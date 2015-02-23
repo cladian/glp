@@ -35,13 +35,21 @@ AppAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
-                    ['label' => 'Signout', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+                    ['label' => 'Inicio', 'url' => ['/site/index']],
+                    ['label' => 'Acerca de ', 'url' => ['/site/about']],
+                    ['label' => 'Evento', 'url' => ['/site/about']],
+                    ['label' => 'Registrarse', 'url' => ['/site/about']],
+                    ['label' => 'Contacto', 'url' => ['/site/contact']],
+                    ['label' => 'Catálogo', 'items' => [
+                        ['label' => 'Responsabilidad', 'url' => '#'],
+                        ['label' => 'Institución', 'url' => '#'],
+                        ['label' => 'Pais', 'url' => '#'],
+                    ]
+                    ],
+                    //['label' => 'Signout', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                     Yii::$app->user->isGuest ?
-                        ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['label' => 'Ingresar', 'url' => ['/site/login']] :
+                        ['label' => 'Salir (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ],
