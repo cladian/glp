@@ -51,7 +51,9 @@ class Profile extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'lastname'], 'string', 'max' => 100],
             [['institution_name', 'responsability_name'], 'string', 'max' => 250],
-            [['phone_number', 'mobile_number'], 'string', 'max' => 15]
+            [['phone_number', 'mobile_number'], 'string', 'max' => 15],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 

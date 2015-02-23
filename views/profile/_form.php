@@ -59,7 +59,7 @@ use app\models\Responsibilitytype;
         ['prompt' => 'Seleccione']
     ) ?>
 
-   <?/*= $form->field($model, 'country_id')->textInput() */?>
+   <?= $form->field($model, 'country_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
