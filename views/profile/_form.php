@@ -1,7 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+
+/* modelos para incluir */
+use app\models\Institutiontype;
+use app\models\Responsibilitytype;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Profile */
@@ -20,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'responsability_name')->textInput(['maxlength' => 250]) ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ 'M' => 'M', 'F' => 'F', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'gender')->dropDownList(['M' => 'M', 'F' => 'F',], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => 15]) ?>
 
@@ -30,20 +36,33 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?/*= $form->field($model, 'created_at')->textInput() */?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?/*= $form->field($model, 'updated_at')->textInput() */?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'institutiontype_id')->textInput() ?>
+    <? /*= $form->field($model, 'institutiontype_id')->textinput() */ ?>
 
-    <?= $form->field($model, 'responsibilitytype_id')->textInput() ?>
+    <?=
+    $form->field($model, 'institutiontype_id')->dropDownList(
+        ArrayHelper::map(Institutiontype::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
 
-    <?= $form->field($model, 'country_id')->textInput() ?>
+
+    <? /*= $form->field($model, 'responsibilitytype_id')->textInput() */ ?>
+
+    <?=
+    $form->field($model, 'responsibilitytype_id')->dropDownList(
+        ArrayHelper::map(Responsibilitytype::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
+
+   <?/*= $form->field($model, 'country_id')->textInput() */?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
