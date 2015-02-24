@@ -13,7 +13,8 @@ $this->title = 'My Yii Application';
 
 
         <p>
-            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-lg btn-success']) ?>
+            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-lg btn-primary']) ?>
+            <?= Html::a('Ingresar', ['site/login/'], ['class' => 'btn btn-lg btn-success']) ?>
         </p>
     </div>
 
