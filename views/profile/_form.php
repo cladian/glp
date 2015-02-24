@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use kartik\widgets\ColorInput;
 
 /* modelos para incluir */
 use app\models\Institutiontype;
@@ -33,6 +34,8 @@ use app\models\Responsibilitytype;
     <?= $form->field($model, 'mobile_number')->textInput(['maxlength' => 15]) ?>
 
     <?= $form->field($model, 'complete')->textInput() ?>
+    <?= $form->field($model, 'complete')->widget(ColorInput::classname(), ['options' => ['placeholder' => 'Select color ...'],]);  ?>
+
 
     <?= $form->field($model, 'status')->textInput() ?>
 

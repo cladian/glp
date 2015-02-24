@@ -26,7 +26,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'ASOCAM-GLP',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -46,6 +46,7 @@ AppAsset::register($this);
 
                 ['label' => 'Evento', 'url' => ['/site/about']],
                 ['label' => 'Registrarse', 'url' => ['/site/about']],
+
                 //['label' => 'Contacto', 'url' => ['/site/contact']],
 
                 ['label' => 'Catálogo', 'items' => [
