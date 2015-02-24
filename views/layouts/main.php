@@ -44,8 +44,8 @@ AppAsset::register($this);
                 ]
                 ],
 
-                ['label' => 'Evento', 'url' => ['/site/about']],
-                ['label' => 'Registrarse', 'url' => ['/site/about']],
+                ['label' => 'Evento', 'url' => ['/event']],
+//                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
                 //['label' => 'Contacto', 'url' => ['/site/contact']],
 
@@ -53,9 +53,11 @@ AppAsset::register($this);
                     ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
                     ['label' => 'Institución', 'url' => ['/institutiontype']],
                     ['label' => 'Pais', 'url' => ['/country']],
+                    ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+                    ['label' => 'Preguntas por Evento', 'url' => ['/eventquestion']],
                 ]
                 ],
-                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+//                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                 Yii::$app->user->isGuest ?
                     ['label' => 'Ingresar', 'url' => ['/site/login']] :
                     ['label' => 'Salir (' . Yii::$app->user->identity->username . ')',
