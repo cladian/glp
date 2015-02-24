@@ -73,7 +73,7 @@ class Profile extends \yii\db\ActiveRecord
             'mobile_number' => 'Teléfono móvil',
             'complete' => 'Complete',
             'status' => 'Estado',
-            'created_at' => 'Created At',
+            'created_at' => Yii::t('app','Created At'),
             'updated_at' => 'Updated At',
             'user_id' => 'User ID',
             'institutiontype_id' => 'Institutiontype ID',
