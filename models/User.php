@@ -8,21 +8,28 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
-
-
 /**
- * User model
+ * This is the model class for table "user".
  *
  * @property integer $id
  * @property string $username
+ * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
- * @property string $auth_key
  * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * @property AuthAssignment[] $authAssignments
+ * @property Comment[] $comments
+ * @property Inscription[] $inscriptions
+ * @property Notification[] $notifications
+ * @property Post[] $posts
+ * @property Profile[] $profiles
+ * @property Reply[] $replies
+ * @property Request[] $requests
+ * @property Topic[] $topics
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -40,23 +47,114 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function rules()
     {
         return [
-            TimestampBehavior::className(),
+            [['username', 'auth_key', 'password_hash', 'email'], 'required'],
+            [['status'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['username'], 'string', 'max' => 100],
+            [['auth_key'], 'string', 'max' => 32],
+            [['password_hash', 'password_reset_token'], 'string', 'max' => 250],
+            [['email'], 'string', 'max' => 45],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]]
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function attributeLabels()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            'id' => 'ID',
+            'username' => 'Username',
+            'auth_key' => 'Auth Key',
+            'password_hash' => 'Password Hash',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthAssignments()
+    {
+        return $this->hasMany(AuthAssignment::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getInscriptions()
+    {
+        return $this->hasMany(Inscription::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNotifications()
+    {
+        return $this->hasMany(Notification::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfiles()
+    {
+        return $this->hasMany(Profile::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReplies()
+    {
+        return $this->hasMany(Reply::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRequests()
+    {
+        return $this->hasMany(Request::className(), ['id' => 'request_id'])->viaTable('reply', ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTopics()
+    {
+        return $this->hasMany(Topic::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * funciones por defecto
+     */
 
     /**
      * @inheritdoc

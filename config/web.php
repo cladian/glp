@@ -6,6 +6,8 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'es',
+    'sourceLanguage' => 'es',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -38,7 +40,24 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'urlManager'=>['enablePrettyUrl'=>'true'],
+        'authManager'=>[
+            'class'=>'yii\rbac\DbManager',
+        ],
     ],
+    #Acceso url para los modulos de roles y perfiles configurados
+    'modules'=>[
+        'admin'=>[
+            'class'=>'mdm\admin\Module',
+        ]
+    ],
+    #Acceso publico sin control de login desde la aplicación, en este ejemplo site es de acceso publico permitido
+    /*'as access'=>[
+        'class'=>'mdm\admin\components\AccessControl',
+        'allowActions'=>[
+            'site/*',
+        ]
+    ],*/
     'params' => $params,
 ];
 

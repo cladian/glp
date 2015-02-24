@@ -10,6 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
 
+
 class SiteController extends Controller
 {
     public function behaviors()
@@ -19,6 +20,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
                 'rules' => [
+                    [
+                        'actions'=>['signup'],
+                        'allow'=>true,
+                        'roles'=>['?'],
+                    ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,

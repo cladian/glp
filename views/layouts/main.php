@@ -26,25 +26,55 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'ASOCAM-GLP',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
+
+            $items=[
+                ['label' => 'Inicio', 'url' => ['/site/index']],
+
+                // ['label' => 'Acerca de ', 'url' => ['/site/about']],
+                ['label' => 'Perfil', 'items' => [
+                    ['label' => 'User', 'url' => ['/user']],
+                    ['label' => 'Perfiles', 'url' => ['/profile']],
+
+                ]
+                ],
+
+                ['label' => 'Evento', 'url' => ['/site/about']],
+                ['label' => 'Registrarse', 'url' => ['/site/about']],
+
+                //['label' => 'Contacto', 'url' => ['/site/contact']],
+
+                ['label' => 'Catálogo', 'items' => [
+                    ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
+                    ['label' => 'Institución', 'url' => ['/institutiontype']],
+                    ['label' => 'Pais', 'url' => ['/country']],
+                ]
+                ],
+                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+                Yii::$app->user->isGuest ?
+                    ['label' => 'Ingresar', 'url' => ['/site/login']] :
+                    ['label' => 'Salir (' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']],
+            ];
+
+            if (Yii::$app->user->can('permission_admin'))
+                $items[]=    ['label' => 'Roles', 'items' => [
+                    ['label' => 'Asignaciones', 'url' => ['/admin']],
+                    ['label' => 'Roles', 'url' => ['/admin/role']],
+                    ['label' => 'Permisos', 'url' => ['/admin/permission']],
+
+                ]
+                ];
+
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
-                    ['label' => 'Signout', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
-                    Yii::$app->user->isGuest ?
-                        ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                            'url' => ['/site/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
-                ],
+                'items' => $items,
             ]);
             NavBar::end();
         ?>
