@@ -5,28 +5,26 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "country".
+ * This is the model class for table "eventtype".
  *
  * @property integer $id
  * @property string $name
- * @property string $color
- * @property string $iso
- * @property string $phonecode
+ * @property string $description
  * @property integer $status
  * @property string $created_at
- * @property string $updated_at
+ * @property string $update_at
  *
  * @property Event[] $events
- * @property Profile[] $profiles
+ * @property Eventquestion[] $eventquestions
  */
-class Country extends \yii\db\ActiveRecord
+class Eventtype extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'country';
+        return 'eventtype';
     }
 
     /**
@@ -35,10 +33,11 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required'],
+            [['description'], 'string'],
             [['status'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['name', 'color', 'phonecode'], 'string', 'max' => 45],
-            [['iso'], 'string', 'max' => 3]
+            [['created_at', 'update_at'], 'safe'],
+            [['name'], 'string', 'max' => 100]
         ];
     }
 
@@ -50,12 +49,10 @@ class Country extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'color' => 'Color',
-            'iso' => 'Iso',
-            'phonecode' => 'Phonecode',
+            'description' => 'Description',
             'status' => 'Status',
             'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'update_at' => 'Update At',
         ];
     }
 
@@ -64,14 +61,14 @@ class Country extends \yii\db\ActiveRecord
      */
     public function getEvents()
     {
-        return $this->hasMany(Event::className(), ['country_id' => 'id']);
+        return $this->hasMany(Event::className(), ['eventtype_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProfiles()
+    public function getEventquestions()
     {
-        return $this->hasMany(Profile::className(), ['country_id' => 'id']);
+        return $this->hasMany(Eventquestion::className(), ['eventtype_id' => 'id']);
     }
 }

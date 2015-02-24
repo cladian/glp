@@ -40,10 +40,10 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'urlManager'=>[
-            'enablePrettyUrl'=>'true',
-            'showScriptName' => false,
-        ],
+        //'urlManager'=>[
+          //  'enablePrettyUrl'=>'true',
+            //'showScriptName' => false,
+        //],
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
         ],

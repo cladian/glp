@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\controllers\CountrySearch */
+/* @var $searchModel app\controllers\EventtypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Countries';
+$this->title = 'Eventtypes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-index">
+<div class="eventtype-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Eventtype', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,12 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'color',
-            'iso',
-            'phonecode',
-            // 'status',
-            // 'created_at',
-            // 'updated_at',
+            'description:ntext',
+            'status',
+            'created_at',
+            // 'update_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

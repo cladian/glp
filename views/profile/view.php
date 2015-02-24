@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Profile */
 
@@ -43,8 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'institutiontype_id',
             'responsibilitytype_id',
-            'country_id',
-        ],
-    ]) ?>
+            'country_id'
+            /*[
+                'label' => 'country_id',
+                'value' => function($model){return $this->hasOne(Country::className(), ['id' => 'country_id']);},
+            ]*/
+            /*[
+            'label' => 'country_id',
+            'value' => '$model->author->name',
+            'data'=>ArrayHelper::map(country::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+        ]*/
+    ]]) ?>
 
 </div>

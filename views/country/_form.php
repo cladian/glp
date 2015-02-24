@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\ColorInput;
+use kartik\widgets\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Country */
@@ -14,19 +16,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?/*= $form->field($model, 'color')->textInput(['maxlength' => 45]) */?>
+
+    <?= $form->field($model, 'color')->widget(ColorInput::classname(), ['options' => ['placeholder' => 'Select color ...'],]);  ?>
 
     <?= $form->field($model, 'iso')->textInput(['maxlength' => 3]) ?>
 
-    <?= $form->field($model, 'color')->textInput(['maxlength' => 45]) ?>
-
-    <?= $form->field($model, 'phone_code')->textInput(['maxlength' => 45]) ?>
+    <?= $form->field($model, 'phonecode')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'rdate')->textInput() ?>
+    <?= $form->field($model, 'created_at')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => 'Enter birth date ...'],
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format' => 'yyyy/mm/dd'
+        ]
+    ]);
+    ?>
+    <?/*= $form->field($model, 'created_at')->textInput() */?>
 
-    <?= $form->field($model, 'update')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
