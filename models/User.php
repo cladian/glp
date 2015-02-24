@@ -51,12 +51,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email'], 'required'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['username'], 'string', 'max' => 100],
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'password_reset_token'], 'string', 'max' => 250],
             [['email'], 'string', 'max' => 45],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]]
         ];
