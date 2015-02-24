@@ -10,6 +10,7 @@ $this->title = 'My Yii Application';
         <h1>Congratulations!</h1>
 
         <p class="lead">Bienvenidos al sistema de registro de participantes</p>
+        <p class="lead"><?= Yii::$app->formatter->asDate(date('Y-m-d'),'long') ?></p>
 
         <p>
             <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-lg btn-success']) ?>
