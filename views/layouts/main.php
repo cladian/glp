@@ -36,17 +36,25 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Inicio', 'url' => ['/site/index']],
-                    ['label' => 'Acerca de ', 'url' => ['/site/about']],
-                    ['label' => 'Evento', 'url' => ['/site/about']],
-                    ['label' => 'Registrarse', 'url' => ['/site/about']],
-                    ['label' => 'Contacto', 'url' => ['/site/contact']],
-                    ['label' => 'Catálogo', 'items' => [
-                        ['label' => 'Responsabilidad', 'url' => '#'],
-                        ['label' => 'Institución', 'url' => '#'],
-                        ['label' => 'Pais', 'url' => '#'],
+
+                   // ['label' => 'Acerca de ', 'url' => ['/site/about']],
+                    ['label' => 'Perfil', 'items' => [
+                        ['label' => 'User', 'url' => ['/user']],
+                        ['label' => 'Perfiles', 'url' => ['/profile']],
+
                     ]
                     ],
-                    //['label' => 'Signout', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+                    ['label' => 'Evento', 'url' => ['/site/about']],
+                    ['label' => 'Registrarse', 'url' => ['/site/about']],
+                    //['label' => 'Contacto', 'url' => ['/site/contact']],
+
+                    ['label' => 'Catálogo', 'items' => [
+                            ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
+                            ['label' => 'Institución', 'url' => ['/institutiontype']],
+                            ['label' => 'Pais', 'url' => ['/country']],
+                        ]
+                    ],
+                    ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Ingresar', 'url' => ['/site/login']] :
                         ['label' => 'Salir (' . Yii::$app->user->identity->username . ')',
