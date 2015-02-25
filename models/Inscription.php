@@ -60,8 +60,8 @@ class Inscription extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'exposition' => 'Exposition',
-            'service_terms' => 'Service Terms',
+            'exposition' => '¿Presentará exposición?',
+            'service_terms' => '¿Está deacuerdo con los términos de servicio ASOCAM?',
             'complete' => 'Complete',
             'status' => 'Status',
             'created_at' => 'Created At',
