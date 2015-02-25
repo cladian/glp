@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Responsibilitytype */
 
-$this->title = 'Update Responsibilitytype: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Responsibilitytypes', 'url' => ['index']];
+$this->title = 'Actualización Tipo de Resposibilidad: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Tipos de Responsabilidad', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualización';
 ?>
 <div class="responsibilitytype-update">
 
