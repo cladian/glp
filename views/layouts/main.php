@@ -45,6 +45,8 @@ AppAsset::register($this);
                 ],
 
                 ['label' => 'Evento', 'url' => ['/event']],
+                ['label' => 'Pregutnas', 'url' => ['/question']],
+                ['label' => 'Inscripción', 'url' => ['/inscription']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
                 ['label' => 'admUser', 'url' => ['/site/admuser']],
@@ -55,6 +57,7 @@ AppAsset::register($this);
                     ['label' => 'Pais', 'url' => ['/country']],
                     ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
                     ['label' => 'Preguntas por Evento', 'url' => ['/eventquestion']],
+                    ['label' => 'Register Type', 'url' => ['/registertype']],
                 ]
                 ],
 //                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],

@@ -11,11 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 if (!$hasProfile){
     echo Growl::widget([
         'type' => Growl::TYPE_WARNING,
-        'title' => 'Perfil de usuario',
-        'icon' => 'glyphicon glyphicon-ok-sign',
-        'body' => 'Incompleto, actualicelo inmediatamente',
+        'title' => 'Perfil de usario incompleto',
+        'icon' => 'glyphicon glyphicon-exclamation-sign',
+        'body' => 'Actualicelo inmediatamente',
         'showSeparator' => true,
-        'delay' => 5,
+        'delay' => 0,
         'pluginOptions' => [
             'placement' => [
                 'from' => 'top',

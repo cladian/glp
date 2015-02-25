@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use kartik\widgets\ColorInput;
+use kartik\widgets\SwitchInput;
 
 /* modelos para incluir */
 use app\models\Institutiontype;
@@ -55,6 +56,14 @@ use app\models\Country;
         <?= $form->field($model, 'mobile_number')->textInput(['maxlength' => 15]) ?>
     </div>
     <div class="col-sm-6">
+        <?/*= $form->field($model, 'gender')->widget(SwitchInput::classname(), [
+            'type' => SwitchInput::RADIO,
+            'items' => [
+                ['label' => 'Masculino', 'value' => 'M'],
+                ['label' => 'Femenino', 'value' => 'F'],
+
+            ],
+        ]); */?>
         <?= $form->field($model, 'gender')->dropDownList(['M' => 'M', 'F' => 'F',], ['prompt' => '']) ?>
     </div>
     <div class="col-sm-6">
