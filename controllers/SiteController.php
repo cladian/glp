@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Profile;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -41,6 +43,7 @@ class SiteController extends Controller
         ];
     }
 
+
     public function actions()
     {
         return [
@@ -52,6 +55,16 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+    public function actionAdmuser(){
+
+        // Verificamos si el usuario tiene registro de perfil
+        //$modelUser=new User();
+       // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
+
+        return $this->render('admuser', [
+            'hasProfile' => Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count(),
+        ]);
     }
 
     public function actionIndex()
@@ -117,7 +130,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionInit()
+   /* public function actionInit()
     {
         $auth = Yii::$app->authManager;
 
@@ -149,5 +162,5 @@ class SiteController extends Controller
         $auth->assign($admin, 1);
         echo("ejecutado");
 
-    }
+    }*/
 }
