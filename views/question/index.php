@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ResponsibilitytypeSearch */
+/* @var $searchModel app\models\QuestionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Responsibilitytypes';
+$this->title = 'Questions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="responsibilitytype-index">
+<div class="question-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Responsibilitytype', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Question', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,12 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-           // 'id',
-            'name',
-            'description:ntext',
+            'id',
+            'text:ntext',
             'status',
             'created_at',
             'updated_at',
+            // 'type',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
