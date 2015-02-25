@@ -61,11 +61,30 @@ class ProfileController extends Controller
     public function actionCreate()
     {
         $model = new Profile();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())&&$model->save() ) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionCreateown()
+    {
+        $model = new Profile();
+
+        // Verificamos si el usuario tiene registro de perfil para actualizar
+        if (Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count())
+            return $this->redirect(['updateown']);
+
+        if ($model->load(Yii::$app->request->post()) ) {
+            // Asignación del ID de usuario previo al almacenamiento
+            // Almacenamiento del modelo;
+            $model->user_id=Yii::$app->user->identity->id;
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('createown', [
                 'model' => $model,
             ]);
         }
@@ -85,6 +104,20 @@ class ProfileController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
+    public function actionUpdateown()
+    {
+        $model = $this->findModelown(Yii::$app->user->identity->id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('updateown', [
                 'model' => $model,
             ]);
         }
@@ -113,6 +146,17 @@ class ProfileController extends Controller
     protected function findModel($id)
     {
         if (($model = Profile::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    /*
+     * Busqueda de registroo de perfil según usuario logeado
+     */
+    protected function findModelown($id)
+    {
+        if (($model = Profile::findOne(['user_id'=>$id]))!== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\ColorInput;
 use kartik\widgets\DatePicker;
+use kartik\widgets\SwitchInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Country */
@@ -23,6 +24,13 @@ use kartik\widgets\DatePicker;
     <?= $form->field($model, 'iso')->textInput(['maxlength' => 3]) ?>
 
     <?= $form->field($model, 'phonecode')->textInput(['maxlength' => 45]) ?>
+    <?=  $form->field($model, 'is_event_city')->widget(SwitchInput::classname(), [
+        'pluginOptions' => [
+            'onText' => 'SI',
+            'offText' => 'NO',
+        ]
+    ]);?>
+
 
     <?/*= $form->field($model, 'status')->textInput() */?>
     <?= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>

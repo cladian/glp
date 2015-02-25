@@ -1,16 +1,16 @@
 <?php
 
-namespace app\controllers;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Country;
+use app\models\Registertype;
 
 /**
- * CountrySearch represents the model behind the search form about `app\models\Country`.
+ * RegistertypeSearch represents the model behind the search form about `app\models\Registertype`.
  */
-class CountrySearch extends Country
+class RegistertypeSearch extends Registertype
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CountrySearch extends Country
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['name', 'color', 'iso', 'phonecode', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'status', 'registertype_id'], 'integer'],
+            [['name', 'role', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CountrySearch extends Country
      */
     public function search($params)
     {
-        $query = Country::find();
+        $query = Registertype::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,12 +60,11 @@ class CountrySearch extends Country
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'registertype_id' => $this->registertype_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'iso', $this->iso])
-            ->andFilterWhere(['like', 'phonecode', $this->phonecode]);
+            ->andFilterWhere(['like', 'role', $this->role]);
 
         return $dataProvider;
     }

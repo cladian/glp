@@ -12,10 +12,20 @@ use dosamigos\tinymce\TinyMce;
 <div class="question-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'text')->widget(TinyMCE::className());?>
 
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'text')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'es',
+        'clientOptions' => [
+            'plugins' => [
+                "advlist autolink lists link charmap  preview anchor",
+
+
+            ],
+            'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
+        ]
+    ]);?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 

@@ -35,7 +35,7 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status'], 'integer'],
+            [['is_event_city', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'color', 'phonecode'], 'string', 'max' => 45],
             [['iso'], 'string', 'max' => 3],
@@ -55,6 +55,7 @@ class Country extends \yii\db\ActiveRecord
             'color' => 'Color',
             'iso' => 'Iso Ejm: ECU',
             'phonecode' => 'Código Telefónico de País',
+            'is_event_city' => 'Is Event City',
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

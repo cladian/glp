@@ -12,6 +12,7 @@ use yii\helpers\Html;
 use mdm\admin\components\MenuHelper;
 use yii\web\Response;
 use yii\rbac\Item;
+use yii\filters\AccessControl;
 
 /**
  * AssignmentController implements the CRUD actions for Assignment model.
@@ -50,16 +51,16 @@ class AssignmentController extends Controller
                     'assign' => ['post'],
                 ],
             ],
-            'access' => [
+            /*'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view','create','update','delete'],
+                        'actions' => ['index', 'view','create','update','delete'.'admin'],
                         'allow' => true,
                         'roles' => ['sysadmin'],
                     ],
                 ],
-            ],
+            ],*/
         ];
     }
 

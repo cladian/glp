@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Country */
+/* @var $model app\models\Registertype */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Paises', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Registertypes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-view">
+<div class="registertype-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,15 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-//            'id',
+            'id',
             'name',
-            'color',
-            'is_event_city',
-            'iso',
-            'phonecode',
+            'role',
             'status',
             'created_at',
             'updated_at',
+            'registertype_id',
         ],
     ]) ?>
 
