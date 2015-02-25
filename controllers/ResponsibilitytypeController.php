@@ -23,6 +23,23 @@ class ResponsibilitytypeController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['create', 'update'],
+                'rules' => [
+                    // deny all POST requests
+                    [
+                        'allow' => false,
+                        'verbs' => ['POST']
+                    ],
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['createResponsibilitytype'],
+                    ],
+                    // everything else is denied
+                ],
+            ],
         ];
     }
 
@@ -32,6 +49,7 @@ class ResponsibilitytypeController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new ResponsibilitytypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
