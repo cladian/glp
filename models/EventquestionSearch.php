@@ -1,16 +1,16 @@
 <?php
 
-namespace app\controllers;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Country;
+use app\models\Eventquestion;
 
 /**
- * CountrySearch represents the model behind the search form about `app\models\Country`.
+ * EventquestionSearch represents the model behind the search form about `app\models\Eventquestion`.
  */
-class CountrySearch extends Country
+class EventquestionSearch extends Eventquestion
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CountrySearch extends Country
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['name', 'color', 'iso', 'phonecode', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'status', 'eventtype_id', 'question_id'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CountrySearch extends Country
      */
     public function search($params)
     {
-        $query = Country::find();
+        $query = Eventquestion::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,12 +60,9 @@ class CountrySearch extends Country
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'eventtype_id' => $this->eventtype_id,
+            'question_id' => $this->question_id,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'iso', $this->iso])
-            ->andFilterWhere(['like', 'phonecode', $this->phonecode]);
 
         return $dataProvider;
     }

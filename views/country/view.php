@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
             'color',
+            'is_event_city',
             'iso',
             'phonecode',
             'status',

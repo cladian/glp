@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\controllers\EventSearch */
+/* @var $model app\models\EventSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace app\controllers;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Eventquestion;
+use app\models\Eventtype;
 
 /**
- * EventquestionSearch represents the model behind the search form about `app\models\Eventquestion`.
+ * EventtypeSearch represents the model behind the search form about `app\models\Eventtype`.
  */
-class EventquestionSearch extends Eventquestion
+class EventtypeSearch extends Eventtype
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class EventquestionSearch extends Eventquestion
     public function rules()
     {
         return [
-            [['id', 'status', 'eventtype_id', 'question_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['name', 'description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EventquestionSearch extends Eventquestion
      */
     public function search($params)
     {
-        $query = Eventquestion::find();
+        $query = Eventtype::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,9 +60,10 @@ class EventquestionSearch extends Eventquestion
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'eventtype_id' => $this->eventtype_id,
-            'question_id' => $this->question_id,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

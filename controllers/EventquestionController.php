@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Eventquestion;
-use app\controllers\EventquestionSearch;
+use app\models\EventquestionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
