@@ -47,7 +47,7 @@ AppAsset::register($this);
                 ['label' => 'Evento', 'url' => ['/event']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
-                //['label' => 'Contacto', 'url' => ['/site/contact']],
+                ['label' => 'admUser', 'url' => ['/site/admuser']],
 
                 ['label' => 'Catálogo', 'items' => [
                     ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
@@ -60,7 +60,7 @@ AppAsset::register($this);
 //                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                 Yii::$app->user->isGuest ?
                     ['label' => 'Ingresar', 'url' => ['/site/login']] :
-                    ['label' => 'Salir (' . Yii::$app->user->identity->username . ')',
+                    ['label' => 'Salir (' . Yii::$app->user->identity->username . '-'. Yii::$app->user->identity->id.')',
                         'url' => ['/site/logout'],
                         'linkOptions' => ['data-method' => 'post']],
             ];
