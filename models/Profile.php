@@ -67,8 +67,8 @@ class Profile extends \yii\db\ActiveRecord
             'name' => 'Nombres',
             'lastname' => 'Apellidos',
             'institution_name' => 'Institución',
-            'responsability_name' => 'Responsabiilidad',
-            'gender' => 'Genero',
+            'responsability_name' => 'Responsabilidad',
+            'gender' => 'Género',
             'phone_number' => 'Telefono fijo',
             'mobile_number' => 'Teléfono móvil',
             'complete' => 'Complete',
@@ -76,9 +76,9 @@ class Profile extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app','Created At'),
             'updated_at' => 'Updated At',
             'user_id' => 'User ID',
-            'institutiontype_id' => 'Institutiontype ID',
-            'responsibilitytype_id' => 'Responsibilitytype ID',
-            'country_id' => 'Country ID',
+            'institutiontype_id' => 'Tipo de Institución',
+            'responsibilitytype_id' => 'Tipos de Responsabilidad',
+            'country_id' => 'País',
         ];
     }
 
