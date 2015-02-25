@@ -19,30 +19,34 @@ use app\models\Country;
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <div class="col-sm-6">  <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>    </div>
-    <div class="col-sm-6">   <?= $form->field($model, 'lastname')->textInput(['maxlength' => 100]) ?> </div>
+    <div class="col-sm-6">
+        <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
+    </div>
+    <div class="col-sm-6">
+        <?= $form->field($model, 'lastname')->textInput(['maxlength' => 100]) ?>
+    </div>
 
 
     <div class="col-sm-6">
-    <?= $form->field($model, 'responsability_name')->textInput(['maxlength' => 250]) ?>
+        <?= $form->field($model, 'responsability_name')->textInput(['maxlength' => 250]) ?>
     </div>
 
     <div class="col-sm-6">
-    <?=
-    $form->field($model, 'responsibilitytype_id')->dropDownList(
-        ArrayHelper::map(Responsibilitytype::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
+        <?=
+        $form->field($model, 'responsibilitytype_id')->dropDownList(
+            ArrayHelper::map(Responsibilitytype::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
     </div>
     <div class="col-sm-6">
-    <?= $form->field($model, 'institution_name')->textInput(['maxlength' => 250]) ?>
+        <?= $form->field($model, 'institution_name')->textInput(['maxlength' => 250]) ?>
     </div>
     <div class="col-sm-6">
-    <?=
-    $form->field($model, 'institutiontype_id')->dropDownList(
-        ArrayHelper::map(Institutiontype::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
+        <?=
+        $form->field($model, 'institutiontype_id')->dropDownList(
+            ArrayHelper::map(Institutiontype::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
     </div>
     <div class="col-sm-6">
         <?= $form->field($model, 'phone_number')->textInput(['maxlength' => 15]) ?>
@@ -60,30 +64,6 @@ use app\models\Country;
             ['prompt' => 'Seleccione']
         ) ?>
     </div>
-
-    <?= $form->field($model, 'complete')->textInput() ?>
-    <?/*= $form->field($model, 'complete')->widget(ColorInput::classname(), ['options' => ['placeholder' => 'Select color ...'],]);  */?>
-
-
-    <?/*= $form->field($model, 'status')->textInput() */?>
-    <?= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
-
-    <?/*= $form->field($model, 'created_at')->textInput() */?>
-
-    <?/*= $form->field($model, 'updated_at')->textInput() */?>
-
-   <!-- --><?/*= $form->field($model, 'user_id')->textInput() */?>
-
-    <? /*= $form->field($model, 'institutiontype_id')->textinput() */ ?>
-
-
-
-
-    <? /*= $form->field($model, 'responsibilitytype_id')->textInput() */ ?>
-
-
-
-  <?/*= $form->field($model, 'country_id')->textInput() */?>
 
 
     <div class="form-group">

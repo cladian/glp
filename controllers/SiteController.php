@@ -60,10 +60,10 @@ class SiteController extends Controller
 
         // Verificamos si el usuario tiene registro de perfil
         //$modelUser=new User();
-        $modelProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
+       // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
 
         return $this->render('admuser', [
-            'modelProfile' => $modelProfile,
+            'hasProfile' => Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count(),
         ]);
     }
 

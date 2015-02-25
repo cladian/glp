@@ -1,14 +1,36 @@
 <?php
 use yii\helpers\Html;
+use kartik\widgets\Growl;
 
 /* @var $this yii\web\View */
 $this->title = 'Panel de control de usuario';
 $this->params['breadcrumbs'][] = $this->title;
+
+// http://demos.krajee.com/widget-details/growl
+
+if (!$hasProfile){
+    echo Growl::widget([
+        'type' => Growl::TYPE_WARNING,
+        'title' => 'Perfil de usuario',
+        'icon' => 'glyphicon glyphicon-ok-sign',
+        'body' => 'Incompleto, actualicelo inmediatamente',
+        'showSeparator' => true,
+        'delay' => 5,
+        'pluginOptions' => [
+            'placement' => [
+                'from' => 'top',
+                'align' => 'right',
+            ]
+        ]
+    ]);
+
+
+}
 ?>
 <div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
-    <h2><?= print_r(Yii::$app->user->identity->id); ?></h2>
+
 
     <?= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) ?>
 
@@ -20,3 +42,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <code><?= __FILE__ ?></code>
 </div>
+
+
