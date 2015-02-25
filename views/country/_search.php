@@ -19,19 +19,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'description') ?>
+    <?= $form->field($model, 'color') ?>
 
     <?= $form->field($model, 'iso') ?>
 
-    <?= $form->field($model, 'color') ?>
-
-    <?php // echo $form->field($model, 'phone_code') ?>
+    <?= $form->field($model, 'phonecode') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'rdate') ?>
+    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'update') ?>
+    <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

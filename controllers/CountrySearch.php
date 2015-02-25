@@ -19,7 +19,7 @@ class CountrySearch extends Country
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'description', 'iso', 'color', 'phone_code', 'rdate', 'update'], 'safe'],
+            [['name', 'color', 'iso', 'phonecode', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -58,15 +58,14 @@ class CountrySearch extends Country
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'rdate' => $this->rdate,
-            'update' => $this->update,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'iso', $this->iso])
             ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'phone_code', $this->phone_code]);
+            ->andFilterWhere(['like', 'iso', $this->iso])
+            ->andFilterWhere(['like', 'phonecode', $this->phonecode]);
 
         return $dataProvider;
     }

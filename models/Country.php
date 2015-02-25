@@ -9,13 +9,15 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
- * @property string $description
- * @property string $iso
  * @property string $color
- * @property string $phone_code
+ * @property string $iso
+ * @property string $phonecode
  * @property integer $status
- * @property string $rdate
- * @property string $update
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * @property Event[] $events
+ * @property Profile[] $profiles
  */
 class Country extends \yii\db\ActiveRecord
 {
@@ -33,11 +35,9 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['description'], 'string'],
             [['status'], 'integer'],
-            [['rdate', 'update'], 'safe'],
-            [['name', 'color', 'phone_code'], 'string', 'max' => 45],
+            [['created_at', 'updated_at'], 'safe'],
+            [['name', 'color', 'phonecode'], 'string', 'max' => 45],
             [['iso'], 'string', 'max' => 3]
         ];
     }
@@ -50,13 +50,28 @@ class Country extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'description' => 'Description',
-            'iso' => 'Iso',
             'color' => 'Color',
-            'phone_code' => 'Phone Code',
+            'iso' => 'Iso',
+            'phonecode' => 'Phonecode',
             'status' => 'Status',
-            'rdate' => 'Rdate',
-            'update' => 'Update',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvents()
+    {
+        return $this->hasMany(Event::className(), ['country_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfiles()
+    {
+        return $this->hasMany(Profile::className(), ['country_id' => 'id']);
     }
 }
