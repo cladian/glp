@@ -49,11 +49,11 @@ class Institutiontype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Nombre',
+            'description' => 'Descripción',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

@@ -12,7 +12,7 @@ use Yii;
  * @property string $description
  * @property integer $status
  * @property string $created_at
- * @property string $update_at
+ * @property string $updated_at
  *
  * @property Event[] $events
  * @property Eventquestion[] $eventquestions
@@ -36,7 +36,7 @@ class Eventtype extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['description'], 'string'],
             [['status'], 'integer'],
-            [['created_at', 'update_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 100]
         ];
     }
@@ -48,11 +48,11 @@ class Eventtype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'update_at' => 'Update At',
+            'name' => 'Nombre',
+            'description' => 'Descripción',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

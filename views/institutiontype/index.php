@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\InstitutiontypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Institutiontypes';
+$this->title = 'Tipos de Institución';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="institutiontype-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Institutiontype', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
             'description:ntext',
             'status',
-            'created_at',
+//            'created_at',
             // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],

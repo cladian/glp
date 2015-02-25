@@ -38,7 +38,9 @@ class Country extends \yii\db\ActiveRecord
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'color', 'phonecode'], 'string', 'max' => 45],
-            [['iso'], 'string', 'max' => 3]
+            [['iso'], 'string', 'max' => 3],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -49,13 +51,13 @@ class Country extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Nombre',
             'color' => 'Color',
-            'iso' => 'Iso',
-            'phonecode' => 'Phonecode',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'iso' => 'Iso Ejm: ECU',
+            'phonecode' => 'Código Telefónico de País',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

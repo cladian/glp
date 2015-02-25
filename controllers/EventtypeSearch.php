@@ -19,7 +19,7 @@ class EventtypeSearch extends Eventtype
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'description', 'created_at', 'update_at'], 'safe'],
+            [['name', 'description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -59,7 +59,7 @@ class EventtypeSearch extends Eventtype
             'id' => $this->id,
             'status' => $this->status,
             'created_at' => $this->created_at,
-            'update_at' => $this->update_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

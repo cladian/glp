@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ResponsibilitytypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Responsibilitytypes';
+$this->title = 'Tipos de Responsabilidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="responsibilitytype-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Responsibilitytype', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Tipo de Responsabilidad', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:ntext',
             'status',
-            'created_at',
-            'updated_at',
+            /*'created_at',
+            'updated_at',*/
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
