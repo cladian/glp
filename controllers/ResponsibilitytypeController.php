@@ -8,6 +8,7 @@ use app\models\ResponsibilitytypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ResponsibilitytypeController implements the CRUD actions for Responsibilitytype model.
@@ -23,6 +24,17 @@ class ResponsibilitytypeController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['sysadmin'],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -32,6 +44,7 @@ class ResponsibilitytypeController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new ResponsibilitytypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

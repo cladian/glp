@@ -31,6 +31,16 @@ class RuleController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['sysadmin'],
+                    ],
+                ],
+            ],
         ];
     }
 
