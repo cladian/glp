@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use kartik\widgets\Growl;
 
+use yii\grid\GridView;
+
 /* @var $this yii\web\View */
 $this->title = 'Panel de control de usuario';
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,22 +31,51 @@ if (!$hasProfile){
 ?>
 <div class="site-about">
     <h3><?= Html::encode($this->title) ?></h3>
-    <p><?= $activeUsers; ?></p>
-    <button class="btn btn-primary" type="button"> Usuarios Activos <span class="badge"><?= $activeUsers; ?></span></button>
-    <!--<button class="btn btn-primary" type="button"> Eventos Activos <span class="badge"><?/*= $activeEvents; */?></span></button>-->
-    <button class="btn btn-primary" type="button"> Eventos Activos <span class="badge"><?= $activeInscriptions; ?></span></button>
 
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary" type="button"> Usuarios <span class="badge"><?= $activeUsers; ?></span></button>
+        </div>
+        <div class="btn-group" role="group">
+            <button class="btn btn-info" type="button"> Eventos <span class="badge"><?= $activeEvents; ?></span></button>
+        </div>
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary" type="button"> Inscripciones <span class="badge"><?= $activeInscriptions; ?></span></button>
+        </div>
+        <div class="btn-group" role="group">
+            <?= Html::a('Perfil', ['/profile/createown'], ['class' => 'btn btn-warning']) ?>
+        </div>
+    </div>
 
-
-    <?= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) ?>
-
-
-
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
 </div>
+
+<div class="inscription-index">
+
+    <h3>Inscripciones activas</h3>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+//            'id',
+            'exposition',
+           // 'service_terms',
+            'complete',
+            'status',
+            // 'created_at',
+            // 'updated_at',
+            // 'complete_logistic',
+            // 'complete_eventquiz',
+            // 'complete_quiz',
+            // 'event_id',
+            // 'user_id',
+            // 'registertype_type',
+            // 'registertype_assigment',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+    </div>
 
 

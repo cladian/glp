@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="inscription-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 
     <p>
         <?= Html::a('Crear Inscripción', ['create'], ['class' => 'btn btn-success']) ?>
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'exposition',
-            'service_terms',
+          //  'service_terms',
             'complete',
             'status',
             // 'created_at',

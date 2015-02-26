@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'created_at',
             'updated_at',
+            'photo',
 //            'user_id',
             [                    // the owner name of the model
                 'label' => 'Usuario',
