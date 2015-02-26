@@ -6,6 +6,7 @@ use app\models\Inscription;
 use app\models\InscriptionSearch;
 use app\models\Profile;
 use app\models\Event;
+use app\models\EventSearch;
 use app\models\User;
 use Yii;
 // Comentado Temporalmente
@@ -94,7 +95,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'modelEvent' => Event::find()->where(['status'=>10])->all(),
+
+        ]);
     }
 
     public function actionLogin()
