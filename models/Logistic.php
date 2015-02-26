@@ -49,7 +49,9 @@ class Logistic extends \yii\db\ActiveRecord
             [['leavingondate', 'leavingonhour', 'returningondate', 'returningonhour', 'accommodationdatein', 'accommodationdateout', 'created_at', 'updated_at'], 'safe'],
             [['residenceobs'], 'string'],
             [['leavingonorigincity', 'leavingonairline', 'returningonairline'], 'string', 'max' => 45],
-            [['leavingonflightnumber', 'returningonflightnumber'], 'string', 'max' => 10]
+            [['leavingonflightnumber', 'returningonflightnumber'], 'string', 'max' => 10],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -74,9 +76,9 @@ class Logistic extends \yii\db\ActiveRecord
             'residenceobs' => 'Residenceobs',
             'accommodationdatein' => 'Fecha de inicio de alojamiento',
             'accommodationdateout' => 'Fecha de salida de alojamiento',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

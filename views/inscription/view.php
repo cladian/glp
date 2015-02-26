@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
 //            'id',
             'exposition',
-
             'service_terms',
             'complete',
             'status',
@@ -40,15 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'complete_eventquiz',
             'complete_quiz',
 //            'event_id',
-            [                    // the owner name of the model
-                'label' => 'Evento',
-                'value' => $model->event->name,
-            ],
+//            [                    // the owner name of the model
+//                'label' => 'Evento',
+//                'value' => $model->event->name,
+//            ],
 //            'user_id',
-            [                    // the owner name of the model
-                'label' => 'Usuario',
-                'value' => $model->user->username,
-            ],
+
             'registertype_type',
             'registertype_assigment',
         ],

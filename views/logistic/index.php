@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\LogisticSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Logistics';
+$this->title = 'Logística';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="logistic-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Logistic', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear logística', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
