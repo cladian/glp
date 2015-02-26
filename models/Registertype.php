@@ -39,7 +39,9 @@ class Registertype extends \yii\db\ActiveRecord
             [['role'], 'string'],
             [['status', 'registertype_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 45]
+            [['name'], 'string', 'max' => 45],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -50,11 +52,11 @@ class Registertype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'role' => 'Role',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Nombre',
+            'role' => 'Rol',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
             'registertype_id' => 'Registertype ID',
         ];
     }

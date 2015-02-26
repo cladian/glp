@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Registertype */
 
-$this->title = 'Update Registertype: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Registertypes', 'url' => ['index']];
+$this->title = 'Actualización tipo de Registro: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualización';
 ?>
 <div class="registertype-update">
 
