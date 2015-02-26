@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventquestion */
 
-$this->title = 'Create Eventquestion';
-$this->params['breadcrumbs'][] = ['label' => 'Eventquestions', 'url' => ['index']];
+$this->title = 'Crear Pregunta de Evento';
+$this->params['breadcrumbs'][] = ['label' => 'Preguntas por Evento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="eventquestion-create">

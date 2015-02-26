@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Inscription */
 
 $this->title = 'Crear Inscripción';
-$this->params['breadcrumbs'][] = ['label' => 'Inscriptions', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="inscription-create">
