@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'user_id',
             [                    // the owner name of the model
                 'label' => 'Usuario',
-                'value' => $model->user->id,
+                'value' => $model->user->username,
             ],
 //            'institutiontype_id',
             [                    // the owner name of the model

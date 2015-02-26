@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\InscriptionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Inscriptions';
+$this->title = 'Inscripciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="inscription-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Inscription', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Inscripción', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'exposition',
             'service_terms',
             'complete',
