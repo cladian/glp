@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use kartik\widgets\FileInput;
+
 use kartik\widgets\ColorInput;
 use kartik\widgets\SwitchInput;
 
@@ -73,6 +75,12 @@ use app\models\Country;
             ['prompt' => 'Seleccione']
         ) ?>
     </div>
+
+    <?=
+    $form->field($model, 'photo')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*'],
+    ]);
+    // $form->field($model, 'photo')->textarea(['rows' => 6]) ?>
 
 
     <div class="form-group">

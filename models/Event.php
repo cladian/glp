@@ -59,7 +59,9 @@ class Event extends \yii\db\ActiveRecord
             [['cost'], 'number'],
             [['discount', 'year', 'status', 'country_id', 'eventtype_id'], 'integer'],
             [['name', 'city'], 'string', 'max' => 100],
-            [['discount_description'], 'string', 'max' => 250]
+            [['discount_description'], 'string', 'max' => 250],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -70,29 +72,29 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'short_description' => 'Short Description',
-            'general_content' => 'General Content',
-            'methodology' => 'Methodology',
-            'addressed_to' => 'Addressed To',
-            'included' => 'Included',
-            'requirements' => 'Requirements',
-            'file' => 'File',
-            'photo' => 'Photo',
-            'url' => 'Url',
-            'begin_at' => 'Begin At',
-            'end_at' => 'End At',
-            'city' => 'City',
-            'cost' => 'Cost',
-            'discount' => 'Discount',
-            'discount_end_at' => 'Discount End At',
-            'discount_description' => 'Discount Description',
-            'year' => 'Year',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'country_id' => 'Country ID',
-            'eventtype_id' => 'Eventtype ID',
+            'name' => 'Nombre',
+            'short_description' => 'Descripción Corta',
+            'general_content' => 'Contenido General',
+            'methodology' => 'Metodología',
+            'addressed_to' => 'Dirigido a:',
+            'included' => 'Que incluye',
+            'requirements' => 'Requerimientos',
+            'file' => 'Archivo',
+            'photo' => 'Fotografía',
+            'url' => 'Enlace Recurso',
+            'begin_at' => 'Fecha de Inicio',
+            'end_at' => 'Fecha de Fin',
+            'city' => 'Ciudad',
+            'cost' => 'Costo',
+            'discount' => 'Descuento',
+            'discount_end_at' => 'Fecha Limite de Descuento',
+            'discount_description' => 'Información de descuento',
+            'year' => 'Año',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
+            'country_id' => 'Pais',
+            'eventtype_id' => 'Tipo de Evento',
         ];
     }
 

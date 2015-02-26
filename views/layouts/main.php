@@ -34,22 +34,30 @@ AppAsset::register($this);
             ]);
 
             $items=[
+
                 ['label' => 'Inicio', 'url' => ['/site/index']],
+                ['label' => 'Paneles', 'items' => [
+                        ['label' => 'User', 'url' => ['/site/admuser']],
+                        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+                        ['label' => 'SIS-Admin', 'url' => ['#']],
+                    ]
+                ],
 
                 // ['label' => 'Acerca de ', 'url' => ['/site/about']],
                 ['label' => 'Perfil', 'items' => [
                     ['label' => 'User', 'url' => ['/user']],
                     ['label' => 'Perfiles', 'url' => ['/profile']],
 
-                ]
+                    ]
                 ],
 
                 ['label' => 'Evento', 'url' => ['/event']],
-                ['label' => 'Pregutnas', 'url' => ['/question']],
+                ['label' => 'Preguntas', 'url' => ['/question']],
                 ['label' => 'Inscripción', 'url' => ['/inscription']],
+                ['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
-                ['label' => 'admUser', 'url' => ['/site/admuser']],
+
 
                 ['label' => 'Catálogo', 'items' => [
                     ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],

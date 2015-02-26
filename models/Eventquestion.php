@@ -36,7 +36,9 @@ class Eventquestion extends \yii\db\ActiveRecord
         return [
             [['status', 'eventtype_id', 'question_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['eventtype_id', 'question_id'], 'required']
+            [['eventtype_id', 'question_id'], 'required'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -47,11 +49,11 @@ class Eventquestion extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'eventtype_id' => 'Eventtype ID',
-            'question_id' => 'Question ID',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
+            'eventtype_id' => 'Tipo de Evento',
+            'question_id' => 'Pregunta',
         ];
     }
 

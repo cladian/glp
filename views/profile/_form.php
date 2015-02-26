@@ -9,6 +9,8 @@ use kartik\widgets\ColorInput;
 use app\models\Institutiontype;
 use app\models\Responsibilitytype;
 use app\models\Country;
+use kartik\widgets\FileInput;
+use yii\helpers\Url;
 
 
 /* @var $this yii\web\View */
@@ -18,7 +20,7 @@ use app\models\Country;
 
 <div class="profile-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
 
@@ -35,15 +37,15 @@ use app\models\Country;
     <?= $form->field($model, 'mobile_number')->textInput(['maxlength' => 15]) ?>
 
     <?= $form->field($model, 'complete')->textInput() ?>
-    <?/*= $form->field($model, 'complete')->widget(ColorInput::classname(), ['options' => ['placeholder' => 'Select color ...'],]);  */?>
+    <? /*= $form->field($model, 'complete')->widget(ColorInput::classname(), ['options' => ['placeholder' => 'Select color ...'],]);  */ ?>
 
 
-    <?/*= $form->field($model, 'status')->textInput() */?>
-    <?= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
+    <? /*= $form->field($model, 'status')->textInput() */ ?>
+    <?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
 
-    <?/*= $form->field($model, 'created_at')->textInput() */?>
+    <? /*= $form->field($model, 'created_at')->textInput() */ ?>
 
-    <?/*= $form->field($model, 'updated_at')->textInput() */?>
+    <? /*= $form->field($model, 'updated_at')->textInput() */ ?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
@@ -64,12 +66,28 @@ use app\models\Country;
         ['prompt' => 'Seleccione']
     ) ?>
 
-  <?/*= $form->field($model, 'country_id')->textInput() */?>
+    <? /*= $form->field($model, 'country_id')->textInput() */ ?>
     <?=
     $form->field($model, 'country_id')->dropDownList(
         ArrayHelper::map(Country::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
     ) ?>
+<?= $file;?>
+    <?=
+    $form->field($model, 'photo')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'showUpload' => true,
+            'initialPreview' => [
+              //  Html::img("uploads/avatar/default.png", ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
+                Html::img("uploads/avatar/".$file, ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
+            ],
+            'initialCaption'=>[$file],
+            'overwriteInitial'=>true
+        ]
+
+    ]);
+    // $form->field($model, 'photo')->textarea(['rows' => 6])  ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
