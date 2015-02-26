@@ -26,7 +26,7 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-/web/uploads/*
+web/uploads/*
 
 web/uploads/10622901_953676637989697_5443837919387290014_n.jpg
 
