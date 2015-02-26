@@ -46,7 +46,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'lastname',  'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'required'],
-            [['gender'], 'string'],
+            [['gender', 'photo'], 'string'],
             [['complete', 'status', 'user_id', 'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'lastname'], 'string', 'max' => 100],
@@ -80,6 +80,7 @@ class Profile extends \yii\db\ActiveRecord
             'institutiontype_id' => 'Tipo de Institución',
             'responsibilitytype_id' => 'Tipos de Responsabilidad',
             'country_id' => 'País',
+            'photo' => 'Photo',
         ];
     }
 

@@ -36,9 +36,10 @@ AppAsset::register($this);
             $items=[
 
                 ['label' => 'Inicio', 'url' => ['/site/index']],
-                ['label' => 'Admins', 'items' => [
+                ['label' => 'Paneles', 'items' => [
                         ['label' => 'User', 'url' => ['/site/admuser']],
-                        ['label' => 'Perfiles', 'url' => ['/site/admasocam']],
+                        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+                        ['label' => 'SIS-Admin', 'url' => ['#']],
                     ]
                 ],
 
