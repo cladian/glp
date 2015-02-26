@@ -34,14 +34,20 @@ AppAsset::register($this);
             ]);
 
             $items=[
+
                 ['label' => 'Inicio', 'url' => ['/site/index']],
+                ['label' => 'Admins', 'items' => [
+                        ['label' => 'User', 'url' => ['/site/admuser']],
+                        ['label' => 'Perfiles', 'url' => ['/site/admasocam']],
+                    ]
+                ],
 
                 // ['label' => 'Acerca de ', 'url' => ['/site/about']],
                 ['label' => 'Perfil', 'items' => [
                     ['label' => 'User', 'url' => ['/user']],
                     ['label' => 'Perfiles', 'url' => ['/profile']],
 
-                ]
+                    ]
                 ],
 
                 ['label' => 'Evento', 'url' => ['/event']],
