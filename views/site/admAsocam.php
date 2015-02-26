@@ -68,10 +68,15 @@ if (!$hasProfile){
             // 'complete_logistic',
             // 'complete_eventquiz',
             // 'complete_quiz',
-            // 'event_id',
+             'event_id',
             // 'user_id',
             // 'registertype_type',
             // 'registertype_assigment',
+
+ /*          [                    // the owner name of the model
+                'attribute' => 'event_id',
+                'value' => $dataProvider->event->name,
+            ],*/
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

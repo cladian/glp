@@ -42,6 +42,7 @@ class InscriptionSearch extends Inscription
     public function search($params)
     {
         $query = Inscription::find();
+        /*$query->joinWith(['event']);*/
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -71,6 +72,7 @@ class InscriptionSearch extends Inscription
             'registertype_type' => $this->registertype_type,
             'registertype_assigment' => $this->registertype_assigment,
         ]);
+        /*->andFilterWhere(['like', 'event.id', $this->event_id]);*/
 
         return $dataProvider;
     }
