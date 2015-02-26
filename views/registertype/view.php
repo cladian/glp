@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Registertype */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Registertypes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="registertype-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,13 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'name',
             'role',
             'status',
             'created_at',
             'updated_at',
-            'registertype_id',
+//            'registertype_id',
+            [                    // the owner name of the model
+                'label' => 'Tipo de Registro',
+                'value' => $model->registertype->name,
+            ],
         ],
     ]) ?>
 

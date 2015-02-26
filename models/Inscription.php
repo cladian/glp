@@ -49,7 +49,9 @@ class Inscription extends \yii\db\ActiveRecord
         return [
             [['exposition', 'service_terms', 'complete', 'status', 'complete_logistic', 'complete_eventquiz', 'complete_quiz', 'event_id', 'user_id', 'registertype_type', 'registertype_assigment'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['event_id', 'user_id', 'registertype_type', 'registertype_assigment'], 'required']
+            [['event_id', 'user_id', 'registertype_type', 'registertype_assigment'], 'required'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -64,15 +66,15 @@ class Inscription extends \yii\db\ActiveRecord
             'service_terms' => '¿Está deacuerdo con los términos de servicio ASOCAM?',
             'complete' => 'Complete',
             'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
             'complete_logistic' => 'Complete Logistic',
             'complete_eventquiz' => 'Complete Eventquiz',
             'complete_quiz' => 'Complete Quiz',
-            'event_id' => 'Event ID',
-            'user_id' => 'User ID',
-            'registertype_type' => 'Registertype Type',
-            'registertype_assigment' => 'Registertype Assigment',
+            'event_id' => 'Evento',
+            'user_id' => 'Usuario',
+            'registertype_type' => 'Tipo de Resgistro',
+            'registertype_assigment' => 'Tipo de Asignación',
         ];
     }
 

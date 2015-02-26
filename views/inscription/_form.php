@@ -3,6 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\SwitchInput;
+use yii\helpers\ArrayHelper;
+
+use app\models\Registertype;
+use app\models\User;
+use app\models\Event;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Inscription */
@@ -29,15 +34,39 @@ use kartik\widgets\SwitchInput;
 
     --><?/*= $form->field($model, 'complete_quiz')->textInput() */?>
 
-    <?= $form->field($model, 'event_id')->textInput() ?>
+<!--    --><?//= $form->field($model, 'event_id')->textInput() ?>
+    <?=
+    $form->field($model, 'event_id')->dropDownList(
+        ArrayHelper::map(Event::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+<!--    --><?//= $form->field($model, 'user_id')->textInput() ?>
+
+    <?=
+    $form->field($model, 'user_id')->dropDownList(
+        ArrayHelper::map(User::find()->all(), 'id', 'username'),
+        ['prompt' => 'Seleccione']
+    ) ?>
+
     <div class="col-sm-6">
 
-    <?= $form->field($model, 'registertype_type')->textInput() ?>
+<!--    --><?//= $form->field($model, 'registertype_type')->textInput() ?>
+
+    <?=
+    $form->field($model, 'registertype_type')->dropDownList(
+        ArrayHelper::map(Registertype::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
+
 </div>
     <div class="col-sm-6">
-    <?= $form->field($model, 'registertype_assigment')->textInput() ?>
+<!--    --><?//= $form->field($model, 'registertype_assigment')->textInput() ?>
+    <?=
+    $form->field($model, 'registertype_assigment')->dropDownList(
+        ArrayHelper::map(Registertype::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
 </div>
     <div class="col-sm-6">
         <?=  $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
