@@ -65,7 +65,7 @@ class Inscription extends \yii\db\ActiveRecord
             'exposition' => '¿Presentará exposición?',
             'service_terms' => '¿Está deacuerdo con los términos de servicio ASOCAM?',
             'complete' => 'Complete',
-            'status' => 'Status',
+            'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
             'complete_logistic' => 'Complete Logistic',
