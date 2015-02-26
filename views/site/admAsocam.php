@@ -29,10 +29,10 @@ if (!$hasProfile){
 ?>
 <div class="site-about">
     <h3><?= Html::encode($this->title) ?></h3>
-    <p><?= $activeUsers; ?></p>
+
     <button class="btn btn-primary" type="button"> Usuarios Activos <span class="badge"><?= $activeUsers; ?></span></button>
-    <!--<button class="btn btn-primary" type="button"> Eventos Activos <span class="badge"><?/*= $activeEvents; */?></span></button>-->
-    <button class="btn btn-primary" type="button"> Eventos Activos <span class="badge"><?= $activeInscriptions; ?></span></button>
+    <button class="btn btn-primary" type="button"> Eventos Activos <span class="badge"><?= $activeEvents; ?></span></button>
+    <button class="btn btn-primary" type="button"> Inscripciones Activos <span class="badge"><?= $activeInscriptions; ?></span></button>
 
 
 

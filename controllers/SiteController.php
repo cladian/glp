@@ -7,6 +7,7 @@ use app\models\Profile;
 use app\models\Event;
 use app\models\User;
 use Yii;
+// Comentado Temporalmente
 //use yii\base\Event;
 use yii\filters\AccessControl;
 use yii\web\Controller;
