@@ -16,8 +16,8 @@ $this->title = 'My Yii Application';
         <h1>Bienvenidos</h1>
         <code class="lead"><?= Yii::$app->formatter->asDate(date('Y-m-d'), 'long') ?></code>
 
-        <p class="lead">Al sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá registrarce y
-            acceder a la información, materiales y demás ecursos disponibles para los participantes de los eventos</p>
+        <p class="lead">Al sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá registrarse y
+            acceder a la información, materiales y demás cursos disponibles para los participantes de los eventos regionales</p>
 
 
         <p>
