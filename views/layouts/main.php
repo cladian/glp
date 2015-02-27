@@ -65,7 +65,7 @@ AppAsset::register($this);
                     ['label' => 'Pais', 'url' => ['/country']],
                     ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
                     ['label' => 'Preguntas por Evento', 'url' => ['/eventquestion']],
-                    ['label' => 'Register Type', 'url' => ['/registertype']],
+                    ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
                 ]
                 ],
 //                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
