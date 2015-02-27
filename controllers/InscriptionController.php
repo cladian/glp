@@ -71,6 +71,21 @@ class InscriptionController extends Controller
         }
     }
 
+    public function actionCreateown()
+    {
+        $model = new Inscription();
+        //Almacenamiento de ID de usuario logeado
+        $model->user_id=Yii::$app->user->identity->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('createown', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Updates an existing Inscription model.
      * If update is successful, the browser will be redirected to the 'view' page.
