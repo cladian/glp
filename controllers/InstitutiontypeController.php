@@ -61,6 +61,7 @@ class InstitutiontypeController extends Controller
     public function actionCreate()
     {
         $model = new Institutiontype();
+        $model->created_at=date('Y-m-d H:i:s');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -80,6 +81,7 @@ class InstitutiontypeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->updated_at=date('Y-m-d H:i:s');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

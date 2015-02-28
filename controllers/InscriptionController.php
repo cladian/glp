@@ -2,12 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
 use app\models\InscriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
+
 
 /**
  * InscriptionController implements the CRUD actions for Inscription model.
@@ -132,5 +136,29 @@ class InscriptionController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /*
+     * Función para retorno de array de opciones
+     */
+    public function actionSubcat(){
+       $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $cat_id = $parents[0];
+               // $parentClass=Registertype::findone($cat_id);
+                $out=Registertype::find()
+                    ->where(['status'=>10,'registertype_id'=> $cat_id])
+                    ->andWhere('id <> :id', [':id' => $cat_id])  // funcion adicional para exluir el parent
+                    ->asArray()  // exportar en array para el dropdownlist
+                    ->all();
+
+                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                return;
+           }
+        }
+        echo Json::encode(['output'=>'', 'selected'=>'']);
+
+
     }
 }
