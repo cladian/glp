@@ -17,6 +17,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
+use yii\web\NotFoundHttpException;
 
 
 class SiteController extends Controller
@@ -99,6 +100,21 @@ class SiteController extends Controller
             'modelEvent' => Event::find()->where(['status'=>10])->all(),
 
         ]);
+    }
+
+    public function actionEvent($id){
+        if (($modelEvent = Event::findOne($id)) !== null) {
+
+            return $this->render('event',[
+                'modelEvent' => $modelEvent,
+
+            ]);
+        }
+    else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+
     }
 
     public function actionLogin()
