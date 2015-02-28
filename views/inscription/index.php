@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'complete_eventquiz',
             // 'complete_quiz',
             // 'event_id',
+
             // 'user_id',
             // 'registertype_type',
             // 'registertype_assigment',
