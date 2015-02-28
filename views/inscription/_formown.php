@@ -47,7 +47,7 @@ use yii\helpers\Url;
     ) ?>
 
 <!--    -->
-    <?= $form->field($model, 'user_id')->input('hidden') ?>
+<!--    --><?//= $form->field($model, 'user_id')->input('hidden') ?>
 
 
     <div class="col-sm-6">

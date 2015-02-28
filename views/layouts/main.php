@@ -51,7 +51,16 @@ AppAsset::register($this);
                     ]
                 ],
 
-                ['label' => 'Evento', 'url' => ['/event']],
+//                ['label' => 'Evento', 'url' => ['/event']],
+
+                ['label' => 'Evento','items' => [
+                    ['label' => 'Eventos', 'url' => ['/event']],
+                    ['label' => 'Respuesta', 'url' => ['/answer']],
+                    ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+                    ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+                ]
+                ],
+
                 ['label' => 'Preguntas', 'url' => ['/question']],
                 ['label' => 'Inscripción', 'url' => ['/inscription']],
                 ['label' => 'Logistica', 'url' => ['/logistic']],
