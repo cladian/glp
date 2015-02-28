@@ -56,6 +56,7 @@ class Eventanswer extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
+            'status' => 'Estado',
         ];
     }
 

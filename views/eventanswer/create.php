@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Eventanswer */
 
 $this->title = 'Crear Respuesta por Evento';
-$this->params['breadcrumbs'][] = ['label' => 'Eventanswers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Respuestas por Evento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="eventanswer-create">
