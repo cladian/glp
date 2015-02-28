@@ -9,6 +9,7 @@ use app\models\Event;
 use app\models\EventSearch;
 use app\models\User;
 use Yii;
+
 // Comentado Temporalmente
 //use yii\base\Event;
 use yii\filters\AccessControl;
@@ -30,9 +31,9 @@ class SiteController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions'=>['signup'],
-                        'allow'=>true,
-                        'roles'=>['?'],
+                        'actions' => ['signup'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout'],
@@ -63,43 +64,51 @@ class SiteController extends Controller
             ],
         ];
     }
-    public function actionAdmuser(){
+
+    public function actionAdmuser()
+    {
         // De acceso solo para usuarios logeados
 
         // Verificamos si el usuario tiene registro de perfil
-       // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
-
-
+        // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
 
 
         return $this->render('admuser', [
-            'hasProfile' => Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count(),
+            'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
 
 
         ]);
     }
 
-    public function actionAdmasocam(){
+    public function actionAdmasocam()
+    {
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('admasocam', [
-            'hasProfile' => Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count(),
-            'activeUsers'=> User::find()->where(['status'=>10])->count(),
-            'activeEvents'=> Event::find()->where(['status'=>10])->count(),
-            'activeInscriptions'=> Inscription::find()->where(['status'=>10])->count(),
+            'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'activeUsers' => User::find()->where(['status' => 10])->count(),
+            'activeEvents' => Event::find()->where(['status' => 10])->count(),
+            'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
 
     }
-
+    /*
+     * Modificaciones previas
+     */
     public function actionIndex()
     {
-        return $this->render('index',[
-            'modelEvent' => Event::find()->where(['status'=>10])->all(),
-
-        ]);
+        if (Yii::$app->user->can('user')) {
+            return $this->redirect(['admuser']);
+        } else if (Yii::$app->user->can('asocam')) {
+            return $this->redirect(['admasocam']);
+        } else {
+            return $this->render('index', [
+                'modelEvent' => Event::find()->where(['status' => 10])->all(),
+            ]);
+        }
     }
 
     public function actionEvent($id){
@@ -175,37 +184,37 @@ class SiteController extends Controller
         ]);
     }
 
-   /* public function actionInit()
-    {
-        $auth = Yii::$app->authManager;
+    /* public function actionInit()
+     {
+         $auth = Yii::$app->authManager;
 
-        // add "createPost" permission
-        $createPost = $auth->createPermission('createPost');
-        $createPost->description = 'Create a post';
-        $auth->add($createPost);
+         // add "createPost" permission
+         $createPost = $auth->createPermission('createPost');
+         $createPost->description = 'Create a post';
+         $auth->add($createPost);
 
-        // add "updatePost" permission
-        $updatePost = $auth->createPermission('updatePost');
-        $updatePost->description = 'Update post';
-        $auth->add($updatePost);
+         // add "updatePost" permission
+         $updatePost = $auth->createPermission('updatePost');
+         $updatePost->description = 'Update post';
+         $auth->add($updatePost);
 
-        // add "author" role and give this role the "createPost" permission
-        $author = $auth->createRole('author');
-        $auth->add($author);
-        $auth->addChild($author, $createPost);
+         // add "author" role and give this role the "createPost" permission
+         $author = $auth->createRole('author');
+         $auth->add($author);
+         $auth->addChild($author, $createPost);
 
-        // add "admin" role and give this role the "updatePost" permission
-        // as well as the permissions of the "author" role
-        $admin = $auth->createRole('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $updatePost);
-        $auth->addChild($admin, $author);
+         // add "admin" role and give this role the "updatePost" permission
+         // as well as the permissions of the "author" role
+         $admin = $auth->createRole('admin');
+         $auth->add($admin);
+         $auth->addChild($admin, $updatePost);
+         $auth->addChild($admin, $author);
 
-        // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // usually implemented in your User model.
-        $auth->assign($author, 2);
-        $auth->assign($admin, 1);
-        echo("ejecutado");
+         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
+         // usually implemented in your User model.
+         $auth->assign($author, 2);
+         $auth->assign($admin, 1);
+         echo("ejecutado");
 
-    }*/
+     }*/
 }
