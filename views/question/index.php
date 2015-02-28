@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
          //   'id',
             'text:html',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
             // 'type',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Generalquestion */
 
-$this->title = 'Update Generalquestion: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Generalquestions', 'url' => ['index']];
+$this->title = 'Actualizar Pregunta General: ' . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Preguntas Generales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualización';
 ?>
 <div class="generalquestion-update">
 

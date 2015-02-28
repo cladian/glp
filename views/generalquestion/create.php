@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Generalquestion */
 
-$this->title = 'Create Generalquestion';
-$this->params['breadcrumbs'][] = ['label' => 'Generalquestions', 'url' => ['index']];
+$this->title = 'Crear Pregunta General';
+$this->params['breadcrumbs'][] = ['label' => 'Preguntas Generales', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="generalquestion-create">
