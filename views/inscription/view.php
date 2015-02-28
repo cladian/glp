@@ -29,6 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
 //            'id',
+
+            [
+                'label'=>'Evento',
+                'value' => $model->event->name,
+            ],
             'exposition',
             'service_terms',
             'complete',
@@ -45,8 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
 //            ],
 //            'user_id',
 
-            'registertype_type',
-            'registertype_assigment',
+            [
+                'label'=>'Tipo de Registro',
+                'value' =>$model->registertypeType->name,
+            ],
+            [
+                'label'=>'Tipo de Asignación',
+                'value' =>$model->registertypeAssigment->name,
+            ],
         ],
     ]) ?>
 

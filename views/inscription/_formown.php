@@ -8,10 +8,15 @@ use yii\helpers\ArrayHelper;
 use app\models\Registertype;
 use app\models\User;
 use app\models\Event;
+use kartik\widgets\DepDrop;
+use yii\helpers\Url;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Inscription */
 /* @var $form yii\widgets\ActiveForm */
+
+// http://demos.krajee.com/widget-details/depdrop
 ?>
 
 <div class="inscription-form">
@@ -51,18 +56,32 @@ use app\models\Event;
 
     <?=
     $form->field($model, 'registertype_type')->dropDownList(
-        ArrayHelper::map(Registertype::find()->all(), 'id', 'name'),
+        ArrayHelper::map(Registertype::find()->where(['id'=>['1','2']])->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
     ) ?>
+        <?=
+         $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
+            // 'type'=>DepDrop::TYPE_DEFAULT,
+             'options'=>['id'=>'name'],
+             'pluginOptions'=>[
+                /*'depends'=>['registertype_type'],*/
+                'depends'=>[Html::getInputId($model, 'registertype_type')],
+                'placeholder'=>'Seleccione',
+                'url'=>Url::to(['/inscription/subcat'])
+            ]
+        ]);
+        ?>
 
 </div>
     <div class="col-sm-6">
 <!--    --><?//= $form->field($model, 'registertype_assigment')->textInput() ?>
-    <?=
+<!--    --><?/*=
     $form->field($model, 'registertype_assigment')->dropDownList(
         ArrayHelper::map(Registertype::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
-    ) ?>
+    ) */?>
+
+
 </div>
     <div class="col-sm-6">
         <?=  $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
