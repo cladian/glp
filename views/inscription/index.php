@@ -26,17 +26,26 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'exposition',
+// 'event_id',
+            [
+                'attribute' => 'event_id',
+                'value'=> function ($data){ return $data->event->name;}
+            ],
+            // 'user_id',
+            [
+                'attribute' => 'user_id',
+                'value'=> function ($data){ return $data->user->username;}
+            ],
+//            'exposition',
           //  'service_terms',
-            'complete',
+//            'complete',
             'status',
             // 'created_at',
             // 'updated_at',
             // 'complete_logistic',
             // 'complete_eventquiz',
             // 'complete_quiz',
-            // 'event_id',
-            // 'user_id',
+
             // 'registertype_type',
             // 'registertype_assigment',
 
