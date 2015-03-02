@@ -102,7 +102,8 @@ if (!$hasProfile) {
                 San Francisco, CA 94107<br>
                 <abbr title="Phone">P:</abbr> (123) 456-7890
             </address>
-            <p><a class="btn btn-default" href="Evento">Inscribirme</a></p>
+<!--            <p><a class="btn btn-default" href="Evento">Inscribirme</a></p>-->
+            <?= Html::a('Inscribirme', ['inscription/createown/','id'=> 1], ['class' => 'btn  btn-primary']) ?>
         </div>
         <div class="col-lg-8">
             <h2>Mis inscripciones</h2>

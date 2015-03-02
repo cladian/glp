@@ -40,11 +40,11 @@ use yii\helpers\Url;
     --><?/*= $form->field($model, 'complete_quiz')->textInput() */?>
 
 <!--    --><?//= $form->field($model, 'event_id')->textInput() ?>
-    <?=
+    <?/*=
     $form->field($model, 'event_id')->dropDownList(
         ArrayHelper::map(Event::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
-    ) ?>
+    ) */?>
 
 <!--    -->
 <!--    --><?//= $form->field($model, 'user_id')->input('hidden') ?>

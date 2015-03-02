@@ -5,6 +5,9 @@ namespace app\controllers;
 use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
+use app\models\Logistic;
+use app\models\Answer;
+use app\models\Generalquestion;
 use app\models\InscriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -75,13 +78,32 @@ class InscriptionController extends Controller
         }
     }
 
-    public function actionCreateown()
+    public function actionCreateown($id)
     {
         $model = new Inscription();
         //Almacenamiento de ID de usuario logeado
+
         $model->user_id=Yii::$app->user->identity->id;
+        $model->event_id = $id;
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $modelLogistic = new Logistic();
+
+
+            $modelLogistic -> inscription_id = $model->id;
+            $modelLogistic -> save();
+
+            $modelanswer= new Answer();
+            $modelgeneralquestion = Generalquestion::find()->where(['status'=> 10])->all();
+            foreach ($modelgeneralquestion as $answer)
+            {
+                $modelanswer->inscription_id=$model->id;
+                $modelanswer->question_id=$answer->question_id;
+                $modelanswer->save();
+
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
@@ -89,6 +111,7 @@ class InscriptionController extends Controller
             ]);
         }
     }
+
 
     /**
      * Updates an existing Inscription model.
