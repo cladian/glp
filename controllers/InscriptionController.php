@@ -153,6 +153,20 @@ class InscriptionController extends Controller
         }
     }
 
+    public function actionUpdateown($id)
+    {
+        // búsqueda de modelo por dos parámetros
+        $model = $this->findModelown($id,Yii::$app->user->id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('updateown', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Deletes an existing Inscription model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -176,6 +190,14 @@ class InscriptionController extends Controller
     protected function findModel($id)
     {
         if (($model = Inscription::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    protected function findModelown($id,$user_id)
+    {
+        if (($model = Inscription::findOne(['id'=>$id,'user_id'=>$user_id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

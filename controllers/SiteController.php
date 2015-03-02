@@ -74,7 +74,7 @@ class SiteController extends Controller
 
        // $searchInscription=Inscription::find()->where(['status'=>10])->all();
         $searchInscription=new InscriptionSearch();
-        $dataInscription = $searchInscription->search(Yii::$app->request->queryParams);
+        $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
         // Por implementar consulta de inscipciones ya habilitadas
         $modelEvent = Event::find()->where( ['status'=>10])->all();

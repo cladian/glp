@@ -80,9 +80,7 @@ if (!$hasProfile) {
 
         </div>
         <div class="col-lg-8">
-            <h2>Mis inscripciones</h2>
-
-            <p>componente</p>
+            <h3>Mis inscripciones</h3>
             <?= GridView::widget([
                 'dataProvider' => $dataInscription,
                 'filterModel' => $searchInscription,
@@ -110,7 +108,19 @@ if (!$hasProfile) {
                     // 'registertype_type',
                     // 'registertype_assigment',
 
+
                     ['class' => 'yii\grid\ActionColumn'],
+                    ['class' => 'yii\grid\ActionColumn',
+                        'template'=>'{view}{update}{delete}',
+                        'buttons'=>[
+                            'create' => function ($url, $model) {
+                                return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
+                                    'title' => Yii::t('yii', 'Create'),
+                                ]);
+
+                            }
+                        ]
+                    ],
                 ],
             ]); ?>
         </div>
