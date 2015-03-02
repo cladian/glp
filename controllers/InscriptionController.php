@@ -15,6 +15,8 @@ use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 
+// links and alerts
+
 
 /**
  * InscriptionController implements the CRUD actions for Inscription model.
@@ -78,22 +80,36 @@ class InscriptionController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     * Utilizada para el almacenamiento de registros de los usuarios logeados, generalmente para crear los registros propios de cada uno de los perfiles
+     */
     public function actionCreateown($id)
     {
         $model = new Inscription();
-        //Almacenamiento de ID de usuario logeado
 
+
+        //Almacenamiento de ID de usuario logeado
         $model->user_id=Yii::$app->user->identity->id;
         $model->event_id = $id;
-
+        //Verificación si el usuario tiene un registro previo al evento seleccionado
+        $modelInscription=Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->count();
+        if ($modelInscription >0){
+            // Opciones disponibles para loe errores: success - info - warning - danger
+            \Yii::$app->getSession()->setFlash('danger', 'Usted dispone de una inscripción previa al evento, por favor complete la información de éste registro');
+         //   \Yii::$app->getSession()->setFlash('success', 'Usted dispone de una inscripción previa al evento');
+            return $this->redirect(['site/index']);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+            //Almacenamiento de registro Logistica en Blanco
             $modelLogistic = new Logistic();
-
-
             $modelLogistic -> inscription_id = $model->id;
             $modelLogistic -> save();
+
+            //Almacenamiento de registro Answers en blanco
 
             $modelanswer= new Answer();
             $modelgeneralquestion = Generalquestion::find()->where(['status'=> 10])->all();
@@ -104,6 +120,10 @@ class InscriptionController extends Controller
                 $modelanswer->save();
 
             }
+
+            // Almacenamiento de registros EventAnswers en Blanco
+            // Pendiente
+            //
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
