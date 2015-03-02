@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(' Crear Rpuesta', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(' Crear Respuesta', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,7 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'inscription_id',
-            'question_id',
+//            'question_id',
+            [
+                'attribute' => 'question_id',
+                'value'=> function ($data){ return $data->question->question->text;}
+            ],
             'reply:ntext',
             'created_at',
             // 'updated_at',
