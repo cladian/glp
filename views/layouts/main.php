@@ -77,7 +77,7 @@ AppAsset::register($this);
                     ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
                 ]
                 ],
-//                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                 Yii::$app->user->isGuest ?
                     ['label' => 'Ingresar', 'url' => ['/site/login']] :
                     ['label' => 'Salir (' . Yii::$app->user->identity->username . '-'. Yii::$app->user->identity->id.')',

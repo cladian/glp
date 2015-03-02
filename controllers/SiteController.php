@@ -76,11 +76,15 @@ class SiteController extends Controller
         $searchInscription=new InscriptionSearch();
         $dataInscription = $searchInscription->search(Yii::$app->request->queryParams);
 
+        // Por implementar consulta de inscipciones ya habilitadas
+        $modelEvent = Event::find()->where( ['status'=>10])->all();
+
 
         return $this->render('admuser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'searchInscription' => $searchInscription,
             'dataInscription' => $dataInscription,
+            'modelEvent'=>$modelEvent,
         ]);
     }
 
