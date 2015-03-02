@@ -93,15 +93,16 @@ class InscriptionController extends Controller
         //Almacenamiento de ID de usuario logeado
         $model->user_id=Yii::$app->user->identity->id;
         $model->event_id = $id;
+
         //Verificación si el usuario tiene un registro previo al evento seleccionado
-        $modelInscription=Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->count();
-        if ($modelInscription >0){
+
+        if (Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->count() >0){
             // Opciones disponibles para loe errores: success - info - warning - danger
             \Yii::$app->getSession()->setFlash('danger', 'Usted dispone de una inscripción previa al evento, por favor complete la información de éste registro');
-         //   \Yii::$app->getSession()->setFlash('success', 'Usted dispone de una inscripción previa al evento');
             return $this->redirect(['site/index']);
         }
 
+        // Si es una inscripción nueva
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             //Almacenamiento de registro Logistica en Blanco
