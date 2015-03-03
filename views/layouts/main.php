@@ -63,7 +63,7 @@ AppAsset::register($this);
 
                 ['label' => 'Preguntas', 'url' => ['/question']],
                 ['label' => 'Inscripción', 'url' => ['/inscription']],
-                ['label' => 'Logistica', 'url' => ['/logistic']],
+                //['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
 
@@ -77,7 +77,7 @@ AppAsset::register($this);
                     ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
                 ]
                 ],
-//                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
+                ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
                 Yii::$app->user->isGuest ?
                     ['label' => 'Ingresar', 'url' => ['/site/login']] :
                     ['label' => 'Salir (' . Yii::$app->user->identity->username . '-'. Yii::$app->user->identity->id.')',

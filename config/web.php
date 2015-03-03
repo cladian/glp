@@ -52,6 +52,9 @@ $config = [
     'modules'=>[
         'admin'=>[
             'class'=>'mdm\admin\Module',
+        ],
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
         ]
     ],
     #Acceso publico sin control de login desde la aplicación, en este ejemplo site es de acceso publico permitido

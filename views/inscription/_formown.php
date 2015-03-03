@@ -25,80 +25,82 @@ use yii\helpers\Url;
 
 
 
-    <?/*= $form->field($model, 'complete')->textInput() */?>
+    <? /*= $form->field($model, 'complete')->textInput() */ ?>
 
-    <?/*= $form->field($model, 'status')->textInput() */?>
+    <? /*= $form->field($model, 'status')->textInput() */ ?>
 
-<!--    <?/*= $form->field($model, 'created_at')->textInput() */?>
+    <!--    <? /*= $form->field($model, 'created_at')->textInput() */ ?>
 
-    --><?/*= $form->field($model, 'updated_at')->textInput() */?>
+    --><? /*= $form->field($model, 'updated_at')->textInput() */ ?>
 
-<!--    <?/*= $form->field($model, 'complete_logistic')->textInput() */?>
+    <!--    <? /*= $form->field($model, 'complete_logistic')->textInput() */ ?>
 
-    <?/*= $form->field($model, 'complete_eventquiz')->textInput() */?>
+    <? /*= $form->field($model, 'complete_eventquiz')->textInput() */ ?>
 
-    --><?/*= $form->field($model, 'complete_quiz')->textInput() */?>
+    --><? /*= $form->field($model, 'complete_quiz')->textInput() */ ?>
 
-<!--    --><?//= $form->field($model, 'event_id')->textInput() ?>
+    <!--    --><? //= $form->field($model, 'event_id')->textInput() ?>
     <?/*=
     $form->field($model, 'event_id')->dropDownList(
         ArrayHelper::map(Event::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
-    ) */?>
+    ) */
+    ?>
 
-<!--    -->
-<!--    --><?//= $form->field($model, 'user_id')->input('hidden') ?>
+    <!--    -->
+    <!--    --><? //= $form->field($model, 'user_id')->input('hidden') ?>
 
 
     <div class="col-sm-6">
 
-<!--    --><?//= $form->field($model, 'registertype_type')->textInput() ?>
+        <!--    --><? //= $form->field($model, 'registertype_type')->textInput() ?>
 
-    <?=
-    $form->field($model, 'registertype_type')->dropDownList(
-        ArrayHelper::map(Registertype::find()->where(['id'=>['1','2']])->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
         <?=
-         $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
-            // 'type'=>DepDrop::TYPE_DEFAULT,
-             'options'=>['id'=>'name'],
-             'pluginOptions'=>[
-                /*'depends'=>['registertype_type'],*/
-                'depends'=>[Html::getInputId($model, 'registertype_type')],
-                'placeholder'=>'Seleccione',
-                'url'=>Url::to(['/inscription/subcat'])
-            ]
-        ]);
+        $form->field($model, 'registertype_type')->dropDownList(
+            ArrayHelper::map(Registertype::find()->where(['id' => ['1', '2']])->all(), 'id', 'name')
+        ) ?>
+
+        <?= $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
+                'data' => [$model->registertype_assigment => 'name'],
+                'pluginOptions' => [
+                    'initialize'=>true,
+                    'depends' => [Html::getInputId($model, 'registertype_type')],
+                    'placeholder' => 'Seleccione',
+                    'url' => Url::to(['/inscription/subcat'])
+                ]
+            ]);
+
+
         ?>
 
-</div>
+    </div>
     <div class="col-sm-6">
-<!--    --><?//= $form->field($model, 'registertype_assigment')->textInput() ?>
-<!--    --><?/*=
+        <!--    --><? //= $form->field($model, 'registertype_assigment')->textInput() ?>
+        <!--    --><?/*=
     $form->field($model, 'registertype_assigment')->dropDownList(
         ArrayHelper::map(Registertype::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
-    ) */?>
+    ) */
+        ?>
 
 
-</div>
+    </div>
     <div class="col-sm-6">
-        <?=  $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
+        <?= $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
             'pluginOptions' => [
                 'onText' => 'SI',
                 'offText' => 'NO',
             ]
-        ]);?>
+        ]); ?>
     </div>
 
     <div class="col-sm-6">
-        <?=  $form->field($model, 'service_terms')->widget(SwitchInput::classname(), [
+        <?= $form->field($model, 'service_terms')->widget(SwitchInput::classname(), [
             'pluginOptions' => [
                 'onText' => 'SI',
                 'offText' => 'NO',
             ]
-        ]);?>
+        ]); ?>
     </div>
 
     <div class="form-group">
