@@ -48,8 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'discount_description',
             'year',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
 //            'country_id',
             [                    // the owner name of the model
                 'label' => 'Pais',
