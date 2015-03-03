@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => 'Preguntas del Evento',
 //                  'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialEventquestion',['dataProvider'=>$dataProvider, 'searchModel'=>$searchModel]),
+                'content' => $this->render('_partialEventquestion',['dataProvider'=>$dataProvider, 'searchModel'=>$searchModel,'eventtype_id'=>$model->eventtype_id,'event_id'=>$model->id]),
 //                 'options' => ['id' => 'myveryownID'],
             ],
         ],
