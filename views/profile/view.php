@@ -39,8 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'mobile_number',
 //            'complete',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
             'photo',
 //            'user_id',
             [                    // the owner name of the model
