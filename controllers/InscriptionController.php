@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Eventanswer;
+use app\models\Eventquestion;
 use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
@@ -61,9 +63,11 @@ class InscriptionController extends Controller
     public function actionView($id)
     {   $model=$this->findModel($id);
         $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
+        $modelEventanswer=Eventanswer::find()->where(['inscription_id'=>$model->id])->all();
         return $this->render('view', [
             'model' => $model,
             'modelLogistic' => $modelLogistic,
+            'modelEventanswer'=>$modelEventanswer,
         ]);
     }
 
@@ -125,6 +129,17 @@ class InscriptionController extends Controller
                 $modelanswer->question_id=$answer->question_id;
                 $modelanswer->save();
 
+            }
+
+            //Verificación de preguntas habilitadas para el evento, para esto es necesario ingresar desde el modelo de insctpción
+            // y subir al registro de evento
+
+            $modelEvenAnswer= new Eventanswer() ;
+            $modelEventQuestion=Eventquestion::find()->where(['status'=>10,'eventtype_id'=>$model->event->eventtype_id])->all();
+            foreach($modelEventQuestion as $eventanswer){
+                $modelEvenAnswer->inscription_id=$model->id;
+                $modelEvenAnswer->eventquestion_id=$eventanswer->eventquestion_id;
+                $modelEvenAnswer->save();
             }
 
             // Almacenamiento de registros EventAnswers en Blanco

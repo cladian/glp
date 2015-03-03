@@ -93,6 +93,19 @@ class LogisticController extends Controller
         }
     }
 
+    public function actionUpdateown($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['inscription/view', 'id' => $model->inscription_id]);
+        } else {
+            return $this->render('updateown', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Deletes an existing Logistic model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
