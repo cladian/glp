@@ -18,9 +18,9 @@ use app\models\Question;
     <?/*= $form->field($model, 'status')->textInput() */?>
     <?= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+<!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
+<!---->
+<!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
     <!--    --><?//= $form->field($model, 'eventtype_id')->textInput() ?>
     <?=

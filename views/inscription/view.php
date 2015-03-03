@@ -52,9 +52,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => 'Logistica',
-                'content' => 'Anim pariatur cliche...',
+              //  'content' => 'Anim pariatur cliche...',
                 'content' => $this->render('_partialLogistic',['model'=>$modelLogistic]),
-                'options' => ['id' => 'myveryownID'],
+              //  'options' => ['id' => 'myveryownID'],
         ],
         [
             'label' => 'Encuestas',
