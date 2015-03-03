@@ -57,37 +57,19 @@ use yii\helpers\Url;
 
         <?=
         $form->field($model, 'registertype_type')->dropDownList(
-            ArrayHelper::map(Registertype::find()->where(['id' => ['1', '2']])->all(), 'id', 'name'),
-            ['prompt' => 'Seleccione']
+            ArrayHelper::map(Registertype::find()->where(['id' => ['1', '2']])->all(), 'id', 'name')
         ) ?>
-        <?php
-        if ($model->isNewRecord) {
-            // Versión para nuevo registro
-            echo $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
+
+        <?= $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
+                'data' => [$model->registertype_assigment => 'name'],
                 'pluginOptions' => [
-                    /*'depends'=>['registertype_type'],*/
-                    'depends' => [Html::getInputId($model, 'registertype_type')],
-                    'placeholder' => 'Seleccione',
-                    'url' => Url::to(['/inscription/subcat'])
-                ]
-            ]);
-        } else {
-            echo $form->field($model, 'registertype_assigment')->widget(DepDrop::classname(), [
-                // 'type'=>DepDrop::TYPE_DEFAULT,
-                //  'data'=>$model->registertypeType->name,
-                'data' => [$model->registertype_assigment => $model->registertypeAssigment->name],
-                //  'options'=>['id'=>'name', 'class'=>'input-large form-control'],
-                // 'data'=>[Html::getInputId($model, 'registertype_assigment')],
-                //'options'=>['id'=>'name'],
-                'pluginOptions' => [
-                    /*'depends'=>['registertype_type'],*/
                     'initialize'=>true,
                     'depends' => [Html::getInputId($model, 'registertype_type')],
                     'placeholder' => 'Seleccione',
                     'url' => Url::to(['/inscription/subcat'])
                 ]
             ]);
-        }
+
 
         ?>
 

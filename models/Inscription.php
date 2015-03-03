@@ -33,6 +33,8 @@ use Yii;
  */
 class Inscription extends \yii\db\ActiveRecord
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
     /**
      * @inheritdoc
      */
@@ -50,6 +52,7 @@ class Inscription extends \yii\db\ActiveRecord
             [['exposition', 'service_terms', 'complete', 'status', 'complete_logistic', 'complete_eventquiz', 'complete_quiz', 'event_id', 'user_id', 'registertype_type', 'registertype_assigment'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['event_id', 'user_id', 'registertype_type', 'registertype_assigment'], 'required'],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];

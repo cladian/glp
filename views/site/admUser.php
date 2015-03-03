@@ -8,6 +8,7 @@ $this->title = 'Panel de control de usuario';
 $this->params['breadcrumbs'][] = $this->title;
 
 // http://demos.krajee.com/widget-details/growl
+//http://www.bsourcecode.com/yiiframework2/gridview-in-yiiframework-2-0/
 
 if (!$hasProfile) {
     echo Growl::widget([
@@ -108,42 +109,38 @@ if (!$hasProfile) {
                     // 'registertype_type',
                     // 'registertype_assigment',
 
+                    [
+                        'class' => 'yii\grid\CheckboxColumn',
+                        // you may configure additional properties here
+                    ],
+                    // ['class' => 'yii\grid\ActionColumn'],
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'header' => 'Acciones',
 
-                    ['class' => 'yii\grid\ActionColumn'],
-                    ['class' => 'yii\grid\ActionColumn',
-                        'template'=>'{view}{update}{delete}',
-                        'buttons'=>[
-                            'create' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
-                                    'title' => Yii::t('yii', 'Create'),
+                        'template' => '{view}{update}{delete}{link}',
+                        'buttons' => [
+                            'link' => function ($url, $model) {
+                                return Html::a('<span class="glyphicon glyphicon-info-sign"></span>', $url, [
+                                    'title' => Yii::t('app', 'Info'),
                                 ]);
-
                             }
+
+                            /*                    'update' => function ($url, $model) {
+                                                    return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
+                                                        'title' => Yii('yii', 'inscription/updateown'),
+                                                    ]);
+
+                                                }*/
                         ]
                     ],
+
+
                 ],
+
             ]); ?>
         </div>
-        <!--        <div class="col-lg-4">
-                    <h2>Heading</h2>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h2>Heading</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur.</p>
-
-            <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-        </div>-->
     </div>
 
 

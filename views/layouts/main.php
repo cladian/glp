@@ -63,7 +63,7 @@ AppAsset::register($this);
 
                 ['label' => 'Preguntas', 'url' => ['/question']],
                 ['label' => 'Inscripción', 'url' => ['/inscription']],
-                ['label' => 'Logistica', 'url' => ['/logistic']],
+                //['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
 

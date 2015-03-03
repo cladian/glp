@@ -56,9 +56,11 @@ class InscriptionController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    {   $model=$this->findModel($id);
+        $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'modelLogistic' => $modelLogistic,
         ]);
     }
 
@@ -99,7 +101,7 @@ class InscriptionController extends Controller
         if (Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->count() >0){
             // Opciones disponibles para loe errores: success - info - warning - danger
             \Yii::$app->getSession()->setFlash('danger', 'Usted dispone de una inscripción previa al evento, por favor complete la información de éste registro');
-            return $this->redirect(['site/index']);
+            return $this->redirect(['inscription/view','id'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->one()->id]);
         }
 
         // Si es una inscripción nueva
@@ -113,7 +115,7 @@ class InscriptionController extends Controller
             //Almacenamiento de registro Answers en blanco
 
             $modelanswer= new Answer();
-            $modelgeneralquestion = Generalquestion::find()->where(['status'=> 10])->all();
+            $modelgeneralquestion = Generalquestion::find()->where(['status'=> self::STATUS_ACTIVE])->all();
             foreach ($modelgeneralquestion as $answer)
             {
                 $modelanswer->inscription_id=$model->id;
@@ -143,6 +145,7 @@ class InscriptionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -214,7 +217,7 @@ class InscriptionController extends Controller
                 $cat_id = $parents[0];
                // $parentClass=Registertype::findone($cat_id);
                 $out=Registertype::find()
-                    ->where(['status'=>10,'registertype_id'=> $cat_id])
+                    ->where(['status'=>self::STATUS_ACTIVE,'registertype_id'=> $cat_id])
                     ->andWhere('id <> :id', [':id' => $cat_id])  // funcion adicional para exluir el parent
                     ->asArray()  // exportar en array para el dropdownlist
                     ->all();
