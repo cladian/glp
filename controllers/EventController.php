@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Event;
 use app\models\EventSearch;
+use app\models\EventquestionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -51,9 +52,14 @@ class EventController extends Controller
      */
     public function actionView($id)
     {
+        $model=$this->findModel($id);
+        $searchModel = new EventquestionSearch();
+        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams,$model->eventtype_id);
 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
