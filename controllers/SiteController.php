@@ -2,12 +2,24 @@
 
 namespace app\controllers;
 
+use app\models\Inscription;
+use app\models\InscriptionSearch;
+use app\models\Profile;
+use app\models\Event;
+use app\models\EventSearch;
+use app\models\User;
 use Yii;
+
+// Comentado Temporalmente
+//use yii\base\Event;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\SignupForm;
+use yii\web\NotFoundHttpException;
+
 
 class SiteController extends Controller
 {
@@ -18,6 +30,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
                 'rules' => [
+                    [
+                        'actions' => ['signup'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,
@@ -34,6 +51,7 @@ class SiteController extends Controller
         ];
     }
 
+
     public function actions()
     {
         return [
@@ -47,9 +65,71 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionAdmuser()
+    {
+        // De acceso solo para usuarios logeados
+
+        // Verificamos si el usuario tiene registro de perfil
+        // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
+
+       // $searchInscription=Inscription::find()->where(['status'=>10])->all();
+        $searchInscription=new InscriptionSearch();
+        $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
+
+        // Por implementar consulta de inscipciones ya habilitadas
+        $modelEvent = Event::find()->where( ['status'=>10])->all();
+
+
+        return $this->render('admuser', [
+            'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'searchInscription' => $searchInscription,
+            'dataInscription' => $dataInscription,
+            'modelEvent'=>$modelEvent,
+        ]);
+    }
+
+    public function actionAdmasocam()
+    {
+        $searchModel = new InscriptionSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('admasocam', [
+            'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'activeUsers' => User::find()->where(['status' => 10])->count(),
+            'activeEvents' => Event::find()->where(['status' => 10])->count(),
+            'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+    /*
+     * Modificaciones previas
+     */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->user->can('user')) {
+            return $this->redirect(['admuser']);
+        } else if (Yii::$app->user->can('asocam')) {
+            return $this->redirect(['admasocam']);
+        } else {
+            return $this->render('index', [
+                'modelEvent' => Event::find()->where(['status' => 10])->all(),
+            ]);
+        }
+    }
+
+    public function actionEvent($id){
+        if (($modelEvent = Event::findOne($id)) !== null) {
+
+            return $this->render('event',[
+                'modelEvent' => $modelEvent,
+
+            ]);
+        }
+    else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
     public function actionLogin()
@@ -93,4 +173,21 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
 }

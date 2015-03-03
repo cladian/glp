@@ -1,51 +1,56 @@
 <?php
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
+
+
+
+
 ?>
+
+
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Bienvenidos</h1>
+        <code class="lead"><?= Yii::$app->formatter->asDate(date('Y-m-d'), 'long') ?></code>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Al sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá registrarse y
+            acceder a la información, materiales y demás cursos disponibles para los participantes de los eventos regionales</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+
+        <p>
+            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-lg btn-primary']) ?>
+            <?= Html::a('Ingresar', ['site/login/'], ['class' => 'btn btn-lg btn-success']) ?>
+        </p>
     </div>
 
     <div class="body-content">
-
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <?php  // Begin ForEach
+                foreach ($modelEvent as $event) {
+                   /* $timeDiff = date_diff(date_create($event->begin_at),date_create(date('Y-m-d')));*/
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    //$timeDiff=intval($timeDiff/86400);
+                  //  $timeDiff=date('Y-m-d');
+                    ?>
+                <div class="col-lg-4"><h4><?= $event->name; ?></h4>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+                    <p><?= $event->short_description; ?></p>
+                   <!-- <p><?php /*echo $timeDiff;*/?></p>-->
+                    <address>
+                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
+                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?><br>
+                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?><br>
+                        <strong>Inversión: </strong><?= $event->cost; ?> USD
+                    </address>
+                    <?= Html::a('Más información', ['site/signup/'], ['class' => 'btn  btn-primary']) ?>
+                </div>
+            <?php }  // End ForEach ?>
         </div>
 
     </div>
+
+
 </div>
