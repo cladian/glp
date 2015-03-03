@@ -78,6 +78,7 @@ AppAsset::register($this);
                     ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
                     '<li class="divider"></li>',
                     ['label' => 'Preguntas', 'url' => ['/question']],
+                    ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
                 ]
                 ],
                 ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
