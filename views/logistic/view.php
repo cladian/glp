@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'accommodationdatein',
             'accommodationdateout',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
         ],
     ]) ?>
 
