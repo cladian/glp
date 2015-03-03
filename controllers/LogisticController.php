@@ -14,6 +14,9 @@ use yii\filters\VerbFilter;
  */
 class LogisticController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [

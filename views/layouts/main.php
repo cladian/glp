@@ -57,6 +57,7 @@ AppAsset::register($this);
                     ['label' => 'Eventos', 'url' => ['/event']],
                     ['label' => 'Respuesta', 'url' => ['/answer']],
                     ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+                    ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
                     ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
                 ]
                 ],

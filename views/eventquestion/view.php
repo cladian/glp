@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
 //            'id',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
 //            'eventtype_id',
             [                    // the owner name of the model
                 'label' => 'Tipo de Evento',

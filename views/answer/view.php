@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'inscription_id',
             'question_id',
             'reply:ntext',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
             'status',
         ],
     ]) ?>

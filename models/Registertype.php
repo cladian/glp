@@ -21,6 +21,8 @@ use Yii;
  */
 class Registertype extends \yii\db\ActiveRecord
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
     /**
      * @inheritdoc
      */

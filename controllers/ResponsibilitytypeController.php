@@ -15,6 +15,9 @@ use yii\filters\AccessControl;
  */
 class ResponsibilitytypeController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [

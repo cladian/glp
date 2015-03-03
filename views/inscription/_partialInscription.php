@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'service_terms',
             'complete',
             'status',
-            'created_at',
+//            'created_at',
 /*            'updated_at',
             'complete_logistic',
             'complete_eventquiz',
