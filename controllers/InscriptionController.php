@@ -64,6 +64,7 @@ class InscriptionController extends Controller
     {   $model=$this->findModel($id);
         $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
         $modelEventanswer=Eventanswer::find()->where(['inscription_id'=>$model->id])->all();
+
         return $this->render('view', [
             'model' => $model,
             'modelLogistic' => $modelLogistic,

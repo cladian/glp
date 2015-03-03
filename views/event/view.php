@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="event-view">
 
-
-
     <?= Tabs::widget([
         'items' => [
             [
