@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+use kartik\editable\Editable;
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Institutiontype */
 
@@ -24,6 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?= Editable::widget([
+        'model'=>$model,
+        'attribute' => 'name',
+        'type'=>'primary',
+        'size'=>'lg',
+       // 'inputType'=>Editable::INPUT_RATING,
+        'editableValueOptions'=>['class'=>'text-success h3']
+    ]);
+    ?>
 
     <?= DetailView::widget([
         'model' => $model,

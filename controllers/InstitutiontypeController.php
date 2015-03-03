@@ -8,6 +8,7 @@ use app\models\InstitutiontypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * InstitutiontypeController implements the CRUD actions for Institutiontype model.
@@ -48,6 +49,22 @@ class InstitutiontypeController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->request->post('hasEditable')) {
+            $model=$this->findModel($id);
+            $post = [];
+            $output = '';
+            $posted = Yii::$app->request->post('Institutiontype');
+            if (isset($posted['name'])) {
+                $model->name=$posted['name'];
+                $model->save();
+                $output =  $model->name;
+            }
+            $out = Json::encode(['output'=>$output, 'message'=>'']);
+            echo $out;
+            return;
+
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

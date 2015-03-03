@@ -33,6 +33,7 @@ class Institutiontype extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['name'], 'safe'],
             [['description'], 'string'],
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
