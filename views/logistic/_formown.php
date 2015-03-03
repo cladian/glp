@@ -47,7 +47,6 @@ use kartik\widgets\SwitchInput;
                     'pluginOptions' => [
                         'autoclose' => true,
                         'format' => 'yyyy-mm-dd',
-
                         'readonly' => true,
                         'disabled' => true,
                     ]
