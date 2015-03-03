@@ -14,6 +14,9 @@ use yii\filters\VerbFilter;
  */
 class UserController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [
@@ -110,6 +113,7 @@ class UserController extends Controller
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     protected function findModel($id)
     {
         if (($model = User::findOne($id)) !== null) {

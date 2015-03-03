@@ -18,6 +18,8 @@ use Yii;
  */
 class Responsibilitytype extends \yii\db\ActiveRecord
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
     /**
      * @inheritdoc
      */
