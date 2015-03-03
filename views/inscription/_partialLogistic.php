@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2>Registro de Logistica </h2>
 
     <p>
-        <?= Html::a('Actualizar', ['logistic/update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Actualizar', ['logistic/updateown', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 <!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
