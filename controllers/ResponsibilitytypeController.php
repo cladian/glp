@@ -28,7 +28,7 @@ class ResponsibilitytypeController extends Controller
                 ],
             ],
 
-            'access' => [
+            /*'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -37,7 +37,7 @@ class ResponsibilitytypeController extends Controller
                         'roles' => ['sysadmin'],
                     ],
                 ],
-            ],
+            ],*/
         ];
     }
 

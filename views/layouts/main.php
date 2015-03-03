@@ -62,7 +62,7 @@ AppAsset::register($this);
                 ]
                 ],
 
-                ['label' => 'Preguntas', 'url' => ['/question']],
+
                 ['label' => 'Inscripción', 'url' => ['/inscription']],
                 //['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
@@ -72,10 +72,12 @@ AppAsset::register($this);
                 ['label' => 'Catálogo', 'items' => [
                     ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
                     ['label' => 'Institución', 'url' => ['/institutiontype']],
+                    '<li class="divider"></li>',
                     ['label' => 'Pais', 'url' => ['/country']],
                     ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-                    ['label' => 'Preguntas por Evento', 'url' => ['/eventquestion']],
                     ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+                    '<li class="divider"></li>',
+                    ['label' => 'Preguntas', 'url' => ['/question']],
                 ]
                 ],
                 ['label' => 'Registro', 'url' => ['/site/signup'],'visible' => [Yii::$app->user->isGuest]],
