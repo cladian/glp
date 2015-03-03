@@ -27,7 +27,8 @@
         "mdmsoft/yii2-admin":"*",
         "kartik-v/yii2-widgets":"dev-master",
         "2amigos/yii2-tinymce-widget" : "*",
-        "kartik-v/yii2-money": "*"
+        "kartik-v/yii2-money": "*",
+        "kartik-v/yii2-grid": "dev-master"
     },
     "config": {
         "process-timeout": 1800
