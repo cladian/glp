@@ -9,6 +9,8 @@ use Yii;
 use app\models\Inscription;
 use app\models\Logistic;
 use app\models\Answer;
+use app\models\EventanswerSearch;
+use app\models\AnswerSearch;
 use app\models\Generalquestion;
 use app\models\InscriptionSearch;
 use yii\web\Controller;
@@ -61,18 +63,23 @@ class InscriptionController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {   $model=$this->findModel($id);
+    {
+        $model=$this->findModel($id);
         $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
-        $modelEventanswer=Eventanswer::find()->where(['inscription_id'=>$model->id])->all();
-<<<<<<< HEAD
-        //print_r($modelEventanswer);
-=======
+        $searchModelEventanswer = new EventanswerSearch();
+        $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams,$id);
 
->>>>>>> origin/master
+        $searchModelAnswer = new AnswerSearch();
+        $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams,$id);
+
         return $this->render('view', [
             'model' => $model,
             'modelLogistic' => $modelLogistic,
-            'modelEventanswer'=>$modelEventanswer,
+            'searchModelEventanswer' => $searchModelEventanswer,
+            'dataProviderEventanswer' => $dataProviderEventanswer,
+
+            'searchModelAnswer' => $searchModelAnswer,
+            'dataProviderAnswer' => $dataProviderAnswer,
         ]);
     }
 
@@ -126,10 +133,10 @@ class InscriptionController extends Controller
 
             //Almacenamiento de registro Answers en blanco
 
-            $modelanswer= new Answer();
-            $modelgeneralquestion = Generalquestion::find()->where(['status'=> self::STATUS_ACTIVE])->all();
+
+            $modelgeneralquestion = Generalquestion::find()->where(['status'=>self::STATUS_ACTIVE])->all();
             foreach ($modelgeneralquestion as $answer)
-            {
+            {   $modelanswer= new Answer();
                 $modelanswer->inscription_id=$model->id;
                 $modelanswer->question_id=$answer->question_id;
                 $modelanswer->save();
@@ -139,9 +146,10 @@ class InscriptionController extends Controller
             //Verificación de preguntas habilitadas para el evento, para esto es necesario ingresar desde el modelo de insctpción
             // y subir al registro de evento
 
-            $modelEvenAnswer= new Eventanswer() ;
-            $modelEventQuestion=Eventquestion::find()->where(['status'=>10,'eventtype_id'=>$model->event->eventtype_id])->all();
+
+            $modelEventQuestion=Eventquestion::find()->where(['status'=>self::STATUS_ACTIVE,'eventtype_id'=>$model->event->eventtype_id])->all();
             foreach($modelEventQuestion as $eventquestion){
+                $modelEvenAnswer= new Eventanswer() ;
                 $modelEvenAnswer->inscription_id=$model->id;
                 $modelEvenAnswer->eventquestion_id=$eventquestion->id;
                 $modelEvenAnswer->save();

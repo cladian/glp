@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
 //            'created_at',
 //            'updated_at',
-            'eventtype_id',
+//            'eventtype_id',
             [
                 'attribute' => 'eventtype_id',
                 'value'=> function ($data){ return $data->eventtype->name;}

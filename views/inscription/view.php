@@ -62,9 +62,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'items' => [
 
                 [
-                    'label' => 'Del Evento',
+                    'label' => 'Respuestas del Evento',
                     //'content' => 'DropdownB, Anim pariatur cliche...',
-                    'content' => $this->render('_partialEventanswer',['model'=>$modelEventanswer]),
+                    'content' => $this->render('_partialEventanswer',['searchModel'=>$searchModelEventanswer, 'dataProvider'=>$dataProviderEventanswer]),
+                ],
+                [
+                    'label' => 'Respuestas',
+//                    'content' => 'DropdownB, Anim pariatur cliche...',
+                    'content' => $this->render('_partialAnswer',['searchModel'=>$searchModelAnswer, 'dataProvider'=>$dataProviderAnswer]),
                 ],
             ],
         ],
