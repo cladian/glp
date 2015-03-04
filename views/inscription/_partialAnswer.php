@@ -4,18 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EventanswerSearch */
+/* @var $searchModel app\models\AnswerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Respuestas por Evento';
+$this->title = 'Respuestas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="eventanswer-index">
+<div class="answer-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-
+<!--    <p>-->
+<!--        --><?//= Html::a(' Crear Respuesta', ['create'], ['class' => 'btn btn-success']) ?>
+<!--    </p>-->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,19 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-
 //            'inscription_id',
-//            'eventquestion_id',
+//            'question_id',
             [
-                'attribute' => 'eventquestion_id',
-                'value'=> function ($data){ return $data->eventquestion->question->text;}
+                'attribute' => 'question_id',
+                'value'=> function ($data){ return $data->question->question->text;}
             ],
             'reply:ntext',
 //            'created_at',
             // 'updated_at',
             // 'status',
 
-//            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
