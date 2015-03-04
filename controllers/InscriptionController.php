@@ -64,7 +64,11 @@ class InscriptionController extends Controller
     {   $model=$this->findModel($id);
         $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
         $modelEventanswer=Eventanswer::find()->where(['inscription_id'=>$model->id])->all();
+<<<<<<< HEAD
+        //print_r($modelEventanswer);
+=======
 
+>>>>>>> origin/master
         return $this->render('view', [
             'model' => $model,
             'modelLogistic' => $modelLogistic,
@@ -137,9 +141,9 @@ class InscriptionController extends Controller
 
             $modelEvenAnswer= new Eventanswer() ;
             $modelEventQuestion=Eventquestion::find()->where(['status'=>10,'eventtype_id'=>$model->event->eventtype_id])->all();
-            foreach($modelEventQuestion as $eventanswer){
+            foreach($modelEventQuestion as $eventquestion){
                 $modelEvenAnswer->inscription_id=$model->id;
-                $modelEvenAnswer->eventquestion_id=$eventanswer->eventquestion_id;
+                $modelEvenAnswer->eventquestion_id=$eventquestion->id;
                 $modelEvenAnswer->save();
             }
 
