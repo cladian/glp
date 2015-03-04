@@ -15,9 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
-    </p>
+  
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,7 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
             'eventtype_id',
-            // 'question_id',
+            [
+                'attribute' => 'eventtype_id',
+                'value'=> function ($data){ return $data->eventtype->name;}
+            ],
+//             'question_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
