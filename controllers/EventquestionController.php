@@ -74,6 +74,19 @@ class EventquestionController extends Controller
         }
     }
 
+    public function actionCreateown($eventtype_id,$event_id)
+    {
+        $model = new Eventquestion();
+        $model->eventtype_id=$eventtype_id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['event/view', 'id' => $event_id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Updates an existing Eventquestion model.
      * If update is successful, the browser will be redirected to the 'view' page.
