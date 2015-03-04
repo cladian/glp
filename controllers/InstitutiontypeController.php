@@ -39,10 +39,41 @@ class InstitutiontypeController extends Controller
         $searchModel = new InstitutiontypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        if (Yii::$app->request->post('hasEditable')) {
+            $bookId = Yii::$app->request->post('editableKey');
+            $model = Institutiontype::findOne($bookId);
+            $out = Json::encode(['output'=>'', 'message'=>'']);
+            $post = [];
+            $posted = current($_POST['Institutiontype']);
+            $post['Institutiontype'] = $posted;
+            if ($model->load($post)) {
+
+                $model->save();
+                $output = '';
+                /*if (isset($posted['name'])) {
+                    $output =  Yii::$app->formatter->asDecimal($model->buy_amount, 2);
+                }*/
+                $out = Json::encode(['output'=>$output, 'message'=>'']);
+            }
+            // return ajax json encoded response and exit
+            echo $out;
+            return;
+
+        }
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+
+/*
+        $searchModel = new InstitutiontypeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);*/
     }
 
     /**
