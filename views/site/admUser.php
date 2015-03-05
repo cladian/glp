@@ -74,6 +74,7 @@ if (!$hasProfile) {
                                 <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
                                      aria-labelledby="heading<?= $event->id; ?>">
                                     <div class="panel-body">
+
                                         <p><?= $event->short_description; ?></p>
                                         <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
                                         <address>
