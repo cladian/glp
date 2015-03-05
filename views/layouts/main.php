@@ -62,6 +62,14 @@ AppAsset::register($this);
         ]
         ],
 
+        ['label' => 'Notificaciones', 'items' => [
+            ['label' => 'Solicitudes', 'url' => ['/request']],
+            ['label' => 'Respuestas', 'url' => ['/reply']],
+            ['label' => 'Notificaciones', 'url' => ['/notification']],
+
+        ]
+        ],
+
 
         ['label' => 'Inscripción', 'url' => ['/inscription']],
         //['label' => 'Logistica', 'url' => ['/logistic']],
