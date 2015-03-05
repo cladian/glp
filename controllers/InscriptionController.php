@@ -311,4 +311,26 @@ class InscriptionController extends Controller
 
 
     }
+    // Retorno de info para Grid
+    public function actionDetail()
+    {
+        if (isset($_POST['expandRowKey'])) {
+
+            $inscriptionId = Yii::$app->request->post('expandRowInd');
+            $model = Logistic::find()
+                ->where(['inscription_id' => $inscriptionId])
+                ->one();
+
+            /*            $dataProvider = new ActiveDataProvider([
+                            'query' => $model,
+                            'pagination' => ['pageSize' => 20,],
+                        ]);*/
+
+            return $this->renderPartial('_detail', [
+                'model' => $model,
+            ]);
+        } else {
+            return '<div class="alert alert-danger">No data found</div>';
+        }
+    }
 }
