@@ -4,11 +4,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 
-
-
-
 ?>
-
 
 <div class="site-index">
 
@@ -35,8 +31,8 @@ $this->title = 'My Yii Application';
                     //$timeDiff=intval($timeDiff/86400);
                   //  $timeDiff=date('Y-m-d');
                     ?>
-                <div class="col-lg-4"><h4><?= $event->name; ?></h4>
-
+                <div class="col-xs-12 col-sm-8 col-xl-4 col-lg-4"><h4><?= $event->name; ?></h4>
+                    <?= Html::img('imgs/event/0.jpg',['class'=>'img-responsive']);?>
                     <p><?= $event->short_description; ?></p>
                    <!-- <p><?php /*echo $timeDiff;*/?></p>-->
                     <address>
