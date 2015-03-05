@@ -19,9 +19,13 @@ use yii\widgets\DetailView;
         <div class="panel-heading"><h5>Llegada al lugar del evento</h5></div>
         <div class="panel-body">
             <address>
-                <strong><?= $model->leavingonorigincity ?></strong><br>
-                <strong>Inicia: </strong><?= $model->leavingonairline; ?><br>
-                <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($model->leavingondate, 'long'); ?><br>
+<!--                <strong>--><?//= $model->leavingonorigincity ?><!--</strong><br>-->
+                <strong>Ciudad de procedencia: </strong><?= $model->leavingonorigincity; ?><br>
+                <strong> Aerolinea de llegada: </strong><?= $model->leavingonairline; ?><br>
+                <strong># Vuelo llegada: </strong><?= $model->leavingonflightnumber; ?><br>
+<!--                <strong>Fecha de arribo: </strong>--><?//= $model->leavingondate; ?><!--<br>-->
+                <strong>Hora de arribo: </strong><?= $model->leavingonhour; ?><br>
+                <strong>Fecha de arribo:: </strong><?= Yii::$app->formatter->asDate($model->leavingondate, 'long'); ?><br>
 
             </address>
         </div>
@@ -33,8 +37,12 @@ use yii\widgets\DetailView;
         <div class="panel-heading"><h5>Retorno al Lugar de Origen</h5></div>
         <div class="panel-body">
             <address>
-                <strong><?= $model->leavingonorigincity ?></strong><br>
-                <strong>Inicia: </strong><?= $model->leavingonairline; ?><br>
+<!--                <strong>--><?//= $model->leavingonorigincity ?><!--</strong><br>-->
+                <strong>Fecha de retorno: </strong><?= $model->returningonairline; ?><br>
+                <strong># Vuelo retorno: </strong><?= $model->returningonflightnumber; ?><br>
+<!--                <strong>Fecha de retorno: </strong>--><?//= $model->returningondate; ?><!--<br>-->
+                <strong>Fecha de retorno:: </strong><?= Yii::$app->formatter->asDate($model->returningondate, 'long'); ?><br>
+                <strong>Hora de retorno: </strong><?= $model->returningonhour; ?><br>
 
             </address>
         </div>
@@ -46,8 +54,11 @@ use yii\widgets\DetailView;
         <div class="panel-heading"><h5>Alojamiento en el lugar del evento</h5></div>
         <div class="panel-body">
             <address>
-                <strong><?= $model->leavingonorigincity ?></strong><br>
-                <strong>Inicia: </strong><?= $model->leavingonairline; ?><br>
+<!--                <strong>--><?//= $model->leavingonorigincity ?><!--</strong><br>-->
+<!--                <strong>Fecha de Entrada: </strong>--><?//= $model->accommodationdatein; ?><!--<br>-->
+                <strong>Fecha de Entrada:: </strong><?= Yii::$app->formatter->asDate($model->accommodationdatein, 'long'); ?><br>
+<!--                <strong>Fecha de Salida: </strong>--><?//= $model->accommodationdateout; ?><!--<br>-->
+                <strong>Fecha de Salida:: </strong><?= Yii::$app->formatter->asDate($model->accommodationdateout, 'long'); ?><br>
 
             </address>
         </div>
