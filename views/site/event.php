@@ -10,9 +10,91 @@ $this->title = $modelEvent->name;
 $this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="event-view">
+<div class="container-fluid">
+    <div class="row">
+        <!--Gestión de Proyectos-->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="panel panel-primary"> 
+              <div class="panel-heading"><center><h1>Evento</h1></center></div>
+              <div class="panel-body">
+                <h2><?= Html::encode($this->title) ?></h2>
+                <strong>Descripción: </strong>
+                <p><?= Html::encode($modelEvent->short_description) ?></p>
+              </div>
+              <div class="panel-body">  
+                <p><?= Html::encode($modelEvent->general_content) ?></p>
+              </div>
+              <div class="panel-body">
+                <p><?= Html::encode($modelEvent->methodology) ?></p>
+              </div>
+              <div class="panel-body">
+                  <strong>Archivo PDF: </strong><?= Html::encode($modelEvent->file) ?><br>
+                  <strong>Fotografia del evento: </strong><?= Html::encode($modelEvent->photo) ?><br>
+                  <strong>Galeria Facebook o Flikr: </strong><?= Html::encode($modelEvent->url) ?><br>
+                  
+              </div>
+            </div>
+        </div>
+        <!--END Gestión de Proyectos-->
+        <!--Pais-->
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    
+                    <h1><?= Html::encode($modelEvent->country->name) ?></h1>
+                    <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <center><?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?></center>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <center><strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br></center>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <center><strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br></center>
+                    <center><strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br></center>
+                </div>             
+            </div>
+                <center><?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?></center>
+
+             <br>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <strong>Descripción: </strong><?= Html::encode($modelEvent->short_description) ?><br><br>
+                    <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
+                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                  <strong>Estatus: </strong><?= Html::encode($modelEvent->status) ?><br>
+                  <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+                  <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
+                  <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?><br>
+                  <strong>Descripción de descuento: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
+                </div>
+            </div>
+        </div>
+        <!--END Pais-->
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+            <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-success']) ?>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-primary']) ?>
+        </div>
+    </div>
+</div>
+<!--<div class="event-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p></p>
     <p><?= Html::encode($modelEvent->short_description) ?></p>
     <p><?= Html::encode($modelEvent->general_content) ?></p>
     <p><?= Html::encode($modelEvent->methodology) ?></p>
@@ -34,9 +116,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p><?= Html::encode($modelEvent->created_at) ?></p>
     <p><?= Html::encode($modelEvent->updated_at) ?></p>
     <p><?= Html::encode($modelEvent->country->name) ?></p>
-
+-->
     <!-- botón-->
-    <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-success']) ?>
+    
 
 <!--
     <p>
