@@ -34,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <p><?= Html::encode($modelEvent->created_at) ?></p>
     <p><?= Html::encode($modelEvent->updated_at) ?></p>
     <p><?= Html::encode($modelEvent->country->name) ?></p>
+
+    <!-- botón-->
+    <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-success']) ?>
+
 <!--
     <p>
         <?/*= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) */?>
