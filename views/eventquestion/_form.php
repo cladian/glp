@@ -26,7 +26,7 @@ use app\models\Question;
     <?=
     $form->field($model, 'eventtype_id')->dropDownList(
         ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
+        ['disabled'=> 'disabled']
     ) ?>
 
 <!--    --><?//= $form->field($model, 'question_id')->textInput() ?>

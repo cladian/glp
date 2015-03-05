@@ -71,7 +71,7 @@ class Profile extends \yii\db\ActiveRecord
             'institution_name' => 'Institución',
             'responsability_name' => 'Responsabilidad',
             'gender' => 'Género',
-            'phone_number' => 'Telefono fijo',
+            'phone_number' => 'Teléfono fijo',
             'mobile_number' => 'Teléfono móvil',
             'complete' => 'Complete',
             'status' => 'Estado',
@@ -82,7 +82,7 @@ class Profile extends \yii\db\ActiveRecord
             'institutiontype_id' => 'Tipo de Institución',
             'responsibilitytype_id' => 'Tipos de Responsabilidad',
             'country_id' => 'País',
-            'photo' => 'Photo',
+            'photo' => 'Fotografía',
         ];
     }
 
