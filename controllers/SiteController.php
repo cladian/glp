@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Inscription;
 use app\models\InscriptionSearch;
+use app\models\NotificationSearch;
 use app\models\Profile;
 use app\models\Event;
 use app\models\EventSearch;
@@ -76,15 +77,20 @@ class SiteController extends Controller
         $searchInscription=new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
+        $searchNotification=new NotificationSearch();
+        $dataNotification = $searchNotification->search(Yii::$app->request->queryParams);
+
         // Por implementar consulta de inscipciones ya habilitadas
         $modelEvent = Event::find()->where( ['status'=>10])->all();
 
 
         return $this->render('admuser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'modelEvent'=>$modelEvent,
             'searchInscription' => $searchInscription,
             'dataInscription' => $dataInscription,
-            'modelEvent'=>$modelEvent,
+            'searchNotification' => $searchNotification,
+            'dataNotification' => $dataNotification,
         ]);
     }
 
