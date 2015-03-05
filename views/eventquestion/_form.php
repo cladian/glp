@@ -35,6 +35,7 @@ use app\models\Question;
     $form->field($model, 'question_id')->dropDownList(
         ArrayHelper::map(Question::find()->all(), 'id', 'text'),
         ['prompt' => 'Seleccione']
+
     ) ?>
 
     <div class="form-group">
