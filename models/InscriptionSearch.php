@@ -77,6 +77,7 @@ class InscriptionSearch extends Inscription
         return $dataProvider;
     }
 
+
     public function searchown($params)
     {
         $query = Inscription::find();
