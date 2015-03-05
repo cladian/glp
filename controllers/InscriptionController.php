@@ -64,20 +64,67 @@ class InscriptionController extends Controller
      */
     public function actionView($id)
     {
-        $model=$this->findModel($id);
-        $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
+        $model = $this->findModel($id);
+        $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
         $searchModelEventanswer = new EventanswerSearch();
-        $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams,$id);
-
+        $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
         $searchModelAnswer = new AnswerSearch();
-        $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams,$id);
+        $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
+
+        // Verificación de funcion es editables
+        if (Yii::$app->request->post('hasEditable')) {
+
+            // Verificar que modelo se esta enviando
+            if (isset($_POST['Eventanswer'])) {
+
+                $eventanswerId = Yii::$app->request->post('editableKey');
+                $modelEventanswer = Eventanswer::findOne($eventanswerId);
+                $post = [];
+                $posted = current($_POST['Eventanswer']);
+                $post['Eventanswer'] = $posted;
+                if ($modelEventanswer->load($post)) {
+                    $modelEventanswer->status = 0;
+                    if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
+                        $modelEventanswer->status = 1;
+                    } else {
+                        $modelEventanswer->reply = NULL;
+                    }
+                    $modelEventanswer->save();
+
+
+                }
+            }
+
+            if (isset($_POST['Answer'])) {
+                $answerId = Yii::$app->request->post('editableKey');
+                $modelAnswer = Answer::findOne($answerId);
+                $post = [];
+                $posted = current($_POST['Answer']);
+                $post['Answer'] = $posted;
+                if ($modelAnswer->load($post)) {
+                    $modelAnswer->status = 0;
+                    if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
+                        $modelAnswer->status = 1;
+                    } else {
+                        $modelAnswer->reply = NULL;
+                    }
+                    $modelAnswer->save();
+
+                }
+            }
+            $output = '';
+            $out = Json::encode(['output' => $output, 'message' => '']);
+            echo $out;
+            return;
+
+
+        }
 
         return $this->render('view', [
             'model' => $model,
             'modelLogistic' => $modelLogistic,
             'searchModelEventanswer' => $searchModelEventanswer,
             'dataProviderEventanswer' => $dataProviderEventanswer,
-
             'searchModelAnswer' => $searchModelAnswer,
             'dataProviderAnswer' => $dataProviderAnswer,
         ]);
@@ -112,15 +159,15 @@ class InscriptionController extends Controller
 
 
         //Almacenamiento de ID de usuario logeado
-        $model->user_id=Yii::$app->user->identity->id;
+        $model->user_id = Yii::$app->user->identity->id;
         $model->event_id = $id;
 
         //Verificación si el usuario tiene un registro previo al evento seleccionado
 
-        if (Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->count() >0){
+        if (Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->count() > 0) {
             // Opciones disponibles para loe errores: success - info - warning - danger
             \Yii::$app->getSession()->setFlash('danger', 'Usted dispone de una inscripción previa al evento, por favor complete la información de éste registro');
-            return $this->redirect(['inscription/view','id'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id,'event_id'=>$id])->one()->id]);
+            return $this->redirect(['inscription/view', 'id' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->one()->id]);
         }
 
         // Si es una inscripción nueva
@@ -128,17 +175,17 @@ class InscriptionController extends Controller
 
             //Almacenamiento de registro Logistica en Blanco
             $modelLogistic = new Logistic();
-            $modelLogistic -> inscription_id = $model->id;
-            $modelLogistic -> save();
+            $modelLogistic->inscription_id = $model->id;
+            $modelLogistic->save();
 
             //Almacenamiento de registro Answers en blanco
 
 
-            $modelgeneralquestion = Generalquestion::find()->where(['status'=>self::STATUS_ACTIVE])->all();
-            foreach ($modelgeneralquestion as $answer)
-            {   $modelanswer= new Answer();
-                $modelanswer->inscription_id=$model->id;
-                $modelanswer->question_id=$answer->question_id;
+            $modelgeneralquestion = Generalquestion::find()->where(['status' => self::STATUS_ACTIVE])->all();
+            foreach ($modelgeneralquestion as $answer) {
+                $modelanswer = new Answer();
+                $modelanswer->inscription_id = $model->id;
+                $modelanswer->question_id = $answer->question_id;
                 $modelanswer->save();
 
             }
@@ -147,11 +194,11 @@ class InscriptionController extends Controller
             // y subir al registro de evento
 
 
-            $modelEventQuestion=Eventquestion::find()->where(['status'=>self::STATUS_ACTIVE,'eventtype_id'=>$model->event->eventtype_id])->all();
-            foreach($modelEventQuestion as $eventquestion){
-                $modelEvenAnswer= new Eventanswer() ;
-                $modelEvenAnswer->inscription_id=$model->id;
-                $modelEvenAnswer->eventquestion_id=$eventquestion->id;
+            $modelEventQuestion = Eventquestion::find()->where(['status' => self::STATUS_ACTIVE, 'eventtype_id' => $model->event->eventtype_id])->all();
+            foreach ($modelEventQuestion as $eventquestion) {
+                $modelEvenAnswer = new Eventanswer();
+                $modelEvenAnswer->inscription_id = $model->id;
+                $modelEvenAnswer->eventquestion_id = $eventquestion->id;
                 $modelEvenAnswer->save();
             }
 
@@ -190,7 +237,7 @@ class InscriptionController extends Controller
     public function actionUpdateown($id)
     {
         // búsqueda de modelo por dos parámetros
-        $model = $this->findModelown($id,Yii::$app->user->id);
+        $model = $this->findModelown($id, Yii::$app->user->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -229,35 +276,38 @@ class InscriptionController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    protected function findModelown($id,$user_id)
+
+    protected function findModelown($id, $user_id)
     {
-        if (($model = Inscription::findOne(['id'=>$id,'user_id'=>$user_id])) !== null) {
+        if (($model = Inscription::findOne(['id' => $id, 'user_id' => $user_id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     /*
      * Función para retorno de array de opciones
      */
-    public function actionSubcat(){
-       $out = [];
+    public function actionSubcat()
+    {
+        $out = [];
         if (isset($_POST['depdrop_parents'])) {
             $parents = $_POST['depdrop_parents'];
             if ($parents != null) {
                 $cat_id = $parents[0];
-               // $parentClass=Registertype::findone($cat_id);
-                $out=Registertype::find()
-                    ->where(['status'=>self::STATUS_ACTIVE,'registertype_id'=> $cat_id])
-                    ->andWhere('id <> :id', [':id' => $cat_id])  // funcion adicional para exluir el parent
-                    ->asArray()  // exportar en array para el dropdownlist
+                // $parentClass=Registertype::findone($cat_id);
+                $out = Registertype::find()
+                    ->where(['status' => self::STATUS_ACTIVE, 'registertype_id' => $cat_id])
+                    ->andWhere('id <> :id', [':id' => $cat_id])// funcion adicional para exluir el parent
+                    ->asArray()// exportar en array para el dropdownlist
                     ->all();
 
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                echo Json::encode(['output' => $out, 'selected' => '']);
                 return;
-           }
+            }
         }
-        echo Json::encode(['output'=>'', 'selected'=>'']);
+        echo Json::encode(['output' => '', 'selected' => '']);
 
 
     }
