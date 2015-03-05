@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Question;
 use app\models\QuestionSearch;
+use app\models\EventquestionSearch;
+use app\models\Eventquestion;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,6 +16,9 @@ use yii\filters\VerbFilter;
  */
 class QuestionController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [
@@ -46,10 +51,28 @@ class QuestionController extends Controller
      * @param integer $id
      * @return mixed
      */
+
     public function actionView($id)
     {
+        /*variables que activa la funcion grid en el EventQuestion*/
+
+        $searchModelEventquestion = new EventquestionSearch();
+        $dataProviderEventquestion = $searchModelEventquestion->searchByQuestion(Yii::$app->request->queryParams, $id );
+
+        $searchModelGeneralquestion = new EventquestionSearch();
+        $dataProviderGeneralquestion = $searchModelEventquestion->searchByQuestion(Yii::$app->request->queryParams, $id );
+
+        $model=$this->findModel($id);
+
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'searchModelEventquestion' => $searchModelEventquestion,
+            'dataProviderEventquestion' => $dataProviderEventquestion,
+
+            'searchModelGeneralquestion' => $searchModelGeneralquestion,
+            'dataProviderGeneralquestion' => $dataProviderGeneralquestion,
+
         ]);
     }
 

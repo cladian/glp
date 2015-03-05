@@ -52,20 +52,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => 'Logistica',
-                'content' => 'Anim pariatur cliche...',
+              //  'content' => 'Anim pariatur cliche...',
                 'content' => $this->render('_partialLogistic',['model'=>$modelLogistic]),
-                'options' => ['id' => 'myveryownID'],
+              //  'options' => ['id' => 'myveryownID'],
         ],
-        [
+
+         [
             'label' => 'Encuestas',
             'items' => [
+
                 [
-                    'label' => ' Generales',
-                    'content' => 'DropdownA, Anim pariatur cliche...',
+                    'label' => 'Respuestas del Evento',
+                    //'content' => 'DropdownB, Anim pariatur cliche...',
+                    'content' => $this->render('_partialEventanswer',['searchModel'=>$searchModelEventanswer, 'dataProvider'=>$dataProviderEventanswer]),
                 ],
                 [
-                    'label' => 'Del Evento',
-                    'content' => 'DropdownB, Anim pariatur cliche...',
+                    'label' => 'Respuestas',
+//                    'content' => 'DropdownB, Anim pariatur cliche...',
+                    'content' => $this->render('_partialAnswer',['searchModel'=>$searchModelAnswer, 'dataProvider'=>$dataProviderAnswer]),
                 ],
             ],
         ],

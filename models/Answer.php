@@ -20,6 +20,8 @@ use Yii;
  */
 class Answer extends \yii\db\ActiveRecord
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
     /**
      * @inheritdoc
      */
@@ -46,6 +48,7 @@ class Answer extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public function attributeLabels()
     {
         return [

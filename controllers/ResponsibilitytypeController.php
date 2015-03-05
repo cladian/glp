@@ -15,6 +15,9 @@ use yii\filters\AccessControl;
  */
 class ResponsibilitytypeController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [
@@ -25,7 +28,7 @@ class ResponsibilitytypeController extends Controller
                 ],
             ],
 
-            'access' => [
+            /*'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -34,7 +37,7 @@ class ResponsibilitytypeController extends Controller
                         'roles' => ['sysadmin'],
                     ],
                 ],
-            ],
+            ],*/
         ];
     }
 
@@ -44,10 +47,8 @@ class ResponsibilitytypeController extends Controller
      */
     public function actionIndex()
     {
-
         $searchModel = new ResponsibilitytypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

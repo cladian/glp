@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2>Registro de Inscripción #<?= Html::encode($this->title) ?></h2>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 <!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'service_terms',
             'complete',
             'status',
-            'created_at',
+//            'created_at',
 /*            'updated_at',
             'complete_logistic',
             'complete_eventquiz',

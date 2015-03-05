@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\bootstrap\Tabs;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Question */
@@ -12,28 +14,40 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="question-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
+    <?= Tabs::widget([
+        'items' => [
+            [
+                'label' => 'Preguntas',
+//                'content' => 'Anim pariatur cliche...',
+                'content' => $this->render('_partialQuestion',['model'=>$model]),
+//                'active' => true
             ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-//            'id',
-            'text:html',
-            'status',
-            'created_at',
-            'updated_at',
-            'type',
+            [
+                'label' => 'Preguntas por Evento',
+//                  'content' => 'Anim pariatur cliche...',
+                'content' => $this->render('_partialEventquestion',['dataProvider'=>$dataProviderEventquestion, 'searchModel'=>$searchModelEventquestion]),
+                //  'options' => ['id' => 'myveryownID'],
+            ],
+            [
+                'label' => 'Preguntas  Generales',
+//                  'content' => 'Anim pariatur cliche...',
+                'content' => $this->render('_partialGeneralquestion',['dataProvider'=>$dataProviderGeneralquestion, 'searchModel'=>$searchModelGeneralquestion]),
+                //  'options' => ['id' => 'myveryownID'],
+            ],
+            /*[
+                'label' => 'Encuestas',
+                'items' => [
+                    [
+                        'label' => ' Generales',
+                       // 'content' => $this->render('_partialEventAnswer',['dataProvider'=>$modelEventanswer]),
+                    ],
+                    [
+                        'label' => 'Del Evento',
+                        'content' => 'DropdownB, Anim pariatur cliche...',
+                    ],
+                ],
+            ],*/
         ],
     ]) ?>
 

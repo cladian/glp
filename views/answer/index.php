@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=> function ($data){ return $data->question->question->text;}
             ],
             'reply:ntext',
-            'created_at',
+//            'created_at',
             // 'updated_at',
             // 'status',
 

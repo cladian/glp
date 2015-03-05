@@ -9,11 +9,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * LogisticController implements the CRUD actions for Logistic model.
  */
 class LogisticController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [
@@ -90,6 +94,19 @@ class LogisticController extends Controller
         }
     }
 
+    public function actionUpdateown($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['inscription/view', 'id' => $model->inscription_id]);
+        } else {
+            return $this->render('updateown', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Deletes an existing Logistic model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -118,4 +135,6 @@ class LogisticController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

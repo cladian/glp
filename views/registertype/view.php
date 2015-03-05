@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'role',
             'status',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
 //            'registertype_id',
             [                    // the owner name of the model
                 'label' => 'Tipo de Registro',
