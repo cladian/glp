@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="event-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p></p>
     <p><?= Html::encode($modelEvent->short_description) ?></p>
     <p><?= Html::encode($modelEvent->general_content) ?></p>
     <p><?= Html::encode($modelEvent->methodology) ?></p>
