@@ -29,7 +29,6 @@ if (!$hasProfile) {
 
 }
 ?>
-<div class="site-about">
     <h3><?= Html::encode($this->title) ?></h3>
     <?php
     foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
@@ -48,107 +47,145 @@ if (!$hasProfile) {
     <? /*= Html::a('Inscripción', ['/inscription/createown'], ['class' => 'btn btn-success']) */ ?>
     <div class="row">
 
+
         <div class="col-lg-4">
-            <!--      <nav>
-                      <ul class="pager">
-                          <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
-                    <li class="next"><a href="#">Siguiente <span aria-hidden="true">&rarr;</span></a></li>
-                </ul>
-            </nav>-->
+            <div class="panel panel-primary">
 
-            <?php  // Begin ForEach
-            foreach ($modelEvent as $event) {
-                /* $timeDiff = date_diff(date_create($event->begin_at),date_create(date('Y-m-d')));*/
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"> </span> Eventos disponibles ASOCAM</h3>
+                </div>
 
-                //$timeDiff=intval($timeDiff/86400);
-                //  $timeDiff=date('Y-m-d');
-                ?>
-                <h4><?= $event->name; ?></h4>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <?php foreach ($modelEvent as $event) { ?>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                           href="#collapse<?= $event->id; ?>" aria-expanded="false"
+                                           aria-controls="collapse<?= $event->id; ?>">
+                                            <?= $event->name; ?>, <i><?= $event->city; ?>
+                                                -<?= $event->country->name; ?></i>
 
-                <p><?= $event->short_description; ?></p>
-                <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
-                <address>
-                    <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                    <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?><br>
-                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?><br>
-                    <strong>Inversión: </strong><?= $event->cost; ?> USD
-                </address>
-                <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn  btn-primary']) ?>
-                <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn  btn-success']) ?>
+                                        </a>
+                                        <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
+                                    </h4>
+                                </div>
+                                <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
+                                     aria-labelledby="heading<?= $event->id; ?>">
+                                    <div class="panel-body">
+                                        <p><?= $event->short_description; ?></p>
+                                        <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
+                                        <address>
+                                            <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
+                                            <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+                                            <br>
+                                            <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+                                            <br>
+                                            <strong>Inversión: </strong><?= $event->cost; ?> USD
+                                        </address>
+                                        <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn  btn-primary']) ?>
+                                        <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn  btn-success']) ?>
 
-            <?php }  // End ForEach ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
 
+                </div>
+            </div>
 
         </div>
+
         <div class="col-lg-8">
-            <h3>Mis inscripciones</h3>
-            <?= GridView::widget([
-                'dataProvider' => $dataInscription,
-                'filterModel' => $searchInscription,
-                'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-                    [
-                        'attribute' => 'event_id',
-                        'value' => function ($data) {
-                            return $data->event->name;
-                        }
-                    ],
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis incripciones</h3>
+                </div>
+                <div class="panel-body">
+                    <?= GridView::widget([
+                        'dataProvider' => $dataInscription,
+                        'filterModel' => $searchInscription,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+                            [
+                                'attribute' => 'event_id',
+                                'value' => function ($data) {
+                                    return $data->event->name;
+                                }
+                            ],
 //            'id',
-                    //'exposition',
-                    //  'service_terms',
-                    'complete',
-                    'status',
-                    // 'created_at',
-                    // 'updated_at',
-                    // 'complete_logistic',
-                    // 'complete_eventquiz',
-                    // 'complete_quiz',
-                    // 'event_id',
-                    // 'user_id',
+                            //'exposition',
+                            //  'service_terms',
+                            'complete',
+                            'status',
+                            // 'created_at',
+                            // 'updated_at',
+                            // 'complete_logistic',
+                            // 'complete_eventquiz',
+                            // 'complete_quiz',
+                            // 'event_id',
+                            // 'user_id',
 
-                    // 'registertype_type',
-                    // 'registertype_assigment',
+                            // 'registertype_type',
+                            // 'registertype_assigment',
 
-                    [
-                        'class' => 'yii\grid\CheckboxColumn',
-                        // you may configure additional properties here
-                    ],
-                    // ['class' => 'yii\grid\ActionColumn'],
-                    [
-                        'class' => 'yii\grid\ActionColumn',
-                        'header' => 'Acciones',
+                            [
+                                'class' => 'yii\grid\CheckboxColumn',
+                                // you may configure additional properties here
+                            ],
+                            // ['class' => 'yii\grid\ActionColumn'],
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'header' => 'Acciones',
 
-                        'template' => '{view}{update}{delete}{link}',
-                        'buttons' => [
-                            'link' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-info-sign"></span>', $url, [
-                                    'title' => Yii::t('app', 'Info'),
-                                ]);
-                            }
+                                'template' => '{view}{update}{delete}{link}',
+                                'buttons' => [
+                                    'link' => function ($url, $model) {
+                                        return Html::a('<span class="glyphicon glyphicon-info-sign"></span>', $url, [
+                                            'title' => Yii::t('app', 'Info'),
+                                        ]);
+                                    }
 
-                            /*                    'update' => function ($url, $model) {
-                                                    return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
-                                                        'title' => Yii('yii', 'inscription/updateown'),
-                                                    ]);
+                                    /*                    'update' => function ($url, $model) {
+                                                            return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
+                                                                'title' => Yii('yii', 'inscription/updateown'),
+                                                            ]);
 
-                                                }*/
-                        ]
-                    ],
+                                                        }*/
+                                ]
+                            ],
 
 
-                ],
+                        ],
 
-            ]); ?>
+                    ]); ?>
+                </div>
+            </div>
+
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Notificaciones</h3>
+                </div>
+                <div class="panel-body">
+                    <?= GridView::widget([
+                        'dataProvider' => $dataNotification,
+                        'filterModel' => $searchNotification,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+
+                            'id',
+                            'text:ntext',
+                            'status',
+//            'created_at',
+//            'updated_at',
+                            // 'user_id',
+
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
         </div>
-
     </div>
-
-
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
-
-    <code><?= __FILE__ ?></code>
-</div>
-
-
