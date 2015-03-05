@@ -33,7 +33,7 @@ use app\models\Question;
 
     <?=
     $form->field($model, 'question_id')->dropDownList(
-        ArrayHelper::map(Question::find()->all(), 'id', 'text'),
+        ArrayHelper::map(Question::find()->where(['type'=>'EVENTO'])->all(), 'id', 'text'),
         ['prompt' => 'Seleccione']
 
     ) ?>

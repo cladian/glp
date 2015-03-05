@@ -181,7 +181,7 @@ if (!$hasProfile) {
                             'status',
 //            'created_at',
 //            'updated_at',
-                            // 'user_id',
+                            'user_id',
 
                             ['class' => 'yii\grid\ActionColumn'],
                         ],
