@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * LogisticController implements the CRUD actions for Logistic model.
  */
@@ -134,4 +135,6 @@ class LogisticController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }
