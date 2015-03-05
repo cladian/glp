@@ -78,6 +78,7 @@ class EventquestionController extends Controller
     {
         $model = new Eventquestion();
         $model->eventtype_id=$eventtype_id;
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['event/view', 'id' => $event_id]);
         } else {
