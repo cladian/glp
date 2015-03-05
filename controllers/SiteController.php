@@ -41,6 +41,11 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['admuser'],
+                        'allow' => true,
+                        'roles' => ['user'],
+                    ],
                 ],
             ],
             'verbs' => [
@@ -69,11 +74,10 @@ class SiteController extends Controller
     public function actionAdmuser()
     {
         // De acceso solo para usuarios logeados
+        if (Yii::$app->user->can('user'))
+        {
 
-        // Verificamos si el usuario tiene registro de perfil
-        // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
-
-       // $searchInscription=Inscription::find()->where(['status'=>10])->all();
+        }
         $searchInscription=new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
