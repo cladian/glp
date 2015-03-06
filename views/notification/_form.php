@@ -14,7 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+<!--    --><?//= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
 
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 <!---->

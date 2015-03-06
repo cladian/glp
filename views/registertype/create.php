@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Registertype */
 
-$this->title = 'Create Registertype';
-$this->params['breadcrumbs'][] = ['label' => 'Registertypes', 'url' => ['index']];
+$this->title = 'Crear Tipo de Registro';
+$this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="registertype-create">
