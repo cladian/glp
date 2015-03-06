@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\NotificationSearch */
+/* @var $searchModel app\models\RequestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Notificaciones';
+$this->title = 'Solicitudes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="notification-index">
+<div class="request-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Notificación', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Solicitud', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,12 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'text:ntext',
+//            'id',
+            'question:ntext',
+            'answer:ntext',
             'status',
 //            'created_at',
-//            'updated_at',
-            // 'user_id',
+            // 'updated_at',
+            // 'inscription_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

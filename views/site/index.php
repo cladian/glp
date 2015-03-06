@@ -24,25 +24,28 @@ $this->title = 'My Yii Application';
 
     <div class="body-content">
         <div class="row">
-            <?php  // Begin ForEach
-                foreach ($modelEvent as $event) {
-                   /* $timeDiff = date_diff(date_create($event->begin_at),date_create(date('Y-m-d')));*/
 
-                    //$timeDiff=intval($timeDiff/86400);
-                  //  $timeDiff=date('Y-m-d');
-                    ?>
-                <div class="col-xs-12 col-sm-8 col-xl-4 col-lg-4"><h4><?= $event->name; ?></h4>
-                    <?= Html::img('imgs/event/0.jpg',['class'=>'img-responsive']);?>
-                    <p><?= $event->short_description; ?></p>
-                   <!-- <p><?php /*echo $timeDiff;*/?></p>-->
-                    <address>
-                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?><br>
-                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?><br>
-                        <strong>Inversión: </strong><?= $event->cost; ?> USD
-                    </address>
-                    <?= Html::a('Más información', ['site/signup/'], ['class' => 'btn  btn-primary']) ?>
-                </div>
+            <?php  // Begin ForEach
+                foreach ($modelEvent as $event) {?>
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <?= Html::img('imgs/event/0.jpg',['class'=>'img-responsive']);?>
+                                <div class="caption">
+                                    <h3><?= $event->name; ?></h3>
+                                    <p><?= $event->short_description; ?></p>
+                                    <address>
+                                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
+                                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?><br>
+                                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?><br>
+                                        <strong>Inversión: </strong><?= $event->cost; ?> USD
+                                    </address>
+                                    <p>
+                                        <?= Html::a('Más información', ['site/event/','id'=>$event->id], ['class' => 'btn  btn-primary']) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
             <?php }  // End ForEach ?>
         </div>
 

@@ -74,9 +74,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
             [
-                'label' => 'Notificaciones',
+                'label' => 'Solicitudes',
 //                  'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialNotification',['searchModel'=>$searchModelNotification, 'dataProvider'=>$dataProviderNotification]),
+                'content' => $this->render('_partialRequest',['searchModel'=>$searchModelRequest, 'dataProvider'=>$dataProviderRequest]),
                 //  'options' => ['id' => 'myveryownID'],
             ],
     ],

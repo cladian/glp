@@ -11,7 +11,7 @@ use app\models\Logistic;
 use app\models\Answer;
 use app\models\EventanswerSearch;
 use app\models\AnswerSearch;
-use app\models\NotificationSearch;
+use app\models\RequestSearch;
 use app\models\Generalquestion;
 use app\models\InscriptionSearch;
 use yii\web\Controller;
@@ -73,8 +73,8 @@ class InscriptionController extends Controller
         $searchModelAnswer = new AnswerSearch();
         $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
 
-        $searchModelNotification = new NotificationSearch();
-        $dataProviderNotification = $searchModelNotification->search(Yii::$app->request->queryParams, $id);
+        $searchModelRequest = new RequestSearch();
+        $dataProviderRequest = $searchModelRequest->search(Yii::$app->request->queryParams, $id);
 
         // Verificación de funcion es editables
         if (Yii::$app->request->post('hasEditable')) {
@@ -131,8 +131,8 @@ class InscriptionController extends Controller
             'dataProviderEventanswer' => $dataProviderEventanswer,
             'searchModelAnswer' => $searchModelAnswer,
             'dataProviderAnswer' => $dataProviderAnswer,
-            'searchModelNotification' => $searchModelNotification,
-            'dataProviderNotification' => $dataProviderNotification,
+            'searchModelRequest' => $searchModelRequest,
+            'dataProviderRequest' => $dataProviderRequest,
         ]);
     }
 
