@@ -273,4 +273,40 @@ return array (
       '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
     ),
   ),
+  'kartik-v/yii2-grid' => 
+  array (
+    'name' => 'kartik-v/yii2-grid',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
+    ),
+  ),
+  'kartik-v/yii2-popover-x' => 
+  array (
+    'name' => 'kartik-v/yii2-popover-x',
+    'version' => '1.3.0.0',
+    'alias' => 
+    array (
+      '@kartik/popover' => $vendorDir . '/kartik-v/yii2-popover-x',
+    ),
+  ),
+  'kartik-v/yii2-editable' => 
+  array (
+    'name' => 'kartik-v/yii2-editable',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
+    ),
+  ),
+  '2amigos/yii2-tinymce-widget' => 
+  array (
+    'name' => '2amigos/yii2-tinymce-widget',
+    'version' => '1.0.1.0',
+    'alias' => 
+    array (
+      '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget/src',
+    ),
+  ),
 );
