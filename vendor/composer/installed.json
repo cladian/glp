@@ -145,38 +145,6 @@
         ]
     },
     {
-        "name": "bower-asset/yii2-pjax",
-        "version": "v2.0.2",
-        "version_normalized": "2.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/yiisoft/jquery-pjax.git",
-            "reference": "fb92be865c0fd6583714475cb7d629020749d73f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/fb92be865c0fd6583714475cb7d629020749d73f",
-            "reference": "fb92be865c0fd6583714475cb7d629020749d73f",
-            "shasum": ""
-        },
-        "require": {
-            "bower-asset/jquery": ">=1.8"
-        },
-        "type": "bower-asset-library",
-        "extra": {
-            "bower-asset-main": "./jquery.pjax.js",
-            "bower-asset-ignore": [
-                ".travis.yml",
-                "Gemfile",
-                "Gemfile.lock",
-                "vendor/",
-                "script/",
-                "test/"
-            ]
-        },
-        "installation-source": "dist"
-    },
-    {
         "name": "bower-asset/punycode",
         "version": "v1.3.2",
         "version_normalized": "1.3.2.0",
@@ -258,68 +226,6 @@
             "jquery",
             "mask",
             "plugins"
-        ]
-    },
-    {
-        "name": "cebe/markdown",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/cebe/markdown.git",
-            "reference": "9d6c36d6623497523ed421a31d940bc1d7435578"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/cebe/markdown/zipball/9d6c36d6623497523ed421a31d940bc1d7435578",
-            "reference": "9d6c36d6623497523ed421a31d940bc1d7435578",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": "*",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "cebe/indent": "*",
-            "facebook/xhprof": "*@dev",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2014-10-25 16:16:49",
-        "bin": [
-            "bin/markdown"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "cebe\\markdown\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Carsten Brandt",
-                "email": "mail@cebe.cc",
-                "homepage": "http://cebe.cc/",
-                "role": "Creator"
-            }
-        ],
-        "description": "A super fast, highly extensible markdown parser for PHP",
-        "homepage": "https://github.com/cebe/markdown#readme",
-        "keywords": [
-            "extensible",
-            "fast",
-            "gfm",
-            "markdown",
-            "markdown-extra"
         ]
     },
     {
@@ -1674,51 +1580,6 @@
         ]
     },
     {
-        "name": "2amigos/yii2-tinymce-widget",
-        "version": "0.1.0",
-        "version_normalized": "0.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/2amigos/yii2-tinymce-widget.git",
-            "reference": "542ceac58ebfd63632be79712cc253fe8edba80b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/2amigos/yii2-tinymce-widget/zipball/542ceac58ebfd63632be79712cc253fe8edba80b",
-            "reference": "542ceac58ebfd63632be79712cc253fe8edba80b",
-            "shasum": ""
-        },
-        "require": {
-            "yiisoft/yii2": "*"
-        },
-        "time": "2014-04-02 09:10:13",
-        "type": "yii2-extension",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "dosamigos\\tinymce\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Antonio Ramirez",
-                "email": "ramirez.cobos@gmail.com",
-                "homepage": "http://www.ramirezcobos.com"
-            }
-        ],
-        "description": "TinyMCE widget for Yii2.",
-        "keywords": [
-            "extension",
-            "tinymce",
-            "widget",
-            "yii"
-        ]
-    },
-    {
         "name": "kartik-v/yii2-money",
         "version": "v1.2.0",
         "version_normalized": "1.2.0.0",
@@ -2318,24 +2179,215 @@
         ]
     },
     {
+        "name": "kartik-v/mpdf",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kartik-v/mpdf.git",
+            "reference": "a9d6960e47b4c8d28ba72c229c13a6444d8e2658"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kartik-v/mpdf/zipball/a9d6960e47b4c8d28ba72c229c13a6444d8e2658",
+            "reference": "a9d6960e47b4c8d28ba72c229c13a6444d8e2658",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=4.3.10"
+        },
+        "time": "2015-02-18 16:00:43",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "mpdf.php",
+                "classes"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-1.0+"
+        ],
+        "authors": [
+            {
+                "name": "Ian N Back"
+            }
+        ],
+        "description": "A PHP class to generate PDF files from HTML with Unicode/UTF-8 and CJK support. This is a fork of the official mPDF library.",
+        "homepage": "http://www.mpdf1.com/mpdf/index.php",
+        "keywords": [
+            "pdf",
+            "php",
+            "utf-8"
+        ]
+    },
+    {
+        "name": "kartik-v/yii2-mpdf",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kartik-v/yii2-mpdf.git",
+            "reference": "cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3",
+            "reference": "cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3",
+            "shasum": ""
+        },
+        "require": {
+            "kartik-v/mpdf": "*"
+        },
+        "time": "2015-02-26 15:09:02",
+        "type": "yii2-extension",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "kartik\\mpdf\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD 3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kartik Visweswaran",
+                "email": "kartikv2@gmail.com",
+                "homepage": "http://www.krajee.com/"
+            }
+        ],
+        "description": "A Yii2 wrapper component for the mPDF library which generates PDF files from UTF-8 encoded HTML.",
+        "homepage": "https://github.com/kartik-v/yii2-mpdf",
+        "keywords": [
+            "component",
+            "extension",
+            "html",
+            "mpdf",
+            "pdf",
+            "utf8",
+            "yii2"
+        ]
+    },
+    {
+        "name": "cebe/markdown",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cebe/markdown.git",
+            "reference": "f681fee8303310415b746f3758eeda0a7ad08bda"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cebe/markdown/zipball/f681fee8303310415b746f3758eeda0a7ad08bda",
+            "reference": "f681fee8303310415b746f3758eeda0a7ad08bda",
+            "shasum": ""
+        },
+        "require": {
+            "lib-pcre": "*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "cebe/indent": "*",
+            "facebook/xhprof": "*@dev",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-03-06 05:21:16",
+        "bin": [
+            "bin/markdown"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "cebe\\markdown\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Carsten Brandt",
+                "email": "mail@cebe.cc",
+                "homepage": "http://cebe.cc/",
+                "role": "Creator"
+            }
+        ],
+        "description": "A super fast, highly extensible markdown parser for PHP",
+        "homepage": "https://github.com/cebe/markdown#readme",
+        "keywords": [
+            "extensible",
+            "fast",
+            "gfm",
+            "markdown",
+            "markdown-extra"
+        ]
+    },
+    {
+        "name": "bower-asset/yii2-pjax",
+        "version": "v2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yiisoft/jquery-pjax.git",
+            "reference": "3f20897307cca046fca5323b318475ae9dac0ca0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/3f20897307cca046fca5323b318475ae9dac0ca0",
+            "reference": "3f20897307cca046fca5323b318475ae9dac0ca0",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery": ">=1.8"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "./jquery.pjax.js",
+            "bower-asset-ignore": [
+                ".travis.yml",
+                "Gemfile",
+                "Gemfile.lock",
+                "vendor/",
+                "script/",
+                "test/"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ]
+    },
+    {
         "name": "kartik-v/yii2-grid",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-grid.git",
-            "reference": "cc22f718f1f2c582d0bfed6bbbb79adada898b01"
+            "reference": "0c5b604240d1afb0559f95994368cc3bbf8616e3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/cc22f718f1f2c582d0bfed6bbbb79adada898b01",
-            "reference": "cc22f718f1f2c582d0bfed6bbbb79adada898b01",
+            "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/0c5b604240d1afb0559f95994368cc3bbf8616e3",
+            "reference": "0c5b604240d1afb0559f95994368cc3bbf8616e3",
             "shasum": ""
         },
         "require": {
             "kartik-v/yii2-krajee-base": "*"
         },
-        "time": "2015-02-25 19:23:08",
+        "time": "2015-03-03 14:23:36",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {
@@ -2460,100 +2512,6 @@
         ]
     },
     {
-        "name": "kartik-v/mpdf",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kartik-v/mpdf.git",
-            "reference": "a9d6960e47b4c8d28ba72c229c13a6444d8e2658"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/mpdf/zipball/a9d6960e47b4c8d28ba72c229c13a6444d8e2658",
-            "reference": "a9d6960e47b4c8d28ba72c229c13a6444d8e2658",
-            "shasum": ""
-        },
-        "require": {
-            "ext-mbstring": "*",
-            "php": ">=4.3.10"
-        },
-        "time": "2015-02-18 16:00:43",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "mpdf.php",
-                "classes"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-1.0+"
-        ],
-        "authors": [
-            {
-                "name": "Ian N Back"
-            }
-        ],
-        "description": "A PHP class to generate PDF files from HTML with Unicode/UTF-8 and CJK support. This is a fork of the official mPDF library.",
-        "homepage": "http://www.mpdf1.com/mpdf/index.php",
-        "keywords": [
-            "pdf",
-            "php",
-            "utf-8"
-        ]
-    },
-    {
-        "name": "kartik-v/yii2-mpdf",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/kartik-v/yii2-mpdf.git",
-            "reference": "cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3",
-            "reference": "cd6afdcc03b6657ca92d1f4bc4f3c10e630d34e3",
-            "shasum": ""
-        },
-        "require": {
-            "kartik-v/mpdf": "*"
-        },
-        "time": "2015-02-26 15:09:02",
-        "type": "yii2-extension",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "kartik\\mpdf\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD 3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Kartik Visweswaran",
-                "email": "kartikv2@gmail.com",
-                "homepage": "http://www.krajee.com/"
-            }
-        ],
-        "description": "A Yii2 wrapper component for the mPDF library which generates PDF files from UTF-8 encoded HTML.",
-        "homepage": "https://github.com/kartik-v/yii2-mpdf",
-        "keywords": [
-            "component",
-            "extension",
-            "html",
-            "mpdf",
-            "pdf",
-            "utf8",
-            "yii2"
-        ]
-    },
-    {
         "name": "kartik-v/yii2-editable",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -2601,6 +2559,118 @@
             "popover",
             "popover-x",
             "widget"
+        ]
+    },
+    {
+        "name": "tinymce/tinymce",
+        "version": "4.1.8",
+        "version_normalized": "4.1.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tinymce/tinymce-dist.git",
+            "reference": "2ab950dc1e451967f51c4c4bfc4ed161f25e90c2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/2ab950dc1e451967f51c4c4bfc4ed161f25e90c2",
+            "reference": "2ab950dc1e451967f51c4c4bfc4ed161f25e90c2",
+            "shasum": ""
+        },
+        "time": "2015-03-05 13:01:35",
+        "type": "component",
+        "extra": {
+            "component": {
+                "scripts": [
+                    "tinymce.js",
+                    "plugins/*/plugin.js",
+                    "themes/*/theme.js"
+                ],
+                "files": [
+                    "tinymce.min.js",
+                    "plugins/*/plugin.min.js",
+                    "themes/*/theme.min.js",
+                    "skins/**"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "description": "Web based JavaScript HTML WYSIWYG editor control.",
+        "homepage": "http://www.tinymce.com",
+        "keywords": [
+            "editor",
+            "html",
+            "javascript",
+            "richtext",
+            "tinymce",
+            "wysiwyg"
+        ]
+    },
+    {
+        "name": "2amigos/yii2-tinymce-widget",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/2amigos/yii2-tinymce-widget.git",
+            "reference": "fa9e30268a7078209d89bf4dcf2a63a40267406e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/2amigos/yii2-tinymce-widget/zipball/fa9e30268a7078209d89bf4dcf2a63a40267406e",
+            "reference": "fa9e30268a7078209d89bf4dcf2a63a40267406e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "tinymce/tinymce": ">= 4",
+            "yiisoft/yii2": "*"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2015-03-06 15:47:38",
+        "type": "yii2-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            },
+            "asset-installer-paths": {
+                "bower-asset-library": "vendor/bower"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "dosamigos\\tinymce\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Antonio Ramirez",
+                "email": "ramirez.cobos@gmail.com",
+                "homepage": "http://2amigos.us"
+            },
+            {
+                "name": "2amigOS! Consulting Group",
+                "email": "hola@2amigos.us",
+                "homepage": "http://2amigos.us",
+                "role": "Developer"
+            }
+        ],
+        "description": "TinyMCE widget for Yii2.",
+        "keywords": [
+            "extension",
+            "tinymce",
+            "widget",
+            "yii"
         ]
     }
 ]
