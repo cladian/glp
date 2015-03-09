@@ -22,70 +22,62 @@ use app\models\Country;
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <div class="col-sm-6">
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <div class="col-sm-4">
         <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
-    </div>
-    <div class="col-sm-6">
         <?= $form->field($model, 'lastname')->textInput(['maxlength' => 100]) ?>
-    </div>
-
-
-    <div class="col-sm-6">
         <?= $form->field($model, 'responsability_name')->textInput(['maxlength' => 250]) ?>
-    </div>
 
-    <div class="col-sm-6">
         <?=
         $form->field($model, 'responsibilitytype_id')->dropDownList(
             ArrayHelper::map(Responsibilitytype::find()->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
-    </div>
-    <div class="col-sm-6">
         <?= $form->field($model, 'institution_name')->textInput(['maxlength' => 250]) ?>
-    </div>
-    <div class="col-sm-6">
         <?=
         $form->field($model, 'institutiontype_id')->dropDownList(
             ArrayHelper::map(Institutiontype::find()->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?= $form->field($model, 'phone_number')->textInput(['maxlength' => 15]) ?>
-    </div>
-    <div class="col-sm-6">
         <?= $form->field($model, 'mobile_number')->textInput(['maxlength' => 15]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?/*= $form->field($model, 'gender')->widget(SwitchInput::classname(), [
-            'type' => SwitchInput::RADIO,
-            'items' => [
-                ['label' => 'Masculino', 'value' => 'M'],
-                ['label' => 'Femenino', 'value' => 'F'],
-
-            ],
-        ]); */?>
         <?= $form->field($model, 'gender')->dropDownList(['M' => 'M', 'F' => 'F',], ['prompt' => '']) ?>
-    </div>
-    <div class="col-sm-6">
+
         <?=
         $form->field($model, 'country_id')->dropDownList(
             ArrayHelper::map(Country::find()->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
     </div>
-
+    <div class="col-sm-3">
+        <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
     <?=
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+            'browseLabel' =>  'Seleccionar Fotografía',
+            'initialPreview'=>[
+                'initialPreview' => [
+                    Html::img($model->getImageUrl(), ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
+                ],
+            ],
+        ],
     ]);
     // $form->field($model, 'photo')->textarea(['rows' => 6]) ?>
+</div>
 
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 

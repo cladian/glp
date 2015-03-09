@@ -53,3 +53,4 @@ $this->title = 'My Yii Application';
 
 
 </div>
+<?= \Yii::$app->params['adminEmail'];?>
