@@ -31,4 +31,5 @@ class Assignment extends Object
      * @var integer UNIX timestamp representing the assignment creation time
      */
     public $createdAt;
+
 }
