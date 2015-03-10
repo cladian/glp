@@ -26,6 +26,8 @@
         "yiisoft/yii2-faker": "*",
         "mdmsoft/yii2-admin":"*",
         "kartik-v/yii2-widgets":"dev-master",
+         "2amigos/yii2-tinymce-widget" : "*",
+        "kartik-v/yii2-money": "*",
         "kartik-v/yii2-grid": "dev-master",
         "kartik-v/yii2-editable": "dev-master",
         "kartik-v/yii2-mpdf": "dev-master"
