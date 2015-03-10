@@ -17,7 +17,8 @@ if (Yii::$app->user->isGuest) {
         ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
         ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
     ];
-}elseif (Yii::$app->user->can('user')) {
+}
+elseif (Yii::$app->user->can('user')) {
     $items = [
 
         ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
@@ -28,19 +29,57 @@ if (Yii::$app->user->isGuest) {
 
         ]
         ],
-        
-            ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
-                ['label' => 'Perfil', 'url' => ['/profile/viewown']],
-                ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
-            ]
-            ],
-        // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+
+
     ];
 
 
+} elseif (Yii::$app->user->can('asocam')) {
+    $items = [
 
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
 
-}elseif(Yii::$app->user->can('permission_admin')){
+        ['label' => 'Evento', 'items' => [
+            ['label' => 'Eventos', 'url' => ['/event']],
+            ['label' => 'Respuesta', 'url' => ['/answer']],
+            ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+            ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
+            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+        ]
+        ],
+
+        ['label' => 'Notificaciones', 'items' => [
+            ['label' => 'Solicitudes', 'url' => ['/request']],
+            ['label' => 'Respuestas', 'url' => ['/reply']],
+            ['label' => 'Notificaciones', 'url' => ['/notification']],
+
+        ]
+        ],
+        ['label' => 'Inscripción', 'url' => ['/inscription']],
+
+        ['label' => 'Catálogos', 'items' => [
+            ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
+            ['label' => 'Institución', 'url' => ['/institutiontype']],
+            '<li class="divider"></li>',
+            ['label' => 'Pais', 'url' => ['/country']],
+            ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+            ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+            '<li class="divider"></li>',
+            ['label' => 'Preguntas', 'url' => ['/question']],
+            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+        ]
+        ],
+  ];
+    if (Yii::$app->user->can('permission_admin'))
+        $items[] = ['label' => 'Roles', 'items' => [
+            ['label' => 'Asignaciones', 'url' => ['/admin']],
+            ['label' => 'Roles', 'url' => ['/admin/role']],
+            ['label' => 'Permisos', 'url' => ['/admin/permission']],
+
+        ]
+        ];
+
+}elseif (Yii::$app->user->can('permission_admin')) {
     $items = [
 
         ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
@@ -96,20 +135,6 @@ if (Yii::$app->user->isGuest) {
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]
         ],
-        ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
-        Yii::$app->user->isGuest ?
-            ['label' => 'Ingresar', 'url' => ['/site/login']] :
-            ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
-                /*                '<li class="divider"></li>',
-                                ['label' => 'Pais', 'url' => ['/country']],
-                                ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-                                ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-                                '<li class="divider"></li>',*/
-                ['label' => 'Perfil', 'url' => ['/profile/viewown']],
-                ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
-            ]
-            ],
-        // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
     ];
     if (Yii::$app->user->can('permission_admin'))
         $items[] = ['label' => 'Roles', 'items' => [
@@ -119,6 +144,14 @@ if (Yii::$app->user->isGuest) {
 
         ]
         ];
+
+}
+if (    (Yii::$app->user->can('permission_admin'))||(Yii::$app->user->can('user'))|| (Yii::$app->user->can('asocam'))  ){
+    $items[] =['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
+        ['label' => 'Perfil', 'url' => ['/profile/viewown']],
+        ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+    ]
+    ];
 
 }
 

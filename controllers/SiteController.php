@@ -88,7 +88,7 @@ class SiteController extends Controller
         $modelEvent = Event::find()->where( ['status'=>10])->all();
 
 
-        return $this->render('admuser', [
+        return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'modelEvent'=>$modelEvent,
             'searchInscription' => $searchInscription,
@@ -103,7 +103,7 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('admasocam', [
+        return $this->render('admAsocam', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'activeUsers' => User::find()->where(['status' => 10])->count(),
             'activeEvents' => Event::find()->where(['status' => 10])->count(),
