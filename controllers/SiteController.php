@@ -103,7 +103,7 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('admasocam', [
+        return $this->render('admAsocam', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'activeUsers' => User::find()->where(['status' => 10])->count(),
             'activeEvents' => Event::find()->where(['status' => 10])->count(),
@@ -119,7 +119,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->user->can('user')) {
-            return $this->redirect(['admuser']);
+            return $this->redirect(['admUser']);
         } else if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
         } else {
