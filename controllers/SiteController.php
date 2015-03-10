@@ -33,12 +33,12 @@ class SiteController extends Controller
                 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['signup','login'],
+                        'actions' => ['login'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['event'],
+                        'actions' => ['event','signup'],
                         'allow' => true,
                         'roles' => ['?','@'],
                     ],
