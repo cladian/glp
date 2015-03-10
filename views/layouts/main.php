@@ -9,33 +9,41 @@ use app\assets\AppAsset;
 /* @var $content string */
 
 AppAsset::register($this);
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-
-<?php $this->beginBody() ?>
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'ASOCAM-GLP',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-
+//if (Yii::$app->user->can('user')){
+if (Yii::$app->user->isGuest) {
     $items = [
 
-        ['label' => 'Inicio', 'url' => ['/site/index']],
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
+        ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
+        ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
+    ];
+}elseif (Yii::$app->user->can('user')) {
+    $items = [
+
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
+        ['label' => 'Notificaciones', 'items' => [
+            ['label' => 'Solicitudes', 'url' => ['/request']],
+            ['label' => 'Respuestas', 'url' => ['/reply']],
+            ['label' => 'Notificaciones', 'url' => ['/notification']],
+
+        ]
+        ],
+        
+            ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
+                ['label' => 'Perfil', 'url' => ['/profile/viewown']],
+                ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+            ]
+            ],
+        // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+    ];
+
+
+
+
+}elseif(Yii::$app->user->can('permission_admin')){
+    $items = [
+
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
         ['label' => 'Paneles', 'items' => [
             ['label' => 'User', 'url' => ['/site/admuser']],
             ['label' => 'Asocam', 'url' => ['/site/admasocam']],
@@ -91,11 +99,18 @@ AppAsset::register($this);
         ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
         Yii::$app->user->isGuest ?
             ['label' => 'Ingresar', 'url' => ['/site/login']] :
-            ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')',
-                'url' => ['/site/logout'],
-                'linkOptions' => ['data-method' => 'post']],
+            ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
+                /*                '<li class="divider"></li>',
+                                ['label' => 'Pais', 'url' => ['/country']],
+                                ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+                                ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+                                '<li class="divider"></li>',*/
+                ['label' => 'Perfil', 'url' => ['/profile/viewown']],
+                ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+            ]
+            ],
+        // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
     ];
-
     if (Yii::$app->user->can('permission_admin'))
         $items[] = ['label' => 'Roles', 'items' => [
             ['label' => 'Asignaciones', 'url' => ['/admin']],
@@ -104,6 +119,34 @@ AppAsset::register($this);
 
         ]
         ];
+
+}
+
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+    <meta charset="<?= Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+</head>
+<body>
+
+<?php $this->beginBody() ?>
+<div class="wrap">
+
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'ASOCAM-GLP',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

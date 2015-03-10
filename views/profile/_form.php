@@ -72,22 +72,6 @@ use yii\helpers\Url;
         ArrayHelper::map(Country::find()->all(), 'id', 'name'),
         ['prompt' => 'Seleccione']
     ) ?>
-<?= $file;?>
-    <?=
-    $form->field($model, 'photo')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
-        'pluginOptions' => [
-            'showUpload' => true,
-            'initialPreview' => [
-              //  Html::img("uploads/avatar/default.png", ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
-                Html::img("uploads/avatar/".$file, ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
-            ],
-            'initialCaption'=>[$file],
-            'overwriteInitial'=>true
-        ]
-
-    ]);
-    // $form->field($model, 'photo')->textarea(['rows' => 6])  ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

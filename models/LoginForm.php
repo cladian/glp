@@ -76,4 +76,15 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de Usuario',
+            'password' => 'Contraseña',
+            /*            'email' => 'Correo Electrónico',
+                        'status' => 'Estado',
+                        'created_at' => 'Fecha de Creación',
+                        'updated_at' => 'Fecha de Actualización',*/
+        ];
+    }
 }
