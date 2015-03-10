@@ -62,12 +62,10 @@ use yii\widgets\DetailView;
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
                 <!--                <strong>Fecha de Entrada: </strong>-->
                 <? //= $model->accommodationdatein; ?><!--<br>-->
-                <strong>Fecha de
-                    Entrada:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdatein, 'long'); ?><br>
+                <strong>Fecha de Entrada:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdatein, 'long'); ?><br>
                 <!--                <strong>Fecha de Salida: </strong>-->
                 <? //= $model->accommodationdateout; ?><!--<br>-->
-                <strong>Fecha de
-                    Salida:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdateout, 'long'); ?><br>
+                <strong>Fecha de Salida:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdateout, 'long'); ?><br>
 
             </address>
         </div>
