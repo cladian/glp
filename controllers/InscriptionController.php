@@ -7,6 +7,7 @@ use app\models\Eventquestion;
 use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
+use app\models\Profile;
 use app\models\Logistic;
 use app\models\Answer;
 use app\models\EventanswerSearch;
@@ -317,22 +318,41 @@ class InscriptionController extends Controller
 
 
     }
-    // Retorno de info para Grid
+    // Retorno de info para Grid Administrador
     public function actionDetail()
     {
         if (isset($_POST['expandRowKey'])) {
 
-            $inscriptionId = Yii::$app->request->post('expandRowInd');
+            $inscriptionId = Yii::$app->request->post('expandRowKey');
             $model = Logistic::find()
                 ->where(['inscription_id' => $inscriptionId])
                 ->one();
 
-            /*            $dataProvider = new ActiveDataProvider([
-                            'query' => $model,
-                            'pagination' => ['pageSize' => 20,],
-                        ]);*/
+            $modelProfile=Profile::find()
+                ->where(['user_id'=>$model->inscription->user_id])
+                ->one();
 
             return $this->renderPartial('_detail', [
+                'model' => $model,
+                'modelProfile'=>$modelProfile
+            ]);
+        } else {
+            return '<div class="alert alert-danger">No data found</div>';
+        }
+    }
+/*
+ * Solo para llamadas de usuario
+ */
+    public function actionDetailown()
+    {
+        if (isset($_POST['expandRowKey'])) {
+
+            $inscriptionId = Yii::$app->request->post('expandRowKey');
+            $model = Logistic::find()
+                ->where(['inscription_id' => $inscriptionId])
+                ->one();
+
+            return $this->renderPartial('_detailown', [
                 'model' => $model,
             ]);
         } else {

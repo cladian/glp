@@ -11,32 +11,32 @@ use yii\widgets\DetailView;
 
 
 ?>
-<!--<div class="panel-heading"><h5>Logistica</h5></div>-->
+    <?= Html::a('ver', ['inscription/view', 'id' => $model->inscription_id], ['class' => 'btn btn-primary']) ?>
 <hr>
 
-
-<div class="col-sm-4 col-xs-12 col-lg-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">Llegada al lugar del evento</div>
+<div class="col-sm-6 col-xs-12 col-lg-6">
+    <div class="panel panel-success">
+        <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+            Llegada al lugar del evento</div>
         <div class="panel-body">
             <address>
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
                 <strong>Ciudad de procedencia: </strong><?= $model->leavingonorigincity; ?><br>
                 <strong> Aerolinea de llegada: </strong><?= $model->leavingonairline; ?><br>
                 <strong># Vuelo llegada: </strong><?= $model->leavingonflightnumber; ?><br>
-                <!--                <strong>Fecha de arribo: </strong>--><? //= $model->leavingondate; ?><!--<br>-->
+                <strong>Fecha de arribo:: </strong><?= Yii::$app->formatter->asDate($model->leavingondate, 'long'); ?><br>
                 <strong>Hora de arribo: </strong><?= $model->leavingonhour; ?><br>
-                <strong>Fecha de arribo:: </strong><?= Yii::$app->formatter->asDate($model->leavingondate, 'long'); ?>
-                <br>
+
 
             </address>
         </div>
     </div>
 </div>
 </div>
-<div class="col-sm-4 col-xs-12 col-lg-4">
-    <div class="panel panel-info">
-        <div class="panel-heading">Retorno al Lugar de Origen</div>
+<div class="col-sm-6 col-xs-12 col-lg-6">
+    <div class="panel panel-warning">
+        <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+            Retorno al Lugar de Origen</div>
         <div class="panel-body">
             <address>
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
@@ -52,33 +52,11 @@ use yii\widgets\DetailView;
     </div>
 </div>
 </div>
-<div class="col-sm-4 col-xs-12 col-lg-4">
-    <div class="panel panel-success">
-        <div class="panel-heading">Perfil</div>
-        <div class="panel-body">
-            <?php if ($modelProfile) { ?>
-                <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
-                <address>
-                    <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
-                    <strong><?= $modelProfile->name.' '.$modelProfile->lastname;; ?></strong><br>
-                    <strong>phone: </strong><?= $modelProfile->phone_number;?> <br>
-                    <strong>mail: </strong><?= $model->inscription->user->email;?> <br>
-                    <?= Html::img('imgs/flags/'.strtolower($modelProfile->country->iso).'.png');?>
-                </address>
-            <?php } else { ?>
-                <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail']); ?>
-                <address>
-                    <strong>Perfil: </strong>Información pendiente
-                </address>
-            <?php
 
-            }?>
-        </div>
-    </div>
-</div>
 <div class=" col-xs-12">
     <div class="panel panel-default">
-        <div class="panel-heading">Alojamiento en el lugar del evento</div>
+        <div class="panel-heading"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            Alojamiento en el lugar del evento</div>
         <div class="panel-body">
             <address>
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->

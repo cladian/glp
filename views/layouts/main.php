@@ -9,7 +9,15 @@ use app\assets\AppAsset;
 /* @var $content string */
 
 AppAsset::register($this);
-?>
+//if (Yii::$app->user->can('user')){
+if (Yii::$app->user->isGuest) {
+    $items = [
+
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
+        ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
+        ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
+    ];
+}?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -36,7 +44,7 @@ AppAsset::register($this);
 
     $items = [
 
-        ['label' => 'Inicio', 'url' => ['/site/index'],'class'=>'fa fa-user fa-fw'],
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
         ['label' => 'Paneles', 'items' => [
             ['label' => 'User', 'url' => ['/site/admuser']],
             ['label' => 'Asocam', 'url' => ['/site/admasocam']],
@@ -92,14 +100,14 @@ AppAsset::register($this);
         ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
         Yii::$app->user->isGuest ?
             ['label' => 'Ingresar', 'url' => ['/site/login']] :
-            ['label' => Yii::$app->user->identity->username, 'items' => [
-/*                '<li class="divider"></li>',
-                ['label' => 'Pais', 'url' => ['/country']],
-                ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-                ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-                '<li class="divider"></li>',*/
+            ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
+                /*                '<li class="divider"></li>',
+                                ['label' => 'Pais', 'url' => ['/country']],
+                                ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+                                ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+                                '<li class="divider"></li>',*/
                 ['label' => 'Perfil', 'url' => ['/profile/viewown']],
-                ['label' => 'Salir', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']],
+                ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
             ]
             ],
         // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
