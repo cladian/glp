@@ -11,4 +11,4 @@ phpunit.phar
 /phpunit.xml
 
 web/imgs/avatar/*
-config/db.php
+#config/db.php
