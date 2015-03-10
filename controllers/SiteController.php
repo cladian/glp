@@ -119,7 +119,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->user->can('user')) {
-            return $this->redirect(['admuser']);
+            return $this->redirect(['admUser']);
         } else if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
         } else {
