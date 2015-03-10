@@ -32,7 +32,7 @@ use yii\widgets\DetailView;
         </div>
     </div>
 </div>
-</div>
+
 <div class="col-sm-6 col-xs-12 col-lg-6">
     <div class="panel panel-warning">
         <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
@@ -51,7 +51,7 @@ use yii\widgets\DetailView;
         </div>
     </div>
 </div>
-</div>
+
 
 <div class=" col-xs-12">
     <div class="panel panel-default">
@@ -71,7 +71,7 @@ use yii\widgets\DetailView;
         </div>
     </div>
 </div>
-</div>
+
 
 <div class=" col-xs-12">
     <div class=" col-xs-6">
