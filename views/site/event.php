@@ -14,24 +14,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <!--Gestión de Proyectos-->
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-            <div class="panel panel-primary"> 
-              <div class="panel-heading"><center><h5><?= Html::encode($this->title) ?></h5></center></div>
+            <div class="panel panel-info"> 
+              <div class="panel-heading"><?= Html::encode($this->title) ?></div>
               <div class="panel-body">
-                <strong>Descripción: </strong>
-                <p><?= Html::encode($modelEvent->short_description) ?></p>
-              </div>
-              <div class="panel-body">  
-                <p><?= Html::encode($modelEvent->general_content) ?></p>
-              </div>
-              <div class="panel-body">
-                <p><?= Html::encode($modelEvent->methodology) ?></p>
-              </div>
-              <div class="panel-body">
-                  <strong>Archivo PDF: </strong><?= Html::encode($modelEvent->file) ?><br>
-                  <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
-                  <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?><br>
-                  <strong>Descripción de descuento: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
-                  
+                <div role="tabpanel">
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Metodología del curso</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Documentos Adicionales</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home"><p><?= Html::encode($modelEvent->short_description) ?></p>
+                       <hr> <p><?= Html::encode($modelEvent->short_description) ?></p> 
+                       <hr> <p><?= Html::encode($modelEvent->short_description) ?></p> 
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile"><p><?= Html::encode($modelEvent->general_content) ?></p>
+                       <hr> <p><?= Html::encode($modelEvent->general_content) ?></p>
+                       <hr> <p><?= Html::encode($modelEvent->general_content) ?></p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <br>
+                          <strong>Archivo PDF: </strong><?= Html::encode($modelEvent->file) ?><br>
+                          
+                          
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
         </div>
@@ -49,43 +62,39 @@ $this->params['breadcrumbs'][] = $this->title;
                             </a>
                         </div>
                         <div class="media-body">
-                            <h5 class="media-heading"><?= Html::encode($modelEvent->country->name) ?></h5>
+                            <h4 class="media-heading"><?= Html::encode($modelEvent->country->name) ?>
                         </div>
                     </div>-->
-                    <center><h5><?= Html::encode($modelEvent->country->name) ?></h5></center>
+                    <?= Html::encode($modelEvent->country->name) ?>
                 </div>
-                <center><?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?></center>
+                <?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?>
             <div class="panel-body">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <center><?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?></center>
+                    <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <center><strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br></center>
+                    <strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br>
                 </div>
             </div>
                 <div class="panel-body">
                     <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
-                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br><br>
-                    <strong>Descripción: </strong><?= Html::encode($modelEvent->short_description) ?><br>
-                </div>
-                <div class="panel-body">
-                  <strong>Estatus: </strong><?= Html::encode($modelEvent->status) ?><br>
-                  <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
-                  
+                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
+                    <hr>
+                
+                    <strong>Estatus: </strong><?= Html::encode($modelEvent->status) ?><br>
+                    <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+                    <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
+                    <strong>Descripción de descuento: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
+                    <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?><br><br>
+                    <hr>
+                    <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?> 
+                        <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+       
+                    
                 </div>
             </div>
         </div>
         <!--END Pais-->
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
-            <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-success']) ?><?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-primary']) ?>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-primary']) ?>
-        </div>
     </div>
 </div>
 <!--<div class="event-view">
