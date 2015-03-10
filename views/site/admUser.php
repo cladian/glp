@@ -2,10 +2,11 @@
 use yii\helpers\Html;
 use kartik\widgets\Growl;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $this->title = 'Panel de control de usuario';
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->params['breadcrumbs'][] = $this->title;*/
 
 // http://demos.krajee.com/widget-details/growl
 //http://www.bsourcecode.com/yiiframework2/gridview-in-yiiframework-2-0/
@@ -29,7 +30,7 @@ if (!$hasProfile) {
 
 }
 ?>
-    <h3><?= Html::encode($this->title) ?></h3>
+    <!--<h3><?/*= Html::encode($this->title) */?></h3>-->
     <?php
     foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -43,7 +44,7 @@ if (!$hasProfile) {
     }
     ?>
 
-    <?= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) ?>
+   <!-- --><?/*= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) */?>
     <? /*= Html::a('Inscripción', ['/inscription/createown'], ['class' => 'btn btn-success']) */ ?>
     <div class="row">
 
@@ -105,63 +106,111 @@ if (!$hasProfile) {
                     <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis incripciones</h3>
                 </div>
                 <div class="panel-body">
-                    <?= GridView::widget([
-                        'dataProvider' => $dataInscription,
-                        'filterModel' => $searchInscription,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            [
-                                'attribute' => 'event_id',
-                                'value' => function ($data) {
-                                    return $data->event->name;
-                                }
-                            ],
-//            'id',
-                            //'exposition',
-                            //  'service_terms',
-                            'complete',
-                            'status',
-                            // 'created_at',
-                            // 'updated_at',
-                            // 'complete_logistic',
-                            // 'complete_eventquiz',
-                            // 'complete_quiz',
-                            // 'event_id',
-                            // 'user_id',
-
-                            // 'registertype_type',
-                            // 'registertype_assigment',
-
-                            [
-                                'class' => 'yii\grid\CheckboxColumn',
-                                // you may configure additional properties here
-                            ],
-                            // ['class' => 'yii\grid\ActionColumn'],
-                            [
-                                'class' => 'yii\grid\ActionColumn',
-                                'header' => 'Acciones',
-
-                                'template' => '{view}{update}{delete}{link}',
-                                'buttons' => [
-                                    'link' => function ($url, $model) {
-                                        return Html::a('<span class="glyphicon glyphicon-info-sign"></span>', $url, [
-                                            'title' => Yii::t('app', 'Info'),
-                                        ]);
-                                    }
-
-                                    /*                    'update' => function ($url, $model) {
-                                                            return Html::a('<span class="glyphicon glyphicon-plus"></span>', $url, [
-                                                                'title' => Yii('yii', 'inscription/updateown'),
-                                                            ]);
-
-                                                        }*/
-                                ]
-                            ],
-
+                    <?php
+                    $gridColumns = [
+                        // the name column configuration
+                        [
+                            'class' => '\kartik\grid\SerialColumn',
+                            'contentOptions' => ['class' => 'kartik-sheet-style'],
+                        ],
+                        [   //Columna para expander detalles
+                            'class' => 'kartik\grid\ExpandRowColumn',
+                            'value' => function ($model, $key, $index, $column) {
+                                return \kartik\grid\GridView::ROW_COLLAPSED;
+                            },
+                            'detailUrl' => Url::to(['inscription/detailown']),
+                            // 'detailRowCssClass' => \kartik\grid\GridView::TYPE_DEFAULT,
+                            'pageSummary' => false,
+                        ],
+                        [
+                            'attribute' => 'event_id',
+                            'value' => function ($data) {
+                                return $data->event->name;
+                            }
+                        ],
+                       /* [
+                            'attribute' => 'user_id',
+                            'value' => function ($data) {
+                                return $data->user->username;
+                            }
+                        ],*/
+                        [
+                            'attribute' => 'created_at',
 
                         ],
+                        [
+                            'class' => '\kartik\grid\BooleanColumn',
+                            'attribute' => 'status',
+                            'trueLabel' => '10',
+                            'falseLabel' => '0'
+                        ],
 
-                    ]); ?>
+
+                    ];
+
+                    echo \kartik\grid\GridView::widget([
+                        'dataProvider' => $dataInscription,
+                        'filterModel' => $searchInscription,
+                        'columns' => $gridColumns,
+                        // set your toolbar
+                        'toolbar' => [
+
+                            '{export}',
+                            '{toggleData}',
+                        ],
+                        'bordered' => true,
+                        'resizableColumns' => true,
+                        'striped' => true,
+                        'condensed' => true,
+                        'responsive' => true,
+                        'hover' => true,
+                        'showPageSummary' => true,
+                        'persistResize' => false,
+                        'exportConfig' => true,
+                        /*        'pjax'=>true,
+                                'floatHeader'=>true,
+                                'floatHeaderOptions'=>['scrollingTop'=>'50'],
+                                'pjaxSettings'=>[
+                                    'neverTimeout'=>true,
+                                    'beforeGrid'=>'My fancy content before.',
+                                    'afterGrid'=>'My fancy content after.',
+                                ]*/
+                    ]);
+
+                    /*    GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            'filterModel' => $searchModel,
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
+
+                    //            'id',
+                    // 'event_id',
+                                [
+                                    'attribute' => 'event_id',
+                                    'value'=> function ($data){ return $data->event->name;}
+                                ],
+                                // 'user_id',
+                                [
+                                    'attribute' => 'user_id',
+                                    'value'=> function ($data){ return $data->user->username;}
+                                ],
+                    //            'exposition',
+                              //  'service_terms',
+                    //            'complete',
+                                'status',
+                                // 'created_at',
+                                // 'updated_at',
+                                // 'complete_logistic',
+                                // 'complete_eventquiz',
+                                // 'complete_quiz',
+                                // 'registertype_type',
+                                // 'registertype_assigment',
+
+                                ['class' => 'yii\grid\ActionColumn'],
+                            ],
+                        ]); */
+
+                    ?>
                 </div>
             </div>
 

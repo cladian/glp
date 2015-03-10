@@ -41,6 +41,7 @@ class Profile extends \yii\db\ActiveRecord
         return 'profile';
     }
 
+
     /**
      * @inheritdoc
      */
@@ -48,16 +49,19 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'lastname',  'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'required'],
-            [['gender', 'photo'], 'string'],
+            [['gender'], 'string'],
             [['complete', 'status', 'user_id', 'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at','photo'], 'safe'],
             [['name', 'lastname'], 'string', 'max' => 100],
             [['institution_name', 'responsability_name'], 'string', 'max' => 250],
             [['phone_number', 'mobile_number'], 'string', 'max' => 15],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['photo'], 'file', 'extensions'=>'jpg, gif, png'],
+            [['photo'], 'required','on'=>'avatar']
         ];
     }
+
 
     /**
      * @inheritdoc
@@ -116,5 +120,15 @@ class Profile extends \yii\db\ActiveRecord
     public function getCountry()
     {
         return $this->hasOne(Country::className(), ['id' => 'country_id']);
+    }
+    //
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+        $avatar = isset($this->photo) ? $this->photo : 'profile.png';
+        if ($avatar==Null)
+            $avatar='profile.png';
+
+        return Yii::$app->params['avatarFolder'] . $avatar;
     }
 }
