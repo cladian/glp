@@ -92,16 +92,14 @@ AppAsset::register($this);
         ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
         Yii::$app->user->isGuest ?
             ['label' => 'Ingresar', 'url' => ['/site/login']] :
-            ['label' => 'Catálogo', 'items' => [
-                ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
-                ['label' => 'Institución', 'url' => ['/institutiontype']],
-                '<li class="divider"></li>',
+            ['label' => Yii::$app->user->identity->username, 'items' => [
+/*                '<li class="divider"></li>',
                 ['label' => 'Pais', 'url' => ['/country']],
                 ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
                 ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-                '<li class="divider"></li>',
-                ['label' => 'Preguntas', 'url' => ['/question']],
-                ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+                '<li class="divider"></li>',*/
+                ['label' => 'Perfil', 'url' => ['/profile/viewown']],
+                ['label' => 'Salir', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']],
             ]
             ],
         // ['label' => 'Salir (' . Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id . ')','url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],

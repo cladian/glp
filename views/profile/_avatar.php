@@ -21,6 +21,7 @@ use yii\helpers\Url;
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
     <?=
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
@@ -30,7 +31,7 @@ use yii\helpers\Url;
             'showUpload' => false,
             'browseClass' => 'btn btn-primary btn-block',
             'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' =>  'Select Photo',
+            'browseLabel' =>  'Seleccione la fotografía',
             'initialPreview'=>[
                //     Html::img($model->getImageUrl(), ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
 
@@ -41,6 +42,7 @@ use yii\helpers\Url;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a('Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -25,6 +25,7 @@ use app\models\Country;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a('Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger']) ?>
     </div>
 
     <div class="col-sm-4">
@@ -57,24 +58,8 @@ use app\models\Country;
     </div>
     <div class="col-sm-3">
         <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
-    <?=
-    $form->field($model, 'photo')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
-        'pluginOptions' => [
-            'showCaption' => false,
-            'showRemove' => false,
-            'showUpload' => false,
-            'browseClass' => 'btn btn-primary btn-block',
-            'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' =>  'Seleccionar Fotografía',
-            'initialPreview'=>[
-                'initialPreview' => [
-                    Html::img($model->getImageUrl(), ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
-                ],
-            ],
-        ],
-    ]);
-    // $form->field($model, 'photo')->textarea(['rows' => 6]) ?>
+
+
 </div>
 
 

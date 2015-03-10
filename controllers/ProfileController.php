@@ -57,6 +57,18 @@ class ProfileController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViewown()
+    {
+        // Verificación inicial del perfil, si el registro no esta creado se redirije automaticamente
+        // a la función create
+
+        if (!Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count())
+            return $this->redirect(['createown']);
+
+        return $this->render('viewown', [
+            'model' => $this->findModelown(Yii::$app->user->identity->id),
+        ]);
+    }
 
     /**
      * Creates a new Profile model.
@@ -88,7 +100,7 @@ class ProfileController extends Controller
             // Almacenamiento del modelo;
             $model->user_id = Yii::$app->user->identity->id;
             $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown']);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -104,10 +116,7 @@ class ProfileController extends Controller
      */
     public function actionUpdate($id)
     {
-
         $model = $this->findModel($id);
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -117,28 +126,19 @@ class ProfileController extends Controller
             ]);
         }
     }
-    public function actionAvatar($id)
+    public function actionAvatarown()
     {
-
-        $model = $this->findModel($id);
+        $model = $this->findModelown(Yii::$app->user->identity->id);
+        //$model = $this->findModel($id);
         $model->scenario = 'avatar';
 
-
-
         if ($model->load(Yii::$app->request->post())) {
-            //Almacenar archivo
-
             $avatar = UploadedFile::getInstance($model, 'photo');
-
             $photoName = $model->id . '.' . $avatar->extension;
             $avatar->saveAs(\Yii::$app->params['avatarFolder'] . $photoName);
-            // Guardar modelo
             $model->photo = $photoName;
-
-
             $model->save();
-
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown']);
         } else {
             return $this->render('avatar', [
                 'model' => $model,
@@ -153,7 +153,7 @@ class ProfileController extends Controller
         $model = $this->findModelown(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown']);
         } else {
             return $this->render('updateown', [
                 'model' => $model,

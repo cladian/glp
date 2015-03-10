@@ -5,7 +5,7 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 $this->title = 'Panel de control de usuario';
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->params['breadcrumbs'][] = $this->title;*/
 
 // http://demos.krajee.com/widget-details/growl
 //http://www.bsourcecode.com/yiiframework2/gridview-in-yiiframework-2-0/
@@ -29,7 +29,7 @@ if (!$hasProfile) {
 
 }
 ?>
-    <h3><?= Html::encode($this->title) ?></h3>
+    <!--<h3><?/*= Html::encode($this->title) */?></h3>-->
     <?php
     foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -43,7 +43,7 @@ if (!$hasProfile) {
     }
     ?>
 
-    <?= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) ?>
+   <!-- --><?/*= Html::a('Actualizar datos de Perfil', ['/profile/createown'], ['class' => 'btn btn-success']) */?>
     <? /*= Html::a('Inscripción', ['/inscription/createown'], ['class' => 'btn btn-success']) */ ?>
     <div class="row">
 
