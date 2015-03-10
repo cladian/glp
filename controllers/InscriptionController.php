@@ -246,7 +246,12 @@ class InscriptionController extends Controller
         // búsqueda de modelo por dos parámetros
         $model = $this->findModelown($id, Yii::$app->user->id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->complete_quiz=$model->getCountAnswers();
+            $model->complete_eventquiz=$model->getCountEventAnswers();
+            $model->complete_logistic=$model->getCountLogistic();
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('updateown', [
@@ -324,16 +329,16 @@ class InscriptionController extends Controller
         if (isset($_POST['expandRowKey'])) {
 
             $inscriptionId = Yii::$app->request->post('expandRowKey');
-            $model = Logistic::find()
+            $modelLogistic = Logistic::find()
                 ->where(['inscription_id' => $inscriptionId])
                 ->one();
 
             $modelProfile=Profile::find()
-                ->where(['user_id'=>$model->inscription->user_id])
+                ->where(['user_id'=>$modelLogistic->inscription->user_id])
                 ->one();
 
             return $this->renderPartial('_detail', [
-                'model' => $model,
+                'modelLogistic' => $modelLogistic,
                 'modelProfile'=>$modelProfile
             ]);
         } else {
@@ -346,13 +351,14 @@ class InscriptionController extends Controller
     public function actionDetailown()
     {
         if (isset($_POST['expandRowKey'])) {
-
             $inscriptionId = Yii::$app->request->post('expandRowKey');
-            $model = Logistic::find()
+            $model = $this->findModel($inscriptionId);
+            $modelLogistic = Logistic::find()
                 ->where(['inscription_id' => $inscriptionId])
                 ->one();
 
             return $this->renderPartial('_detailown', [
+                'modelLogistic' => $modelLogistic,
                 'model' => $model,
             ]);
         } else {

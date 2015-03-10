@@ -35,6 +35,8 @@ class Inscription extends \yii\db\ActiveRecord
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const COLUMN_ITEMS = 11;
+
     /**
      * @inheritdoc
      */
@@ -143,5 +145,76 @@ class Inscription extends \yii\db\ActiveRecord
     public function getRequests()
     {
         return $this->hasMany(Request::className(), ['inscription_id' => 'id']);
+    }
+
+    /*
+     * Retorna el numero de respuestas que tiene la inscripción
+     */
+    public function getCountAnswers()
+    {
+        $items = $this->hasMany(Answer::className(), ['inscription_id' => 'id'])->count();
+        if ($items==0)
+            return $items;
+
+        $itemsNotNull = $this->hasMany(Answer::className(), ['inscription_id' => 'id'])
+            ->where('reply IS NOT NULL')->count();
+
+        $resp = $itemsNotNull * 100 / $items;
+        return $resp;
+
+    }
+
+    public function getCountEventAnswers()
+    {
+        $items = $this->hasMany(Eventanswer::className(), ['inscription_id' => 'id'])->count();
+        if ($items==0)
+            return $items;
+
+        $itemsNotNull = $this->hasMany(Eventanswer::className(), ['inscription_id' => 'id'])
+            ->where('reply IS NOT NULL')->count();
+
+        $resp = $itemsNotNull * 100 / $items;
+        return $resp;
+
+    }
+
+    public function getCountLogistic()
+    {
+        $items = 11;
+        $modelLogistic = $this->hasMany(Logistic::className(), ['inscription_id' => 'id'])->one();
+        //print_r($modelLogistic);
+        $itemsNotNull = 0;
+        if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->leavingonairline !=NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->leavingonflightnumber != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->leavingondate != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->leavingonhour != NULL) $itemsNotNull=$itemsNotNull+1;
+
+        if ($modelLogistic->returningonairline != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->returningonflightnumber != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->returningondate != NULL) $itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->returningonhour != NULL) $itemsNotNull=$itemsNotNull+1;
+
+        if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull=$itemsNotNull+1;
+        if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull=$itemsNotNull+1;
+
+        $resp = ($itemsNotNull * 100)/$items;
+        return $resp;
+
+        /* 'inscription_id',
+             'leavingonorigincity',
+             'leavingonairline',
+             'leavingonflightnumber',
+             'leavingondate',
+             'leavingonhour',
+             'returningonairline',
+             'returningonflightnumber',
+             'returningondate',
+             'returningonhour',
+             'residence',
+             'residenceobs:ntext',
+             'accommodationdatein',
+             'accommodationdateout',
+             'status',  */
     }
 }
