@@ -13,20 +13,28 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="inscription-view">
 
-    <h2>Registro de Inscripción #<?= Html::encode($this->title) ?></h2>
+    <!--<h2>Registro de Inscripción #<?= Html::encode($this->title) ?></h2>-->
 
-    <p>
-        <?= Html::a('Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-<!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) */?>
-    </p>
+<div class="col-sm-12 col-xs-12 col-lg-12">
+    <div class="panel panel-success">
+        <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+            Llegada al lugar del evento</div>
+        <div class="panel-body">
+            <address>
+                <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
+                <strong>Default: </strong><?= $model->exposition; ?><br>
+                <strong>Default: </strong><?= $model->service_terms; ?><br>
+                <strong>Default: </strong><?= $model->complete; ?><br>
+                <strong>Default: </strong><?= $model->status; ?><br>
+                
 
-    <?= DetailView::widget([
+
+            </address>
+        </div>
+    </div>
+</div>
+
+   <!-- <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
 //            'id',
@@ -59,6 +67,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' =>$model->registertypeAssigment->name,
             ],
         ],
-    ]) ?>
-
+    ]) ?>-->
+<div class="panel-body">
+    <p>
+            <?= Html::a('Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) */?>
+    </p>
 </div>
+</div>
+    
+    

@@ -231,8 +231,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                         <br>
                                         <strong>Inversión: </strong><?= $event->cost; ?> USD
                                     </address>
-                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn  btn-primary']) ?>
-                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn  btn-success']) ?>
+                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
+                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-lg btn-block']) ?>
+                                    
 
                                 </div>
                             </div>
