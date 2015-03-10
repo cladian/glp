@@ -183,15 +183,6 @@ return array (
       '@kartik/form' => $vendorDir . '/kartik-v/yii2-widget-activeform',
     ),
   ),
-  '2amigos/yii2-tinymce-widget' => 
-  array (
-    'name' => '2amigos/yii2-tinymce-widget',
-    'version' => '0.1.0.0',
-    'alias' => 
-    array (
-      '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget',
-    ),
-  ),
   'kartik-v/yii2-money' => 
   array (
     'name' => 'kartik-v/yii2-money',
@@ -273,6 +264,15 @@ return array (
       '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
     ),
   ),
+  'kartik-v/yii2-mpdf' => 
+  array (
+    'name' => 'kartik-v/yii2-mpdf',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+    ),
+  ),
   'kartik-v/yii2-grid' => 
   array (
     'name' => 'kartik-v/yii2-grid',
@@ -300,13 +300,13 @@ return array (
       '@kartik/editable' => $vendorDir . '/kartik-v/yii2-editable',
     ),
   ),
-  'kartik-v/yii2-mpdf' => 
+  '2amigos/yii2-tinymce-widget' => 
   array (
-    'name' => 'kartik-v/yii2-mpdf',
-    'version' => '9999999-dev',
+    'name' => '2amigos/yii2-tinymce-widget',
+    'version' => '1.0.1.0',
     'alias' => 
     array (
-      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+      '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget/src',
     ),
   ),
 );

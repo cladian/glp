@@ -8,6 +8,7 @@ use app\models\Eventtype;
 use kartik\widgets\DatePicker;
 use kartik\widgets\SwitchInput;
 use kartik\money\MaskMoney;
+use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -41,7 +42,12 @@ use kartik\money\MaskMoney;
     </div>
     <?= $form->field($model, 'file')->textarea(['rows' => 1]) ?>
 
-    <?= $form->field($model, 'photo')->textarea(['rows' => 1]) ?>
+    <?/*= $form->field($model, 'photo')->textarea(['rows' => 1]) */?>
+    <?=
+    $form->field($model, 'photo')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'img/event/*'],
+    ]);
+    ?>
 
     <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     <div class="col-sm-3 col-xs-6">
