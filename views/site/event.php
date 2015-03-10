@@ -12,43 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
     <div class="row">
-        <!--Gestión de Proyectos-->
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-            <div class="panel panel-info"> 
-              <div class="panel-heading"><?= Html::encode($this->title) ?></div>
-              <div class="panel-body">
-                <div role="tabpanel">
-
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Metodología del curso</a></li>
-                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Documentos Adicionales</a></li>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home"><p><?= Html::encode($modelEvent->short_description) ?></p>
-                       <hr> <p><?= Html::encode($modelEvent->short_description) ?></p> 
-                       <hr> <p><?= Html::encode($modelEvent->short_description) ?></p> 
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="profile"><p><?= Html::encode($modelEvent->general_content) ?></p>
-                       <hr> <p><?= Html::encode($modelEvent->general_content) ?></p>
-                       <hr> <p><?= Html::encode($modelEvent->general_content) ?></p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="settings">
-                        <br>
-                          <strong>Archivo PDF: </strong><?= Html::encode($modelEvent->file) ?><br>
-                          
-                          
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-        </div>
-        <!--END Gestión de Proyectos-->
         <!--Pais-->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <div class="panel panel-primary"> 
@@ -69,23 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?>
             <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   <center> <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?></center>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <center><strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br></center>
                 </div>
             </div>
                 <div class="panel-body">
                     <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
                     <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
                     <hr>
-                
-                    <strong>Estatus: </strong><?= Html::encode($modelEvent->status) ?><br>
-                    <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
-                    <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
-                    <strong>Descripción de descuento: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
-                    <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?><br><br>
+                    <strong>Incluye: </strong><p><?= Html::encode($modelEvent->included) ?></p>
+                    <strong>Estado del curso: </strong><?= Html::encode($modelEvent->status) ?><br>
+                    
                     <hr>
                     <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?> 
                         <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
@@ -95,6 +55,67 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <!--END Pais-->
+        <!--Gestión de Proyectos-->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="panel panel-primary"> 
+              <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+              <div class="panel-body">
+                <div role="tabpanel">
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Metodología del curso</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Documentos Adicionales</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home"><p>
+                        <h3>Contenido General: </h3><?= Html::encode($modelEvent->general_content) ?></p>
+                        <hr><h3>Dirigido a: </h3><p><?= Html::encode($modelEvent->addressed_to) ?></p>
+                       
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile"><h3>Contenido General: </h3><p><?= Html::encode($modelEvent->general_content) ?></p>
+                       <hr> <h3>Descripción Corta: </h3><p><?= Html::encode($modelEvent->short_description) ?></p>
+                       <hr> <h3>Metodología: </h3><p><?= Html::encode($modelEvent->methodology) ?></p> 
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <br>
+                          <h3>Archivo PDF: </h3><?= Html::encode($modelEvent->file) ?><br>
+                          <hr><h3>Requerimientos: </h3><?= Html::encode($modelEvent->requirements) ?>
+                          
+                          
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <!--END Gestión de Proyectos-->
+        <!--Gestión de Proyectos-->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="panel panel-primary"> 
+              <div class="panel-heading">Descuento</div>
+              <div class="panel-body">
+                <div role="tabpanel">
+                    <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+                    <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
+                    <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?>
+
+                  
+
+                </div>
+              </div>
+            </div>
+        </div>
+        
+
+        <!--END Gestión de Proyectos-->
+        
     </div>
 </div>
 <!--<div class="event-view">

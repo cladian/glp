@@ -28,7 +28,6 @@ class AppAsset extends AssetBundle
         'bower_components/font-awesome/css/font-awesome.min.css',*/
     ];
     public $js = [
-    'http://code.jquery.com/jquery-latest.js'
         //Adicionales para nuevo template
 /*        'bower_components/jquery/dist/jquery.min.js',
         /*'bower_components/bootstrap/dist/js/bootstrap.min.js',*/
