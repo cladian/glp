@@ -11,7 +11,7 @@ use yii\widgets\DetailView;
 
 
 ?>
-    <?= Html::a('ver', ['inscription/view', 'id' => $model->inscription_id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a('ver', ['inscription/view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn-primary']) ?>
 <hr>
 
 <div class="col-sm-6 col-xs-12 col-lg-6">
@@ -21,11 +21,11 @@ use yii\widgets\DetailView;
         <div class="panel-body">
             <address>
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
-                <strong>Ciudad de procedencia: </strong><?= $model->leavingonorigincity; ?><br>
-                <strong> Aerolinea de llegada: </strong><?= $model->leavingonairline; ?><br>
-                <strong># Vuelo llegada: </strong><?= $model->leavingonflightnumber; ?><br>
-                <strong>Fecha de arribo:: </strong><?= Yii::$app->formatter->asDate($model->leavingondate, 'long'); ?><br>
-                <strong>Hora de arribo: </strong><?= $model->leavingonhour; ?><br>
+                <strong>Ciudad de procedencia: </strong><?= $modelLogistic->leavingonorigincity; ?><br>
+                <strong> Aerolinea de llegada: </strong><?= $modelLogistic->leavingonairline; ?><br>
+                <strong># Vuelo llegada: </strong><?= $modelLogistic->leavingonflightnumber; ?><br>
+                <strong>Fecha de arribo:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->leavingondate, 'long'); ?><br>
+                <strong>Hora de arribo: </strong><?= $modelLogistic->leavingonhour; ?><br>
 
 
             </address>
@@ -40,12 +40,12 @@ use yii\widgets\DetailView;
         <div class="panel-body">
             <address>
                 <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
-                <strong>Fecha de retorno: </strong><?= $model->returningonairline; ?><br>
-                <strong># Vuelo retorno: </strong><?= $model->returningonflightnumber; ?><br>
+                <strong>Fecha de retorno: </strong><?= $modelLogistic->returningonairline; ?><br>
+                <strong># Vuelo retorno: </strong><?= $modelLogistic->returningonflightnumber; ?><br>
                 <!--                <strong>Fecha de retorno: </strong>--><? //= $model->returningondate; ?><!--<br>-->
                 <strong>Fecha de
-                    retorno:: </strong><?= Yii::$app->formatter->asDate($model->returningondate, 'long'); ?><br>
-                <strong>Hora de retorno: </strong><?= $model->returningonhour; ?><br>
+                    retorno:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->returningondate, 'long'); ?><br>
+                <strong>Hora de retorno: </strong><?= $modelLogistic->returningonhour; ?><br>
 
             </address>
         </div>
@@ -63,11 +63,11 @@ use yii\widgets\DetailView;
                 <!--                <strong>Fecha de Entrada: </strong>-->
                 <? //= $model->accommodationdatein; ?><!--<br>-->
                 <strong>Fecha de
-                    Entrada:: </strong><?= Yii::$app->formatter->asDate($model->accommodationdatein, 'long'); ?><br>
+                    Entrada:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdatein, 'long'); ?><br>
                 <!--                <strong>Fecha de Salida: </strong>-->
                 <? //= $model->accommodationdateout; ?><!--<br>-->
                 <strong>Fecha de
-                    Salida:: </strong><?= Yii::$app->formatter->asDate($model->accommodationdateout, 'long'); ?><br>
+                    Salida:: </strong><?= Yii::$app->formatter->asDate($modelLogistic->accommodationdateout, 'long'); ?><br>
 
             </address>
         </div>
@@ -77,27 +77,28 @@ use yii\widgets\DetailView;
 
 <div class=" col-xs-12">
     <div class=" col-xs-6">
-        <div class="panel-heading"><h5>Preguntas por evento</h5></div>
+        <div class="panel-heading "><h5>Preguntas por evento</h5></div>
         <div class="progress">
 
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?=$model->complete_eventquiz;?>" aria-valuemin="0"
                  aria-valuemax="100"
-                 style="width: 60%;">
-                60%
+                 style="width: <?=$model-> complete_eventquiz;?>%;">
+                <?=$model->complete_eventquiz;?>%
             </div>
         </div>
     </div>
     <div class=" col-xs-6">
-        <div class="panel-heading "><h5>Preguntas generales</h5></div>
+        <div class="panel-heading"><h5>Preguntas generales</h5></div>
         <div class="progress">
 
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?=$model->complete_quiz;?>" aria-valuemin="0"
                  aria-valuemax="100"
-                 style="width: 60%;">
-                60%
+                 style="width: <?=$model->complete_quiz;?>%;">
+               <?=$model->complete_quiz;?>%
             </div>
         </div>
     </div>
+
 
 </div>
 <?php
