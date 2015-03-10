@@ -40,8 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
                 <div class="panel-body">
-                    <hr><h3>Dirigido a: </h3><p><?= Html::encode($modelEvent->addressed_to) ?></p>
-                    <hr>
+
                     <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
                     <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
                     <hr>
@@ -49,10 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong>Estado del curso: </strong><?= Html::encode($modelEvent->status) ?><br>
                     
                     <hr>
-                    <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?> 
-                        <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
-       
-                    
+                        <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?> 
+                        <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-default btn-lg btn-block']) ?>
                 </div>
             </div>
         </div>
@@ -66,9 +63,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Metodología del curso</a></li>
-                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Documentos Adicionales</a></li>
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span>   Descripción</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>   Metodología del curso</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-file"></span>   Documentos Adicionales</a></li>
                   </ul>
 
                   <!-- Tab panes -->
@@ -78,12 +75,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         
                        
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="profile"><h3>Contenido General: </h3><p><?= Html::encode($modelEvent->general_content) ?></p>
-                       <hr> <h3>Descripción Corta: </h3><p><?= Html::encode($modelEvent->short_description) ?></p>
-                       <hr> <h3>Metodología: </h3><p><?= Html::encode($modelEvent->methodology) ?></p> 
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h3>Metodología: </h3><p><?= Html::encode($modelEvent->methodology) ?></p> 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="settings">
-                        <br>
                           <h3>Archivo PDF: </h3><?= Html::encode($modelEvent->file) ?><br>
                           <hr><h3>Requerimientos: </h3><?= Html::encode($modelEvent->requirements) ?>
                           

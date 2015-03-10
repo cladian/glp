@@ -11,7 +11,6 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="inscription-view">
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button class="btn btn-primary" type="button"> Inscripción <span class="badge"><?= $model->complete;  ?>%</span></button>
@@ -27,8 +26,57 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     </div>
+<hr>
+<!--Pais-->
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="panel panel-primary"> 
+                <div class="panel-heading">
+                        <!--<div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="..." alt="..."
+                              <img class="img-responsive" src="imgs/flags/gt.png" alt="">                              >
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Guatemala                        </div>
+                    </div>-->
+                    Guatemala                </div>
+                <img class="img-responsive figure" src="imgs/event/cursos-2015.jpg" alt="">            <div class="panel-body">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                   <center> <img class="img-responsive" src="imgs/flags/gt.png" alt=""></center>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <center><strong>Ciudad: </strong>Antigua Guatemala, Guatemala<br></center>
+                </div>
+            </div>
+                <div class="panel-body">
 
+                    <strong>Inicia: </strong>7 de septiembre de 2015<br>
+                    <strong>Finaliza: </strong>11 de septiembre de 2015<br>
+                    <hr>
+                    <strong>Incluye: </strong><p>Alimentación durante el evento. - Refrigerios. - Materiales de capacitación.</p>
+                    <strong>Estado del curso: </strong>10<br>
+                    
+                
+                </div>
+            </div>
+        </div>
+<!--END Pais-->
+<!--Registro-->
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+    
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Registro de Inscripción</div>
+  
+  
 <br>
+
+
     <?php
     foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -81,5 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
     ],
 ]);  ?>
-
 </div>
+</div>
+
+<!--ENDRegistro-->
