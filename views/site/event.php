@@ -40,6 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
                 <div class="panel-body">
+                    <hr><h3>Dirigido a: </h3><p><?= Html::encode($modelEvent->addressed_to) ?></p>
+                    <hr>
                     <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
                     <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
                     <hr>
@@ -73,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home"><p>
                         <h3>Contenido General: </h3><?= Html::encode($modelEvent->general_content) ?></p>
-                        <hr><h3>Dirigido a: </h3><p><?= Html::encode($modelEvent->addressed_to) ?></p>
+                        
                        
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile"><h3>Contenido General: </h3><p><?= Html::encode($modelEvent->general_content) ?></p>
