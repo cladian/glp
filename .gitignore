@@ -1,37 +1,12 @@
 # phpstorm project files
 .idea
-
-# netbeans project files
-nbproject
-
-# zend studio for eclipse project files
-.buildpath
-.project
-.settings
-
 # windows thumbnail cache
 Thumbs.db
-
-# composer vendor dir
 #/vendor
-
-# composer itself is not needed
-composer.phar
-
 # Mac DS_Store Files
 .DS_Store
-
 # phpunit itself is not needed
 phpunit.phar
 # local phpunit config
 /phpunit.xml
-
-web/uploads/*
-
-web/uploads/10622901_953676637989697_5443837919387290014_n.jpg
-
-web/uploads/10622901_953676637989697_5443837919387290014_n.jpg
-
-web/uploads/avatar/Captura de pantalla 2015-02-23 a las 16.27.17.png
-
 config/db.php

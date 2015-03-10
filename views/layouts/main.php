@@ -198,7 +198,7 @@ if (    (Yii::$app->user->can('permission_admin'))||(Yii::$app->user->can('user'
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; ASOCAM<?= date('Y') ?>& CLADIAN</p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
