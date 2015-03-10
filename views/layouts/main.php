@@ -36,7 +36,7 @@ AppAsset::register($this);
 
     $items = [
 
-        ['label' => 'Inicio', 'url' => ['/site/index']],
+        ['label' => 'Inicio', 'url' => ['/site/index'],'class'=>'fa fa-user fa-fw'],
         ['label' => 'Paneles', 'items' => [
             ['label' => 'User', 'url' => ['/site/admuser']],
             ['label' => 'Asocam', 'url' => ['/site/admasocam']],
