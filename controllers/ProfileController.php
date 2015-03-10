@@ -150,6 +150,7 @@ class ProfileController extends Controller
 
     public function actionUpdateown()
     {
+
         $model = $this->findModelown(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

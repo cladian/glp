@@ -29,10 +29,11 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+              //  'only' => ['login', 'logout', 'signup','event','admuser','admasocam'],
+                'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup','event','login'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -45,6 +46,11 @@ class SiteController extends Controller
                         'actions' => ['admuser'],
                         'allow' => true,
                         'roles' => ['user'],
+                    ],
+                    [
+                        'actions' => ['admasocam'],
+                        'allow' => true,
+                        'roles' => ['asocam'],
                     ],
                 ],
             ],
