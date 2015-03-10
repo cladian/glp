@@ -7,3 +7,4 @@ return [
     'password' => 'cladian',
     'charset' => 'utf8',
 ];
+

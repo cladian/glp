@@ -9,7 +9,7 @@ use app\assets\AppAsset;
 /* @var $content string */
 
 AppAsset::register($this);
-//if (Yii::$app->user->can('user')){
+$items=[];
 if (Yii::$app->user->isGuest) {
     $items = [
 
