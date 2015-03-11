@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
@@ -10,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use app\models\UploadForm;
+use yii\filters\AccessControl;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -22,10 +24,28 @@ class ProfileController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete', 'viewown','createown','avatarown','updateown'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['viewown','createown','avatarown','updateown'],
+                        'allow' => true,
+                        'roles' => ['user'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -140,7 +160,7 @@ class ProfileController extends Controller
             $model->save();
             return $this->redirect(['viewown']);
         } else {
-            return $this->render('avatar', [
+            return $this->render('avatarown', [
                 'model' => $model,
                 'file' => $model->id,
             ]);

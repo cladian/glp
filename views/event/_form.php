@@ -40,15 +40,9 @@ use kartik\widgets\FileInput;
     <div class="col-sm-6">
         <?= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
     </div>
-    <?= $form->field($model, 'file')->textarea(['rows' => 1]) ?>
 
-    <?/*= $form->field($model, 'photo')->textarea(['rows' => 1]) */?>
-    <?=
-    $form->field($model, 'photo')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'img/event/*'],
-    ]);
-    ?>
 
+    
     <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     <div class="col-sm-3 col-xs-6">
     <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>

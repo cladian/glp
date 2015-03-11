@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 <div class="panel-body">
     <p>
-        <?= Html::a('Crear Solicitud', ['request/create'], ['class' => 'btn btn-success']) ?>
+
     </p>
 </div>
 </div>
