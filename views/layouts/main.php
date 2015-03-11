@@ -229,25 +229,7 @@ $items = [
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
 
-<<<<<<< HEAD
-    ['label' => 'Catálogo', 'items' => [
-        ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
-        ['label' => 'Institución', 'url' => ['/institutiontype']],
-        '<li class="divider"></li>',
-        ['label' => 'Pais', 'url' => ['/country']],
-        ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-        ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-        '<li class="divider"></li>',
-        ['label' => 'Preguntas', 'url' => ['/question']],
-        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-    ]
-    ]
-];
-$items[] = ['label' => 'Roles', 'items' => [
-    ['label' => 'Asignaciones', 'url' => ['/admin']],
-    ['label' => 'Roles', 'url' => ['/admin/role']],
-    ['label' => 'Permisos', 'url' => ['/admin/permission']],
-=======
+
         ['label' => 'Catálogo', 'items' => [
             ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
             ['label' => 'Institución', 'url' => ['/institutiontype']],
@@ -265,7 +247,7 @@ $items[] = ['label' => 'Roles', 'items' => [
         ['label' => 'Asignaciones', 'url' => ['/admin']],
         ['label' => 'Roles', 'url' => ['/admin/role']],
         ['label' => 'Permisos', 'url' => ['/admin/permission']],
->>>>>>> master
+
 
 
 ],
