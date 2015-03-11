@@ -63,7 +63,9 @@ class Event extends \yii\db\ActiveRecord
             [['name', 'city'], 'string', 'max' => 100],
             [['discount_description'], 'string', 'max' => 250],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['photo'], 'file', 'extensions'=>'jpg, gif, png'],
+            [['photo'], 'required','on'=>'resources']
         ];
     }
 
