@@ -7,7 +7,8 @@ use app\models\InscriptionSearch;
 use app\models\NotificationSearch;
 use app\models\Profile;
 use app\models\Event;
-use app\models\EventSearch;
+use app\models\Request;
+
 use app\models\User;
 use Yii;
 
@@ -114,6 +115,8 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $modelRequest=Request::find()->where(['status'=>10])->all();
+
         return $this->render('admAsocam', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'activeUsers' => User::find()->where(['status' => 10])->count(),
@@ -121,6 +124,7 @@ class SiteController extends Controller
             'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'modelRequest'=>$modelRequest
         ]);
 
     }
