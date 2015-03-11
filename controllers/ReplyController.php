@@ -24,9 +24,14 @@ class ReplyController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['index','view','update','delete'],
                         'allow' => true,
-                        'roles' => ['asocam','sysadmin'],
+                        'roles' => ['sysadmin'],
+                    ],
+                    [
+                        'actions' => ['create'],
+                        'allow' => true,
+                        'roles' => ['asocam'],
                     ],
 
                 ],
