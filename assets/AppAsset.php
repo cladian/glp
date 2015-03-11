@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/asocam.css',
         //Adicionales para nuevo template
 /*        'bower_components/bootstrap/dist/css/bootstrap.min.css',
         'bower_components/metisMenu/dist/metisMenu.min.css',
