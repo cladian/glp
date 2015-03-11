@@ -173,6 +173,31 @@ $items = [
         ['label' => 'SIS-Admin', 'url' => ['#']],*/
     ]
     ],
+    ['label' => 'Foro', 'items' => [
+        ['label' => 'Foros', 'url' => ['/phforum']],
+        ['label' => 'Documentos', 'url' => ['/phforum-document']],
+        ['label' => 'Videos', 'url' => ['/phforum-video']],
+        ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
+        '<li class="divider"></li>',
+        ['label' => 'Topicos', 'url' => ['/topic']],
+        ['label' => 'Documentos', 'url' => ['/topic-document']],
+        ['label' => 'Videos', 'url' => ['/topic-video']],
+        ['label' => 'Imagen', 'url' => ['/topic-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Post', 'url' => ['/post']],
+        ['label' => 'Documentos', 'url' => ['/post-document']],
+        ['label' => 'Videos', 'url' => ['/post-video']],
+        ['label' => 'Imagen', 'url' => ['/post-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Comentarios', 'url' => ['/comment']],
+        '<li class="divider"></li>',
+        ['label' => 'Document', 'url' => ['/document']],
+        ['label' => 'Video', 'url' => ['/video']],
+        ['label' => 'Imagen', 'url' => ['/imagen']],
+    ]
+    ],
 
 
     ['label' => 'Asocam', 'items' => [
