@@ -87,6 +87,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'attribute' => 'created_at',
                     ],*/
                     [
+                        'attribute' => 'created_at',
+                    ],
+/*                    [
                         'attribute' => 'complete_logistic',
                     ],
                     [
@@ -94,7 +97,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     ],
                     [
                         'attribute' => 'complete_quiz',
-                    ],
+                    ],*/
                     [
                         'class' => '\kartik\grid\BooleanColumn',
                         'attribute' => 'status',
@@ -121,7 +124,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     'condensed' => true,
                     'responsive' => true,
                     'hover' => true,
-                    'showPageSummary' => true,
+                    /*'showPageSummary' => true,*/
                     'persistResize' => false,
                     'exportConfig' => true,
                     /*        'pjax'=>true,
