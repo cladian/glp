@@ -16,8 +16,7 @@ use yii\helpers\Html;
         <h4><?= $model->name; ?></h4>
 
         <div style="float:right; margin:10px;" class='img-responsive img-thumbnail'>
-            <div
-                align="center"><?= Html::img('imgs/flags/' . strtolower($model->country->iso) . '.png', ['class' => 'img-responsive']); ?></div>
+            <div align="center"><?= Html::img('imgs/flags/' . strtolower($model->country->iso) . '.png', ['class' => 'img-responsive']); ?></div>
             <kbd><?= $model->city; ?>, <i><?=$model->country->name; ?></i></kbd>
         </div>
         <p align="justify"><?= $model->short_description; ?></p>
