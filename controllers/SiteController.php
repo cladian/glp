@@ -29,16 +29,16 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-              //  'only' => ['login', 'logout', 'signup','event','admuser','admasocam'],
-                'only' => ['login', 'logout', 'signup','event','admuser'],
+                'only' => ['login', 'logout', 'signup','event','admuser','admasocam'],
+               // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['login'],
+                        'actions' => ['login','signup'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['event','signup'],
+                        'actions' => ['event'],
                         'allow' => true,
                         'roles' => ['?','@'],
                     ],

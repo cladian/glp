@@ -46,7 +46,8 @@ $config = [
         //],
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
-            'defaultRoles' => ['sysadmin', ''],
+            /*'class' => 'yii\rbac\PhpManager',*/
+           // 'defaultRoles' => ['sysadmin', 'user','asocam'],
 
         ],
     ],
