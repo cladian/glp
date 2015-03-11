@@ -157,74 +157,75 @@ elseif (Yii::$app->user->can('user')) {
 
 
 //temporal
+if (YII_ENV_DEV) {
+    $items = [
 
-$items = [
+        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
+        ['label' => 'Paneles', 'items' => [
+            ['label' => 'User', 'url' => ['/site/admuser']],
+            ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+            ['label' => 'SIS-Admin', 'url' => ['#']],
+        ]
+        ],
 
-    ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
-    ['label' => 'Paneles', 'items' => [
-        ['label' => 'User', 'url' => ['/site/admuser']],
-        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-        ['label' => 'SIS-Admin', 'url' => ['#']],
-    ]
-    ],
+        // ['label' => 'Acerca de ', 'url' => ['/site/about']],
+        ['label' => 'Perfil', 'items' => [
+            ['label' => 'User', 'url' => ['/user']],
+            ['label' => 'Perfiles', 'url' => ['/profile']],
 
-    // ['label' => 'Acerca de ', 'url' => ['/site/about']],
-    ['label' => 'Perfil', 'items' => [
-        ['label' => 'User', 'url' => ['/user']],
-        ['label' => 'Perfiles', 'url' => ['/profile']],
-
-    ]
-    ],
+        ]
+        ],
 
 //                ['label' => 'Evento', 'url' => ['/event']],
 
-    ['label' => 'Evento', 'items' => [
-        ['label' => 'Eventos', 'url' => ['/event']],
-        ['label' => 'Respuesta', 'url' => ['/answer']],
-        ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
-        ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
-        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-    ]
-    ],
+        ['label' => 'Evento', 'items' => [
+            ['label' => 'Eventos', 'url' => ['/event']],
+            ['label' => 'Respuesta', 'url' => ['/answer']],
+            ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+            ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
+            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+        ]
+        ],
 
-    ['label' => 'Notificaciones', 'items' => [
-        ['label' => 'Solicitudes', 'url' => ['/request']],
-        ['label' => 'Respuestas', 'url' => ['/reply']],
-        ['label' => 'Notificaciones', 'url' => ['/notification']],
+        ['label' => 'Notificaciones', 'items' => [
+            ['label' => 'Solicitudes', 'url' => ['/request']],
+            ['label' => 'Respuestas', 'url' => ['/reply']],
+            ['label' => 'Notificaciones', 'url' => ['/notification']],
 
-    ]
-    ],
+        ]
+        ],
 
 
-    ['label' => 'Inscripción', 'url' => ['/inscription']],
-    //['label' => 'Logistica', 'url' => ['/logistic']],
+        ['label' => 'Inscripción', 'url' => ['/inscription']],
+        //['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
 
-    ['label' => 'Catálogo', 'items' => [
-        ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
-        ['label' => 'Institución', 'url' => ['/institutiontype']],
-        '<li class="divider"></li>',
-        ['label' => 'Pais', 'url' => ['/country']],
-        ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-        ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-        '<li class="divider"></li>',
-        ['label' => 'Preguntas', 'url' => ['/question']],
-        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-    ]
+        ['label' => 'Catálogo', 'items' => [
+            ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
+            ['label' => 'Institución', 'url' => ['/institutiontype']],
+            '<li class="divider"></li>',
+            ['label' => 'Pais', 'url' => ['/country']],
+            ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+            ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+            '<li class="divider"></li>',
+            ['label' => 'Preguntas', 'url' => ['/question']],
+            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+        ]
+        ],
+        ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
+        ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
+    ];
+    $items[] = ['label' => 'Roles', 'items' => [
+        ['label' => 'Asignaciones', 'url' => ['/admin']],
+        ['label' => 'Roles', 'url' => ['/admin/role']],
+        ['label' => 'Permisos', 'url' => ['/admin/permission']],
+
+
     ],
-    ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
-    ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
-];
-$items[] = ['label' => 'Roles', 'items' => [
-    ['label' => 'Asignaciones', 'url' => ['/admin']],
-    ['label' => 'Roles', 'url' => ['/admin/role']],
-    ['label' => 'Permisos', 'url' => ['/admin/permission']],
 
-
-],
-
-];
+    ];
+}
 if (   !Yii::$app->user->isGuest){
     $items[] =['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
         ['label' => 'Perfil', 'url' => ['/profile/viewown']],

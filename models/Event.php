@@ -131,4 +131,14 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Phforum::className(), ['event_id' => 'id']);
     }
+
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+        $avatar = isset($this->photo) ? $this->photo : '0.jpg';
+        if ($avatar==Null)
+            $avatar='0.jpg';
+
+        return Yii::$app->params['eventFolder'] . $avatar;
+    }
 }

@@ -47,7 +47,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
     <div class="col-lg-8">
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis
                     incripciones</h3>
@@ -169,7 +169,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
         </div>
 
-        <div class="panel panel-warning">
+        <div class="panel panel-danger">
             <div class="panel-heading">
                 <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                     Notificaciones</h3>
@@ -204,18 +204,20 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div class="panel-body">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <?php foreach ($modelEvent as $event) { ?>
-                        <div class="panel panel-default">
+                        <div class="panel panel-info">
                             <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
-                                <h4 class="panel-title">
+
+                                    <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png'); ?>
                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapse<?= $event->id; ?>" aria-expanded="false"
                                        aria-controls="collapse<?= $event->id; ?>">
-                                        <?= $event->name; ?>, <i><?= $event->city; ?>
-                                            -<?= $event->country->name; ?></i>
+                                        <?= $event->name; ?>,
+                                        <!--<i><?/*= $event->city; */?>-<?/*= $event->country->name; */?></i>-->
 
                                     </a>
+
                                     <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
-                                </h4>
+
                             </div>
                             <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
                                  aria-labelledby="heading<?= $event->id; ?>">

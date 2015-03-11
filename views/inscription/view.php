@@ -11,125 +11,148 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button class="btn btn-primary" type="button"> Inscripción <span class="badge"><?= $model->complete;  ?>%</span></button>
-        </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-info" type="button"> Logistica <span class="badge"><?= $model->complete_logistic; ?>%</span></button>
-        </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-info" type="button"> Encuesta evento <span class="badge"><?= $model->complete_eventquiz; ?>%</span></button>
-        </div>
-        <div class="btn-group" role="group">
-            <button class="btn btn-info" type="button"> Encuesta General <span class="badge"><?= $model->complete_quiz; ?>%</span></button>
-        </div>
-
-    </div>
-<hr>
-<!--Pais-->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="panel panel-primary"> 
-                <div class="panel-heading">
-                        <!--<div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="..." alt="..."
-                              <img class="img-responsive" src="imgs/flags/gt.png" alt="">                              >
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Guatemala                        </div>
-                    </div>-->
-                    Guatemala                </div>
-                <img class="img-responsive figure" src="imgs/event/cursos-2015.jpg" alt="">            <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <center> <img class="img-responsive" src="imgs/flags/gt.png" alt=""></center>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <center><strong>Ciudad: </strong>Antigua Guatemala, Guatemala<br></center>
-                </div>
-            </div>
-                <div class="panel-body">
-
-                    <strong>Inicia: </strong>7 de septiembre de 2015<br>
-                    <strong>Finaliza: </strong>11 de septiembre de 2015<br>
-                    <hr>
-                    <strong>Incluye: </strong><p>Alimentación durante el evento. - Refrigerios. - Materiales de capacitación.</p>
-                    <strong>Estado del curso: </strong>10<br>
-                    
-                
-                </div>
-            </div>
-        </div>
-<!--END Pais-->
-<!--Registro-->
-
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading">Registro de Inscripción</div>
-  
-  
-<br>
-
-
-    <?php
-    foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
-        //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
-        echo '<div class="alert alert-' . $key . '" role="alert">
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    echo '<div class="alert alert-' . $key . '" role="alert">
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                   ' . $message . '
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
              </div>';
-    }
-    ?>
+}
+?>
+<!--<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <button class="btn btn-primary" type="button"> Inscripción <span class="badge"><? /*= $model->complete; */ ?>%</span>
+        </button>
+    </div>
+    <div class="btn-group" role="group">
+        <button class="btn btn-info" type="button"> Logistica <span class="badge"><? /*= $model->complete_logistic; */ ?>
+                %</span></button>
+    </div>
+    <div class="btn-group" role="group">
+        <button class="btn btn-info" type="button"> Encuesta evento <span
+                class="badge"><? /*= $model->complete_eventquiz; */ ?>%</span></button>
+    </div>
+    <div class="btn-group" role="group">
+        <button class="btn btn-info" type="button"> Encuesta General <span class="badge"><? /*= $model->complete_quiz; */ ?>
+                %</span></button>
+    </div>
 
-    <?= Tabs::widget([
-        'items' => [
-            [
-                'label' => 'Inscripción',
-                //'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialInscription',['model'=>$model]),
-                'active' => true
-            ],
-            [
-                'label' => 'Logistica',
-              //  'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialLogistic',['model'=>$modelLogistic]),
-              //  'options' => ['id' => 'myveryownID'],
-        ],
-
-         [
-            'label' => 'Encuestas',
-            'items' => [
-
-                [
-                    'label' => 'Respuestas del Evento',
-                    //'content' => 'DropdownB, Anim pariatur cliche...',
-                    'content' => $this->render('_partialEventanswer',['searchModel'=>$searchModelEventanswer, 'dataProvider'=>$dataProviderEventanswer]),
-                ],
-                [
-                    'label' => 'Respuestas',
-//                    'content' => 'DropdownB, Anim pariatur cliche...',
-                    'content' => $this->render('_partialAnswer',['searchModel'=>$searchModelAnswer, 'dataProvider'=>$dataProviderAnswer]),
-                ],
-            ],
-        ],
-            [
-                'label' => 'Solicitudes',
-//                  'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialRequest',['searchModel'=>$searchModelRequest, 'dataProvider'=>$dataProviderRequest]),
-                //  'options' => ['id' => 'myveryownID'],
-            ],
-    ],
-]);  ?>
 </div>
+<hr>-->
+<!--Render del la información del evento-->
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <?= $this->render('/event/_detailinfo', ['model' => $model->event]) ?>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+
+    <div class="panel-group" id="accordion" role="tablist">
+
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h5 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                       aria-controls="collapseOne">
+                        Información de Inscripción
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <?= $this->render('_partialInscription', ['model' => $model]) ?>
+                </div>
+                <div class="panel-footer">
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        Información logística
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
+
+                </div>
+                <div class="panel-footer">
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-success']) ?>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                       aria-expanded="false" aria-controls="collapseThree">
+                        Respuestas por evento
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <?= $this->render('_partialEventanswer', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); ?>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="heading4">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4"
+                       aria-expanded="false" aria-controls="collapse4">
+                        Respuestas a preguntas generales
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body">
+                    <?= $this->render('_partialAnswer', ['searchModel' => $searchModelAnswer, 'dataProvider' => $dataProviderAnswer]); ?>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="panel panel-warning">
+            <div class="panel-heading" role="tab" id="heading5">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5"
+                       aria-expanded="false" aria-controls="collapse5">
+                        Notificaciones / Solicitudes
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                <div class="panel-body">
+                    <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </div>
 
 <!--ENDRegistro-->
