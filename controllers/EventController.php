@@ -9,6 +9,8 @@ use app\models\EventquestionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -21,10 +23,23 @@ class EventController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete','resources'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -81,6 +96,24 @@ class EventController extends Controller
         }
     }
 
+    public function actionResources($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'resources';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $avatar = UploadedFile::getInstance($model, 'photo');
+            $photoName = $model->id . '.' . $avatar->extension;
+            $avatar->saveAs(\Yii::$app->params['eventFolder'] . $photoName);
+            $model->photo = $photoName;
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('resources', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Updates an existing Event model.
      * If update is successful, the browser will be redirected to the 'view' page.

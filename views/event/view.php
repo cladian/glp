@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'method' => 'post',
                         ],
                     ]) ?>
+                    <?= Html::a('Avatar', ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
 
                 </div>
 
@@ -83,7 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'discount',
                             'discount_end_at',
                             'discount_description',
-
                         ],
                     ]) ?>
                 </div>

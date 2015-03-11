@@ -27,14 +27,9 @@ class ResponsibilitytypeController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['view','create','update','delete'],
+                        'actions' => ['index','view','create','update','delete'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
-                    ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['user'],
                     ],
 
                 ],

@@ -147,6 +147,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
                 <div class="panel-body">
                     <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
+                    <?= Html::a('Crear Solicitud', ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
                 </div>
             </div>
         </div>
