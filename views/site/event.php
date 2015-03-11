@@ -14,44 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <!--Pais-->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="panel panel-primary"> 
-                <div class="panel-heading">
-                        <!--<div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="..." alt="..."
-                              <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?>
-                              >
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading"><?= Html::encode($modelEvent->country->name) ?>
-                        </div>
-                    </div>-->
-                    <?= Html::encode($modelEvent->country->name) ?>
-                </div>
-                <?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?>
-            <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <center> <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?></center>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <center><strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br></center>
-                </div>
-            </div>
-                <div class="panel-body">
-
-                    <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
-                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br>
-                    <hr>
-                    <strong>Incluye: </strong><p><?= Html::encode($modelEvent->included) ?></p>
-                    <strong>Estado del curso: </strong><?= Html::encode($modelEvent->status) ?><br>
-                    
-                    <hr>
-                        <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?> 
-                        <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-default btn-lg btn-block']) ?>
-                </div>
-            </div>
+            <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
         </div>
         <!--END Pais-->
         <!--Gestión de Proyectos-->
