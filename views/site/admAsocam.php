@@ -173,7 +173,7 @@ if (!$hasProfile){
 
 </div>
 </div>
-<div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
+<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
                     <div class="chat-panel panel panel-primary">
