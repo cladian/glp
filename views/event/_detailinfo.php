@@ -17,21 +17,28 @@ use yii\helpers\Html;
 
 
         <div style="float:right; margin:10px;" class='img-responsive img-thumbnail'>
-            <div align="center"><?= Html::img('imgs/flags/' . strtolower($model->country->iso) . '.png', ['class' => 'img-responsive']); ?></div>
-            <kbd><?= $model->city; ?>, <i><?=$model->country->name; ?></i></kbd>
+            <div
+                align="center"><?= Html::img('imgs/flags/' . strtolower($model->country->iso) . '.png', ['class' => 'img-responsive']); ?></div>
+            <kbd><?= $model->city; ?>, <i><?= $model->country->name; ?></i></kbd>
         </div>
         <p align="justify"><?= $model->short_description; ?></p>
-        <strong>Tipo de evento: </strong><?=  $model->eventtype->name?><br>
+        <strong>Tipo de evento: </strong><?= $model->eventtype->name ?><br>
         <hr>
         <address>
             <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($model->begin_at, 'long'); ?><br>
-            <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($model->end_at, 'long'); ?><br>
-
-
+            <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($model->end_at, 'long'); ?>
         </address>
-        <h3>PENDIENTE, control de botones por acceso</h3>
-        <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']) ?>
-        <?= Html::a('Informa', ['/site/admuser'], ['class' => 'btn btn-default btn-lg btn-block']) ?>
+        <?php
+        // solo cuando es visitante, no registrado
+        if (Yii::$app->user->isGuest) {
+            echo Html::a('Inscribirme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']);
+            echo Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default btn-lg btn-block']);
+        } else {
+            // echo Html::a('Inscribirme', ['site/signup/'], ['class' => 'btn btn-success btn-lg btn-block']);
+            echo Html::a('Inscribirme', ['inscription/createown/', 'id' => $model->id], ['class' => 'btn btn-success btn-lg btn-block']);
+            echo Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default btn-lg btn-block']);
+        }?>
+
     </div>
 
 </div>

@@ -24,7 +24,6 @@ class ResponsibilitytypeController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['index', 'view', 'create','update','delete'],
-                // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
                         'actions' => ['index','view','create','update','delete'],
