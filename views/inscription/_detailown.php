@@ -1,17 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Logistic */
-
-
-// Modelo retornado $model = Logistica
-
-
 ?>
-    <?= Html::a('ver', ['inscription/view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn-primary']) ?>
+<?= Html::a('ver', ['inscription/view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn-primary']) ?>
 <hr>
 
 <div class="col-sm-6 col-xs-12 col-lg-6">
@@ -73,8 +64,8 @@ use yii\widgets\DetailView;
 </div>
 
 
-<div class=" col-xs-12">
-    <div class=" col-xs-6">
+
+<div class="col-sm-6 col-xs-12 col-lg-6">
         <div class="panel-heading "><h5>Preguntas por evento</h5></div>
         <div class="progress">
 
@@ -85,7 +76,7 @@ use yii\widgets\DetailView;
             </div>
         </div>
     </div>
-    <div class=" col-xs-6">
+<div class="col-sm-6 col-xs-12 col-lg-6">
         <div class="panel-heading"><h5>Preguntas generales</h5></div>
         <div class="progress">
 
@@ -98,7 +89,7 @@ use yii\widgets\DetailView;
     </div>
 
 
-</div>
+
 <?php
 /*
 if ($model->residence) {

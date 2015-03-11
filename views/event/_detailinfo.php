@@ -15,16 +15,18 @@ use yii\helpers\Html;
 
         <h4><?= $model->name; ?></h4>
 
+
         <div style="float:right; margin:10px;" class='img-responsive img-thumbnail'>
             <div align="center"><?= Html::img('imgs/flags/' . strtolower($model->country->iso) . '.png', ['class' => 'img-responsive']); ?></div>
             <kbd><?= $model->city; ?>, <i><?=$model->country->name; ?></i></kbd>
         </div>
         <p align="justify"><?= $model->short_description; ?></p>
-
+        <strong>Tipo de evento: </strong><?=  $model->eventtype->name?><br>
         <hr>
         <address>
             <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($model->begin_at, 'long'); ?><br>
             <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($model->end_at, 'long'); ?><br>
+
 
         </address>
         <h3>PENDIENTE, control de botones por acceso</h3>
