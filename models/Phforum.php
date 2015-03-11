@@ -52,7 +52,9 @@ class Phforum extends \yii\db\ActiveRecord
             [['begin_at', 'end_at', 'meeting_at', 'memory_at', 'created_at', 'updated_at'], 'safe'],
             [['content'], 'string'],
             [['topic_number', 'event_id', 'status', 'is_private'], 'integer'],
-            [['name'], 'string', 'max' => 250]
+            [['name'], 'string', 'max' => 250],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -63,18 +65,18 @@ class Phforum extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'begin_at' => 'Begin At',
-            'end_at' => 'End At',
-            'meeting_at' => 'Meeting At',
-            'memory_at' => 'Memory At',
-            'content' => 'Content',
-            'topic_number' => 'Topic Number',
-            'event_id' => 'Event ID',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'is_private' => 'Is Private',
+            'name' => 'Nombre',
+            'begin_at' => 'Fecha de Inicio',
+            'end_at' => 'Fecha de Finalización',
+            'meeting_at' => 'Fecha de Reunion',
+            'memory_at' => 'Fecha de entrega de Memoria',
+            'content' => 'Contenido',
+            'topic_number' =>  'Topic Number',
+            'event_id' => 'Evento',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
+            'is_private' => '¿El Foro es privado?',
         ];
     }
 
