@@ -11,67 +11,127 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
- <!--Pais-->
+<!--Pais-->
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <div class="panel panel-primary"> 
-                <div class="panel-heading">
-                        <!--<div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="..." alt="..."
-                              <img class="img-responsive" src="imgs/flags/gt.png" alt="">                              >
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Guatemala                        </div>
-                    </div>-->
-                    Guatemala                </div>
-                <img class="img-responsive figure" src="imgs/event/cursos-2015.jpg" alt="">            <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   <center> <img class="img-responsive" src="imgs/flags/gt.png" alt=""></center>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <center><strong>Ciudad: </strong>Antigua Guatemala, Guatemala<br></center>
-                </div>
-            </div>
-                <div class="panel-body">
-
-                    <strong>Inicia: </strong>7 de septiembre de 2015<br>
-                    <strong>Finaliza: </strong>11 de septiembre de 2015<br>
-                    <hr>
-                    <strong>Incluye: </strong><p>Alimentación durante el evento. - Refrigerios. - Materiales de capacitación.</p>
-                    <strong>Estado del curso: </strong>10<br>
-                </div>
-            </div>
+    <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
 </div>
 <!--END Pais-->
 <!--Contenido-->
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-<div class="panel panel-primary">
-  <div class="panel-heading">Medición de Cadenas de Resultados con el Estándar CDDE</div>
-    <br>
-    <div class="event-view">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-    <?= Tabs::widget([
-        'items' => [
-            [
-                'label' => 'Evento',
-//                'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialEvent',['model'=>$model]),
-                'active' => true
-            ],
-            [
-                'label' => 'Preguntas del Evento',
-//                  'content' => 'Anim pariatur cliche...',
-                'content' => $this->render('_partialEventquestion',['dataProvider'=>$dataProvider, 'searchModel'=>$searchModel,'eventtype_id'=>$model->eventtype_id,'event_id'=>$model->id]),
-//                 'options' => ['id' => 'myveryownID'],
-            ],
-        ],
-    ]) ?>
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h5 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                       aria-controls="collapseOne">
+                        Información General
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'general_content:ntext',
+                            'methodology:ntext',
+                            'addressed_to:ntext',
+                            'included:ntext',
+                            'requirements:ntext',
+                            [                    // the owner name of the model
+                                'label' => 'Pais',
+                                'value' => $model->country->name,
+                            ],
+                            'city',
+                            'year',
+                        ],
+                    ]) ?>
+                </div>
+                <div class="panel-footer">
 
-</div>
+                    <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
 
-</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                       aria-expanded="false" aria-controls="collapseTwo">
+                        Información de descuento
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'cost',
+                            'discount',
+                            'discount_end_at',
+                            'discount_description',
+
+                        ],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                       aria-expanded="false" aria-controls="collapseThree">
+                        Recursos
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'file:ntext',
+                            'photo:ntext',
+                            'url:ntext',
+                        ],
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading" role="tab" id="heading4">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4"
+                       aria-expanded="false" aria-controls="collapse4">
+                        Preguntas por evento
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body">
+                    <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 <!--END Contenido-->

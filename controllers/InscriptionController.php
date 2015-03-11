@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use app\models\Eventanswer;
 use app\models\Eventquestion;
 use app\models\Registertype;
@@ -68,6 +69,9 @@ class InscriptionController extends Controller
     {
         $model = $this->findModel($id);
         $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
+
+
+
         $searchModelEventanswer = new EventanswerSearch();
         $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
 

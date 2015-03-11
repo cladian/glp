@@ -9,7 +9,7 @@ use app\assets\AppAsset;
 /* @var $content string */
 
 AppAsset::register($this);
-$items=[];
+$items = [];
 if (Yii::$app->user->isGuest) {
     $items = [
 
@@ -17,8 +17,7 @@ if (Yii::$app->user->isGuest) {
         ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
         ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
     ];
-}
-elseif (Yii::$app->user->can('user')) {
+} elseif (Yii::$app->user->can('user')) {
     $items = [
 
         ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
@@ -69,7 +68,7 @@ elseif (Yii::$app->user->can('user')) {
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]
         ],
-  ];
+    ];
     if (Yii::$app->user->can('permission_admin'))
         $items[] = ['label' => 'Roles', 'items' => [
             ['label' => 'Asignaciones', 'url' => ['/admin']],
@@ -79,7 +78,7 @@ elseif (Yii::$app->user->can('user')) {
         ]
         ];
 
-}elseif (Yii::$app->user->can('permission_admin')) {
+} elseif (Yii::$app->user->can('permission_admin')) {
     $items = [
 
         ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
@@ -161,42 +160,80 @@ elseif (Yii::$app->user->can('user')) {
 $items = [
 
     ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
-    ['label' => 'Paneles', 'items' => [
-        ['label' => 'User', 'url' => ['/site/admuser']],
+    /* ['label' => 'Paneles', 'items' => [
+         ['label' => 'User', 'url' => ['/site/admuser']],
+         ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+         ['label' => 'SIS-Admin', 'url' => ['#']],
+     ]
+     ],*/
+
+    ['label' => 'Usuario', 'items' => [
+        /*['label' => 'User', 'url' => ['/site/admuser']],
         ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-        ['label' => 'SIS-Admin', 'url' => ['#']],
+        ['label' => 'SIS-Admin', 'url' => ['#']],*/
     ]
     ],
 
-    // ['label' => 'Acerca de ', 'url' => ['/site/about']],
-    ['label' => 'Perfil', 'items' => [
+
+    ['label' => 'Asocam', 'items' => [
+        /*        ['label' => 'User', 'url' => ['/site/admuser']],
+                ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+                ['label' => 'SIS-Admin', 'url' => ['#']],*/
+        '<li class="divider"></li>',
+        ['label' => 'Inscripción', 'url' => ['/inscription']],
+        '<li class="divider"></li>',
         ['label' => 'User', 'url' => ['/user']],
         ['label' => 'Perfiles', 'url' => ['/profile']],
-
-    ]
-    ],
-
-//                ['label' => 'Evento', 'url' => ['/event']],
-
-    ['label' => 'Evento', 'items' => [
+        '<li class="divider"></li>',
         ['label' => 'Eventos', 'url' => ['/event']],
         ['label' => 'Respuesta', 'url' => ['/answer']],
         ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
         ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
         ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-    ]
-    ],
-
-    ['label' => 'Notificaciones', 'items' => [
+        '<li class="divider"></li>',
         ['label' => 'Solicitudes', 'url' => ['/request']],
         ['label' => 'Respuestas', 'url' => ['/reply']],
         ['label' => 'Notificaciones', 'url' => ['/notification']],
 
+
+    ]
+
+    ],
+    ['label' => 'Administrador', 'items' => [
+//        ['label' => 'User', 'url' => ['/site/admuser']],
+//        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
+//        ['label' => 'SIS-Admin', 'url' => ['#']],
+        '<li class="divider"></li>',
+        ['label' => 'Inscripción', 'url' => ['/inscription']],
+        '<li class="divider"></li>',
+        ['label' => 'User', 'url' => ['/user']],
+        ['label' => 'Perfiles', 'url' => ['/profile']],
+        '<li class="divider"></li>',
+        ['label' => 'Eventos', 'url' => ['/event']],
+        ['label' => 'Respuesta', 'url' => ['/answer']],
+        ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+        ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
+        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+        '<li class="divider"></li>',
+        ['label' => 'Solicitudes', 'url' => ['/request']],
+        ['label' => 'Respuestas', 'url' => ['/reply']],
+        ['label' => 'Notificaciones', 'url' => ['/notification']],
+        '<li class="divider"></li>',
+        ['label' => 'Asignaciones', 'url' => ['/admin']],
+        ['label' => 'Roles', 'url' => ['/admin/role']],
+        ['label' => 'Permisos', 'url' => ['/admin/permission']],
+
+
     ]
     ],
 
 
-    ['label' => 'Inscripción', 'url' => ['/inscription']],
+    // ['label' => 'Acerca de ', 'url' => ['/site/about']],
+
+
+//                ['label' => 'Evento', 'url' => ['/event']],
+
+
     //['label' => 'Logistica', 'url' => ['/logistic']],
 //                ['label' => 'Registrarse', 'url' => ['/site/about']],
 
@@ -212,21 +249,12 @@ $items = [
         ['label' => 'Preguntas', 'url' => ['/question']],
         ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
     ]
-    ],
-    ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
-    ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
+    ]
 ];
-$items[] = ['label' => 'Roles', 'items' => [
-    ['label' => 'Asignaciones', 'url' => ['/admin']],
-    ['label' => 'Roles', 'url' => ['/admin/role']],
-    ['label' => 'Permisos', 'url' => ['/admin/permission']],
 
 
-],
-
-];
-if (   !Yii::$app->user->isGuest){
-    $items[] =['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
+if (!Yii::$app->user->isGuest) {
+    $items[] = ['label' => Yii::$app->user->identity->username . '-' . Yii::$app->user->identity->id, 'items' => [
         ['label' => 'Perfil', 'url' => ['/profile/viewown']],
         ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
     ]
@@ -267,7 +295,8 @@ if (   !Yii::$app->user->isGuest){
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
+        <?=
+        Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
