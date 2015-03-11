@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Phforum */
 
-$this->title = 'Create Phforum';
+$this->title = 'Crear Foro';
 $this->params['breadcrumbs'][] = ['label' => 'Phforums', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
