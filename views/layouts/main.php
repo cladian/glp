@@ -212,9 +212,7 @@ if (YII_ENV_DEV) {
             ['label' => 'Preguntas', 'url' => ['/question']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]
-        ],
-        ['label' => 'Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest]],
-        ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]]
+        ]
     ];
     $items[] = ['label' => 'Roles', 'items' => [
         ['label' => 'Asignaciones', 'url' => ['/admin']],
