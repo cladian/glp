@@ -47,11 +47,9 @@ $config = [
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
             /*'class' => 'yii\rbac\PhpManager',*/
-<<<<<<< HEAD
-           // 'defaultRoles' => ['sysadmin', 'user','asocam'],
-=======
+
 //            'defaultRoles' => ['sysadmin', 'user','asocam'],
->>>>>>> mauricio
+
 
         ],
     ],
@@ -65,9 +63,7 @@ $config = [
         ]
     ],
     #Acceso publico sin control de login desde la aplicación, en este ejemplo site es de acceso publico permitido
-<<<<<<< HEAD
-/*    'as access'=>[
-=======
+
    /* 'as access'=>[
 >>>>>>> mauricio
         'class'=>'mdm\admin\components\AccessControl',
