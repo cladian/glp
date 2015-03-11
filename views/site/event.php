@@ -12,80 +12,70 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
     <div class="row">
+        <!--Pais-->
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
+        </div>
+        <!--END Pais-->
         <!--Gestión de Proyectos-->
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="panel panel-primary"> 
-              <div class="panel-heading"><center><h5><?= Html::encode($this->title) ?></h5></center></div>
+              <div class="panel-heading"><?= Html::encode($this->title) ?></div>
               <div class="panel-body">
-                <strong>Descripción: </strong>
-                <p><?= Html::encode($modelEvent->short_description) ?></p>
-              </div>
-              <div class="panel-body">  
-                <p><?= Html::encode($modelEvent->general_content) ?></p>
-              </div>
-              <div class="panel-body">
-                <p><?= Html::encode($modelEvent->methodology) ?></p>
-              </div>
-              <div class="panel-body">
-                  <strong>Archivo PDF: </strong><?= Html::encode($modelEvent->file) ?><br>
-                  <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
-                  <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?><br>
-                  <strong>Descripción de descuento: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
-                  
+                <div role="tabpanel">
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span>   Descripción</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>   Metodología del curso</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-file"></span>   Documentos Adicionales</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home"><p>
+                        <h3>Contenido General: </h3><?= Html::encode($modelEvent->general_content) ?></p>
+                        
+                       
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h3>Metodología: </h3><p><?= Html::encode($modelEvent->methodology) ?></p> 
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                          <h3>Archivo PDF: </h3><?= Html::encode($modelEvent->file) ?><br>
+                          <hr><h3>Requerimientos: </h3><?= Html::encode($modelEvent->requirements) ?>
+                          
+                          
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
         </div>
+
+
         <!--END Gestión de Proyectos-->
-        <!--Pais-->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <!--Gestión de Proyectos-->
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="panel panel-primary"> 
-                <div class="panel-heading">
-                        <!--<div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" src="..." alt="..."
-                              <?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?>
-                              >
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="media-heading"><?= Html::encode($modelEvent->country->name) ?></h5>
-                        </div>
-                    </div>-->
-                    <center><h5><?= Html::encode($modelEvent->country->name) ?></h5></center>
-                </div>
-                <center><?= Html::img('imgs/event/cursos-2015.jpg',['class'=>'img-responsive figure']);?></center>
-            <div class="panel-body">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <center><?= Html::img('imgs/flags/'.strtolower($modelEvent->country->iso).'.png',['class'=>'img-responsive']);?></center>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <center><strong>Ciudad: </strong><?= Html::encode($modelEvent->city) ?><br></center>
-                </div>
-            </div>
-                <div class="panel-body">
-                    <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($modelEvent->begin_at, 'long'); ?><br>
-                    <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($modelEvent->end_at, 'long'); ?><br><br>
-                    <strong>Descripción: </strong><?= Html::encode($modelEvent->short_description) ?><br>
-                </div>
-                <div class="panel-body">
-                  <strong>Estatus: </strong><?= Html::encode($modelEvent->status) ?><br>
-                  <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+              <div class="panel-heading">Descuento</div>
+              <div class="panel-body">
+                <div role="tabpanel">
+                    <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+                    <strong>Descuento: </strong><?= Html::encode($modelEvent->discount) ?><br>
+                    <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?>
+
                   
+
                 </div>
+              </div>
             </div>
         </div>
-        <!--END Pais-->
-    </div>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
-            <?= Html::a('Regresar', ['/site/admuser'], ['class' => 'btn btn-success']) ?><?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-primary']) ?>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-            <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-primary']) ?>
-        </div>
+        
+
+        <!--END Gestión de Proyectos-->
+        
     </div>
 </div>
 <!--<div class="event-view">

@@ -8,12 +8,10 @@ use kartik\editable\Editable;
 /* @var $searchModel app\models\AnswerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Respuestas';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="answer-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <!--    <p>-->

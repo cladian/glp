@@ -29,12 +29,18 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+              //  'only' => ['login', 'logout', 'signup','event','admuser','admasocam'],
+                'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['login'],
                         'allow' => true,
                         'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['event','signup'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
                     ],
                     [
                         'actions' => ['logout'],
@@ -45,6 +51,11 @@ class SiteController extends Controller
                         'actions' => ['admuser'],
                         'allow' => true,
                         'roles' => ['user'],
+                    ],
+                    [
+                        'actions' => ['admasocam'],
+                        'allow' => true,
+                        'roles' => ['asocam'],
                     ],
                 ],
             ],
@@ -119,7 +130,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->user->can('user')) {
-            return $this->redirect(['admUser']);
+            return $this->redirect(['admuser']);
         } else if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
         } else {

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b12da4ad56b84de2aea855ea043c5f5c",
+    "hash": "9cf516f8dd9b57ac41d111b3b983c5fc",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -603,68 +603,6 @@
     ],
     "packages-dev": [
         {
-            "name": "2amigos/yii2-tinymce-widget",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/2amigos/yii2-tinymce-widget.git",
-                "reference": "fa9e30268a7078209d89bf4dcf2a63a40267406e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-tinymce-widget/zipball/fa9e30268a7078209d89bf4dcf2a63a40267406e",
-                "reference": "fa9e30268a7078209d89bf4dcf2a63a40267406e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "tinymce/tinymce": ">= 4",
-                "yiisoft/yii2": "*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "asset-installer-paths": {
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "dosamigos\\tinymce\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "ramirez.cobos@gmail.com",
-                    "homepage": "http://2amigos.us"
-                },
-                {
-                    "name": "2amigOS! Consulting Group",
-                    "email": "hola@2amigos.us",
-                    "homepage": "http://2amigos.us",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TinyMCE widget for Yii2.",
-            "keywords": [
-                "extension",
-                "tinymce",
-                "widget",
-                "yii"
-            ],
-            "time": "2015-03-06 15:47:38"
-        },
-        {
             "name": "bower-asset/jquery-ui",
             "version": "1.11.3",
             "source": {
@@ -1119,56 +1057,6 @@
                 "yii2"
             ],
             "time": "2015-02-13 03:36:35"
-        },
-        {
-            "name": "kartik-v/yii2-money",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/yii2-money.git",
-                "reference": "70e7275a7015fabc9d9428276242862df936c2e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-money/zipball/70e7275a7015fabc9d9428276242862df936c2e2",
-                "reference": "70e7275a7015fabc9d9428276242862df936c2e2",
-                "shasum": ""
-            },
-            "require": {
-                "kartik-v/yii2-krajee-base": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "kartik\\money\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "An advanced money mask input for Yii 2.0 based on jquery maskmoney plugin styled for Bootstrap 3.",
-            "homepage": "https://github.com/kartik-v/yii2-money",
-            "keywords": [
-                "bootstrap",
-                "bootstrap 3",
-                "currency",
-                "extension",
-                "format",
-                "jquery",
-                "mask",
-                "money",
-                "widget",
-                "yii2"
-            ],
-            "time": "2014-11-25 09:21:12"
         },
         {
             "name": "kartik-v/yii2-mpdf",
@@ -2293,52 +2181,6 @@
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
             "time": "2013-11-01 13:02:21"
-        },
-        {
-            "name": "tinymce/tinymce",
-            "version": "4.1.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "2ab950dc1e451967f51c4c4bfc4ed161f25e90c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/2ab950dc1e451967f51c4c4bfc4ed161f25e90c2",
-                "reference": "2ab950dc1e451967f51c4c4bfc4ed161f25e90c2",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "tinymce.js",
-                        "plugins/*/plugin.js",
-                        "themes/*/theme.js"
-                    ],
-                    "files": [
-                        "tinymce.min.js",
-                        "plugins/*/plugin.min.js",
-                        "themes/*/theme.min.js",
-                        "skins/**"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "description": "Web based JavaScript HTML WYSIWYG editor control.",
-            "homepage": "http://www.tinymce.com",
-            "keywords": [
-                "editor",
-                "html",
-                "javascript",
-                "richtext",
-                "tinymce",
-                "wysiwyg"
-            ],
-            "time": "2015-03-05 13:01:35"
         },
         {
             "name": "yiisoft/yii2-codeception",
