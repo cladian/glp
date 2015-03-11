@@ -47,9 +47,13 @@ $config = [
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
             /*'class' => 'yii\rbac\PhpManager',*/
+<<<<<<< HEAD
 //            'defaultRoles' => ['sysadmin', 'user','asocam'],
 
         
+=======
+
+>>>>>>> mauricio
         ],
     ],
     #Acceso url para los modulos de roles y perfiles configurados
