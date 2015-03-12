@@ -63,7 +63,6 @@ class ReplyController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single Reply model.
      * @param integer $user_id

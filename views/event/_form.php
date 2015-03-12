@@ -51,13 +51,20 @@ use kartik\widgets\FileInput;
 
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?=$form->field($model, 'eventtype_id')->dropDownList(
+            ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
+    </div>
 <!--Ciudad--> 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
     </div>
+
 <!--END Ciudad-->
 <!--Pais--> 
-    <div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?=
         $form->field($model, 'country_id')->dropDownList(
             ArrayHelper::map(Country::find()->all(), 'id', 'name'),
@@ -95,20 +102,7 @@ use kartik\widgets\FileInput;
         ?>
 
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
-            'options' => ['placeholder' => 'Fecha'],
-            'pluginOptions' => [
-                'autoclose' => true,
-                'format' => 'yyyy-mm-dd',
-
-                'readonly' => true,
-                'disabled' => true,
-            ]
-        ]);
-        ?>
-
-    </div>
+    
 <!--END Fecha-->
 <!--Costo--> 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -133,20 +127,44 @@ use kartik\widgets\FileInput;
         ]); ?>
     </div>
 <!--END Descuento--> 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<!--Descripcion Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
     </div>
+<!--END Descripcion Descuento--> 
+<!--Fecha Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => 'Fecha'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
 
+                    'readonly' => true,
+                    'disabled' => true,
+                ]
+            ]);
+            ?>
 
-
-
-    <?= $form->field($model, 'year')->textInput() ?>
-
+    </div>
+<!--END Fecha Descuento--> 
+<!--Año
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?= $form->field($model, 'year')->textInput() ?>
+    </div>
+END Año--> 
     <!--    --><? //= $form->field($model, 'status')->textInput() ?>
 
+<<<<<<< HEAD
 
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
+
+=======
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+    </div>
+>>>>>>> daniel
     <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
     <!---->
     <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
@@ -155,15 +173,11 @@ use kartik\widgets\FileInput;
     
 
     <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
-    <?=
-    $form->field($model, 'eventtype_id')->dropDownList(
-        ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
+    
 
-</div>
+</div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
     </div>
 
 </div>
