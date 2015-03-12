@@ -21,7 +21,14 @@ use yii\helpers\Url;
 <div class="profile-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
+    <center>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
+    </div>
+    </center>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="form-group">
     <?=
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
@@ -40,9 +47,24 @@ use yii\helpers\Url;
     ]);
     // $form->field($model, 'photo')->textarea(['rows' => 6])  ?>
 
+    </div>
+</div>
+<center>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                <?= Html::submitButton($model->isNewRecord ? 'Crear' : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                
+                <?= Html::a('Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>
+            </div>
+        </div>
+    </center>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a('Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger']) ?>
+        
+        
     </div>
 
     <?php ActiveForm::end(); ?>

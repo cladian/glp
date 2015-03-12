@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="profile-view">
 
 
-<div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

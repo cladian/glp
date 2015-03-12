@@ -468,44 +468,52 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <div class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix">
-                                    <?php foreach ($modelEvent as $event) { ?>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
-
-                                                    <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png'); ?>
-                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                                       href="#collapse<?= $event->id; ?>" aria-expanded="false"
-                                                       aria-controls="collapse<?= $event->id; ?>">
-                                                        <?= $event->name; ?>,
-                                                        <!--<i><?/*= $event->city; */?>-<?/*= $event->country->name; */?></i>-->
-
-                                                    </a>
-
-                                                    <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
-
-                                            </div>
-                                            <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
-                                                 aria-labelledby="heading<?= $event->id; ?>">
-                                                <div class="panel-body">
-
-                                                    <p><?= $event->short_description; ?></p>
-                                                    <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
-                                                    <address>
-                                                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                                                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                                        <br>
-                                                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                                        <br>
-                                                        <strong>Inversión: </strong><?= $event->cost; ?> USD
-                                                    </address>
-                                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
-                                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-lg btn-block']) ?>
-                                                    
-
-                                                </div>
-                                            </div>
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
                                         </div>
-                                    <?php } ?>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
