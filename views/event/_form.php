@@ -16,6 +16,7 @@ use kartik\widgets\FileInput;
 ?>
 
 <div class="event-form">
+<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -40,9 +41,15 @@ use kartik\widgets\FileInput;
     <div class="col-sm-6">
         <?= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
     </div>
+</div>
 
 
 
+
+
+<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3">
+
+    
     <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     <div class="col-sm-3 col-xs-6">
         <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
@@ -147,10 +154,9 @@ use kartik\widgets\FileInput;
         ['prompt' => 'Seleccione']
     ) ?>
 
+    <?php ActiveForm::end(); ?>
+</div>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
