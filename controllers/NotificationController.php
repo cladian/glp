@@ -15,6 +15,10 @@ use yii\filters\AccessControl;
  */
 class NotificationController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     public function behaviors()
     {
         return [

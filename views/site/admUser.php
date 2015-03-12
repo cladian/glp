@@ -43,10 +43,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-
 <div class="hidden-xs">
-    <h3><?= Html::encode($this->title) ?></h3>
-
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
         <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
@@ -150,8 +147,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <!--END Panel-->
     </div>
 </div>
-
-
 <div class="col-lg-8">
 
     <div class="panel panel-primary">
@@ -282,7 +277,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-danger">
         <div class="panel-heading">
             <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                Notificaciones</h3>
+                Próximos Eventos</h3>
         </div>
         <div class="panel-body">
             <?= GridView::widget([

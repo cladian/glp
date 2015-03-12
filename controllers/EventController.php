@@ -18,20 +18,22 @@ use yii\web\UploadedFile;
 class EventController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
 
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete'],
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete','resources'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources'],
                         'allow' => true,
-                        'roles' => ['asocam','sysadmin'],
+                        'roles' => ['asocam', 'sysadmin'],
                     ],
 
                 ],
@@ -67,9 +69,9 @@ class EventController extends Controller
      */
     public function actionView($id)
     {
-        $model=$this->findModel($id);
+        $model = $this->findModel($id);
         $searchModel = new EventquestionSearch();
-        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams,$model->eventtype_id);
+        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $model->eventtype_id);
 
         return $this->render('view', [
             'model' => $model,
@@ -114,6 +116,7 @@ class EventController extends Controller
             ]);
         }
     }
+
     /**
      * Updates an existing Event model.
      * If update is successful, the browser will be redirected to the 'view' page.

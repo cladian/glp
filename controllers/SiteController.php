@@ -25,6 +25,10 @@ use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     public function behaviors()
     {
         return [
@@ -97,7 +101,11 @@ class SiteController extends Controller
         $dataNotification = $searchNotification->search(Yii::$app->request->queryParams);
 
         // Por implementar consulta de inscipciones ya habilitadas
-        $modelEvent = Event::find()->where( ['status'=>10])->all();
+        $modelEvent = Event::find()
+            ->where( ['status'=>10])
+            ->orderBy('begin_at')
+            ->limit(4)
+            ->all();
 
 
         return $this->render('admUser', [
@@ -115,7 +123,7 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $modelRequest=Request::find()->where(['status'=>10])->all();
+        $modelRequest=Request::find()->where(['status'=>self::STATUS_ACTIVE])->all();
 
         return $this->render('admAsocam', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
