@@ -11,8 +11,16 @@ use app\models\Request;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="reply-form">
 
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+<div class="panel panel-primary">
+  <div class="panel-heading">Crear Respuesta</div>
+  <div class="panel-body">
+
+
+
+<div class="reply-form">
+    
     <?php $form = ActiveForm::begin(); ?>
 
 
@@ -30,13 +38,14 @@ use app\models\Request;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
 
 </div>
 
-
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <div class="panel panel-default">
+  </div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-green">
         <div class="panel-heading">
             <i class="fa fa-clock-o fa-fw"></i> Historial
         </div>
