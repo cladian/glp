@@ -96,7 +96,7 @@ class Logistic extends \yii\db\ActiveRecord
             'returningonhour' => 'Hora de retorno',
 
             'residence' => '¿Reside en la ciudad del evento?',
-            'residenceobs' => 'Residenceobs',
+            'residenceobs' => 'Observación del lugar de Residencia',
             'accommodationdatein' => 'Fecha de inicio de alojamiento',
             'accommodationdateout' => 'Fecha de salida de alojamiento',
             'status' => 'Estado',

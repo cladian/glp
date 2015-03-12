@@ -101,7 +101,7 @@ class SiteController extends Controller
 
         // Por implementar consulta de inscipciones ya habilitadas
         $modelEvent = Event::find()
-            ->where(['status' => 10])
+            ->where(['status' => self::STATUS_ACTIVE])
             ->orderBy('begin_at')
             ->limit(4)
             ->all();
@@ -127,9 +127,9 @@ class SiteController extends Controller
         return $this->render('admAsocam', [
             'ownInscriptions' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
-            'activeUsers' => User::find()->where(['status' => 10])->count(),
-            'activeEvents' => Event::find()->where(['status' => 10])->count(),
-            'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
+            'activeUsers' => User::find()->where(['status' => self::STATUS_ACTIVE])->count(),
+            'activeEvents' => Event::find()->where(['status' => self::STATUS_ACTIVE])->count(),
+            'activeInscriptions' => Inscription::find()->where(['status' => self::STATUS_ACTIVE])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'modelRequest' => $modelRequest
@@ -148,7 +148,7 @@ class SiteController extends Controller
             return $this->redirect(['admuser']);
         } else {
             return $this->render('index', [
-                'modelEvent' => Event::find()->where(['status' => 10])->all(),
+                'modelEvent' => Event::find()->where(['status' => self::STATUS_ACTIVE])->all(),
             ]);
         }
     }
