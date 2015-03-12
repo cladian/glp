@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                     <?= $model->getStatus($model->status);?>
+                    <?php $estado=$model->getStatus($model->status);?>
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -47,8 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'city',
                             'year',
                             'status',
-/*                            [
-                                'value'=>function($data){return 'data->getStatus('status')';}
+/*                            [   'attribute'=>'status',
+                                'value'=>function($model){return $model->getStatus($estado);}
                             ]*/
                         ],
                     ]) ?>

@@ -42,11 +42,11 @@ use kartik\widgets\FileInput;
     </div>
 
 
-    
+
     <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     <div class="col-sm-3 col-xs-6">
-    <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
-        </div>
+        <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
+    </div>
     <div class="col-sm-3 col-xs-6">
         <?= $form->field($model, 'begin_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
@@ -79,79 +79,78 @@ use kartik\widgets\FileInput;
 
     <div class="col-sm-3 col-xs-6">
 
-    <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            'prefix' => '$ ',
-            'suffix' => '',
-            'allowNegative' => false,
-            'precision' => 2,
-        ]
-    ]);?>
-        </div>
+        <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
+            'pluginOptions' => [
+                'prefix' => '$ ',
+                'suffix' => '',
+                'allowNegative' => false,
+                'precision' => 2,
+            ]
+        ]); ?>
+    </div>
     <hr>
 
 
+    <div class="col-sm-3 col-xs-6">
+        <?= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
+            'pluginOptions' => [
+                'onText' => 'SI',
+                'offText' => 'NO',
+            ]
+        ]); ?>
+    </div>
 
-            <div class="col-sm-3 col-xs-6">
-            <?=  $form->field($model, 'discount')->widget(SwitchInput::classname(), [
-                'pluginOptions' => [
-                    'onText' => 'SI',
-                    'offText' => 'NO',
-                ]
-            ]);?>
-        </div>
+    <div class="col-sm-9 col-xs-6">
+        <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
+            'options' => ['placeholder' => 'Fecha'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd',
 
-            <div class="col-sm-9 col-xs-6">
-                <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
-                    'options' => ['placeholder' => 'Fecha'],
-                    'pluginOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd',
+                'readonly' => true,
+                'disabled' => true,
+            ]
+        ]);
+        ?>
 
-                        'readonly' => true,
-                        'disabled' => true,
-                    ]
-                ]);
-                ?>
-
-            </div>
-            <div class="xs-12">
-            <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
-                </div>
-
+    </div>
+    <div class="xs-12">
+        <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
+    </div>
 
 
 
 
-<?= $form->field($model, 'year')->textInput() ?>
 
-<!--    --><? //= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'year')->textInput() ?>
 
-<?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'] ) ?>
-<?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
 
-<!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
-<!---->
-<!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo']) ?>
+    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
-<!--    --><? //= $form->field($model, 'country_id')->textInput() ?>
-<?=
-$form->field($model, 'country_id')->dropDownList(
-    ArrayHelper::map(Country::find()->all(), 'id', 'name'),
-    ['prompt' => 'Seleccione']
-) ?>
+    <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
+    <!---->
+    <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
 
-<!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
-<?=
-$form->field($model, 'eventtype_id')->dropDownList(
-    ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
-    ['prompt' => 'Seleccione']
-) ?>
+    <!--    --><? //= $form->field($model, 'country_id')->textInput() ?>
+    <?=
+    $form->field($model, 'country_id')->dropDownList(
+        ArrayHelper::map(Country::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
 
-<div class="form-group">
-    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-</div>
+    <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
+    <?=
+    $form->field($model, 'eventtype_id')->dropDownList(
+        ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
+        ['prompt' => 'Seleccione']
+    ) ?>
 
-<?php ActiveForm::end(); ?>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
 
 </div>

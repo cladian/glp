@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+
+use app\models\Event;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InscriptionSearch */
@@ -13,6 +16,7 @@ $this->title = 'Inscripciones';
 ?>
 <div class="inscription-index">
     <?php
+
     $gridColumns = [
         // the name column configuration
         [
@@ -29,10 +33,22 @@ $this->title = 'Inscripciones';
             'pageSummary' => false,
         ],
         [
+            /*       'attribute' => 'event_id',
+                   'value' => function ($data) {
+                       return $data->event->name;
+                   }*/
             'attribute' => 'event_id',
-            'value' => function ($data) {
-                return $data->event->name;
-            }
+            'vAlign' => 'middle',
+            'value' => function ($model) {
+                return $model->event->name;
+            },
+            'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
+            'filter' => ArrayHelper::map(Event::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+            'filterInputOptions' => ['placeholder' => 'Todos'],
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
+            ],
+
         ],
         [
             'attribute' => 'user_id',
@@ -42,13 +58,21 @@ $this->title = 'Inscripciones';
         ],
         [
             'attribute' => 'created_at',
-
         ],
         [
-            'class' => '\kartik\grid\BooleanColumn',
             'attribute' => 'status',
-            'trueLabel' => '10',
-            'falseLabel' => '0'
+            'vAlign' => 'middle',
+            'value' => function ($model) {
+                if ($rel = $model->getStatus($model->status)) {
+                    return $rel;
+                }
+            },
+            'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
+            'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+            'filterInputOptions' => ['placeholder' => 'Todos'],
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
+            ],
         ],
         [
             'class' => 'kartik\grid\ActionColumn',
@@ -69,7 +93,7 @@ $this->title = 'Inscripciones';
         'headerRowOptions' => ['class' => 'kartik-sheet-style'],
         'filterRowOptions' => ['class' => 'kartik-sheet-style'],
         // set your toolbar
-
+        'pjax' => true, // pjax is set to always true for this demo
         'toolbar' => [
             ['content' =>
             //Html::button('<i class="glyphicon glyphicon-plus"></i>', ['type'=>'button', 'title'=>'nuevi', 'class'=>'btn btn-success', 'onclick'=>'ins']) . ' '.
@@ -97,20 +121,20 @@ $this->title = 'Inscripciones';
             'heading' => '<i class="glyphicon glyphicon-book"></i>  Inscripciones',
         ],
         'persistResize' => true,
-/*        'exportConfig' => [
-            \kartik\grid\GridView::EXCEL => [
-                'label' => 'Excel',
-                'icon' => 'floppy-remove',
-                'showHeader' => true,
-                'showPageSummary' => true,
-                'showFooter' => true,
-                'showCaption' => true,
-                'worksheet' => 'ExportWorksheet',
-                'filename' => 'grid-export',
-                'alertMsg' => 'The EXCEL export file will be generated for download.',
-                'cssFile' => '',
-                'options' => 'Save as Excel'],
-        ],*/
+        /*        'exportConfig' => [
+                    \kartik\grid\GridView::EXCEL => [
+                        'label' => 'Excel',
+                        'icon' => 'floppy-remove',
+                        'showHeader' => true,
+                        'showPageSummary' => true,
+                        'showFooter' => true,
+                        'showCaption' => true,
+                        'worksheet' => 'ExportWorksheet',
+                        'filename' => 'grid-export',
+                        'alertMsg' => 'The EXCEL export file will be generated for download.',
+                        'cssFile' => '',
+                        'options' => 'Save as Excel'],
+                ],*/
         'toolbar' => [
             ['content' =>
                 Html::a('Create Employee', ['create'], ['class' => 'btn btn-default'])
