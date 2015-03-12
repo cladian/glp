@@ -167,12 +167,7 @@ $items = [
      ]
      ],*/
 
-    ['label' => 'Usuario', 'items' => [
-        /*['label' => 'User', 'url' => ['/site/admuser']],
-        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-        ['label' => 'SIS-Admin', 'url' => ['#']],*/
-    ]
-    ],
+
     ['label' => 'Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
@@ -199,12 +194,17 @@ $items = [
     ]
     ],
 
-
+    ['label' => 'Usuario', 'items' => [
+        ['label' => 'Solicitudes', 'url' => ['/request/index']],
+        ['label' => 'Notificaciones', 'url' => ['/notification/index']],
+        ['label' => 'SIS-Admin', 'url' => ['#']],
+    ]
+    ],
     ['label' => 'Asocam', 'items' => [
         /*        ['label' => 'User', 'url' => ['/site/admuser']],
                 ['label' => 'Asocam', 'url' => ['/site/admasocam']],
                 ['label' => 'SIS-Admin', 'url' => ['#']],*/
-        '<li class="divider"></li>',
+        /*'<li class="divider"></li>',*/
         ['label' => 'Inscripción', 'url' => ['/inscription']],
         '<li class="divider"></li>',
         ['label' => 'User', 'url' => ['/user']],
