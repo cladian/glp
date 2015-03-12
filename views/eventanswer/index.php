@@ -10,15 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Respuestas por Evento';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="eventanswer-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Crear Respuesta por Evento', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -36,5 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+  </div>
+</div>
+<div class="eventanswer-index">
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Crear Respuesta por Evento', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    
 
 </div>
