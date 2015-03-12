@@ -16,7 +16,7 @@ use kartik\widgets\FileInput;
 ?>
 
 <div class="event-form">
-<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -41,20 +41,32 @@ use kartik\widgets\FileInput;
     <div class="col-sm-6">
         <?= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
     </div>
+    <div class="col-sm-12">
+        <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
+    </div>
 </div>
 
 
 
 
 
-<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3">
-
-    
-    <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
-    <div class="col-sm-3 col-xs-6">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<!--Ciudad--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
     </div>
-    <div class="col-sm-3 col-xs-6">
+<!--END Ciudad-->
+<!--Pais--> 
+    <div>
+        <?=
+        $form->field($model, 'country_id')->dropDownList(
+            ArrayHelper::map(Country::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
+    </div> 
+<!--END Pais--> 
+<!--Fecha-->    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'begin_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -68,7 +80,8 @@ use kartik\widgets\FileInput;
         ?>
 
     </div>
-    <div class="col-sm-3 col-xs-6">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'end_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -82,32 +95,7 @@ use kartik\widgets\FileInput;
         ?>
 
     </div>
-
-
-    <div class="col-sm-3 col-xs-6">
-
-        <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
-            'pluginOptions' => [
-                'prefix' => '$ ',
-                'suffix' => '',
-                'allowNegative' => false,
-                'precision' => 2,
-            ]
-        ]); ?>
-    </div>
-    <hr>
-
-
-    <div class="col-sm-3 col-xs-6">
-        <?= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
-            'pluginOptions' => [
-                'onText' => 'SI',
-                'offText' => 'NO',
-            ]
-        ]); ?>
-    </div>
-
-    <div class="col-sm-9 col-xs-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -121,10 +109,33 @@ use kartik\widgets\FileInput;
         ?>
 
     </div>
-    <div class="xs-12">
+<!--END Fecha-->
+<!--Costo--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
+            'pluginOptions' => [
+                'prefix' => '$ ',
+                'suffix' => '',
+                'allowNegative' => false,
+                'precision' => 2,
+            ]
+        ]); ?>
+    </div>
+<!--END Costo--> 
+<!--Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
+            'pluginOptions' => [
+                'onText' => 'SI',
+                'offText' => 'NO',
+            ]
+        ]); ?>
+    </div>
+<!--END Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
     </div>
-
 
 
 
@@ -141,11 +152,7 @@ use kartik\widgets\FileInput;
     <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
 
     <!--    --><? //= $form->field($model, 'country_id')->textInput() ?>
-    <?=
-    $form->field($model, 'country_id')->dropDownList(
-        ArrayHelper::map(Country::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
+    
 
     <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
     <?=
@@ -154,9 +161,11 @@ use kartik\widgets\FileInput;
         ['prompt' => 'Seleccione']
     ) ?>
 
-    <?php ActiveForm::end(); ?>
 </div>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+
 </div>
+
+    <?php ActiveForm::end(); ?>

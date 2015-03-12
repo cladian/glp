@@ -114,9 +114,9 @@ class InscriptionController extends Controller
                 $posted = current($_POST['Eventanswer']);
                 $post['Eventanswer'] = $posted;
                 if ($modelEventanswer->load($post)) {
-                    $modelEventanswer->status = 0;
+                    $modelEventanswer->status = self::STATUS_ACTIVE;
                     if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
-                        $modelEventanswer->status = 1;
+                        $modelEventanswer->status = self::STATUS_ACTIVE;
                     } else {
                         $modelEventanswer->reply = NULL;
                     }
@@ -132,9 +132,9 @@ class InscriptionController extends Controller
                 $posted = current($_POST['Answer']);
                 $post['Answer'] = $posted;
                 if ($modelAnswer->load($post)) {
-                    $modelAnswer->status = 0;
+                    $modelAnswer->status = self::STATUS_ACTIVE;
                     if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
-                        $modelAnswer->status = 1;
+                        $modelAnswer->status = self::STATUS_ACTIVE;
                     } else {
                         $modelAnswer->reply = NULL;
                     }
