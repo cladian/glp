@@ -34,7 +34,7 @@ if (!$hasProfile){
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
 <!--Panel-->        
         <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-primary">
+            <div class="panel panel-green">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
@@ -58,7 +58,7 @@ if (!$hasProfile){
 <!--END Panel-->
 <!--Panel-->        
         <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-green">
+            <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
@@ -106,7 +106,7 @@ if (!$hasProfile){
 <!--END Panel-->
 <!--Panel-->        
         <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
@@ -132,7 +132,7 @@ if (!$hasProfile){
 </div>
 
 <!--<div class="col-xs-12 col-lg-8 col-md-8 col-md-8">
-    <div class="panel panel-primary">
+    <div class="panel panel-green">
       <div class="panel-heading">Inscripciones activas</div>
       <br>
   <div class="panel-body">
@@ -172,7 +172,7 @@ if (!$hasProfile){
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
-                    <div class="chat-panel panel panel-primary">
+                    <div class="chat-panel panel panel-green">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>
                             Solicitudes por atender
@@ -187,7 +187,7 @@ if (!$hasProfile){
                                     </span>
                                         <div class="chat-body clearfix">
                                             <div class="header">
-                                                <strong class="primary-font"><?= $request->inscription->user->username?></strong>
+                                                <strong class="green-font"><?= $request->inscription->user->username?></strong>
                                                 <small class="pull-right text-muted">
                                                     <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                                 </small>
@@ -198,7 +198,7 @@ if (!$hasProfile){
                                             </p>
 
 
-                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-primary btn-xs pull-right']) ?>
+                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-green btn-xs pull-right']) ?>
                                         </div>
                                     </li>
                                 <?php
@@ -229,7 +229,7 @@ if (!$hasProfile){
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
-                    <div class="chat-panel panel panel-primary">
+                    <div class="chat-panel panel panel-green">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>
                             Solicitudes por atender
@@ -244,7 +244,7 @@ if (!$hasProfile){
                                     </span>
                                         <div class="chat-body clearfix">
                                             <div class="header">
-                                                <strong class="primary-font"><?= $request->inscription->user->username?></strong>
+                                                <strong class="green-font"><?= $request->inscription->user->username?></strong>
                                                 <small class="pull-right text-muted">
                                                     <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                                 </small>
@@ -255,7 +255,7 @@ if (!$hasProfile){
                                             </p>
 
 
-                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-primary btn-xs pull-right']) ?>
+                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-green btn-xs pull-right']) ?>
                                         </div>
                                     </li>
                                 <?php
@@ -285,7 +285,7 @@ if (!$hasProfile){
 </div><div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
-                    <div class="chat-panel panel panel-primary">
+                    <div class="chat-panel panel panel-green">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>
                             Solicitudes por atender
@@ -300,7 +300,7 @@ if (!$hasProfile){
                                     </span>
                                         <div class="chat-body clearfix">
                                             <div class="header">
-                                                <strong class="primary-font"><?= $request->inscription->user->username?></strong>
+                                                <strong class="green-font"><?= $request->inscription->user->username?></strong>
                                                 <small class="pull-right text-muted">
                                                     <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                                 </small>
@@ -311,7 +311,7 @@ if (!$hasProfile){
                                             </p>
 
 
-                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-primary btn-xs pull-right']) ?>
+                                            <?= Html::a('Responder', ['reply/create'], ['class' => 'btn btn-green btn-xs pull-right']) ?>
                                         </div>
                                     </li>
                                 <?php

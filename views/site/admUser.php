@@ -328,12 +328,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
 <<<<<<< HEAD
 
+
         <!-- /.panel-body -->
         <div class="panel-footer">
             <div class="input-group">
                 <input id="btn-input" type="text" class="form-control input-sm"
                        placeholder="Type your message here..."/>
 
+<<<<<<< HEAD
 =======
         <div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
 
@@ -433,6 +435,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <div class="panel-footer">
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+>>>>>>> daniel
+=======
+
 >>>>>>> daniel
                                 <span class="input-group-btn">
                                     <button class="btn btn-warning btn-sm" id="btn-chat">
