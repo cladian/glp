@@ -44,12 +44,12 @@ class InscriptionController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete','detail'],
+                        'actions' => ['index','create','update','delete','detail'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['createown','updateown','subcat','detailown'],
+                        'actions' => ['createown','updateown','subcat','detailown','view'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],

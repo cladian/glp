@@ -23,7 +23,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'email')->textInput(['maxlength' => 45]) ?>
 
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
-    <?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
+<!--    --><?//= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
+    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 <!---->

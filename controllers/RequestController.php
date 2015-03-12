@@ -29,12 +29,12 @@ class RequestController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['index','create','update','delete'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['createown'],
+                        'actions' => ['createown','view'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
