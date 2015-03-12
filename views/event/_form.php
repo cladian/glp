@@ -136,6 +136,7 @@ use kartik\widgets\FileInput;
 
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
+
     <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
     <!---->
     <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>

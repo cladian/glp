@@ -36,7 +36,8 @@ use app\models\Eventquestion;
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
-    <?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
+
+    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
