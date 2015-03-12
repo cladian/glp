@@ -43,10 +43,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-<div class="hidden-xs">
+<div >
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class=" col-xs-6 col-lg-3 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
@@ -54,14 +54,13 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <i class="glyphicon glyphicon-user"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">daniel</div>
-                            <div>Usuario</div>
+                            <div style="font-size:20px;" class="huge">10</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left">Respuestas</span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
 
                         <div class="clearfix"></div>
@@ -71,7 +70,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-6">
             <div class="panel panel-green">
                 <div class="panel-heading">
                     <div class="row">
@@ -79,14 +78,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <i class="glyphicon glyphicon-tasks"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">daniel</div>
-                            <div>Eventos</div>
+                            <div style="font-size:20px;" class="huge">5</div>
+
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left">Notificaciones</span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
 
                         <div class="clearfix"></div>
@@ -96,7 +95,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-6">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
                     <div class="row">
@@ -104,14 +103,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <i class="glyphicon glyphicon-pencil"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">daniel</div>
-                            <div>Inscripciones</div>
+                            <div style="font-size:20px;" class="huge">5</div>
+
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left">Inscripciones</span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
 
                         <div class="clearfix"></div>
@@ -121,7 +120,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
@@ -129,14 +128,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <i class="glyphicon glyphicon-eye-open"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">daniel</div>
-                            <div>Perfil</div>
+                            <div style="font-size:20px;" class="huge">5</div>
+
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left">Nuevas entradas en foros</span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
 
                         <div class="clearfix"></div>
@@ -203,8 +202,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 [
                     'class' => '\kartik\grid\BooleanColumn',
                     'attribute' => 'status',
-                    'trueLabel' => '10',
-                    'falseLabel' => '0'
+                    'trueLabel' => 'ACTIVO',
+                    'falseLabel' => 'INACTIVO'
                 ],
 
 
@@ -214,6 +213,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 'dataProvider' => $dataInscription,
                 'filterModel' => $searchInscription,
                 'columns' => $gridColumns,
+                'pjax' => true, // pjax is set to always true for this demo
                 // set your toolbar
                 'toolbar' => [
 
@@ -229,73 +229,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 /*'showPageSummary' => true,*/
                 'persistResize' => false,
                 'exportConfig' => true,
-                /*        'pjax'=>true,
-                        'floatHeader'=>true,
-                        'floatHeaderOptions'=>['scrollingTop'=>'50'],
-                        'pjaxSettings'=>[
-                            'neverTimeout'=>true,
-                            'beforeGrid'=>'My fancy content before.',
-                            'afterGrid'=>'My fancy content after.',
-                        ]*/
+
             ]);
 
-            /*    GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModel,
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-
-            //            'id',
-            // 'event_id',
-                        [
-                            'attribute' => 'event_id',
-                            'value'=> function ($data){ return $data->event->name;}
-                        ],
-                        // 'user_id',
-                        [
-                            'attribute' => 'user_id',
-                            'value'=> function ($data){ return $data->user->username;}
-                        ],
-            //            'exposition',
-                      //  'service_terms',
-            //            'complete',
-                        'status',
-                        // 'created_at',
-                        // 'updated_at',
-
-                        // 'registertype_type',
-                        // 'registertype_assigment',
-
-                        ['class' => 'yii\grid\ActionColumn'],
-                    ],
-                ]); */
 
             ?>
         </div>
     </div>
 
-    <div class="panel panel-danger">
-        <div class="panel-heading">
-            <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                Próximos Eventos</h3>
-        </div>
-        <div class="panel-body">
-            <?= GridView::widget([
-                'dataProvider' => $dataNotification,
-                'filterModel' => $searchNotification,
-                'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-
-                    'id',
-                    'text:ntext',
-                    'status',
-                    'user_id',
-
-                    ['class' => 'yii\grid\ActionColumn'],
-                ],
-            ]); ?>
-        </div>
-    </div>
 </div>
 
 
@@ -402,107 +343,5 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <!-- /.panel .chat-panel -->
 
 </div>
-<div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
 
-    <!-- /.panel -->
-    <div class="chat-panel panel panel-primary">
-        <div class="panel-heading">
-            <i class="fa fa-comments fa-fw"></i>
-            Notificaciones
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-                <ul class="dropdown-menu slidedown">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-check-circle fa-fw"></i> Available
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-times fa-fw"></i> Busy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-clock-o fa-fw"></i> Away
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-            <ul class="chat">
-                <li class="left clearfix">
-                    <?php foreach ($modelEvent as $event) { ?>
-                        <div class="panel panel-info">
-                            <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
-
-                                <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png'); ?>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapse<?= $event->id; ?>" aria-expanded="false"
-                                   aria-controls="collapse<?= $event->id; ?>">
-                                    <?= $event->name; ?>,
-                                    <!--<i><? /*= $event->city; */ ?>-<? /*= $event->country->name; */ ?></i>-->
-
-                                </a>
-
-                                <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
-
-                            </div>
-                            <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="heading<?= $event->id; ?>">
-                                <div class="panel-body">
-
-                                    <p><?= $event->short_description; ?></p>
-                                    <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
-                                    <address>
-                                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                        <br>
-                                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                        <br>
-                                        <strong>Inversión: </strong><?= $event->cost; ?> USD
-                                    </address>
-                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
-                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-lg btn-block']) ?>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </li>
-            </ul>
-        </div>
-        <!-- /.panel-body -->
-        <div class="panel-footer">
-            <div class="input-group">
-                <input id="btn-input" type="text" class="form-control input-sm"
-                       placeholder="Type your message here..."/>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-            </div>
-        </div>
-        <!-- /.panel-footer -->
-    </div>
-    <!-- /.panel .chat-panel -->
-
-</div>
 

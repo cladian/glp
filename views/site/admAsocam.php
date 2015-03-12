@@ -131,7 +131,7 @@ if (!$hasProfile){
     </div>
 </div>
 
-<div class="col-xs-12 col-lg-8 col-md-8 col-md-8">
+<!--<div class="col-xs-12 col-lg-8 col-md-8 col-md-8">
     <div class="panel panel-primary">
       <div class="panel-heading">Inscripciones activas</div>
       <br>
@@ -139,7 +139,7 @@ if (!$hasProfile){
         <div class="inscription-index">
 
     
-    <?= GridView::widget([
+    <?/*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -160,19 +160,15 @@ if (!$hasProfile){
             // 'registertype_type',
             // 'registertype_assigment',
 
- /*          [                    // the owner name of the model
-                'attribute' => 'event_id',
-                'value' => $dataProvider->event->name,
-            ],*/
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]); */?>
     </div>
     </div>
 
 </div>
-</div>
+</div>-->
+
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
