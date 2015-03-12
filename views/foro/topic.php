@@ -57,14 +57,16 @@
 			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 				<table class="table table-condensed">
 					<tr>
-					  <span style="font-size:20px;"class="glyphicon glyphicon-circle-arrow-down">
-					  	Descargar
-					  </span>
+						<center>
+							<a href=""><span style="font-size:20px;"class="glyphicon glyphicon-circle-arrow-down"></span><br>
+							<div>Descargar</div></a><hr>
+						</center>
 					</tr>
 					<tr>
-					  <span style="font-size:20px;"class="glyphicon glyphicon-circle-arrow-down">
-					  	Descargar
-					  </span>
+						<center>
+							<a href=""><span style="font-size:20px;"class="glyphicon glyphicon-circle-arrow-down"></span><br>
+							<div>Descargar</div></a><hr>
+						</center>
 					</tr>
 				</table>
 			</div>
