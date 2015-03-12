@@ -20,5 +20,9 @@ class ForoController extends \yii\web\Controller
     {
         return $this->render('multimedia');
     }
+     public function actionMensajes()
+    {
+        return $this->render('mensajes');
+    }
 
 }
