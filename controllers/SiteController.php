@@ -25,23 +25,27 @@ use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'signup','event','admuser','admasocam'],
-               // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'only' => ['login', 'logout', 'signup', 'event', 'admuser', 'admasocam'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['login','signup'],
+                        'actions' => ['login', 'signup'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
                         'actions' => ['event'],
                         'allow' => true,
-                        'roles' => ['?','@'],
+                        'roles' => ['?', '@'],
                     ],
                     [
                         'actions' => ['logout'],
@@ -86,23 +90,26 @@ class SiteController extends Controller
     public function actionAdmuser()
     {
         // De acceso solo para usuarios logeados
-        if (Yii::$app->user->can('user'))
-        {
+        if (Yii::$app->user->can('user')) {
 
         }
-        $searchInscription=new InscriptionSearch();
+        $searchInscription = new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
-        $searchNotification=new NotificationSearch();
+        $searchNotification = new NotificationSearch();
         $dataNotification = $searchNotification->search(Yii::$app->request->queryParams);
 
         // Por implementar consulta de inscipciones ya habilitadas
-        $modelEvent = Event::find()->where( ['status'=>10])->all();
+        $modelEvent = Event::find()
+            ->where(['status' => 10])
+            ->orderBy('begin_at')
+            ->limit(4)
+            ->all();
 
 
         return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
-            'modelEvent'=>$modelEvent,
+            'modelEvent' => $modelEvent,
             'searchInscription' => $searchInscription,
             'dataInscription' => $dataInscription,
             'searchNotification' => $searchNotification,
@@ -115,28 +122,30 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $modelRequest=Request::find()->where(['status'=>10])->all();
+        $modelRequest = Request::find()->where(['status' => self::STATUS_ACTIVE])->all();
 
         return $this->render('admAsocam', [
+            'ownInscriptions' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'activeUsers' => User::find()->where(['status' => 10])->count(),
             'activeEvents' => Event::find()->where(['status' => 10])->count(),
             'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'modelRequest'=>$modelRequest
+            'modelRequest' => $modelRequest
         ]);
 
     }
+
     /*
      * Modificaciones previas
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->can('user')) {
-            return $this->redirect(['admuser']);
-        } else if (Yii::$app->user->can('asocam')) {
+        if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
+        } elseif (Yii::$app->user->can('user')) {
+            return $this->redirect(['admuser']);
         } else {
             return $this->render('index', [
                 'modelEvent' => Event::find()->where(['status' => 10])->all(),
@@ -144,15 +153,15 @@ class SiteController extends Controller
         }
     }
 
-    public function actionEvent($id){
+    public function actionEvent($id)
+    {
         if (($modelEvent = Event::findOne($id)) !== null) {
 
-            return $this->render('event',[
+            return $this->render('event', [
                 'modelEvent' => $modelEvent,
 
             ]);
-        }
-    else {
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }

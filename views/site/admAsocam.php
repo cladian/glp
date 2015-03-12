@@ -48,7 +48,7 @@ if (!$hasProfile){
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left"><?= Html::a('Ver más..',['user/index'])?></span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -72,7 +72,7 @@ if (!$hasProfile){
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left"><?= Html::a('Ver más..',['event/index'])?></span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -96,7 +96,7 @@ if (!$hasProfile){
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left"><?= Html::a('Ver todas..',['incription/index'])?></span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -113,14 +113,14 @@ if (!$hasProfile){
                             <i style="font-size:5em;"class="glyphicon glyphicon-eye-open"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"><?= $activeUsers; ?></div>
-                            <div>Perfil</div>
+                            <div class="huge"><?= $ownInscriptions; ?></div>
+                            <div>Mis Inscripciones</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
+                        <span class="pull-left"><?= Html::a('Ver todas..',['site/admuser'])?></span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -131,7 +131,7 @@ if (!$hasProfile){
     </div>
 </div>
 
-<div class="col-xs-12 col-lg-8 col-md-8 col-md-8">
+<!--<div class="col-xs-12 col-lg-8 col-md-8 col-md-8">
     <div class="panel panel-primary">
       <div class="panel-heading">Inscripciones activas</div>
       <br>
@@ -139,7 +139,7 @@ if (!$hasProfile){
         <div class="inscription-index">
 
     
-    <?= GridView::widget([
+    <?/*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -160,19 +160,15 @@ if (!$hasProfile){
             // 'registertype_type',
             // 'registertype_assigment',
 
- /*          [                    // the owner name of the model
-                'attribute' => 'event_id',
-                'value' => $dataProvider->event->name,
-            ],*/
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]); */?>
     </div>
     </div>
 
 </div>
-</div>
+</div>-->
+
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
         <!-- /.panel -->
