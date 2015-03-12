@@ -311,4 +311,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+
+
+            $avatar = isset($this->profiles->photo) ? $this->profiles->photo : 'profile.png';
+
+
+        return Yii::$app->params['avatarFolder'] . $avatar;
+    }
 }
