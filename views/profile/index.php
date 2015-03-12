@@ -10,15 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Perfiles';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Crear Perfil ', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -45,5 +39,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+  </div>
+</div>
+<div class="profile-index">
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 </div>

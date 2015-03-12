@@ -10,15 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -39,4 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+  </div>
+</div>
+
+<div class="user-index">
+
+  
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+
+    </p>
+
+    
 </div>
