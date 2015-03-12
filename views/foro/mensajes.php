@@ -39,6 +39,16 @@
           </label>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <input type="radio" aria-label="...">
+            </span>
+            <input type="text" class="form-control" aria-label="...">
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -51,6 +61,3 @@
   </div>
 
 </div>
-
-
-
