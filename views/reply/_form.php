@@ -34,16 +34,20 @@ use app\models\Request;
 
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="panel panel-primary">
-        <div class="panel-heading">Historial de respuestas</div>
+
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-clock-o fa-fw"></i> Historial
+        </div>
+        <!-- /.panel-heading -->
         <div class="panel-body">
-            <ul class="bs_timeline">
+            <ul class="timeline">
                 <?php
                 $contador = 0;
 
                 foreach ($modelReply as $reply) {
-                    $clase = '';
+                    $clase = 'class=timeline-inverted';
                     if ($contador++ & 1)
                         $clase = 'class=timeline-right';
                     ?>
@@ -53,99 +57,26 @@ use app\models\Request;
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                              <!--  <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
-                                <p><small class="text-muted"><i class="fa fa-clock-o"></i> <?= Yii::$app->formatter->asDate($reply->created_at, 'long'); ?></small>
-                                </p>
+                                <!--  <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
+
+                                    <small class="text-muted"><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDate($reply->created_at, 'long'); ?>
+                                    </small>
+
                             </div>
                             <div class="timeline-body">
                                 <p><?= $reply->text; ?></p>
-                                <?= $reply->user->username ?>
+
+                                <span class="label label-success"><?= $reply->user->username ?></span>
                             </div>
                         </div>
                     </li>
-
-                  
                 <?php
                 }
                 ?>
-
-
-
-
-
-
-
-                <li>
-                    <div class="timeline-panel">
-                        <div class="timeline-copy">
-                            <h5 class="timeline-title">Responsive Timeline (w/ Bootstrap)</h5>
-
-                            <p style="margin-top: 14px;"><a
-                                    href="http://alexwhinfield.co.uk/responsive-css-timeline-twitter-bootstrap/"
-                                    title="Grab the source code"><span class="label label-success">Built by Alex Whinfield</span></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-badge"><i class="glyphicon glyphicon-envelope"></i></div>
-                </li>
-
-                <li class="timeline-right">
-                    <div class="timeline-panel">
-                        <div class="timeline-copy">
-                            <h5 class="timeline-title">Eiusmod Tempor Incididunt</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-badge warning"><i class="glyphicon glyphicon-user"></i></div>
-                </li>
-
-                <li class="timeline-right">
-                    <div class="timeline-panel">
-                        <div class="timeline-copy">
-                            <h5 class="timeline-title">Eiusmod Tempor Incididunt</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-badge warning"><i class="glyphicon glyphicon-user"></i></div>
-                </li>
-
-                <li class="timeline-right">
-                    <div class="timeline-panel">
-                        <div class="timeline-copy">
-                            <h5 class="timeline-title">Eiusmod Tempor Incididunt</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-badge warning"><i class="glyphicon glyphicon-user"></i></div>
-                </li>
-
-                <li class="timeline-right">
-                    <div class="timeline-panel">
-                        <div class="timeline-copy">
-                            <h5 class="timeline-title">Eiusmod Tempor Incididunt</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-badge warning"><i class="glyphicon glyphicon-user"></i></div>
-                </li>
-
-
             </ul>
         </div>
+        <!-- /.panel-body -->
     </div>
 
-
-
+</div>
 

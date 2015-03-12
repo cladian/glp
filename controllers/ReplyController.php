@@ -89,11 +89,12 @@ class ReplyController extends Controller
         $model->request_id=$id;
         $model->user_id=\Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+            //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+            return $this->redirect(['create', 'id' => $id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'modelReply'=>Reply::find()->where(['request_id'=>$id])->orderBy('created_at')->all(),
+                'modelReply'=>Reply::find()->where(['request_id'=>$id])->orderBy('created_at desc')->all(),
             ]);
         }
     }
