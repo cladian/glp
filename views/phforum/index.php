@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PhforumSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Phforums';
+$this->title = 'Foro';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="phforum-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Phforum', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Foro', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
             'begin_at',
             'end_at',
