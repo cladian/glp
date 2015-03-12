@@ -13,7 +13,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!--Pais-->
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
+
+    <div class="panel panel-primary">
+        <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
+        <div class="panel-footer">
+            <?= Html::a('Regresar', ['index'], ['class' => 'btn btn-default'])?>
+
+        </div>
+    </div>
+
+
 </div>
 <!--END Pais-->
 <!--Contenido-->
@@ -31,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <?= $model->getStatus($model->status);?>
-                    <?php $estado=$model->getStatus($model->status);?>
+                    <?= $model->getStatus($model->status); ?>
+                    <?php $estado = $model->getStatus($model->status); ?>
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
@@ -48,9 +57,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             'city',
                             'year',
                             'status',
-/*                            [   'attribute'=>'status',
-                                'value'=>function($model){return $model->getStatus($estado);}
-                            ]*/
+                            /*                            [   'attribute'=>'status',
+                                                            'value'=>function($model){return $model->getStatus($estado);}
+                                                        ]*/
                         ],
                     ]) ?>
                 </div>

@@ -100,7 +100,7 @@ class RequestController extends Controller
         $model->inscription_id=$inscription_id;
         $model->status=self::STATUS_ACTIVE;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['reply/create', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,
