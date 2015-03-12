@@ -12,5 +12,13 @@ class ForoController extends \yii\web\Controller
     {
         return $this->render('index');
     }
+    public function actionTopic()
+    {
+        return $this->render('topic');
+    }
+    public function actionMultimedia()
+    {
+        return $this->render('multimedia');
+    }
 
 }

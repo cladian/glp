@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 ?>
-<?= Html::a('<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Visualizar Inscripción', ['inscription/view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn-primary']) ?>
+<?= Html::a('<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Visualizar Inscripción', ['inscription/viewown', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn-primary']) ?>
 <hr>
 <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
 

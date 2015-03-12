@@ -155,9 +155,16 @@ use kartik\widgets\FileInput;
 END Año--> 
     <!--    --><? //= $form->field($model, 'status')->textInput() ?>
 
+<<<<<<< HEAD
+
+    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+
+
+=======
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
     </div>
+>>>>>>> daniel
     <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
     <!---->
     <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>

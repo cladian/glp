@@ -43,7 +43,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-<div >
+<div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
         <div class=" col-xs-6 col-lg-3 col-md-6">
@@ -205,10 +205,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     'trueLabel' => 'ACTIVO',
                     'falseLabel' => 'INACTIVO'
                 ],
-
-
             ];
-
             echo \kartik\grid\GridView::widget([
                 'dataProvider' => $dataInscription,
                 'filterModel' => $searchInscription,
@@ -229,106 +226,53 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 /*'showPageSummary' => true,*/
                 'persistResize' => false,
                 'exportConfig' => true,
-
             ]);
-
-
             ?>
         </div>
     </div>
-
 </div>
-
-
 <div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
 
     <!-- /.panel -->
     <div class="chat-panel panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
-            Notificaciones
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-                <ul class="dropdown-menu slidedown">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-check-circle fa-fw"></i> Available
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-times fa-fw"></i> Busy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-clock-o fa-fw"></i> Away
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            Próximos eventos
+
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <ul class="chat">
-                <li class="left clearfix">
-                    <?php foreach ($modelEvent as $event) { ?>
-                        <div class="panel panel-info">
-                            <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
 
-                                <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png'); ?>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapse<?= $event->id; ?>" aria-expanded="false"
-                                   aria-controls="collapse<?= $event->id; ?>">
-                                    <?= $event->name; ?>,
-                                    <!--<i><? /*= $event->city; */ ?>-<? /*= $event->country->name; */ ?></i>-->
-
-                                </a>
-
-                                <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
-
+                <?php foreach ($modelEvent as $event) { ?>
+                    <li class="left clearfix">
+                        <span class="chat-img pull-left">
+                            <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font"> <?= $event->name; ?></strong>
+                                <!--<small class="pull-right text-muted">
+                                    <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                </small>-->
                             </div>
-                            <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="heading<?= $event->id; ?>">
-                                <div class="panel-body">
-
-                                    <p><?= $event->short_description; ?></p>
-                                    <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
-                                    <address>
-                                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                        <br>
-                                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                        <br>
-                                        <strong>Inversión: </strong><?= $event->cost; ?> USD
-                                    </address>
-                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
-                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-lg btn-block']) ?>
-
-
-                                </div>
-                            </div>
+                            <p>
+                            <address>
+                                <!--<strong><? /*= $event->city . ', ' . $event->country->name; */ ?></strong><br>-->
+                                <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+                                <br>
+                                <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+                                <br>
+                                <strong>Inversión: </strong><?= $event->cost; ?> USD
+                            </address>
+                            </p>
+                            <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
+                            <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-xs ']) ?>
                         </div>
-                    <?php } ?>
-                </li>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
-
-
-
         <!-- /.panel-body -->
         <div class="panel-footer">
             <div class="input-group">
