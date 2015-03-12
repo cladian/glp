@@ -54,7 +54,7 @@ use kartik\widgets\FileInput;
     <div class="col-sm-3 col-xs-6">
         <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
     </div>
-    <div class="col-sm-3 col-xs-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?= $form->field($model, 'begin_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -106,7 +106,7 @@ use kartik\widgets\FileInput;
             ]
         ]); ?>
     </div>
-
+<hr>
     <div class="col-sm-9 col-xs-6">
         <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
