@@ -151,6 +151,14 @@ $this->title = 'My Yii Application';
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    </ul>
+  </div>
+</div>
+</div>
+    
+>>>>>>> origin/master
 
 
     <?= \Yii::$app->params['adminEmail']; ?>
