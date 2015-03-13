@@ -11,8 +11,10 @@ use app\models\Inscription;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="request-form">
-
+<div class="panel panel-primary">
+  <div class="panel-heading">Crear Solicitudes</div>
+  <div class="panel-body">
+    
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'question')->textarea(['rows' => 6]) ?>
@@ -33,6 +35,10 @@ use app\models\Inscription;
 //        ArrayHelper::map(Inscription::find()->all(), 'id', 'id'),
 //        ['prompt' => 'Seleccione']
 //    ) ?>
+  </div>
+</div>
+<div class="request-form">
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
