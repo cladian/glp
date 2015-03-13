@@ -4,6 +4,8 @@ return [
     'adminEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
     'avatarFolder' => 'imgs/avatar/',
+    'foroDocs' => 'upload/docs/',
+    'foroImgs' => 'upload/imgs/',
     'eventFolder' => 'imgs/event/',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Crear',
