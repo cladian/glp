@@ -210,36 +210,8 @@ if (!$hasProfile) {
                         </div>
                     </li>
 
-                    <?php
-                    /*
-                                        $modelReply = \app\models\Reply::find()->where(['request_id' => $request->id])->all();
-                                        foreach ($modelReply as $reply) {
-                                            */
-                    ?><!--
-                        <li class="left clearfix">
-                                    <span class="chat-img pull-right">
-                                    <? /*= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); */ ?>
-                                    </span>
 
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="green-font"><? /*= $reply->user->username */ ?></strong>
-                                    <small class="pull-right text-muted">
-
-                                    </small>
-                                </div>
-                                <p>
-                                    <? /*= $reply->text; */ ?>
-
-                                </p>
-
-
-                            </div>
-                        </li>
-                    --><?php
-                    /*
-
-                                        }*/
+                   <?php
                 }
                 ?>
 
@@ -252,10 +224,7 @@ if (!$hasProfile) {
                 <button class="btn btn-warning btn-md" id="btn-chat">
                     Ver todas
                 </button>
-                <!-- <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                 <span class="input-group-btn">
 
-                 </span>-->
             </div>
         </div>
         <!-- /.panel-footer -->
@@ -321,6 +290,7 @@ if (!$hasProfile) {
     <!-- /.panel .chat-panel -->
 
 </div>
+
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
     <!-- /.panel -->

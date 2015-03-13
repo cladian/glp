@@ -107,6 +107,7 @@ class SiteController extends Controller
             ->all();
 
 
+
         return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'modelEvent' => $modelEvent,
@@ -114,6 +115,8 @@ class SiteController extends Controller
             'dataInscription' => $dataInscription,
             'searchNotification' => $searchNotification,
             'dataNotification' => $dataNotification,
+            'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+
         ]);
     }
 
@@ -136,7 +139,7 @@ class SiteController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'modelRequest' => $modelRequest,
-            'modelRecentInscription'=>Inscription::find()->orderBy('created_at desc')->limit(5)->all(),
+            'modelRecentInscription'=>Inscription::find()->orderBy('created_at desc')->limit(10)->all(),
         ]);
 
     }

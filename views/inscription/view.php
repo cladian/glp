@@ -28,10 +28,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <!--Visualización información del evento-->
 
-    <div class="panel panel-primary">
+    <div class="panel panel-green">
         <?= $this->render('/event/_detailinfo', ['model' => $model->event]) ?>
         <div class="panel-footer">
             <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+
         </div>
     </div>
 
@@ -47,7 +48,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+        <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
@@ -68,7 +69,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
                 <h4 class="panel-title">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
@@ -90,7 +91,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
