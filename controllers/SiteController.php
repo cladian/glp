@@ -107,6 +107,7 @@ class SiteController extends Controller
             ->all();
 
 
+
         return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'modelEvent' => $modelEvent,
@@ -114,6 +115,8 @@ class SiteController extends Controller
             'dataInscription' => $dataInscription,
             'searchNotification' => $searchNotification,
             'dataNotification' => $dataNotification,
+            'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+
         ]);
     }
 
@@ -122,7 +125,10 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $modelRequest = Request::find()->where(['status' => self::STATUS_ACTIVE])->all();
+        $modelRequest = Request::find()
+            ->where(['status' => self::STATUS_ACTIVE])
+            ->orderBy('created_at desc')
+            ->all();
 
         return $this->render('admAsocam', [
             'ownInscriptions' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
@@ -132,7 +138,8 @@ class SiteController extends Controller
             'activeInscriptions' => Inscription::find()->where(['status' => self::STATUS_ACTIVE])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'modelRequest' => $modelRequest
+            'modelRequest' => $modelRequest,
+            'modelRecentInscription'=>Inscription::find()->orderBy('created_at desc')->limit(10)->all(),
         ]);
 
     }

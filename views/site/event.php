@@ -12,11 +12,30 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
     <div class="row">
-        <!--Pais-->
+
+        <!--Visualización información del evento-->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
+            <div class="panel panel-primary">
+                <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
+                <div class="panel-footer">
+                    <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+                    <?php
+                    // solo cuando es visitante, no registrado
+                    if (Yii::$app->user->isGuest) {
+                        echo Html::a('Inscribirme', ['site/signup/'], ['class' => 'btn btn-success pull-right']);
+
+                    } else {
+
+                        echo Html::a('Inscribirme', ['inscription/createown/', 'id' => $modelEvent->id], ['class' => 'btn btn-success pull-right ']);
+
+                    }?>
+
+                </div>
+            </div>
         </div>
-        <!--END Pais-->
+        <!--END Visualización evento-->
+
+
         <!--Gestión de Proyectos-->
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="panel panel-primary"> 

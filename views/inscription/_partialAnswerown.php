@@ -34,15 +34,24 @@ use kartik\editable\Editable;
             }
 
         ],
+
         [
             'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
             'attribute' => 'reply',
-            'value' => 'reply',
-
+            /*'readonly' => function ($model, $key, $index, $widget) {
+                return (!$model->status == 10); // do not allow editing of inactive records
+            },*/
+            'editableOptions' => [
+                'header' => 'Nombre',
+                'size' => 'md',
+                'inputType' => \kartik\editable\Editable::INPUT_TEXTAREA,
+                'class' => 'text-danger',
+                'format' => Editable::FORMAT_BUTTON,
+                /*'options' => [
+                    'pluginOptions' => ['min' => 0, 'max' => 5000]
+                ]*/
+            ],
         ],
-
-
         [
             'class' => '\kartik\grid\BooleanColumn',
             'attribute' => 'status',

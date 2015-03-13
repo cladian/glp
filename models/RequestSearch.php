@@ -68,4 +68,33 @@ class RequestSearch extends Request
 
         return $dataProvider;
     }
+    public function searchByInscription($params,$id)
+    {
+        $query = Request::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'inscription_id' => $id,
+        ]);
+
+        $query->andFilterWhere(['like', 'question', $this->question])
+            ->andFilterWhere(['like', 'answer', $this->answer]);
+
+        return $dataProvider;
+    }
 }

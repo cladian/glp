@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Request;
 use Yii;
 use app\models\Reply;
 use app\models\ReplySearch;
@@ -33,7 +34,7 @@ class ReplyController extends Controller
                         'roles' => ['sysadmin'],
                     ],
                     [
-                        'actions' => ['create'],
+                        'actions' => ['create','index','view'],
                         'allow' => true,
                         'roles' => ['asocam'],
                     ],
@@ -81,15 +82,19 @@ class ReplyController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    // Pasa como parametro el id de la Solicitud
+    public function actionCreate($id)
     {
         $model = new Reply();
-
+        $model->request_id=$id;
+        $model->user_id=\Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+            //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+            return $this->redirect(['create', 'id' => $id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'modelReply'=>Reply::find()->where(['request_id'=>$id])->orderBy('created_at desc')->all(),
             ]);
         }
     }

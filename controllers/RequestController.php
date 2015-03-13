@@ -29,12 +29,12 @@ class RequestController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','create','update','delete'],
+                        'actions' => ['index','create','update','delete','view'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['createown','view'],
+                        'actions' => ['createown','view','index'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
@@ -100,7 +100,7 @@ class RequestController extends Controller
         $model->inscription_id=$inscription_id;
         $model->status=self::STATUS_ACTIVE;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['reply/create', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -119,7 +119,7 @@ class RequestController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['site/index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

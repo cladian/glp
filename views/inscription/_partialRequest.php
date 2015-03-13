@@ -25,13 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'question:ntext',
-            'answer:ntext',
+        //    'answer:ntext',
             'status',
 //            'created_at',
             // 'updated_at',
-            // 'inscription_id',
+           // 'inscription_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+
+            /*['class' => 'yii\grid\ActionColumn'],*/
         ],
     ]); ?>
 <div class="panel-body">

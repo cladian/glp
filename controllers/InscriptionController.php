@@ -23,6 +23,7 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 
+
 // links and alerts
 
 
@@ -40,16 +41,15 @@ class InscriptionController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete','detail','subcat','createown','updateown','detailown'],
-                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'only' => ['index', 'view', 'create', 'update', 'delete', 'detail', 'subcat', 'createown', 'updateown', 'detailown', 'viewown'],
                 'rules' => [
                     [
-                        'actions' => ['index','create','update','delete','detail'],
+                        'actions' => ['index', 'create', 'update', 'delete', 'detail', 'view'],
                         'allow' => true,
-                        'roles' => ['asocam','sysadmin'],
+                        'roles' => ['asocam', 'sysadmin'],
                     ],
                     [
-                        'actions' => ['createown','updateown','subcat','detailown','view'],
+                        'actions' => ['createown', 'updateown', 'subcat', 'detailown', 'viewown'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
@@ -92,7 +92,6 @@ class InscriptionController extends Controller
         $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
 
 
-
         $searchModelEventanswer = new EventanswerSearch();
         $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
 
@@ -100,7 +99,11 @@ class InscriptionController extends Controller
         $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
 
         $searchModelRequest = new RequestSearch();
-        $dataProviderRequest = $searchModelRequest->search(Yii::$app->request->queryParams, $id);
+        $dataProviderRequest = $searchModelRequest->searchByInscription(Yii::$app->request->queryParams, $id);
+
+        $modelProfile = Profile::find()
+            ->where(['user_id' => $model->user_id])
+            ->one();
 
         // Verificación de funcion es editables
         if (Yii::$app->request->post('hasEditable')) {
@@ -159,7 +162,94 @@ class InscriptionController extends Controller
             'dataProviderAnswer' => $dataProviderAnswer,
             'searchModelRequest' => $searchModelRequest,
             'dataProviderRequest' => $dataProviderRequest,
+            'modelProfile'=>$modelProfile
         ]);
+    }
+
+    public function actionViewown($id)
+    {
+        //Validar Pertenencia de Inscripción
+        if ($this->actionOwn($id, Yii::$app->user->id)) {
+
+
+            $model = $this->findModel($id);
+            $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
+
+
+            $searchModelEventanswer = new EventanswerSearch();
+            $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
+
+            $searchModelAnswer = new AnswerSearch();
+            $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
+
+            $searchModelRequest = new RequestSearch();
+            $dataProviderRequest = $searchModelRequest->searchByInscription(Yii::$app->request->queryParams, $id);
+
+            $modelProfile = Profile::find()
+                ->where(['user_id' => Yii::$app->user->id])
+                ->one();
+
+            // Verificación de funcion es editables
+            if (Yii::$app->request->post('hasEditable')) {
+
+                // Verificar que modelo se esta enviando
+                if (isset($_POST['Eventanswer'])) {
+
+                    $eventanswerId = Yii::$app->request->post('editableKey');
+                    $modelEventanswer = Eventanswer::findOne($eventanswerId);
+                    $post = [];
+                    $posted = current($_POST['Eventanswer']);
+                    $post['Eventanswer'] = $posted;
+                    if ($modelEventanswer->load($post)) {
+                        $modelEventanswer->status = self::STATUS_ACTIVE;
+                        if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
+                            $modelEventanswer->status = self::STATUS_ACTIVE;
+                        } else {
+                            $modelEventanswer->reply = NULL;
+                        }
+                        $modelEventanswer->save();
+
+                    }
+                }
+
+                if (isset($_POST['Answer'])) {
+                    $answerId = Yii::$app->request->post('editableKey');
+                    $modelAnswer = Answer::findOne($answerId);
+                    $post = [];
+                    $posted = current($_POST['Answer']);
+                    $post['Answer'] = $posted;
+                    if ($modelAnswer->load($post)) {
+                        $modelAnswer->status = self::STATUS_ACTIVE;
+                        if ((isset($posted['reply'])) && (strlen($posted['reply']) > 0)) {
+                            $modelAnswer->status = self::STATUS_ACTIVE;
+                        } else {
+                            $modelAnswer->reply = NULL;
+                        }
+                        $modelAnswer->save();
+
+                    }
+                }
+                $output = '';
+                $out = Json::encode(['output' => $output, 'message' => '']);
+                echo $out;
+                return;
+
+            }
+
+            return $this->render('viewown', [
+                'model' => $model,
+                'modelLogistic' => $modelLogistic,
+                'searchModelEventanswer' => $searchModelEventanswer,
+                'dataProviderEventanswer' => $dataProviderEventanswer,
+                'searchModelAnswer' => $searchModelAnswer,
+                'dataProviderAnswer' => $dataProviderAnswer,
+                'searchModelRequest' => $searchModelRequest,
+                'dataProviderRequest' => $dataProviderRequest,
+                'modelProfile'=>$modelProfile
+            ]);
+        }
+        throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);
+
     }
 
     /**
@@ -199,7 +289,7 @@ class InscriptionController extends Controller
         if (Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->count() > 0) {
             // Opciones disponibles para loe errores: success - info - warning - danger
             \Yii::$app->getSession()->setFlash('danger', 'Usted dispone de una inscripción previa al evento, por favor complete la información de éste registro');
-            return $this->redirect(['inscription/view', 'id' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->one()->id]);
+            return $this->redirect(['inscription/viewown', 'id' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->one()->id]);
         }
 
         // Si es una inscripción nueva
@@ -237,7 +327,7 @@ class InscriptionController extends Controller
             // Almacenamiento de registros EventAnswers en Blanco
             // Pendiente
             //
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -268,21 +358,24 @@ class InscriptionController extends Controller
 
     public function actionUpdateown($id)
     {
-        // búsqueda de modelo por dos parámetros
-        $model = $this->findModelown($id, Yii::$app->user->id);
+        if ($this->actionOwn($id, Yii::$app->user->id)) {
+            // búsqueda de modelo por dos parámetros
+            $model = $this->findModelown($id, Yii::$app->user->id);
 
-        if ($model->load(Yii::$app->request->post()) ) {
+            if ($model->load(Yii::$app->request->post())) {
 
-            $model->complete_quiz=$model->getCountAnswers();
-            $model->complete_eventquiz=$model->getCountEventAnswers();
-            $model->complete_logistic=$model->getCountLogistic();
-            $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('updateown', [
-                'model' => $model,
-            ]);
+                $model->complete_quiz = $model->getCountAnswers();
+                $model->complete_eventquiz = $model->getCountEventAnswers();
+                $model->complete_logistic = $model->getCountLogistic();
+                $model->save();
+                return $this->redirect(['viewown', 'id' => $model->id]);
+            } else {
+                return $this->render('updateown', [
+                    'model' => $model,
+                ]);
+            }
         }
+        throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);
     }
 
     /**
@@ -348,6 +441,7 @@ class InscriptionController extends Controller
 
 
     }
+
     // Retorno de info para Grid Administrador
     public function actionDetail()
     {
@@ -358,21 +452,22 @@ class InscriptionController extends Controller
                 ->where(['inscription_id' => $inscriptionId])
                 ->one();
 
-            $modelProfile=Profile::find()
-                ->where(['user_id'=>$modelLogistic->inscription->user_id])
+            $modelProfile = Profile::find()
+                ->where(['user_id' => $modelLogistic->inscription->user_id])
                 ->one();
 
             return $this->renderPartial('_detail', [
                 'modelLogistic' => $modelLogistic,
-                'modelProfile'=>$modelProfile
+                'modelProfile' => $modelProfile
             ]);
         } else {
             return '<div class="alert alert-danger">No data found</div>';
         }
     }
-/*
- * Solo para llamadas de usuario
- */
+
+    /*
+     * Solo para llamadas de usuario
+     */
     public function actionDetailown()
     {
         if (isset($_POST['expandRowKey'])) {
@@ -389,5 +484,13 @@ class InscriptionController extends Controller
         } else {
             return '<div class="alert alert-danger">No data found</div>';
         }
+    }
+
+    /*
+     * Verificación si la inscripción le pertenece al usuario que lo solicita
+     */
+    public function actionOwn($id, $user)
+    {
+        return Inscription::find()->where(['user_id' => $user, 'id' => $id])->count();
     }
 }

@@ -43,7 +43,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-<div >
+<div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
         <div class=" col-xs-6 col-lg-3 col-md-6">
@@ -146,96 +146,62 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <!--END Panel-->
     </div>
 </div>
-<div class="col-lg-8">
+<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
-    <div class="panel panel-primary">
+    <!-- /.panel  CENTRAL-->
+    <div class="chat-panel panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis
-                incripciones</h3>
+            <i class="fa fa-comments fa-fw"></i>
+            Mis inscripciones
         </div>
+        <!-- /.panel-heading -->
         <div class="panel-body">
-            <?php
-            $gridColumns = [
-                // the name column configuration
-                [
-                    'class' => '\kartik\grid\SerialColumn',
-                    'contentOptions' => ['class' => 'kartik-sheet-style'],
-                ],
-                [   //Columna para expander detalles
-                    'class' => 'kartik\grid\ExpandRowColumn',
-                    'value' => function ($model, $key, $index, $column) {
-                        return \kartik\grid\GridView::ROW_COLLAPSED;
-                    },
-                    'detailUrl' => Url::to(['inscription/detailown']),
-                    // 'detailRowCssClass' => \kartik\grid\GridView::TYPE_DEFAULT,
-                    'pageSummary' => false,
-                ],
-                [
-                    'attribute' => 'event_id',
-                    'value' => function ($data) {
-                        return $data->event->name;
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>#</th>
+                        <th>Evento</th>
+                        <th>Usuario</th>
+
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $contador = 1;
+                    foreach ($modelRecentInscription as $recent) {
+                        ?>
+                        <tr>
+                            <td><?= $contador++; ?></td>
+                            <td><?= substr($recent->event->name, 0, 15) . '...'; ?></td>
+
+                            <td><?= $recent->user->username; ?></td>
+                            <!--<td> <? /*= Yii::$app->formatter->asDate($recent->created_at, 'short'); */ ?></td>-->
+                            <td>
+
+                                <?= Html::a(' Ver', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
+
+
+                            </td>
+                        </tr>
+                    <?php
                     }
-                ],
-                /* [
-                     'attribute' => 'user_id',
-                     'value' => function ($data) {
-                         return $data->user->username;
-                     }  'complete_logistic',
-                         'complete_eventquiz',
-                        'complete_quiz',
-                 ],*/
-                /*                    [
-                                        'attribute' => 'created_at',
-                                    ],*/
-                [
-                    'attribute' => 'created_at',
-                ],
-                /*                    [
-                                        'attribute' => 'complete_logistic',
-                                    ],
-                                    [
-                                        'attribute' => 'complete_eventquiz',
-                                    ],
-                                    [
-                                        'attribute' => 'complete_quiz',
-                                    ],*/
-                [
-                    'class' => '\kartik\grid\BooleanColumn',
-                    'attribute' => 'status',
-                    'trueLabel' => 'ACTIVO',
-                    'falseLabel' => 'INACTIVO'
-                ],
+                    ?>
 
-
-            ];
-
-            echo \kartik\grid\GridView::widget([
-                'dataProvider' => $dataInscription,
-                'filterModel' => $searchInscription,
-                'columns' => $gridColumns,
-                'pjax' => true, // pjax is set to always true for this demo
-                // set your toolbar
-                'toolbar' => [
-
-                    '{export}',
-                    '{toggleData}',
-                ],
-                'bordered' => true,
-                'resizableColumns' => true,
-                'striped' => true,
-                'condensed' => true,
-                'responsive' => true,
-                'hover' => true,
-                /*'showPageSummary' => true,*/
-                'persistResize' => false,
-                'exportConfig' => true,
-
-            ]);
-
-
-            ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <?= Html::a('Ver todas las inscripciones', ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
+        </div>
+        <!-- /.panel-footer -->
     </div>
+    <!-- /.panel .chat-panel -->
 
 </div>
 
@@ -246,89 +212,43 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="chat-panel panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
-            Notificaciones
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-                <ul class="dropdown-menu slidedown">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-check-circle fa-fw"></i> Available
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-times fa-fw"></i> Busy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-clock-o fa-fw"></i> Away
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            Próximos eventos
+
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <ul class="chat">
-                <li class="left clearfix">
-                    <?php foreach ($modelEvent as $event) { ?>
-                        <div class="panel panel-info">
-                            <div class="panel-heading" role="tab" id="heading<?= $event->id; ?>">
 
-                                <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png'); ?>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapse<?= $event->id; ?>" aria-expanded="false"
-                                   aria-controls="collapse<?= $event->id; ?>">
-                                    <?= $event->name; ?>,
-                                    <!--<i><? /*= $event->city; */ ?>-<? /*= $event->country->name; */ ?></i>-->
+                <?php foreach ($modelEvent as $event) { ?>
+                    <li class="left clearfix">
+                        <span class="chat-img pull-left">
+                            <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
+                        </span>
 
-                                </a>
-
-                                <small><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?></small>
-
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font"> <?= $event->name; ?></strong>
+                                <!--<small class="pull-right text-muted">
+                                    <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                </small>-->
                             </div>
-                            <div id="collapse<?= $event->id; ?>" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="heading<?= $event->id; ?>">
-                                <div class="panel-body">
-
-                                    <p><?= $event->short_description; ?></p>
-                                    <!-- <p><?php /*echo $timeDiff;*/ ?></p>-->
-                                    <address>
-                                        <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
-                                        <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                        <br>
-                                        <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                        <br>
-                                        <strong>Inversión: </strong><?= $event->cost; ?> USD
-                                    </address>
-                                    <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
-                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-lg btn-block']) ?>
-
-
-                                </div>
-                            </div>
+                            <p>
+                            <address>
+                                <!--<strong><? /*= $event->city . ', ' . $event->country->name; */ ?></strong><br>-->
+                                <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+                                <br>
+                                <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+                                <br>
+                                <strong>Inversión: </strong><?= $event->cost; ?> USD
+                            </address>
+                            </p>
+                            <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
+                            <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-xs ']) ?>
                         </div>
-                    <?php } ?>
-                </li>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
-
-
-
         <!-- /.panel-body -->
         <div class="panel-footer">
             <div class="input-group">
@@ -347,5 +267,106 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <!-- /.panel .chat-panel -->
 
 </div>
+
+<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
+
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-green">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Solicitudes por atender
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <ul class="chat">
+                <?php
+                // $modelRequest=\app\models\Request::find()
+                foreach ($modelRecentInscription as $inscription) {
+
+                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id,'status'=>1])->all() as $request) {
+                        ?>
+                        <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                      <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                    </span>
+
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="green-font"><?= $request->inscription->user->username ?></strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
+                                    </small>
+                                </div>
+                                <p>
+                                    <?= $request->question; ?>
+
+
+                                </p>
+
+
+                                <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+
+
+                            </div>
+                        </li>
+                        <?php
+                        $modelReply=\app\models\Reply::findAll(['request_id' => $request->id]);
+                        foreach ($modelReply as $reply) {
+                            ?>
+                            <li class="right ">
+                                    <span class="chat-img pull-right">
+                                        <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                    </span>
+
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+
+                                        <strong class="pull-right primary-font"><?= $reply->user->username ?></strong>
+                                    </div>
+                                    <p>
+                                        <?= $reply->text; ?>
+                                    </p>
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($reply->created_at, 'long'); ?>
+                                    </small>
+                                </div>
+                            </li>
+                            <?php
+
+                        }
+                        ?>
+
+
+                    <?php
+                    }
+
+
+                    ?>
+
+
+
+                <?php
+                }
+                ?>
+
+
+            </ul>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <div class="input-group">
+                <button class="btn btn-warning btn-md" id="btn-chat">
+                    Ver todas
+                </button>
+
+            </div>
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+
+</div>
+
+
 
 
