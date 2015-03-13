@@ -10,12 +10,12 @@ $this->title = 'Crear Perfil';
 $this->params['breadcrumbs'][] = ['label' => 'Perfiles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_formown', [
+<div class="panel panel-primary">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+      <?= $this->render('_formown', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>
