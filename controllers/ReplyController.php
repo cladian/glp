@@ -36,7 +36,7 @@ class ReplyController extends Controller
                     [
                         'actions' => ['create','index','view'],
                         'allow' => true,
-                        'roles' => ['asocam'],
+                        'roles' => ['asocam','user'],
                     ],
 
                 ],
