@@ -65,7 +65,9 @@ class Topic extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['status', 'user_id', 'phforum_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['user_id', 'phforum_id'], 'required']
+            [['user_id', 'phforum_id'], 'required'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -76,12 +78,12 @@ class Topic extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Content',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'user_id' => 'User ID',
-            'phforum_id' => 'Phforum ID',
+            'content' => 'Contenido',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
+            'user_id' => 'Usuario',
+            'phforum_id' => 'Fóro',
         ];
     }
 
