@@ -4,6 +4,51 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.img-slide{
+    max-width: 100%;
+}
+ 
+/*css asocam*/
+ .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
+ background-color: #aad04b;   
+ }
+ .navbar-inverse .navbar-nav .open .dropdown-menu > li > a{
+    color: #fff;
+ }
+ .navbar-inverse .navbar-toggle{
+    border-color:none;
+ }
+.navbar-inverse{
+    background-color: #005596;
+    border-bottom-color: #005596;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-top-color: #005596;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a{
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
+    background-color: #aad04b;
+}
+.dropdown-menu{
+    background-color:rgba(19, 90, 151, 0.8);
+}
+.dropdown-menu > li > a{
+    color:#fff;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: #aad04b;
+    color: #fff;
+}
+/*END css asocam*/
+
+
+
 .chat {
     margin: 0;
     padding: 0;
