@@ -54,6 +54,7 @@ class TopicController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+
         ]);
     }
 
@@ -64,6 +65,7 @@ class TopicController extends Controller
      */
     public function actionCreate()
     {
+
         $model = new Topic();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
