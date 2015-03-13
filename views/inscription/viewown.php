@@ -77,7 +77,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <?= $this->render('_partialInscription', ['model' => $model]) ?>
+                    <?= $this->render('_partialInscription', ['model' => $model,'modelProfile'=>$modelProfile]) ?>
                 </div>
                 <div class="panel-footer">
                     <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>

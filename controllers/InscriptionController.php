@@ -99,7 +99,11 @@ class InscriptionController extends Controller
         $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
 
         $searchModelRequest = new RequestSearch();
-        $dataProviderRequest = $searchModelRequest->search(Yii::$app->request->queryParams, $id);
+        $dataProviderRequest = $searchModelRequest->searchByInscription(Yii::$app->request->queryParams, $id);
+
+        $modelProfile = Profile::find()
+            ->where(['user_id' => $model->user_id])
+            ->one();
 
         // Verificación de funcion es editables
         if (Yii::$app->request->post('hasEditable')) {
@@ -158,6 +162,7 @@ class InscriptionController extends Controller
             'dataProviderAnswer' => $dataProviderAnswer,
             'searchModelRequest' => $searchModelRequest,
             'dataProviderRequest' => $dataProviderRequest,
+            'modelProfile'=>$modelProfile
         ]);
     }
 
@@ -178,7 +183,11 @@ class InscriptionController extends Controller
             $dataProviderAnswer = $searchModelAnswer->searchByAnswer(Yii::$app->request->queryParams, $id);
 
             $searchModelRequest = new RequestSearch();
-            $dataProviderRequest = $searchModelRequest->search(Yii::$app->request->queryParams, $id);
+            $dataProviderRequest = $searchModelRequest->searchByInscription(Yii::$app->request->queryParams, $id);
+
+            $modelProfile = Profile::find()
+                ->where(['user_id' => Yii::$app->user->id])
+                ->one();
 
             // Verificación de funcion es editables
             if (Yii::$app->request->post('hasEditable')) {
@@ -236,6 +245,7 @@ class InscriptionController extends Controller
                 'dataProviderAnswer' => $dataProviderAnswer,
                 'searchModelRequest' => $searchModelRequest,
                 'dataProviderRequest' => $dataProviderRequest,
+                'modelProfile'=>$modelProfile
             ]);
         }
         throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);

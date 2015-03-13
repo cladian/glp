@@ -25,7 +25,11 @@ use app\models\Request;
 
             </div>
             <div class="panel-footer">
-                <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+               <span class="pull-right">
+                   <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+               </span>
+                <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+
             </div>
             <?php ActiveForm::end(); ?>
         </div>

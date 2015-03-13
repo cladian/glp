@@ -135,7 +135,8 @@ class SiteController extends Controller
             'activeInscriptions' => Inscription::find()->where(['status' => self::STATUS_ACTIVE])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'modelRequest' => $modelRequest
+            'modelRequest' => $modelRequest,
+            'modelRecentInscription'=>Inscription::find()->orderBy('created_at desc')->limit(5)->all(),
         ]);
 
     }
