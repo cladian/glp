@@ -204,40 +204,14 @@ if (!$hasProfile) {
                             </p>
 
 
-                            <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?> -
-                            <?= Html::a('Cerrar', ['reply/delete', 'id' => $request->inscription->id], ['class' => 'btn btn-warning btn-xs pull-right']) ?>
+                            <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+                            -
+                            <?= Html::a('Cerrar', ['request/update', 'id' => $request->id], ['class' => 'btn btn-warning btn-xs pull-right']) ?>
                         </div>
                     </li>
 
-                    <?php
-/*
-                    $modelReply = \app\models\Reply::find()->where(['request_id' => $request->id])->all();
-                    foreach ($modelReply as $reply) {
-                        */?><!--
-                        <li class="left clearfix">
-                                    <span class="chat-img pull-right">
-                                    <?/*= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); */?>
-                                    </span>
 
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="green-font"><?/*= $reply->user->username */?></strong>
-                                    <small class="pull-right text-muted">
-
-                                    </small>
-                                </div>
-                                <p>
-                                    <?/*= $reply->text; */?>
-
-                                </p>
-
-
-                            </div>
-                        </li>
-                    --><?php
-/*
-
-                    }*/
+                   <?php
                 }
                 ?>
 
@@ -250,10 +224,7 @@ if (!$hasProfile) {
                 <button class="btn btn-warning btn-md" id="btn-chat">
                     Ver todas
                 </button>
-                <!-- <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                 <span class="input-group-btn">
 
-                 </span>-->
             </div>
         </div>
         <!-- /.panel-footer -->
@@ -267,32 +238,59 @@ if (!$hasProfile) {
     <div class="chat-panel panel panel-green">
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
-           xxxxxxx
+            Inscripciones Recientes
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <ul class="chat">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>#</th>
+                        <th>Evento</th>
+                        <th>Usuario</th>
+
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $contador = 1;
+                    foreach ($modelRecentInscription as $recent) {
+                        ?>
+                        <tr>
+                            <td><?= $contador++; ?></td>
+                            <td><?= substr($recent->event->name, 0, 15) . '...'; ?></td>
+
+                            <td><?= $recent->user->username; ?></td>
+                            <!--<td> <? /*= Yii::$app->formatter->asDate($recent->created_at, 'short'); */ ?></td>-->
+                            <td>
+
+                                    <?= Html::a(' Ver', ['inscription/view','id'=>$recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
 
 
-            </ul>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <div class="input-group">
-                <button class="btn btn-warning btn-md" id="btn-chat">
-                    Ver todas
-                </button>
-                <!-- <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                 <span class="input-group-btn">
-
-                 </span>-->
-            </div>
+            <?= Html::a('Ver todas las inscripciones', ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
         <!-- /.panel-footer -->
     </div>
     <!-- /.panel .chat-panel -->
 
 </div>
+
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
     <!-- /.panel -->
@@ -303,22 +301,57 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <ul class="chat">
-
-
-            </ul>
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                </a>
+                <!--                <a href="#" class="list-group-item">
+                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                                    </span>
+                                </a>-->
+                <!--                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Payment Received
+                                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                                    </span>
+                                </a>-->
+            </div>
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <div class="input-group">
-                <button class="btn btn-warning btn-md" id="btn-chat">
-                    Ver todas
-                </button>
-                <!-- <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                 <span class="input-group-btn">
-
-                 </span>-->
-            </div>
+            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
         </div>
         <!-- /.panel-footer -->
     </div>

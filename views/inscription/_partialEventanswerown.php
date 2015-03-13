@@ -5,18 +5,18 @@ use yii\grid\GridView;
 use kartik\editable\Editable;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\AnswerSearch */
+/* @var $searchModel app\models\EventanswerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->title = 'Respuestas por Evento';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="answer-index">
+<div class="eventanswer-index">
 
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<!--    <p>-->
-<!--        --><?//= Html::a(' Crear Respuesta', ['create'], ['class' => 'btn btn-success']) ?>
-<!--    </p>-->
+
 
     <?
     $gridColumns = [
@@ -28,21 +28,30 @@ use kartik\editable\Editable;
         [
             'class' => 'kartik\grid\EditableColumn',
             'readonly' => true,
-            'attribute' => 'question_id',
+            'attribute' => 'eventquestion_id',
             'value' => function ($data) {
-                return $data->question->question->text;
+                return $data->eventquestion->question->text;
             }
 
         ],
+
         [
             'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
             'attribute' => 'reply',
-            'value' => 'reply',
-
+            /*'readonly' => function ($model, $key, $index, $widget) {
+                return (!$model->status == 10); // do not allow editing of inactive records
+            },*/
+            'editableOptions' => [
+                'header' => 'Nombre',
+                'size' => 'md',
+                'inputType' => \kartik\editable\Editable::INPUT_TEXTAREA,
+                'class' => 'text-danger',
+                'format' => Editable::FORMAT_BUTTON,
+                /*'options' => [
+                    'pluginOptions' => ['min' => 0, 'max' => 5000]
+                ]*/
+            ],
         ],
-
-
         [
             'class' => '\kartik\grid\BooleanColumn',
             'attribute' => 'status',
@@ -82,6 +91,10 @@ use kartik\editable\Editable;
                 ]*/
     ]);
 
+
+
+
+
     /*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -89,19 +102,21 @@ use kartik\editable\Editable;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
+
 //            'inscription_id',
-//            'question_id',
+//            'eventquestion_id',
             [
-                'attribute' => 'question_id',
-                'value'=> function ($data){ return $data->question->question->text;}
+                'attribute' => 'eventquestion_id',
+                'value'=> function ($data){ return $data->eventquestion->question->text;}
             ],
             'reply:ntext',
 //            'created_at',
             // 'updated_at',
             // 'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); */?>
+    ]); */
+    ?>
 
 </div>

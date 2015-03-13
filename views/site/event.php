@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <!--Visualización información del evento-->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <div class="panel panel-primary">
-            <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
+                <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
                 <div class="panel-footer">
                     <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
                     <?php

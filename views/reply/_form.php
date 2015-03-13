@@ -13,36 +13,47 @@ use app\models\Request;
 
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-<div class="panel panel-primary">
-  <div class="panel-heading">Crear Respuesta</div>
-  <div class="panel-body">
+    <div class="col-xs-12 ">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Crear Respuesta</div>
+            <?php $form = ActiveForm::begin(); ?>
+            <div class="panel-body">
+                <div class="reply-form">
+                    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+                    <? /*= $form->field($model, 'status')->dropDownList($model->getStatusList()) */ ?>
+                </div>
 
+            </div>
+            <div class="panel-footer">
+               <span class="pull-right">
+                   <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+               </span>
+                <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
 
-
-<div class="reply-form">
-    
-    <?php $form = ActiveForm::begin(); ?>
-
-
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-    <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
-    <!---->
-    <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
-
-    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
-    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            </div>
+            <?php ActiveForm::end(); ?>
+        </div>
     </div>
+    <div class="col-xs-12 ">
+        <div class="panel panel-info">
+            <div class="panel-heading">Resumen de solicitud realizada </div>
+            <div class="panel-body">
 
-    <?php ActiveForm::end(); ?>
+                <h4>
+                    <kbd><?= $model->request->question; ?></kbd></h4>
+                <span>
+                <?= Html::img($model->user->getImageUrl(), ['class' => 'img-circle push-right', 'style' => 'height:30px;']); ?>
+</span>
+                <i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($model->request->created_at, 'long'); ?>
+
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-success"><?= $model->user->username ?></span>
+            </div>
+
+        </div>
     </div>
-
-</div>
-
-  </div>
 </div>
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
     <div class="panel panel-green">
@@ -62,14 +73,13 @@ use app\models\Request;
                     ?>
                     <li <?= $clase; ?>>
                         <div class="timeline-badge">
-                            <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                            <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:40px;']); ?>
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <!--  <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
-
-                                    <small class="text-muted"><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDate($reply->created_at, 'long'); ?>
-                                    </small>
+                                <small class="text-muted"><i
+                                        class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($reply->created_at, 'long'); ?>
+                                </small>
 
                             </div>
                             <div class="timeline-body">
