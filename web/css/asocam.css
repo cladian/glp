@@ -4,7 +4,9 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-
+.img-slide{
+    max-width: 100%;
+}
  
 /*css asocam*/
  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{

@@ -17,19 +17,19 @@ $this->title = 'My Yii Application';
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <?= Html::img('imgs/slide/1.jpg' , ['class' => 'img-responsive']); ?>
+          <?= Html::img('imgs/slide/1.jpg' , ['class' => 'img-slide ']); ?>
           <div class="carousel-caption">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nisi blanditiis provident cum esse possimus ut officia dicta molestiae tenetur aspernatur adipisci eius placeat iste deserunt praesentium, similique debitis, error.
           </div>
         </div>
         <div class="item">
-          <?= Html::img('imgs/slide/2.jpg' , ['class' => 'img-responsive']); ?>
+          <?= Html::img('imgs/slide/2.jpg' , ['class' => 'img-slide ']); ?>
           <div class="carousel-caption">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nisi blanditiis provident cum esse possimus ut officia dicta molestiae tenetur aspernatur adipisci eius placeat iste deserunt praesentium, similique debitis, error.
           </div>
         </div>
         <div class="item">
-          <?= Html::img('imgs/slide/3.jpg' , ['class' => 'img-responsive']); ?>
+          <?= Html::img('imgs/slide/3.jpg' , ['class' => 'img-slide ']); ?>
           <div class="carousel-caption">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta asperiores sapiente voluptas, ipsa, quaerat omnis dolor dolore cumque non dolorem natus exercitationem expedita accusamus consectetur delectus repellat recusandae repellendus nesciunt.
           </div>
