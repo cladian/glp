@@ -17,7 +17,7 @@ use app\models\Inscription;
 
     <?= $form->field($model, 'question')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'answer')->textarea(['rows' => 6]) ?>
+    <?/*= $form->field($model, 'answer')->textarea(['rows' => 6]) */?>
 
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
@@ -27,11 +27,11 @@ use app\models\Inscription;
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
 <!--    --><?//= $form->field($model, 'inscription_id')->textInput() ?>
-    <?=
+    <?/*=
     $form->field($model, 'inscription_id')->dropDownList(
         ArrayHelper::map(Inscription::find()->all(), 'id', 'id'),
         ['prompt' => 'Seleccione']
-    ) ?>
+    ) */?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

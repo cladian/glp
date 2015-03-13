@@ -28,10 +28,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <!--Visualización información del evento-->
 
-    <div class="panel panel-primary">
+    <div class="panel panel-green">
         <?= $this->render('/event/_detailinfo', ['model' => $model->event]) ?>
         <div class="panel-footer">
             <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+
         </div>
     </div>
 
@@ -47,7 +48,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+        <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
@@ -58,17 +59,17 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <?= $this->render('_partialInscription', ['model' => $model]) ?>
+                    <?= $this->render('_partialInscription', ['model' => $model,'modelProfile' => $modelProfile]) ?>
                 </div>
-                <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-                </div>
+  <!--              <div class="panel-footer">
+                    <?/*= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) */?>
+                </div>-->
             </div>
         </div>
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
                 <h4 class="panel-title">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
@@ -82,15 +83,15 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
 
                 </div>
-                <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-success']) ?>
-                </div>
+        <!--        <div class="panel-footer">
+                    <?/*= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-success']) */?>
+                </div>-->
             </div>
         </div>
 
 
 
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
@@ -138,7 +139,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
                 <div class="panel-body">
                     <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
-                    <?= Html::a('Crear Solicitud', ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
+                  <!--  --><?/*= Html::a('Crear Solicitud', ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) */?>
                 </div>
             </div>
         </div>

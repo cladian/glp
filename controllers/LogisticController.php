@@ -100,7 +100,7 @@ class LogisticController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['inscription/view', 'id' => $model->inscription_id]);
+            return $this->redirect(['inscription/viewown', 'id' => $model->inscription_id]);
         } else {
             return $this->render('updateown', [
                 'model' => $model,

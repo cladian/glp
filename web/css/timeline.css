@@ -75,7 +75,7 @@
     border-left: 14px solid #fff;
 }
 
-/*.timeline > li > .timeline-badge {
+.timeline > li > .timeline-badge {
     z-index: 100;
     position: absolute;
     top: 16px;
@@ -88,8 +88,9 @@
     font-size: 1.4em;
     line-height: 50px;
     color: #fff;
-    background-color: #999999;
-}*/
+    /*background-color: #999999;*/
+
+}
 
 .timeline > li.timeline-inverted > .timeline-panel {
     float: right;
