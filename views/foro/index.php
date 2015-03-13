@@ -80,7 +80,7 @@ foreach ($model as $foro) {
                                     <td><?= $topic->content;?></td>
                                     <td><?= $topic->user->username;?></td>
                                     <td><?= Yii::$app->formatter->asDate($topic->created_at, 'long'); ?></td>
-                                    <td><?= Html::a('<span class="badge">2</span> Aportes', ['foro/topic','id'=>$foro->id], ['class' => 'btn btn-default btn-xs'])?></td>
+                                    <td><?= Html::a('<span class="badge">2</span> Aportes', ['foro/topic','id'=>$topic->id], ['class' => 'btn btn-default btn-xs'])?></td>
                                 </tr>
                                     <?php
 
