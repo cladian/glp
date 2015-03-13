@@ -148,7 +148,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 </div>
 <div class="col-lg-8">
 
-    <div class="panel panel-primary">
+    <div class="chat-panel panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis
                 incripciones</h3>
@@ -229,6 +229,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             ]);
             ?>
         </div>
+        <div class="panel-footer">
+            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+        </div>
     </div>
 </div>
 <div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
@@ -249,6 +252,67 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <span class="chat-img pull-left">
                             <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
                         </span>
+
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font"> <?= $event->name; ?></strong>
+                                <!--<small class="pull-right text-muted">
+                                    <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                </small>-->
+                            </div>
+                            <p>
+                            <address>
+                                <!--<strong><? /*= $event->city . ', ' . $event->country->name; */ ?></strong><br>-->
+                                <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+                                <br>
+                                <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+                                <br>
+                                <strong>Inversión: </strong><?= $event->cost; ?> USD
+                            </address>
+                            </p>
+                            <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
+                            <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-default btn-xs ']) ?>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="btn-input" type="text" class="form-control input-sm"
+                       placeholder="Type your message here..."/>
+
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+            </div>
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+
+</div><div class="col-xs-12 ">
+
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Próximos eventos
+
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <ul class="chat">
+
+                <?php foreach ($modelEvent as $event) { ?>
+                    <li class="left clearfix">
+                        <span class="chat-img pull-left">
+                            <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
+                        </span>
+
                         <div class="chat-body clearfix">
                             <div class="header">
                                 <strong class="primary-font"> <?= $event->name; ?></strong>
