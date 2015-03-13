@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Phforum;
 use app\models\Topic;
+use app\models\Post;
 use app\models\PhforumSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -47,6 +48,7 @@ class ForoController extends Controller
 
         return $this->render('topic', [
             'model'=>Topic::find()->where(['id'=>$id])->one(),
+            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
         ]);
     }
 
@@ -59,6 +61,7 @@ class ForoController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
         ]);
     }
 
