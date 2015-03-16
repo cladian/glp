@@ -53,9 +53,9 @@ class Generalquestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'question_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['question_id'], 'required'],
+
             [['text'], 'string'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
@@ -73,7 +73,7 @@ class Generalquestion extends \yii\db\ActiveRecord
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'question_id' => 'Preguntas',
+
         ];
     }
 
