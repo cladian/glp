@@ -8,6 +8,7 @@ use app\models\ImagenSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ImagenController implements the CRUD actions for Imagen model.
@@ -65,8 +66,16 @@ class ImagenController extends Controller
     public function actionCreate()
     {
         $model = new Imagen();
+        $model->scenario = 'file';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+             $doc = UploadedFile::getInstance($model, 'file');
+             $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+             // $docName =  'mauricio.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroImgs'] . $docName);
+            $model->file = $docName;
+            $model->save();   
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

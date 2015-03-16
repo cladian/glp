@@ -72,7 +72,7 @@ class DocumentController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
-            $docName = Yii::$app->security->generateRandomString() .time() . '.' . $doc->extension;
+            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
             $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
             $model->file = $docName;
             $model->save();

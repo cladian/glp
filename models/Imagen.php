@@ -65,7 +65,11 @@ class Imagen extends \yii\db\ActiveRecord
             [['file', 'tags'], 'string'],
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 250]
+            [['name'], 'string', 'max' => 250],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['file'], 'file', 'extensions'=>'jpg, png, gif '],
+            [['file'], 'required','on'=>'file']
         ];
     }
 
@@ -76,12 +80,12 @@ class Imagen extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'file' => 'File',
+            'name' => 'Nombre',
+            'file' => 'Archivo',
             'tags' => 'Tags',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

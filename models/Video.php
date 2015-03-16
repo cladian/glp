@@ -59,9 +59,13 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             [['ulr'], 'string'],
+            [['ulr'], 'url'],
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 250]
+            [['name'], 'string', 'max' => 250],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+
         ];
     }
 
@@ -72,11 +76,11 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'ulr' => 'Ulr',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Nombre',
+            'ulr' => 'Enlace del Video',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 
