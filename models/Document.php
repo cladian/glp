@@ -66,7 +66,9 @@ class Document extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 250],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['file'], 'file', 'extensions'=>'pdf, doc, ppt, xls, docx, pptx, xlsx '],
+            [['file'], 'required','on'=>'file']
         ];
     }
 

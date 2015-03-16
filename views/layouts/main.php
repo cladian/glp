@@ -188,7 +188,7 @@ $items = [
         '<li class="divider"></li>',
         ['label' => 'Comentarios', 'url' => ['/comment']],
         '<li class="divider"></li>',
-        ['label' => 'Document', 'url' => ['/document']],
+        ['label' => 'Documentos', 'url' => ['/document']],
         ['label' => 'Video', 'url' => ['/video']],
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]

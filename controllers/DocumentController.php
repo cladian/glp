@@ -8,6 +8,7 @@ use app\models\DocumentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * DocumentController implements the CRUD actions for Document model.
@@ -62,18 +63,30 @@ class DocumentController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
     public function actionCreate()
     {
-        $model = new Document();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = new Document();
+        $model->scenario = 'file';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $doc = UploadedFile::getInstance($model, 'file');
+            $docName = Yii::$app->security->generateRandomString() .time() . '.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
+            $model->file = $docName;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+
+
             ]);
         }
     }
+
+
 
     /**
      * Updates an existing Document model.
