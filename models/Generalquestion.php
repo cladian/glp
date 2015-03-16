@@ -73,6 +73,7 @@ class Generalquestion extends \yii\db\ActiveRecord
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
+            'text' => 'Contenido',
 
         ];
     }

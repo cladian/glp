@@ -74,6 +74,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]) ?>
                     <?= Html::a('Subir imagen', ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+                    <?= Html::a('Pregunta', ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
 
                 </div>
 

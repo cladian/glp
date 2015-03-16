@@ -26,3 +26,5 @@ web/imgs/avatar/5.jpg
 *.jpg
 
 *.jpg
+
+config/db.php
