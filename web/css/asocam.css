@@ -9,6 +9,9 @@
 }
  
 /*css asocam*/
+.datepicker .datepicker-dropdown .dropdown-menu .datepicker-orient-left .datepicker-orient-top important!{
+    background-color: red;
+}
  .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
  background-color: #aad04b;   
  }
