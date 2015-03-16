@@ -278,11 +278,12 @@ class InscriptionController extends Controller
     public function actionCreateown($id)
     {
         $model = new Inscription();
+        $modelLogistic =new Logistic();
 
-
-        //Almacenamiento de ID de usuario logeado
+            //Almacenamiento de ID de usuario logeado
         $model->user_id = Yii::$app->user->identity->id;
         $model->event_id = $id;
+
 
         //Verificación si el usuario tiene un registro previo al evento seleccionado
 
@@ -293,10 +294,11 @@ class InscriptionController extends Controller
         }
 
         // Si es una inscripción nueva
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if (    $model->load(Yii::$app->request->post()) &&  $modelLogistic->load(Yii::$app->request->post()) ) {
 
+            $model->save();
             //Almacenamiento de registro Logistica en Blanco
-            $modelLogistic = new Logistic();
+            //$modelLogistic = new Logistic();
             $modelLogistic->inscription_id = $model->id;
             $modelLogistic->save();
 
@@ -331,6 +333,7 @@ class InscriptionController extends Controller
         } else {
             return $this->render('createown', [
                 'model' => $model,
+                'modelLogistic' => $modelLogistic,
             ]);
         }
     }
