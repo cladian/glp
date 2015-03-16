@@ -159,7 +159,7 @@ class ReplyController extends Controller
         $content.=$message;
 
 
-        $modelReply=Reply::find()->where(['request_id'=>$request_id])->all();
+        $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
         foreach ($modelReply as $reply){
             $reply->user->sendEmail($content);
 
