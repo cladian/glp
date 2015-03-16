@@ -168,12 +168,14 @@ END Año-->
 
     <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
     
-
-</div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+</div>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
     </div>
 
+</div>
 </div>
 
     <?php ActiveForm::end(); ?>
