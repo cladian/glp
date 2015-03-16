@@ -25,18 +25,18 @@ class ReplyController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete'],
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','update','delete'],
+                        'actions' => ['index', 'view', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['sysadmin'],
                     ],
                     [
-                        'actions' => ['create','index','view'],
+                        'actions' => ['create', 'index', 'view'],
                         'allow' => true,
-                        'roles' => ['asocam','user'],
+                        'roles' => ['asocam', 'user'],
                     ],
 
                 ],
@@ -64,6 +64,7 @@ class ReplyController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
     /**
      * Displays a single Reply model.
      * @param integer $user_id
@@ -86,15 +87,17 @@ class ReplyController extends Controller
     public function actionCreate($id)
     {
         $model = new Reply();
-        $model->request_id=$id;
-        $model->user_id=\Yii::$app->user->identity->id;
+        $model->request_id = $id;
+        $model->user_id = \Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+            $this->sendMail($model->request_id,$model->text);
             return $this->redirect(['create', 'id' => $id]);
+
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'modelReply'=>Reply::find()->where(['request_id'=>$id])->orderBy('created_at desc')->all(),
+                'modelReply' => Reply::find()->where(['request_id' => $id])->orderBy('created_at desc')->all(),
             ]);
         }
     }
@@ -148,5 +151,20 @@ class ReplyController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    protected function sendMail($request_id, $message)
+    {   $content="<h1>Pregunta</h1>";
+        $content.="El usuario respondio a su inquitud";
+        $content.=$message;
+
+
+        $modelReply=Reply::find()->where(['request_id'=>$request_id])->all();
+        foreach ($modelReply as $reply){
+            $reply->user->sendEmail($content);
+
+        }
+
+
     }
 }
