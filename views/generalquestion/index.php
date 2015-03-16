@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'updated_at',
 //            'question_id',
             [
-                'attribute' => 'question_id',
-                'value'=> function ($data){ return $data->question->text;}
+                'attribute' => 'text',
+           /*     'value'=> function ($data){ return $data->question->text;}*/
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

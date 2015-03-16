@@ -309,7 +309,7 @@ class InscriptionController extends Controller
             foreach ($modelgeneralquestion as $answer) {
                 $modelanswer = new Answer();
                 $modelanswer->inscription_id = $model->id;
-                $modelanswer->question_id = $answer->question_id;
+                //$modelanswer->question_id = $answer->question_id;
                 $modelanswer->save();
 
             }

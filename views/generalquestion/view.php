@@ -32,11 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
 //            'created_at',
 //            'updated_at',
-//            'question_id',
-            [                    // the owner name of the model
-                'label' => 'Preguntas',
-                'value' => $model->question->text,
-            ],
+            'text',
+
         ],
     ]) ?>
 
