@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Topic;
+use app\models\Post;
 use app\models\TopicSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,8 +53,23 @@ class TopicController extends Controller
      */
     public function actionView($id)
     {
+
+        $modelPost = new Post();
+
+
+        $modelPost->topic_id=$id;
+        $modelPost->user_id=Yii::$app->user->id;
+
+        if ($modelPost->load(Yii::$app->request->post()) ) {
+            $modelPost->save();
+            $modelPost = new Post();
+       }
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'modelPost'=>$modelPost,
+            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
 
         ]);
     }
@@ -63,13 +79,15 @@ class TopicController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
 
         $model = new Topic();
+        $model->user_id = Yii::$app->user->id;
+        $model->phforum_id= $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['phforum/view', 'id' => $model->phforum_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

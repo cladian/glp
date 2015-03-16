@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\SignupForm */
 
-$this->title = 'Signup';
+$this->title = 'Registro';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -14,10 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-sm-6 col-md-4">
   </div>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <div class="thumbnail">
+    <div class="panel panel-primary">
+  <center class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></center>
+  <div class="panel-body">
+ 
       
       <div class="caption">
-        <center><h1><?= Html::encode($this->title) ?></h1></center>
+        
         <p>Por favor, rellene los siguientes campos para inscribirse:</p>
         <hr>
         <div class="row">
@@ -27,14 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                        <?= Html::submitButton('Registro', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                     </div>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
         <p>Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
       </div>
-    </div>
+     </div>
+</div>
+
+
   </div>
   <div class="col-sm-6 col-md-4">
     <div class="">

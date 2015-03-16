@@ -71,7 +71,7 @@ class Reply extends \yii\db\ActiveRecord
         return [
             'user_id' => 'Usuario',
             'request_id' => 'Solicitud',
-            'text' => 'Text',
+            'text' => 'Comentario',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
             'status' => 'Estado',

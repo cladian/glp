@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\User;
+use app\models\Profile;
 use app\modelsUserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -69,6 +70,44 @@ class UserController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    // Retorno de info para Grid Administrador
+    public function actionProfile()
+    {
+        if (isset($_POST['expandRowKey'])) {
+
+            $userId = Yii::$app->request->post('expandRowKey');
+            $modelProfile = \app\models\Profile::find()
+                ->where(['user_id' => $userId])
+                ->one();
+            if ($modelProfile){
+                return $this->renderPartial('_profile', [
+
+                    'modelProfile' => $modelProfile
+                ]);
+            }
+            else
+            {
+                return '<div class="alert alert-danger">No tiene perfil</div>';
+            }
+
+
+      /*      $modelLogistic = Logistic::find()
+                ->where(['inscription_id' => $inscriptionId])
+                ->one();
+
+            $modelProfile = Profile::find()
+                ->where(['user_id' => $modelLogistic->inscription->user_id])
+                ->one();
+
+            return $this->renderPartial('_detail', [
+                'modelLogistic' => $modelLogistic,
+                'modelProfile' => $modelProfile
+            ]);*/
+        } else {
+            return '<div class="alert alert-danger">No data found</div>';
+        }
     }
 
     /**
