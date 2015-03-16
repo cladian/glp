@@ -328,14 +328,13 @@ class User extends ActiveRecord implements IdentityInterface
         /*$model=$this->findModel($id);
         $html='<h1>Notificación de acceso</h1>';
         */
+
         $content='Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.';
-        $subject='Notificación desde ASOCAM';
+        $subject='Nueva notificación desde ASOCAM-GLP';
         Yii::$app->mailer->compose('mail',['content'=>$content])
             ->setFrom(\Yii::$app->params['contactEmail'])
             ->setTo($this->email)
             ->setSubject($subject)
-//            ->setTextBody('Plain text content')
-//            ->setHtmlBody('<b>HTML content</b>')
             ->send();
     }
 }
