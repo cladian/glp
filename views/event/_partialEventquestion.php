@@ -27,23 +27,23 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
 //            'eventtype_id',
-            [
+/*            [
                 'attribute' => 'eventtype_id',
                 'value'=> function ($data){ return $data->eventtype->name;}
-            ],
-//            'question_id',
+            ],*/
+/*//            'question_id',
             [
                 'attribute' => 'question_id',
-                'value'=> function ($data){ return $data->question->text;}
-            ],
+                'value'=> function ($data){ return $data->text;}
+            ],*/
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 <div class="panel-body">
-    
+
     <p>
-        <?= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
+<!--        --><?//= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
     </p>
 </div>
 </div>

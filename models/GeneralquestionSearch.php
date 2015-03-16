@@ -18,8 +18,8 @@ class GeneralquestionSearch extends Generalquestion
     public function rules()
     {
         return [
-            [['id', 'status', 'question_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['text', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -60,35 +60,35 @@ class GeneralquestionSearch extends Generalquestion
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'question_id' => $this->question_id,
-        ]);
 
+        ]);
+        $query->andFilterWhere(['like', 'text', $this->text]);
         return $dataProvider;
     }
     public function searchByQuestion($params, $question_id)
     {
-        $query = Generalquestion::find();
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'question_id' => $question_id,
-        ]);
-
-        return $dataProvider;
+//        $query = Generalquestion::find();
+//
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => $query,
+//        ]);
+//
+//        $this->load($params);
+//
+//        if (!$this->validate()) {
+//            // uncomment the following line if you do not want to any records when validation fails
+//            // $query->where('0=1');
+//            return $dataProvider;
+//        }
+//
+//        $query->andFilterWhere([
+//            'id' => $this->id,
+//            'status' => $this->status,
+//            'created_at' => $this->created_at,
+//            'updated_at' => $this->updated_at,
+//            'question_id' => $question_id,
+//        ]);
+//
+//        return $dataProvider;
     }
 }

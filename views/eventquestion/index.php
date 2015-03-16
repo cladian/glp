@@ -24,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
 //            'eventtype_id',
-            [
+/*            [
                 'attribute' => 'eventtype_id',
                 'value'=> function ($data){ return $data->eventtype->name;}
-            ],
-            // 'question_id',
+            ],*/
+            'text',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

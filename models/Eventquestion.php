@@ -56,7 +56,7 @@ class Eventquestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'eventtype_id', 'question_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['status', 'event_id'], 'integer'],
             [['text'], 'string'],
