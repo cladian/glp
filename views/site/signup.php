@@ -7,15 +7,15 @@ use yii\bootstrap\ActiveForm;
 /* @var $model \frontend\models\SignupForm */
 
 $this->title = 'Registro';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="row">
   <div class="col-sm-6 col-md-4">
   </div>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <div class="panel panel-primary">
-  <center class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></center>
+    <div class="panel panel-green">
+  <center class="panel-heading"><h3>Crear una cuenta</h3></center>
   <div class="panel-body">
  
       
@@ -30,12 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Registro', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                        <?= Html::submitButton('Crear cuenta', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
                     </div>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
-        <p>Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
+        
+        <p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
       </div>
      </div>
 </div>

@@ -18,7 +18,7 @@ $this->title = 'Ingreso';
   </div>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <div class="panel panel-primary">
-  <center class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></center>
+  <center class="panel-heading"><h3>Ingresar a su cuenta</h3></center>
   <div class="panel-body">
  
       
@@ -33,12 +33,18 @@ $this->title = 'Ingreso';
                     <?= $form->field($model, 'password')->passwordInput() ?>
                     <?= $form->field($model, 'rememberMe')->checkbox() ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Ingreso', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        <?= Html::submitButton('Iniciar sesión', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                     </div>
+                    <p>¿No dispones de una cuenta?</p>
+                    <span class="form-group">
+                        <?= Html::a('Regístrate ahora', ['site/signup']) ?>
+                    </span>
+
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
-        <p>Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
+        <br>
+        <p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
       </div>
      </div>
 </div>
