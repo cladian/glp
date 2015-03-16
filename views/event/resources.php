@@ -10,12 +10,12 @@ $this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualización';
 ?>
-<div class="event-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-primary">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_resources', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

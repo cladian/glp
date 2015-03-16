@@ -6,7 +6,7 @@ $this->title = 'My Yii Application';
 
 ?>
 <!-- SlideShow -->
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="hidden-xs carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -83,11 +83,11 @@ $this->title = 'My Yii Application';
 
                     <div class="col-sm-6 col-md-6">
                         <div class="thumbnail">
-                            <?= Html::img('imgs/event/0.jpg', ['class' => 'img-responsive']); ?>
+                            <?= Html::img($event->getImageUrl(), ['class' => 'img-responsive figure']); ?>
                             <div class="caption">
                                 <h3><?= $event->name; ?></h3>
 
-                                <p><?= $event->short_description; ?></p>
+                                <!-- <p><?= $event->short_description; ?></p> -->
                                 <address>
                                     <strong><?= $event->city . ', ' . $event->country->name; ?></strong><br>
                                     <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
