@@ -29,7 +29,8 @@
         "kartik-v/yii2-money": "*",
         "kartik-v/yii2-grid": "dev-master",
         "kartik-v/yii2-editable": "dev-master",
-        "kartik-v/yii2-mpdf": "dev-master"
+        "kartik-v/yii2-mpdf": "dev-master",
+        "yiisoft/yii2-swiftmailer": "~2.0.0"
     },
     "config": {
         "process-timeout": 1800

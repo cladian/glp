@@ -1,7 +1,9 @@
 <?php
-
+// Llamada
+//    \Yii::$app->params['contactEmail']
 return [
     'adminEmail' => 'team@cladian.com',
+    'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
     'avatarFolder' => 'imgs/avatar/',
     'foroDocs' => 'upload/docs/',
