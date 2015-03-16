@@ -15,6 +15,7 @@ use kartik\widgets\FileInput;
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 <!-- 
      <?= $form->field($model, 'file')->textarea(['rows' => 6]) ?> -->
+    
       <?=
     // Usage with ActiveForm and model
     $form->field($model, 'file')->widget(FileInput::classname(), [
