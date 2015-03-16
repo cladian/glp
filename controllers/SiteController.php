@@ -93,6 +93,11 @@ class SiteController extends Controller
         if (Yii::$app->user->can('user')) {
 
         }
+
+        $modelUser=User::find()->where(['id'=>Yii::$app->user->identity->id])->one();
+
+        /*$modelUser=User::find()->where(['id'=> Yii::$app->user->identity->id])->one();*/
+        $modelUser->sendEmail();
         $searchInscription = new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 

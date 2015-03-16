@@ -166,7 +166,7 @@ $items = [
          ['label' => 'SIS-Admin', 'url' => ['#']],
      ]
      ],*/
-
+    ['label' => 'Foro', 'url' => ['/foro']],
 
     ['label' => 'Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],

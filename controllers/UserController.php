@@ -26,13 +26,18 @@ class UserController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete'],
+                'only' => ['index', 'view', 'create','update','delete','sendmail'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
                         'actions' => ['index','view','create','update','delete'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['sendmail'],
+                        'allow' => true,
+                        'roles' => ['user','asocam'],
                     ],
 
                 ],
@@ -176,4 +181,6 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }
