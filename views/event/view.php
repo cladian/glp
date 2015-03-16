@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'method' => 'post',
                         ],
                     ]) ?>
-                    <?= Html::a('Avatar', ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+                    <?= Html::a('Subir imagen', ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
 
                 </div>
 

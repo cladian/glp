@@ -12,7 +12,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  * @property integer $question_id
- *
+ * @property string $text
  * @property Answer[] $answers
  * @property Question $question
  */
@@ -56,6 +56,7 @@ class Generalquestion extends \yii\db\ActiveRecord
             [['status', 'question_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['question_id'], 'required'],
+            [['text'], 'string'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
 
@@ -87,8 +88,8 @@ class Generalquestion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getQuestion()
+/*    public function getQuestion()
     {
         return $this->hasOne(Question::className(), ['id' => 'question_id']);
-    }
+    }*/
 }
