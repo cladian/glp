@@ -8,14 +8,10 @@ use yii\helpers\Html;
 <?php $this->beginPage() ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body style="background-color: #EAECED">
+
+
+	<body style="background-color: #EAECED">
 	<center>
 			<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#eaeced">
 				<tr height="8" style="font-size: 0; line-height: 0;"><td>&nbsp;</td></tr>
@@ -52,7 +48,7 @@ use yii\helpers\Html;
     		<td width="70"><a href="#"><img src="http://www.asocam.org/fileadmin/templates/tmpAsocamOrg/images//logoAsocam.png" width="100%" height="auto" alt="InVision App" style="border:0;"></a></td>
             
             
-    		<td class="responsive-header-cell-big" style="font-family:'Open Sans', arial, sans-serif !important;font-size:25px;line-height:30px !important;font-weight:200 !important;color:#252b33 !important;"><?= Html::encode($this->title) ?></td>
+    		<td class="responsive-header-cell-big" style="font-family:'Open Sans', arial, sans-serif !important;font-size:25px;line-height:30px !important;font-weight:200 !important;color:#252b33 !important;">ASOCAM</td>
             
             
     		<td class="responsive-header-cell" style="font-family:'Open Sans', arial, sans-serif !important;font-size:13px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right">Mar 9, 2015 - Mar 13, 2015</td>
@@ -81,7 +77,7 @@ use yii\helpers\Html;
                 <td align="center">
                     <table class="story-4" border="0" cellpadding="0" cellspacing="0" width="78%">
                         <tbody><tr>
-                            <td align="center" style="font-family:'Open Sans', arial, sans-serif !important;font-size:16px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;">Mensaje enviado desde la plataforma desde sistema de Gestión de lista de Participantes</td>
+                            <td align="center" style="font-family:'Open Sans', arial, sans-serif !important;font-size:16px !important;line-height:30px !important;font-weight:400 !important;color:#7e8890 !important;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta velit perspiciatis, quam, soluta sed quibusdam ab illo reprehenderit ducimus voluptatibus quia laborum, numquam expedita harum assumenda quas optio ratione repudiandae.</td>
                         </tr>
                     </tbody></table>
                 </td>
@@ -114,10 +110,11 @@ use yii\helpers\Html;
     </td>
 </tr>
 </body>
-</html>
 
 
-<head>
+
+
+
     <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -132,10 +129,4 @@ use yii\helpers\Html;
 <?php $this->endBody() ?>
 </body>
 </html>
-
-
-
-
-
-
 <?php $this->endPage() ?>
