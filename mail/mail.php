@@ -211,6 +211,6 @@ use yii\helpers\Html;
             </table>
         </td>
     </tr>
-</table>
+    </table>
 </center>
 </body>
