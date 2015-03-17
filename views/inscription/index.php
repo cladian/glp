@@ -117,7 +117,7 @@ $this->title = 'Inscripciones';
         'hover' => true,
         'showPageSummary' => true,
         'panel' => [
-            'type' => \kartik\grid\GridView::TYPE_PRIMARY,
+            'type' => \kartik\grid\GridView::TYPE_SUCCESS,
             'heading' => '<i class="glyphicon glyphicon-book"></i>  Inscripciones',
         ],
         'persistResize' => true,
@@ -136,9 +136,9 @@ $this->title = 'Inscripciones';
                         'options' => 'Save as Excel'],
                 ],*/
         'toolbar' => [
-            ['content' =>
+/*            ['content' =>
                 Html::a('Create Employee', ['create'], ['class' => 'btn btn-default'])
-            ],
+            ],*/
             '{export}',
         ],
 
