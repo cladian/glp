@@ -297,45 +297,45 @@ if (!$hasProfile) {
     <div class="chat-panel panel panel-green">
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
-            Solicitudes por atender
+            Accesos Rápidos
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="list-group">
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
+                    <i class="glyphicon glyphicon-user"></i> Usuarios
+                              <!--      <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
+                    <i class="fa fa-twitter fa-fw"></i>Asignaciones
+                                   <!-- <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                    <i class="fa fa-envelope fa-fw"></i> Catálogo de tipos responsabilidad<!--
                                     <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
+                    <i class="fa fa-tasks fa-fw"></i> Catálogos de tipos de Institución
+                                  <!--  <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
+                    <i class="fa fa-upload fa-fw"></i> Catálogos de tipos de Evento
+                       <!--             <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
+                    <i class="fa fa-bolt fa-fw"></i> Catálogo de tipos de registro
+                                  <!--  <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>-->
                 </a>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
+                    <i class="fa fa-warning fa-fw"></i> Preguntas Generales
+                                 <!--   <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>-->
                 </a>
                 <!--                <a href="#" class="list-group-item">
                                     <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
