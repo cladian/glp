@@ -318,7 +318,7 @@ class InscriptionController extends Controller
             // y subir al registro de evento
 
 
-            $modelEventQuestion = Eventquestion::find()->where(['status' => self::STATUS_ACTIVE, 'eventtype_id' => $model->event->eventtype_id])->all();
+            $modelEventQuestion = Eventquestion::find()->where(['status' => self::STATUS_ACTIVE, 'event_id' => $model->event->id])->all();
             foreach ($modelEventQuestion as $eventquestion) {
                 $modelEvenAnswer = new Eventanswer();
                 $modelEvenAnswer->inscription_id = $model->id;
