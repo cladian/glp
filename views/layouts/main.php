@@ -13,6 +13,7 @@ use kartik\icons\Icon;
 AppAsset::register($this);
 // Botón HOME todos tiene el botón
 $items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];
+$items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Foro', 'url' => ['/foro']];
 
 // Botones solo para usuarios que no están logeados todavia
 if (Yii::$app->user->isGuest) {
@@ -29,6 +30,32 @@ if (Yii::$app->user->can('permission_admin')) {
             ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]];
+    $items[] = ['label' => 'Foro', 'items' => [
+        ['label' => 'Foros', 'url' => ['/phforum']],
+        ['label' => 'Documentos', 'url' => ['/phforum-document']],
+        ['label' => 'Videos', 'url' => ['/phforum-video']],
+        ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
+        '<li class="divider"></li>',
+        ['label' => 'Temas', 'url' => ['/topic']],
+        ['label' => 'Documentos', 'url' => ['/topic-document']],
+        ['label' => 'Videos', 'url' => ['/topic-video']],
+        ['label' => 'Imagen', 'url' => ['/topic-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Aportes', 'url' => ['/post']],
+        ['label' => 'Documentos', 'url' => ['/post-document']],
+        ['label' => 'Videos', 'url' => ['/post-video']],
+        ['label' => 'Imagen', 'url' => ['/post-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Comentarios', 'url' => ['/comment']],
+        '<li class="divider"></li>',
+        ['label' => 'Documentos', 'url' => ['/document']],
+        ['label' => 'Video', 'url' => ['/video']],
+        ['label' => 'Imagen', 'url' => ['/imagen']],
+    ]
+    ];
+
     $items[]=
 
         ['label' => 'Notificaciones', 'items' => [
