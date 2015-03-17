@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Nuevo Tópico', ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Subir Documento', ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

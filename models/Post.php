@@ -78,12 +78,12 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Content',
+            'content' => 'Contenido',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'status' => 'Status',
-            'topic_id' => 'Topic ID',
-            'user_id' => 'User ID',
+            'status' => 'Estado',
+            'topic_id' => 'Tema',
+            'user_id' => 'Usuario',
         ];
     }
 
