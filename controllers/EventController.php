@@ -91,7 +91,8 @@ class EventController extends Controller
     public function actionCreate()
     {
         $model = new Event();
-
+        // Por defecto el status estará en 2= INACTIVO;
+        $model->status=2;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

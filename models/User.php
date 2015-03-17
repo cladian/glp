@@ -323,6 +323,7 @@ class User extends ActiveRecord implements IdentityInterface
         return Yii::$app->params['avatarFolder'] . $avatar;
     }
 
+
     public function sendEmail($content, $type, $url){
         if ($type==1)
             $subject='Respuesta a Inquietud';
