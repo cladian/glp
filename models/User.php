@@ -323,9 +323,10 @@ class User extends ActiveRecord implements IdentityInterface
         return Yii::$app->params['avatarFolder'] . $avatar;
     }
 
-    public function sendEmail($content){
+    public function sendEmail($content, $type){
+        if ($type==1)
+            $subject='Respuesta a Inquietud';
 
-        $subject='Nueva notificación desde ASOCAM-GLP';
         Yii::$app->mailer->compose('mail',['content'=>$content])
             ->setFrom(\Yii::$app->params['contactEmail'])
             ->setTo($this->email)
