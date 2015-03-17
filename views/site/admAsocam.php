@@ -198,13 +198,8 @@ if (!$hasProfile) {
                                     <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                 </small>
                             </div>
-                            <p>
-                                <?= $request->question; ?>
-
-                            </p>
-
-
-                            <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+                            <p><?= $request->question; ?></p>
+                            <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
                             -
                             <?= Html::a('Cerrar', ['request/update', 'id' => $request->id], ['class' => 'btn btn-warning btn-xs pull-right']) ?>
                         </div>

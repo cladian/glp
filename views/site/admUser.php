@@ -299,7 +299,7 @@ if (!$hasProfile) {
                             </div>
                         </li>
                         <?php
-                        $modelReply=\app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->all();
+                        $modelReply=\app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->limit(3)->all();
                         foreach ($modelReply as $reply) {
                             ?>
                             <li class="right ">
