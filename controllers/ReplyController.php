@@ -161,7 +161,7 @@ class ReplyController extends Controller
     {
         $content="<h1>Respuesta a solicitud</h1>";
         $content.="El usuario respondio a su inquitud";
-        $content.="<p>".$message."</p>";
+        $content.=$message;
 
 
         $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
