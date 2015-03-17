@@ -22,7 +22,7 @@ use app\models\Question;
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
-<?= $form->field($model, 'text')->textInput() ?>
+<?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
 <!--    --><?/*=
     $form->field($model, 'question_id')->dropDownList(

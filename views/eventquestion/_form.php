@@ -19,16 +19,15 @@ use app\models\Question;
 <!--    --><?//= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
-<?= $form->field($model, 'text')->textInput() ?>
+<?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
-    <!--    --><?//= $form->field($model, 'eventtype_id')->textInput() ?>
-    <?=
-    $form->field($model, 'event_id')->dropDownList(
-        ArrayHelper::map(Event::find()->all(), 'id', 'name'),
-        ['prompt' => 'Seleccione']
-    ) ?>
+<!--        --><?//= $form->field($model, 'event_id')->textInput() ?>
+<!--    --><?//=
+//    $form->field($model, 'event_id')->dropDownList(
+//        ArrayHelper::map(Event::find()->all(), 'id', 'name')
+//    ) ?>
 
 <!--    --><?//= $form->field($model, 'question_id')->textInput() ?>
 

@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
 
 /**
  * ReplyController implements the CRUD actions for Reply model.
@@ -91,7 +92,11 @@ class ReplyController extends Controller
         $model->user_id = \Yii::$app->user->identity->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
+<<<<<<< HEAD
             $this->sendMail($model->request_id,$model->text);
+=======
+            $this->sendMail($model->request_id,$model->text, Html::a('Registrarme', ['reply/create/','id'=>$model->request_id], ['class' => 'btn btn-lg btn-primary']) );
+>>>>>>> master
             return $this->redirect(['create', 'id' => $id]);
 
         } else {
@@ -153,6 +158,7 @@ class ReplyController extends Controller
         }
     }
 
+<<<<<<< HEAD
     protected function sendMail($request_id, $message)
     {   $content="<h1>Pregunta</h1>";
         $content.="El usuario respondio a su inquitud";
@@ -162,6 +168,17 @@ class ReplyController extends Controller
         $modelReply=Reply::find()->where(['request_id'=>$request_id])->all();
         foreach ($modelReply as $reply){
             $reply->user->sendEmail($content);
+=======
+    protected function sendMail($request_id, $message,$url)
+    {   $content="<h1>Respuesta a solicitud</h1>";
+        $content.="El usuario respondio a su inquitud";
+        $content.="<p>".$message."</p>";
+
+
+        $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
+        foreach ($modelReply as $reply){
+            $reply->user->sendEmail($content, 1,$url);
+>>>>>>> master
 
         }
 
