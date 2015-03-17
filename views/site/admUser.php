@@ -293,7 +293,7 @@ if (!$hasProfile) {
                                 </p>
 
 
-                                <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+                                <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
 
 
                             </div>
