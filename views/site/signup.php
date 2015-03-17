@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -29,6 +30,7 @@ $this->title = 'Registro';
                     <?= $form->field($model, 'username') ?>
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
                     <div class="form-group">
                         <?= Html::submitButton('Crear cuenta', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
                     </div>

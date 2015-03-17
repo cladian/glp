@@ -35,7 +35,7 @@ class PermissionController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-            /*'access' => [
+            'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -44,7 +44,7 @@ class PermissionController extends Controller
                         'roles' => ['sysadmin'],
                     ],
                 ],
-            ],*/
+            ],
         ];
     }
 
