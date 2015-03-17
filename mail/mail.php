@@ -31,7 +31,7 @@
                                         </tr>
                                         <tr>
                                              <td><p style="margin-left:20px; font-family:'Open Sans', arial, sans-serif !important;font-size:30px !important;font-weight:200 !important;color:#000 !important;">
-                                                Nueva notificación</p></td>
+                                                <?= $title?></p></td>
                                             </td>
                                         </tr>
                                         <tr>

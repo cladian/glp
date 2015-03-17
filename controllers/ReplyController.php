@@ -159,15 +159,14 @@ class ReplyController extends Controller
 
     protected function sendMail($request_id, $message, $url)
     {
-        $content="<h1>Respuesta a solicitud</h1>";
-        $content.="El usuario respondio a su inquitud";
-        $content.=$message;
+        $title="Respuesta a solicitud";
+        $content=$message;
 
 
         $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
         foreach ($modelReply as $reply){
             // Contenido, tipo  1=Notificacion URL
-            $reply->user->sendEmail($content, 1,$url);
+            $reply->user->sendEmail($content, $url, $title);
         }
 
 
