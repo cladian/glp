@@ -5,6 +5,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -300,7 +301,9 @@ if (!Yii::$app->user->isGuest) {
 <body>
 
 <?php $this->beginBody() ?>
+
 <div class="wrap">
+
 
     <?php
     NavBar::begin([

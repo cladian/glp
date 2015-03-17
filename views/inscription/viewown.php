@@ -8,8 +8,8 @@ use yii\bootstrap\Tabs;
 /* @var $model app\models\Inscription */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];*/
+/*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {

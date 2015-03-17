@@ -154,6 +154,14 @@ class Event extends \yii\db\ActiveRecord
         return $this->hasMany(Phforum::className(), ['event_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventquestions()
+    {
+        return $this->hasMany(Eventquestion::className(), ['event_id' => 'id']);
+    }
+
     public function getImageUrl()
     {
         // return a default image placeholder if your source avatar is not found

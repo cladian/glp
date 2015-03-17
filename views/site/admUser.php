@@ -31,18 +31,7 @@ if (!$hasProfile) {
 }
 ?>
 <!--<h3><? /*= Html::encode($this->title) */ ?></h3>-->
-<?php
-foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
-    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
-    echo '<div class="alert alert-' . $key . '" role="alert">
-                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                  ' . $message . '
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-             </div>';
-}
-?>
+
 <div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
@@ -271,7 +260,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
     <!-- /.panel -->
-    <div class="chat-panel panel panel-green">
+    <div class="chat-panel panel panel-primary">
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
             Solicitudes por atender
@@ -310,7 +299,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </div>
                         </li>
                         <?php
-                        $modelReply=\app\models\Reply::findAll(['request_id' => $request->id]);
+                        $modelReply=\app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->all();
                         foreach ($modelReply as $reply) {
                             ?>
                             <li class="right ">

@@ -9,7 +9,7 @@ use kartik\editable\Editable;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Respuestas por Evento';
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
 <div class="eventanswer-index">
 
