@@ -51,16 +51,16 @@ class AssignmentController extends Controller
                     'assign' => ['post'],
                 ],
             ],
-            /*'access' => [
+           'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view','create','update','delete'.'admin'],
+                        'actions' => ['index', 'view','create','update','delete'.'admin','assign'],
                         'allow' => true,
-                        'roles' => ['sysadmin'],
+                        'roles' => ['sysadmin','asocam'],
                     ],
                 ],
-            ],*/
+            ],
         ];
     }
 

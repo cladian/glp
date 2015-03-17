@@ -22,13 +22,13 @@ use app\models\Question;
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
-<!--    --><?//= $form->field($model, 'question_id')->textInput() ?>
+<?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-    <?=
+<!--    --><?/*=
     $form->field($model, 'question_id')->dropDownList(
         ArrayHelper::map(Question::find()->all(), 'id', 'text'),
         ['prompt' => 'Seleccione']
-    ) ?>
+    ) */?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

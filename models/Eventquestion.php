@@ -56,7 +56,7 @@ class Eventquestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'eventtype_id', 'question_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['status', 'event_id'], 'integer'],
             [['text'], 'string'],
@@ -74,7 +74,7 @@ class Eventquestion extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'status' => 'Estado',
-            'text' => 'Text',
+            'text' => 'Texto',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
             'event_id' => 'Evento',

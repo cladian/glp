@@ -36,20 +36,20 @@ use app\models\Request;
     </div>
     <div class="col-xs-12 ">
         <div class="panel panel-info">
-            <div class="panel-heading">Resumen de solicitud realizada </div>
+            <div class="panel-heading">Resumen de solicitud realizada</div>
             <div class="panel-body">
-
                 <h4>
                     <kbd><?= $model->request->question; ?></kbd></h4>
+
                 <span>
-                <?= Html::img($model->user->getImageUrl(), ['class' => 'img-circle push-right', 'style' => 'height:30px;']); ?>
+                <?= Html::img($model->request->inscription->user->getImageUrl(), ['class' => 'img-circle push-right', 'style' => 'height:30px;']); ?>
 </span>
                 <i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($model->request->created_at, 'long'); ?>
 
 
             </div>
             <div class="panel-footer">
-                <span class="label label-success"><?= $model->user->username ?></span>
+                <span class="label label-success"><?= $model->request->inscription->user->username ?></span>
             </div>
 
         </div>

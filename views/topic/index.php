@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TopicSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Topics';
+$this->title = 'Temas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="topic-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Topic', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Tema', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'content:ntext',
             'status',
             'created_at',

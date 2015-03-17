@@ -24,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
 //            'eventtype_id',
-            [
+/*            [
                 'attribute' => 'eventtype_id',
                 'value'=> function ($data){ return $data->eventtype->name;}
-            ],
-            // 'question_id',
+            ],*/
+            'text',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Pregunta por Evento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Pregunta por Evento', ['create'], ['class' => 'btn btn-success', ]) ?>
     </p>
 
     
