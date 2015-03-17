@@ -90,7 +90,7 @@ use yii\helpers\Html;
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tbody>
                                             <tr><td align="center" valign="top">
-                                                    <a href="#" style="background-color: #005596; padding: 14px 28px 14px 28px; -webkit-border-radius: 3px; border-radius: 3px; line-height: 18px !important; letter-spacing: 0.125em; text-transform: uppercase; font-size: 13px; font-family: 'Open Sans', Arial, sans-serif; font-weight: 400; color: #ffffff; text-decoration: none; display: inline-block; line-height: 18px !important;-webkit-text-size-adjust:none;mso-hide:all;">Acceder a su cuenta</a>
+                                                    <?= $url ?>
                                                 </td></tr>
                                             </tbody>
                                         </table>
