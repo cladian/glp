@@ -6,7 +6,7 @@ $this->title = 'My Yii Application';
 
 ?>
 <!-- SlideShow -->
-    <div id="carousel-example-generic" class="hidden-xs carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="hidden-xs hidden-sm carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -46,10 +46,11 @@ $this->title = 'My Yii Application';
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <br>
 <!-- END SlideShow -->
 
 <!-- Ingreso y Registro -->
-    <div class="site-index">
+    <div class=" hidden-lg hidden-md site-index">
 
         <div class="jumbotron">
             <h1>Bienvenidos</h1>
@@ -71,17 +72,21 @@ $this->title = 'My Yii Application';
 
     </div>
 <!-- END Ingreso y Registro -->
-
+<center class="hidden-xs hidden-sm ">
+  <?= Html::a('Registrarme', ['site/signup/'], ['class' => 'btn btn-lg btn-primary']) ?>
+  <?= Html::a('Ingresar', ['site/login/'], ['class' => 'btn btn-lg btn-success']) ?>
+</center>
+<br class="hidden-xs hidden-sm ">
 <!-- Eventos -->
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="panel panel-primary">
-      <div class="panel-heading">Panel heading without title</div>
+      <div class="panel-heading">Eventos próximos a realizarse</div>
       <div class="panel-body">
         <?php  // Begin ForEach
                 foreach ($modelEvent as $event) {
                     ?>
 
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="thumbnail">
                             <?= Html::img($event->getImageUrl(), ['class' => 'img-responsive figure']); ?>
                             <div class="caption">
@@ -107,5 +112,6 @@ $this->title = 'My Yii Application';
       </div>
     </div>
 </div>
+
 <!-- END Eventos -->
 

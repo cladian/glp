@@ -75,7 +75,7 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'country_id', 'eventtype_id'], 'required'],
+            [['name', 'country_id', 'eventtype_id','city','short_description', 'general_content'], 'required'],
             [['short_description', 'general_content', 'methodology', 'addressed_to', 'included', 'requirements', 'file', 'photo', 'url'], 'string'],
             [['begin_at', 'end_at', 'discount_end_at', 'created_at', 'updated_at'], 'safe'],
             [['cost'], 'number'],
