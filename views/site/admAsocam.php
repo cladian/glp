@@ -199,9 +199,8 @@ if (!$hasProfile) {
                                 </small>
                             </div>
                             <p><?= $request->question; ?></p>
-                            <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
-                            -
-                            <?= Html::a('Cerrar', ['request/update', 'id' => $request->id], ['class' => 'btn btn-warning btn-xs pull-right']) ?>
+                            <span class="pull-right">&nbsp;<?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs']) ?></span>
+                            <span class="pull-right"><?= Html::a('Cerrar', ['request/update', 'id' => $request->id], ['class' => 'btn btn-default btn-xs']) ?></span>
                         </div>
                     </li>
 
