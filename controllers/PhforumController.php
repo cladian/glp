@@ -7,6 +7,7 @@ use app\models\Phforum;
 use app\models\PhforumSearch;
 use app\models\Document;
 use app\models\Video;
+use app\models\Imagen;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
@@ -14,6 +15,7 @@ use yii\filters\VerbFilter;
 
 use app\models\PhforumDocument;
 use app\models\PhforumVideo;
+use app\models\PhforumImagen;
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -130,27 +132,33 @@ class PhforumController extends Controller
             ]);
         }
     }
-
-
     public function actionCreateimg($id)
     {
-        $model = new Video();
+        $model = new Imagen();
+        $model->scenario = 'file';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $doc = UploadedFile::getInstance($model, 'file');
+            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            // $docName =  'mauricio.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroImgs'] . $docName);
+            $model->file = $docName;
+            $model->save();
+
             //Guarda relación de documentos
-            $modelPhforumVideo=new PhforumVideo;
-            $modelPhforumVideo->phforum_id=$id;
-            $modelPhforumVideo->video_id=$model->id;
-            $modelPhforumVideo->save();
+            $modelPhforumImg=new PhforumImagen;
+            $modelPhforumImg->phforum_id=$id;
+            $modelPhforumImg->imagen_id=$model->id;
+            $modelPhforumImg->save();
+
             return $this->redirect(['view', 'id' => $id]);
-
-
         } else {
-            return $this->render('createvideo', [
+            return $this->render('createimg', [
                 'model' => $model,
             ]);
         }
     }
+
 
     /**
      * Updates an existing Phforum model.
