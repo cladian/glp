@@ -93,7 +93,7 @@ class ReplyController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
 
-            $this->sendMail($model->request_id,$model->text, Html::a('Registrarme', ['reply/create/','id'=>$model->request_id], ['class' => 'btn btn-lg btn-primary']) );
+            $this->sendMail($model->request_id,$model->text, Html::a('Responder', ['reply/create/','id'=>$model->request_id], ['class' => 'btn btn-lg btn-primary']) );
 
             return $this->redirect(['create', 'id' => $id]);
 
@@ -157,17 +157,17 @@ class ReplyController extends Controller
     }
 
 
-    protected function sendMail($request_id, $message,$url)
-    {   $content="<h1>Respuesta a solicitud</h1>";
+    protected function sendMail($request_id, $message, $url)
+    {
+        $content="<h1>Respuesta a solicitud</h1>";
         $content.="El usuario respondio a su inquitud";
         $content.="<p>".$message."</p>";
 
 
         $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
         foreach ($modelReply as $reply){
+            // Contenido, tipo  1=Notificacion URL
             $reply->user->sendEmail($content, 1,$url);
-
-
         }
 
 
