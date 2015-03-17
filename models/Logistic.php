@@ -65,7 +65,7 @@ class Logistic extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['inscription_id'], 'required'],
+            [['inscription_id','leavingonorigincity'], 'required'],
             [['inscription_id', 'residence', 'status'], 'integer'],
             [['leavingondate', 'leavingonhour', 'returningondate', 'returningonhour', 'accommodationdatein', 'accommodationdateout', 'created_at', 'updated_at'], 'safe'],
             [['residenceobs'], 'string'],
