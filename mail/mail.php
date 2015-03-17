@@ -90,7 +90,7 @@ use yii\helpers\Html;
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tbody>
                                             <tr><td align="center" valign="top">
-                                                    <?= $url ?>
+                                                    <?=  \Yii::getAlias('@webroot').$url ?>
                                                 </td></tr>
                                             </tbody>
                                         </table>
