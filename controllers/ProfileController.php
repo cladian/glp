@@ -38,7 +38,7 @@ class ProfileController extends Controller
                     [
                         'actions' => ['viewown','createown','avatarown','updateown'],
                         'allow' => true,
-                        'roles' => ['user'],
+                        'roles' => ['user','asocam'],
                     ],
 
                 ],
