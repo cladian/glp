@@ -5,9 +5,15 @@ namespace app\controllers;
 use Yii;
 use app\models\Phforum;
 use app\models\PhforumSearch;
+use app\models\Document;
+use app\models\Video;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use app\models\PhforumDocument;
+use app\models\PhforumVideo;
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -70,6 +76,77 @@ class PhforumController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
+    public function actionCreatedoc($id)
+    {
+        $model = new Document();
+        $model->scenario = 'file';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $doc = UploadedFile::getInstance($model, 'file');
+            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
+            $model->file = $docName;
+            $model->save();
+
+            //Guarda relación de documentos
+            $modelPhforumDocument=new PhforumDocument;
+            $modelPhforumDocument->phforum_id=$id;
+            $modelPhforumDocument->document_id=$model->id;
+            $modelPhforumDocument->save();
+
+
+            return $this->redirect(['view', 'id' => $id]);
+        } else {
+            return $this->render('createdoc', [
+                'model' => $model,
+
+            ]);
+        }
+    }
+
+
+    public function actionCreatevideo($id)
+    {
+        $model = new Video();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //Guarda relación de documentos
+            $modelPhforumVideo=new PhforumVideo;
+            $modelPhforumVideo->phforum_id=$id;
+            $modelPhforumVideo->video_id=$model->id;
+            $modelPhforumVideo->save();
+            return $this->redirect(['view', 'id' => $id]);
+
+
+        } else {
+            return $this->render('createvideo', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
+    public function actionCreateimg($id)
+    {
+        $model = new Video();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //Guarda relación de documentos
+            $modelPhforumVideo=new PhforumVideo;
+            $modelPhforumVideo->phforum_id=$id;
+            $modelPhforumVideo->video_id=$model->id;
+            $modelPhforumVideo->save();
+            return $this->redirect(['view', 'id' => $id]);
+
+
+        } else {
+            return $this->render('createvideo', [
                 'model' => $model,
             ]);
         }
