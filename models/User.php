@@ -327,7 +327,7 @@ class User extends ActiveRecord implements IdentityInterface
         if ($type==1)
             $subject='Respuesta a Inquietud';
 
-        Yii::$app->mailer->compose('mail',['content'=>$content,$url])
+        Yii::$app->mailer->compose('mail',['content'=>$content,'url'=>$url])
             ->setFrom(\Yii::$app->params['contactEmail'])
             ->setTo($this->email)
             ->setSubject($subject)
