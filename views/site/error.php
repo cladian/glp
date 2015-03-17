@@ -9,19 +9,23 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
+<div class="container">
+<div class="error">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1 class="error-titulo"><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+        <div class="alerta">
+            <?= nl2br(Html::encode($message)) ?>
+        </div>
+        Regresar a la página de <span class="glyphicon glyphicon-home"> INICIO</span>
     </div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
 
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <?= Html::img('imgs/error/400.png'); ?>
+    </div>
+    
+</div>
 </div>
