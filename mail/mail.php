@@ -26,7 +26,7 @@
                                             <td align="center"><h2 style="background-color: #005596; with:100%; margin: 0 !important; font-family:'Open Sans', arial, sans-serif !important;font-size:28px !important;font-weight:200 !important;color:#fff !important; line-height: 100px !important;"><?= $title ?> </h2></td>
                                         </tr>
                                         <tr>
-                                             <td class="responsive-header-cell" style="margin-left:20px; font-family:'Open Sans', arial, sans-serif !important;font-size:13px !important; font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right"><code class="lead"><?= Yii::$app->formatter->asDate(date('Y-m-d'), 'long') ?></code>
+                                             <td class="responsive-header-cell" style="margin-left:20px; font-family:'Open Sans', arial, sans-serif !important;font-size:13px !important; font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right"><code class="lead"><?= Yii::$app->formatter->asDatetime(date('Y-m-d'), 'long') ?></code>
                                              </td>
                                         </tr>
                                        
