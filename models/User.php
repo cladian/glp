@@ -324,14 +324,12 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-    public function sendEmail($content, $type, $url){
-        if ($type==1)
-            $subject='Respuesta a Inquietud';
+    public function sendEmail($content, $url, $title){
 
-        Yii::$app->mailer->compose('mail',['content'=>$content,'url'=>$url])
+        Yii::$app->mailer->compose('mail',['content'=>$content,'url'=>$url,'title'=>$title])
             ->setFrom(\Yii::$app->params['contactEmail'])
             ->setTo($this->email)
-            ->setSubject($subject)
+            ->setSubject($title)
             ->send();
     }
 }
