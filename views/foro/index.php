@@ -1,6 +1,13 @@
 <?php
 use yii\helpers\Html;
 
+use app\models\PhforumDocument;
+use app\models\PhforumImagens;
+
+
+use app\models\Document;
+use app\models\Imagen;
+
 
 ?>
 
@@ -46,6 +53,42 @@ foreach ($model as $foro) {
                         </button>
                         <h5>Información del evento</h5>
                         <?= $foro->event->name; ?>
+                        <h4>Documentos</h4>
+                        <ul class="list-group">
+                        <?php
+                        foreach($foro->getPhforumDocuments()->all() as $documents)
+                        { ?>
+                            <li class="list-group-item glyphicon glyphicon-download"> <?= Html::a($documents->document->name,\Yii::$app->params['foroDocs'].$documents->document->file); ?></li>
+                        <?php
+                        }
+                        ?>
+
+
+<!--
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>-->
+                        </ul>
+
+                        <h4>Imagenes</h4>
+                        <?php
+                        foreach($foro->getPhforumImagens()->all() as $imagenes)
+                        { ?>
+                            <li class="list-group-item"> <?= Html::img( \Yii::$app->params['foroImgs'].$imagenes->imagen->file, ['class' => 'img-responsive']); ?>
+                            </li>
+                        <?php
+                        }
+                        ?>
+
+                        </ul>
+
+                        <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/iFyp1P_NsMI?rel=0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                         <div class="media">

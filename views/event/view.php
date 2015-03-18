@@ -11,6 +11,18 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    echo '<div class="alert alert-' . $key . '" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  ' . $message . '
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+             </div>';
+}
+?>
 <!--Pais-->
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
@@ -143,6 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                 <div class="panel-body">
                     <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
+                    <?= Html::a('Pregunta', ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                 </div>
             </div>
         </div>

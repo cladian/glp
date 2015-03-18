@@ -74,7 +74,7 @@ class EventController extends Controller
 
         // Edison despues de actualización
         //$dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $model->eventtype_id);
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams,$id);
 
         return $this->render('view', [
             'model' => $model,
@@ -92,7 +92,7 @@ class EventController extends Controller
     {
         $model = new Event();
         // Por defecto el status estará en 2= INACTIVO;
-        $model->status=2;
+        $model->status=self::STATUS_INACTIVE;;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -131,7 +131,17 @@ class EventController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            if (($model->getEventquestions()->andWhere(['status'=>self::STATUS_ACTIVE])->count()==0)&&($model->status==self::STATUS_ACTIVE)){
+                // WARNINGS
+                \Yii::$app->getSession()
+                    ->setFlash('danger',
+                    'El evento no puede cambiar a estado activo hasta que agregue al menos una pregunta al evento');
+                $model->status=self::STATUS_INACTIVE;
+            }
+
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

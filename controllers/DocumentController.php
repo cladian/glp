@@ -72,7 +72,7 @@ class DocumentController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
-            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            $docName = Yii::$app->security->generateRandomString() . time() . '.' . $doc->extension;
             $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
             $model->file = $docName;
             $model->save();
@@ -85,7 +85,6 @@ class DocumentController extends Controller
             ]);
         }
     }
-
 
 
     /**
@@ -134,5 +133,17 @@ class DocumentController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionDownload($file)
+    {
+
+        /*//$path = Yii::$app()->request->hostInfo . Yii::$app()->request->baseURL .\Yii::$app->params['foroDocs']. $file;
+        $path =\Yii::$app->params['foroDocs']. $file;
+
+
+        if (file_exists($path)) {
+            return Yii::$app()->getRequest()->sendFile($file, @file_get_contents($path));
+        }*/
     }
 }
