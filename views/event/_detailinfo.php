@@ -28,7 +28,18 @@ use yii\helpers\Html;
             <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($model->begin_at, 'long'); ?><br>
             <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($model->end_at, 'long'); ?>
         </address>
-
-
+        <?php
+        switch ($model->status) {
+            case 1:
+                echo '<h3><span class="label label-success">'.$model->getStatus($model->status).'</span></h3>';
+                break;
+            case 2:
+                echo '<h3><span class="label label-warning">'.$model->getStatus($model->status).'</span></h3>';
+                break;
+            case 0:
+                echo '<h3><span class="label label-danger">'.$model->getStatus($model->status).'</span></h3>';
+                break;
+        }
+        ?>
     </div>
 

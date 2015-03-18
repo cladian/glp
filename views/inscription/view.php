@@ -48,11 +48,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
+                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                       aria-controls="collapseOne">
+                       aria-controls="collapseOne" style="color:white;">
                         Información de Inscripción
                     </a>
                 </h5>
@@ -69,11 +70,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                       aria-expanded="true" aria-controls="collapseTwo">
+                       aria-expanded="true" aria-controls="collapseTwo" style="color:white;">
                         Información logística
                     </a>
                 </h4>
@@ -91,11 +93,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                       aria-expanded="false" aria-controls="collapseThree">
+                       aria-expanded="false" aria-controls="collapseThree" style="color:white;">
                         Respuestas por evento
                     </a>
                 </h4>
@@ -109,11 +112,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4"
-                       aria-expanded="false" aria-controls="collapse4">
+                       aria-expanded="false" aria-controls="collapse4" style="color:white;">
                         Respuestas a preguntas generales
                     </a>
                 </h4>
@@ -127,9 +131,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-warning">
+        <div class="panel panel-danger">
             <div class="panel-heading" role="tab" id="heading5">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5"
                        aria-expanded="false" aria-controls="collapse5">
                         Notificaciones / Solicitudes

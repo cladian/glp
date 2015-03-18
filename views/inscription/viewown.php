@@ -54,6 +54,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
+
+                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                        aria-controls="collapseOne">
                         Información de Inscripción
@@ -72,9 +74,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
                        aria-expanded="true" aria-controls="collapseTwo">
                         Información logística
@@ -97,6 +100,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
                        aria-expanded="false" aria-controls="collapseThree">
                         Respuestas por evento
@@ -105,16 +109,17 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <?= $this->render('_partialEventanswer', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); ?>
+                    <?= $this->render('_partialEventanswerown', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); ?>
                 </div>
             </div>
         </div>
 
 
 
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4"
                        aria-expanded="false" aria-controls="collapse4">
                         Respuestas a preguntas generales
@@ -123,16 +128,17 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                 <div class="panel-body">
-                    <?= $this->render('_partialAnswer', ['searchModel' => $searchModelAnswer, 'dataProvider' => $dataProviderAnswer]); ?>
+                    <?= $this->render('_partialAnswerown', ['searchModel' => $searchModelAnswer, 'dataProvider' => $dataProviderAnswer]); ?>
                 </div>
             </div>
         </div>
 
 
 
-        <div class="panel panel-warning">
+        <div class="panel panel-danger">
             <div class="panel-heading" role="tab" id="heading5">
                 <h4 class="panel-title">
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5"
                        aria-expanded="false" aria-controls="collapse5">
                         Notificaciones / Solicitudes
