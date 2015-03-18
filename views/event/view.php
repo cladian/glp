@@ -155,6 +155,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                 <div class="panel-body">
                     <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
+                    <?= Html::a('Pregunta', ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                 </div>
             </div>
         </div>

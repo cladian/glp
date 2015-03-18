@@ -46,9 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="eventquestion-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Crear Pregunta por Evento', ['create'], ['class' => 'btn btn-success', ]) ?>
-    </p>
+    <!--<p>
+        <?/*= Html::a('Crear Pregunta por Evento', ['create'], ['class' => 'btn btn-success', ]) */?>
+    </p>-->
 
     
 

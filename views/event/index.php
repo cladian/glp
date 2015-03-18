@@ -44,7 +44,20 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'country_id',
             // 'eventtype_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
+                        },
+                    'update' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['event/update', 'id' => $key]);
+                        },
+
+                ]
+            ],
         ],
     ]); ?>
   </div>
