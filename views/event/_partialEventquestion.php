@@ -22,28 +22,38 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
-//            'status',
+            'text',
+            'status',
 //            'created_at',
 //            'updated_at',
 //            'eventtype_id',
-/*            [
-                'attribute' => 'eventtype_id',
-                'value'=> function ($data){ return $data->eventtype->name;}
-            ],*/
-/*//            'question_id',
-            [
-                'attribute' => 'question_id',
-                'value'=> function ($data){ return $data->text;}
-            ],*/
+            /*            [
+                            'attribute' => 'eventtype_id',
+                            'value'=> function ($data){ return $data->eventtype->name;}
+                        ],*/
+            /*//            'question_id',
+                        [
+                            'attribute' => 'question_id',
+                            'value'=> function ($data){ return $data->text;}
+                        ],*/
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'buttons' => [
+                    'update' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['eventquestion/update', 'id' => $key]);
+                    },
+
+
+                ]
+            ],
+
         ],
     ]); ?>
-<div class="panel-body">
+    <div class="panel-body">
 
-    <p>
-<!--        --><?//= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
-    </p>
-</div>
+        <p>
+            <!--        --><? //= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
+        </p>
+    </div>
 </div>
