@@ -71,7 +71,7 @@ $this->title = 'My Yii Application';
 
 
 <!-- Ingreso y Registro -->
-<div class=" hidden-lg hidden-md site-index">
+<div class=" hidden-xs hidden-md hidden-sm hidden-lg site-index">
 
     <div class="jumbotron">
         <h1>Bienvenidos</h1>
