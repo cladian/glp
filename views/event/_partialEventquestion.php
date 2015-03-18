@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\EventquestionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -52,8 +53,12 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
     <div class="panel-body">
 
-        <p>
-            <!--        --><? //= Html::a('Crear Pregunta por Evento', ['eventquestion/createown','eventtype_id'=>$eventtype_id,'event_id'=>$event_id], ['class' => 'btn btn-success']) ?>
-        </p>
+
     </div>
+
+
+
+
+
+
 </div>

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'text',
             [                    // the owner name of the model
                 'label' => 'Tipo de Evento',
-                'value' => $model->eventtype->name,
+                'value' => $model->event->name,
             ],
 //            'question_id',
 
