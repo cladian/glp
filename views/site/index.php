@@ -96,16 +96,16 @@ $this->title = 'My Yii Application';
 <section style="padding-top: 20px;">
    
   <div class="panel panel-default">
-  <div class="panel-heading"><h2 class="text-large">Próximos eventos</h2></div>
+  <div class="panel-heading"><h4 class="text-large">Próximos eventos</h4></div>
     <div class="panel-body">
 <!-- panel-interno -->
 
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" >
 
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+
      <?php  // Begin foreach
         foreach ($modelEvent as $event) {
       ?>
+ <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" >
     <div class="panel panel-primary">
       <div class="panel-heading"><center>
 
@@ -122,14 +122,18 @@ $this->title = 'My Yii Application';
           <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong class="event-text">Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
 <br><br>
         <?= Html::img($event->getImageUrl(), ['class' => 'img-d-retina']); ?>
-        <br>
-        <p class="texto-rell"> <?= $event->name; ?></p>
-        <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-block']) ?>
+
+        
+        
+      </div>
+      <div class="panel-footer">
+          <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
       </div>
     </div>
+    </div>
     <?php }  // End ForEach ?>
-  </div>
-</div>
+  
+
 
 
 
