@@ -22,10 +22,10 @@ use yii\widgets\DetailView;
             'phone_number',
             'mobile_number',
 //            'complete',
-            'status',
+//            'status',
 //            'created_at',
 //            'updated_at',
-            'photo',
+//            'photo',
 //            'user_id',
             [                    // the owner name of the model
                 'label' => 'Usuario',

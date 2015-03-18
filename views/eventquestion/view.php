@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
             'text',
-/*            [                    // the owner name of the model
+            [                    // the owner name of the model
                 'label' => 'Tipo de Evento',
                 'value' => $model->eventtype->name,
-            ],*/
+            ],
 //            'question_id',
 
         ],

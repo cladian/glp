@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Inscription;
 use Yii;
 use app\models\Logistic;
 use app\models\LogisticSearch;
@@ -98,6 +99,8 @@ class LogisticController extends Controller
     public function actionUpdateown($id)
     {
         $model = $this->findModel($id);
+        $modelInscription=new Inscription();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['inscription/viewown', 'id' => $model->inscription_id]);

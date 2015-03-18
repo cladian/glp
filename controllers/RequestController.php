@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use app\models\Request;
 use app\models\RequestSearch;
@@ -119,6 +120,11 @@ class RequestController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // Evniamos mensaje únicamente cuanto el estado se cambia a inactivo
+            if($model->status==self::STATUS_INACTIVE)
+            {  $this->sendMail("El asministrador ha cerrado la solicitud", $model->inscription->user_id);
+
+            }
             return $this->redirect(['site/index']);
         } else {
             return $this->render('update', [
@@ -154,5 +160,15 @@ class RequestController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    protected  function sendMail($message, $user_id)
+    {
+        $title="Solicitud resuelta";
+        $content=$message;
+
+        $modelUser=User::find()->where(['id'=>$user_id])->one();
+        $modelUser->sendEmail($content, '#', $title);
+
     }
 }

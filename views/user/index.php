@@ -177,9 +177,9 @@ echo \kartik\grid\GridView::widget([
                     'options' => 'Save as Excel'],
             ],*/
     'toolbar' => [
-        ['content' =>
+/*        ['content' =>
             Html::a('Create Employee', ['create'], ['class' => 'btn btn-default'])
-        ],
+        ],*/
         '{export}',
     ],
 
