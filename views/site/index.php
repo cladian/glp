@@ -71,7 +71,7 @@ $this->title = 'My Yii Application';
 
 
 <!-- Ingreso y Registro -->
-<div class=" hidden-lg hidden-md site-index">
+<div class=" hidden-xs hidden-md hidden-sm hidden-lg site-index">
 
     <div class="jumbotron">
         <h1>Bienvenidos</h1>
@@ -88,7 +88,49 @@ $this->title = 'My Yii Application';
 
 
 <!-- end copia -->
+
+
+
+
+<!-- eventos -->
+<section style="padding-top: 20px;">
+  <h2 class="text-large">Próximos eventos</h2>
+  <?php  // Begin foreach
+    foreach ($modelEvent as $event) {
+  ?>
+
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+    <div class="panel panel-default">
+      <div class="panel-heading"><center>
+        <?= Html::img('imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive']); ?>
+        <h3><?= $event->city . ', ' . $event->country->name; ?></h3></center>
+        
+
+      
+      </div>
+      <div class="panel-body">
+        
+          <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong class="event-text">Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+          <br>
+          <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong class="event-text">Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+<br><br>
+        <?= Html::img($event->getImageUrl(), ['class' => 'img-d-retina']); ?>
+        <br>
+        <p class="texto-rell"> <?= $event->name; ?></p>
+        <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-block']) ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+
+  <?php }  // End ForEach ?>
+</section>
+<!-- eventos -->
 <!-- relleno -->
+<!-- <section>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">         
     <h1 class="tituto-relleno">Te proporcionamos todas las novedades que necesitas para sobre nuestros eventos.</h1>
     <p class="texto-relleno">ASOCAM te permite planificar cualquier evento, hacerle un seguimiento y promocionarlo.</p>
@@ -109,27 +151,6 @@ $this->title = 'My Yii Application';
     <h3 class="texto-cursos">Publica un evento en solo unos minutos</h3>
     <p class="texto-rell">¡Es muy fácil organizar festivales, espectáculos, recogidas de fondos, conferencias, fiestas, talleres y eventos de todo tipo!</p>
 </div>
+
+</section> -->
 <!-- end relleno -->
-
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-
-                <?php  // Begin foreach
-                foreach ($modelEvent as $event) {
-                    ?>
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="thumbnail">
-                            <?= Html::img($event->getImageUrl(), ['class' => 'img-responsive figure']); ?>
-                            <div class="caption">
-                                <center><h3><?= $event->name; ?></h3></center>
-
-                                <!-- <p><?= $event->short_description; ?></p> -->
-                               
-                                <p>
-                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-primary btn-block']) ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                <?php }  // End ForEach ?>
-</div>
