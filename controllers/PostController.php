@@ -8,7 +8,14 @@ use app\models\PostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Document;
+use app\models\Video;
+use app\models\Imagen;
+use yii\web\UploadedFile;
 
+use app\models\PostDocument;
+use app\models\PostVideo;
+use app\models\PostImagen;
 /**
  * PostController implements the CRUD actions for Post model.
  */
@@ -70,6 +77,80 @@ class PostController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCreatedoc($id)
+    {
+        $model = new Document();
+        $model->scenario = 'file';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $doc = UploadedFile::getInstance($model, 'file');
+            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
+            $model->file = $docName;
+            $model->save();
+
+            //Guarda relación de documentos
+            $modelPostDocument=new PostDocument;
+            $modelPostDocument->post_id=$id;
+            $modelPostDocument->document_id=$model->id;
+            $modelPostDocument->save();
+
+
+            return $this->redirect(['view', 'id' => $id]);
+        } else {
+            return $this->render('createdoc', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCreatevideo($id)
+    {
+        $model = new Video();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //Guarda relación de documentos
+            $modelPostVideo=new PostVideo;
+            $modelPostVideo->post_id=$id;
+            $modelPostVideo->video_id=$model->id;
+            $modelPostVideo->save();
+            return $this->redirect(['view', 'id' => $id]);
+
+
+        } else {
+            return $this->render('createvideo', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionCreateimg($id)
+    {
+        $model = new Imagen();
+        $model->scenario = 'file';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $doc = UploadedFile::getInstance($model, 'file');
+            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            // $docName =  'mauricio.' . $doc->extension;
+            $doc->saveAs(\Yii::$app->params['foroImgs'] . $docName);
+            $model->file = $docName;
+            $model->save();
+
+            //Guarda relación de documentos
+            $modelPostImg=new PostImagen;
+            $modelPostImg->post_id=$id;
+            $modelPostImg->imagen_id=$model->id;
+            $modelPostImg->save();
+
+            return $this->redirect(['view', 'id' => $id]);
+        } else {
+            return $this->render('createimg', [
                 'model' => $model,
             ]);
         }

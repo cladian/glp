@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Nuevo Tópico', ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Nuevo Tema', ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Subir Documento', ['phforum/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Subir Video', ['phforum/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Subir Imagen', ['phforum/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
