@@ -298,7 +298,7 @@ class InscriptionController extends Controller
 
             $model->save();
             //Almacenamiento de registro Logistica en Blanco
-            //$modelLogistic = new Logistic();
+
             $modelLogistic->inscription_id = $model->id;
             $modelLogistic->save();
 
@@ -318,17 +318,18 @@ class InscriptionController extends Controller
             // y subir al registro de evento
 
 
-            $modelEventQuestion = Eventquestion::find()->where(['status' => self::STATUS_ACTIVE, 'eventtype_id' => $model->event->eventtype_id])->all();
+            $modelEventQuestion = Eventquestion::find()->where(['status' => self::STATUS_ACTIVE, 'event_id' => $model->event->id])->all();
             foreach ($modelEventQuestion as $eventquestion) {
                 $modelEvenAnswer = new Eventanswer();
                 $modelEvenAnswer->inscription_id = $model->id;
                 $modelEvenAnswer->eventquestion_id = $eventquestion->id;
                 $modelEvenAnswer->save();
             }
+            //++++++++++++++++++++++++++++++++++++++++
+            // CALCULATE
+            $this->calculate($model->id);
+            //++++++++++++++++++++++++++++++++++++++++
 
-            // Almacenamiento de registros EventAnswers en Blanco
-            // Pendiente
-            //
             return $this->redirect(['viewown', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
@@ -371,6 +372,12 @@ class InscriptionController extends Controller
                 $model->complete_eventquiz = $model->getCountEventAnswers();
                 $model->complete_logistic = $model->getCountLogistic();
                 $model->save();
+
+                //++++++++++++++++++++++++++++++++++++++++
+                // CALCULATE
+                $this->calculate($model->id);
+                //++++++++++++++++++++++++++++++++++++++++
+
                 return $this->redirect(['viewown', 'id' => $model->id]);
             } else {
                 return $this->render('updateown', [
@@ -495,5 +502,44 @@ class InscriptionController extends Controller
     public function actionOwn($id, $user)
     {
         return Inscription::find()->where(['user_id' => $user, 'id' => $id])->count();
+    }
+    /*
+     * Función para calcular los porcentajes de avance
+     */
+    public function calculate($id){
+        //modelo para hacer actualización
+        $model =$this->findModel($id);
+
+        // contador de Logistic
+        $items=11;
+        $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
+        $itemsNotNull = 0;
+        if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
+        if ($modelLogistic->leavingonairline !=NULL) $itemsNotNull++;
+        if ($modelLogistic->leavingonflightnumber != NULL) $itemsNotNull++;
+        if ($modelLogistic->leavingondate != NULL) $itemsNotNull++;
+        if ($modelLogistic->leavingonhour != NULL) $itemsNotNull++;
+
+        if ($modelLogistic->returningonairline != NULL) $itemsNotNull++;
+        if ($modelLogistic->returningonflightnumber != NULL) $itemsNotNull++;
+        if ($modelLogistic->returningondate != NULL) $itemsNotNull++;
+        if ($modelLogistic->returningonhour != NULL) $itemsNotNull++;
+
+        if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
+        if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
+
+        $model->complete_quiz=0;
+        if ($model->getAnswers()->count()>0)
+            $model->complete_quiz=$model->getAnswers()->andWhere(('text=NULL'))->count()*100/ $model->getAnswers()->count();
+
+        $model->complete_logistic=($itemsNotNull * 100)/$items;;
+        $model->getAnswers()->andWhere(('text=NULL'))->count();
+        $model->getAnswers()->count();
+
+        $model->complete=100;
+        $model->complete_eventquiz=50;
+
+        $model->save();
+
     }
 }
