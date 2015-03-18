@@ -366,11 +366,8 @@ class InscriptionController extends Controller
             // búsqueda de modelo por dos parámetros
             $model = $this->findModelown($id, Yii::$app->user->id);
 
-            if ($model->load(Yii::$app->request->post())) {
+            if ($model->load(Yii::$app->request->post())&&$model->save()) {
 
-                $model->complete_quiz = $model->getCountAnswers();
-                $model->complete_eventquiz = $model->getCountEventAnswers();
-                $model->complete_logistic = $model->getCountLogistic();
                 $model->save();
 
                 //++++++++++++++++++++++++++++++++++++++++
@@ -511,33 +508,55 @@ class InscriptionController extends Controller
         $model =$this->findModel($id);
 
         // contador de Logistic
-        $items=11;
+        $items=0;
         $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
         $itemsNotNull = 0;
-        if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
-        if ($modelLogistic->leavingonairline !=NULL) $itemsNotNull++;
-        if ($modelLogistic->leavingonflightnumber != NULL) $itemsNotNull++;
-        if ($modelLogistic->leavingondate != NULL) $itemsNotNull++;
-        if ($modelLogistic->leavingonhour != NULL) $itemsNotNull++;
 
-        if ($modelLogistic->returningonairline != NULL) $itemsNotNull++;
-        if ($modelLogistic->returningonflightnumber != NULL) $itemsNotNull++;
-        if ($modelLogistic->returningondate != NULL) $itemsNotNull++;
-        if ($modelLogistic->returningonhour != NULL) $itemsNotNull++;
 
-        if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
-        if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
+        If ($modelLogistic->residence){
+            $items=3;
+            //1
+            if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
+            //2
+            if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
+            //3
+            if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
+        }else{
+            $items=11;
+            //1
+            if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
+            //2
+            if ($modelLogistic->leavingonairline !=NULL) $itemsNotNull++;
+            //3
+            if ($modelLogistic->leavingonflightnumber != NULL) $itemsNotNull++;
+            //4
+            if ($modelLogistic->leavingondate != NULL) $itemsNotNull++;
+            //5
+            if ($modelLogistic->leavingonhour != NULL) $itemsNotNull++;
+            //6
+            if ($modelLogistic->returningonairline != NULL) $itemsNotNull++;
+            //7
+            if ($modelLogistic->returningonflightnumber != NULL) $itemsNotNull++;
+            //8
+            if ($modelLogistic->returningondate != NULL) $itemsNotNull++;
+            //9
+            if ($modelLogistic->returningonhour != NULL) $itemsNotNull++;
+            //10
+            if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
+            //11
+            if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
+        }
 
-        $model->complete_quiz=0;
+        $model->complete_quiz=100;
         if ($model->getAnswers()->count()>0)
-            $model->complete_quiz=$model->getAnswers()->andWhere(('text=NULL'))->count()*100/ $model->getAnswers()->count();
+            $model->complete_quiz=round($model->getAnswers()->count()*100/ $model->getAnswers()->count());
 
-        $model->complete_logistic=($itemsNotNull * 100)/$items;;
-        $model->getAnswers()->andWhere(('text=NULL'))->count();
-        $model->getAnswers()->count();
+        $model->complete_logistic=round($itemsNotNull*100/$items);
+
 
         $model->complete=100;
-        $model->complete_eventquiz=50;
+        if ($model->getEventanswers()->count()>0)
+            $model->complete_eventquiz=$model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count();
 
         $model->save();
 
