@@ -107,7 +107,6 @@ class PhforumController extends Controller
         } else {
             return $this->render('createdoc', [
                 'model' => $model,
-
             ]);
         }
     }
@@ -132,6 +131,7 @@ class PhforumController extends Controller
             ]);
         }
     }
+    
     public function actionCreateimg($id)
     {
         $model = new Imagen();

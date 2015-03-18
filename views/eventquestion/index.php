@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Event;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\EventquestionSearch */
@@ -20,15 +23,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'status',
+
+
 //            'created_at',
 //            'updated_at',
-//            'eventtype_id',
-/*            [
-                'attribute' => 'eventtype_id',
-                'value'=> function ($data){ return $data->eventtype->name;}
-            ],*/
+//            'event_id',
+            [
+                'attribute' => 'event_id',
+                'value' => function ($data) {
+                        return $data->event->name;
+                    }
+            ],
             'text',
+            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
