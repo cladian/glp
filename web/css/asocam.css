@@ -3,6 +3,188 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+a:link{   
+ text-decoration:none;   
+}   
+ /*slide*/
+.slide{
+    background: url("1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 100%;
+    height: 500px;
+}
+.caja{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.titulo-registro{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color:#fff;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.texto-info{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color: #999;
+    font-size: 11px;
+    line-height: 16px;
+}
+.aviso{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color: #999;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+}
+.caja-slide{
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.tituto-slide{
+    padding: 20px 20px 0 20px;
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color: #fff;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 50px;
+}
+.texto-slide{
+    padding: 20px;
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.texto-slide2{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+
+}
+.marketing-text--white{
+    color: #fff;
+    text-decoration-color: -moz-use-text-color;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+}
+.responsive-form__input--icon input[type="color"], .responsive-form__input--icon input[type="date"], .responsive-form__input--icon input[type="datetime"], .responsive-form__input--icon input[type="datetime-local"], .responsive-form__input--icon input[type="email"], .responsive-form__input--icon input[type="month"], .responsive-form__input--icon input[type="number"], .responsive-form__input--icon input[type="password"], .responsive-form__input--icon input[type="range"], .responsive-form__input--icon input[type="search"], .responsive-form__input--icon input[type="tel"], .responsive-form__input--icon input[type="time"], .responsive-form__input--icon input[type="text"], .responsive-form__input--icon input[type="url"], .responsive-form__input--icon input[type="week"]{
+    font-size: 16px;
+    padding-left: 40px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #fff;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: #dedede;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-source: none;
+    border-image-width: 1 1 1 1;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #dedede;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #dedede;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #dedede;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: border-box;
+    color: #666;
+    font-weight: 400;
+    line-height: 24px;
+    padding-bottom: 9px;
+    padding-right: 12px;
+    padding-top: 9px;
+    vertical-align: middle;
+    width: 100%;
+}
+.tituto-relleno{
+    color: #404040;
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    text-align: center;
+
+}
+.texto-relleno{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    color: #999;
+
+}
+.texto-cursos{
+    color: #404040;
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+}
+.texto-rell{
+    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #999;
+}
+
+/*end slide*/
+
+
+
+ /*pagina de error*/
 .error-titulo{
     color: #F4ACAD;
     font-size: 50pt;
@@ -15,7 +197,7 @@
 .img-slide{
     max-width: 100%;
 }
- 
+/* END pagina de error*/ 
 /*css asocam*/
 .calendario{
     background-color: red !important;
