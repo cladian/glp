@@ -35,103 +35,103 @@ if (!$hasProfile) {
 <div>
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
-        <div class=" col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">10</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">Respuestas</span>
-                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<!--        <div class=" col-xs-6 col-lg-3 col-md-6">-->
+<!--            <div class="panel panel-primary">-->
+<!--                <div class="panel-heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-3">-->
+<!--                            <i class="glyphicon glyphicon-user"></i>-->
+<!--                        </div>-->
+<!--                        <div class="col-xs-9 text-right">-->
+<!--                            <div style="font-size:20px;" class="huge">10</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <a href="#">-->
+<!--                    <div class="panel-footer">-->
+<!--                        <span class="pull-left">Respuestas</span>-->
+<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
+<!---->
+<!--                        <div class="clearfix"></div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
         <!--END Panel-->
         <!--Panel-->
-        <div class="col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="glyphicon glyphicon-tasks"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">5</div>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">Notificaciones</span>
-                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
+<!--            <div class="panel panel-green">-->
+<!--                <div class="panel-heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-3">-->
+<!--                            <i class="glyphicon glyphicon-tasks"></i>-->
+<!--                        </div>-->
+<!--                        <div class="col-xs-9 text-right">-->
+<!--                            <div style="font-size:20px;" class="huge">5</div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <a href="#">-->
+<!--                    <div class="panel-footer">-->
+<!--                        <span class="pull-left">Notificaciones</span>-->
+<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
+<!---->
+<!--                        <div class="clearfix"></div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
         <!--END Panel-->
         <!--Panel-->
-        <div class="col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">5</div>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">Inscripciones</span>
-                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
+<!--            <div class="panel panel-yellow">-->
+<!--                <div class="panel-heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-3">-->
+<!--                            <i class="glyphicon glyphicon-pencil"></i>-->
+<!--                        </div>-->
+<!--                        <div class="col-xs-9 text-right">-->
+<!--                            <div style="font-size:20px;" class="huge">5</div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <a href="#">-->
+<!--                    <div class="panel-footer">-->
+<!--                        <span class="pull-left">Inscripciones</span>-->
+<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
+<!---->
+<!--                        <div class="clearfix"></div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
         <!--END Panel-->
         <!--Panel-->
-        <div class="col-xs-6 col-lg-3 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="glyphicon glyphicon-eye-open"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div style="font-size:20px;" class="huge">5</div>
-
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">Nuevas entradas en foros</span>
-                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
+<!--            <div class="panel panel-red">-->
+<!--                <div class="panel-heading">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-3">-->
+<!--                            <i class="glyphicon glyphicon-eye-open"></i>-->
+<!--                        </div>-->
+<!--                        <div class="col-xs-9 text-right">-->
+<!--                            <div style="font-size:20px;" class="huge">5</div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <a href="#">-->
+<!--                    <div class="panel-footer">-->
+<!--                        <span class="pull-left">Nuevas entradas en foros</span>-->
+<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
+<!---->
+<!--                        <div class="clearfix"></div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
         <!--END Panel-->
     </div>
 </div>
