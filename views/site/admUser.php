@@ -272,7 +272,7 @@ if (!$hasProfile) {
                 // $modelRequest=\app\models\Request::find()
                 foreach ($modelRecentInscription as $inscription) {
 
-                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id,'status'=>1])->all() as $request) {
+                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id,'status'=>1])->orderBy('created_at desc')->all() as $request) {
                         ?>
                         <li class="left clearfix">
                                     <span class="chat-img pull-left">
@@ -293,7 +293,7 @@ if (!$hasProfile) {
                                 </p>
 
 
-                                <?= Html::a('Responder', ['reply/create', 'id' => $request->inscription->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+                                <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
 
 
                             </div>

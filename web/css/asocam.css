@@ -3,7 +3,15 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
-
+.error-titulo{
+    color: #F4ACAD;
+    font-size: 50pt;
+}
+.alerta{
+    font-size: 20pt;
+    color: #999999;
+    text-transform: uppercase;
+}
 .img-slide{
     max-width: 100%;
 }
@@ -22,13 +30,13 @@
     border-color:none;
  }
 .navbar-inverse{
-    background-color: #005596;
-    border-bottom-color: #005596;
+    background-color: #337AB7;
+    border-bottom-color: #337AB7;
     border-left-color-ltr-source: physical;
     border-left-color-rtl-source: physical;
     border-right-color-ltr-source: physical;
     border-right-color-rtl-source: physical;
-    border-top-color: #005596;
+    border-top-color: #337AB7;
 }
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav > li > a{
