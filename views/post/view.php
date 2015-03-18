@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Subir Documento', ['post/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Subir Video', ['post/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Subir Imagen', ['post/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
