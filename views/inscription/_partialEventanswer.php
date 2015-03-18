@@ -30,7 +30,7 @@ $this->title = 'Respuestas por Evento';
             'readonly' => true,
             'attribute' => 'eventquestion_id',
             'value' => function ($data) {
-                return $data->eventquestion->question->text;
+                return $data->eventquestion->text;
             }
 
         ],
