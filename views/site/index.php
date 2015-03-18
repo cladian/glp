@@ -12,12 +12,12 @@ $this->title = 'My Yii Application';
 <section class="slide">
         <center class="caja-slide">
         <div class="hidden-xs hidden-lg hidden-md col-xs-7 col-sm-7 col-md-7 col-lg-7">
-            
+            <div class="caja-slide">
                 <h1 class="tituto-slide">Bienvenidos</h1>
                 <p class="texto-slide">Al sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá registrarse y
                 acceder a la información, materiales y demás cursos disponibles para los participantes de los eventos
                 regionales</p>
-            
+            </div>
         </div>
         </center>
 <!-- ingreso -->
@@ -94,15 +94,21 @@ $this->title = 'My Yii Application';
 
 <!-- eventos -->
 <section style="padding-top: 20px;">
-  <h2 class="text-large">Próximos eventos</h2>
-  <?php  // Begin foreach
-    foreach ($modelEvent as $event) {
-  ?>
+   
+  <div class="panel panel-default">
+  <div class="panel-heading"><h2 class="text-large">Próximos eventos</h2></div>
+    <div class="panel-body">
+<!-- panel-interno -->
 
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" >
+
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-    <div class="panel panel-default">
+     <?php  // Begin foreach
+        foreach ($modelEvent as $event) {
+      ?>
+    <div class="panel panel-primary">
       <div class="panel-heading"><center>
+
         <?= Html::img('imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive']); ?>
         <h3><?= $event->city . ', ' . $event->country->name; ?></h3></center>
         
@@ -121,12 +127,26 @@ $this->title = 'My Yii Application';
         <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-block']) ?>
       </div>
     </div>
+    <?php }  // End ForEach ?>
   </div>
 </div>
 
+
+
+
+
+
+    </div>
+<!-- end panel interno -->
+  </div>
+ 
+ 
+
+
+
    
 
-  <?php }  // End ForEach ?>
+
 </section>
 <!-- eventos -->
 <!-- relleno -->
