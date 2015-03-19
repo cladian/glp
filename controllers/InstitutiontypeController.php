@@ -130,10 +130,14 @@ class InstitutiontypeController extends Controller
         $model = new Institutiontype();
         $model->created_at=date('Y-m-d H:i:s');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            /*return $this->redirect(['index']);*/
+            //return $this->actionIndex();
+            $model->save();
+
+            /*return $this->redirect(['view', 'id' => $model->id]);*/
         } else {
-            return $this->render('create', [
+            return $this->renderAjax('create', [
                 'model' => $model,
             ]);
         }
