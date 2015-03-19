@@ -80,10 +80,10 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+//            'captcha' => [
+//                'class' => 'yii\captcha\CaptchaAction',
+//                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+//            ],
         ];
     }
 
@@ -157,6 +157,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
         if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
         } elseif (Yii::$app->user->can('user')) {
@@ -164,6 +172,7 @@ class SiteController extends Controller
         } else {
             return $this->render('index', [
                 'modelEvent' => Event::find()->where(['status' => self::STATUS_ACTIVE])->all(),
+                'model'=> $model
             ]);
         }
     }
