@@ -13,43 +13,21 @@ $this->title = 'Respuestas por Evento';
 ?>
 <div class="eventanswer-index">
 
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-
-
     <?
     $gridColumns = [
-        // the name column configuration
         [
             'class' => '\kartik\grid\SerialColumn',
             'contentOptions'=>['class'=>'kartik-sheet-style'],
         ],
-        /*[
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'eventquestion_id',
-            'value' => function ($data) {
-                return $data->eventquestion->text;
-            }
-
-        ],*/
-
         [
             'class' => 'kartik\grid\EditableColumn',
             'attribute' => 'reply',
-            /*'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status == 10); // do not allow editing of inactive records
-            },*/
             'editableOptions' => [
                 'header' => 'Nombre',
                 'size' => 'md',
                 'inputType' => \kartik\editable\Editable::INPUT_TEXTAREA,
                 'class' => 'text-danger',
                 'format' => Editable::FORMAT_BUTTON,
-                /*'options' => [
-                    'pluginOptions' => ['min' => 0, 'max' => 5000]
-                ]*/
             ],
         ],
         [
@@ -81,42 +59,9 @@ $this->title = 'Respuestas por Evento';
         'showPageSummary' => true,
         'persistResize' => false,
         'exportConfig' => true,
-        /*        'pjax'=>true,
-                'floatHeader'=>true,
-                'floatHeaderOptions'=>['scrollingTop'=>'50'],
-                'pjaxSettings'=>[
-                    'neverTimeout'=>true,
-                    'beforeGrid'=>'My fancy content before.',
-                    'afterGrid'=>'My fancy content after.',
-                ]*/
+        'pjax'=>true,
     ]);
 
-
-
-
-
-    /*= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-//            'id',
-
-//            'inscription_id',
-//            'eventquestion_id',
-            [
-                'attribute' => 'eventquestion_id',
-                'value'=> function ($data){ return $data->eventquestion->question->text;}
-            ],
-            'reply:ntext',
-//            'created_at',
-            // 'updated_at',
-            // 'status',
-
-//            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */
     ?>
 
 </div>
