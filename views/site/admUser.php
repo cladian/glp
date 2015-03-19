@@ -185,7 +185,7 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <?= Html::a('Ver todas las inscripciones', ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            <?= Html::a('Ver todas las inscripciones', ['inscription/indexown'], ['class' => 'btn btn-default btn-block']) ?>
             <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
         <!-- /.panel-footer -->
