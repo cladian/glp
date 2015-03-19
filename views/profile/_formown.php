@@ -41,18 +41,18 @@ use app\models\Country;
 
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <?=$form->field($model, 'country_id')->dropDownList(
-            ArrayHelper::map(Country::find()->all(), 'id', 'name'),
+            ArrayHelper::map(Country::find()->where(['status'=> Country::STATUS_ACTIVE])->orderby('name')->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
         <?= $form->field($model, 'institution_name')->textInput(['maxlength' => 250]) ?>
         <?=$form->field($model, 'institutiontype_id')->dropDownList(
-            ArrayHelper::map(Institutiontype::find()->all(), 'id', 'name'),
+            ArrayHelper::map(Institutiontype::find()->orderby('name')->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
         
         <?= $form->field($model, 'responsability_name')->textInput(['maxlength' => 250]) ?>
         <?=$form->field($model, 'responsibilitytype_id')->dropDownList(
-            ArrayHelper::map(Responsibilitytype::find()->all(), 'id', 'name'),
+            ArrayHelper::map(Responsibilitytype::find()->orderby('name')->all(), 'id', 'name'),
             ['prompt' => 'Seleccione']
         ) ?>
         

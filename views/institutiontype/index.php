@@ -127,9 +127,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'status',
             'pageSummary' => true
         ],
-        [   // Botones de acción
-            'class' => '\kartik\grid\ActionColumn',
-            'deleteOptions' => ['label' => '<i class="glyphicon glyphicon-remove"></i>']
+//        [   // Botones de acción
+//            'class' => '\kartik\grid\ActionColumn',
+//            'deleteOptions' => ['label' => '<i class="glyphicon glyphicon-remove"></i>']
+//        ],
+
+        ['class' => 'kartik\grid\ActionColumn',
+            'template' => '{view} {update}',
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['institutiontype/view', 'id' => $key]);
+                    },
+                'update' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['institutiontype/update', 'id' => $key]);
+                    },
+
+            ]
         ],
 
         [

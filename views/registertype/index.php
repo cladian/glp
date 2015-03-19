@@ -32,8 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
             // 'updated_at',
             // 'registertype_id',
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['registertype/view', 'id' => $key]);
+                        },
+                    'update' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['registertype/update', 'id' => $key]);
+                        },
 
-            ['class' => 'yii\grid\ActionColumn'],
+                ]
+            ],
         ],
     ]); ?>
 

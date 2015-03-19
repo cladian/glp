@@ -49,7 +49,7 @@ class InscriptionController extends Controller
                         'roles' => ['asocam', 'sysadmin'],
                     ],
                     [
-                        'actions' => ['createown', 'updateown', 'subcat', 'detailown', 'viewown'],
+                        'actions' => ['createown', 'updateown', 'subcat', 'detailown', 'viewown', 'indexown'],
                         'allow' => true,
                         'roles' => ['user'],
                     ],
@@ -81,6 +81,17 @@ class InscriptionController extends Controller
         ]);
     }
 
+    public function actionIndexown()
+    {
+        $searchModel = new InscriptionSearch();
+        $dataProvider = $searchModel->searchByuser(Yii::$app->request->queryParams, yii::$app->user->identity->id);
+
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     /**
      * Displays a single Inscription model.
      * @param integer $id
