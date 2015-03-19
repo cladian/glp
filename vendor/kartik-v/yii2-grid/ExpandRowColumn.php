@@ -3,8 +3,8 @@
 /**
  * @package   yii2-grid
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015
- * @version   3.0.0
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @version   3.0.1
  */
 
 namespace kartik\grid;
@@ -352,10 +352,8 @@ HTML;
         if ($this->value === GridView::ROW_EXPANDED) {
             $options['title'] = $this->collapseTitle;
         }
-        if ($this->disabled) {
+        if (static::parseData($this->disabled, $model, $key, $index, $this)) {
             $css .= ' kv-state-disabled';
-        } elseif (!isset($options['title'])) {
-            $options['title'] = $title;
         }
         Html::addCssClass($options, $css);
         $this->initPjax("kvExpandRow({$this->_hashVar});");
