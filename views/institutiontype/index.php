@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\editable\Editable;
+use yii\bootstrap\Modal;
+use yii\widgets\Pjax;
+use yii\helpers\Url;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InstitutiontypeSearch */
@@ -17,12 +21,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+       <?/*= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) */?>
+       <?= Html::button(
+           'create',
+           ['value' => Url::to(['institutiontype/create']),
+               'id' => 'modalButton'
+           ]) ?>
 
-    <?/*= GridView::widget([
+
+       <?php
+       Modal::begin([
+           'id' => 'modal'
+       ]);
+
+       echo "<div id='modalContent'></div>";
+
+       Modal::end();
+       ?>
+
+    </p>
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions'=>function($model){
+            if ($model->status==1){
+                return ['class'=>'success'];
+            }elseif($model->status==0){
+                return ['class'=>'danger'];
+            }else
+                return ['class'=>'warning'];
+
+        },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -33,157 +62,86 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {delete}',
+                'headerOptions' => ['width' => '20%', 'class' => 'activity-view-link',],
+                'contentOptions' => ['class' => 'padding-left-5px'],
 
-    // the grid columns setup (only two column entries are shown here
-    // you can add more column entries you need for your use case)
-    $gridColumns = [
-        // the name column configuration
-        [
-            'class' => '\kartik\grid\SerialColumn'
-        ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'attribute' => 'name',
-            'pageSummary' => true,
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', '#', [
+                            'id' => 'activity-view-link',
+                            'title' => Yii::t('yii', 'View'),
+                            'data-toggle' => 'modal',
+                            'data-target' => '#activity-modal',
+                            'data-id' => $key,
+                            'data-pjax' => '0',
 
-            'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status==10); // do not allow editing of inactive records
-            },
-            'editableOptions' => [
-                'header' => 'Nombre',
-                'size'=>'md',
-                'inputType' => \kartik\editable\Editable::INPUT_TEXTAREA,
-                'class'=>'text-danger',
-                'format' => Editable::FORMAT_BUTTON,
-                /*'options' => [
-                    'pluginOptions' => ['min' => 0, 'max' => 5000]
-                ]*/
-            ],/*,
-            'editableOptions'=> function ($model, $key, $index, $widget) {
-                return [
-                    'header' => 'Name',
-                    'size' => 'md',
-                    'afterInput' => function ($form, $widget) use ($model, $index) {
-                        return $form->field($model, "color")->widget(\kartik\widgets\ColorInput::classname(), [
-                            'showDefaultPalette' => false,
-                            'options'=>['id'=>"color-{$index}"],
-                            'pluginOptions' => [
-                                'showPalette' => true,
-                                'showPaletteOnly' => true,
-                                'showSelectionPalette' => true,
-                                'showAlpha' => false,
-                                'allowEmpty' => false,
-                                'preferredFormat' => 'name',
-                                'palette' => [
-                                    [
-                                        "white", "black", "grey", "silver", "gold", "brown",
-                                    ],
-                                    [
-                                        "red", "orange", "yellow", "indigo", "maroon", "pink"
-                                    ],
-                                    [
-                                        "blue", "green", "violet", "cyan", "magenta", "purple",
-                                    ],
-                                ]
-                            ],
                         ]);
-                    }
-                ];
-            }*/
-        ],
-        // the buy_amount column configuration
-        [
-            'class' => '\kartik\grid\BooleanColumn',
-            'attribute' => 'status',
-            'trueLabel' => '1',
-            'falseLabel' => '0'
-        ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'attribute' => 'status',
-            'readonly' => function ($model, $key, $index, $widget) {
-                return (!$model->status == 10); // do not allow editing of inactive records
-            },
+                    },
+                ],
 
 
-            'editableOptions' => [
-                'header' => 'Buy Amount',
-                'inputType' => \kartik\editable\Editable::INPUT_SPIN,
-                /*'options' => [
-                    'pluginOptions' => ['min' => 0, 'max' => 5000]
-                ]*/
             ],
-            'hAlign' => 'right',
-            'vAlign' => 'right',
-            //'width' => '100px',
-            // 'format' => ['decimal', 2],
-
         ],
-        [
-            'class' => '\kartik\grid\DataColumn',
-            'attribute' => 'status',
-            'pageSummary' => true
-        ],
-        [   // Botones de acción
-            'class' => '\kartik\grid\ActionColumn',
-            'deleteOptions' => ['label' => '<i class="glyphicon glyphicon-remove"></i>']
-        ],
-
-        [
-
-            'attribute'=>'status',
-
-            'filter'=>array("10"=>"Active","0"=>"Inactive"),
-
-            //TblCategory::get_status(),
-
-        ],
-        [
-            'attribute' => 'created_at',
-           // 'format' => ['raw', 'Y-m-d H:i:s'],
-            //'format' =>  ['date', 'php:Y-m-d H:i:s'],
-            'options' => ['width' => '200']
-        ],
-
-
-
-
-    ];
-
-    // the GridView widget (you must use kartik\grid\GridView)
-    echo \kartik\grid\GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => $gridColumns,
-        // set your toolbar
-        'toolbar' =>  [
-
-            '{export}',
-            '{toggleData}',
-        ],
-        'bordered' => true,
-        'resizableColumns'=>true,
-        'striped' => true,
-        'condensed' => true,
-        'responsive' => true,
-        'hover' => true,
-        'showPageSummary' => true,
-        'persistResize' => false,
-        'exportConfig' => true,
-/*        'pjax'=>true,
-        'floatHeader'=>true,
-        'floatHeaderOptions'=>['scrollingTop'=>'50'],
-        'pjaxSettings'=>[
-            'neverTimeout'=>true,
-            'beforeGrid'=>'My fancy content before.',
-            'afterGrid'=>'My fancy content after.',
-        ]*/
     ]);
 
     ?>
 
 
 </div>
+<?php
+
+Modal::begin([
+    'header' => '<h4 class="modal-title">Nuevo registro</b></h4>',
+    'id'=>'modal',
+    'size'=>'modal-lg',
+    'toggleButton' => ['label' => 'Create New'],
+    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
+]);
+
+echo 'Say hello...';
+
+Modal::end();
+
+
+
+
+?>
+
+
+<?php $this->registerJs(
+    "$('.activity-view-link').click(function() {
+    $.get(
+        'imgview',
+        {
+            id: $(this).closest('tr').data('key')
+        },
+        function (data) {
+            $('.modal-body').html(data);
+            $('#activity-modal').modal();
+        }
+    );
+});
+    "
+); ?>
+
+<?php
+
+
+?>
+
+<?php Modal::begin([
+    'id' => 'activity-modal',
+    'header' => '<h4 class="modal-title">View Image</h4>',
+    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
+
+]); ?>
+
+<div class="well">
+
+
+</div>
+
+
+<?php Modal::end(); ?>
