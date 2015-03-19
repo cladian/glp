@@ -102,7 +102,7 @@ $this->title = 'Inscripciones';
 
     echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => $searchByuserModel,
         'columns' => $gridColumns,
         'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
         'headerRowOptions' => ['class' => 'kartik-sheet-style'],
