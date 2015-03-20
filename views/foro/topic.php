@@ -4,6 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+
+use app\models\PhforumDocument;
+use app\models\PhforumImagens;
+
+
+use app\models\Document;
+use app\models\Imagen;
 ?>
 <!--<div class="row">
     <center>
@@ -130,6 +137,9 @@ use yii\helpers\ArrayHelper;
                             <p><?= $post->content;?></p>
                             <span class="label label-success"><?= $post->user->username ?></span>
 
+<!--                            <span class="label label-success">--><?//= $post->postDocuments->document_id->id ?><!--</span>-->
+<!--                            <span class="label label-success">--><?//= $post->postVideos->video_id->id ?><!--</span>-->
+
                         </div>
                     </li>
                     <!-->
@@ -149,22 +159,69 @@ use yii\helpers\ArrayHelper;
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="panel panel-primary">
-        <div class="panel-heading"><?= 'Aportes'; ?></div>
+        <div class="panel-heading"><?= 'Aportes' ?></div>
         <div class="panel-body">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <table class="table table-condensed">
+                    <div class="post-form">
+                        <?php $form = ActiveForm::begin(); ?>
+                        <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
+                        <!--    --><?//= $form->field($model, 'status')->textInput() ?>
+                        <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>
+                        <div class="form-group">
+                            <?= Html::submitButton($modelPost->isNewRecord ? 'Crear' : 'Guardar', ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        </div>
+
+                        <?php ActiveForm::end(); ?>
 
 
-            <div class="post-form">
-                <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
-                <!--    --><?//= $form->field($model, 'status')->textInput() ?>
-                <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>
-                <div class="form-group">
-                    <?= Html::submitButton($modelPost->isNewRecord ? 'Crear' : 'Guardar', ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                </div>
+                    </div>
 
-                <?php ActiveForm::end(); ?>
-
+                </table>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <table class="table table-condensed">
+                    <tr>
+                        <center>
+                            <a href=""><span style="font-size:20px;"</span><br>
+<!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
+
+                                <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                                
+<!--                                <div>Subir Documento</div>-->
+                            </a>
+                            <hr>
+                        </center>
+                    </tr>
+                    <tr>
+                        <center>
+                            <a href=""><span style="font-size:20px;"</span><br>
+                                <!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
+
+                                <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                                <!--                                <div>Subir Documento</div>-->
+                            </a>
+                            <hr>
+                        </center>
+                    </tr>
+                    <tr>
+                        <center>
+                            <a href=""><span style="font-size:20px;"</span><br>
+                                <!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
+
+                                <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                                <!--                                <div>Subir Documento</div>-->
+                            </a>
+                            <hr>
+                        </center>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
 
         </div>
     </div>
