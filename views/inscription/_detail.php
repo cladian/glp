@@ -12,7 +12,7 @@ use yii\widgets\DetailView;
 
 ?>
 <!--<div class="panel-heading"><h5>Logistica</h5></div>-->
-<?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Visualizar', ['view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn btn-success']) ?>
+<?= Html::a(\Yii::$app->params['btnVer'], ['view', 'id' => $modelLogistic->inscription_id], ['class' => 'btn btn btn-success']) ?>
 <hr>
 <?php if ($modelLogistic->residence) { ?>
     <div class="col-sm-4 col-xs-12 col-lg-4">

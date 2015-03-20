@@ -23,6 +23,13 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 
+// BUILD FORM
+use yii\data\ActiveDataProvider;
+
+
+
+
+
 
 // links and alerts
 
@@ -573,16 +580,38 @@ class InscriptionController extends Controller
 
     }
 
-    public function actionAnswer(){
+ public function actionEventanswer($id){
 
-        $model = $this->findModel($id);
+     $model= new Eventanswer();
+     //Enviamos parametro registros de preguntas por ID Inscripción
+     $searchModel = Eventanswer::find()->where(['inscription_id'=>$id])->indexBy('id');
+     $dataProvider = new ActiveDataProvider([
+         'query' => $searchModel,
+     ]);
+     $models=$dataProvider->getModels();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+     if (Eventanswer::loadMultiple($models, Yii::$app->request->post()) && Eventanswer::validateMultiple($models)) {
+         $count = 0;
+         foreach ($models as $index => $item) {
+             // populate and save records for each model
+             if ($item->save()) {
+                 $count++;
+             }
+         }
+         Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+         //++++++++++++++++++++++++++++++++++++++++
+         // CALCULATE
+         $this->calculate($id);
+         //++++++++++++++++++++++++++++++++++++++++
+
+         return $this->redirect(['viewown', 'id' => $id]);
+     }
+
+
+     return $this->render('_eventanswers', [
+         'searchModel' => $searchModel,
+         'dataProvider' => $dataProvider,
+         'model' => $model,
+     ]);
     }
 }

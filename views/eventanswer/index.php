@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Respuesta por Evento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(\Yii::$app->params['btnCrearRespuesta'], ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     

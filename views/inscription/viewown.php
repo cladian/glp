@@ -30,10 +30,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-primary">
             <?= $this->render('/event/_detailinfo', ['model' => $model->event])?>
             <div class="panel-footer">
-                <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+                <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default'])?>
                 <span class="pull-right">
 
-               <?= Html::a('Enviar Inquietud', ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+               <?= Html::a(\Yii::$app->params['btnEnviar'], ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
 
                 </span>
             </div>
@@ -67,7 +67,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialInscription', ['model' => $model,'modelProfile'=>$modelProfile]) ?>
                 </div>
                 <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Preguntas por evento', ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
                 </div>
             </div>
         </div>
@@ -97,7 +98,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+<!--        <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
@@ -109,10 +110,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <?= $this->render('_partialEventanswerown', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); ?>
+                    <?/*= $this->render('_partialEventanswerown', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); */?>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
 
@@ -135,7 +136,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-danger">
+        <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="heading5">
                 <h4 class="panel-title">
                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
@@ -148,7 +149,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
                 <div class="panel-body">
                     <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
-                    <?= Html::a('Enviar Inquietud', ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+                    <?= Html::a(\Yii::$app->params['btnEnviar'], ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
                 </div>
             </div>
         </div>

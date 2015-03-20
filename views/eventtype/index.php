@@ -10,14 +10,12 @@ use yii\grid\GridView;
 $this->title = 'Tipos de Evento';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="eventtype-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Crear Tipo de Evento', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+   
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -46,5 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
+  </div>
 </div>
+ <p>
+        <?= Html::a(\Yii::$app->params['btnCrearTEvento'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>

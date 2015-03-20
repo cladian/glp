@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\editable\Editable;
 use yii\bootstrap\Modal;
+
 use yii\widgets\Pjax;
 use yii\helpers\Url;
 
@@ -15,46 +16,61 @@ use yii\helpers\Url;
 $this->title = 'Tipos de Institución';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="institutiontype-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+<<<<<<< HEAD
     <p>
-       <?/*= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) */?>
-       <?= Html::button(
-           'create',
-           ['value' => Url::to(['institutiontype/create']),
-               'id' => 'modalButton'
-           ]) ?>
+        <? /*= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) */ ?>
+        <?= Html::button(
+            'create',
+            ['value' => Url::to(['institutiontype/create']),
+                'id' => 'modalButton',
+
+            ]) ?>
 
 
-       <?php
-       Modal::begin([
-           'id' => 'modal'
-       ]);
+        <?php
+        Modal::begin([
+            'id' => 'modal',
+            'header' => '<h4 class="modal-title">Add new candidate</h4>',
+    'footer' =>
+        Html::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal'])
+        . PHP_EOL .
+        Html::button('Add', ['class' => 'btn btn-primary btn-modal-save']),
+    'options' => [
+            'role' => 'dialog',
+            'aria-labelledby' => 'candidate-modal-label',
+            'aria-hidden' => 'true',
+            'data-url' => Url::to('candidate/create'),
+        ],
+        ]);
+=======
+    
+>>>>>>> daniel
 
-       echo "<div id='modalContent'></div>";
+        echo "<div id='modalContent'></div>";
 
-       Modal::end();
-       ?>
+        Modal::end();
+        ?>
 
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'rowOptions'=>function($model){
-            if ($model->status==1){
-                return ['class'=>'success'];
-            }elseif($model->status==0){
-                return ['class'=>'danger'];
-            }else
-                return ['class'=>'warning'];
+        'rowOptions' => function ($model) {
+            if ($model->status == 1) {
+                return ['class' => 'success'];
+            } elseif ($model->status == 0) {
+                return ['class' => 'danger'];
+            } else
+                return ['class' => 'warning'];
 
         },
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
             'name',
             'description:ntext',
@@ -63,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {delete}',
+                /*'template' => '{view} {delete}',
                 'headerOptions' => ['width' => '20%', 'class' => 'activity-view-link',],
                 'contentOptions' => ['class' => 'padding-left-5px'],
 
@@ -79,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         ]);
                     },
-                ],
+                ],*/
 
 
             ],
@@ -90,60 +106,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     ?>
 
-
+  </div>
 </div>
-<?php
-
-Modal::begin([
-    'header' => '<h4 class="modal-title">Nuevo registro</b></h4>',
-    'id'=>'modal',
-    'size'=>'modal-lg',
-    'toggleButton' => ['label' => 'Create New'],
-    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
-]);
-
-echo 'Say hello...';
-
-Modal::end();
-
-
-
-
-?>
-
-
-<?php $this->registerJs(
-    "$('.activity-view-link').click(function() {
-    $.get(
-        'imgview',
-        {
-            id: $(this).closest('tr').data('key')
-        },
-        function (data) {
-            $('.modal-body').html(data);
-            $('#activity-modal').modal();
-        }
-    );
-});
-    "
-); ?>
-
-<?php
-
-
-?>
-
-<?php Modal::begin([
-    'id' => 'activity-modal',
-    'header' => '<h4 class="modal-title">View Image</h4>',
-    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
-
-]); ?>
-
-<div class="well">
-
-
-</div>
-
-
-<?php Modal::end(); ?>
+<p>
+        <?= Html::a(\Yii::$app->params['btnInstitucion'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>

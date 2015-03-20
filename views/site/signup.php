@@ -30,7 +30,7 @@ $this->title = 'Registro';
                     <?= $form->field($model, 'username') ?>
                     <?= $form->field($model, 'email') ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
-                <?= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
+                <?/*= $form->field($model, 'captcha')->widget(Captcha::className()) */?>
                     <div class="form-group">
                         <?= Html::submitButton('Crear cuenta', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
                     </div>
@@ -38,7 +38,7 @@ $this->title = 'Registro';
             </div>
         </div>
         
-        <p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
+        <!--<p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administrador al correo .</p>-->
       </div>
      </div>
 </div>

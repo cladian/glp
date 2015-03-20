@@ -23,11 +23,6 @@ use app\models\Question;
     ) ?>
 
 <!--    --><?//= $form->field($model, 'question_id')->textInput() ?>
-    <?=
-    $form->field($model, 'question_id')->dropDownList(
-        ArrayHelper::map(Question::find()->all(), 'id', 'text'),
-        ['' => '']
-    ) ?>
 
     <?= $form->field($model, 'reply')->textarea(['rows' => 6]) ?>
 
@@ -39,7 +34,7 @@ use app\models\Question;
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualización', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

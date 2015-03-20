@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options'=>[
         'id' => 'my-form-category',
-        'beforeSubmit' => 'postForm',
+        'beforeSubmit' => 'submitForm',
+        'enableClientValidation' => true,
     ]]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
@@ -27,7 +28,7 @@ use yii\widgets\ActiveForm;
     --><?/*= $form->field($model, 'updated_at')->textInput() */?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

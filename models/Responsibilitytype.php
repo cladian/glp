@@ -3,6 +3,10 @@
 namespace app\models;
 
 use Yii;
+use kartik\builder\Form;
+
+use kartik\builder\TabularForm;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "responsibilitytype".
@@ -26,7 +30,7 @@ class Responsibilitytype extends \yii\db\ActiveRecord
     public function getStatus($status)
     {
         $codes = $this->getStatusList();
-        return (    isset($codes[$status])) ? $codes[$status] : '';
+        return (isset($codes[$status])) ? $codes[$status] : '';
     }
 
     public function getStatusList()
@@ -84,5 +88,28 @@ class Responsibilitytype extends \yii\db\ActiveRecord
     public function getProfiles()
     {
         return $this->hasMany(Profile::className(), ['responsibilitytype_id' => 'id']);
+    }
+
+    public function getFormAttribs()
+    {
+        return [
+            'name' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter username...']],
+            'description' => ['type' => Form::INPUT_PASSWORD, 'options' => ['placeholder' => 'Enter password...']],
+            'actions' => ['type' => Form::INPUT_RAW, 'value' => Html::submitButton('Submit', ['class' => 'btn btn-primary'])]
+        ];
+    }
+
+    public function getGrid()
+    {
+        return [
+            // primary key column
+
+            'name' => ['type' => Form::INPUT_TEXTAREA, 'options' => ['placeholder' => 'Nombre']],
+            'description' => ['type' => Form::INPUT_TEXTAREA, 'options' => ['placeholder' => 'Descripción']],
+
+
+
+
+        ];
     }
 }
