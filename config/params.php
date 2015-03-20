@@ -10,12 +10,16 @@ return [
     'foroImgs' => 'upload/imgs/',
     'eventFolder' => 'imgs/event/',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar',
+// Crear
     'btnCrearEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear evento',
     'btnCrearRespuesta' => '<span class="glyphicon glyphicon-pencil"></span> Crear respuesta',
     'btnCrearNotificacion' => '<span class="glyphicon glyphicon-pencil"></span> Crear notificación',
     'btnCrearResponsabilidad' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de responsabilidad',
-    'btnInstitucion' => '<span class="glyphicon glyphicon-pencil"></span> Crear institución',
     'btnCrear' => '<span class="glyphicon glyphicon-pencil"></span> Crear',
+    'btnCrearTEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de evento',
+    'btnCrearRegistro' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de registro',
+// Varios
+    'btnInstitucion' => '<span class="glyphicon glyphicon-pencil"></span> Crear institución',
     'btnCancelar' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',
     'btnEliminar' => '<span class="glyphicon glyphicon-remove"></span> Eliminar',
     'btnSubirImagen' => '<span class="glyphicon glyphicon-eject"></span> Subir imagen',
