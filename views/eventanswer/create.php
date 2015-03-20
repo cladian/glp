@@ -9,13 +9,11 @@ use yii\helpers\Html;
 $this->title = 'Crear Respuesta por Evento';
 $this->params['breadcrumbs'][] = ['label' => 'Respuestas por Evento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="eventanswer-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+?><div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

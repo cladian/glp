@@ -10,12 +10,11 @@ $this->title = 'Crear Tipo de Registro';
 $this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="registertype-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

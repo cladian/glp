@@ -12,6 +12,7 @@ use kartik\builder\TabularForm;
 $this->title = 'Tipos de Responsabilidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<<<<<<< HEAD
 <div class="responsibilitytype-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -21,6 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </p>
 
+=======
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+>>>>>>> daniel
 
 </div>
 <?php
@@ -42,5 +53,18 @@ $form = ActiveForm::begin();?>
 // Add other fields if needed or render your submit button
 ?>
 
+<<<<<<< HEAD
 
 <?php ActiveForm::end(); ?>
+=======
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+    
+  </div>
+</div>
+
+<p>
+        <?= Html::a(\Yii::$app->params['btnCrearResponsabilidad'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+>>>>>>> daniel

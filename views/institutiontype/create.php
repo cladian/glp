@@ -10,12 +10,11 @@ $this->title = 'Crear Tipo de Institución';
 $this->params['breadcrumbs'][] = ['label' => 'Tipos de Institución', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="institutiontype-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

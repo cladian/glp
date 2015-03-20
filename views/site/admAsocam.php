@@ -215,9 +215,9 @@ if (!$hasProfile) {
         <!-- /.panel-body -->
         <div class="panel-footer">
             <div class="input-group">
-                <button class="btn btn-warning btn-md" id="btn-chat">
+              <!--   <button class="btn btn-warning btn-md" id="btn-chat">
                     Ver todas
-                </button>
+                </button> -->
 
             </div>
         </div>
@@ -276,7 +276,8 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <?= Html::a('Ver todas las inscripciones', ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            <?= Html::a(\Yii::$app->params['btnVisualizar'], ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            
             <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
         <!-- /.panel-footer -->
