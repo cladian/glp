@@ -300,4 +300,13 @@ return array (
       '@kartik/money' => $vendorDir . '/kartik-v/yii2-money',
     ),
   ),
+  'kartik-v/yii2-builder' => 
+  array (
+    'name' => 'kartik-v/yii2-builder',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@kartik/builder' => $vendorDir . '/kartik-v/yii2-builder',
+    ),
+  ),
 );

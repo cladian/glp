@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\filters\AccessControl;
+use yii\bootstrap\Modal;
 
 /**
  * InstitutiontypeController implements the CRUD actions for Institutiontype model.
@@ -125,6 +126,7 @@ class InstitutiontypeController extends Controller
      * Creates a new Institutiontype model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * http://www.yiiframework.com/wiki/690/render-a-form-in-a-modal-popup-using-ajax/
      */
     public function actionCreate()
     {
@@ -132,9 +134,36 @@ class InstitutiontypeController extends Controller
         $model->created_at=date('Y-m-d H:i:s');
 
         if ($model->load(Yii::$app->request->post()) ) {
-            /*return $this->redirect(['index']);*/
-            //return $this->actionIndex();
+
+            if ($model->save()) {
+                if (\Yii::$app->getRequest()->getIsAjax())
+                    exit;
+                $model->refresh();
+                //\Yii::$app->response->format = 'json';
+              /*  \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+                return [
+                    'success' => true,
+                ];*/
+
+                return \Yii::createObject([
+                    'class' => 'yii\web\Response',
+                    'format' => \yii\web\Response::FORMAT_JSON,
+                    'data' => [
+                        'success' =>true,
+
+                    ],
+                ]);
+            }
+/*
             $model->save();
+            $model->refresh();
+
+            Yii::$app->response->format = 'json';*/
+//            return [
+//                'message' => 'Success!!!',
+//            ];
+
 
             /*return $this->redirect(['view', 'id' => $model->id]);*/
         } else {

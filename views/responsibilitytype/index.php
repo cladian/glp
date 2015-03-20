@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use kartik\widgets\ActiveForm;
+use kartik\builder\TabularForm;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ResponsibilitytypeSearch */
@@ -16,35 +18,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Tipo de Responsabilidad', ['create'], ['class' => 'btn btn-success']) ?>
+
     </p>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-           // 'id',
-            'name',
-            'description:ntext',
-            'status',
-            /*'created_at',
-            'updated_at',*/
-
-            ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update}',
-                'buttons' => [
-                    'view' => function ($url, $model, $key) {
-                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['responsibilitytype/view', 'id' => $key]);
-                        },
-                    'update' => function ($url, $model, $key) {
-                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['responsibilitytype/update', 'id' => $key]);
-                        },
-
-                ]
-            ],
-        ],
-    ]); ?>
 
 </div>
+<?php
+$form = ActiveForm::begin();?>
+<div class="form-group">
+    <?=Html::submitButton('Almacenar', ['class' => 'btn btn-primary']);?>
+    <?= Html::a('Crear Tipo de Responsabilidad', ['create'], ['class' => 'btn btn-success']) ?>
+</div>
+<?=TabularForm::widget([
+    'dataProvider' => $dataProvider,
+    'form' => $form,
+    'attributes' => $model->getGrid(),
+    'actionColumn'=>false,
+    'serialColumn'=>false,
+    'checkboxColumn'=>false,
+
+
+]);
+// Add other fields if needed or render your submit button
+?>
+
+
+<?php ActiveForm::end(); ?>

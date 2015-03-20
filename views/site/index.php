@@ -33,7 +33,7 @@ $this->title = 'My Yii Application';
         <br>
 
         <div class="caja">
-            <div class="panel-heading"><h2 class="titulo-registro">Registrarse</h2></div>
+            <div class="panel-heading"><h2 class="titulo-registro">Registro</h2></div>
             <div class="panel-body">
 
                 <!-- form -->
@@ -75,7 +75,7 @@ $this->title = 'My Yii Application';
 <!--                <input type="hidden" name="signup_page" value="es_registration-online">-->
 <!--                <input type="hidden" name="submitted" value="1">-->
 <!--                <input type="hidden" name="forward" value="/create">-->
-<!--                <!-- END: Hidden input fields... signup_page value is page specific -->-->
+<!--                <!-- END: Hidden input fields... signup_page value is page specific -->
 <!---->
 <!--                <div class="responsive-form__input--icon responsive-form__input--icon--bg l-block-2">-->
 <!--                    <input type="password" name="passwd1" placeholder="Nombre de Usuario"/>-->
@@ -96,12 +96,15 @@ $this->title = 'My Yii Application';
                 <!--            </form>-->
                 <!-- end form -->
                 <div>
-                    <p style="text-align:center; padding-top: 20px;" class="texto-info">Al hacer clic en "¡Empieza!",
-                        confirmo que acepto los términos de servicio, la política de privacidad, y la política de
+                    <p style="text-align:center; padding-top: 0px;" class="texto-info">Al hacer clic en "Crear cuenta",
+                        confirma que acepto los términos de servicio, la política de privacidad, y la política de
                         cookies de ASOCAM, así como recibir comunicaciones de marketing de ASOCAM.</p>
 
-                    <p class="aviso">¿Ya eres miembro? <a href="/login" class="marketing-text--white">Inicia sesión</a>
-                    </p>
+                    <div class="form-group">
+<!--                        --><?//= Html::submitButton('Inicia sesión', ['class' => ' btn-primary  ', 'name' => 'signup-button']) ?>
+                    </div>
+
+                    <p class="aviso">¿Si eres miembro?  <?= Html::a('Ingresar', ['/site/login'], ['class'=>'btn btn-primary btn-xs']) ?></p>
                 </div>
             </div>
         </div>

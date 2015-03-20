@@ -573,16 +573,22 @@ class InscriptionController extends Controller
 
     }
 
-    public function actionAnswer(){
-
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+//    public function actionEventanswer($id){
+//
+//        $modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
+//
+//        if ($modelEventAnswer->load(Yii::$app->request->post()) && $modelEventAnswer->save()) {
+//            $modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
+//            if($modelEventAnswer){
+//                return $this->render('updateeventanswer', [
+//                    'model' => $modelEventAnswer,
+//                ]);
+//            }else
+//            return $this->redirect(['view', 'id' => $modelEventAnswer->id]);
+//        } else {
+//            return $this->render('updateeventanswer', [
+//                'model' => $modelEventAnswer,
+//            ]);
+//        }
+//    }
 }
