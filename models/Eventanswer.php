@@ -105,8 +105,9 @@ class Eventanswer extends \yii\db\ActiveRecord
         return [
             [
                 'type' => Form::INPUT_RAW,
-                'value'=>function ($model, $key, $index, $widget) {return '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>'.$model->eventquestion->text; },
-                'columnOptions'=>['width'=>'50%'],
+                'value'=>function ($model, $key, $index, $widget) {return $model->eventquestion->text; },
+                'columnOptions'=>['width'=>'30%'],
+                'label'=>'Preguntas requeridas para el evento'
 
             ],
 /*
@@ -136,7 +137,8 @@ class Eventanswer extends \yii\db\ActiveRecord
 
             'reply' => [
                 'type' => Form::INPUT_TEXTAREA,
-                'options' => ['placeholder' => 'Descripción']
+                'options' => ['placeholder' => 'Descripción'],
+                'columnOptions'=>['width'=>'200px;'],
             ],
 
 
