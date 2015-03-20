@@ -3,6 +3,10 @@
 namespace app\models;
 
 use Yii;
+// BUILD FORM
+use kartik\builder\Form;
+use kartik\builder\TabularForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "eventanswer".
@@ -95,5 +99,49 @@ class Eventanswer extends \yii\db\ActiveRecord
     public function getEventquestion()
     {
         return $this->hasOne(Eventquestion::className(), ['id' => 'eventquestion_id']);
+    }
+    public function getGrid()
+    {
+        return [
+            [
+                'type' => Form::INPUT_RAW,
+                'value'=>function ($model, $key, $index, $widget) {return '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>'.$model->eventquestion->text; },
+                'columnOptions'=>['width'=>'50%'],
+
+            ],
+/*
+            'eventquestion_id' =>[
+
+                'type'=>TabularForm::INPUT_DROPDOWN_LIST,
+                'items'=>ArrayHelper::map(Eventquestion::find()->orderBy('text')->asArray()->all(), 'id', 'text'),
+                'columnOptions'=>['width'=>'50%'],
+                'options' => ['disabled' => true]
+
+
+            ],*/
+         /*   'eventquestion_id' =>[
+
+
+                'value' => function ($data) {
+                    return $data->getEventquestion()->text;
+                }
+            ],*/
+//            'eventquestion_id' => [
+//                'type' => Form::INPUT_TEXTAREA,
+//                /*'type' => Form::INPUT_STATIC,*/
+//                'options' => ['placeholder' => 'Nombre'],
+//              //  'value' => $this->evenquestion->text,
+//
+//            ],
+
+            'reply' => [
+                'type' => Form::INPUT_TEXTAREA,
+                'options' => ['placeholder' => 'Descripción']
+            ],
+
+
+
+
+        ];
     }
 }

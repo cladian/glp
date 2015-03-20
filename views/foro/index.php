@@ -21,7 +21,7 @@ use app\models\Imagen;
       </label>
       <label class="btn btn-primary btn-lg">
           <span style="font-size:30px;"class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <br> <hr>
-        <input type="radio" name="options" id="option2" autocomplete="off"> Documentos
+        <input type="radio" name="options" id="option2" autocomplete="off">
       </label>
       <label class="btn btn-primary btn-lg">
           <span style="font-size:30px;"class="glyphicon glyphicon-play" aria-hidden="true"></span> <br> <hr>
@@ -48,10 +48,10 @@ foreach ($model as $foro) {
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <!-- Large modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target=".bs-example-modal-lg">Large modal
-                        </button>
-                        <h5>Información del evento</h5>
+<!--                        <button type="button" class="btn btn-primary" data-toggle="modal"-->
+<!--                                data-target=".bs-example-modal-lg">Large modal-->
+<!--                        </button>-->
+                        <h4>Información del evento</h4>
                         <?= $foro->event->name; ?>
                         <br>
                         <br>
@@ -62,13 +62,13 @@ foreach ($model as $foro) {
                         foreach($foro->getPhforumDocuments()->all() as $documents)
                         { ?>
                             <li class="list-group-item glyphicon glyphicon-download"> <?= Html::a($documents->document->name,\Yii::$app->params['foroDocs'].$documents->document->file); ?></li>
+
+<!--                            <a  href="--><?php //echo $this->createUrl('someDownloadAction','fileId'=>'someXXX') ;?><!--"  target="helperFrame" > downloadIt </a>-->
+<!--                            <iframe src="" style="display:none" name="helperFrame"/>-->
                         <?php
                         }
                         ?>
-
-
-<!--
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
+<!--                        <li class="list-group-item">Dapibus ac facilisis in</li>
                             <li class="list-group-item">Morbi leo risus</li>
                             <li class="list-group-item">Porta ac consectetur ac</li>
                             <li class="list-group-item">Vestibulum at eros</li>-->
@@ -112,8 +112,8 @@ foreach ($model as $foro) {
                                 <tr>
                                     <th>#</th>
                                     <th>Tema</th>
-                                    <th>Descripción</th>
                                     <th>Creado por</th>
+                                    <th>Fecha de Creación</th>
                                     <th>ver</th>
                                 </tr>
                                 </thead>
