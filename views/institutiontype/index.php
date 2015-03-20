@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use kartik\editable\Editable;
 use yii\bootstrap\Modal;
+
 use yii\widgets\Pjax;
 use yii\helpers\Url;
 
@@ -104,56 +105,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
-<?php
-
-Modal::begin([
-    'header' => '<h4 class="modal-title">Nuevo registro</b></h4>',
-    'id' => 'modal',
-    'size' => 'modal-lg',
-    'toggleButton' => ['label' => 'Create New'],
-    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
-]);
-
-echo 'Say hello...';
-
-Modal::end();
-
-
-?>
-
-
-<?php $this->registerJs(
-    "$('.activity-view-link').click(function() {
-    $.get(
-        'imgview',
-        {
-            id: $(this).closest('tr').data('key')
-        },
-        function (data) {
-            $('.modal-body').html(data);
-            $('#activity-modal').modal();
-        }
-    );
-});
-    "
-); ?>
-
-<?php
-
-
-?>
-
-<?php Modal::begin([
-    'id' => 'activity-modal',
-    'header' => '<h4 class="modal-title">View Image</h4>',
-    'footer' => '<a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>',
-
-]); ?>
-
-<div class="well">
-
-
-</div>
-
-
-<?php Modal::end(); ?>

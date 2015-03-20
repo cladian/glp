@@ -20,6 +20,7 @@ function submitForm($form) {
         });
     return false;
 }
+/*
 
 function postForm($form) {
     $.post(
@@ -41,4 +42,4 @@ function postForm($form) {
             console.log("server error");
         });
     return false;
-}
+}*/

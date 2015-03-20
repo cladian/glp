@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\widgets\ActiveForm;
+use kartik\builder\Form;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Responsibilitytype */
@@ -38,3 +41,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+

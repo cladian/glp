@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options'=>[
         'id' => 'my-form-category',
-        'beforeSubmit' => 'postForm',
+        'beforeSubmit' => 'submitForm',
+        'enableClientValidation' => true,
     ]]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
