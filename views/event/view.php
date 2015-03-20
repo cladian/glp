@@ -29,7 +29,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-primary">
         <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
         <div class="panel-footer">
-            <?= Html::a('Regresar', ['index'], ['class' => 'btn btn-default'])?>
+            <?= Html::a(\Yii::$app->params['btnRegresar'], ['index'], ['class' => 'btn btn-success'])?>
 
         </div>
     </div>
@@ -77,16 +77,16 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </div>
                 <div class="panel-footer">
 
-                    <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
                         'data' => [
                             'confirm' => 'Are you sure you want to delete this item?',
                             'method' => 'post',
                         ],
                     ]) ?>
-                    <?= Html::a('Subir imagen', ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
-                    <?= Html::a('Pregunta', ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(\Yii::$app->params['btnSubirImagen'], ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+                    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
 
 
                 </div>
@@ -155,7 +155,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                 <div class="panel-body">
                     <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
-                    <?= Html::a('Pregunta', ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                 </div>
             </div>
         </div>

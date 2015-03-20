@@ -31,7 +31,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-green">
         <?= $this->render('/event/_detailinfo', ['model' => $model->event]) ?>
         <div class="panel-footer">
-            <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+            <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
 
         </div>
     </div>
