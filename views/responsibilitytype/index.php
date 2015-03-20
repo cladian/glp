@@ -10,15 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Tipos de Responsabilidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="responsibilitytype-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Crear Tipo de Responsabilidad', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -35,5 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
+    
+  </div>
 </div>
+
+<p>
+        <?= Html::a(\Yii::$app->params['btnCrearResponsabilidad'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>

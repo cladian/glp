@@ -15,15 +15,9 @@ use kartik\editable\Editable;
 $this->title = 'Paises';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?/*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -75,4 +69,10 @@ echo \kartik\grid\GridView::widget([
 
 ?>
 
+  </div>
 </div>
+    <p>
+        <?= Html::a(\Yii::$app->params['btnNuevo'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    

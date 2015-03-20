@@ -11,21 +11,18 @@ use kartik\editable\Editable;
 $this->title = 'Tipos de Institución';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="institutiontype-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    
 
     <?/*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
             'name',
             'description:ntext',
@@ -185,5 +182,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     ?>
 
-
+  </div>
 </div>
+<p>
+        <?= Html::a(\Yii::$app->params['btnInstitucion'], ['create'], ['class' => 'btn btn-success']) ?>
+    </p>

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Notificación', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(\Yii::$app->params['btnCrearNotificacion'], ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     

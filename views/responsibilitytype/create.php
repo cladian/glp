@@ -10,12 +10,11 @@ $this->title = 'Crear Tipo de Responsabilidad';
 $this->params['breadcrumbs'][] = ['label' => 'Tipos de Responsabilidad', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="responsibilitytype-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>
