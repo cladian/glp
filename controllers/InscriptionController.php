@@ -23,6 +23,13 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 
+// BUILD FORM
+use yii\data\ActiveDataProvider;
+
+
+
+
+
 
 // links and alerts
 
@@ -573,22 +580,38 @@ class InscriptionController extends Controller
 
     }
 
-//    public function actionEventanswer($id){
-//
-//        $modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
-//
-//        if ($modelEventAnswer->load(Yii::$app->request->post()) && $modelEventAnswer->save()) {
-//            $modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
-//            if($modelEventAnswer){
-//                return $this->render('updateeventanswer', [
-//                    'model' => $modelEventAnswer,
-//                ]);
-//            }else
-//            return $this->redirect(['view', 'id' => $modelEventAnswer->id]);
-//        } else {
-//            return $this->render('updateeventanswer', [
-//                'model' => $modelEventAnswer,
-//            ]);
-//        }
-//    }
+ public function actionEventanswer($id){
+
+     $model= new Eventanswer();
+     //Enviamos parametro registros de preguntas por ID Inscripción
+     $searchModel = Eventanswer::find()->where(['inscription_id'=>$id])->indexBy('id');
+     $dataProvider = new ActiveDataProvider([
+         'query' => $searchModel,
+     ]);
+     $models=$dataProvider->getModels();
+
+     if (Eventanswer::loadMultiple($models, Yii::$app->request->post()) && Eventanswer::validateMultiple($models)) {
+         $count = 0;
+         foreach ($models as $index => $item) {
+             // populate and save records for each model
+             if ($item->save()) {
+                 $count++;
+             }
+         }
+         Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+         //++++++++++++++++++++++++++++++++++++++++
+         // CALCULATE
+         $this->calculate($id);
+         //++++++++++++++++++++++++++++++++++++++++
+
+         return $this->redirect(['viewown', 'id' => $id]);
+     }
+
+
+     return $this->render('_eventanswers', [
+         'searchModel' => $searchModel,
+         'dataProvider' => $dataProvider,
+         'model' => $model,
+     ]);
+    }
 }
