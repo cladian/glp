@@ -64,14 +64,15 @@ class TopicController extends Controller
         $modelPost = new Post();
 
 
-        $modelPost->topic_id=$id;
-        $modelPost->user_id=Yii::$app->user->id;
+
 
         if ($modelPost->load(Yii::$app->request->post()) ) {
             $modelPost->save();
             $modelPost = new Post();
+            $modelPost->content=null;
        }
-
+        $modelPost->topic_id=$id;
+        $modelPost->user_id=Yii::$app->user->id;
 
         return $this->render('view', [
             'model' => $this->findModel($id),

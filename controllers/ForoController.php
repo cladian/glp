@@ -5,11 +5,11 @@ namespace app\controllers;
 use Yii;
 use app\models\Phforum;
 use app\models\Topic;
-use app\models\Post;
 use app\models\PhforumSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Post;
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -46,9 +46,20 @@ class ForoController extends Controller
     public function actionTopic($id)
     {
 
+        $modelPost = new Post();
+        $modelPost->topic_id=$id;
+        $modelPost->user_id=Yii::$app->user->id;
+
+        if ($modelPost->load(Yii::$app->request->post()) ) {
+            $modelPost->save();
+            $modelPost = new Post();
+            $modelPost->content=NULL;
+        }
+
         return $this->render('topic', [
             'model'=>Topic::find()->where(['id'=>$id])->one(),
             'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
+            'modelPost'=>$modelPost,
         ]);
     }
 
