@@ -69,9 +69,18 @@ class PostController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Post();
+        $model->user_id = Yii::$app->user->id;
+        $model->topic_id =$id;
+
+//        $model = Topic::find()->where(['topic_id' => $id]);
+
+
+
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

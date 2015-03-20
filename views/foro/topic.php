@@ -1,6 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
+use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 ?>
 <!--<div class="row">
     <center>
@@ -83,6 +86,7 @@ use yii\helpers\Html;
                     </tr>
                 </table>
             </div>
+
         </div>
     </div>
 </div>
@@ -135,6 +139,33 @@ use yii\helpers\Html;
                 ?>
 
             </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><?= 'Aportes'; ?></div>
+        <div class="panel-body">
+
+
+            <div class="post-form">
+                <?php $form = ActiveForm::begin(); ?>
+                <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
+                <!--    --><?//= $form->field($model, 'status')->textInput() ?>
+                <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>
+                <div class="form-group">
+                    <?= Html::submitButton($modelPost->isNewRecord ? 'Crear' : 'Guardar', ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                </div>
+
+                <?php ActiveForm::end(); ?>
+
+            </div>
+
         </div>
     </div>
 </div>
