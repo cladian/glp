@@ -98,7 +98,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+<!--        <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
@@ -110,10 +110,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <?= $this->render('_partialEventanswerown', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); ?>
+                    <?/*= $this->render('_partialEventanswerown', ['searchModel' => $searchModelEventanswer, 'dataProvider' => $dataProviderEventanswer]); */?>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
 

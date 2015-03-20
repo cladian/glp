@@ -599,6 +599,10 @@ class InscriptionController extends Controller
              }
          }
          Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+         //++++++++++++++++++++++++++++++++++++++++
+         // CALCULATE
+         $this->calculate($id);
+         //++++++++++++++++++++++++++++++++++++++++
 
          return $this->redirect(['viewown', 'id' => $id]);
      }
@@ -609,21 +613,5 @@ class InscriptionController extends Controller
          'dataProvider' => $dataProvider,
          'model' => $model,
      ]);
-
-        /*$modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
-
-        if ($modelEventAnswer->load(Yii::$app->request->post()) && $modelEventAnswer->save()) {
-            $modelEventAnswer=Eventanswer::find()->where(['inscription_id'=>$id])->andWhere('LENGTH(reply)>0')->one();
-            if($modelEventAnswer){
-                return $this->render('updateeventanswer', [
-                    'model' => $modelEventAnswer,
-                ]);
-            }else
-            return $this->redirect(['view', 'id' => $modelEventAnswer->id]);
-        } else {
-            return $this->render('updateeventanswer', [
-                'model' => $modelEventAnswer,
-            ]);
-        }*/
     }
 }
