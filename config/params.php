@@ -18,8 +18,8 @@ return [
     'btnCrear' => '<span class="glyphicon glyphicon-pencil"></span> Crear',
     'btnCrearTEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de evento',
     'btnCrearRegistro' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de registro',
-// Varios
     'btnInstitucion' => '<span class="glyphicon glyphicon-pencil"></span> Crear institución',
+// Varios
     'btnCancelar' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',
     'btnEliminar' => '<span class="glyphicon glyphicon-remove"></span> Eliminar',
     'btnSubirImagen' => '<span class="glyphicon glyphicon-eject"></span> Subir imagen',
@@ -30,6 +30,8 @@ return [
     'btnVer' => '<span class="glyphicon glyphicon-eye-open"></span> Vizualizar',
     'btnSolicitud' => '<span class="glyphicon glyphicon-pencil""></span> Crear Solicitud',
     'btnNuevo' => '<span class="glyphicon glyphicon-file""></span> Nuevo',
+    'btnEnviar' => '<span class="glyphicon glyphicon-send"></span> Enviar inquietud',
+    
 // Preguntas    
     'btnPregunta' => '<span class="glyphicon glyphicon-question-sign"></span> Pregunta',
     'btnPreguntaGeneral' => '<span class="glyphicon glyphicon-question-sign"></span> Crear Pregunta',
