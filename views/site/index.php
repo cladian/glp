@@ -33,7 +33,7 @@ $this->title = 'My Yii Application';
         <br>
 
         <div class="caja">
-            <div class="panel-heading"><h2 class="titulo-registro">Registrarse</h2></div>
+            <div class="panel-heading"><h2 class="titulo-registro">Registro</h2></div>
             <div class="panel-body">
 
                 <!-- form -->
@@ -104,8 +104,7 @@ $this->title = 'My Yii Application';
 <!--                        --><?//= Html::submitButton('Inicia sesión', ['class' => ' btn-primary  ', 'name' => 'signup-button']) ?>
                     </div>
 
-                    <p class="aviso">¿Si eres miembro? <a <?php Html::a('/site/login')?> class="marketing-text--white"><?= Html::submitButton('Inicia sesión', ['class' => ' btn-danger  ', 'name' => 'signup-button']) ?></a>
-                    </p>
+                    <p class="aviso">¿Si eres miembro?  <?= Html::a('Ingresar', ['/site/login'], ['class'=>'btn btn-primary btn-xs']) ?></p>
                 </div>
             </div>
         </div>
