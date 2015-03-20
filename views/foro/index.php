@@ -53,6 +53,9 @@ foreach ($model as $foro) {
                         </button>
                         <h5>Información del evento</h5>
                         <?= $foro->event->name; ?>
+                        <br>
+                        <br>
+
                         <h4>Documentos</h4>
                         <ul class="list-group">
                         <?php
@@ -70,7 +73,8 @@ foreach ($model as $foro) {
                             <li class="list-group-item">Porta ac consectetur ac</li>
                             <li class="list-group-item">Vestibulum at eros</li>-->
                         </ul>
-
+                        <br>
+                        <br>
                         <h4>Imagenes</h4>
                         <?php
                         foreach($foro->getPhforumImagens()->all() as $imagenes)
@@ -82,7 +86,9 @@ foreach ($model as $foro) {
                         ?>
 
                         </ul>
-
+                        <br>
+                        <br>
+                        <h4>Videos</h4>
                         <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe class="embed-responsive-item" src="//www.youtube.com/embed/iFyp1P_NsMI?rel=0" allowfullscreen></iframe>

@@ -74,9 +74,24 @@ $this->title = 'Inscripciones';
                 'pluginOptions' => ['allowClear' => true],
             ],
         ],
-        [
-            'class' => 'kartik\grid\ActionColumn',
+//        [
+//            'class' => 'kartik\grid\ActionColumn',
+//
+//        ],
+
+        ['class' => 'kartik\grid\ActionColumn',
+            'template' => '{view} {update}',
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['inscription/view', 'id' => $key]);
+                    },
+                'update' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['inscription/update', 'id' => $key]);
+                    },
+
+            ]
         ],
+
         [
             'class' => 'kartik\grid\CheckboxColumn',
             'headerOptions' => ['class' => 'kartik-sheet-style'],

@@ -10,7 +10,11 @@ use yii\widgets\ActiveForm;
 
 <div class="institutiontype-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>[
+        'id' => 'my-form-category',
+        'beforeSubmit' => 'submitForm',
+        'enableClientValidation' => true,
+    ]]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
 

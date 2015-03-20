@@ -185,7 +185,7 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <?= Html::a('Ver todas las inscripciones', ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
+            <?= Html::a('Ver todas las inscripciones', ['inscription/indexown'], ['class' => 'btn btn-default btn-block']) ?>
             <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
         <!-- /.panel-footer -->
@@ -240,7 +240,7 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <div class="input-group">
+           <!-- <div class="input-group">
                 <input id="btn-input" type="text" class="form-control input-sm"
                        placeholder="Type your message here..."/>
 
@@ -249,7 +249,7 @@ if (!$hasProfile) {
                                         Send
                                     </button>
                                 </span>
-            </div>
+            </div>-->
         </div>
         <!-- /.panel-footer -->
     </div>
@@ -343,12 +343,12 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <div class="input-group">
+            <!--<div class="input-group">
                 <button class="btn btn-warning btn-md" id="btn-chat">
                     Ver todas
                 </button>
 
-            </div>
+            </div>-->
         </div>
         <!-- /.panel-footer -->
     </div>

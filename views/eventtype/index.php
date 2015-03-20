@@ -30,7 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['eventtype/view', 'id' => $key]);
+                        },
+                    'update' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['eventtype/update', 'id' => $key]);
+                        },
+
+                ]
+            ],
         ],
     ]); ?>
   </div>
