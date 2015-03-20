@@ -27,12 +27,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
     <?= Editable::widget([
         'model'=>$model,
         'attribute' => 'name',
         'type'=>'primary',
         'size'=>'lg',
        // 'inputType'=>Editable::INPUT_RATING,
+        'editableValueOptions'=>['class'=>'text-success h3']
+    ]);
+    ?>
+    <?=
+    Editable::widget([
+        'model'=>$model,
+        'attribute' => 'description',
+        'type'=>'primary',
+        'size'=>'lg',
+        'format'=>Editable::FORMAT_BUTTON,
+        'inputType'=>Editable::INPUT_RATING,
         'editableValueOptions'=>['class'=>'text-success h3']
     ]);
     ?>

@@ -101,6 +101,7 @@ class InstitutiontypeController extends Controller
     {
         if (Yii::$app->request->post('hasEditable')) {
             $model=$this->findModel($id);
+            print_r(Yii::$app->request->post);
             $post = [];
             $output = '';
             $posted = Yii::$app->request->post('Institutiontype');
