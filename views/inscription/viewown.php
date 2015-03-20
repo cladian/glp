@@ -67,7 +67,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialInscription', ['model' => $model,'modelProfile'=>$modelProfile]) ?>
                 </div>
                 <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Preguntas por evento', ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
                 </div>
             </div>
         </div>
