@@ -13,7 +13,7 @@ use app\assets\AppAsset;
 AppAsset::register($this);
 // Botón HOME todos tiene el botón
 $items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];
-$items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Foro', 'url' => ['/foro']];
+$items[] = ['label' => '<span class="glyphicon glyphicon-comment"></span> Foro', 'url' => ['/foro']];
 
 // Botones solo para usuarios que no están logeados todavia
 if (Yii::$app->user->isGuest) {
@@ -209,7 +209,7 @@ if ($temp) {
             ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
             ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
             '<li class="divider"></li>',
-            ['label' => 'Preguntas', 'url' => ['/question']],
+//            ['label' => 'Preguntas', 'url' => ['/question']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]
         ],

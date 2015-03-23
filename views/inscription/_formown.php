@@ -25,8 +25,7 @@ use kartik\widgets\TimePicker;
     <?php $form = ActiveForm::begin(); ?>
 
 
-
-    <? /*= $form->field($model, 'complete')->textInput() */ ?>
+<!--    --><?//= $form->field($model, 'complete')->textInput()  ?>
 
     <? /*= $form->field($model, 'status')->textInput() */ ?>
 
@@ -102,8 +101,10 @@ use kartik\widgets\TimePicker;
                 'offText' => 'NO',
             ]
         ]); ?>
-
     </div>
+</div>
+</div>
+</div>
     <div class="panel panel-primary">
         <div class="panel-heading"><?= Html::encode($this->title) ?></div>
         <div class="panel-body">
