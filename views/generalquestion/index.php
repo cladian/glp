@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\GeneralquestionSearch */
@@ -20,14 +21,43 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'status',
+            [
+                'attribute' => 'text',
+
+                /*     'value'=> function ($data){ return $data->question->text;}*/
+
+            ],
+
+            [
+                'attribute' => 'status',
+                /* 'value'=> function ($data){ return $data->question->text;}*/
+                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                'value' => function ($model) {
+                            if ($rel = $model->getStatus($model->status)) {
+                                return $rel;
+                         }
+                        },
+
+            ],
+//            'status',
+//            [
+//                'attribute' => 'status',
+//                'vAlign' => 'middle',
+//                'value' => function ($model) {
+//                        if ($rel = $model->getStatus($model->status)) {
+//                            return $rel;
+//                        }
+//                    },
+//                'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
+//                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+//                'filterInputOptions' => ['placeholder' => 'Todos'],
+//                'filterWidgetOptions' => [
+//                    'pluginOptions' => ['allowClear' => true],
+//                ],
+//            ],
 //            'created_at',
 //            'updated_at',
 //            'question_id',
-            [
-                'attribute' => 'text',
-           /*     'value'=> function ($data){ return $data->question->text;}*/
-            ],
 
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update}',

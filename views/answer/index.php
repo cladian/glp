@@ -21,7 +21,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'inscription_id',
+//            [
+//                'attribute' => 'inscription_id',
+//                'value' => function ($data) {
+//                        return $data->inscription->exposition;
+//                    }
+//            ],
 //            'question_id',
+            [
+                'attribute' => 'question_id',
+                'value' => function ($data) {
+                        return $data->question->text;
+                    }
+            ],
             // [
             //     'attribute' => 'question_id',
             //     'value'=> function ($data){ return $data->question->question->text;}

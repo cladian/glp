@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use kartik\builder\Form;
+use kartik\builder\TabularForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "answer".
@@ -97,8 +100,51 @@ class Answer extends \yii\db\ActiveRecord
         return $this->hasOne(Generalquestion::className(), ['id' => 'question_id']);
     }
 
+
     public function getGrid()
     {
+        return [
+            [
+                'type' => Form::INPUT_RAW,
+                'value'=>function ($model, $key, $index, $widget) {return $model->question->text; },
+                'columnOptions'=>['width'=>'30%'],
+                'label'=>'Preguntas requeridas para el evento'
 
+            ],
+            /*
+                        'eventquestion_id' =>[
+
+                            'type'=>TabularForm::INPUT_DROPDOWN_LIST,
+                            'items'=>ArrayHelper::map(Eventquestion::find()->orderBy('text')->asArray()->all(), 'id', 'text'),
+                            'columnOptions'=>['width'=>'50%'],
+                            'options' => ['disabled' => true]
+
+
+                        ],*/
+            /*   'eventquestion_id' =>[
+
+
+                   'value' => function ($data) {
+                       return $data->getEventquestion()->text;
+                   }
+               ],*/
+//            'eventquestion_id' => [
+//                'type' => Form::INPUT_TEXTAREA,
+//                /*'type' => Form::INPUT_STATIC,*/
+//                'options' => ['placeholder' => 'Nombre'],
+//              //  'value' => $this->evenquestion->text,
+//
+//            ],
+
+            'reply' => [
+                'type' => Form::INPUT_TEXTAREA,
+                'options' => ['placeholder' => 'Descripción'],
+                'columnOptions'=>['width'=>'200px;'],
+            ],
+
+
+
+
+        ];
     }
 }

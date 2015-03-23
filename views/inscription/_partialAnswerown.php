@@ -25,15 +25,15 @@ use kartik\editable\Editable;
             'class' => '\kartik\grid\SerialColumn',
             'contentOptions'=>['class'=>'kartik-sheet-style'],
         ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'question_id',
-            'value' => function ($data) {
-                return $data->question->question->text;
-            }
-
-        ],
+//        [
+//            'class' => 'kartik\grid\EditableColumn',
+//            'readonly' => true,
+//            'attribute' => 'question_id',
+//            'value' => function ($data) {
+//                return $data->Generalquestion->text;
+//            }
+//
+//        ],
 
         [
             'class' => 'kartik\grid\EditableColumn',
