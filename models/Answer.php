@@ -96,4 +96,9 @@ class Answer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Generalquestion::className(), ['id' => 'question_id']);
     }
+
+    public function getGrid()
+    {
+
+    }
 }
