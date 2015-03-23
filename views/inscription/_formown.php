@@ -106,17 +106,18 @@ use kartik\widgets\TimePicker;
 </div>
 </div>
     <div class="panel panel-primary">
-        <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+        <div class="panel-heading">Información Logística</div>
         <div class="panel-body">
 
 
             <!---->
 
-            <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]) ?>
+            <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]); ?>
             <?=  $form->field($modelLogistic, 'residence')->widget(SwitchInput::classname(), [
                 'pluginOptions' => [
                     'onText' => 'SI',
                     'offText' => 'NO',
+
                 ]
             ]);?>
 

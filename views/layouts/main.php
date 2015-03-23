@@ -75,7 +75,7 @@ if (Yii::$app->user->can('permission_admin')) {
             ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
             ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
             '<li class="divider"></li>',
-            ['label' => 'Preguntas', 'url' => ['/question']],
+//            ['label' => 'Preguntas', 'url' => ['/question']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]
         ];
