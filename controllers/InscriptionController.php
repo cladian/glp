@@ -380,13 +380,18 @@ class InscriptionController extends Controller
 
     public function actionUpdateown($id)
     {
+        $modelLogistic =new Logistic();
         if ($this->actionOwn($id, Yii::$app->user->id)) {
             // búsqueda de modelo por dos parámetros
             $model = $this->findModelown($id, Yii::$app->user->id);
 
-            if ($model->load(Yii::$app->request->post())&&$model->save()) {
+            if (    $model->load(Yii::$app->request->post()) &&  $modelLogistic->load(Yii::$app->request->post()) ) {
 
                 $model->save();
+                //Almacenamiento de registro Logistica en Blanco
+
+                $modelLogistic->inscription_id = $model->id;
+                $modelLogistic->save();
 
                 //++++++++++++++++++++++++++++++++++++++++
                 // CALCULATE
@@ -397,6 +402,7 @@ class InscriptionController extends Controller
             } else {
                 return $this->render('updateown', [
                     'model' => $model,
+                    'modelLogistic' => $modelLogistic,
                 ]);
             }
         }
@@ -579,17 +585,22 @@ class InscriptionController extends Controller
         $model->save();
 
     }
-
+// Pasar el $id de la Inscrpción
  public function actionEventanswer($id){
 
+     //Vacio para la función  Eventanswer  Answer
      $model= new Eventanswer();
+
      //Enviamos parametro registros de preguntas por ID Inscripción
+     // Cargo todas las preguntas por evento de la inscripción
      $searchModel = Eventanswer::find()->where(['inscription_id'=>$id])->indexBy('id');
      $dataProvider = new ActiveDataProvider([
          'query' => $searchModel,
      ]);
-     $models=$dataProvider->getModels();
 
+     //Guardar multiples modelos
+     // Modificar los modelos de trabajo Eventanswer::  Answers::
+     $models=$dataProvider->getModels();
      if (Eventanswer::loadMultiple($models, Yii::$app->request->post()) && Eventanswer::validateMultiple($models)) {
          $count = 0;
          foreach ($models as $index => $item) {
@@ -599,6 +610,7 @@ class InscriptionController extends Controller
              }
          }
          Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+
          //++++++++++++++++++++++++++++++++++++++++
          // CALCULATE
          $this->calculate($id);

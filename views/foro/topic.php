@@ -11,6 +11,7 @@ use app\models\PhforumImagens;
 
 use app\models\Document;
 use app\models\Imagen;
+
 ?>
 <!--<div class="row">
     <center>
@@ -108,45 +109,52 @@ use app\models\Imagen;
             <ul class="timeline">
 
                 <?php
-                $contador=0;
+                $contador = 0;
                 foreach ($modelPostList as $post) {
-                    $class='class=timeline-badge';
-                    if ($contador++ % 2)
-                        $class='class=timeline-inverted';
+                $class = 'class=timeline-badge';
+                if ($contador++ % 2)
+                    $class = 'class=timeline-inverted';
 
-
-                    ?>
-                    <!-->
-                    <li <?= $class; ?> >
-                        <div class="timeline-badge"><i class="fa fa-check"></i>
-                            <?= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:40px;']); ?>
-                        </div>
-
-
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-<!--                                <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
-
-                                <p>
-                                    <small class="text-muted"><i class="glyphicon glyphicon-time"></i> <?= $post->created_at;?></small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-
-                            </div>
-                            <p><?= $post->content;?></p>
-                            <span class="label label-success"><?= $post->user->username ?></span>
-
-<!--                            <span class="label label-success">--><?//= $post->postDocuments->document_id->id ?><!--</span>-->
-<!--                            <span class="label label-success">--><?//= $post->postVideos->video_id->id ?><!--</span>-->
-
-                        </div>
-                    </li>
-                    <!-->
-                    <?php
-                }
 
                 ?>
+                <!-->
+                <li <?= $class; ?> >
+                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                        <?= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:40px;']); ?>
+                    </div>
+
+
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <!--                                <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
+
+                            <p>
+                                <small class="text-muted"><i
+                                        class="glyphicon glyphicon-time"></i> <?= $post->created_at; ?></small>
+                            </p>
+                        </div>
+                        <div class="timeline-body">
+
+                        </div>
+                        <p><?= $post->content; ?></p>
+                        <span class="label label-success"><?= $post->user->username ?></span>
+
+<!--                        <h2>--><?//= $post->id; ?><!--</h2>-->
+
+                        <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
+
+                            <?= Html::a($postDocs->document->name, [\Yii::$app->params['foroDocs'] . $postDocs->document->file],['class' => 'btn btn-primary']); ?>
+                        <?php endforeach ?>
+
+
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+
+                </li>
+
 
             </ul>
         </div>
@@ -154,7 +162,6 @@ use app\models\Imagen;
     </div>
 
 </div>
-
 
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -166,7 +173,7 @@ use app\models\Imagen;
                     <div class="post-form">
                         <?php $form = ActiveForm::begin(); ?>
                         <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
-                        <!--    --><?//= $form->field($model, 'status')->textInput() ?>
+                        <!--    --><? //= $form->field($model, 'status')->textInput() ?>
                         <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>
                         <div class="form-group">
                             <?= Html::submitButton($modelPost->isNewRecord ? 'Crear' : 'Guardar', ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -184,21 +191,10 @@ use app\models\Imagen;
                     <tr>
                         <center>
                             <a href=""><span style="font-size:20px;"</span><br>
-<!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
-
-                                <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-                                
-<!--                                <div>Subir Documento</div>-->
-                            </a>
-                            <hr>
-                        </center>
-                    </tr>
-                    <tr>
-                        <center>
-                            <a href=""><span style="font-size:20px;"</span><br>
                                 <!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
 
-                                <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                                <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
                                 <!--                                <div>Subir Documento</div>-->
                             </a>
                             <hr>
@@ -209,7 +205,18 @@ use app\models\Imagen;
                             <a href=""><span style="font-size:20px;"</span><br>
                                 <!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
 
-                                <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                                <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                                <!--                                <div>Subir Documento</div>-->
+                            </a>
+                            <hr>
+                        </center>
+                    </tr>
+                    <tr>
+                        <center>
+                            <a href=""><span style="font-size:20px;"</span><br>
+                                <!--                                             class="glyphicon glyphicon-circle-arrow-up"></span><br>-->
+
+                                <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                                 <!--                                <div>Subir Documento</div>-->
                             </a>
                             <hr>
@@ -217,10 +224,6 @@ use app\models\Imagen;
                     </tr>
                 </table>
             </div>
-
-
-
-
 
 
         </div>
