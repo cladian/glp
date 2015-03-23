@@ -86,8 +86,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel-body">
 
 
-
-
 <!---->
 
         <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]) ?>

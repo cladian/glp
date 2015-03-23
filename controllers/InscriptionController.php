@@ -380,13 +380,18 @@ class InscriptionController extends Controller
 
     public function actionUpdateown($id)
     {
+        $modelLogistic =new Logistic();
         if ($this->actionOwn($id, Yii::$app->user->id)) {
             // búsqueda de modelo por dos parámetros
             $model = $this->findModelown($id, Yii::$app->user->id);
 
-            if ($model->load(Yii::$app->request->post())&&$model->save()) {
+            if (    $model->load(Yii::$app->request->post()) &&  $modelLogistic->load(Yii::$app->request->post()) ) {
 
                 $model->save();
+                //Almacenamiento de registro Logistica en Blanco
+
+                $modelLogistic->inscription_id = $model->id;
+                $modelLogistic->save();
 
                 //++++++++++++++++++++++++++++++++++++++++
                 // CALCULATE
@@ -397,6 +402,7 @@ class InscriptionController extends Controller
             } else {
                 return $this->render('updateown', [
                     'model' => $model,
+                    'modelLogistic' => $modelLogistic,
                 ]);
             }
         }

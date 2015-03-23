@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = 'Actualización';
   <div class="panel-body">
     <?= $this->render('_formown', [
         'model' => $model,
+        'modelLogistic' => $modelLogistic,
     ]) ?>
   </div>
 </div>
