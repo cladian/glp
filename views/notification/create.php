@@ -7,9 +7,11 @@ use yii\helpers\Html;
 /* @var $model app\models\Notification */
 
 $this->title = 'Crear Notificación';
-$this->params['breadcrumbs'][] = ['label' => 'Notificaciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/notification/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

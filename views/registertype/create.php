@@ -7,9 +7,10 @@ use yii\helpers\Html;
 /* @var $model app\models\Registertype */
 
 $this->title = 'Crear Tipo de Registro';
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/registertype/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

@@ -26,9 +26,10 @@ use app\models\Request;
             </div>
             <div class="panel-footer">
                <span class="pull-right">
-                   <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+                   
                </span>
-                <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
+               <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+
 
             </div>
             <?php ActiveForm::end(); ?>

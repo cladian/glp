@@ -14,6 +14,11 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
 //$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 //$this->params['breadcrumbs'][] = 'Actualziación';
 ?>
+
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $id], ['class' => 'btn btn-default'])?>
+</div>
+
 <div class="panel panel-green">
   <div class="panel-heading">Preguntas del Evento</div>
   <div class="panel-body">

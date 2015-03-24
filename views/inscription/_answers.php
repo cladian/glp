@@ -14,14 +14,15 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
 //$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 //$this->params['breadcrumbs'][] = 'Actualziación';
 ?>
-<h1>Preguntas Generales</h1>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $id], ['class' => 'btn btn-default'])?>
+</div>
 <?php
 $form = ActiveForm::begin();?>
-<div class="form-group">
-    <?=Html::submitButton('Guardar', ['class' => 'btn btn-primary']);?>
-
-</div>
-<?=TabularForm::widget([
+<div class="panel panel-green">
+  <div class="panel-heading">Preguntas Generales</div>
+  <div class="panel-body">
+    <?=TabularForm::widget([
     'dataProvider' => $dataProvider,
     'form' => $form,
     'attributes' => $model->getGrid(),
@@ -44,6 +45,14 @@ $form = ActiveForm::begin();?>
 ]);
 // Add other fields if needed or render your submit button
 ?>
+
+  </div>
+</div>
+
+
+    <?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+
+
 
 
 <?php ActiveForm::end(); ?>

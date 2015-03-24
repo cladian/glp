@@ -7,22 +7,17 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Registertype */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Registro', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="registertype-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
       <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        
     </p>
 
     <?= DetailView::widget([

@@ -10,9 +10,11 @@ use kartik\builder\Form;
 /* @var $model app\models\Responsibilitytype */
 
 $this->title = 'Crear Tipo de Responsabilidad';
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Responsabilidad', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/responsibilitytype/index'], ['class' => 'btn btn-default'])?>
+</div>
 
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>

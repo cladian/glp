@@ -7,9 +7,11 @@ use yii\helpers\Html;
 /* @var $model app\models\Request */
 
 $this->title = 'Crear Solicitudes';
-$this->params['breadcrumbs'][] = ['label' => 'Solicitudes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $id], ['class' => 'btn btn-default'])?>
+</div>
+
 <div class="request-create">
 
     <?= $this->render('_formown', [

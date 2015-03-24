@@ -7,9 +7,10 @@ use yii\helpers\Html;
 /* @var $model app\models\Eventtype */
 
 $this->title = 'Crear Tipo de Evento';
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Evento', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/eventtype/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

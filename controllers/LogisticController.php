@@ -107,6 +107,7 @@ class LogisticController extends Controller
         } else {
             return $this->render('updateown', [
                 'model' => $model,
+                'id'=> $id
             ]);
         }
     }
