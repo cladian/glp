@@ -74,7 +74,7 @@ class Eventquestion extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'status' => 'Estado',
-            'text' => 'Texto',
+            'text' => 'Texto de Pregunta',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
             'event_id' => 'Evento',

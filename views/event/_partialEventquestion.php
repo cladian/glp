@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Preguntas por Evento';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="eventquestion-index">
 

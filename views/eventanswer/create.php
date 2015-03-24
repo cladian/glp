@@ -7,9 +7,11 @@ use yii\helpers\Html;
 /* @var $model app\models\Eventanswer */
 
 $this->title = 'Crear Respuesta por Evento';
-$this->params['breadcrumbs'][] = ['label' => 'Respuestas por Evento', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-?><div class="panel panel-green">
+?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/eventanswer','Respuestas por Evento' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
+<div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">
     <?= $this->render('_form', [

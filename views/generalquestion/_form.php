@@ -16,13 +16,13 @@ use app\models\Question;
 
 
      <?/*= $form->field($model, 'status')->textInput() */?>
+
+    <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
+    <!---->
+    <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
+
+    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
-
-<!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
-<!---->
-<!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
-
-<?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
 <!--    --><?/*=
     $form->field($model, 'question_id')->dropDownList(

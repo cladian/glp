@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn',
+//            ['class' => 'yii\grid\ActionColumn',
                 /*'template' => '{view} {delete}',
                 'headerOptions' => ['width' => '20%', 'class' => 'activity-view-link',],
                 'contentOptions' => ['class' => 'padding-left-5px'],
@@ -74,6 +74,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],*/
 
 
+//            ],
+
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['institutiontype/view', 'id' => $key]);
+                        },
+                    'update' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['institutiontype/update', 'id' => $key]);
+                        },
+
+                ]
             ],
         ],
 
