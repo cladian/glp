@@ -69,7 +69,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 <div class="panel-footer">
                     <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
                     <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Preguntas por evento', ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Respuestas a preguntas generales', ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  Preguntas generales', ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-        <div class="panel panel-primary">
+<!--        <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
@@ -130,10 +130,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                 <div class="panel-body">
-                    <?= $this->render('_partialAnswerown', ['searchModel' => $searchModelAnswer, 'dataProvider' => $dataProviderAnswer]); ?>
+                    <?/*= $this->render('_partialAnswerown', ['searchModel' => $searchModelAnswer, 'dataProvider' => $dataProviderAnswer]); */?>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
 

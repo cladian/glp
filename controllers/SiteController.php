@@ -111,7 +111,7 @@ class SiteController extends Controller
         $modelEvent = Event::find()
             ->where(['status' => self::STATUS_ACTIVE])
             ->orderBy('begin_at')
-            ->limit(4)
+//            ->limit(4)
             ->all();
 
 

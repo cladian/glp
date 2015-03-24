@@ -35,7 +35,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
             ],
             'text',
-            'status',
+//            'status',
+            [
+                'attribute' => 'status',
+                /* 'value'=> function ($data){ return $data->question->text;}*/
+                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                'value' => function ($model) {
+                        if ($rel = $model->getStatus($model->status)) {
+                            return $rel;
+                        }
+                    },
+
+            ],
 
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update}',

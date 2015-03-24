@@ -135,39 +135,11 @@ class InstitutiontypeController extends Controller
 
         if ($model->load(Yii::$app->request->post()) ) {
 
-            if ($model->save()) {
-                if (\Yii::$app->getRequest()->getIsAjax())
-                    exit;
-                $model->refresh();
-                //\Yii::$app->response->format = 'json';
-              /*  \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+          $model->save();
+            return $this->redirect(['index']);
 
-                return [
-                    'success' => true,
-                ];*/
-
-                return \Yii::createObject([
-                    'class' => 'yii\web\Response',
-                    'format' => \yii\web\Response::FORMAT_JSON,
-                    'data' => [
-                        'success' =>true,
-
-                    ],
-                ]);
-            }
-/*
-            $model->save();
-            $model->refresh();
-
-            Yii::$app->response->format = 'json';*/
-//            return [
-//                'message' => 'Success!!!',
-//            ];
-
-
-            /*return $this->redirect(['view', 'id' => $model->id]);*/
         } else {
-            return $this->renderAjax('create', [
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }
