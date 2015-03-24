@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="institutiontype-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Actualización de Tipo de Institución</h1>
 
     <p>
          
@@ -30,26 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= Editable::widget([
-        'model'=>$model,
-        'attribute' => 'name',
-        'type'=>'primary',
-        'size'=>'lg',
-       // 'inputType'=>Editable::INPUT_RATING,
-        'editableValueOptions'=>['class'=>'text-success h3']
-    ]);
-    ?>
-    <?=
-    Editable::widget([
-        'model'=>$model,
-        'attribute' => 'description',
-        'type'=>'primary',
-        'size'=>'lg',
-        'format'=>Editable::FORMAT_BUTTON,
-        'inputType'=>Editable::INPUT_RATING,
-        'editableValueOptions'=>['class'=>'text-success h3']
-    ]);
-    ?>
+
+
 
     <?= DetailView::widget([
         'model' => $model,
