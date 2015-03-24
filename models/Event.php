@@ -85,6 +85,7 @@ class Event extends \yii\db\ActiveRecord
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
             [['photo'], 'file', 'extensions' => 'jpg, gif, png'],
+            [['file'], 'file', 'extensions'=>'pdf, doc, ppt, xls, docx, pptx, xlsx '],
             [['photo'], 'required', 'on' => 'resources']
         ];
     }
