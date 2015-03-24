@@ -14,6 +14,10 @@ use app\models\Event;
 $this->title = 'Inscripciones';
 /*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
+
 <div class="inscription-index">
     <?php
 

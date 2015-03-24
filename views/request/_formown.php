@@ -11,7 +11,7 @@ use app\models\Inscription;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-green">
   <div class="panel-heading">Crear Solicitudes</div>
   <div class="panel-body">
     
@@ -41,7 +41,7 @@ use app\models\Inscription;
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

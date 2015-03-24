@@ -44,6 +44,9 @@ return [
 // Preguntas    
     'btnPregunta' => '<span class="glyphicon glyphicon-question-sign"></span> Nueva Pregunta',
     'btnPreguntaGeneral' => '<span class="glyphicon glyphicon-question-sign"></span> Crear Pregunta',
+    'btnPreguntaE' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas por evento',
+    'btnPreguntaG' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas generales',
+
 
     
 

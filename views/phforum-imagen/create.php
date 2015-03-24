@@ -7,15 +7,17 @@ use yii\helpers\Html;
 /* @var $model app\models\PhforumImagen */
 
 $this->title = 'Create Phforum Imagen';
-$this->params['breadcrumbs'][] = ['label' => 'Phforum Imagens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="phforum-imagen-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum-imagen/index'], ['class' => 'btn btn-default'])?>
+</div>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 
+</div>
 </div>

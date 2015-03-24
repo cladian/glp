@@ -30,6 +30,9 @@ if (!$hasProfile) {
 
 }
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <!--<h3><? /*= Html::encode($this->title) */ ?></h3>-->
 
 <div>
