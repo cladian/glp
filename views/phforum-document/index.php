@@ -8,18 +8,14 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Phforum Documents';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="phforum-document-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Phforum Document', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -34,4 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+  </div>
 </div>
+
+        <?= Html::a('Create Phforum Document', ['create'], ['class' => 'btn btn-success']) ?>

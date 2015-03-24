@@ -7,9 +7,12 @@ use yii\helpers\Html;
 /* @var $model app\models\Generalquestion */
 
 $this->title = 'Crear Pregunta General';
-$this->params['breadcrumbs'][] = ['label' => 'Preguntas Generales', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/generalquestion','Preguntas Generales' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
+
 
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
