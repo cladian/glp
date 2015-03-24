@@ -84,8 +84,7 @@ if (Yii::$app->user->can('permission_admin')) {
         $items[] = ['label' => 'Roles', 'items' => [
             ['label' => 'Asignaciones', 'url' => ['/admin']],
             ['label' => 'Roles', 'url' => ['/admin/role']],
-            ['label' => 'Permisos', 'url' => ['/admin/pe
-            rmission']],
+            ['label' => 'Permisos', 'url' => ['/admin/permission']],
 
         ]
         ];
