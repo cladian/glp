@@ -7,10 +7,11 @@ use yii\helpers\Html;
 /* @var $model app\models\Profile */
 
 $this->title = 'Crear Perfil';
-$this->params['breadcrumbs'][] = ['label' => 'Perfiles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-?>
 
+?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-primary">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

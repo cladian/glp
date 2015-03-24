@@ -11,6 +11,12 @@ $this->title = $model->id;
 /*$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];*/
 /*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
+
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
+
+
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -30,10 +36,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-primary">
             <?= $this->render('/event/_detailinfo', ['model' => $model->event])?>
             <div class="panel-footer">
-                <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default'])?>
+                <?= Html::a(\Yii::$app->params['btnEnviar'], ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
+               <!--  <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default'])?> -->
                 <span class="pull-right">
 
-               <?= Html::a(\Yii::$app->params['btnEnviar'], ['request/createown','inscription_id'=>$model->id], ['class' => 'btn btn-success']) ?>
+               
 
                 </span>
             </div>

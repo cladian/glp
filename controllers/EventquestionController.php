@@ -91,6 +91,7 @@ class EventquestionController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'id' => $id,
 
             ]);
         }

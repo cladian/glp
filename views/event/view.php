@@ -8,9 +8,11 @@ use yii\bootstrap\Tabs;
 /* @var $model app\models\Event */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -28,10 +30,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
     <div class="panel panel-primary">
         <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
-        <div class="panel-footer">
+        <!-- <div class="panel-footer">
             <?= Html::a(\Yii::$app->params['btnRegresar'], ['index'], ['class' => 'btn btn-success'])?>
 
-        </div>
+        </div> -->
     </div>
 
 

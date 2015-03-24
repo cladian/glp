@@ -8,8 +8,11 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Respuestas por Evento';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

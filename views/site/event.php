@@ -7,9 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Event */
 
 $this->title = $modelEvent->name;
-$this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="container-fluid">
     <div class="row">
 
@@ -18,18 +20,19 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel panel-primary">
                 <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
                 <div class="panel-footer">
-                    <?= Html::a('Regresar', ['/site/index'], ['class' => 'btn btn-default'])?>
-                    <?php
+                    
+                    <?= Html::a(\Yii::$app->params['btnInscribirme'], ['site/signup/'], ['class' => 'btn btn-success'])?>
+                  <!--   <?php
                     // solo cuando es visitante, no registrado
                     if (Yii::$app->user->isGuest) {
-                        echo Html::a('Inscribirme', ['site/signup/'], ['class' => 'btn btn-success pull-right']);
+                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['site/signup/'], ['class' => 'btn btn-success pull-right']);
 
                     } else {
 
-                        echo Html::a('Inscribirme', ['inscription/createown/', 'id' => $modelEvent->id], ['class' => 'btn btn-success pull-right ']);
+                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['inscription/createown/', 'id' => $modelEvent->id], ['class' => 'btn btn-success pull-right ']);
 
                     }?>
-
+ -->
                 </div>
             </div>
         </div>

@@ -18,6 +18,7 @@ return [
     'btnCrear' => '<span class="glyphicon glyphicon-pencil"></span> Crear',
     'btnCrearTEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de evento',
     'btnCrearRegistro' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de registro',
+    'btnInscribirme' => '<span class="glyphicon glyphicon-list-alt"></span> Inscribirme',
     'btnInstitucion' => '<span class="glyphicon glyphicon-pencil"></span> Crear institución',
 // Varios
     'btnCancelar' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',
