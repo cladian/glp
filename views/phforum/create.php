@@ -7,15 +7,17 @@ use yii\helpers\Html;
 /* @var $model app\models\Phforum */
 
 $this->title = 'Crear Foro';
-$this->params['breadcrumbs'][] = ['label' => 'Phforums', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="phforum-create">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum','Phforums' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

@@ -7,15 +7,16 @@ use yii\helpers\Html;
 /* @var $model app\models\PhforumDocument */
 
 $this->title = 'Create Phforum Document';
-$this->params['breadcrumbs'][] = ['label' => 'Phforum Documents', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="phforum-document-create">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum-document/index'], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

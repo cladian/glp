@@ -7,15 +7,17 @@ use yii\helpers\Html;
 /* @var $model app\models\PhforumVideo */
 
 $this->title = 'Create Phforum Video';
-$this->params['breadcrumbs'][] = ['label' => 'Phforum Videos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="phforum-video-create">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum-video/index'], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 
+  </div>
 </div>
