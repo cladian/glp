@@ -113,7 +113,8 @@ class EventController extends Controller
 
             
             $avatar = UploadedFile::getInstance($model, 'photo');
-            $photoName = $model->id . '.' . $avatar->extension;
+            // $photoName = $model->id . '.' . $avatar->extension;
+            $photoName = Yii::$app->security->generateRandomString().time() . '.' . $avatar->extension;
             $avatar->saveAs(\Yii::$app->params['eventFolder'] . $photoName);
             $model->photo = $photoName;
    
@@ -137,7 +138,8 @@ class EventController extends Controller
             
 
             $file = UploadedFile::getInstance($model, 'file');
-            $fileName = $model->id . '.' . $file->extension;
+            // $fileName = $model->id . '.' . $file->extension;
+            $fileName = Yii::$app->security->generateRandomString().time() . '.' . $file->extension;
             $file->saveAs(\Yii::$app->params['eventDocs'] . $fileName);
             $model->file = $fileName;
             $model->save();
