@@ -14,12 +14,19 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">
     <?= GridView::widget([
+
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'user_id',
+//            'user_id',
+            [                    // the owner name of the model
+                'label' => 'Usuario',
+                'value' => function ($model){
+                      return $model->user->username;
+                    }
+            ],
             'request_id',
             'text:ntext',
 //            'created_at',

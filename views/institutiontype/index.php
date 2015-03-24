@@ -21,42 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="panel-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<<<<<<< HEAD
-    <p>
-        <? /*= Html::a('Crear Institución', ['create'], ['class' => 'btn btn-success']) */ ?>
-        <?= Html::button(
-            'create',
-            ['value' => Url::to(['institutiontype/create']),
-                'id' => 'modalButton',
-
-            ]) ?>
-
-
-        <?php
-        Modal::begin([
-            'id' => 'modal',
-            'header' => '<h4 class="modal-title">Add new candidate</h4>',
-    'footer' =>
-        Html::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal'])
-        . PHP_EOL .
-        Html::button('Add', ['class' => 'btn btn-primary btn-modal-save']),
-    'options' => [
-            'role' => 'dialog',
-            'aria-labelledby' => 'candidate-modal-label',
-            'aria-hidden' => 'true',
-            'data-url' => Url::to('candidate/create'),
-        ],
-        ]);
-=======
     
->>>>>>> daniel
-
-        echo "<div id='modalContent'></div>";
-
-        Modal::end();
-        ?>
-
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -74,7 +39,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
             'description:ntext',
-            'status',
+//            'status',
+            [
+                'attribute' => 'status',
+                /* 'value'=> function ($data){ return $data->question->text;}*/
+                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                'value' => function ($model) {
+                        if ($rel = $model->getStatus($model->status)) {
+                            return $rel;
+                        }
+                    },
+
+            ],
 //            'created_at',
             // 'updated_at',
 

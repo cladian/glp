@@ -22,7 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'reply:ntext',
             'inscription_id',
-            'eventquestion_id',
+//            'eventquestion_id',
+
+                        [
+                'attribute' => 'eventquestion_id',
+                'value' => function ($data) {
+                        return $data->eventquestion->text;
+                    }
+            ],
+
 //            'created_at',
             // 'updated_at',
             // 'status',

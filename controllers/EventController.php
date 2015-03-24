@@ -75,12 +75,13 @@ class EventController extends Controller
         // Edison despues de actualización
         //$dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $model->eventtype_id);
         $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams,$id);
-
+//        print_r($model);
         return $this->render('view', [
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
     /**
@@ -140,7 +141,7 @@ class EventController extends Controller
                     'El evento no puede cambiar a estado activo hasta que agregue al menos una pregunta al evento');
                 $model->status=self::STATUS_INACTIVE;
             }
-
+//             print_r($model);(exit);
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

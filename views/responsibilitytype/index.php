@@ -12,28 +12,12 @@ use kartik\builder\TabularForm;
 $this->title = 'Tipos de Responsabilidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<<<<<<< HEAD
-<div class="responsibilitytype-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-
-    </p>
-
-=======
-<div class="panel panel-green">
+<div class="panel panel-primary">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
->>>>>>> daniel
+    Panel content
 
-</div>
+
 <?php
 $form = ActiveForm::begin();?>
 <div class="form-group">
@@ -53,18 +37,9 @@ $form = ActiveForm::begin();?>
 // Add other fields if needed or render your submit button
 ?>
 
-<<<<<<< HEAD
 
-<?php ActiveForm::end(); ?>
-=======
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-    
+    <?= Html::a(\Yii::$app->params['btnCrearResponsabilidad'], ['create'], ['class' => 'btn btn-success']) ?>
   </div>
 </div>
 
-<p>
-        <?= Html::a(\Yii::$app->params['btnCrearResponsabilidad'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
->>>>>>> daniel
+<?php ActiveForm::end(); ?>

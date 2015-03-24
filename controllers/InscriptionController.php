@@ -327,7 +327,7 @@ class InscriptionController extends Controller
             foreach ($modelgeneralquestion as $answer) {
                 $modelanswer = new Answer();
                 $modelanswer->inscription_id = $model->id;
-                //$modelanswer->question_id = $answer->question_id;
+                $modelanswer->question_id = $answer->id;
                 $modelanswer->save();
 
             }
@@ -380,13 +380,21 @@ class InscriptionController extends Controller
 
     public function actionUpdateown($id)
     {
+        $modelLogistic =new Logistic( );
+
+
         if ($this->actionOwn($id, Yii::$app->user->id)) {
             // búsqueda de modelo por dos parámetros
             $model = $this->findModelown($id, Yii::$app->user->id);
+            $modelLogistic = Logistic::findOne([ 'inscription_id' => $id]);
 
-            if ($model->load(Yii::$app->request->post())&&$model->save()) {
+            if (    $model->load(Yii::$app->request->post()) &&  $modelLogistic->load(Yii::$app->request->post()) ) {
 
                 $model->save();
+                //Almacenamiento de registro Logistica en Blanco
+                print_r($modelLogistic->residence);
+                $modelLogistic->inscription_id = $model->id;
+                $modelLogistic->save();
 
                 //++++++++++++++++++++++++++++++++++++++++
                 // CALCULATE
@@ -395,8 +403,10 @@ class InscriptionController extends Controller
 
                 return $this->redirect(['viewown', 'id' => $model->id]);
             } else {
+
                 return $this->render('updateown', [
                     'model' => $model,
+                    'modelLogistic' => $modelLogistic,
                 ]);
             }
         }
@@ -567,14 +577,14 @@ class InscriptionController extends Controller
 
         $model->complete_quiz=100;
         if ($model->getAnswers()->count()>0)
-            $model->complete_quiz=round($model->getAnswers()->count()*100/ $model->getAnswers()->count());
+            $model->complete_quiz=round($model->getAnswers()->andWhere('LENGTH(reply)>0')->count()*100/ $model->getAnswers()->count());
 
         $model->complete_logistic=round($itemsNotNull*100/$items);
 
 
         $model->complete=100;
         if ($model->getEventanswers()->count()>0)
-            $model->complete_eventquiz=$model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count();
+            $model->complete_eventquiz=round($model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count());
 
         $model->save();
 
@@ -603,7 +613,7 @@ class InscriptionController extends Controller
                  $count++;
              }
          }
-         Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosmente.");
 
          //++++++++++++++++++++++++++++++++++++++++
          // CALCULATE
@@ -619,5 +629,47 @@ class InscriptionController extends Controller
          'dataProvider' => $dataProvider,
          'model' => $model,
      ]);
+    }
+
+
+    public function actionAnswer($id){
+
+        //Vacio para la función  Eventanswer  Answer
+        $model= new Answer();
+
+        //Enviamos parametro registros de preguntas por ID Inscripción
+        // Cargo todas las preguntas por evento de la inscripción
+        $searchModel = Answer::find()->where(['inscription_id'=>$id])->indexBy('id');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $searchModel,
+        ]);
+
+        //Guardar multiples modelos
+        // Modificar los modelos de trabajo Eventanswer::  Answers::
+        $models=$dataProvider->getModels();
+        if (Answer::loadMultiple($models, Yii::$app->request->post()) && Answer::validateMultiple($models)) {
+            $count = 0;
+            foreach ($models as $index => $item) {
+                // populate and save records for each model
+                if ($item->save()) {
+                    $count++;
+                }
+            }
+            Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+
+            //++++++++++++++++++++++++++++++++++++++++
+            // CALCULATE
+            $this->calculate($id);
+            //++++++++++++++++++++++++++++++++++++++++
+
+            return $this->redirect(['viewown', 'id' => $id]);
+        }
+
+
+        return $this->render('_answers', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
     }
 }

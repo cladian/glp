@@ -31,6 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'inscription_id',
             'question_id',
+//            [                    // the owner name of the model
+//                'label' => 'Pregunta',
+//                'value' => $model->question->text,
+//            ],
             'reply:ntext',
 //            'created_at',
 //            'updated_at',
