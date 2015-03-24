@@ -8,8 +8,11 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Solicitudes';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">
@@ -35,11 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="request-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(\Yii::$app->params['btnSolicitud'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     
 
 </div>
