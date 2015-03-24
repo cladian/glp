@@ -115,9 +115,24 @@ $gridColumns = [
             'pluginOptions' => ['allowClear' => true],
         ],
     ],
-    [
-        'class' => 'kartik\grid\ActionColumn',
+//    [
+//        'class' => 'kartik\grid\ActionColumn',
+//    ],
+
+    ['class' => 'kartik\grid\ActionColumn',
+        'template' => '{view} {update}',
+        'buttons' => [
+            'view' => function ($url, $model, $key) {
+                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['user/view', 'id' => $key]);
+                },
+            'update' => function ($url, $model, $key) {
+                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['user/update', 'id' => $key]);
+                },
+
+        ]
     ],
+
+
     [
         'class' => 'kartik\grid\CheckboxColumn',
         'headerOptions' => ['class' => 'kartik-sheet-style'],

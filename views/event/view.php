@@ -54,7 +54,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <?= $model->getStatus($model->status); ?>
+<!--                    --><?//= $model->getStatus($model->status); ?>
                     <?php $estado = $model->getStatus($model->status); ?>
                     <?= DetailView::widget([
                         'model' => $model,
@@ -70,7 +70,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             ],
                             'city',
                             'year',
-                            'status',
+//                            'status',
                             /*                            [   'attribute'=>'status',
                                                             'value'=>function($model){return $model->getStatus($estado);}
                                                         ]*/
