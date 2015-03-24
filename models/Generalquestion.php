@@ -57,6 +57,7 @@ class Generalquestion extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
 
             [['text'], 'string'],
+            [['text'], 'required'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
 
@@ -73,7 +74,7 @@ class Generalquestion extends \yii\db\ActiveRecord
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'text' => 'Contenido',
+            'text' => 'Texto de Pregunta',
 
         ];
     }
