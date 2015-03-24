@@ -9,8 +9,10 @@ use yii\widgets\DetailView;
 $this->title = $model->id;
 ?>
 <div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/eventanswer/create','Respuestas por Evento' => $model->id], ['class' => 'btn btn-default'])?>
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
 </div>
+
+
 <div class="eventanswer-view">
 
     <h1><?= Html::encode($this->title) ?></h1>

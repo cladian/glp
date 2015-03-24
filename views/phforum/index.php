@@ -8,17 +8,14 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Foro';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="phforum-index">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Crear Foro', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -42,5 +39,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+  </div>
+</div>
+
+
+<div class="phforum-index">
+
+    
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+   
+        <?= Html::a(\Yii::$app->params['btnForo'], ['create'], ['class' => 'btn btn-success']) ?>
+   
+
+    
 
 </div>
