@@ -19,12 +19,25 @@ $this->title = 'Preguntas por Evento';
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+
+//        'filterModel' => false,
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'text',
-            'status',
+//            'status',
+            [
+                'attribute' => 'status',
+                /* 'value'=> function ($data){ return $data->question->text;}*/
+                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                'value' => function ($model) {
+                        if ($rel = $model->getStatus($model->status)) {
+                            return $rel;
+                        }
+                    },
+
+            ],
 //            'created_at',
 //            'updated_at',
 //            'eventtype_id',
@@ -39,7 +52,7 @@ $this->title = 'Preguntas por Evento';
                         ],*/
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update}',
+                'template' => ' {update}',
                 'buttons' => [
                     'update' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['eventquestion/update', 'id' => $key]);
