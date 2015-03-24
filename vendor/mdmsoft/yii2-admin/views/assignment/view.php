@@ -5,7 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model yii\web\IdentityInterface */
 
-$this->title = Yii::t('rbac-admin', 'Assignments');
+$this->title = Yii::t('rbac-admin', 'Asignaciones');
+$this->title = 'Asignaciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assignment-index">

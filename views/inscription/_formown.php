@@ -113,6 +113,7 @@ use kartik\widgets\TimePicker;
             <!---->
 
             <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]); ?>
+
             <?=  $form->field($modelLogistic, 'residence')->widget(SwitchInput::classname(), [
                 'pluginOptions' => [
                     'onText' => 'SI',

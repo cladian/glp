@@ -79,15 +79,15 @@ $this->title = 'Inscripciones';
 //
 //        ],
 
-        ['class' => 'kartik\grid\ActionColumn',
+        /*['class' => 'kartik\grid\ActionColumn',
             'template' => '{view} {update}',
             'buttons' => [
                 'view' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['inscription/view', 'id' => $key]);
-                    },
+                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['inscription/view', 'id' => $key]);
+                },
                 'update' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['inscription/update', 'id' => $key]);
-                    },
+                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['inscription/update', 'id' => $key]);
+                },
 
             ]
         ],
@@ -95,14 +95,14 @@ $this->title = 'Inscripciones';
         [
             'class' => 'kartik\grid\CheckboxColumn',
             'headerOptions' => ['class' => 'kartik-sheet-style'],
-        ],
+        ],*/
 
 
     ];
 
     echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchByuserModel,
+        'filterModel' => $searchModel,
         'columns' => $gridColumns,
         'containerOptions' => ['style' => 'overflow: auto'], // only set when $responsive = false
         'headerRowOptions' => ['class' => 'kartik-sheet-style'],
@@ -151,10 +151,10 @@ $this->title = 'Inscripciones';
                         'options' => 'Save as Excel'],
                 ],*/
         'toolbar' => [
-/*            ['content' =>
-                Html::a('Create Employee', ['create'], ['class' => 'btn btn-default'])
-            ],*/
-            '{export}',
+            /*            ['content' =>
+                            Html::a('Create Employee', ['create'], ['class' => 'btn btn-default'])
+                        ],*/
+           /* '{export}',*/
         ],
 
     ]);
