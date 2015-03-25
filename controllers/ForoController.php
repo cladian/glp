@@ -55,7 +55,7 @@ class ForoController extends Controller
         if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
             $modelPost->save();
             $modelPost = new Post();
-            $modelPost->content=NULL;
+
 
             \Yii::$app->getSession()
                 ->setFlash('success',
@@ -64,6 +64,7 @@ class ForoController extends Controller
              * ENVIO DE CORREOS ELECTRONICOS
              */
             $this->sendMail($id,$modelPost->content, 'URL' );
+            $modelPost->content=NULL;
 
         }
 
