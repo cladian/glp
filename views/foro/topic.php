@@ -45,7 +45,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div class="panel-body">
                 TEMA:<?= $model->phforum->name ?>
                 <hr/>
-                CONTNEIDO:<?= $model->content ?>
+                CONTENIDO:<?= $model->content ?>
                 <hr/>
                 EVENTO: <?= $model->phforum->event->name ?>
             </div>
