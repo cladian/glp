@@ -79,7 +79,7 @@ class ForoController extends Controller
 
         return $this->render('topic', [
             'model'=>Topic::find()->where(['id'=>$id])->one(),
-            'modellatest'=>Topic::find()->where(['status'=>self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(10)->all(),
+            'modellatest'=>Post::find()->where(['status'=>self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(10)->all(),
             'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
             'modelPost'=>$modelPost,
         ]);
