@@ -30,7 +30,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/foro'], ['class' => 'btn btn-default'])?>
 </div>
 <a name="sube"></a>
 <div role="tabpanel" class="tab-pane active" id="home">
