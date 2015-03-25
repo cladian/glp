@@ -140,10 +140,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <!--                                <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
-
+                            <kbd class="pull-right"> <?=$contador?> </kbd>
                             <p>
-                                <small class="text-muted"><i
-                                        class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?></small>
+                                <small class="text-muted">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                    <a href="#<?= $post->id; ?>">
+                                    <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?>
+                                </a>
+                                </small>
                             </p>
                         </div>
                         <div class="timeline-body">

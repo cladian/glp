@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Post;
+use yii\helpers\Url;
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -54,16 +55,25 @@ class ForoController extends Controller
 
         if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
             $modelPost->save();
-            $modelPost = new Post();
-            $modelPost->content=NULL;
 
+            // > Envio de correo electrónico
+            $html='<h4>Contenido </h4>';
+            $html.='<blockquote>'.$modelPost->content.'</blockquote>';
+            $html.='<kbd>'.$modelPost->user->username.'</kbd>';
+            $url= \Yii::$app->params['webRoot'].Url::to(['foro/topic', 'id' => $id,'#' => $modelPost->id]);
+
+            $this->sendMail($id,$html, $url );
+            //> Fin Correo
             \Yii::$app->getSession()
                 ->setFlash('success',
                     'Su aporte ha sido publicado éxitosamente');
-            /*
-             * ENVIO DE CORREOS ELECTRONICOS
-             */
-            $this->sendMail($id,$modelPost->content, 'URL' );
+
+
+
+            // Encerar modelo
+            return $this->redirect(['topic', 'id' => $id]);
+         /*   $modelPost = new Post();
+            $modelPost->content=NULL;*/
 
         }
 
