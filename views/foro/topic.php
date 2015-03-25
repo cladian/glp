@@ -143,7 +143,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                             <p>
                                 <small class="text-muted"><i
-                                        class="glyphicon glyphicon-time"></i> <?= $post->created_at; ?></small>
+                                        class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?></small>
                             </p>
                         </div>
                         <div class="timeline-body">
