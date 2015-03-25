@@ -10,6 +10,9 @@ $this->title = 'Crear Respuesta';
 //$this->params['breadcrumbs'][] = ['label' => 'Respuestas', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="reply-create">
 
 

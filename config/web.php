@@ -49,6 +49,10 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport'=>false,
+            'viewPath' => '@app/mail',
+
+
         ],
     ],
     #Acceso url para los modulos de roles y perfiles configurados

@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model app\models\Request */
 
 $this->title = 'Actualizar Solicitud: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Solicitudes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Actualización';
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Post;
+use yii\helpers\Url;
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -32,6 +33,8 @@ class ForoController extends Controller
         ];
     }
 
+
+
     /**
      * Lists all Phforum models.
      * @return mixed
@@ -50,10 +53,28 @@ class ForoController extends Controller
         $modelPost->topic_id=$id;
         $modelPost->user_id=Yii::$app->user->id;
 
-        if ($modelPost->load(Yii::$app->request->post()) ) {
+        if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
             $modelPost->save();
-            $modelPost = new Post();
-            $modelPost->content=NULL;
+
+            // > Envio de correo electrónico
+            $html='<h4>Contenido </h4>';
+            $html.='<blockquote>'.$modelPost->content.'</blockquote>';
+            $html.='<kbd>'.$modelPost->user->username.'</kbd>';
+            $url= \Yii::$app->params['webRoot'].Url::to(['foro/topic', 'id' => $id,'#' => $modelPost->id]);
+
+            $this->sendMail($id,$html, $url );
+            //> Fin Correo
+            \Yii::$app->getSession()
+                ->setFlash('success',
+                    'Su aporte ha sido publicado éxitosamente');
+
+
+
+            // Encerar modelo
+            return $this->redirect(['topic', 'id' => $id]);
+         /*   $modelPost = new Post();
+            $modelPost->content=NULL;*/
+
         }
 
         return $this->render('topic', [
@@ -154,9 +175,30 @@ class ForoController extends Controller
     {
         return $this->render('multimedia');
     }
-     public function actionMensajes()
+    public function actionMensajes()
     {
         return $this->render('mensajes');
+    }
+    public function actionTopicfinal()
+    {
+        return $this->render('topicFinal');
+    }
+
+    /*
+* Función para envio de correos electrónicos a todos los participantes que están participando en el tópico
+*/
+    protected function sendMail($topic_id, $message, $url)
+    {
+        $title="Nuevo mensaje enviado Foro-ASOCAM";
+        $content=$message;
+
+        $modelPost=Post::find()->where(['topic_id'=>$topic_id])->addGroupBy(['user_id'])->all();
+        foreach ($modelPost as $user){
+            // Contenido, tipo  1=Notificacion URL
+            $user->user->sendEmail($content, $url, $title);
+        }
+
+
     }
 
 }

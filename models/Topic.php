@@ -65,7 +65,7 @@ class Topic extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['status', 'user_id', 'phforum_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['user_id', 'phforum_id'], 'required'],
+            [['user_id', 'phforum_id','content'], 'required'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
