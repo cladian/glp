@@ -60,7 +60,7 @@ class ForoController extends Controller
             $html='<h4>Contenido </h4>';
             $html.='<blockquote>'.$modelPost->content.'</blockquote>';
             $html.='<kbd>'.$modelPost->user->username.'</kbd>';
-            $url= \Yii::$app->params['webRoot'].Url::to(['foro/topic', 'id' => $id]);
+            $url= \Yii::$app->params['webRoot'].Url::to(['foro/topic', 'id' => $id,'#' => $modelPost->id]);
 
             $this->sendMail($id,$html, $url );
             //> Fin Correo
