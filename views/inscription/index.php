@@ -79,7 +79,7 @@ $this->title = 'Inscripciones';
 //
 //        ],
 
-        ['class' => 'kartik\grid\ActionColumn',
+        /*['class' => 'kartik\grid\ActionColumn',
             'template' => '{view} {update}',
             'buttons' => [
                 'view' => function ($url, $model, $key) {
@@ -90,7 +90,7 @@ $this->title = 'Inscripciones';
                     },
 
             ]
-        ],
+        ],*/
 
         [
             'class' => 'kartik\grid\CheckboxColumn',
