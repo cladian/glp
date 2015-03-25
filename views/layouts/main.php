@@ -14,12 +14,7 @@ AppAsset::register($this);
 // Botón HOME todos tiene el botón
 $items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];
 $items[] = ['label' => '<span class="glyphicon glyphicon-comment"></span> Foro', 'url' => ['/foro']];
-$items[] = ['label' => '<span class="glyphicon glyphicon-refresh"></span> Actualización de Datos', 'items' => [
-    ['label' => ' Perfil', 'url' => ['/profile/viewown']],
-    '<li class="divider"></li>',
-    ['label' => 'Actualización de Contraseña', 'url' => ['/phforum-document']],
-    ['label' => 'Actualización de Correo', 'url' => ['/phforum-document']],
-]];
+
 
 // Botones solo para usuarios que no están logeados todavia
 if (Yii::$app->user->isGuest) {
@@ -226,6 +221,8 @@ if ($temp) {
 if (!Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> ' . Yii::$app->user->identity->username, 'items' => [
 //        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
+        ['label' => 'Actualización de Contraseña', 'url' => ['/user/password']],
+        ['label' => 'Actualización de Correo', 'url' => ['/user/email']],
         '<li class="divider"></li>',
         ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
     ]];
