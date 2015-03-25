@@ -54,16 +54,17 @@ class ForoController extends Controller
 
         if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
             $modelPost->save();
-            $modelPost = new Post();
 
-
+            // > Envio de correo electrónico
+            $this->sendMail($id,$modelPost->content, 'URL' );
             \Yii::$app->getSession()
                 ->setFlash('success',
                     'Su aporte ha sido publicado éxitosamente');
-            /*
-             * ENVIO DE CORREOS ELECTRONICOS
-             */
-            $this->sendMail($id,$modelPost->content, 'URL' );
+
+
+
+            // Encerar modelo
+            $modelPost = new Post();
             $modelPost->content=NULL;
 
         }
