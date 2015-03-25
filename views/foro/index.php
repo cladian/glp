@@ -81,14 +81,14 @@ foreach ($model as $foro) {
 
                         <?php endif ?>
 
-                        <h4>Videos</h4>
+                        <!--<h4>Videos</h4>
 
                         <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe class="embed-responsive-item" src="//www.youtube.com/embed/iFyp1P_NsMI?rel=0"
                                         allowfullscreen></iframe>
                             </div>
-                        </div>
+                        </div>-->
 
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
