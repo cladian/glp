@@ -3,7 +3,35 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
-
+body{
+      -x-system-font: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #edeff0;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    color: #657380;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: 14px;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-weight: normal;
+    line-height: 24px;
+}
 .regresar{
     padding-bottom: 20px;
 }
@@ -56,7 +84,7 @@ a:link{
     border-top-right-radius: 5px;
 }
 .titulo-registro{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color:#fff;
     text-align: center;
     font-size: 24px;
@@ -64,13 +92,13 @@ a:link{
     line-height: 30px;
 }
 .texto-info{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     font-size: 11px;
     line-height: 16px;
 }
 .aviso{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     font-size: 13px;
     font-weight: 400;
@@ -86,7 +114,7 @@ a:link{
 }
 .tituto-slide{
     padding: 20px 20px 0 20px;
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
     font-size: 42px;
     font-weight: 400;
@@ -94,14 +122,14 @@ a:link{
 }
 .texto-slide{
     padding: 20px;
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
     font-size: 24px;
     font-weight: 400;
     line-height: 30px;
 }
 .texto-slide2{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif !important;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
     font-size: 20px;
     font-weight: 400;
@@ -173,7 +201,7 @@ a:link{
 }
 .tituto-relleno{
     color: #404040;
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 30px;
     font-weight: 400;
     line-height: 36px;
@@ -181,7 +209,7 @@ a:link{
 
 }
 .texto-relleno{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 24px;
     font-weight: 400;
     line-height: 30px;
@@ -191,14 +219,14 @@ a:link{
 }
 .texto-cursos{
     color: #404040;
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 24px;
     font-weight: 400;
     line-height: 30px;
     text-align: center;
 }
 .texto-rell{
-    font-family: "Benton Sans","Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-family: "Gotham Rounded A","Gotham Rounded B","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 17px;
     font-weight: 400;
     line-height: 24px;
