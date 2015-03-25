@@ -59,6 +59,7 @@ class ForoController extends Controller
             $html='<h4>Contenido </h4>';
             $html.='<blockquote>'.$modelPost->content.'</blockquote>';
             $html.='<kbd>'.$modelPost->user->username.'</kbd>';
+            $html.= '<p>'.Url::base().Url::to(['post/view', 'id' => 100]).'</p>';
 
             $this->sendMail($id,$html, 'URL' );
             //> Fin Correo
