@@ -56,7 +56,12 @@ class ForoController extends Controller
             $modelPost->save();
 
             // > Envio de correo electrónico
-            $this->sendMail($id,$modelPost->content, 'URL' );
+            $html='<h4>Contenido </h4>';
+            $html.='<blockquote>'.$modelPost->content.'</blockquote>';
+            $html.='<kbd>'.$modelPost->user->username.'</kbd>';
+
+            $this->sendMail($id,$html, 'URL' );
+            //> Fin Correo
             \Yii::$app->getSession()
                 ->setFlash('success',
                     'Su aporte ha sido publicado éxitosamente');
