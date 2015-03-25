@@ -44,7 +44,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 <h1>boton abajo</h1>
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-    
+
     <div class="panel panel-yellow">
         <div class="panel-heading">Mensajes recibidos</div>
         <div class="panel-body">
@@ -77,9 +77,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                                 <p><?= $post->content; ?> </p>
 
-                                <small><i
-                                        class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?>
-                                </small>
+                                <small><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?></small>
 
                                 </td>
                             <td>
@@ -168,38 +166,20 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-yellow">
         <div class="panel-heading"> Mensajes recibidos</div>
         <div class="panel-body">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-info"> Enviado por mcrettaz </p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-warning"> 11 de noviembre de 2014 </p>
-            </div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit . Facilis quasi molestiae voluptatibus iusto
-            optio
-            consequatur eveniet quidem sunt placeat . A error magni voluptate ea nesciunt cupiditate natus fuga, quo
-            esse .
-            <hr>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-info"> Enviado por mcrettaz </p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-warning"> 11 de noviembre de 2014 </p>
-            </div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit . Facilis quasi molestiae voluptatibus iusto
-            optio
-            consequatur eveniet quidem sunt placeat . A error magni voluptate ea nesciunt cupiditate natus fuga, quo
-            esse .
-            <hr>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-info"> Enviado por mcrettaz </p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                <p class="bg-warning"> 11 de noviembre de 2014 </p>
-            </div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit . Facilis quasi molestiae voluptatibus iusto
-            optio
-            consequatur eveniet quidem sunt placeat . A error magni voluptate ea nesciunt cupiditate natus fuga, quo
-            esse .
+            <?php  foreach ($modelPostList as $post): ?>
+                <div><small><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'medium'); ?></small></div>
+                <div><p><?= substr($post->content,0,50); ?>... </p></div>
+                <button class="btn btn-default btn-xs pull-right" type="button">Ver </button>
+                <div >
+                    <p class="bg-info"> <?= $post->user->username ?></p>
+
+                </div>
+
+                <hr>
+            <?php endforeach ?>
+
+
+
         </div>
     </div>
     <!--<nav>
