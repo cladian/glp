@@ -26,9 +26,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-<<<<<<< HEAD
-<div>Boton de retroceso</div>
-=======
+
 <div class="regresar">
 
 
@@ -36,7 +34,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
 </div>
 <a name="sube"></a>
->>>>>>> master
+
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="panel panel-primary">
@@ -51,10 +49,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 
-<h1>boton abajo</h1>
-=======
 <!-- Boton para bajar -->
 <div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <button type="button" class="btn btn-default btn-lg">
@@ -63,7 +58,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 </div>
 <!-- END Boton para bajar -->
 
->>>>>>> master
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
     <div class="panel panel-yellow">
@@ -131,13 +125,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     endforeach ?>
                     </tbody>
                 </table>
-<<<<<<< HEAD
 
 
-=======
 
-
->>>>>>> master
                 <!--<nav>
                     <ul class="pagination">
                         <li>
@@ -229,9 +219,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </nav>-->
 </div>
 
-<<<<<<< HEAD
-<h1>boton arriba</h1>
-=======
 
 <!-- Boton para bajar -->
 <div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -244,4 +231,4 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 <a name="baja"></a>
->>>>>>> master
+
