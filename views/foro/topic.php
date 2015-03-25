@@ -26,7 +26,13 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
-<div>Boton de retroceso</div>
+<div class="regresar">
+
+
+
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
+<a name="sube"></a>
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="panel panel-primary">
@@ -41,8 +47,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
 </div>
+<!-- Boton para bajar -->
+<div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <button type="button" class="btn btn-default btn-lg">
+      <a href="#baja"  class="glyphicon glyphicon-chevron-down" ></a>
+    </button>
+</div>
+<!-- END Boton para bajar -->
 
-<h1>boton abajo</h1>
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
     <div class="panel panel-yellow">
@@ -203,4 +215,15 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </nav>-->
 </div>
 
-<h1>boton arriba</h1>
+
+<!-- Boton para bajar -->
+<div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <button type="button" class="btn btn-default btn-lg">
+      <a href="#sube" class="glyphicon glyphicon-chevron-up" ></a>
+    </button>
+</div>
+<!-- END Boton para bajar -->
+
+
+
+<a name="baja"></a>

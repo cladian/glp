@@ -75,7 +75,7 @@ use app\models\Country;
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 
-                <?= Html::a('<span class="glyphicon glyphicon-remove"></span> Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>
+                <?= Html::a(\Yii::$app->params['btnCancelar'] , ['/site/index'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>
             </div>
         </div>
     </center>
