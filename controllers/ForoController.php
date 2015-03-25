@@ -50,7 +50,7 @@ class ForoController extends Controller
         $modelPost->topic_id=$id;
         $modelPost->user_id=Yii::$app->user->id;
 
-        if ($modelPost->load(Yii::$app->request->post()) ) {
+        if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
             $modelPost->save();
             $modelPost = new Post();
             $modelPost->content=NULL;

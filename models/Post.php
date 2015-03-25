@@ -65,7 +65,7 @@ class Post extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['status', 'topic_id', 'user_id'], 'integer'],
-            [['topic_id', 'user_id'], 'required'],
+            [['topic_id', 'user_id','content'], 'required'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
         ];
