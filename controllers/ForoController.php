@@ -71,8 +71,9 @@ class ForoController extends Controller
 
 
             // Encerar modelo
-            $modelPost = new Post();
-            $modelPost->content=NULL;
+            return $this->redirect(['topic', 'id' => $id]);
+         /*   $modelPost = new Post();
+            $modelPost->content=NULL;*/
 
         }
 
