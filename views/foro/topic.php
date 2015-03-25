@@ -1,4 +1,4 @@
-<?php
+<a name="sube"></a><?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -31,9 +31,18 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/foro'], ['class' => 'btn btn-default'])?>
+<a href="#baja">
+    <button type="button" class="glyphicon glyphicon-chevron-down btn btn-default btn-lg">
+      
+    </button>
+    </a>
 </div>
+<<<<<<< HEAD
 <a name="sube"></a>
+=======
+
+>>>>>>> daniel
 
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -50,6 +59,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </div>
 </div>
 
+<<<<<<< HEAD
 <!-- Boton para bajar -->
 <div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <button type="button" class="btn btn-default btn-lg">
@@ -57,11 +67,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </button>
 </div>
 <!-- END Boton para bajar -->
+=======
+>>>>>>> daniel
 
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
     <div class="panel panel-yellow">
-        <div class="panel-heading">Mensajes recibidos</div>
+        <div class="panel-heading">Mensajes recibidos
+        </div>
         <div class="panel-body">
             <div class="bs-example" data-example-id="condensed-table">
                 <table class="table table-condensed">
@@ -222,9 +235,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 <!-- Boton para bajar -->
 <div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <button type="button" class="btn btn-default btn-lg">
-      <a href="#sube" class="glyphicon glyphicon-chevron-up" ></a>
+    <a href="#sube">
+    <button type="button" class="glyphicon glyphicon-chevron-up btn btn-default btn-lg">
+      
     </button>
+    </a>
 </div>
 <!-- END Boton para bajar -->
 
