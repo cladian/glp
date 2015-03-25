@@ -31,7 +31,7 @@ class EventController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources','file'],
                         'allow' => true,
                         'roles' => ['asocam', 'sysadmin'],
                     ],
@@ -109,14 +109,45 @@ class EventController extends Controller
         $model->scenario = 'resources';
 
         if ($model->load(Yii::$app->request->post())) {
+
+
+            
             $avatar = UploadedFile::getInstance($model, 'photo');
-            $photoName = $model->id . '.' . $avatar->extension;
+            // $photoName = $model->id . '.' . $avatar->extension;
+            $photoName = Yii::$app->security->generateRandomString().time() . '.' . $avatar->extension;
             $avatar->saveAs(\Yii::$app->params['eventFolder'] . $photoName);
             $model->photo = $photoName;
+   
             $model->save();
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('resources', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionFile($id)
+    {
+        $model = $this->findModel($id);
+        $model->scenario = 'resources';
+
+        if ($model->load(Yii::$app->request->post())) {
+            
+
+            $file = UploadedFile::getInstance($model, 'file');
+            // $fileName = $model->id . '.' . $file->extension;
+            $fileName = Yii::$app->security->generateRandomString().time() . '.' . $file->extension;
+            $file->saveAs(\Yii::$app->params['eventDocs'] . $fileName);
+            $model->file = $fileName;
+            $model->save();
+
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('file', [
                 'model' => $model,
             ]);
         }

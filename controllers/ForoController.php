@@ -154,9 +154,13 @@ class ForoController extends Controller
     {
         return $this->render('multimedia');
     }
-     public function actionMensajes()
+    public function actionMensajes()
     {
         return $this->render('mensajes');
+    }
+    public function actionTopicfinal()
+    {
+        return $this->render('topicFinal');
     }
 
 }

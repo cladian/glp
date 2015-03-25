@@ -8,9 +8,10 @@ use yii\bootstrap\Tabs;
 /* @var $model app\models\Inscription */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -30,10 +31,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
     <div class="panel panel-green">
         <?= $this->render('/event/_detailinfo', ['model' => $model->event]) ?>
-        <div class="panel-footer">
-            <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
-
-        </div>
+      
     </div>
 
     <!--END Visualización evento-->

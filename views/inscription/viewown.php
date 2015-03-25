@@ -74,9 +74,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialInscription', ['model' => $model,'modelProfile'=>$modelProfile]) ?>
                 </div>
                 <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Preguntas por evento', ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  Preguntas generales', ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a(\Yii::$app->params['btnActualizar'], ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-primary']) ?>
+                    <?= Html::a(\Yii::$app->params['btnPreguntaE'], ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
+                    <?= Html::a(\Yii::$app->params['btnPreguntaG'], ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                 </div>
                 <div class="panel-footer">
-                    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar', ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-success']) ?>
+                     <?= Html::a(\Yii::$app->params['btnActualizar'], ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-primary']) ?>
                 </div>
             </div>
         </div>

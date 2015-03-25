@@ -16,9 +16,10 @@ use kartik\widgets\TimePicker;
 /* @var $model app\models\Inscription */
 
 $this->title = 'Crear Inscripción';
-$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="inscription-form">
 
     <?php $form = ActiveForm::begin(); ?>

@@ -7,9 +7,10 @@ use yii\helpers\Html;
 /* @var $model app\models\Country */
 
 $this->title = 'Crear Pais';
-$this->params['breadcrumbs'][] = ['label' => 'Paises', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/country/index'], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">

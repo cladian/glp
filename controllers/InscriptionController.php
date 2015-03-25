@@ -263,7 +263,8 @@ class InscriptionController extends Controller
                 'dataProviderAnswer' => $dataProviderAnswer,
                 'searchModelRequest' => $searchModelRequest,
                 'dataProviderRequest' => $dataProviderRequest,
-                'modelProfile'=>$modelProfile
+                'modelProfile'=>$modelProfile,
+
             ]);
         }
         throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);
@@ -625,6 +626,7 @@ class InscriptionController extends Controller
          'searchModel' => $searchModel,
          'dataProvider' => $dataProvider,
          'model' => $model,
+         'id'=>$id,
      ]);
     }
 
@@ -667,6 +669,7 @@ class InscriptionController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
+            'id' => $id,
         ]);
     }
 }
