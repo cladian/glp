@@ -32,6 +32,8 @@ class ForoController extends Controller
         ];
     }
 
+
+
     /**
      * Lists all Phforum models.
      * @return mixed
@@ -54,6 +56,15 @@ class ForoController extends Controller
             $modelPost->save();
             $modelPost = new Post();
             $modelPost->content=NULL;
+
+            \Yii::$app->getSession()
+                ->setFlash('success',
+                    'Su aporte ha sido publicado éxitosamente');
+            /*
+             * ENVIO DE CORREOS ELECTRONICOS
+             */
+            $this->sendMail($id,$modelPost->content, 'URL' );
+
         }
 
         return $this->render('topic', [
@@ -161,6 +172,23 @@ class ForoController extends Controller
     public function actionTopicfinal()
     {
         return $this->render('topicFinal');
+    }
+
+    /*
+* Función para envio de correos electrónicos a todos los participantes que están participando en el tópico
+*/
+    protected function sendMail($topic_id, $message, $url)
+    {
+        $title="Nuevo mensaje enviado Foro-ASOCAM";
+        $content=$message;
+
+        $modelPost=Post::find()->where(['topic_id'=>$topic_id])->addGroupBy(['user_id'])->all();
+        foreach ($modelPost as $user){
+            // Contenido, tipo  1=Notificacion URL
+            $user->user->sendEmail($content, $url, $title);
+        }
+
+
     }
 
 }
