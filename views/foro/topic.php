@@ -26,6 +26,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
+
 <div class="regresar">
 
 
@@ -33,6 +34,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <?= Html::a(\Yii::$app->params['btnRegresar'],['/foro'], ['class' => 'btn btn-default'])?>
 </div>
 <a name="sube"></a>
+
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="panel panel-primary">
@@ -47,6 +49,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
 </div>
+
 <!-- Boton para bajar -->
 <div class="regresar col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <button type="button" class="btn btn-default btn-lg">
@@ -122,6 +125,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     endforeach ?>
                     </tbody>
                 </table>
+
 
 
                 <!--<nav>
@@ -227,3 +231,4 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 <a name="baja"></a>
+
