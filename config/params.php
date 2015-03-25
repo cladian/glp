@@ -2,6 +2,7 @@
 // Llamada
 //    \Yii::$app->params['contactEmail']
 return [
+    'webRoot'=>'http://www.cladian.net',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
@@ -46,6 +47,8 @@ return [
     'btnPreguntaGeneral' => '<span class="glyphicon glyphicon-question-sign"></span> Crear Pregunta',
     'btnPreguntaE' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas por evento',
     'btnPreguntaG' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas generales',
+
+    // Globales
 
 
     
