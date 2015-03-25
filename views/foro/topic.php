@@ -171,7 +171,7 @@ use app\models\Imagen;
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <table class="table table-condensed">
                     <div class="post-form">
-                        <?php $form = ActiveForm::begin(); ?>
+                        <?php $form = ActiveForm::begin(['enableAjaxValidation' => true]); ?>
                         <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
                         <!--    --><? //= $form->field($model, 'status')->textInput() ?>
                         <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>

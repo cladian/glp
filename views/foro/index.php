@@ -48,62 +48,60 @@ foreach ($model as $foro) {
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <!-- Large modal -->
-<!--                        <button type="button" class="btn btn-primary" data-toggle="modal"-->
-<!--                                data-target=".bs-example-modal-lg">Large modal-->
-<!--                        </button>-->
-                        <h4>Información del evento</h4>
-                        <?= $foro->event->name; ?>
-                        <br>
-                        <br>
+                        <!--                        <button type="button" class="btn btn-primary" data-toggle="modal"-->
+                        <!--                                data-target=".bs-example-modal-lg">Large modal-->
+                        <!--                        </button>-->
+                        <div>
+                            <h4>Información del evento</h4>
+                            <?= $foro->event->name; ?>
+                        </div>
 
-                        <h4>Documentos</h4>
-                        <ul class="list-group">
-                        <?php
-                        foreach($foro->getPhforumDocuments()->all() as $documents)
-                        { ?>
-                            <li class="list-group-item glyphicon glyphicon-download"> <?= Html::a($documents->document->name,\Yii::$app->params['foroDocs'].$documents->document->file); ?></li>
 
-<!--                            <a  href="--><?php //echo $this->createUrl('someDownloadAction','fileId'=>'someXXX') ;?><!--"  target="helperFrame" > downloadIt </a>-->
-<!--                            <iframe src="" style="display:none" name="helperFrame"/>-->
-                        <?php
-                        }
-                        ?>
-<!--                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>-->
-                        </ul>
-                        <br>
-                        <br>
-                        <h4>Imagenes</h4>
-                        <?php
-                        foreach($foro->getPhforumImagens()->all() as $imagenes)
-                        { ?>
-                            <li class="list-group-item"> <?= Html::img( \Yii::$app->params['foroImgs'].$imagenes->imagen->file, ['class' => 'img-responsive']); ?>
-                            </li>
-                        <?php
-                        }
-                        ?>
+                        <?php if ($foro->getPhforumDocuments()->count() > 0): ?>
+                            <h4>Documentos</h4>
+                            <ul class="list-group">
+                                <?php foreach ($foro->getPhforumDocuments()->all() as $documents): ?>
+                                    <li class="list-group-item glyphicon glyphicon-download"> <?= Html::a($documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file); ?></li>
+                                <?php
+                                endforeach;
+                                ?>
+                            </ul>
 
-                        </ul>
-                        <br>
-                        <br>
+                        <?php endif ?>
+
+                        <?php if ($foro->getPhforumImagens()->count() > 0): ?>
+                            <h4>Imagenes</h4>
+                            <ul class="list-group">
+                                <?php foreach ($foro->getPhforumImagens()->all() as $imagenes): ?>
+                                    <li class="list-group-item"> <?= Html::img(\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
+                                <?php
+                                endforeach;
+                                ?>
+                            </ul>
+
+                        <?php endif ?>
+
                         <h4>Videos</h4>
+
                         <div class="bs-example" data-example-id="responsive-embed-16by9-iframe-youtube">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/iFyp1P_NsMI?rel=0" allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/iFyp1P_NsMI?rel=0"
+                                        allowfullscreen></iframe>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
                         <div class="media">
-                            <div class="media-left">
-                                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                            </div>
+
                             <div class="media-body">
-                                <h4 class="media-heading">Contenido</h4>
-                                <?=$foro->content; ?>
+
+                                <blockquote>
+                                    <h4 class="media-heading">Contenido</h4>
+
+                                    <p><?= $foro->content; ?></p>
+                                </blockquote>
+
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -112,29 +110,22 @@ foreach ($model as $foro) {
                                 <tr>
                                     <th>#</th>
                                     <th>Tema</th>
-                                    <th>Creado por</th>
-                                    <th>Fecha de Creación</th>
+                                    <th>por</th>
+                                    <th>fecha</th>
                                     <th>ver</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php
+                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic):?>
 
-                                    foreach(\app\models\Topic::find()->where(['phforum_id'=>$foro->id])->all() as $topic){
-                                        echo "hola";
-                                        ?>
-
-                                <tr>
-                                    <td><?= $topic->id;?></td>
-                                    <td><?= $topic->content;?></td>
-                                    <td><?= $topic->user->username;?></td>
-                                    <td><?= Yii::$app->formatter->asDate($topic->created_at, 'long'); ?></td>
-                                    <td><?= Html::a('<span class="badge">2</span> Aportes', ['foro/topic','id'=>$topic->id], ['class' => 'btn btn-default btn-xs'])?></td>
-                                </tr>
-                                    <?php
-
-                                    }
-                                ?>
+                                    <tr>
+                                        <td><?= $topic->id; ?></td>
+                                        <td><?= $topic->content; ?></td>
+                                        <td><?= $topic->user->username; ?></td>
+                                        <td><?= Yii::$app->formatter->asDate($topic->created_at, 'medium'); ?></td>
+                                        <td><?= Html::a('<span class="badge">'.$topic->getPosts()->count().'</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-default btn-xs']) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -143,8 +134,12 @@ foreach ($model as $foro) {
                 </div>
             </div>
         </div>
-        <div class="panel-footer">
-            <?= Html::a('<span class="badge">2</span> Temas', ['foro/topic','id'=>$foro->id], ['class' => 'btn btn-default'])?>
+        <!--        <div class="panel-footer">
+            <? /*= Html::a('<span class="badge">2</span> Temas', ['foro/topic', 'id' => $foro->id], ['class' => 'btn btn-default']) */ ?>
+            <? /*= Html::a('<span class="badge">2</span> Temas', ['foro/topic', 'id' => $foro->id], ['class' => 'btn btn-default']) */ ?>
+            <? /*= Html::a('<span class="badge">2</span> Temas', ['foro/topic', 'id' => $foro->id], ['class' => 'btn btn-default']) */ ?>
+            <? /*= Html::a('<span class="badge">2</span> Temas', ['foro/topic', 'id' => $foro->id], ['class' => 'btn btn-default']) */ ?>
+            <? /*= Html::a('<span class="badge">2</span> Temas', ['foro/topic', 'id' => $foro->id], ['class' => 'btn btn-default']) */ ?>
             <button class="btn btn-primary" type="button">
                 Temas <span class="badge">2</span>
             </button>
@@ -154,7 +149,7 @@ foreach ($model as $foro) {
             <button class="btn btn-primary" type="button">
                 Comentarios <span class="badge">10</span>
             </button>
-        </div>
+        </div>-->
 
     </div>
 
