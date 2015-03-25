@@ -26,16 +26,16 @@ class UserController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete','sendmail'],
+                'only' => ['index', 'view', 'create','update','delete','sendmail','email','password'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['index','view','create','update','delete','email','password'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['sendmail'],
+                        'actions' => ['sendmail','email','password'],
                         'allow' => true,
                         'roles' => ['user','asocam'],
                     ],
@@ -152,36 +152,31 @@ class UserController extends Controller
         }
     }
 
-    public function actionUpdatMail($id)
-    {
+    public function actionEmail()
+    {   $id=Yii::$app->user->identity->id;
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
+            return $this->render('email', [
                 'model' => $model,
             ]);
         }
     }
 
-
-    public function actionUpdatePassword($id)
-    {
+    public function actionPassword()
+    {   $id=Yii::$app->user->identity->id;
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
+            return $this->render('password', [
                 'model' => $model,
             ]);
         }
     }
-
-
-
-
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
