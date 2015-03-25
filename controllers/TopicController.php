@@ -70,6 +70,8 @@ class TopicController extends Controller
             $modelPost->save();
             $modelPost = new Post();
             $modelPost->content=null;
+
+
        }
         $modelPost->topic_id=$id;
         $modelPost->user_id=Yii::$app->user->id;
@@ -226,4 +228,6 @@ class TopicController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

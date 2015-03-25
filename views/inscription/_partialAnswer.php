@@ -30,7 +30,7 @@ use kartik\editable\Editable;
             'readonly' => true,
             'attribute' => 'question_id',
             'value' => function ($data) {
-                return $data->question->question->text;
+                return $data->question->text;
             }
 
         ],

@@ -13,6 +13,19 @@ use app\models\Document;
 use app\models\Imagen;
 
 ?>
+
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    echo '<div class="alert alert-' . $key . '" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  ' . $message . '
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+             </div>';
+}
+?>
 <!--<div class="row">
     <center>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -127,10 +140,14 @@ use app\models\Imagen;
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <!--                                <h4 class="timeline-title">Lorem ipsum dolor</h4>-->
-
+                            <kbd class="pull-right"> <?=$contador?> </kbd>
                             <p>
-                                <small class="text-muted"><i
-                                        class="glyphicon glyphicon-time"></i> <?= $post->created_at; ?></small>
+                                <small class="text-muted">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                    <a href="#<?= $post->id; ?>">
+                                    <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?>
+                                </a>
+                                </small>
                             </p>
                         </div>
                         <div class="timeline-body">
@@ -171,7 +188,7 @@ use app\models\Imagen;
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <table class="table table-condensed">
                     <div class="post-form">
-                        <?php $form = ActiveForm::begin(); ?>
+                        <?php $form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
                         <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
                         <!--    --><? //= $form->field($model, 'status')->textInput() ?>
                         <?= $form->field($modelPost, 'status')->dropDownList($model->getStatusList()) ?>
