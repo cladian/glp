@@ -55,7 +55,9 @@ class PhforumImagen extends \yii\db\ActiveRecord
         return [
             [['phforum_id', 'imagen_id'], 'required'],
             [['phforum_id', 'imagen_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -66,9 +68,9 @@ class PhforumImagen extends \yii\db\ActiveRecord
     {
         return [
             'phforum_id' => 'Phforum ID',
-            'imagen_id' => 'Imagen ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'imagen_id' => 'Imagenes',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

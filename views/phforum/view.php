@@ -67,6 +67,7 @@ $this->title = $model->name;
 
 </div>
 
+
 <!--INICIOVista Temas-->
 
 <div class="panel panel-green">
@@ -87,6 +88,18 @@ $this->title = $model->name;
                 // 'phforum_id',
 
                 ['class' => 'yii\grid\ActionColumn'],
+                ['class' => 'yii\grid\ActionColumn',
+                    'template' => '{view} {update}',
+                    'buttons' => [
+                        'view' => function ($url, $model, $key) {
+                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
+                            },
+                        'update' => function ($url, $model, $key) {
+                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['event/update', 'id' => $key]);
+                            },
+
+                    ]
+                ],
             ],
         ]); ?>
     </div>
@@ -110,7 +123,7 @@ $this->title = $model->name;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'phforum_id',
+//                'phforum_id',
                 'document_id',
                 'created_at',
                 'updated_at',
@@ -118,14 +131,11 @@ $this->title = $model->name;
                 ['class' => 'yii\grid\ActionColumn'],
             ],
         ]); ?>
-
     </div>
+
 </div>
-
-
-        <p>
-
-            <?= Html::a(\Yii::$app->params['btnSubirD'], ['phforum/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+<p>
+<?= Html::a(\Yii::$app->params['btnSubirD'], ['phforum/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
 
 <!--FIN Vista Documentos-->
 
@@ -140,7 +150,7 @@ $this->title = $model->name;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'phforum_id',
+//                'phforum_id',
                 'video_id',
                 'created_at',
                 'updated_at',
@@ -162,7 +172,7 @@ $this->title = $model->name;
 <!--INICIOVista Imagenes-->
 
 <div class="panel panel-green">
-    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-heading">Imagenes</div>
     <div class="panel-body">
 
         <?= GridView::widget([
@@ -171,8 +181,17 @@ $this->title = $model->name;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'phforum_id',
-                'imagen_id',
+//                'phforum_id',
+//                'imagen_id',
+                [
+                    'label'=>'Imagen',
+                    'format'=>'raw',
+
+                    'value' => function($data){
+                            $url=   \Yii::$app->params['foroImgs'].$data->imagen->file;
+                            return Html::img($url,['class' => 'thumbnail', 'style' => 'height:100px;']);
+                        }
+                ],
                 'created_at',
                 'updated_at',
 
