@@ -45,7 +45,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div class="panel-body">
                 TEMA:<?= $model->phforum->name ?>
                 <hr/>
-                CONTNEIDO:<?= $model->content ?>
+                CONTENIDO:<?= $model->content ?>
                 <hr/>
                 EVENTO: <?= $model->phforum->event->name ?>
             </div>
@@ -60,10 +60,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-yellow">
         <div class="panel-heading"><a href="#baja">
     <button type="button" class="glyphicon glyphicon-chevron-down btn btn-default btn-md">
-      bajar
+      Bajar
     </button>
     </a>
-    Mensajes recibidos
+    Aportes recibidos
         </div>
         <div class="panel-body">
             <div class="bs-example" data-example-id="condensed-table">
@@ -107,7 +107,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         </tr>
                         <tr class="<?= $class ?>">
                             <td colspan="5">
-                                <button type="button" class="btn btn-default ">Agregar Comentario <span class="badge">0</span></button>
+<!--                                <button type="button" class="btn btn-default ">Agregar Comentario <span class="badge">0</span></button>-->
                                 <!--&nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Documentos <span class="badge">4</span></button>
                                 &nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Imagenes <span class="badge">4</span></button>
                                 &nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Videos <span class="badge">4</span></button>
@@ -168,7 +168,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
     <div class="panel panel-yellow">
-        <div class="panel-heading">Mensajes recibidos</div>
+        <div class="panel-heading">Nuevo Aporte</div>
         <div class="panel-body">
 
             <div class="post-form">
@@ -194,14 +194,17 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
     <div class="panel panel-yellow">
-        <div class="panel-heading"> Mensajes recibidos</div>
+        <div class="panel-heading">Útimos Aportes</div>
         <div class="panel-body">
-            <?php  foreach ($modelPostList as $post): ?>
+            <?php  foreach ($modellatest as $post): ?>
                 <div><small><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'medium'); ?></small></div>
                 <div><p><?= substr($post->content,0,50); ?>... </p></div>
-                <button class="btn btn-default btn-xs pull-right" type="button">Ver </button>
+<!--                <button class="btn btn-default btn-xs pull-right" type="button">Ver </button>-->
+
+                <?= Html::a('Ver',['/foro/topic', 'id'=> $post->topic_id], ['class' => 'btn btn-default btn-xs'])?>
                 <div >
-                    <p class="bg-info"> <?= $post->user->username ?></p>
+<!--                    <p class="bg-info"> --><?//= $post->user->username ?><!--</p>-->
+                    <span class="label label-success"><?= $post->user->username ?></span>
 
                 </div>
 
