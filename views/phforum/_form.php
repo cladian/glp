@@ -83,6 +83,7 @@ use app\models\Event;
 
 
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
+
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>

@@ -71,7 +71,7 @@ $this->title = $model->name;
 <!--INICIOVista Temas-->
 
 <div class="panel panel-green">
-    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-heading">Temas</div>
     <div class="panel-body">
         <?= GridView::widget([
             'dataProvider' => $dataProviderTopic,
@@ -81,9 +81,20 @@ $this->title = $model->name;
 
 //            'id',
                 'content:ntext',
-                'status',
+//                'status',
+                [
+                    'attribute' => 'status',
+                    /* 'value'=> function ($data){ return $data->question->text;}*/
+                    'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                    'value' => function ($model) {
+                            if ($rel = $model->getStatus($model->status)) {
+                                return $rel;
+                            }
+                        },
+
+                ],
                 'created_at',
-                'updated_at',
+//                'updated_at',
                 // 'user_id',
                 // 'phforum_id',
 
@@ -115,7 +126,7 @@ $this->title = $model->name;
 <!--INICIOVista Documentos-->
 
     <<div class="panel panel-green">
-    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-heading">Documentos</div>
     <div class="panel-body">
         <?= GridView::widget([
             'dataProvider' => $dataProviderPDocument,
@@ -132,7 +143,7 @@ $this->title = $model->name;
                         }
                 ],
                 'created_at',
-                'updated_at',
+//                'updated_at',
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],
@@ -148,7 +159,7 @@ $this->title = $model->name;
 <!--INICIOVista Videos-->
 
 <div class="panel panel-green">
-    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-heading">Videos</div>
     <div class="panel-body">
         <?= GridView::widget([
             'dataProvider' => $dataProviderPVideo,
@@ -159,7 +170,7 @@ $this->title = $model->name;
 //                'phforum_id',
                 'video_id',
                 'created_at',
-                'updated_at',
+//                'updated_at',
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],
@@ -199,7 +210,7 @@ $this->title = $model->name;
                         }
                 ],
                 'created_at',
-                'updated_at',
+//                'updated_at',
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],
