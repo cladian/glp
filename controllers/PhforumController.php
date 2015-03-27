@@ -17,6 +17,10 @@ use app\models\PhforumDocument;
 use app\models\PhforumVideo;
 use app\models\PhforumImagen;
 
+use app\models\TopicSearch;
+use app\models\PhforumDocumentSearch;
+use app\models\PhforumVideoSearch;
+use app\models\PhforumImagenSearch;
 /**
  * PhforumController implements the CRUD actions for Phforum model.
  */
@@ -60,8 +64,34 @@ class PhforumController extends Controller
      */
     public function actionView($id)
     {
+        $searchTopic = new TopicSearch();
+        $dataProviderTopic = $searchTopic->searchByTopic(Yii::$app->request->queryParams, $id);
+
+        $searchPDocument = new PhforumDocumentSearch();
+        $dataProviderPDocument = $searchPDocument->searchByDocs(Yii::$app->request->queryParams , $id);
+
+        $searchPVideo = new PhforumVideoSearch();
+        $dataProviderPVideo = $searchPVideo->searchByVideos(Yii::$app->request->queryParams, $id);
+
+        $searchPImagen = new PhforumImagenSearch();
+        $dataProviderPImagen = $searchPImagen->searchByImagen(Yii::$app->request->queryParams, $id);
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+
+            'searchTopic' => $searchTopic,
+            'dataProviderTopic' => $dataProviderTopic,
+
+            'searchPDocument' => $searchPDocument,
+            'dataProviderPDocument' => $dataProviderPDocument,
+
+            'searchPVideo' => $searchPVideo,
+            'dataProviderPVideo' => $dataProviderPVideo,
+
+            'searchPImagen' => $searchPImagen,
+            'dataProviderPImagen' => $dataProviderPImagen,
+
         ]);
     }
 

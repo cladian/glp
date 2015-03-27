@@ -114,9 +114,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </td>
                         </tr>
 
-
-
-
                         <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
                         <?= Html::a($postDocs->document->name, [\Yii::$app->params['foroDocs'] . $postDocs->document->file], ['class' => 'btn btn-primary']); ?>
                     <?php endforeach ?>
@@ -165,8 +162,13 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </div>
 
 
+<<<<<<< HEAD
+    <?php if (!Yii::$app->user->isGuest) {?>
+    <div class="panel panel-yellow">
+=======
 
     <div class="panel panel-primary">
+>>>>>>> daniel
         <div class="panel-heading">Nuevo Aporte</div>
         <div class="panel-body">
 
@@ -185,9 +187,19 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
         </div>
     </div>
+<?php }else {?>
+        <div class="panel panel-yellow">
+            <div class="panel-heading">Nuevo Aporte</div>
+            <div class="panel-body">
 
+                <div class="post-form">
+                    Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas, comentarios, etc.
 
+                </div>
+            </div>
+        </div>
 
+<?php } ?>
 </div>
 
 <!-- <div role="tabpanel" class="tab-pane active" id="home">
