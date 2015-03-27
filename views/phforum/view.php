@@ -124,7 +124,13 @@ $this->title = $model->name;
                 ['class' => 'yii\grid\SerialColumn'],
 
 //                'phforum_id',
-                'document_id',
+//                'document_id',
+                [
+                    'attribute' => 'document_id',
+                    'value' => function ($data) {
+                            return $data->document->file;
+                        }
+                ],
                 'created_at',
                 'updated_at',
 
