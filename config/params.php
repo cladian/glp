@@ -48,7 +48,10 @@ return [
     'btnPreguntaE' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas por evento',
     'btnPreguntaG' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas generales',
 
-    // Globales
+// Globales
+    'btnRegistro' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Registrarse',
+    'btnIngreso' => '<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><br>Iniciar sesión'
+
 
 
     
