@@ -158,6 +158,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['site/index', 'id' => $model->id]);
+
         } else {
             return $this->render('email', [
                 'model' => $model,
@@ -169,7 +170,11 @@ class UserController extends Controller
     {   $id=Yii::$app->user->identity->id;
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->setPassword($model->password_hash);
+            $model->generateAuthKey();
+            $model->save();
             return $this->redirect(['site/index', 'id' => $model->id]);
         } else {
             return $this->render('password', [
