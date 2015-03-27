@@ -185,16 +185,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
 <?php }else {?>
-        <div class="panel panel-yellow">
-            <div class="panel-heading">Nuevo Aporte</div>
-            <div class="panel-body">
 
-                <div class="post-form">
-                    Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas, comentarios, etc.
-
-                </div>
-            </div>
-        </div>
+<div class="alert alert-warning" role="alert"><center>Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas, comentarios, etc.</center>
+    <center>
+        <br>
+        <?= Html::a(\Yii::$app->params['btnIngreso'],['/site/login'], ['class' => 'btn btn-primary'])?>
+        <?= Html::a(\Yii::$app->params['btnRegistro'],['/site/signup'], ['class' => 'btn btn-success'])?>
+    </center>
+</div>
 
 <?php } ?>
 </div>
