@@ -123,7 +123,7 @@ foreach ($model as $foro) {
                                         <td><?= $topic->content; ?></td>
                                         <td><?= $topic->user->username; ?></td>
                                         <td><?= Yii::$app->formatter->asDate($topic->created_at, 'medium'); ?></td>
-                                        <td><?= Html::a('<span class="badge">'.$topic->getPosts()->count().'</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-default btn-xs']) ?></td>
+                                        <td><?= Html::a('<span class="badge">'.$topic->getPosts()->count().'</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-xs']) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>

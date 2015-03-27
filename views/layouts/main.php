@@ -14,12 +14,7 @@ AppAsset::register($this);
 // Botón HOME todos tiene el botón
 $items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];
 $items[] = ['label' => '<span class="glyphicon glyphicon-comment"></span> Foro', 'url' => ['/foro']];
-$items[] = ['label' => '<span class="glyphicon glyphicon-refresh"></span> Actualización de Datos', 'items' => [
-    ['label' => ' Perfil', 'url' => ['/profile/viewown']],
-    '<li class="divider"></li>',
-    ['label' => 'Actualización de Contraseña', 'url' => ['/phforum-document']],
-    ['label' => 'Actualización de Correo', 'url' => ['/phforum-document']],
-]];
+
 
 // Botones solo para usuarios que no están logeados todavia
 if (Yii::$app->user->isGuest) {
@@ -96,7 +91,35 @@ if (Yii::$app->user->can('permission_admin')) {
         ];
 
 }
+if (Yii::$app->user->can('asocam')) {
 
+    $items[] = ['label' => 'Foro', 'items' => [
+        ['label' => 'Foros', 'url' => ['/phforum']],
+        ['label' => 'Documentos', 'url' => ['/phforum-document']],
+        ['label' => 'Videos', 'url' => ['/phforum-video']],
+        ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
+        '<li class="divider"></li>',
+        ['label' => 'Temas', 'url' => ['/topic']],
+        ['label' => 'Documentos', 'url' => ['/topic-document']],
+        ['label' => 'Videos', 'url' => ['/topic-video']],
+        ['label' => 'Imagen', 'url' => ['/topic-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Aportes', 'url' => ['/post']],
+        ['label' => 'Documentos', 'url' => ['/post-document']],
+        ['label' => 'Videos', 'url' => ['/post-video']],
+        ['label' => 'Imagen', 'url' => ['/post-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Comentarios', 'url' => ['/comment']],
+        '<li class="divider"></li>',
+        ['label' => 'Documentos', 'url' => ['/document']],
+        ['label' => 'Video', 'url' => ['/video']],
+        ['label' => 'Imagen', 'url' => ['/imagen']],
+    ]
+    ];
+
+}
 //temporal
 $temp = false;
 if ($temp) {
@@ -225,7 +248,9 @@ if ($temp) {
 //Menu de Usuario
 if (!Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> ' . Yii::$app->user->identity->username, 'items' => [
-//        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
+        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
+        ['label' => 'Actualización de Contraseña', 'url' => ['/user/password']],
+        ['label' => 'Actualización de Correo', 'url' => ['/user/email']],
         '<li class="divider"></li>',
         ['label' => 'Salir', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
     ]];
