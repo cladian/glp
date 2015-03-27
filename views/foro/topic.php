@@ -231,7 +231,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <?php endforeach ?>
 
 
-
         </div>
     </div>
     <!--<nav>
