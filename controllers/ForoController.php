@@ -164,9 +164,6 @@ class ForoController extends Controller
         }
     }
 
-
-
-
     public function actionList()
     {
         return $this->render('list');
@@ -198,8 +195,6 @@ class ForoController extends Controller
             // Contenido, tipo  1=Notificacion URL
             $user->user->sendEmail($content, $url, $title);
         }
-
-
     }
 
 }

@@ -11,6 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * ReplyController implements the CRUD actions for Reply model.
@@ -93,7 +94,14 @@ class ReplyController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'user_id' => $model->user_id, 'request_id' => $model->request_id]);
 
-            $this->sendMail($model->request_id,$model->text, Html::a('Responder', ['reply/create/','id'=>$model->request_id], ['class' => 'btn btn-lg btn-primary']) );
+            $html='<h4>Contenido </h4>';
+            $html.='<blockquote>'.$model->text.'</blockquote>';
+            $html.='<kbd>'.$model->user->username.'</kbd>';
+            $html.='<h4>Inquietud previa </h4>';
+            $html.='<p>'.$model->request->question.'</p>';
+            $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
+
+            $this->sendMail($model->request_id,$html, $url );
 
             return $this->redirect(['create', 'id' => $id]);
 
