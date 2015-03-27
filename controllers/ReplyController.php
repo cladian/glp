@@ -98,7 +98,7 @@ class ReplyController extends Controller
             $html.='<blockquote>'.$model->text.'</blockquote>';
             $html.='<kbd>'.$model->user->username.'</kbd>';
             $html='<h4>Inquietud previa </h4>';
-            $html.='<p>'.$model->reply->request->question.'</p>';
+            $html.='<p>'.$model->request->question.'</p>';
             $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
 
             $this->sendMail($model->request_id,$model->text, $url );
