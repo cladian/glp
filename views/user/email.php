@@ -16,7 +16,7 @@ $this->title = 'Actualziar Usuario: ' . ' ' . $model->id;
   </div>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div class="panel panel-primary">
-  <center class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></center>
+  <center class="panel-heading"><h3>Actualización de Usuario</h3></center>
   <div class="panel-body">
  
       
