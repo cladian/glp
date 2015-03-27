@@ -101,7 +101,7 @@ class ReplyController extends Controller
             $html.='<p>'.$model->request->question.'</p>';
             $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
 
-            $this->sendMail($model->request_id,$model->text, $url );
+            $this->sendMail($model->request_id,$html, $url );
 
             return $this->redirect(['create', 'id' => $id]);
 
