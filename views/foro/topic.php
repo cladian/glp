@@ -162,13 +162,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </div>
 
 
-<<<<<<< HEAD
+
     <?php if (!Yii::$app->user->isGuest) {?>
     <div class="panel panel-yellow">
-=======
-
-    <div class="panel panel-primary">
->>>>>>> daniel
+ 
         <div class="panel-heading">Nuevo Aporte</div>
         <div class="panel-body">
 
