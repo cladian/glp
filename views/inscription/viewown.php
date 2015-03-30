@@ -94,9 +94,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
 
                 </div>
-                <div class="panel-footer">
-                     <?= Html::a(\Yii::$app->params['btnActualizar'], ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-primary']) ?>
-                </div>
+
             </div>
         </div>
 
