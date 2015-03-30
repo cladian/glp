@@ -56,23 +56,13 @@ use kartik\widgets\TimePicker;
     <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Información Logística
     </div>
     <div class="panel-body">
-
-
-        <!---->
-
         <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]); ?>
-
-        <!--        --><?/*=  $form->field($modelLogistic, 'residence')->widget(SwitchInput::classname(), [
-            'pluginOptions' => [
-                'onText' => 'SI',
-                'offText' => 'NO',
-            ]
-        ]);*/
-        ?>
         <div class="alert alert-info" role="alert">
             <span class="glyphicon glyphicon-info-sign pull-right" aria-hidden="true"></span>
-            <p>Si usted reside en la ciudad/país del evento y se va a transportar de forma terrestre hasta la ciudad del evento, proporcione información adicional
-            para facilitar la coordinación logistica dentro de la ciudad/país de su residencia</p>
+
+            <p>Si usted reside en la ciudad/país del evento y se va a transportar de forma terrestre hasta la ciudad del
+                evento, proporcione información adicional
+                para facilitar la coordinación logistica dentro de la ciudad/país de su residencia</p>
 
             <?=
             $form->field($modelLogistic, 'residence')->dropDownList(['0' => 'NO', '1' => 'SI']);
@@ -83,7 +73,8 @@ use kartik\widgets\TimePicker;
 
         <div class="panel panel-success">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Información de llegada <span class="pull-right"><small> (*) No requerida si reside en la ciudad del evento</small></span>
+                <span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Información de llegada <span
+                    class="pull-right"><small> (*) No requerida si reside en la ciudad del evento</small></span>
             </div>
             <div class="panel-body">
                 <div class="col-sm-3 col-xs-6">
@@ -119,7 +110,9 @@ use kartik\widgets\TimePicker;
         </div>
 
         <div class="panel panel-info">
-            <div class="panel-heading"> <span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Información de Salida <span class="pull-right"><small> (*) No requerida si reside en la ciudad del evento</small></span></div>
+            <div class="panel-heading"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span> Información de
+                Salida <span class="pull-right"><small> (*) No requerida si reside en la ciudad del evento
+                    </small></span></div>
             <div class="panel-body">
                 <div class="col-sm-3 col-xs-6">
                     <?= $form->field($modelLogistic, 'returningonairline')->textInput(['maxlength' => 45]) ?>
@@ -157,7 +150,9 @@ use kartik\widgets\TimePicker;
 
 
         <div class="panel panel-warning">
-            <div class="panel-heading"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Información de Alojamiento </div>
+            <div class="panel-heading"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Información de
+                Alojamiento
+            </div>
             <div class="panel-body">
 
                 <div class="col-sm-3 col-xs-6">
@@ -192,24 +187,10 @@ use kartik\widgets\TimePicker;
             </div>
         </div>
     </div>
+    <div class="panel-footer">
+        <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
     <!---->
-
-</div>
-
-
-<div class="row">
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-
-        <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-
-
-    </div>
-</div>
-
 
 </div>
 

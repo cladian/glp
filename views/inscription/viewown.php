@@ -63,7 +63,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                        aria-controls="collapseOne">
-                        Información de Inscripción
+                        Información de Inscripción  <span class="pull-right"><?= $model->complete;  ?>%</span>
                     </a>
                 </h5>
             </div>

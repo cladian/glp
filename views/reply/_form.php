@@ -13,6 +13,7 @@ use app\models\Request;
 
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <?php if($model->request->status==Request::STATUS_ACTIVE): ?>
     <div class="col-xs-12 ">
         <div class="panel panel-primary">
             <div class="panel-heading">Crear Respuesta</div>
@@ -28,13 +29,14 @@ use app\models\Request;
                <span class="pull-right">
                    
                </span>
-               <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+               <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary pull-right']) ?>
 
 
             </div>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
+    <?php endif ?>
     <div class="col-xs-12 ">
         <div class="panel panel-info">
             <div class="panel-heading">Resumen de solicitud realizada</div>
@@ -48,6 +50,7 @@ use app\models\Request;
             </div>
             <div class="panel-footer">
                 <span class="label label-success"><?= $model->request->inscription->user->username ?></span>
+                <span class="label label-default pull-right"><?= $model->request->getStatus($model->request->status) ?></span>
             </div>
 
         </div>
