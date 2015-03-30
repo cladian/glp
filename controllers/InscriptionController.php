@@ -579,9 +579,16 @@ class InscriptionController extends Controller
         $model->complete_logistic=round($itemsNotNull*100/$items);
 
 
-        $model->complete=100;
+        $model->complete_eventquiz=100;
         if ($model->getEventanswers()->count()>0)
             $model->complete_eventquiz=round($model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count());
+
+        $model->complete=round(($model->complete_quiz+ $model->complete_eventquiz+$model->complete_logistic)/3);
+
+        if ($model->complete==100)
+        {
+            //sendmail
+        }
 
         $model->save();
 
@@ -668,4 +675,7 @@ class InscriptionController extends Controller
             'id' => $id,
         ]);
     }
+    // sendmail
+
+
 }

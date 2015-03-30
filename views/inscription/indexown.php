@@ -31,7 +31,7 @@ $this->title = 'Inscripciones';
             'value' => function ($model, $key, $index, $column) {
                 return \kartik\grid\GridView::ROW_COLLAPSED;
             },
-            'detailUrl' => Url::to(['inscription/detail']),
+            'detailUrl' => Url::to(['inscription/detailown']),
             // 'detailRowCssClass' => \kartik\grid\GridView::TYPE_DEFAULT,
             'pageSummary' => false,
         ],
