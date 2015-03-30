@@ -587,11 +587,17 @@ class InscriptionController extends Controller
 
         if ($model->complete==100)
         {
-            //sendmail
+            $html='<h4>Contenido </h4>';
+            $html.='<blockquote>'.$model->text.'</blockquote>';
+            $html.='<kbd>'.$model->user->username.'</kbd>';
+            $html.='<h4>Inquietud previa </h4>';
+            $html.='<p>'.$model->request->question.'</p>';
+            $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
+
+            $this->sendMail($model->request_id,$html, $url );
+
         }
-
         $model->save();
-
     }
 // Pasar el $id de la Inscrpción
  public function actionEventanswer($id){
@@ -676,6 +682,19 @@ class InscriptionController extends Controller
         ]);
     }
     // sendmail
+
+    protected function sendMail($inscription_id, $message, $url)
+    {
+        $title="Respuesta a solicitud";
+        $content=$message;
+        $modelReply=User::find()->where(Yii::$app->params['mail']);
+        foreach ($modelReply as $reply){
+            // Contenido, tipo  1=Notificacion URL
+            $reply->user->sendEmail($content, $url, $title);
+        }
+
+
+    }
 
 
 }
