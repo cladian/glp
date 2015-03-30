@@ -12,6 +12,8 @@ return [
     'eventFolder' => 'imgs/event/',
     'eventDocs' => 'imgs/docs/',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar',
+    'btnGuardarSiguiente' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Continuar',
+    'btnGuardarCerrar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Cerrar',
 // Crear
     'btnCrearEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear evento',
     'btnCrearRespuesta' => '<span class="glyphicon glyphicon-pencil"></span> Crear respuesta',

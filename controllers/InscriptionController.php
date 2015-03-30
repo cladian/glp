@@ -323,7 +323,6 @@ class InscriptionController extends Controller
 
             //Almacenamiento de registro Answers en blanco
 
-
             $modelgeneralquestion = Generalquestion::find()->where(['status' => self::STATUS_ACTIVE])->all();
             foreach ($modelgeneralquestion as $answer) {
                 $modelanswer = new Answer();
@@ -349,7 +348,7 @@ class InscriptionController extends Controller
             $this->calculate($model->id);
             //++++++++++++++++++++++++++++++++++++++++
 
-            return $this->redirect(['viewown', 'id' => $model->id]);
+            return $this->redirect(['eventanswer', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -399,7 +398,7 @@ class InscriptionController extends Controller
                 $this->calculate($model->id);
                 //++++++++++++++++++++++++++++++++++++++++
 
-                return $this->redirect(['viewown', 'id' => $model->id]);
+                return $this->redirect(['eventanswer', 'id' => $model->id]);
             } else {
 
                 return $this->render('updateown', [
@@ -611,14 +610,14 @@ class InscriptionController extends Controller
                  $count++;
              }
          }
-         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosmente.");
+         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
          //++++++++++++++++++++++++++++++++++++++++
          // CALCULATE
          $this->calculate($id);
          //++++++++++++++++++++++++++++++++++++++++
 
-         return $this->redirect(['viewown', 'id' => $id]);
+         return $this->redirect(['answer', 'id' => $id]);
      }
 
 
@@ -654,7 +653,7 @@ class InscriptionController extends Controller
                     $count++;
                 }
             }
-            Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
             //++++++++++++++++++++++++++++++++++++++++
             // CALCULATE

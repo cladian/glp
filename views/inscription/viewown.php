@@ -56,8 +56,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
     <div class="panel-group" id="accordion" role="tablist">
 
-
-
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
@@ -80,8 +78,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </div>
             </div>
         </div>
-
-
 
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">

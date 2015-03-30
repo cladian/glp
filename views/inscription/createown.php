@@ -260,4 +260,6 @@ $this->title = 'Crear Inscripción';
 </div>
 <?php ActiveForm::end(); ?>
 
+
+
 </div>

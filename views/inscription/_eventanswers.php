@@ -41,18 +41,12 @@ $form = ActiveForm::begin();?>
     'actionColumn'=>false,
     'serialColumn'=>false,
     'checkboxColumn'=>false,
-
-
-
-
 ]);
 // Add other fields if needed or render your submit button
 ?>
-<?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+<?=Html::submitButton(\Yii::$app->params['btnGuardarSiguiente'], ['class' => 'btn btn-success']);?>
   </div>
 </div>
-
-
 
 
 <?php ActiveForm::end(); ?>

@@ -50,7 +50,7 @@ $form = ActiveForm::begin();?>
 </div>
 
 
-    <?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+    <?=Html::submitButton(\Yii::$app->params['btnGuardarCerrar'], ['class' => 'btn btn-success']);?>
 
 
 
