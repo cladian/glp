@@ -629,9 +629,7 @@ class InscriptionController extends Controller
      ]);
     }
 
-
     public function actionAnswer($id){
-
         //Vacio para la función  Eventanswer  Answer
         $model= new Answer();
 
@@ -662,7 +660,6 @@ class InscriptionController extends Controller
 
             return $this->redirect(['viewown', 'id' => $id]);
         }
-
 
         return $this->render('_answers', [
             'searchModel' => $searchModel,

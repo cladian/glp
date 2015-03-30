@@ -108,8 +108,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
         </div>
 
-
-
         <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
@@ -126,8 +124,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </div>
             </div>
         </div>
-
-
 
         <div class="panel panel-danger">
             <div class="panel-heading" role="tab" id="heading5">
