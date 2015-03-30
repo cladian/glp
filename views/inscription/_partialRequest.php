@@ -36,7 +36,6 @@ $this->title = 'Solicitudes';
                             return $rel;
                         }
                     },
-
             ],
 //            'created_at',
             // 'updated_at',
