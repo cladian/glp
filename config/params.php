@@ -12,6 +12,8 @@ return [
     'eventFolder' => 'imgs/event/',
     'eventDocs' => 'imgs/docs/',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar',
+    'btnGuardarSiguiente' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Continuar',
+    'btnGuardarCerrar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Cerrar',
 // Crear
     'btnCrearEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear evento',
     'btnCrearRespuesta' => '<span class="glyphicon glyphicon-pencil"></span> Crear respuesta',
@@ -48,7 +50,10 @@ return [
     'btnPreguntaE' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas por evento',
     'btnPreguntaG' => '<span class="glyphicon glyphicon-question-sign"></span> Preguntas generales',
 
-    // Globales
+// Globales
+    'btnRegistro' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Registrarse',
+    'btnIngreso' => '<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><br>Iniciar sesión'
+
 
 
     

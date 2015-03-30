@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => 100]) ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => 100,'readonly'=>'readonly']) ?>
 
 <!--    --><?//= $form->field($model, 'auth_key')->textInput(['maxlength' => 32]) ?>
 
@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

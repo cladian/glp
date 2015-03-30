@@ -79,7 +79,7 @@ class ForoController extends Controller
 
         return $this->render('topic', [
             'model'=>Topic::find()->where(['id'=>$id])->one(),
-            'modellatest'=>Post::find()->where(['status'=>self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(10)->all(),
+            'modellatest'=>Post::find()->where(['status'=>self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(5)->all(),
             'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
             'modelPost'=>$modelPost,
         ]);
@@ -164,9 +164,6 @@ class ForoController extends Controller
         }
     }
 
-
-
-
     public function actionList()
     {
         return $this->render('list');
@@ -198,8 +195,6 @@ class ForoController extends Controller
             // Contenido, tipo  1=Notificacion URL
             $user->user->sendEmail($content, $url, $title);
         }
-
-
     }
 
 }

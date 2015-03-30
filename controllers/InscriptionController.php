@@ -323,7 +323,6 @@ class InscriptionController extends Controller
 
             //Almacenamiento de registro Answers en blanco
 
-
             $modelgeneralquestion = Generalquestion::find()->where(['status' => self::STATUS_ACTIVE])->all();
             foreach ($modelgeneralquestion as $answer) {
                 $modelanswer = new Answer();
@@ -349,7 +348,7 @@ class InscriptionController extends Controller
             $this->calculate($model->id);
             //++++++++++++++++++++++++++++++++++++++++
 
-            return $this->redirect(['viewown', 'id' => $model->id]);
+            return $this->redirect(['eventanswer', 'id' => $model->id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -399,7 +398,7 @@ class InscriptionController extends Controller
                 $this->calculate($model->id);
                 //++++++++++++++++++++++++++++++++++++++++
 
-                return $this->redirect(['viewown', 'id' => $model->id]);
+                return $this->redirect(['eventanswer', 'id' => $model->id]);
             } else {
 
                 return $this->render('updateown', [
@@ -580,9 +579,16 @@ class InscriptionController extends Controller
         $model->complete_logistic=round($itemsNotNull*100/$items);
 
 
-        $model->complete=100;
+        $model->complete_eventquiz=100;
         if ($model->getEventanswers()->count()>0)
             $model->complete_eventquiz=round($model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count());
+
+        $model->complete=round(($model->complete_quiz+ $model->complete_eventquiz+$model->complete_logistic)/3);
+
+        if ($model->complete==100)
+        {
+            //sendmail
+        }
 
         $model->save();
 
@@ -611,14 +617,14 @@ class InscriptionController extends Controller
                  $count++;
              }
          }
-         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosmente.");
+         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
          //++++++++++++++++++++++++++++++++++++++++
          // CALCULATE
          $this->calculate($id);
          //++++++++++++++++++++++++++++++++++++++++
 
-         return $this->redirect(['viewown', 'id' => $id]);
+         return $this->redirect(['answer', 'id' => $id]);
      }
 
 
@@ -630,9 +636,7 @@ class InscriptionController extends Controller
      ]);
     }
 
-
     public function actionAnswer($id){
-
         //Vacio para la función  Eventanswer  Answer
         $model= new Answer();
 
@@ -654,7 +658,7 @@ class InscriptionController extends Controller
                     $count++;
                 }
             }
-            Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
             //++++++++++++++++++++++++++++++++++++++++
             // CALCULATE
@@ -664,7 +668,6 @@ class InscriptionController extends Controller
             return $this->redirect(['viewown', 'id' => $id]);
         }
 
-
         return $this->render('_answers', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -672,4 +675,7 @@ class InscriptionController extends Controller
             'id' => $id,
         ]);
     }
+    // sendmail
+
+
 }

@@ -6,16 +6,46 @@ use yii\helpers\Html;
 /* @var $model app\models\User */
 
 $this->title = 'Actualziar Usuario: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Actualización';
+
 ?>
-<div class="user-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_password', [
-        'model' => $model,
-    ]) ?>
-
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
 </div>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="panel panel-primary">
+  <center class="panel-heading"><h3>Actualización de Usuario</h3></center>
+  <div class="panel-body">
+ 
+      
+      <div class="caption">
+        
+        <p>Por favor, rellene los siguientes:</p>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+              <?= $this->render('_password', [
+			        'model' => $model,
+			    ]) ?>
+            </div>
+        </div>
+        <br>
+        <p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administradores.</p>
+      </div>
+     </div>
+</div>
+
+
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+    <div class="">
+      
+    </div>
+  </div>
+</div>
+
+
+
+

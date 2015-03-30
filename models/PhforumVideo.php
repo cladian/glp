@@ -54,7 +54,10 @@ class PhforumVideo extends \yii\db\ActiveRecord
         return [
             [['phforum_id', 'video_id'], 'required'],
             [['phforum_id', 'video_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+
         ];
     }
 
@@ -65,9 +68,9 @@ class PhforumVideo extends \yii\db\ActiveRecord
     {
         return [
             'phforum_id' => 'Phforum ID',
-            'video_id' => 'Video ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'video_id' => 'Videos',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

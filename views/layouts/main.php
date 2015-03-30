@@ -31,7 +31,7 @@ if (Yii::$app->user->can('permission_admin')) {
             ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]];
-    $items[] = ['label' => 'Foro', 'items' => [
+/*    $items[] = ['label' => 'Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
@@ -55,7 +55,7 @@ if (Yii::$app->user->can('permission_admin')) {
         ['label' => 'Video', 'url' => ['/video']],
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]
-    ];
+    ];*/
 
     $items[]=
 
@@ -91,7 +91,35 @@ if (Yii::$app->user->can('permission_admin')) {
         ];
 
 }
+if (Yii::$app->user->can('asocam')) {
 
+    $items[] = ['label' => 'Foro', 'items' => [
+        ['label' => 'Foros', 'url' => ['/phforum']],
+        ['label' => 'Documentos', 'url' => ['/phforum-document']],
+        ['label' => 'Videos', 'url' => ['/phforum-video']],
+        ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
+        '<li class="divider"></li>',
+        ['label' => 'Temas', 'url' => ['/topic']],
+        ['label' => 'Documentos', 'url' => ['/topic-document']],
+        ['label' => 'Videos', 'url' => ['/topic-video']],
+        ['label' => 'Imagen', 'url' => ['/topic-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Aportes', 'url' => ['/post']],
+        ['label' => 'Documentos', 'url' => ['/post-document']],
+        ['label' => 'Videos', 'url' => ['/post-video']],
+        ['label' => 'Imagen', 'url' => ['/post-imagen']],
+
+        '<li class="divider"></li>',
+        ['label' => 'Comentarios', 'url' => ['/comment']],
+        '<li class="divider"></li>',
+        ['label' => 'Documentos', 'url' => ['/document']],
+        ['label' => 'Video', 'url' => ['/video']],
+        ['label' => 'Imagen', 'url' => ['/imagen']],
+    ]
+    ];
+
+}
 //temporal
 $temp = false;
 if ($temp) {
@@ -220,7 +248,7 @@ if ($temp) {
 //Menu de Usuario
 if (!Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> ' . Yii::$app->user->identity->username, 'items' => [
-//        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
+        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
         ['label' => 'Actualización de Contraseña', 'url' => ['/user/password']],
         ['label' => 'Actualización de Correo', 'url' => ['/user/email']],
         '<li class="divider"></li>',
@@ -277,11 +305,13 @@ if (!Yii::$app->user->isGuest) {
 <footer class="footer">
     <div class="container">
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
-                <?= Html::img('imgs/logos/asocam.png',['class' => 'img_footer']); ?>
+                <a href="http://www.asocam.org" target="_blank"> <?= Html::img('imgs/logos/asocam.png',['class' => 'img_footer']); ?></a>
 
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">
-                <p style="text-align:justify">ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas específicos, generando productos   de alta calidad y utilidad para los actores de desarrollo. Cuenta con metodologías probadas de trabajo para apoyar estos procesos y ha colaborado con  agencias de cooperación, proyectos, entidades públicas-privadas y organizaciones ciudadanas que promueven procesos de desarrollo. Los servicios de ASOCAM incluyen también asesorías específicas o de acompañamiento, intercambios de experiencias,  sistematización, redes, cursos de entrenamiento y facilitación de eventos. ASOCAM cuenta con un equipo especializado y con una red de consultores asociados a nivel de America Latina comprometidos con brindar servicios para fortalecer los procesos de desarrollo. Con Sede Regional en Ecuador y oficinas filiales en Perú, Nicaragua y Bolivia, ASOCAM garantiza una cobertura regional.</p>
+                <p style="text-align:justify">ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas específicos, generando productos   de alta calidad y utilidad para los actores de desarrollo.</p>
+                <p>Desarrollado por <a href="http://www.cladian.com" target="_blank">Cladian Digital</a> & ASOCAM <?php echo date("Y"); ?>  </p>
+
             </div>
     </div>
 </footer>
