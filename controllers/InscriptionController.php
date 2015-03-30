@@ -400,6 +400,9 @@ class InscriptionController extends Controller
                 $this->calculate($model->id);
                 //++++++++++++++++++++++++++++++++++++++++
 
+                if($model->complete ==100)
+                    return $this->redirect(['viewown', 'id' => $model->id]);
+                else
                 return $this->redirect(['eventanswer', 'id' => $model->id]);
             } else {
 
