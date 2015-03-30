@@ -592,7 +592,7 @@ class InscriptionController extends Controller
             $html.='<h4>Inquietud previa </h4>';
             $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
 
-            $this->sendMail($model->request_id,$html, $url );
+            $this->sendMail($model->id,$html, $url );
 
         }
         $model->save();
