@@ -119,12 +119,18 @@ use kartik\widgets\FileInput;
 <!--END Costo--> 
 <!--Descuento--> 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <?= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
+
+
+       <!-- --><?/*= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
             'pluginOptions' => [
                 'onText' => 'SI',
                 'offText' => 'NO',
             ]
-        ]); ?>
+        ]); */?>
+
+        <?=
+        $form->field($model, 'discount')->dropDownList(['0' => 'NO', '1' => 'NO']);
+        ?>
     </div>
 <!--END Descuento--> 
 <!--Descripcion Descuento--> 

@@ -31,7 +31,7 @@ if (Yii::$app->user->can('permission_admin')) {
             ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
             ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
         ]];
-    $items[] = ['label' => 'Foro', 'items' => [
+/*    $items[] = ['label' => 'Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
@@ -55,7 +55,7 @@ if (Yii::$app->user->can('permission_admin')) {
         ['label' => 'Video', 'url' => ['/video']],
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]
-    ];
+    ];*/
 
     $items[]=
 
