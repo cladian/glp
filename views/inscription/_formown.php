@@ -254,13 +254,21 @@ use kartik\widgets\TimePicker;
 
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar y Continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+    </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+
+
+
+
 </div>
 </div>
     <?php ActiveForm::end(); ?>
+
 
 </div>
