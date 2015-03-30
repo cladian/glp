@@ -610,7 +610,7 @@ class InscriptionController extends Controller
                  $count++;
              }
          }
-         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosmente.");
+         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
          //++++++++++++++++++++++++++++++++++++++++
          // CALCULATE
@@ -653,7 +653,7 @@ class InscriptionController extends Controller
                     $count++;
                 }
             }
-            Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
 
             //++++++++++++++++++++++++++++++++++++++++
             // CALCULATE
