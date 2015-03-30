@@ -687,10 +687,10 @@ class InscriptionController extends Controller
     {
         $title="Solicitud Completa";
         $content=$message;
-        $modelReply=User::find()->where(['id'=> Yii::$app->user->identity->id]);
-        foreach ($modelReply as $reply){
+        $modelUsers=User::find()->where(['id'=> Yii::$app->user->identity->id])->all();
+        foreach ($modelUsers as $user){
             // Contenido, tipo  1=Notificacion URL
-            $reply->user->sendEmail($content, $url, $title);
+            $user->sendEmail($content, $url, $title);
         }
 
 
