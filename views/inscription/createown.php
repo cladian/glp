@@ -62,21 +62,33 @@ $this->title = 'Crear Inscripción';
 
       </div>
       <div class="col-sm-6">
-          <?= $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
+
+<!--          --><?/*= $form->field($model, 'exposition')->widget(SwitchInput::classname(), [
               'pluginOptions' => [
                   'onText' => 'SI',
                   'offText' => 'NO',
               ]
-          ]); ?>
+          ]); */?>
+
+          <?=
+          $form->field($model, 'exposition')->dropDownList(['0' => 'NO', '1' => 'SI']);
+          ?>
+
       </div>
 
       <div class="col-sm-6">
-          <?= $form->field($model, 'service_terms')->widget(SwitchInput::classname(), [
+
+          <?/*= $form->field($model, 'service_terms')->widget(SwitchInput::classname(), [
               'pluginOptions' => [
                   'onText' => 'SI',
                   'offText' => 'NO',
               ]
-          ]); ?>
+          ]); */?>
+
+          <?=
+          $form->field($model, 'service_terms')->dropDownList(['0' => 'NO', '1' => 'SI']);
+          ?>
+
       </div>
 
 
@@ -90,13 +102,18 @@ $this->title = 'Crear Inscripción';
 <!---->
 
         <?= $form->field($modelLogistic, 'leavingonorigincity')->textInput(['maxlength' => 45]) ?>
-        <?=  $form->field($modelLogistic, 'residence')->widget(SwitchInput::classname(), [
+
+
+<!--        --><?/*=  $form->field($modelLogistic, 'residence')->widget(SwitchInput::classname(), [
             'pluginOptions' => [
                 'onText' => 'SI',
                 'offText' => 'NO',
             ]
-        ]);?>
+        ]);*/?>
 
+        <?=
+        $form->field($modelLogistic, 'residence')->dropDownList(['0' => 'NO', '1' => 'SI']);
+        ?>
 
         <?= $form->field($modelLogistic, 'residenceobs')->textarea(['rows' => 6]) ?>
 
