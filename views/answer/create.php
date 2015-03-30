@@ -7,15 +7,16 @@ use yii\helpers\Html;
 /* @var $model app\models\Answer */
 
 $this->title = 'Crear Respuesta';
-$this->params['breadcrumbs'][] = ['label' => 'Respuestas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="answer-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/answer','Respuestas' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

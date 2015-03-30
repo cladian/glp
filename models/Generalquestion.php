@@ -12,14 +12,33 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  * @property integer $question_id
- *
+ * @property string $text
  * @property Answer[] $answers
  * @property Question $question
  */
 class Generalquestion extends \yii\db\ActiveRecord
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
     /**
      * @inheritdoc
      */
@@ -34,9 +53,11 @@ class Generalquestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'question_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['question_id'], 'required'],
+
+            [['text'], 'string'],
+            [['text'], 'required'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
 
@@ -53,7 +74,8 @@ class Generalquestion extends \yii\db\ActiveRecord
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'question_id' => 'Preguntas',
+            'text' => 'Texto de Pregunta',
+
         ];
     }
 
@@ -68,8 +90,8 @@ class Generalquestion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getQuestion()
+/*    public function getQuestion()
     {
         return $this->hasOne(Question::className(), ['id' => 'question_id']);
-    }
+    }*/
 }

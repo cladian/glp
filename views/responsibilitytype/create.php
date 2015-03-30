@@ -1,21 +1,26 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\widgets\ActiveForm;
+use kartik\builder\Form;
+
 
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Responsibilitytype */
 
 $this->title = 'Crear Tipo de Responsabilidad';
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Responsabilidad', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="responsibilitytype-create">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/responsibilitytype/index'], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

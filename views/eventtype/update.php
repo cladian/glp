@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventtype */
 
-$this->title = 'Update Eventtype: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Eventtypes', 'url' => ['index']];
+$this->title = 'Actualizar Tipo de Evento: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Tipos de Evento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualización';
 ?>
 <div class="eventtype-update">
 

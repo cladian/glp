@@ -1,9 +1,10 @@
 <?php
 
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=asocam_glp',
-    'username' => 'cladian',
-    'password' => 'cladian',
-    'charset' => 'utf8',
-];
+    return [
+        'class' => 'yii\db\Connection',
+        'dsn' => 'mysql:host=localhost;dbname=cladiann_glp',
+        'username' => 'cladian',
+        'password' => 'cladian',
+        'charset' => 'utf8',
+    ];
+

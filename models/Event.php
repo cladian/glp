@@ -39,8 +39,28 @@ use Yii;
  */
 class Event extends \yii\db\ActiveRecord
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
+
     /**
      * @inheritdoc
      */
@@ -55,7 +75,7 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'country_id', 'eventtype_id'], 'required'],
+            [['name', 'country_id', 'eventtype_id','city','short_description', 'general_content'], 'required'],
             [['short_description', 'general_content', 'methodology', 'addressed_to', 'included', 'requirements', 'file', 'photo', 'url'], 'string'],
             [['begin_at', 'end_at', 'discount_end_at', 'created_at', 'updated_at'], 'safe'],
             [['cost'], 'number'],
@@ -63,7 +83,10 @@ class Event extends \yii\db\ActiveRecord
             [['name', 'city'], 'string', 'max' => 100],
             [['discount_description'], 'string', 'max' => 250],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['photo'], 'file', 'extensions' => 'jpg, gif, png'],
+            [['file'], 'file', 'extensions'=>'pdf, doc, ppt, xls, docx, pptx, xlsx '],
+            [['photo'], 'required', 'on' => 'resources']
         ];
     }
 
@@ -131,4 +154,24 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Phforum::className(), ['event_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventquestions()
+    {
+        return $this->hasMany(Eventquestion::className(), ['event_id' => 'id']);
+    }
+
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+        $avatar = isset($this->photo) ? $this->photo : '0.jpg';
+        if ($avatar == Null)
+            $avatar = '0.jpg';
+
+        return Yii::$app->params['eventFolder'] . $avatar;
+    }
+
+
 }

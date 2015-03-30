@@ -4,31 +4,52 @@ namespace app\controllers;
 
 use Yii;
 use app\models\User;
+use app\models\Profile;
 use app\modelsUserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
+
 class UserController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete','sendmail','email','password'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete','email','password'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['sendmail','email','password'],
+                        'allow' => true,
+                        'roles' => ['user','asocam'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
     }
-
     /**
      * Lists all User models.
      * @return mixed
@@ -54,6 +75,44 @@ class UserController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    // Retorno de info para Grid Administrador
+    public function actionProfile()
+    {
+        if (isset($_POST['expandRowKey'])) {
+
+            $userId = Yii::$app->request->post('expandRowKey');
+            $modelProfile = \app\models\Profile::find()
+                ->where(['user_id' => $userId])
+                ->one();
+            if ($modelProfile){
+                return $this->renderPartial('_profile', [
+
+                    'modelProfile' => $modelProfile
+                ]);
+            }
+            else
+            {
+                return '<div class="alert alert-danger">No tiene perfil</div>';
+            }
+
+
+      /*      $modelLogistic = Logistic::find()
+                ->where(['inscription_id' => $inscriptionId])
+                ->one();
+
+            $modelProfile = Profile::find()
+                ->where(['user_id' => $modelLogistic->inscription->user_id])
+                ->one();
+
+            return $this->renderPartial('_detail', [
+                'modelLogistic' => $modelLogistic,
+                'modelProfile' => $modelProfile
+            ]);*/
+        } else {
+            return '<div class="alert alert-danger">No data found</div>';
+        }
     }
 
     /**
@@ -93,6 +152,36 @@ class UserController extends Controller
         }
     }
 
+    public function actionEmail()
+    {   $id=Yii::$app->user->identity->id;
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['site/index', 'id' => $model->id]);
+
+        } else {
+            return $this->render('email', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionPassword()
+    {   $id=Yii::$app->user->identity->id;
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->setPassword($model->password_hash);
+            $model->generateAuthKey();
+            $model->save();
+            return $this->redirect(['site/index', 'id' => $model->id]);
+        } else {
+            return $this->render('password', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -122,4 +211,6 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

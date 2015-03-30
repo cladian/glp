@@ -1,6 +1,8 @@
 html,
 body {
     height: 100%;
+    background-color: darkgray;
+
 }
 
 .wrap {
@@ -8,14 +10,18 @@ body {
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+
 }
 
 .wrap > .container {
     padding: 70px 15px 20px;
+
+    background-color: #eeeeee;
 }
 
 .footer {
-    height: 60px;
+    width: 100%;
+    height: auto;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
@@ -88,4 +94,11 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
+}
+strong{
+    color: #337AB7;
+}
+.figure{
+    width: 100%;
+    height: auto;
 }

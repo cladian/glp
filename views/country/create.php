@@ -7,15 +7,15 @@ use yii\helpers\Html;
 /* @var $model app\models\Country */
 
 $this->title = 'Crear Pais';
-$this->params['breadcrumbs'][] = ['label' => 'Paises', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/country/index'], ['class' => 'btn btn-default'])?>
+</div>
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

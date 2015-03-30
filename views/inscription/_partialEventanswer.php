@@ -1,41 +1,112 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\grid\GridView;
+use kartik\editable\Editable;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Eventanswer */
+/* @var $searchModel app\models\EventanswerSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Respuestas por Evento', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Respuestas por Evento';
+/*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
-<div class="eventanswer-view">
+<div class="eventanswer-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-//            'id',
-            'reply:ntext',
-            'inscription_id',
-            'eventquestion_id',
-            'created_at',
-            'updated_at',
-            'status',
+
+
+    <?
+    $gridColumns = [
+        // the name column configuration
+        [
+            'class' => '\kartik\grid\SerialColumn',
+            'contentOptions'=>['class'=>'kartik-sheet-style'],
         ],
-    ]) ?>
+        [
+            'class' => 'kartik\grid\EditableColumn',
+            'readonly' => true,
+            'attribute' => 'eventquestion_id',
+            'value' => function ($data) {
+                return $data->eventquestion->text;
+            }
+
+        ],
+
+        [
+            'class' => 'kartik\grid\EditableColumn',
+            'readonly' => true,
+            'attribute' => 'reply',
+            'value' => 'reply',
+
+        ],
+        [
+            'class' => '\kartik\grid\BooleanColumn',
+            'attribute' => 'status',
+            'trueLabel' => '1',
+            'falseLabel' => '0'
+        ],
+
+
+    ];
+
+    echo \kartik\grid\GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+        // set your toolbar
+        'toolbar' => [
+
+            '{export}',
+            '{toggleData}',
+        ],
+        'bordered' => true,
+        'resizableColumns' => true,
+        'striped' => true,
+        'condensed' => true,
+        'responsive' => true,
+        'hover' => true,
+        'showPageSummary' => true,
+        'persistResize' => false,
+        'exportConfig' => true,
+        /*        'pjax'=>true,
+                'floatHeader'=>true,
+                'floatHeaderOptions'=>['scrollingTop'=>'50'],
+                'pjaxSettings'=>[
+                    'neverTimeout'=>true,
+                    'beforeGrid'=>'My fancy content before.',
+                    'afterGrid'=>'My fancy content after.',
+                ]*/
+    ]);
+
+
+
+
+
+    /*= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+//            'id',
+
+//            'inscription_id',
+//            'eventquestion_id',
+            [
+                'attribute' => 'eventquestion_id',
+                'value'=> function ($data){ return $data->eventquestion->question->text;}
+            ],
+            'reply:ntext',
+//            'created_at',
+            // 'updated_at',
+            // 'status',
+
+//            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); */
+    ?>
 
 </div>

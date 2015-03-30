@@ -33,8 +33,27 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
 
     /**
      * @inheritdoc
@@ -131,7 +150,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfiles()
     {
-        return $this->hasMany(Profile::className(), ['user_id' => 'id']);
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -291,5 +310,26 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function getImageUrl()
+    {
+        // return a default image placeholder if your source avatar is not found
+
+
+            $avatar = isset($this->profiles->photo) ? $this->profiles->photo : 'profile.png';
+
+
+        return Yii::$app->params['avatarFolder'] . $avatar;
+    }
+
+
+    public function sendEmail($content, $url, $title){
+
+        Yii::$app->mailer->compose('mail',['content'=>$content,'url'=>$url,'title'=>$title])
+            ->setFrom(\Yii::$app->params['contactEmail'])
+            ->setTo($this->email)
+            ->setSubject($title)
+            ->send();
     }
 }

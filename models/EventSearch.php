@@ -21,6 +21,7 @@ class EventSearch extends Event
             [['id', 'discount', 'year', 'status', 'country_id', 'eventtype_id'], 'integer'],
             [['name', 'short_description', 'general_content', 'methodology', 'addressed_to', 'included', 'requirements', 'file', 'photo', 'url', 'begin_at', 'end_at', 'city', 'discount_end_at', 'discount_description', 'created_at', 'updated_at'], 'safe'],
             [['cost'], 'number'],
+
         ];
     }
 

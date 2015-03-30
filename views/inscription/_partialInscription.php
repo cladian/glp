@@ -1,64 +1,91 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\DetailView;
-use yii\bootstrap\Tabs;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Inscription */
-
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Inscripciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="inscription-view">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <address>
+                <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
+                <strong>¿Exposición en el evento?: </strong><?= ($model->exposition ? ('SI') : ('NO')); ?><br>
+                <strong>¿Esta de acuerdo con los términos de servicio de
+                    ASOCAM?: </strong><?= ($model->service_terms ? ('SI') : ('NO')); ?>
+                <hr>
+                <strong>Tipo de registro: </strong><br><?= $model->registertypeType->name ?><br>
+                <strong>Tipo de Asignación: </strong><br><?= $model->registertypeAssigment->name ?>
+            </address>
+        </div>
 
-    <h2>Registro de Inscripción #<?= Html::encode($this->title) ?></h2>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+           <!-- <b>Inscripción</b>
+            <div class="progress">
 
-    <p>
-        <?= Html::a('Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-<!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) */?>
-    </p>
+                <div class="progress-bar" role="progressbar"
+                     aria-valuenow="<?/*= $model->complete; */?>"
+                     aria-valuemin="0" aria-valuemax="100"
+                     style="width: <?/*= $model->complete; */?>%;">
+                    <?/*= $model->complete; */?>%
+                </div>
+            </div>-->
+            <b>Información Logística</b>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar"
+                     aria-valuenow="<?= $model->complete_logistic; ?>"
+                     aria-valuemin="0" aria-valuemax="100"
+                     style="width: <?= $model->complete_logistic; ?>%;">
+                    <?= $model->complete_logistic; ?>%
+                </div>
+            </div>
+            <b>Preguntas por evento</b>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar"
+                     aria-valuenow="<?= $model->complete_eventquiz; ?>"
+                     aria-valuemin="0" aria-valuemax="100"
+                     style="width: <?= $model->complete_eventquiz; ?>%;">
+                    <?= $model->complete_eventquiz; ?>%
+                </div>
+            </div>
+            <b>Preguntas Generales</b>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar"
+                     aria-valuenow="<?= $model->complete_quiz; ?>"
+                     aria-valuemin="0" aria-valuemax="100"
+                     style="width: <?= $model->complete_quiz; ?>%;">
+                    <?= $model->complete_quiz; ?>%
+                </div>
+            </div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-//            'id',
-            [
-                'label'=>'Evento',
-                'value' => $model->event->name,
-            ],
-            'exposition',
-            'service_terms',
-            'complete',
-            'status',
-//            'created_at',
-/*            'updated_at',
-            'complete_logistic',
-            'complete_eventquiz',
-            'complete_quiz',*/
-//            'event_id',
-//            [                    // the owner name of the model
-//                'label' => 'Evento',
-//                'value' => $model->event->name,
-//            ],
-//            'user_id',
 
-            [
-                'label'=>'Tipo de Registro',
-                'value' =>$model->registertypeType->name,
-            ],
-            [
-                'label'=>'Tipo de Asignación',
-                'value' =>$model->registertypeAssigment->name,
-            ],
-        ],
-    ]) ?>
+        </div>
 
+    </div>
 </div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <?php if ($modelProfile) { ?>
+
+
+                <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
+                <h5><?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
+                    <?= $modelProfile->name . ' ' . $modelProfile->lastname;; ?></h5>
+                <address>
+
+                    <strong>phone: </strong><?= $modelProfile->phone_number; ?> <br>
+                    <strong>mail: </strong><?= $model->user->email; ?> <br>
+
+                </address>
+            <?php } else { ?>
+                <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+                <address>
+                    <strong>Perfil: </strong>Información pendiente
+                </address>
+            <?php } ?>
+        </div>
+
+    </div>
+</div>
+
+

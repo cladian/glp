@@ -8,6 +8,7 @@ use app\models\Eventtype;
 use kartik\widgets\DatePicker;
 use kartik\widgets\SwitchInput;
 use kartik\money\MaskMoney;
+use kartik\widgets\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -15,6 +16,7 @@ use kartik\money\MaskMoney;
 ?>
 
 <div class="event-form">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -39,15 +41,39 @@ use kartik\money\MaskMoney;
     <div class="col-sm-6">
         <?= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
     </div>
-    <?= $form->field($model, 'file')->textarea(['rows' => 1]) ?>
+    <div class="col-sm-12">
+        <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
+    </div>
+</div>
 
-    <?= $form->field($model, 'photo')->textarea(['rows' => 1]) ?>
 
-    <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
-    <div class="col-sm-3 col-xs-6">
-    <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
-        </div>
-    <div class="col-sm-3 col-xs-6">
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?=$form->field($model, 'eventtype_id')->dropDownList(
+            ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
+    </div>
+<!--Ciudad--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?= $form->field($model, 'city')->textInput(['maxlength' => 100]) ?>
+    </div>
+
+<!--END Ciudad-->
+<!--Pais--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?=
+        $form->field($model, 'country_id')->dropDownList(
+            ArrayHelper::map(Country::find()->all(), 'id', 'name'),
+            ['prompt' => 'Seleccione']
+        ) ?>
+    </div> 
+<!--END Pais--> 
+<!--Fecha-->    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'begin_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -61,7 +87,8 @@ use kartik\money\MaskMoney;
         ?>
 
     </div>
-    <div class="col-sm-3 col-xs-6">
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?= $form->field($model, 'end_at')->widget(DatePicker::classname(), [
             'options' => ['placeholder' => 'Fecha'],
             'pluginOptions' => [
@@ -75,82 +102,80 @@ use kartik\money\MaskMoney;
         ?>
 
     </div>
+    
+<!--END Fecha-->
+<!--Costo--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
-
-    <div class="col-sm-3 col-xs-6">
-
-    <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
-        'pluginOptions' => [
-            'prefix' => '$ ',
-            'suffix' => '',
-            'allowNegative' => false,
-            'precision' => 2,
-        ]
-    ]);?>
-        </div>
-    <hr>
-
-
-
-            <div class="col-sm-3 col-xs-6">
-            <?=  $form->field($model, 'discount')->widget(SwitchInput::classname(), [
+        <?= $form->field($model, 'cost')->widget(MaskMoney::classname(), [
+            'pluginOptions' => [
+                'prefix' => '$ ',
+                'suffix' => '',
+                'allowNegative' => false,
+                'precision' => 2,
+            ]
+        ]); ?>
+    </div>
+<!--END Costo--> 
+<!--Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?= $form->field($model, 'discount')->widget(SwitchInput::classname(), [
+            'pluginOptions' => [
+                'onText' => 'SI',
+                'offText' => 'NO',
+            ]
+        ]); ?>
+    </div>
+<!--END Descuento--> 
+<!--Descripcion Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
+    </div>
+<!--END Descripcion Descuento--> 
+<!--Fecha Descuento--> 
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => 'Fecha'],
                 'pluginOptions' => [
-                    'onText' => 'SI',
-                    'offText' => 'NO',
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+
+                    'readonly' => true,
+                    'disabled' => true,
                 ]
-            ]);?>
-        </div>
+            ]);
+            ?>
 
-            <div class="col-sm-9 col-xs-6">
-                <?= $form->field($model, 'discount_end_at')->widget(DatePicker::classname(), [
-                    'options' => ['placeholder' => 'Fecha'],
-                    'pluginOptions' => [
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd',
+    </div>
+<!--END Fecha Descuento--> 
+<!--Año
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <?= $form->field($model, 'year')->textInput() ?>
+    </div>
+END Año--> 
+    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
 
-                        'readonly' => true,
-                        'disabled' => true,
-                    ]
-                ]);
-                ?>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?php if (!$model->isNewRecord )  echo $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+    </div>
 
-            </div>
-            <div class="xs-12">
-            <?= $form->field($model, 'discount_description')->textInput(['maxlength' => 250]) ?>
-                </div>
+    <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
+    <!---->
+    <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
 
+    <!--    --><? //= $form->field($model, 'country_id')->textInput() ?>
+    
 
-
-
-
-<?= $form->field($model, 'year')->textInput() ?>
-
-<!--    --><? //= $form->field($model, 'status')->textInput() ?>
-
-<?= $form->field($model, 'status')->dropDownList(['10' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
-
-<!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
-<!---->
-<!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
-
-<!--    --><? //= $form->field($model, 'country_id')->textInput() ?>
-<?=
-$form->field($model, 'country_id')->dropDownList(
-    ArrayHelper::map(Country::find()->all(), 'id', 'name'),
-    ['prompt' => 'Seleccione']
-) ?>
-
-<!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
-<?=
-$form->field($model, 'eventtype_id')->dropDownList(
-    ArrayHelper::map(Eventtype::find()->all(), 'id', 'name'),
-    ['prompt' => 'Seleccione']
-) ?>
-
-<div class="form-group">
-    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
+    
 </div>
-
-<?php ActiveForm::end(); ?>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
+    </div>
 
 </div>
+</div>
+
+    <?php ActiveForm::end(); ?>

@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use app\models\Inscription;
 use app\models\InscriptionSearch;
+use app\models\NotificationSearch;
 use app\models\Profile;
 use app\models\Event;
-use app\models\EventSearch;
+use app\models\Request;
+
 use app\models\User;
 use Yii;
 
@@ -23,22 +25,42 @@ use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'signup', 'event', 'admuser', 'admasocam'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['login', 'signup'],
                         'allow' => true,
                         'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['event'],
+                        'allow' => true,
+                        'roles' => ['?', '@'],
                     ],
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['admuser'],
+                        'allow' => true,
+                        'roles' => ['user'],
+                    ],
+                    [
+                        'actions' => ['admasocam'],
+                        'allow' => true,
+                        'roles' => ['asocam'],
                     ],
                 ],
             ],
@@ -58,33 +80,51 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+//            'captcha' => [
+//                'class' => 'yii\captcha\CaptchaAction',
+//                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+//            ],
         ];
     }
 
     public function actionAdmuser()
     {
         // De acceso solo para usuarios logeados
+        if (Yii::$app->user->can('user')) {
 
-        // Verificamos si el usuario tiene registro de perfil
-        // $hasProfile= Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count();
+        }
 
-       // $searchInscription=Inscription::find()->where(['status'=>10])->all();
-        $searchInscription=new InscriptionSearch();
+//        $modelUser=User::find()->where(['id'=>Yii::$app->user->identity->id])->one();
+
+        /*$modelUser=User::find()->where(['id'=> Yii::$app->user->identity->id])->one();*/
+
+//        $content='<h1>Prueba de envio</h1>';
+//        $modelUser->sendEmail($content,1,"#");
+
+        $searchInscription = new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
+        $searchNotification = new NotificationSearch();
+        $dataNotification = $searchNotification->search(Yii::$app->request->queryParams);
+
         // Por implementar consulta de inscipciones ya habilitadas
-        $modelEvent = Event::find()->where( ['status'=>10])->all();
+        $modelEvent = Event::find()
+            ->where(['status' => self::STATUS_ACTIVE])
+            ->orderBy('begin_at')
+//            ->limit(4)
+            ->all();
 
 
-        return $this->render('admuser', [
+
+        return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'modelEvent' => $modelEvent,
             'searchInscription' => $searchInscription,
             'dataInscription' => $dataInscription,
-            'modelEvent'=>$modelEvent,
+            'searchNotification' => $searchNotification,
+            'dataNotification' => $dataNotification,
+            'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+
         ]);
     }
 
@@ -93,41 +133,59 @@ class SiteController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('admasocam', [
+        $modelRequest = Request::find()
+            ->where(['status' => self::STATUS_ACTIVE])
+            ->orderBy('created_at desc')
+            ->all();
+
+        return $this->render('admAsocam', [
+            'ownInscriptions' => Inscription::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
-            'activeUsers' => User::find()->where(['status' => 10])->count(),
-            'activeEvents' => Event::find()->where(['status' => 10])->count(),
-            'activeInscriptions' => Inscription::find()->where(['status' => 10])->count(),
+            'activeUsers' => User::find()->where(['status' => self::STATUS_ACTIVE])->count(),
+            'activeEvents' => Event::find()->where(['status' => self::STATUS_ACTIVE])->count(),
+            'activeInscriptions' => Inscription::find()->where(['status' => self::STATUS_ACTIVE])->count(),
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'modelRequest' => $modelRequest,
+            'modelRecentInscription'=>Inscription::find()->orderBy('created_at desc')->limit(10)->all(),
         ]);
 
     }
+
     /*
      * Modificaciones previas
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->can('user')) {
-            return $this->redirect(['admuser']);
-        } else if (Yii::$app->user->can('asocam')) {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+        if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
+        } elseif (Yii::$app->user->can('user')) {
+            return $this->redirect(['admuser']);
         } else {
             return $this->render('index', [
-                'modelEvent' => Event::find()->where(['status' => 10])->all(),
+                'modelEvent' => Event::find()->where(['status' => self::STATUS_ACTIVE])->all(),
+                'model'=> $model
             ]);
         }
     }
 
-    public function actionEvent($id){
+    public function actionEvent($id)
+    {
         if (($modelEvent = Event::findOne($id)) !== null) {
 
-            return $this->render('event',[
+            return $this->render('event', [
                 'modelEvent' => $modelEvent,
 
             ]);
-        }
-    else {
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }

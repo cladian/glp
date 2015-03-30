@@ -28,7 +28,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -40,12 +40,19 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        //'urlManager'=>[
-          //  'enablePrettyUrl'=>'true',
-            //'showScriptName' => false,
-        //],
+/*       'urlManager'=>[
+           'enablePrettyUrl'=>'true',
+            'showScriptName' => 'false',
+        ],*/
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport'=>false,
+            'viewPath' => '@app/mail',
+
+
         ],
     ],
     #Acceso url para los modulos de roles y perfiles configurados
@@ -58,7 +65,8 @@ $config = [
         ]
     ],
     #Acceso publico sin control de login desde la aplicación, en este ejemplo site es de acceso publico permitido
-    /*'as access'=>[
+
+   /* 'as access'=>[
         'class'=>'mdm\admin\components\AccessControl',
         'allowActions'=>[
             'site/*',

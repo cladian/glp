@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Inscription;
 use Yii;
 use app\models\Logistic;
 use app\models\LogisticSearch;
@@ -9,13 +10,15 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * LogisticController implements the CRUD actions for Logistic model.
  */
 class LogisticController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     public function behaviors()
     {
@@ -96,12 +99,15 @@ class LogisticController extends Controller
     public function actionUpdateown($id)
     {
         $model = $this->findModel($id);
+        $modelInscription=new Inscription();
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['inscription/view', 'id' => $model->inscription_id]);
+            return $this->redirect(['inscription/viewown', 'id' => $model->inscription_id]);
         } else {
             return $this->render('updateown', [
                 'model' => $model,
+                'id'=> $id
             ]);
         }
     }
@@ -134,4 +140,6 @@ class LogisticController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

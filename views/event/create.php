@@ -7,15 +7,17 @@ use yii\helpers\Html;
 /* @var $model app\models\Event */
 
 $this->title = 'Crear evento';
-$this->params['breadcrumbs'][] = ['label' => 'Eventos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
-<div class="event-create">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/event','Eventos' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
+<div class="panel panel-green">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+  </div>
 </div>

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 /**
  * ResponsibilitytypeController implements the CRUD actions for Responsibilitytype model.
@@ -16,26 +17,28 @@ use yii\filters\AccessControl;
 class ResponsibilitytypeController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view','create','update','delete'],
-                        'allow' => true,
-                        'roles' => ['sysadmin'],
-                    ],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -47,14 +50,39 @@ class ResponsibilitytypeController extends Controller
      */
     public function actionIndex()
     {
-
-        $searchModel = new ResponsibilitytypeSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        // Original
+        //$searchModel = new ResponsibilitytypeSearch();
+        $model= new Responsibilitytype();
+        $searchModel = Responsibilitytype::find()->indexBy('id');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $searchModel,
         ]);
+
+    /*    $searchModel = new ResponsibilitytypeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);*/
+        $models=$dataProvider->getModels();
+
+        if (Responsibilitytype::loadMultiple($models, Yii::$app->request->post()) && Responsibilitytype::validateMultiple($models)) {
+            $count = 0;
+            foreach ($models as $index => $item) {
+                // populate and save records for each model
+                if ($item->save()) {
+                    $count++;
+                }
+            }
+            Yii::$app->session->setFlash('success', "Processed {$count} records successfully.");
+           // return $this->redirect(['index']); // redirect to your next desired page
+        }
+            // Original
+   /*     $searchModel = new ResponsibilitytypeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);*/
+
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            ]);
+
     }
 
     /**

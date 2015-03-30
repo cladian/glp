@@ -8,6 +8,7 @@ use app\models\EventquestionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * EventquestionController implements the CRUD actions for Eventquestion model.
@@ -15,15 +16,34 @@ use yii\filters\VerbFilter;
 class EventquestionController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete', 'createown'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['createown'],
+                        'allow' => true,
+                        'roles' => ['user'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -61,12 +81,29 @@ class EventquestionController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Eventquestion();
+        $model->event_id=$id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['event/view', 'id' => $id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'id' => $id,
+
+            ]);
+        }
+    }
+
+    public function actionCreateown($eventtype_id,$event_id)
+    {
+        $model = new Eventquestion();
+        $model->eventtype_id=$eventtype_id;
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['event/view', 'id' => $event_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +122,7 @@ class EventquestionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['event/view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

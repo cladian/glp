@@ -13,6 +13,7 @@ use Yii;
  * @property string $updated_at
  * @property integer $eventtype_id
  * @property integer $question_id
+ * @property string $text
  *
  * @property Eventanswer[] $eventanswers
  * @property Eventtype $eventtype
@@ -20,8 +21,27 @@ use Yii;
  */
 class Eventquestion extends \yii\db\ActiveRecord
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
     /**
      * @inheritdoc
      */
@@ -36,11 +56,13 @@ class Eventquestion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'eventtype_id', 'question_id'], 'integer'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['eventtype_id', 'question_id'], 'required'],
+            [['status', 'event_id'], 'integer'],
+            [['text'], 'string'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            [['event_id'], 'required']
         ];
     }
 
@@ -52,10 +74,10 @@ class Eventquestion extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'status' => 'Estado',
+            'text' => 'Texto de Pregunta',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'eventtype_id' => 'Tipo de Evento',
-            'question_id' => 'Pregunta',
+            'event_id' => 'Evento',
         ];
     }
 
@@ -70,16 +92,9 @@ class Eventquestion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEventtype()
+    public function getEvent()
     {
-        return $this->hasOne(Eventtype::className(), ['id' => 'eventtype_id']);
+        return $this->hasOne(Event::className(), ['id' => 'event_id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getQuestion()
-    {
-        return $this->hasOne(Question::className(), ['id' => 'question_id']);
-    }
 }

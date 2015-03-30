@@ -30,8 +30,27 @@ use Yii;
  */
 class Logistic extends \yii\db\ActiveRecord
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
     /**
      * @inheritdoc
      */
@@ -46,7 +65,7 @@ class Logistic extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['inscription_id'], 'required'],
+            [['inscription_id','leavingonorigincity'], 'required'],
             [['inscription_id', 'residence', 'status'], 'integer'],
             [['leavingondate', 'leavingonhour', 'returningondate', 'returningonhour', 'accommodationdatein', 'accommodationdateout', 'created_at', 'updated_at'], 'safe'],
             [['residenceobs'], 'string'],
@@ -66,16 +85,18 @@ class Logistic extends \yii\db\ActiveRecord
             'id' => 'ID',
             'inscription_id' => 'ID',
             'leavingonorigincity' => 'Ciudad de procedencia',
-            'leavingonairline' => 'Aerolinea de llegada',
-            'leavingonflightnumber' => '# Vuelo llegada',
+            'leavingonairline' => 'Aerolinea',
+            'leavingonflightnumber' => '# Vuelo',
             'leavingondate' => 'Fecha de arribo',
             'leavingonhour' => 'Hora de Arribo',
-            'returningonairline' => 'Fecha de retorno',
-            'returningonflightnumber' => '# Vuelo retorno',
+
+            'returningonairline' => 'Aerolinea',
+            'returningonflightnumber' => '# Vuelo',
             'returningondate' => 'Fecha de retorno',
             'returningonhour' => 'Hora de retorno',
+
             'residence' => '¿Reside en la ciudad del evento?',
-            'residenceobs' => 'Residenceobs',
+            'residenceobs' => 'Observación del lugar de Residencia',
             'accommodationdatein' => 'Fecha de inicio de alojamiento',
             'accommodationdateout' => 'Fecha de salida de alojamiento',
             'status' => 'Estado',

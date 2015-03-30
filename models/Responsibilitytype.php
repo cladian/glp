@@ -3,6 +3,10 @@
 namespace app\models;
 
 use Yii;
+use kartik\builder\Form;
+
+use kartik\builder\TabularForm;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "responsibilitytype".
@@ -18,8 +22,27 @@ use Yii;
  */
 class Responsibilitytype extends \yii\db\ActiveRecord
 {
+    // CONTROL DE ESTADOS
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
+    //---> ESTADOS
     /**
      * @inheritdoc
      */
@@ -65,5 +88,28 @@ class Responsibilitytype extends \yii\db\ActiveRecord
     public function getProfiles()
     {
         return $this->hasMany(Profile::className(), ['responsibilitytype_id' => 'id']);
+    }
+
+    public function getFormAttribs()
+    {
+        return [
+            'name' => ['type' => Form::INPUT_TEXT, 'options' => ['placeholder' => 'Enter username...']],
+            'description' => ['type' => Form::INPUT_PASSWORD, 'options' => ['placeholder' => 'Enter password...']],
+            'actions' => ['type' => Form::INPUT_RAW, 'value' => Html::submitButton('Submit', ['class' => 'btn btn-primary'])]
+        ];
+    }
+
+    public function getGrid()
+    {
+        return [
+            // primary key column
+
+            'name' => ['type' => Form::INPUT_TEXTAREA, 'options' => ['placeholder' => 'Nombre']],
+            'description' => ['type' => Form::INPUT_TEXTAREA, 'options' => ['placeholder' => 'Descripción']],
+
+
+
+
+        ];
     }
 }

@@ -2,6 +2,7 @@
 namespace app\models;
 
 use app\models\User;
+use app\models\Profile;
 use yii\base\Model;
 use Yii;
 
@@ -13,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+//    public $captcha;
 
     /**
      * @inheritdoc
@@ -22,13 +24,16 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este nómbre de usuario ya ha sido seleccionado.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
+
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'El correo electrónico ya esta registrado en el sistema.'],
+//            ['captcha', 'required'],
+//            ['captcha', 'captcha'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
@@ -57,5 +62,16 @@ class SignupForm extends Model
         }
 
         return null;
+    }
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de Usuario',
+            'password' => 'Contraseña',
+/*            'email' => 'Correo Electrónico',
+            'status' => 'Estado',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',*/
+        ];
     }
 }

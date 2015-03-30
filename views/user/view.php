@@ -7,28 +7,19 @@ use yii\widgets\DetailView;
 /* @var $model app\models\User */
 
 $this->title = $model->username;
-$this->params['breadcrumbs'][] = ['label' => 'Usuario', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-view">
+<div class="regresar">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/user/index'], ['class' => 'btn btn-default'])?>
+</div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
+<div class="panel panel-primary">
+  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+  <div class="panel-body">
+       
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'username',
             'auth_key',
             'password_hash',
@@ -39,5 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'updated_at',
         ],
     ]) ?>
+    <p>
+        <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
 
+  </div>
 </div>

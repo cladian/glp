@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use app\models\Profile;
 use app\models\ProfileSearch;
@@ -9,6 +10,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\models\UploadForm;
+use yii\filters\AccessControl;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -16,15 +19,34 @@ use yii\web\UploadedFile;
 class ProfileController extends Controller
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete', 'viewown','createown','avatarown','updateown'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['viewown','createown','avatarown','updateown'],
+                        'allow' => true,
+                        'roles' => ['user','asocam'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -56,6 +78,18 @@ class ProfileController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionViewown()
+    {
+        // Verificación inicial del perfil, si el registro no esta creado se redirije automaticamente
+        // a la función create
+
+        if (!Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count())
+            return $this->redirect(['createown']);
+
+        return $this->render('viewown', [
+            'model' => $this->findModelown(Yii::$app->user->identity->id),
+        ]);
+    }
 
     /**
      * Creates a new Profile model.
@@ -65,7 +99,7 @@ class ProfileController extends Controller
     public function actionCreate()
     {
         $model = new Profile();
-        if ($model->load(Yii::$app->request->post())&&$model->save() ) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -73,20 +107,21 @@ class ProfileController extends Controller
             ]);
         }
     }
+
     public function actionCreateown()
     {
         $model = new Profile();
 
         // Verificamos si el usuario tiene registro de perfil para actualizar
-        if (Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->count())
+        if (Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count())
             return $this->redirect(['updateown']);
 
-        if ($model->load(Yii::$app->request->post()) ) {
+        if ($model->load(Yii::$app->request->post())) {
             // Asignación del ID de usuario previo al almacenamiento
             // Almacenamiento del modelo;
-            $model->user_id=Yii::$app->user->identity->id;
+            $model->user_id = Yii::$app->user->identity->id;
             $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown']);
         } else {
             return $this->render('createown', [
                 'model' => $model,
@@ -103,22 +138,32 @@ class ProfileController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) ) {
-
-            //Almacenar archivo
-            $avatar=UploadedFile::getInstance($model, 'photo');
-            $avatar->saveAs('uploads/avatar/' . $avatar->baseName . '.' . $avatar->extension);
-
-            // Guardar modelo
-            $model->photo=$avatar->baseName . '.' . $avatar->extension;
-            $model->save();
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'file'=>$model->id,
+                'file' => $model->id,
+            ]);
+        }
+    }
+    public function actionAvatarown()
+    {
+        $model = $this->findModelown(Yii::$app->user->identity->id);
+        //$model = $this->findModel($id);
+        $model->scenario = 'avatar';
+
+        if ($model->load(Yii::$app->request->post())) {
+            $avatar = UploadedFile::getInstance($model, 'photo');
+            $photoName = $model->id . '.' . $avatar->extension;
+            $avatar->saveAs(\Yii::$app->params['avatarFolder'] . $photoName);
+            $model->photo = $photoName;
+            $model->save();
+            return $this->redirect(['viewown']);
+        } else {
+            return $this->render('avatarown', [
+                'model' => $model,
+                'file' => $model->id,
             ]);
         }
     }
@@ -126,10 +171,11 @@ class ProfileController extends Controller
 
     public function actionUpdateown()
     {
+
         $model = $this->findModelown(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewown']);
         } else {
             return $this->render('updateown', [
                 'model' => $model,
@@ -165,15 +211,18 @@ class ProfileController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     /*
      * Busqueda de registroo de perfil según usuario logeado
      */
     protected function findModelown($id)
     {
-        if (($model = Profile::findOne(['user_id'=>$id]))!== null) {
+        if (($model = Profile::findOne(['user_id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }

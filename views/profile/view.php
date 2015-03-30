@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Avatar', ['avatar', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -25,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail','style'=>'width=140px']);?>
+    <?/*= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);*/?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
