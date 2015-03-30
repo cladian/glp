@@ -3,9 +3,8 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 
-
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'GLP-ASOCAM';
 
 ?>
 
@@ -18,11 +17,8 @@ $this->title = 'My Yii Application';
             <div class="caja-slide">
                 <h1 class="tituto-slide">Bienvenidos</h1>
 
-                <p class="texto-slide">Al sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá
-                    registrarse y
-                    acceder a la información, materiales y demás cursos disponibles para los participantes de los
-                    eventos
-                    regionales</p>
+                <p class="texto-slide">Sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá
+                    acceder a la información de eventos ASOCAM</p>
             </div>
         </div>
     </center>
@@ -38,73 +34,38 @@ $this->title = 'My Yii Application';
 
                 <!-- form -->
                 <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                <!--            <form name="signupForm" method="post" action="/signup?nomo=1" class="responsive-form marketing-form l-block-2 js-validate-signup">-->
-                <!--                --><? //= $form->field($model, 'username') ?>
-<!--                <div class="responsive-form__input--icon responsive-form__input--icon--bg l-block-2">-->
-                    <?=
-                    $form->field($model, 'username', [
-                        'inputOptions' => ['placeholder' => 'Usuario'],
-                        'inputTemplate' => '<div class="input-group"><span class="input-group-addon"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </span>{input}</div>'
-                    ])->label(false);
-                    ?>
-<!--                </div>-->
-<!--                --><?//= $form->field($model, 'email') ?>
-                <?=$form->field($model, 'email', [
+                <?=
+                $form->field($model, 'username', [
+                    'inputOptions' => ['placeholder' => 'Usuario'],
+                    'inputTemplate' => '<div class="input-group"><span class="input-group-addon"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </span>{input}</div>'
+                ])->label(false);
+                ?>
+                <?= $form->field($model, 'email', [
                     'inputOptions' => ['placeholder' => 'Email'],
                     'inputTemplate' => '<div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>   </span>{input}</div>'
                 ])->label(false);
                 ?>
 
-<!--                --><?//= $form->field($model, 'password')->passwordInput() ?>
                 <?=
                 $form->field($model, 'password', [
                     'inputOptions' => ['placeholder' => 'Contraseña'],
                     'inputTemplate' => '<div class="input-group"><span class="input-group-addon"> <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> </span>{input}</div>'
                 ])->label(false)->passwordInput();
                 ?>
-<!--                --><?//= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
+                <!--                --><? //= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
                 <div class="form-group">
                     <?= Html::submitButton('Crear cuenta', ['class' => 'btn-lg btn-success btn-block ', 'name' => 'signup-button']) ?>
                 </div>
-<!--menu html-->
-<!--menu html-->
-<!--menu html-->
-<!--menu html-->
-<!--menu html-->
-                <!-- Hidden input fields... signup_page value is page specific -->
-<!--                <input type="hidden" name="signup_page" value="es_registration-online">-->
-<!--                <input type="hidden" name="submitted" value="1">-->
-<!--                <input type="hidden" name="forward" value="/create">-->
-<!--                <!-- END: Hidden input fields... signup_page value is page specific -->
-<!---->
-<!--                <div class="responsive-form__input--icon responsive-form__input--icon--bg l-block-2">-->
-<!--                    <input type="password" name="passwd1" placeholder="Nombre de Usuario"/>-->
-<!--                </div>-->
-<!--                <br>-->
-<!---->
-<!--                <div class="responsive-form__input--icon responsive-form__input--icon--bg">-->
-<!--                    <input class="glyphicon glyphicon-align-left" type="email" name="email" placeholder="Email"/>-->
-<!--                </div>-->
-<!--                <br>-->
-<!---->
-<!--                <div class="responsive-form__input--icon responsive-form__input--icon--bg l-block-2">-->
-<!--                    <input type="password" name="passwd1" placeholder="Contraseña"/>-->
-<!--                </div>-->
-<!--                <br>-->
-<!--                <input type="submit" class="btn btn-success btn-lg btn-block" value="Registrarse">-->
                 <?php ActiveForm::end(); ?>
-                <!--            </form>-->
-                <!-- end form -->
                 <div>
                     <p style="text-align:center; padding-top: 0px;" class="texto-info">Al hacer clic en "Crear cuenta",
-                        confirma que acepto los términos de servicio, la política de privacidad, y la política de
-                        cookies de ASOCAM, así como recibir comunicaciones de marketing de ASOCAM.</p>
+                        confirma y acepta los términos de servicio, la política de privacidad de ASOCAM, así como recibir comunicaciones y notificaciones desde el sistema.</p>
 
                     <div class="form-group">
-<!--                        --><?//= Html::submitButton('Inicia sesión', ['class' => ' btn-primary  ', 'name' => 'signup-button']) ?>
+                        <!--                        --><? //= Html::submitButton('Inicia sesión', ['class' => ' btn-primary  ', 'name' => 'signup-button']) ?>
                     </div>
 
-                    <p class="aviso">¿Si eres miembro?  <?= Html::a('Ingresar', ['/site/login'], ['class'=>'btn btn-primary btn-xs']) ?></p>
+                    <p class="aviso">¿Eres miembro?  <?= Html::a('Ingresar', ['/site/login'], ['class' => 'btn btn-primary btn-xs']) ?></p>
                 </div>
             </div>
         </div>
@@ -198,22 +159,22 @@ $this->title = 'My Yii Application';
 <!-- eventos -->
 <!-- relleno -->
 <!-- <section>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">         
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <h1 class="tituto-relleno">Te proporcionamos todas las novedades que necesitas para sobre nuestros eventos.</h1>
     <p class="texto-relleno">ASOCAM te permite planificar cualquier evento, hacerle un seguimiento y promocionarlo.</p>
 </div>
 
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">         
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
     <center><span style="color:#999; font-size: 70px;" class="glyphicon glyphicon-time" aria-hidden="true"></span></center>
     <h3 class="texto-cursos">Publica un evento en solo unos minutos</h3>
     <p class="texto-rell">¡Es muy fácil organizar festivales, espectáculos, recogidas de fondos, conferencias, fiestas, talleres y eventos de todo tipo!</p>
 </div>
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">         
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
     <center><span style="color:#999; font-size: 70px;" class="glyphicon glyphicon-cog" aria-hidden="true"></span></center>
     <h3 class="texto-cursos">Publica un evento en solo unos minutos</h3>
     <p class="texto-rell">¡Es muy fácil organizar festivales, espectáculos, recogidas de fondos, conferencias, fiestas, talleres y eventos de todo tipo!</p>
 </div>
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">         
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
     <center><span style="color:#999; font-size: 70px;" class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></center>
     <h3 class="texto-cursos">Publica un evento en solo unos minutos</h3>
     <p class="texto-rell">¡Es muy fácil organizar festivales, espectáculos, recogidas de fondos, conferencias, fiestas, talleres y eventos de todo tipo!</p>
