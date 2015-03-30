@@ -9,6 +9,7 @@ use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
 use app\models\Profile;
+use app\models\User;
 use app\models\Logistic;
 use app\models\Answer;
 use app\models\EventanswerSearch;
@@ -23,6 +24,7 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
+
 // BUILD FORM
 use yii\data\ActiveDataProvider;
 
