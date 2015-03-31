@@ -170,7 +170,6 @@ class ReplyController extends Controller
         $title="Respuesta a solicitud";
         $content=$message;
 
-
         $modelReply=Reply::find()->where(['request_id'=>$request_id])->addGroupBy(['user_id'])->all();
         foreach ($modelReply as $reply){
             // Contenido, tipo  1=Notificacion URL

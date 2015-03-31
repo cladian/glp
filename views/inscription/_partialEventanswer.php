@@ -82,9 +82,6 @@ $this->title = 'Respuestas por Evento';
     ]);
 
 
-
-
-
     /*= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
