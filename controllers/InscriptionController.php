@@ -638,8 +638,6 @@ class InscriptionController extends Controller
             else
                 return $this->redirect(['answer', 'id' => $id]);
         }
-
-
         return $this->render('_eventanswers', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
