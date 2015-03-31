@@ -19,7 +19,7 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
 <?= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $id], ['class' => 'btn btn-default'])?>
 </div>
 
-<div class="panel panel-green">
+<div class="panel panel-primary">
   <div class="panel-heading">Preguntas del Evento</div>
   <div class="panel-body">
     <?php
@@ -48,7 +48,7 @@ $form = ActiveForm::begin();?>
 ]);
 // Add other fields if needed or render your submit button
 ?>
-<?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+<?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-primary']);?>
   </div>
 </div>
 

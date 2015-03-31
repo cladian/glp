@@ -19,7 +19,7 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
 </div>
 <?php
 $form = ActiveForm::begin();?>
-<div class="panel panel-green">
+<div class="panel panel-primary">
   <div class="panel-heading">Preguntas Generales</div>
   <div class="panel-body">
     <?=TabularForm::widget([
@@ -50,7 +50,7 @@ $form = ActiveForm::begin();?>
 </div>
 
 
-    <?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+    <?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-primary']);?>
 
 
 

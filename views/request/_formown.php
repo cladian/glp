@@ -11,7 +11,7 @@ use app\models\Inscription;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="panel panel-green">
+<div class="panel panel-primary">
   <div class="panel-heading">Crear Solicitudes</div>
   <div class="panel-body">
     
