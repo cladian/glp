@@ -20,6 +20,7 @@ $this->title = 'Actualizar Respuesta por Evento: ';
 <?php
 $form = ActiveForm::begin();?>
 <div class="panel panel-primary">
+<<<<<<< HEAD
     <div class="panel-heading">Preguntas Generales</div>
     <div class="panel-body">
         <?= TabularForm::widget([
@@ -52,6 +53,39 @@ $form = ActiveForm::begin();?>
 
 
 
+=======
+  <div class="panel-heading">Preguntas Generales</div>
+  <div class="panel-body">
+    <?=TabularForm::widget([
+    'dataProvider' => $dataProvider,
+    'form' => $form,
+    'attributes' => $model->getGrid(),
+/*    'attributeDefaults' => [
+
+        [
+            'type' => Form::INPUT_RAW,
+            'value'=>function ($model, $key, $index, $widget) {return $model->eventquestion->text; }
+
+
+        ],
+    ],*/
+    'actionColumn'=>false,
+    'serialColumn'=>false,
+    'checkboxColumn'=>false,
+
+
+
+
+]);
+// Add other fields if needed or render your submit button
+?>
+
+  </div>
+</div>
+
+
+    <?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-primary']);?>
+>>>>>>> daniel
 
 
 
