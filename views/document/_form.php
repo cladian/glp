@@ -14,16 +14,28 @@ use kartik\widgets\FileInput;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
+
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 
 <!--    --><?//= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
 
 
 
+
+
     <?=
     // Usage with ActiveForm and model
     $form->field($model, 'file')->widget(FileInput::classname(), [
-//        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+
+            'showRemove' => false,
+            'showUpload' => false,
+            'showPreview' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseLabel' =>  'Explorar'
+
+        ],
     ]);
 
     ?>

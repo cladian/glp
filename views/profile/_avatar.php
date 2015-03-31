@@ -27,18 +27,19 @@ use yii\helpers\Url;
     </div>
     </center>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
     <div class="form-group">
     <?=
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'showCaption' => false,
             'showRemove' => false,
             'showUpload' => false,
+            'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',
             'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' =>  'Seleccione la fotografía',
+            'browseLabel' =>  'Explorar',
+
             'initialPreview'=>[
                //     Html::img($model->getImageUrl(), ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
 
@@ -50,12 +51,12 @@ use yii\helpers\Url;
     </div>
 </div>
 <center>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? 'Crear' : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 
                 <?= Html::a('Cancelar', ['/profile/viewown'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>

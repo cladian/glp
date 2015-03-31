@@ -17,6 +17,7 @@ use app\models\TopicDocument;
 use app\models\TopicVideo;
 use app\models\TopicImagen;
 use app\models\Document;
+
 /**
  * TopicController implements the CRUD actions for Topic model.
  */
@@ -63,15 +64,10 @@ class TopicController extends Controller
 
         $modelPost = new Post();
 
-
-
-
         if ($modelPost->load(Yii::$app->request->post()) ) {
             $modelPost->save();
             $modelPost = new Post();
             $modelPost->content=null;
-
-
        }
         $modelPost->topic_id=$id;
         $modelPost->user_id=Yii::$app->user->id;
@@ -91,6 +87,7 @@ class TopicController extends Controller
      */
     public function actionCreate($id)
     {
+
 
         $model = new Topic();
         $model->user_id = Yii::$app->user->id;

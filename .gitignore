@@ -16,4 +16,4 @@ config/db.php
 
 config/db.php
 
-config/db.php
+web/upload/*
