@@ -59,6 +59,11 @@ $this->title = 'Inscripciones';
                 return $data->user->username;
             }
         ],
+
+
+
+
+
         [
             'attribute' => 'created_at',
         ],

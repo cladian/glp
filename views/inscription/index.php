@@ -101,7 +101,6 @@ $this->title = 'Inscripciones';
             'headerOptions' => ['class' => 'kartik-sheet-style'],
         ],
 
-
     ];
 
     echo \kartik\grid\GridView::widget([

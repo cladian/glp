@@ -17,6 +17,7 @@ use app\models\TopicDocument;
 use app\models\TopicVideo;
 use app\models\TopicImagen;
 use app\models\Document;
+use app\models\PostSearch;
 
 /**
  * TopicController implements the CRUD actions for Topic model.
@@ -62,6 +63,9 @@ class TopicController extends Controller
     public function actionView($id)
     {
 
+        $searchPost = new PostSearch();
+        $dataProviderPost = $searchPost->searchByTopic(Yii::$app->request->queryParams, $id);
+
         $modelPost = new Post();
 
         if ($modelPost->load(Yii::$app->request->post()) ) {
@@ -74,6 +78,8 @@ class TopicController extends Controller
 
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchPost' => $searchPost,
+            'dataProviderPost' => $dataProviderPost,
             'modelPost'=>$modelPost,
             'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
 

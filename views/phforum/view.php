@@ -68,115 +68,133 @@ $this->title = $model->name;
 </div>
 
 
-<!--INICIOVista Temas-->
+<div class="tabs-x align-center tabs-above tab-bordered">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#one2" data-toggle="tab">Temas</a></li>
+        <li><a href="#two2" data-toggle="tab">Documentos</a></li>
+        <li><a href="#three2" data-toggle="tab">Videos</a></li>
+        <li><a href="#four2" data-toggle="tab">Imagenes</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="one2">
 
-<div class="panel panel-green">
-    <div class="panel-heading">Temas</div>
-    <div class="panel-body">
-        <?= GridView::widget([
-            'dataProvider' => $dataProviderTopic,
-            'filterModel' => $searchTopic,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+            <!--INICIOVista Temas-->
+            <br/>
+            <div class="panel panel-green">
+                <div class="panel-heading">Temas</div>
+                <div class="panel-body">
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderTopic,
+                        'filterModel' => $searchTopic,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-                'content:ntext',
+                            'content:ntext',
 //                'status',
-                [
-                    'attribute' => 'status',
-                    /* 'value'=> function ($data){ return $data->question->text;}*/
-                    'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
-                    'value' => function ($model) {
-                            if ($rel = $model->getStatus($model->status)) {
-                                return $rel;
-                            }
-                        },
+                            [
+                                'attribute' => 'status',
+                                /* 'value'=> function ($data){ return $data->question->text;}*/
+                                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                                'value' => function ($model) {
+                                        if ($rel = $model->getStatus($model->status)) {
+                                            return $rel;
+                                        }
+                                    },
 
-                ],
-                'created_at',
+                            ],
+                            'created_at',
 //                'updated_at',
-                // 'user_id',
-                // 'phforum_id',
+                            // 'user_id',
+                            // 'phforum_id',
 
-                ['class' => 'yii\grid\ActionColumn'],
-                ['class' => 'yii\grid\ActionColumn',
-                    'template' => '{view} {update}',
-                    'buttons' => [
-                        'view' => function ($url, $model, $key) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
-                            },
-                        'update' => function ($url, $model, $key) {
-                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['event/update', 'id' => $key]);
-                            },
+                            ['class' => 'yii\grid\ActionColumn'],
+                            ['class' => 'yii\grid\ActionColumn',
+                                'template' => '{view} {update}',
+                                'buttons' => [
+                                    'view' => function ($url, $model, $key) {
+                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
+                                        },
+                                    'update' => function ($url, $model, $key) {
+                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['event/update', 'id' => $key]);
+                                        },
 
-                    ]
-                ],
-            ],
-        ]); ?>
-    </div>
-</div>
+                                ]
+                            ],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
 
 
-    <p>
+            <p>
 
-        <?= Html::a(\Yii::$app->params['btnTema'], ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a(\Yii::$app->params['btnTema'], ['topic/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
 
-<!--FIN Vista Temas-->
+                <!--FIN Vista Temas-->
 
-<!--INICIOVista Documentos-->
+        </div>
+        <br/>
+        <div class="tab-pane" id="two2">
 
-    <<div class="panel panel-green">
-    <div class="panel-heading">Documentos</div>
-    <div class="panel-body">
-        <?= GridView::widget([
-            'dataProvider' => $dataProviderPDocument,
-            'filterModel' => $searchPDocument,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+
+            <!--INICIOVista Documentos-->
+
+            <div class="panel panel-green">
+                <div class="panel-heading">Documentos</div>
+                <div class="panel-body">
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderPDocument,
+                        'filterModel' => $searchPDocument,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
 //                'phforum_id',
 //                'document_id',
-                [
-                    'attribute' => 'document_id',
-                    'value' => function ($data) {
-                            return $data->document->file;
-                        }
-                ],
-                'created_at',
+                            [
+                                'attribute' => 'document_id',
+                                'value' => function ($data) {
+                                        return $data->document->file;
+                                    }
+                            ],
+                            'created_at',
 //                'updated_at',
 
-                ['class' => 'yii\grid\ActionColumn'],
-            ],
-        ]); ?>
-    </div>
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                </div>
 
-</div>
-<p>
-<?= Html::a(\Yii::$app->params['btnSubirD'], ['phforum/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+            </div>
+            <p>
+                <?= Html::a(\Yii::$app->params['btnSubirD'], ['phforum/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
 
-<!--FIN Vista Documentos-->
+                <!--FIN Vista Documentos-->
 
-<!--INICIOVista Videos-->
+        </div>
+        <div class="tab-pane" id="three2">
 
-<div class="panel panel-green">
-    <div class="panel-heading">Videos</div>
-    <div class="panel-body">
-        <?= GridView::widget([
-            'dataProvider' => $dataProviderPVideo,
-            'filterModel' => $searchPVideo,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+            <!--INICIOVista Videos-->
+
+            <div class="panel panel-green">
+                <div class="panel-heading">Videos</div>
+                <div class="panel-body">
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderPVideo,
+                        'filterModel' => $searchPVideo,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
 //                'phforum_id',
-                'video_id',
-                'created_at',
+                            'video_id',
+                            'created_at',
 //                'updated_at',
 
-                ['class' => 'yii\grid\ActionColumn'],
-            ],
-        ]); ?>
-    </div>
-</div>
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
 
 
             <p>
@@ -184,43 +202,60 @@ $this->title = $model->name;
                 <?= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
 
 
-<!--FIN Vista Videos-->
+                <!--FIN Vista Videos-->
 
-<!--INICIOVista Imagenes-->
+        </div>
+        <div class="tab-pane" id="four2">
 
-<div class="panel panel-green">
-    <div class="panel-heading">Imagenes</div>
-    <div class="panel-body">
+            <!--INICIOVista Imagenes-->
 
-        <?= GridView::widget([
-            'dataProvider' => $dataProviderPImagen,
-            'filterModel' => $searchPImagen,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
+            <div class="panel panel-green">
+                <div class="panel-heading">Imagenes</div>
+                <div class="panel-body">
+
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderPImagen,
+                        'filterModel' => $searchPImagen,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
 //                'phforum_id',
 //                'imagen_id',
-                [
-                    'label'=>'Imagen',
-                    'format'=>'raw',
+                            [
+                                'label'=>'Imagen',
+                                'format'=>'raw',
 
-                    'value' => function($data){
-                            $url=   \Yii::$app->params['foroImgs'].$data->imagen->file;
-                            return Html::img($url,['class' => 'thumbnail', 'style' => 'height:100px;']);
-                        }
-                ],
-                'created_at',
+                                'value' => function($data){
+                                        $url=   \Yii::$app->params['foroImgs'].$data->imagen->file;
+                                        return Html::img($url,['class' => 'thumbnail', 'style' => 'height:100px;']);
+                                    }
+                            ],
+                            'created_at',
 //                'updated_at',
 
-                ['class' => 'yii\grid\ActionColumn'],
-            ],
-        ]); ?>
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
+
+
+            <p>
+
+
+                <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+                <!--FIN Vista Imagenes-->
+
+        </div>
     </div>
 </div>
 
 
-                <p>
 
 
-                    <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-<!--FIN Vista Imagenes-->
+
+
+
+
+
+
