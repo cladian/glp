@@ -73,8 +73,8 @@ use yii\helpers\Html;
                     <?= $modelProfile->name . ' ' . $modelProfile->lastname;; ?></h5>
                 <address>
 
-                    <strong>phone: </strong><?= $modelProfile->phone_number; ?> <br>
-                    <strong>mail: </strong><?= $model->user->email; ?> <br>
+                    <strong>Teléfono: </strong><?= $modelProfile->phone_number; ?> <br>
+                    <strong>Correo: </strong><?= $model->user->email; ?> <br>
 
                 </address>
             <?php } else { ?>

@@ -607,6 +607,7 @@ class InscriptionController extends Controller
 
         //Vacio para la función  Eventanswer  Answer
         $model = new Eventanswer();
+        $modelInscription = $this->findModel($id);
 
         //Enviamos parametro registros de preguntas por ID Inscripción
         // Cargo todas las preguntas por evento de la inscripción
@@ -633,7 +634,7 @@ class InscriptionController extends Controller
             $this->calculate($id);
             //++++++++++++++++++++++++++++++++++++++++
 
-            if ($model->complete == 100)
+            if ($modelInscription->complete == 100)
                 return $this->redirect(['viewown', 'id' => $model->id]);
             else
                 return $this->redirect(['answer', 'id' => $id]);
