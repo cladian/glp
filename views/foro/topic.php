@@ -1,4 +1,4 @@
-<a name="sube"></a><?php
+<?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -7,13 +7,15 @@ use yii\helpers\ArrayHelper;
 
 use app\models\PhforumDocument;
 use app\models\PhforumImagens;
-
+use kartik\widgets\FileInput;
 
 use app\models\Document;
 use app\models\Imagen;
 
+
 ?>
 
+<a name="sube"></a>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -147,7 +149,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <div class="panel-footer">
             <!-- Boton para bajar -->
-&nbsp;
+            &nbsp;
             <a href="#sube" class="pull-right">
                 <button type="button" class="glyphicon glyphicon-chevron-up btn btn-default btn-xs">
                 </button>
@@ -166,9 +168,32 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <div class="panel-body">
 
                 <div class="post-form">
-                    <?php $form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
+                    <!--                    --><?php //$form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
                     <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
+
                     <!--    --><? //= $form->field($model, 'status')->textInput() ?>
+                    <div class="alert alert-success" role="alert">
+                        <p>Documentos</p>
+                        <?= $form->field($modelDocument, 'name')->textInput(['maxlength' => 250]) ?>
+
+                        <?=
+                        // Usage with ActiveForm and model
+                        $form->field($modelDocument, 'file')->widget(FileInput::classname(), [
+                            'pluginOptions' => [
+
+                                'showRemove' => false,
+                                'showUpload' => false,
+                                'showPreview' => false,
+                                'browseClass' => 'btn btn-primary btn-block',
+                                'browseLabel' =>  'Explorar'
+
+                            ],
+                        ]);
+
+                        ?>
+
+                    </div>
 
                     <div class="form-group">
                         <?= Html::submitButton($modelPost->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -210,9 +235,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
                 <?= Html::a('Leer más ...', ['/foro/topic', 'id' => $post->topic_id], ['class' => 'btn btn-default btn-xs']) ?>
-<!--                <div>
+                <!--                <div>
 
-                    <span class="label label-success"><?/*= $post->user->username */?></span>
+                    <span class="label label-success"><? /*= $post->user->username */ ?></span>
                 </div>-->
 
                 <hr>

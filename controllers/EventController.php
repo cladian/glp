@@ -35,7 +35,6 @@ class EventController extends Controller
                         'allow' => true,
                         'roles' => ['asocam', 'sysadmin'],
                     ],
-
                 ],
             ],
             'verbs' => [

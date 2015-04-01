@@ -9,6 +9,7 @@ use app\models\Registertype;
 use Yii;
 use app\models\Inscription;
 use app\models\Profile;
+use app\models\User;
 use app\models\Logistic;
 use app\models\Answer;
 use app\models\EventanswerSearch;
@@ -22,13 +23,10 @@ use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 // BUILD FORM
 use yii\data\ActiveDataProvider;
-
-
-
-
 
 
 // links and alerts
@@ -99,6 +97,7 @@ class InscriptionController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
     /**
      * Displays a single Inscription model.
      * @param integer $id
@@ -180,7 +179,7 @@ class InscriptionController extends Controller
             'dataProviderAnswer' => $dataProviderAnswer,
             'searchModelRequest' => $searchModelRequest,
             'dataProviderRequest' => $dataProviderRequest,
-            'modelProfile'=>$modelProfile
+            'modelProfile' => $modelProfile
         ]);
     }
 
@@ -263,11 +262,11 @@ class InscriptionController extends Controller
                 'dataProviderAnswer' => $dataProviderAnswer,
                 'searchModelRequest' => $searchModelRequest,
                 'dataProviderRequest' => $dataProviderRequest,
-                'modelProfile'=>$modelProfile,
+                'modelProfile' => $modelProfile,
 
             ]);
         }
-        throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);
+        throw new \yii\web\HttpException(403, \Yii::$app->params['errorOwn']);
 
     }
 
@@ -297,9 +296,9 @@ class InscriptionController extends Controller
     public function actionCreateown($id)
     {
         $model = new Inscription();
-        $modelLogistic =new Logistic();
+        $modelLogistic = new Logistic();
 
-            //Almacenamiento de ID de usuario logeado
+        //Almacenamiento de ID de usuario logeado
         $model->user_id = Yii::$app->user->identity->id;
         $model->event_id = $id;
 
@@ -313,7 +312,7 @@ class InscriptionController extends Controller
         }
 
         // Si es una inscripción nueva
-        if (    $model->load(Yii::$app->request->post()) &&  $modelLogistic->load(Yii::$app->request->post()) ) {
+        if ($model->load(Yii::$app->request->post()) && $modelLogistic->load(Yii::$app->request->post())) {
 
             $model->save();
             //Almacenamiento de registro Logistica en Blanco
@@ -386,9 +385,9 @@ class InscriptionController extends Controller
         if ($this->actionOwn($id, Yii::$app->user->id)) {
             // búsqueda de modelo por dos parámetros
             $model = $this->findModelown($id, Yii::$app->user->id);
-            $modelLogistic = Logistic::findOne([ 'inscription_id' => $id]);
+            $modelLogistic = Logistic::findOne(['inscription_id' => $id]);
 
-            if (   $modelLogistic->load(Yii::$app->request->post())&&  $model->load(Yii::$app->request->post())   ) {
+            if ($modelLogistic->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
                 $model->save();
                 $modelLogistic->save();
@@ -398,7 +397,10 @@ class InscriptionController extends Controller
                 $this->calculate($model->id);
                 //++++++++++++++++++++++++++++++++++++++++
 
-                return $this->redirect(['eventanswer', 'id' => $model->id]);
+                if ($model->complete == 100)
+                    return $this->redirect(['viewown', 'id' => $model->id]);
+                else
+                    return $this->redirect(['eventanswer', 'id' => $model->id]);
             } else {
 
                 return $this->render('updateown', [
@@ -407,7 +409,7 @@ class InscriptionController extends Controller
                 ]);
             }
         }
-        throw new \yii\web\HttpException(403,\Yii::$app->params['errorOwn']);
+        throw new \yii\web\HttpException(403, \Yii::$app->params['errorOwn']);
     }
 
     /**
@@ -525,33 +527,35 @@ class InscriptionController extends Controller
     {
         return Inscription::find()->where(['user_id' => $user, 'id' => $id])->count();
     }
+
     /*
      * Función para calcular los porcentajes de avance
      */
-    public function calculate($id){
+    public function calculate($id)
+    {
         //modelo para hacer actualización
-        $model =$this->findModel($id);
+        $model = $this->findModel($id);
 
         // contador de Logistic
-        $items=0;
-        $modelLogistic=Logistic::find()->where(['inscription_id'=>$id])->one();
+        $items = 0;
+        $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
         $itemsNotNull = 0;
 
 
-        If ($modelLogistic->residence){
-            $items=3;
+        If ($modelLogistic->residence) {
+            $items = 3;
             //1
             if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
             //2
-            if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
+            if ($modelLogistic->accommodationdatein != NULL) $itemsNotNull++;
             //3
             if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
-        }else{
-            $items=11;
+        } else {
+            $items = 11;
             //1
             if ($modelLogistic->leavingonorigincity != NULL) $itemsNotNull++;
             //2
-            if ($modelLogistic->leavingonairline !=NULL) $itemsNotNull++;
+            if ($modelLogistic->leavingonairline != NULL) $itemsNotNull++;
             //3
             if ($modelLogistic->leavingonflightnumber != NULL) $itemsNotNull++;
             //4
@@ -567,95 +571,97 @@ class InscriptionController extends Controller
             //9
             if ($modelLogistic->returningonhour != NULL) $itemsNotNull++;
             //10
-            if ($modelLogistic->accommodationdatein != NULL)$itemsNotNull++;
+            if ($modelLogistic->accommodationdatein != NULL) $itemsNotNull++;
             //11
             if ($modelLogistic->accommodationdateout != NULL) $itemsNotNull++;
         }
 
-        $model->complete_quiz=100;
-        if ($model->getAnswers()->count()>0)
-            $model->complete_quiz=round($model->getAnswers()->andWhere('LENGTH(reply)>0')->count()*100/ $model->getAnswers()->count());
+        $model->complete_quiz = 100;
+        if ($model->getAnswers()->count() > 0)
+            $model->complete_quiz = round($model->getAnswers()->andWhere('LENGTH(reply)>0')->count() * 100 / $model->getAnswers()->count());
 
-        $model->complete_logistic=round($itemsNotNull*100/$items);
+        $model->complete_logistic = round($itemsNotNull * 100 / $items);
 
 
-        $model->complete_eventquiz=100;
-        if ($model->getEventanswers()->count()>0)
-            $model->complete_eventquiz=round($model->getEventanswers()->andWhere('LENGTH(reply)>0')->count()*100/$model->getEventanswers()->count());
+        $model->complete_eventquiz = 100;
+        if ($model->getEventanswers()->count() > 0)
+            $model->complete_eventquiz = round($model->getEventanswers()->andWhere('LENGTH(reply)>0')->count() * 100 / $model->getEventanswers()->count());
 
-        $model->complete=round(($model->complete_quiz+ $model->complete_eventquiz+$model->complete_logistic)/3);
+        $model->complete = round(($model->complete_quiz + $model->complete_eventquiz + $model->complete_logistic) / 3);
 
-        if ($model->complete==100)
-        {
-            $html='<h4>Contenido </h4>';
-            $html.='<blockquote>'.$model->text.'</blockquote>';
-            $html.='<kbd>'.$model->user->username.'</kbd>';
-            $html.='<h4>Inquietud previa </h4>';
-            $html.='<p>'.$model->request->question.'</p>';
-            $url= \Yii::$app->params['webRoot'].Url::to(['reply/create/', 'id' => $id]);
+        if ($model->complete == 100) {
+            $html = '<h4>Contenido </h4>';
+            $html .= '<kbd>' . $model->user->id . '</kbd>';
+            $html .= '<h4>Inquietud previa </h4>';
+            $url = \Yii::$app->params['webRoot'] . Url::to(['reply/create/', 'id' => $id]);
 
-            $this->sendMail($model->request_id,$html, $url );
+            $this->sendMail($model->id, $html, $url);
 
         }
         $model->save();
     }
+
 // Pasar el $id de la Inscrpción
- public function actionEventanswer($id){
+    public function actionEventanswer($id)
+    {
 
-     //Vacio para la función  Eventanswer  Answer
-     $model= new Eventanswer();
-
-     //Enviamos parametro registros de preguntas por ID Inscripción
-     // Cargo todas las preguntas por evento de la inscripción
-     $searchModel = Eventanswer::find()->where(['inscription_id'=>$id])->indexBy('id');
-     $dataProvider = new ActiveDataProvider([
-         'query' => $searchModel,
-     ]);
-
-     //Guardar multiples modelos
-     // Modificar los modelos de trabajo Eventanswer::  Answers::
-     $models=$dataProvider->getModels();
-     if (Eventanswer::loadMultiple($models, Yii::$app->request->post()) && Eventanswer::validateMultiple($models)) {
-         $count = 0;
-         foreach ($models as $index => $item) {
-             // populate and save records for each model
-             if ($item->save()) {
-                 $count++;
-             }
-         }
-         Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
-
-         //++++++++++++++++++++++++++++++++++++++++
-         // CALCULATE
-         $this->calculate($id);
-         //++++++++++++++++++++++++++++++++++++++++
-
-         return $this->redirect(['answer', 'id' => $id]);
-     }
-
-
-     return $this->render('_eventanswers', [
-         'searchModel' => $searchModel,
-         'dataProvider' => $dataProvider,
-         'model' => $model,
-         'id'=>$id,
-     ]);
-    }
-
-    public function actionAnswer($id){
         //Vacio para la función  Eventanswer  Answer
-        $model= new Answer();
+        $model = new Eventanswer();
+        $modelInscription = $this->findModel($id);
 
         //Enviamos parametro registros de preguntas por ID Inscripción
         // Cargo todas las preguntas por evento de la inscripción
-        $searchModel = Answer::find()->where(['inscription_id'=>$id])->indexBy('id');
+        $searchModel = Eventanswer::find()->where(['inscription_id' => $id])->indexBy('id');
         $dataProvider = new ActiveDataProvider([
             'query' => $searchModel,
         ]);
 
         //Guardar multiples modelos
         // Modificar los modelos de trabajo Eventanswer::  Answers::
-        $models=$dataProvider->getModels();
+        $models = $dataProvider->getModels();
+        if (Eventanswer::loadMultiple($models, Yii::$app->request->post()) && Eventanswer::validateMultiple($models)) {
+            $count = 0;
+            foreach ($models as $index => $item) {
+                // populate and save records for each model
+                if ($item->save()) {
+                    $count++;
+                }
+            }
+            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
+
+            //++++++++++++++++++++++++++++++++++++++++
+            // CALCULATE
+            $this->calculate($id);
+            //++++++++++++++++++++++++++++++++++++++++
+
+            if ($modelInscription->complete == 100)
+                return $this->redirect(['viewown', 'id' => $model->id]);
+            else
+                return $this->redirect(['answer', 'id' => $id]);
+        }
+        return $this->render('_eventanswers', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'id' => $id,
+        ]);
+    }
+
+    public function actionAnswer($id)
+    {
+        //Vacio para la función  Eventanswer  Answer
+        $model = new Answer();
+
+        //Enviamos parametro registros de preguntas por ID Inscripción
+        // Cargo todas las preguntas por evento de la inscripción
+        $searchModel = Answer::find()->where(['inscription_id' => $id])->indexBy('id');
+        $dataProvider = new ActiveDataProvider([
+            'query' => $searchModel,
+        ]);
+
+        //Guardar multiples modelos
+        // Modificar los modelos de trabajo Eventanswer::  Answers::
+        $models = $dataProvider->getModels();
         if (Answer::loadMultiple($models, Yii::$app->request->post()) && Answer::validateMultiple($models)) {
             $count = 0;
             foreach ($models as $index => $item) {
@@ -681,16 +687,17 @@ class InscriptionController extends Controller
             'id' => $id,
         ]);
     }
+
     // sendmail
 
     protected function sendMail($inscription_id, $message, $url)
     {
-        $title="Respuesta a solicitud";
-        $content=$message;
-        $modelReply=User::find()->where(Yii::$app->params['mail']);
-        foreach ($modelReply as $reply){
+        $title = "Solicitud Completa";
+        $content = $message;
+        $modelUsers = User::find()->where(['id' => Yii::$app->user->identity->id])->all();
+        foreach ($modelUsers as $user) {
             // Contenido, tipo  1=Notificacion URL
-            $reply->user->sendEmail($content, $url, $title);
+            $user->sendEmail($content, $url, $title);
         }
 
 
