@@ -60,6 +60,17 @@ $this->title = 'Inscripciones';
                 return $data->user->username;
             }
         ],
+
+        [
+            'attribute' => 'Avance',
+//            'headerOptions' => ['style'=>'align:center'],
+//            'vAlign' => 'middle',
+            'value' => function ($data) {
+                    return $data->complete."%";
+                }
+
+
+        ],
         [
             'attribute' => 'created_at',
         ],

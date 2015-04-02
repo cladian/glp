@@ -64,4 +64,30 @@ class TopicImagenSearch extends TopicImagen
 
         return $dataProvider;
     }
+
+    public function searchByTopic($params, $id)
+    {
+        $query = TopicImagen::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'topic_id' => $id,
+            'imagen_id' => $this->imagen_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ]);
+
+        return $dataProvider;
+    }
 }

@@ -30,12 +30,13 @@ use kartik\widgets\FileInput;
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'showCaption' => false,
             'showRemove' => false,
             'showUpload' => false,
+            'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',
             'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' =>  'Seleccione la fotografía',
+            'browseLabel' =>  'Explorar',
+
             'initialPreview'=>[
                 //     Html::img($model->getImageUrl(), ['class' => 'file-preview-image', 'alt' => 'Default', 'title' => 'default']),
 
