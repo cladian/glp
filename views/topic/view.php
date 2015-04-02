@@ -23,7 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <ul class="nav nav-tabs">
             <li class="active"><a href="#one2" data-toggle="tab">Información del Tema</a></li>
             <li><a href="#two2" data-toggle="tab">Aportes</a></li>
-<!--            <li><a href="#three2" data-toggle="tab">Three</a></li>-->
+            <li><a href="#three2" data-toggle="tab">Documento</a></li>
+            <li><a href="#four2" data-toggle="tab">Imagen</a></li>
+            <li><a href="#five2" data-toggle="tab">Video</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="one2">
@@ -74,9 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ]) ?>
 
-                <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+
                 <!--        --><?//= Html::a('Crear Aporte', ['post/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
             </div>
             <div class="tab-pane" id="two2">
@@ -89,10 +89,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProviderPost,
-                        'filterModel' => $searchPost,
+//                        'filterModel' => $searchPost,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
                             'content:ntext',
 //            'created_at',
@@ -107,7 +106,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                             return $rel;
                                         }
                                     },
-
                             ],
                             // 'topic_id',
                             // 'user_id',
@@ -122,7 +120,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'update' => function ($url, $model, $key) {
                                             return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['post/update', 'id' => $key]);
                                         },
-
                                 ]
                             ],
                         ],
@@ -130,9 +127,86 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 </div>
             </div>
-<!--            <div class="tab-pane" id="three2">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis-->
-<!--                pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae.-->
-<!--            </div>-->
+            <div class="tab-pane" id="three2">
+
+                <br/>
+                <div class="topic-document-index">
+
+
+
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderPostDocument,
+//                        'filterModel' => $searchTopicDocument,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+
+                            'topic_id',
+                            'document_id',
+                            'created_at',
+                            'updated_at',
+
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+
+                </div>
+
+                <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+
+
+            </div>
+            <div class="tab-pane" id="four2">
+
+                <div class="topic-imagen-index">
+
+
+
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderTopicImagen,
+//                        'filterModel' => $searchTopicImagen,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+
+                            'topic_id',
+                            'imagen_id',
+                            'created_at',
+                            'updated_at',
+
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+
+                </div>
+
+                <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+            </div>
+
+            <div class="tab-pane" id="five2">
+
+                <div class="topic-video-index">
+
+
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProviderTopicVideo,
+//                        'filterModel' => $searchTopicVideo,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+
+                            'topic_id',
+                            'video_id',
+                            'created_at',
+                            'updated_at',
+
+                            ['class' => 'yii\grid\ActionColumn'],
+                        ],
+                    ]); ?>
+
+                </div>
+
+                <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+
+            </div>
+
         </div>
         </div>
         </div>

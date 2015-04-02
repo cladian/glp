@@ -18,6 +18,9 @@ use app\models\TopicVideo;
 use app\models\TopicImagen;
 use app\models\Document;
 use app\models\PostSearch;
+use app\models\TopicDocumentSearch;
+use app\models\TopicImagenSearch;
+use app\models\TopicVideoSearch;
 
 /**
  * TopicController implements the CRUD actions for Topic model.
@@ -66,20 +69,40 @@ class TopicController extends Controller
         $searchPost = new PostSearch();
         $dataProviderPost = $searchPost->searchByTopic(Yii::$app->request->queryParams, $id);
 
-        $modelPost = new Post();
+        $searchTopicDocument = new TopicDocumentSearch();
+        $dataProviderPostDocument = $searchTopicDocument->searchByTopic(Yii::$app->request->queryParams, $id);
 
+        $searchTopicImagen = new TopicImagenSearch();
+        $dataProviderTopicImagen = $searchTopicImagen->searchByTopic(Yii::$app->request->queryParams, $id);
+
+        $searchTopicVideo = new TopicVideoSearch();
+        $dataProviderTopicVideo = $searchTopicVideo->searchByTopic(Yii::$app->request->queryParams, $id);
+
+        $modelPost = new Post();
+        $modelPost->topic_id=$id;
+        $modelPost->user_id=Yii::$app->user->id;
         if ($modelPost->load(Yii::$app->request->post()) ) {
             $modelPost->save();
             $modelPost = new Post();
             $modelPost->content=null;
        }
-        $modelPost->topic_id=$id;
-        $modelPost->user_id=Yii::$app->user->id;
+
 
         return $this->render('view', [
             'model' => $this->findModel($id),
+
             'searchPost' => $searchPost,
             'dataProviderPost' => $dataProviderPost,
+
+            'searchTopicDocument' => $searchTopicDocument,
+            'dataProviderPostDocument' => $dataProviderPostDocument,
+
+            'searchTopicImagen' => $searchTopicImagen,
+            'dataProviderTopicImagen' => $dataProviderTopicImagen,
+
+            'searchTopicVideo' => $searchTopicVideo,
+            'dataProviderTopicVideo' => $dataProviderTopicVideo,
+
             'modelPost'=>$modelPost,
             'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
 
@@ -93,8 +116,6 @@ class TopicController extends Controller
      */
     public function actionCreate($id)
     {
-
-
         $model = new Topic();
         $model->user_id = Yii::$app->user->id;
         $model->phforum_id= $id;

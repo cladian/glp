@@ -60,8 +60,12 @@ $this->title = 'Inscripciones';
             }
         ],
 
-
-
+        [
+            'attribute' => 'Avance',
+            'value' => function ($data) {
+                    return $data->complete."%";
+                }
+        ],
 
 
         [
