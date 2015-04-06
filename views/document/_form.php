@@ -8,6 +8,9 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Document */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="panel panel-green">
+    <div class="panel-heading">Crear Documento</div>
+    <div class="panel-body">
 
 <div class="document-form">
 
@@ -55,4 +58,6 @@ use kartik\widgets\FileInput;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

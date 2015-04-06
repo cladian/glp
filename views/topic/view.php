@@ -11,9 +11,15 @@ use yii\grid\GridView;
 /* @var $model app\models\Topic */
 
 $this->title = $model->content;
-$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = $this->title;
+
 ?>
+    <div class="regresar">
+
+        <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->phforum_id], ['class' => 'btn btn-default'])?>
+
+    </div>
 <div class="panel panel-green">
     <div class="panel-heading">Temas</div>
     <div class="panel-body">

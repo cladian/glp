@@ -41,7 +41,7 @@ $this->title = $model->name;
                             'meeting_at',
                             'memory_at',
                             'content:ntext',
-                            'topic_number',
+//                            'topic_number',
 //            'event_id',
                             [                    // the owner name of the model
                                 'label' => 'Evento',
@@ -113,15 +113,15 @@ $this->title = $model->name;
                             // 'user_id',
                             // 'phforum_id',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+//                            ['class' => 'yii\grid\ActionColumn'],
                             ['class' => 'yii\grid\ActionColumn',
                                 'template' => '{view} {update}',
                                 'buttons' => [
                                     'view' => function ($url, $model, $key) {
-                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
+                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['topic/view', 'id' => $key]);
                                         },
                                     'update' => function ($url, $model, $key) {
-                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['event/update', 'id' => $key]);
+                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['topic/update', 'id' => $key]);
                                         },
 
                                 ]
@@ -150,7 +150,7 @@ $this->title = $model->name;
                 <div class="panel-body">
                     <?= GridView::widget([
                         'dataProvider' => $dataProviderPDocument,
-//                        'filterModel' => $searchPDocument,
+                        'filterModel' => $searchPDocument,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
@@ -165,7 +165,23 @@ $this->title = $model->name;
                             'created_at',
 //                'updated_at',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+//                            ['class' => 'yii\grid\ActionColumn'],
+                            ['class' => 'yii\grid\ActionColumn',
+                                'template' => '{view} {delete}',
+                                'buttons' => [
+                                    'view' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-document/view','phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+                                        },
+//                                    'update' => function ($url, $model) {
+//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                                        },
+
+                    'delete' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-document/delete',  'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+                    },
+
+                                ]
+                            ],
                         ],
                     ]); ?>
                 </div>
@@ -191,11 +207,33 @@ $this->title = $model->name;
                             ['class' => 'yii\grid\SerialColumn'],
 
 //                'phforum_id',
-                            'video_id',
+//                            'video_id',
+                            [
+                                'attribute' => 'video_id',
+                                'value' => function ($data) {
+                                        return $data->video->name;
+                                    }
+                            ],
                             'created_at',
 //                'updated_at',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+//                            ['class' => 'yii\grid\ActionColumn'],
+                            ['class' => 'yii\grid\ActionColumn',
+                                'template' => '{view} {delete}',
+                                'buttons' => [
+                                    'view' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-video/view','phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
+                                        },
+//                                    'update' => function ($url, $model) {
+//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                                        },
+
+                                    'delete' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-video/delete',  'phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
+                                        },
+
+                                ]
+                            ],
                         ],
                     ]); ?>
                 </div>
@@ -238,7 +276,25 @@ $this->title = $model->name;
                             'created_at',
 //                'updated_at',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+//                            ['class' => 'yii\grid\ActionColumn'],
+
+                            ['class' => 'yii\grid\ActionColumn',
+                                'template' => '{view} {delete}',
+                                'buttons' => [
+                                    'view' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-imagen/view','phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
+                                        },
+//                                    'update' => function ($url, $model) {
+//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                                        },
+
+                                    'delete' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-imagen/delete',  'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
+                                        },
+
+                                ]
+                            ],
+
                         ],
                     ]); ?>
                 </div>

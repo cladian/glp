@@ -15,7 +15,7 @@ $this->title = $model->username;
 <div class="panel panel-primary">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
   <div class="panel-body">
-       
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -30,6 +30,7 @@ $this->title = $model->username;
 //            'updated_at',
         ],
     ]) ?>
+
     <p>
         <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
