@@ -196,7 +196,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
 
                     <div class="form-group">
-                        <?= Html::submitButton($modelPost->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                        <?= Html::submitButton($modelPost->isNewRecord ? \Yii::$app->params['btnPublicar'] : \Yii::$app->params['btnGuardar'], ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                     </div>
 
                     <?php ActiveForm::end(); ?>
