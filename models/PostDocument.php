@@ -54,7 +54,9 @@ class PostDocument extends \yii\db\ActiveRecord
         return [
             [['post_id', 'document_id'], 'required'],
             [['post_id', 'document_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -64,10 +66,10 @@ class PostDocument extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'post_id' => 'Post ID',
-            'document_id' => 'Document ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'post_id' => 'Aportes',
+            'document_id' => 'Documentos',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

@@ -10,10 +10,14 @@ use app\models\Event;
 /* @var $this yii\web\View */
 /* @var $model app\models\Phforum */
 /* @var $form yii\widgets\ActiveForm */
+$this->title = $model->name;
 ?>
 
+<div class="panel panel-green">
+    <div class="panel-heading"> <h4><?= $this->title = 'Actualización de Foro: ' . ' ' . $model->name;?> </h4></div>
+    <div class="panel-body">
 <div class="phforum-form">
-
+<?php  ?>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
@@ -71,7 +75,7 @@ use app\models\Event;
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'topic_number')->textInput() ?>
+<!--    --><?//= $form->field($model, 'topic_number')->textInput() ?>
 
 <!--    --><?//= $form->field($model, 'event_id')->textInput() ?>
 
@@ -90,7 +94,9 @@ use app\models\Event;
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'is_private')->textInput() ?>
+<!--    --><?//= $form->field($model, 'is_private')->textInput() ?>
+    <?= $form->field($model, 'is_private')->dropDownList([ '0' => 'NO','1' => 'SI'], [ 'prompt' => 'Seleccionar']) ?>
+
     <?= $form->field($model, 'status')->dropDownList([ '1' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
 
     <div class="form-group">
@@ -99,4 +105,9 @@ use app\models\Event;
 
     <?php ActiveForm::end(); ?>
 
+
 </div>
+</div>
+</div>
+
+

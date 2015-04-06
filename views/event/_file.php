@@ -23,13 +23,25 @@ use kartik\widgets\FileInput;
 
 
 <!--    --><?//= $form->field($model, 'file')->textarea(['rows' => 1]) ?>
+
+
     <?=
     // Usage with ActiveForm and model
     $form->field($model, 'file')->widget(FileInput::classname(), [
-//        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+
+            'showRemove' => false,
+            'showUpload' => false,
+            'showPreview' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseLabel' =>  'Explorar'
+
+        ],
     ]);
 
     ?>
+
+
 
     <?/*= $form->field($model, 'photo')->textarea(['rows' => 1]) */?>
 

@@ -21,9 +21,9 @@ use yii\widgets\ActiveForm;
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
-    <?= $form->field($model, 'topic_id')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
+<!--    --><?//= $form->field($model, 'topic_id')->textInput() ?>
+<!---->
+<!--    --><?//= $form->field($model, 'user_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

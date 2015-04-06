@@ -21,18 +21,22 @@ $this->title = $modelEvent->name;
                 <?= $this->render('/event/_detailinfo', ['model' => $modelEvent])?>
                 <div class="panel-footer">
                     
-                    <?= Html::a(\Yii::$app->params['btnInscribirme'], ['site/signup/'], ['class' => 'btn btn-success'])?>
-                  <!--   <?php
+                    <?/*= Html::a(\Yii::$app->params['btnInscribirme'], ['site/signup/'], ['class' => 'btn btn-success'])*/?>
+
+
+   <?php
                     // solo cuando es visitante, no registrado
                     if (Yii::$app->user->isGuest) {
-                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['site/signup/'], ['class' => 'btn btn-success pull-right']);
+                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['site/login/'], ['class' => 'btn btn-success ']);
 
                     } else {
 
-                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['inscription/createown/', 'id' => $modelEvent->id], ['class' => 'btn btn-success pull-right ']);
+                        echo Html::a(\Yii::$app->params['btnInscribirme'], ['inscription/createown/', 'id' => $modelEvent->id], ['class' => 'btn btn-success  ']);
 
                     }?>
- -->
+
+
+
                 </div>
             </div>
         </div>
@@ -66,8 +70,7 @@ $this->title = $modelEvent->name;
                     <div role="tabpanel" class="tab-pane" id="settings">
                           <h3>Archivo PDF: </h3><?= Html::encode($modelEvent->file) ?><br>
                           <hr><h3>Requerimientos: </h3><?= Html::encode($modelEvent->requirements) ?>
-                          
-                          
+
                     </div>
                   </div>
 
@@ -75,7 +78,6 @@ $this->title = $modelEvent->name;
               </div>
             </div>
         </div>
-
 
         <!--END Gestión de Proyectos-->
         <!--Gestión de Proyectos-->

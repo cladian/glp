@@ -59,6 +59,15 @@ $this->title = 'Inscripciones';
                 return $data->user->username;
             }
         ],
+
+        [
+            'attribute' => 'Avance',
+            'value' => function ($data) {
+                    return $data->complete."%";
+                }
+        ],
+
+
         [
             'attribute' => 'created_at',
         ],

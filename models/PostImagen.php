@@ -54,7 +54,9 @@ class PostImagen extends \yii\db\ActiveRecord
         return [
             [['post_id', 'imagen_id'], 'required'],
             [['post_id', 'imagen_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -64,10 +66,10 @@ class PostImagen extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'post_id' => 'Post ID',
-            'imagen_id' => 'Imagen ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'post_id' => 'Aporte',
+            'imagen_id' => 'Imagen',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

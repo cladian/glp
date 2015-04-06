@@ -3,6 +3,7 @@
 //    \Yii::$app->params['contactEmail']
 return [
     'webRoot'=>'http://www.cladian.net',
+    'mail'=>'team@cladian.com',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',

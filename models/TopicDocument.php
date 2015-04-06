@@ -54,7 +54,9 @@ class TopicDocument extends \yii\db\ActiveRecord
         return [
             [['topic_id', 'document_id'], 'required'],
             [['topic_id', 'document_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -64,10 +66,10 @@ class TopicDocument extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'topic_id' => 'Topic ID',
-            'document_id' => 'Document ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'topic_id' => 'Tema',
+            'document_id' => 'Documento',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

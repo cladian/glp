@@ -52,7 +52,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                        aria-controls="collapseOne" style="color:white;">
-                        Información de Inscripción
+                        Información de Inscripción <span class="pull-right"><?= $model->complete;  ?>%</span>
                     </a>
                 </h5>
             </div>
@@ -108,8 +108,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             </div>
         </div>
 
-
-
         <div class="panel panel-green">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
@@ -126,8 +124,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </div>
             </div>
         </div>
-
-
 
         <div class="panel panel-danger">
             <div class="panel-heading" role="tab" id="heading5">

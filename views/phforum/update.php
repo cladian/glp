@@ -5,11 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Phforum */
 
-$this->title = 'Actualización de Foro: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Phforums', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+
+
 ?>
+<div class="regresar">
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
 <div class="phforum-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
