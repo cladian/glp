@@ -10,34 +10,21 @@ use app\models\Imagen;
 
 
 ?>
+<?php
+// Mensaje de error si no existen Foros activos
+if (!$model):?>
+<div class="panel panel-primary">
+    <div class="panel-heading">No existen Foros Activos</div>
+    <div class="panel-body">
+       <p>Estimado participante, no existen foros activos en este momento.</p>
 
-<div class="row">
-    <!--<center>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-primary btn-lg active">
-          <span style="font-size:30px;"class="glyphicon glyphicon-comment" aria-hidden="true"></span> <br> <hr>
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> Foro
-      </label>
-      <label class="btn btn-primary btn-lg">
-          <span style="font-size:30px;"class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <br> <hr>
-        <input type="radio" name="options" id="option2" autocomplete="off">
-      </label>
-      <label class="btn btn-primary btn-lg">
-          <span style="font-size:30px;"class="glyphicon glyphicon-play" aria-hidden="true"></span> <br> <hr>
-        <input type="radio" name="options" id="option3" autocomplete="off"> Multimendia
-      </label>
-      <label class="btn btn-primary btn-lg">
-          <span style="font-size:30px;"class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <br> <hr>
-        <input type="radio" name="options" id="option3" autocomplete="off"> Mensajes
-      </label>
+
     </div>
-    </div>
-    </center>-->
 </div>
-<br>
+<?php endif; ?>
 
 <?php
+// Iterador por cada foro activo.
 foreach ($model as $foro) {
 
     ?>
@@ -116,14 +103,14 @@ foreach ($model as $foro) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic):?>
+                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic): ?>
 
                                     <tr>
                                         <td><?= $topic->id; ?></td>
                                         <td><?= $topic->content; ?></td>
                                         <td><?= $topic->user->username; ?></td>
                                         <td><?= Yii::$app->formatter->asDate($topic->created_at, 'medium'); ?></td>
-                                        <td><?= Html::a('<span class="badge">'.$topic->getPosts()->count().'</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-xs']) ?></td>
+                                        <td><?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-xs']) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
