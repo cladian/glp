@@ -66,7 +66,7 @@ class PhforumDocument extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'phforum_id' => 'Phforum ID',
+            'phforum_id' => 'Foro',
             'document_id' => 'Documentos',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

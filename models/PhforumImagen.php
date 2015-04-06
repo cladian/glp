@@ -67,7 +67,7 @@ class PhforumImagen extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'phforum_id' => 'Phforum ID',
+            'phforum_id' => 'Foro',
             'imagen_id' => 'Imagenes',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

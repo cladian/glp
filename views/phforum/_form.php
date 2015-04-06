@@ -71,7 +71,7 @@ use app\models\Event;
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'topic_number')->textInput() ?>
+<!--    --><?//= $form->field($model, 'topic_number')->textInput() ?>
 
 <!--    --><?//= $form->field($model, 'event_id')->textInput() ?>
 
@@ -90,7 +90,9 @@ use app\models\Event;
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'is_private')->textInput() ?>
+<!--    --><?//= $form->field($model, 'is_private')->textInput() ?>
+    <?= $form->field($model, 'is_private')->dropDownList([ '0' => 'NO','1' => 'SI'], [ 'prompt' => 'Seleccionar']) ?>
+
     <?= $form->field($model, 'status')->dropDownList([ '1' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
 
     <div class="form-group">
