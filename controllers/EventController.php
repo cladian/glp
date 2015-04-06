@@ -69,6 +69,7 @@ class EventController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
+
         $searchModel = new EventquestionSearch();
 
         // Edison despues de actualización
