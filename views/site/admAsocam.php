@@ -29,11 +29,12 @@ if (!$hasProfile) {
 
 }
 ?>
-<div class="hidden-xs">
+<div >
+<!--<div class="hidden-xs">-->
     <!--<h3><? /*= Html::encode($this->title) */ ?></h3>-->
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-3">
             <div class="panel panel-green">
                 <div class="panel-heading">
                     <div class="row">
@@ -58,7 +59,7 @@ if (!$hasProfile) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-3">
             <div class="panel panel-red">
                 <div class="panel-heading">
                     <div class="row">
@@ -83,7 +84,7 @@ if (!$hasProfile) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class="col-xs-6 col-lg-3 col-md-3">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
                     <div class="row">
@@ -108,7 +109,7 @@ if (!$hasProfile) {
         </div>
         <!--END Panel-->
         <!--Panel-->
-        <div class="hidden-xs col-xs-6 col-lg-3 col-md-6">
+        <div class=" col-xs-6 col-lg-3 col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
