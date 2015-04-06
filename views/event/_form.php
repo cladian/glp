@@ -129,7 +129,7 @@ use kartik\widgets\FileInput;
         ]); */?>
 
         <?=
-        $form->field($model, 'discount')->dropDownList(['0' => 'NO', '1' => 'NO']);
+        $form->field($model, 'discount')->dropDownList(['0' => 'NO', '1' => 'SI']);
         ?>
     </div>
 <!--END Descuento--> 

@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'country_id',
 //            'country_id:html',  // description attribute in HTML
             [                    // the owner name of the model
-                'label' => 'Pais',
+                'label' => 'País',
                 'value' => $model->country->name,
             ],
     ]]) ?>
@@ -68,38 +68,26 @@ $this->params['breadcrumbs'][] = $this->title;
 </center>
 <br>
 <center>
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
     <div class="form-group">
         <?= Html::a('<span class="glyphicon glyphicon-user"></span> Avatar', ['avatarown', 'id' => $model->id], ['class' => 'btn btn-info btn-lg btn-block']) ?>
     </div>
 </div>
 </center>
 </div>
-<div class="col-xs-12 col-lg-12 col-md-12 col-lg-12">
-    <p>
-        
-        
-        
-    </p>
-</div>
-
-
-
-<center>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
-                <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar', ['updateown', 'id' => $model->id], ['class' => 'btn btn-primary  ']) ?>
                 
             </div>
         </div>
         
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
             <div class="form-group">
                 
-               <?= Html::a('<span class="glyphicon glyphicon-remove"></span> Cancelar', ['/site/index'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>
+               <?= Html::a('<span class="glyphicon glyphicon-remove"></span> Cancelar', ['/site/index'], ['class' => 'btn btn-danger ']) ?>
             </div>
         </div>
-</center>
 
 
   </div>
