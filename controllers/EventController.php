@@ -31,7 +31,7 @@ class EventController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources','file'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources', 'file'],
                         'allow' => true,
                         'roles' => ['asocam', 'sysadmin'],
                     ],
@@ -105,7 +105,7 @@ class EventController extends Controller
     public function actionResources($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'resources';
+        $model->scenario = 'imagen';
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -131,7 +131,7 @@ class EventController extends Controller
     public function actionFile($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'resources';
+        $model->scenario = 'documento';
 
         if ($model->load(Yii::$app->request->post())) {
             
