@@ -38,7 +38,7 @@ if (!$hasProfile) {
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i style="font-size:5em;" class="glyphicon glyphicon-user"></i>
+                            <i style="font-size:3em;" class="glyphicon glyphicon-user"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $activeUsers; ?></div>
@@ -63,7 +63,7 @@ if (!$hasProfile) {
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i style="font-size:5em;" class="glyphicon glyphicon-tasks"></i>
+                            <i style="font-size:3em;" class="glyphicon glyphicon-tasks"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $activeEvents; ?></div>
@@ -88,7 +88,7 @@ if (!$hasProfile) {
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i style="font-size:5em;" class="glyphicon glyphicon-pencil"></i>
+                            <i style="font-size:3em;" class="glyphicon glyphicon-pencil"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $activeInscriptions; ?></div>
@@ -113,7 +113,7 @@ if (!$hasProfile) {
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i style="font-size:5em;" class="glyphicon glyphicon-eye-open"></i>
+                            <i style="font-size:3em;" class="glyphicon glyphicon-eye-open"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $ownInscriptions; ?></div>

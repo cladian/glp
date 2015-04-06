@@ -8,11 +8,16 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Document */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="panel panel-green">
+    <div class="panel-heading">Crear Documento</div>
+    <div class="panel-body">
 
 <div class="document-form">
 
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 
@@ -20,10 +25,20 @@ use kartik\widgets\FileInput;
 
 
 
+
+
     <?=
     // Usage with ActiveForm and model
     $form->field($model, 'file')->widget(FileInput::classname(), [
-//        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+
+            'showRemove' => false,
+            'showUpload' => false,
+            'showPreview' => false,
+            'browseClass' => 'btn btn-primary btn-block',
+            'browseLabel' =>  'Explorar'
+
+        ],
     ]);
 
     ?>
@@ -43,4 +58,6 @@ use kartik\widgets\FileInput;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

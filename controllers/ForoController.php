@@ -10,7 +10,11 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Post;
+use app\models\Document;
+use app\models\PostDocument;
 use yii\helpers\Url;
+use yii\web\UploadedFile;
+
 
 /**
  * PhforumController implements the CRUD actions for Phforum model.
@@ -34,7 +38,6 @@ class ForoController extends Controller
     }
 
 
-
     /**
      * Lists all Phforum models.
      * @return mixed
@@ -42,7 +45,7 @@ class ForoController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'model'=>Phforum::find()->where(['status'=>self::STATUS_ACTIVE])->all(),
+            'model' => Phforum::find()->where(['status' => self::STATUS_ACTIVE])->all(),
         ]);
     }
 
@@ -50,38 +53,69 @@ class ForoController extends Controller
     {
 
         $modelPost = new Post();
-        $modelPost->topic_id=$id;
-        $modelPost->user_id=Yii::$app->user->id;
+        $modelPost->topic_id = $id;
+        $modelPost->user_id = Yii::$app->user->id;
 
-        if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() ) {
+        $modelDocument = new Document;
+
+        /*       // Verificación de parametros de envio
+               $request = $_REQUEST;
+               if (isset($_POST['file']))
+                   $modelDocument->scenario('file');*/
+        /*   if ($request->get('file') && $request->get('name') )
+               $modelDocument->scenario('file');*/
+
+        if ($modelPost->load(Yii::$app->request->post()) && $modelPost->validate() && $modelDocument->load(Yii::$app->request->post()) && $modelDocument->validate()) {
+
+            // Post Alamacenado
+
+            /* if (isset($_POST['file'])) {*/
+            //Almacena archivos solo si se envian parametros
+            $doc = UploadedFile::getInstance($modelDocument, 'file');
+
             $modelPost->save();
+            if ($doc) {
+                $docName = Yii::$app->security->generateRandomString() . time() . '.' . $doc->extension;
+                $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
+                $modelDocument->file = $docName;
+                $modelDocument->save();
+
+                //Guarda relación de documentos
+                $modelPostDocument = new PostDocument;
+                $modelPostDocument->post_id = $modelPost->id;
+                $modelPostDocument->document_id = $modelDocument->id;
+                $modelPostDocument->save();
+            }
+
+            /*  }*/
+
 
             // > Envio de correo electrónico
-            $html='<h4>Contenido </h4>';
-            $html.='<blockquote>'.$modelPost->content.'</blockquote>';
-            $html.='<kbd>'.$modelPost->user->username.'</kbd>';
-            $url= \Yii::$app->params['webRoot'].Url::to(['foro/topic', 'id' => $id,'#' => $modelPost->id]);
+            $html = '<h4>Contenido </h4>';
+            $html .= '<blockquote>' . $modelPost->content . '</blockquote>';
+            $html .= '<kbd>' . $modelPost->user->username . '</kbd>';
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic', 'id' => $id, '#' => $modelPost->id]);
 
-            $this->sendMail($id,$html, $url );
+            $this->sendMail($id, $html, $url);
             //> Fin Correo
             \Yii::$app->getSession()
                 ->setFlash('success',
                     'Su aporte ha sido publicado éxitosamente');
 
 
-
             // Encerar modelo
             return $this->redirect(['topic', 'id' => $id]);
-         /*   $modelPost = new Post();
-            $modelPost->content=NULL;*/
+            /*   $modelPost = new Post();
+               $modelPost->content=NULL;*/
 
         }
 
         return $this->render('topic', [
-            'model'=>Topic::find()->where(['id'=>$id])->one(),
-            'modellatest'=>Post::find()->where(['status'=>self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(10)->all(),
-            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
-            'modelPost'=>$modelPost,
+            'model' => Topic::find()->where(['id' => $id])->one(),
+            'modellatest' => Post::find()->where(['status' => self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(5)->all(),
+            'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
+            'modelPost' => $modelPost,
+            'modelDocument' => $modelDocument,
         ]);
     }
 
@@ -90,11 +124,12 @@ class ForoController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
+    public
+    function actionView($id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
+            'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
         ]);
     }
 
@@ -103,7 +138,8 @@ class ForoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public
+    function actionCreate()
     {
         $model = new Phforum();
 
@@ -122,7 +158,8 @@ class ForoController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public
+    function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
@@ -141,7 +178,8 @@ class ForoController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public
+    function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
@@ -155,7 +193,8 @@ class ForoController extends Controller
      * @return Phforum the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected
+    function findModel($id)
     {
         if (($model = Phforum::findOne($id)) !== null) {
             return $model;
@@ -164,34 +203,41 @@ class ForoController extends Controller
         }
     }
 
-    public function actionList()
+    public
+    function actionList()
     {
         return $this->render('list');
     }
 
-    public function actionMultimedia()
+    public
+    function actionMultimedia()
     {
         return $this->render('multimedia');
     }
-    public function actionMensajes()
+
+    public
+    function actionMensajes()
     {
         return $this->render('mensajes');
     }
-    public function actionTopicfinal()
+
+    public
+    function actionTopicfinal()
     {
         return $this->render('topicFinal');
     }
 
     /*
-* Función para envio de correos electrónicos a todos los participantes que están participando en el tópico
-*/
-    protected function sendMail($topic_id, $message, $url)
+    * Función para envio de correos electrónicos a todos los participantes que están participando en el tópico
+    */
+    protected
+    function sendMail($topic_id, $message, $url)
     {
-        $title="Nuevo mensaje enviado Foro-ASOCAM";
-        $content=$message;
+        $title = "Nuevo mensaje enviado Foro-ASOCAM";
+        $content = $message;
 
-        $modelPost=Post::find()->where(['topic_id'=>$topic_id])->addGroupBy(['user_id'])->all();
-        foreach ($modelPost as $user){
+        $modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
+        foreach ($modelPost as $user) {
             // Contenido, tipo  1=Notificacion URL
             $user->user->sendEmail($content, $url, $title);
         }

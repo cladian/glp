@@ -1,14 +1,10 @@
 <?php
-
 use yii\helpers\Html;
 use kartik\widgets\ActiveForm;
 use kartik\builder\TabularForm;
 use kartik\builder\Form;
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventanswer */
-
 $this->title = 'Actualizar Respuesta por Evento: ' ;
 //$this->params['breadcrumbs'][] = ['label' => 'Respuestas por Evento', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
@@ -30,29 +26,20 @@ $form = ActiveForm::begin();?>
     'form' => $form,
     'attributes' => $model->getGrid(),
 /*    'attributeDefaults' => [
-
         [
             'type' => Form::INPUT_RAW,
             'value'=>function ($model, $key, $index, $widget) {return $model->eventquestion->text; }
-
-
         ],
     ],*/
     'actionColumn'=>false,
     'serialColumn'=>false,
     'checkboxColumn'=>false,
-
-
-
-
 ]);
 // Add other fields if needed or render your submit button
 ?>
-<?=Html::submitButton(\Yii::$app->params['btnGuardar'], ['class' => 'btn btn-success']);?>
+<?=Html::submitButton(\Yii::$app->params['btnGuardarSiguiente'], ['class' => 'btn btn-success']);?>
   </div>
 </div>
-
-
 
 
 <?php ActiveForm::end(); ?>

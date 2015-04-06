@@ -67,7 +67,7 @@ class PhforumVideo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'phforum_id' => 'Phforum ID',
+            'phforum_id' => 'Foro',
             'video_id' => 'Videos',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

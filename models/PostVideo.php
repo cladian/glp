@@ -61,8 +61,8 @@ class PostVideo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'post_id' => 'Post ID',
-            'video_id' => 'Video ID',
+            'post_id' => 'Aporte',
+            'video_id' => 'Video',
         ];
     }
 

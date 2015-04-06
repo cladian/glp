@@ -60,7 +60,7 @@ class Document extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            /*[['name'], 'required'],*/
             [['file', 'tags'], 'string'],
             [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
@@ -68,7 +68,7 @@ class Document extends \yii\db\ActiveRecord
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
             [['file'], 'file', 'extensions'=>'pdf, doc, ppt, xls, docx, pptx, xlsx '],
-            [['file'], 'required','on'=>'file']
+            [['name','file'], 'required','on'=>'file']
         ];
     }
 

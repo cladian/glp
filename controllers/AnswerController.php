@@ -32,7 +32,6 @@ class AnswerController extends Controller
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
-
                 ],
             ],
             'verbs' => [

@@ -8,6 +8,15 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
+<div class="regresar">
+
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->phforum_id], ['class' => 'btn btn-default'])?>
+
+</div>
+<div class="panel panel-green">
+    <div class="panel-heading"> Crear Tema</div>
+    <div class="panel-body">
 <div class="topic-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -24,4 +33,6 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

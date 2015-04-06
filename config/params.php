@@ -3,6 +3,7 @@
 //    \Yii::$app->params['contactEmail']
 return [
     'webRoot'=>'http://www.cladian.net',
+    'mail'=>'team@cladian.com',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
@@ -12,6 +13,8 @@ return [
     'eventFolder' => 'imgs/event/',
     'eventDocs' => 'imgs/docs/',
     'btnGuardar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar',
+    'btnGuardarSiguiente' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Continuar',
+    'btnGuardarCerrar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar y Cerrar',
 // Crear
     'btnCrearEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear evento',
     'btnCrearRespuesta' => '<span class="glyphicon glyphicon-pencil"></span> Crear respuesta',

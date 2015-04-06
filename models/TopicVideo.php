@@ -55,7 +55,9 @@ class TopicVideo extends \yii\db\ActiveRecord
         return [
             [['topic_id', 'video_id'], 'required'],
             [['topic_id', 'video_id'], 'integer'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -65,10 +67,10 @@ class TopicVideo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'topic_id' => 'Topic ID',
-            'video_id' => 'Video ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'topic_id' => 'Tema',
+            'video_id' => 'Video',
+            'created_at' => 'Fecha de Creación',
+            'updated_at' => 'Fecha de Actualización',
         ];
     }
 

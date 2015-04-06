@@ -56,8 +56,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
     <div class="panel-group" id="accordion" role="tablist">
 
-
-
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h5 class="panel-title">
@@ -65,7 +63,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                        aria-controls="collapseOne">
-                        Información de Inscripción
+                        Información de Inscripción  <span class="pull-right"><?= $model->complete;  ?>%</span>
                     </a>
                 </h5>
             </div>
@@ -80,8 +78,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </div>
             </div>
         </div>
-
-
 
         <div class="panel panel-primary">
             <div class="panel-heading" role="tab" id="headingTwo" aria-multiselectable="true">
@@ -98,9 +94,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
 
                 </div>
-                <div class="panel-footer">
-                     <?= Html::a(\Yii::$app->params['btnActualizar'], ['logistic/updateown', 'id' => $modelLogistic->id], ['class' => 'btn btn btn-primary']) ?>
-                </div>
+
             </div>
         </div>
 
