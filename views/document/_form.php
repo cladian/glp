@@ -8,6 +8,11 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Document */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
+
+<div class="regresar">
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->id], ['class' => 'btn btn-default'])?>
+</div>
 <div class="panel panel-green">
     <div class="panel-heading">Crear Documento</div>
     <div class="panel-body">

@@ -22,10 +22,10 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
+            ['username', 'filter', 'filter' => 'trim'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este nómbre de usuario ya ha sido seleccionado.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'string', 'min' => 6, 'max' => 15],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
@@ -36,7 +36,7 @@ class SignupForm extends Model
 //            ['captcha', 'captcha'],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => 8],
         ];
     }
 
