@@ -10,10 +10,14 @@ use app\models\Event;
 /* @var $this yii\web\View */
 /* @var $model app\models\Phforum */
 /* @var $form yii\widgets\ActiveForm */
+$this->title = $model->name;
 ?>
 
+<div class="panel panel-green">
+    <div class="panel-heading"> <h4><?= $this->title = 'Actualización de Foro: ' . ' ' . $model->name;?> </h4></div>
+    <div class="panel-body">
 <div class="phforum-form">
-
+<?php  ?>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
@@ -101,4 +105,9 @@ use app\models\Event;
 
     <?php ActiveForm::end(); ?>
 
+
 </div>
+</div>
+</div>
+
+

@@ -16,7 +16,7 @@ use kartik\widgets\FileInput;
 
 <!--     --><?//= $form->field($model, 'file')->textarea(['rows' => 6]) ?><!-- -->
 
- 
+
 
     <?=
     $form->field($model, 'file')->widget(FileInput::classname(), [
