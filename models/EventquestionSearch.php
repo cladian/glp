@@ -66,7 +66,7 @@ class EventquestionSearch extends Eventquestion
         $query->andFilterWhere(['like', 'text', $this->text]);
         return $dataProvider;
     }
-    public function searchByEvent($params,$event_id)
+    public function searchByEvent($params, $event_id)
     {
         $query = Eventquestion::find();
 

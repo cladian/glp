@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 
-$this->title = 'Actualziar Usuario: ' . ' ' . $model->id;
+$this->title = 'Actualizar Usuario ' . ' ' ;
 
 ?>
 <div class="regresar">

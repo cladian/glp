@@ -24,14 +24,8 @@ if (Yii::$app->user->isGuest) {
 
 // Botones para usuario ASOCAM
 if (Yii::$app->user->can('permission_admin')) {
-    $items[] = ['label' => 'Evento', 'items' => [
-            ['label' => 'Eventos', 'url' => ['/event']],
-            ['label' => 'Respuesta', 'url' => ['/answer']],
-            ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
-            ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
-            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-        ]];
-/*    $items[] = ['label' => 'Foro', 'items' => [
+
+    $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
@@ -55,7 +49,14 @@ if (Yii::$app->user->can('permission_admin')) {
         ['label' => 'Video', 'url' => ['/video']],
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]
-    ];*/
+    ];
+    $items[] = ['label' => 'Evento', 'items' => [
+        ['label' => 'Eventos', 'url' => ['/event']],
+        ['label' => 'Respuesta', 'url' => ['/answer']],
+        ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
+        ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
+        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+    ]];
 
     $items[]=
 

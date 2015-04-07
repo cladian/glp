@@ -79,7 +79,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['email'], 'string', 'max' => 45],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'El correo electrónico ya esta registrado en el sistema.'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
