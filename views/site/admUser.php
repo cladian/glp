@@ -31,170 +31,8 @@ if (!$hasProfile) {
 }
 ?>
 
-<div>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-        <!--Panel-->
-<!--        <div class=" col-xs-6 col-lg-3 col-md-6">-->
-<!--            <div class="panel panel-primary">-->
-<!--                <div class="panel-heading">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-xs-3">-->
-<!--                            <i class="glyphicon glyphicon-user"></i>-->
-<!--                        </div>-->
-<!--                        <div class="col-xs-9 text-right">-->
-<!--                            <div style="font-size:20px;" class="huge">10</div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <a href="#">-->
-<!--                    <div class="panel-footer">-->
-<!--                        <span class="pull-left">Respuestas</span>-->
-<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
-<!---->
-<!--                        <div class="clearfix"></div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!--END Panel-->
-        <!--Panel-->
-<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
-<!--            <div class="panel panel-green">-->
-<!--                <div class="panel-heading">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-xs-3">-->
-<!--                            <i class="glyphicon glyphicon-tasks"></i>-->
-<!--                        </div>-->
-<!--                        <div class="col-xs-9 text-right">-->
-<!--                            <div style="font-size:20px;" class="huge">5</div>-->
-<!---->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <a href="#">-->
-<!--                    <div class="panel-footer">-->
-<!--                        <span class="pull-left">Notificaciones</span>-->
-<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
-<!---->
-<!--                        <div class="clearfix"></div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!--END Panel-->
-        <!--Panel-->
-<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
-<!--            <div class="panel panel-yellow">-->
-<!--                <div class="panel-heading">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-xs-3">-->
-<!--                            <i class="glyphicon glyphicon-pencil"></i>-->
-<!--                        </div>-->
-<!--                        <div class="col-xs-9 text-right">-->
-<!--                            <div style="font-size:20px;" class="huge">5</div>-->
-<!---->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <a href="#">-->
-<!--                    <div class="panel-footer">-->
-<!--                        <span class="pull-left">Inscripciones</span>-->
-<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
-<!---->
-<!--                        <div class="clearfix"></div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!--END Panel-->
-        <!--Panel-->
-<!--        <div class="col-xs-6 col-lg-3 col-md-6">-->
-<!--            <div class="panel panel-red">-->
-<!--                <div class="panel-heading">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-xs-3">-->
-<!--                            <i class="glyphicon glyphicon-eye-open"></i>-->
-<!--                        </div>-->
-<!--                        <div class="col-xs-9 text-right">-->
-<!--                            <div style="font-size:20px;" class="huge">5</div>-->
-<!---->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <a href="#">-->
-<!--                    <div class="panel-footer">-->
-<!--                        <span class="pull-left">Nuevas entradas en foros</span>-->
-<!--                        <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>-->
-<!---->
-<!--                        <div class="clearfix"></div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!--END Panel-->
-    </div>
-</div>
-<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
-
-    <!-- /.panel  CENTRAL-->
-    <div class="chat-panel panel panel-primary">
-        <div class="panel-heading">
-            <i class="fa fa-comments fa-fw"></i>
-            Mis inscripciones
-        </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-
-                        <th>#</th>
-                        <th>Evento</th>
-                        <th>Usuario</th>
-
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $contador = 1;
-                    foreach ($modelRecentInscription as $recent) {
-                        ?>
-                        <tr>
-                            <td><?= $contador++; ?></td>
-                            <td><?= substr($recent->event->name, 0, 15) . '...'; ?></td>
-
-                            <td><?= $recent->user->username; ?></td>
-                            <!--<td> <? /*= Yii::$app->formatter->asDate($recent->created_at, 'short'); */ ?></td>-->
-                            <td>
-
-                                <?= Html::a(' Ver', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
-
-
-                            </td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- /.panel-body -->
-        <div class="panel-footer">
-            <?= Html::a(\Yii::$app->params['btnVisualizar'], ['inscription/indexown'], ['class' => 'btn btn-default btn-block']) ?>
-            <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
-        </div>
-        <!-- /.panel-footer -->
-    </div>
-    <!-- /.panel .chat-panel -->
-
-</div>
-
-
-<div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
+<!-- EVENTOS-->
+<div class="col-xs-12 col-lg-4 col-md-4">
 
     <!-- /.panel -->
     <div class="chat-panel panel panel-primary">
@@ -224,10 +62,10 @@ if (!$hasProfile) {
                             <address>
                                 <!--<strong><? /*= $event->city . ', ' . $event->country->name; */ ?></strong><br>-->
                                 <strong>Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                <br>
-                                <strong>Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                <br>
-                                <strong>Inversión: </strong><?= $event->cost; ?> USD
+                                <!--<br>-->
+                                <!--   <strong>Finaliza: </strong><? /*= Yii::$app->formatter->asDate($event->end_at, 'long'); */ ?>
+                                <br>-->
+                                <!--<strong>Inversión: </strong><? /*= $event->cost; */ ?> USD-->
                             </address>
                             </p>
                             <?= Html::a('Inscribirme', ['inscription/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
@@ -239,16 +77,81 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-           <!-- <div class="input-group">
-                <input id="btn-input" type="text" class="form-control input-sm"
-                       placeholder="Type your message here..."/>
+            Listado de próximos eventos
+            <!-- <div class="input-group">
+                 <input id="btn-input" type="text" class="form-control input-sm"
+                        placeholder="Type your message here..."/>
 
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-            </div>-->
+                                 <span class="input-group-btn">
+                                     <button class="btn btn-warning btn-sm" id="btn-chat">
+                                         Send
+                                     </button>
+                                 </span>
+             </div>-->
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+
+</div>
+
+<div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
+
+    <!-- /.panel  CENTRAL-->
+    <div class="chat-panel panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Mis Inscripciones
+            <?= Html::a('ver todas', ['inscription/indexown'], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+
+                        <th>#</th>
+                        <th>Evento</th>
+                        <th>Avance</th>
+
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $contador = 1;
+                    foreach ($modelRecentInscription as $recent) {
+                        $class = '';
+                        if ($recent->complete == 100)
+                            $class = 'success';
+                        ?>
+                        <tr class="<?= $class; ?>">
+                            <td><?= $contador++; ?></td>
+                            <td><?= substr($recent->event->name, 0, 40) . '...'; ?></td>
+
+                            <!--<td><? /*= $recent->user->username; */ ?></td>-->
+                            <td><?= $recent->complete; ?>%</td>
+                            <!--<td> <? /*= Yii::$app->formatter->asDate($recent->created_at, 'short'); */ ?></td>-->
+                            <td>
+
+                                <?= Html::a(' Ver  ', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
+                                <?= Html::a(' Preguntar  ', ['request/createown', 'inscription_id' => $recent->id], ['class' => 'glyphicon glyphicon-comment btn btn-default  btn-xs']) ?>
+
+
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            Listado de las inscripciones del participante
         </div>
         <!-- /.panel-footer -->
     </div>
@@ -266,12 +169,20 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
+
             <ul class="chat">
+
                 <?php
+                if (!$modelRecentInscription) {
+                    ?>
+                    <li> No existen Solicitudes</li>
+                <?php
+                }
+
                 // $modelRequest=\app\models\Request::find()
                 foreach ($modelRecentInscription as $inscription) {
 
-                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id,'status'=>1])->orderBy('created_at desc')->all() as $request) {
+                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id, 'status' => 1])->orderBy('created_at desc')->all() as $request) {
                         ?>
                         <li class="left clearfix">
                                     <span class="chat-img pull-left">
@@ -285,20 +196,12 @@ if (!$hasProfile) {
                                         <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                     </small>
                                 </div>
-                                <p>
-                                    <?= $request->question; ?>
-
-
-                                </p>
-
-
+                                <p> <?= $request->question; ?></p>
                                 <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
-
-
                             </div>
                         </li>
                         <?php
-                        $modelReply=\app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->limit(3)->all();
+                        $modelReply = \app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->limit(3)->all();
                         foreach ($modelReply as $reply) {
                             ?>
                             <li class="right ">
@@ -319,35 +222,16 @@ if (!$hasProfile) {
                                     </small>
                                 </div>
                             </li>
-                            <?php
-
+                        <?php
                         }
-                        ?>
-
-
-                    <?php
                     }
-
-
-                    ?>
-
-
-
-                <?php
                 }
                 ?>
-
-
             </ul>
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <!--<div class="input-group">
-                <button class="btn btn-warning btn-md" id="btn-chat">
-                    Ver todas
-                </button>
-
-            </div>-->
+            Últimas actividades
         </div>
         <!-- /.panel-footer -->
     </div>
@@ -356,5 +240,78 @@ if (!$hasProfile) {
 </div>
 
 
+<div class="col-xs-12 col-md-4 col-lg-4">
+
+    <!-- /.panel  CENTRAL-->
+    <div class="chat-panel panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Aportes en Foros
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            Últimos aportes de foros
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+
+</div>
 
 
+<div class="col-xs-12 col-lg-4 col-md-4 col-md-4">
+
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Datos del Participante
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <?php if ($hasProfile) { ?>
+
+                <div style="width: 30%" class="pull-right">
+                    <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
+                    <span
+                        align="center"> <?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?></span>
+                </div>
+
+                <h5><?= $modelProfile->name ?>
+                <br/><?= $modelProfile->lastname; ?></h5>
+                <address>
+
+                    <strong>Teléfono: </strong><?= $modelProfile->phone_number; ?> <br>
+                    <strong>Movil: </strong><?= $modelProfile->mobile_number; ?><br>
+                    <strong>Correo: </strong><?= $modelProfile->user->email; ?> <hr/>
+                    <strong>Responzabilidad: </strong><?= $modelProfile->responsability_name; ?> <br>
+                    <strong>Tipo: </strong><?= $modelProfile->responsibilitytype->name; ?> <br>
+
+                    <strong>Institución: </strong><?= $modelProfile->institution_name; ?> <br>
+                    <strong>Tipo: </strong><?= $modelProfile->institutiontype->name; ?>
+
+
+                </address>
+            <?php } else { ?>
+                <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+                <address>
+                    <strong>Perfil: </strong>Información pendiente
+                </address>
+            <?php } ?>
+
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+&nbsp;
+            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar', ['profile/createown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-left  ']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Cambiar Imagen', ['profile/viewown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-right  ']) ?>
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+
+</div>
