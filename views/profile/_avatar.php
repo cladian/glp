@@ -56,6 +56,7 @@ use yii\helpers\Url;
                 <?= Html::submitButton($model->isNewRecord ? 'Crear' : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 
