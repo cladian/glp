@@ -94,7 +94,7 @@ if (Yii::$app->user->can('permission_admin')) {
 }
 if (Yii::$app->user->can('asocam')) {
 
-    $items[] = ['label' => 'Foro', 'items' => [
+    $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
