@@ -44,8 +44,19 @@ return [
     'btnVer' => '<span class="glyphicon glyphicon-eye-open"></span> Vizualizar',
     'btnSolicitud' => '<span class="glyphicon glyphicon-pencil""></span> Crear Solicitud',
     'btnNuevo' => '<span class="glyphicon glyphicon-file""></span> Nuevo',
+
     'btnEnviar' => '<span class="glyphicon glyphicon-send"></span> Enviar inquietud',
-    
+    'btnEnviar' => '<span class="glyphicon glyphicon-send"></span> Enviar inquietud',
+
+    'btnHelp' => '<span class="glyphicon glyphicon-info-sign"></span> Ayuda',
+    'btnCancel' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',
+
+// Botones Inscripción
+    'btnInscriptionS1' => '<span class="glyphicon glyphicon-floppy-disk"></span> Sección 1. Inscripción',
+    'btnInscriptionS2' => '<span class="glyphicon glyphicon-question-sign"></span> Sección 2. Preguntas por Evento',
+    'btnInscriptionS3' => '<span class="glyphicon glyphicon-question-sign"></span> Sección 3. Preguntas Generales',
+    'btnNuevaInquietud' => '<span class="glyphicon glyphicon-send"></span> Nueva inquietud',
+
 // Preguntas    
     'btnPregunta' => '<span class="glyphicon glyphicon-question-sign"></span> Nueva Pregunta',
     'btnPreguntaGeneral' => '<span class="glyphicon glyphicon-question-sign"></span> Crear Pregunta',
