@@ -11,7 +11,7 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 ?>
 <div class="regresar">
-    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/admasocam'], ['class' => 'btn btn-default'])?>
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/admuser'], ['class' => 'btn btn-default'])?>
 </div>
 
 <div class="panel panel-primary">
