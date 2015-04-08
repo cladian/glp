@@ -215,7 +215,7 @@ class SiteController extends Controller
         // $getEmail="edison@cladian.com";
         //$getEmail=$_POST['Lupa']['email'];
 
-        if(isset($_POST['Lupa']))
+ /*       if(isset($_POST['Lupa']))
         {   $getEmail=$_POST['Lupa']['email'];
             $getModel= User::model()->findByAttributes(array('email'=>$getEmail));
 
@@ -258,7 +258,7 @@ class SiteController extends Controller
                 $this->redirect(array('site/login'));
             }
 
-        }
+        }*/
         $this->render('forgot');
     }
 
