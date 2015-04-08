@@ -159,7 +159,7 @@ class ProfileController extends Controller
             $avatar->saveAs(\Yii::$app->params['avatarFolder'] . $photoName);
             $model->photo = $photoName;
             $model->save();
-            return $this->redirect(['viewown']);
+            return $this->redirect(['site/admuser']);
         } else {
             return $this->render('avatarown', [
                 'model' => $model,
@@ -175,7 +175,7 @@ class ProfileController extends Controller
         $model = $this->findModelown(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['viewown']);
+            return $this->redirect(['site/admuser']);
         } else {
             return $this->render('updateown', [
                 'model' => $model,
