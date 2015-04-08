@@ -34,11 +34,11 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'signup', 'event', 'admuser', 'admasocam'],
+                'only' => ['login', 'logout', 'signup', 'event', 'admuser', 'admasocam', 'forgot'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'signup'],
+                        'actions' => ['login', 'signup', 'forgot'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -129,6 +129,8 @@ class SiteController extends Controller
         ]);
     }
 
+
+
     public function actionAdmasocam()
     {
         $searchModel = new InscriptionSearch();
@@ -206,6 +208,61 @@ class SiteController extends Controller
             ]);
         }
     }
+
+
+    public function actionForgot()
+    {
+        // $getEmail="edison@cladian.com";
+        //$getEmail=$_POST['Lupa']['email'];
+
+ /*       if(isset($_POST['Lupa']))
+        {   $getEmail=$_POST['Lupa']['email'];
+            $getModel= User::model()->findByAttributes(array('email'=>$getEmail));
+
+            if (!is_null($getModel))
+            {
+                $password=rand(0, 9999999);
+
+                $namaPengirim="Unicef : Lactancia MAterna";
+                $emailadmin="team@cladian.com";
+                $subjek="Unicef.::. Reseteo de Contraseña";
+                $setpesan="
+                    <h3>Hemos recibido una solicitud de cambio de contraseña</h3>
+                    <p>El sistema ha reseteado su contraseña, utilice estos datos para acceder la próxima vez al sistema.</p>
+                    <b>USUARIO: </b> ".$getModel->username."<br/>
+                    <b>CONTRASEÑA: </b>".$password." <br/>
+                    <h3>Administración Unicef</h3>
+                    ";
+//                        "Reply-To: {$emailadmin}\r\n".
+                $name='=?UTF-8?B?'.base64_encode($namaPengirim).'?=';
+                $subject='=?UTF-8?B?'.base64_encode($subjek).'?=';
+                $headers="From: $name <{$getModel->email}>\r\n".
+                    "MIME-Version: 1.0\r\n".
+                    "Content-type: text/html; charset=UTF-8";
+
+                // Actualización de password
+                $command = Yii::app()->db->createCommand();
+                $command->update('user', array(
+                    'password'=>md5($password),
+                ), 'id=:id', array(':id'=>$getModel->id));
+
+
+                // $getModel->save();
+                Yii::app()->user->setFlash('forgot','Hemos remitido la información Actualización completa');
+                mail($getEmail,$subject,$setpesan,$headers);
+                //$this->refresh();
+                $this->redirect(array('site/login'));
+            }
+            else{
+                Yii::app()->user->setFlash('forgot','El correo proporcionado no esta registrado en el sistema');
+                $this->redirect(array('site/login'));
+            }
+
+        }*/
+        $this->render('forgot');
+    }
+
+
 
     public function actionLogout()
     {

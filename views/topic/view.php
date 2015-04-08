@@ -20,9 +20,6 @@ $this->title = $model->content;
         <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->phforum_id], ['class' => 'btn btn-default'])?>
 
     </div>
-<div class="panel panel-green">
-    <div class="panel-heading">Temas</div>
-    <div class="panel-body">
 
 
     <div class="tabs-x align-center tabs-above tab-bordered">
@@ -35,6 +32,10 @@ $this->title = $model->content;
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="one2">
+                <br/>
+                <div class="panel panel-green">
+                    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+                    <div class="panel-body">
                 <div class="topic-view">
 
 <!--                    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
@@ -84,6 +85,8 @@ $this->title = $model->content;
 
 
                 <!--        --><?//= Html::a('Crear Aporte', ['post/create', 'id' => $model->id ], ['class' => 'btn btn-primary']) ?>
+            </div>
+            </div>
             </div>
             <div class="tab-pane" id="two2">
                 <div class="post-index">
@@ -215,8 +218,7 @@ $this->title = $model->content;
 
         </div>
         </div>
-        </div>
-    </div>
+
 
 <!---->
 <!---->
