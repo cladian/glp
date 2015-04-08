@@ -53,9 +53,9 @@ $this->title = 'GLP-ASOCAM';
                 ])->label(false)->passwordInput();
                 ?>
                 <!--                --><? //= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
-                <div class="form-group">
-                    <?= Html::submitButton('Crear cuenta', ['class' => 'btn-lg btn-success btn-block ', 'name' => 'signup-button']) ?>
-                </div>
+
+                    <?= Html::submitButton('<span class="glyphicon glyphicon-book" aria-hidden="true"> Crear una cuenta', ['class' => 'btn-lg btn-success btn-block ', 'name' => 'signup-button']) ?>
+
                 <?php ActiveForm::end(); ?>
                 <div>
                     <p style="text-align:center; padding-top: 0px;" class="texto-info">Al hacer clic en "Crear cuenta",
@@ -65,7 +65,7 @@ $this->title = 'GLP-ASOCAM';
                         <!--                        --><? //= Html::submitButton('Inicia sesión', ['class' => ' btn-primary  ', 'name' => 'signup-button']) ?>
                     </div>
 
-                    <p class="aviso">¿Eres miembro?  <?= Html::a('Ingresar', ['/site/login'], ['class' => 'btn btn-primary btn-xs']) ?></p>
+                    <?= Html::a('<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Soy miembro, Ingresar', ['/site/login'], ['class' => 'btn btn-primary btn-block']) ?>
                 </div>
             </div>
         </div>
