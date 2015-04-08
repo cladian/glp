@@ -118,6 +118,7 @@ class SiteController extends Controller
 
         return $this->render('admUser', [
             'hasProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->count(),
+            'modelProfile' => Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->one(),
             'modelEvent' => $modelEvent,
             'searchInscription' => $searchInscription,
             'dataInscription' => $dataInscription,
