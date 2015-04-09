@@ -8,9 +8,6 @@ use yii\helpers\Html;
 $this->title = 'Actualización de Perfil: ' . ' ' . $model->name;
 
 ?>
-
-
-
     <?= $this->render('_avatar', [
         'model' => $model,
         'file'=>$model->photo,

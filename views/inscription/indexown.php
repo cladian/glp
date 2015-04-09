@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-
+use yii\bootstrap\Modal;
 use app\models\Event;
 
 /* @var $this yii\web\View */
@@ -14,9 +14,23 @@ use app\models\Event;
 $this->title = 'Inscripciones';
 /*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/index'], ['class' => 'btn btn-danger']) ?>
+
+
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
 </div>
+
 <div class="inscription-index">
     <?php
 
@@ -109,9 +123,7 @@ $this->title = 'Inscripciones';
             'headerOptions' => ['class' => 'kartik-sheet-style'],
         ],*/
 
-
     ];
-
     echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -144,7 +156,7 @@ $this->title = 'Inscripciones';
         'hover' => true,
         'showPageSummary' => true,
         'panel' => [
-            'type' => \kartik\grid\GridView::TYPE_SUCCESS,
+            'type' => \kartik\grid\GridView::TYPE_PRIMARY,
             'heading' => '<i class="glyphicon glyphicon-book"></i>  Inscripciones',
         ],
         'persistResize' => true,
