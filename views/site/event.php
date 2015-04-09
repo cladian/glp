@@ -59,21 +59,22 @@ $this->title = 'Evento:' . $modelEvent->name;
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $modelEvent->cost ?> USD</div>
-                           Costo del evento
+                            Costo del evento
                         </div>
                     </div>
                 </div>
                 <?php if ($modelEvent->discount): ?>
 
-                        <div class="panel-body">
-                            <div role="tabpanel">
 
-                                <strong>Información: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
-                                <strong>Fin de descuento: </strong><?=  Yii::$app->formatter->asDate($modelEvent->discount_end_at, 'long'); ?>
-
+                    <div class="panel-body">
+                        <div role="tabpanel">
+                            <strong>Costo: </strong>$<?= Html::encode($modelEvent->cost) ?><br>
+                            <strong>Información: </strong><?= Html::encode($modelEvent->discount_description) ?><br>
+                            <strong>Fin de descuento: </strong><?= Html::encode($modelEvent->discount_end_at) ?>
 
 
                         </div>
+
                     </div>
                 <?php endif; ?>
 
