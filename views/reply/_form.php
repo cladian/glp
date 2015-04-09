@@ -5,12 +5,26 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\User;
 use app\models\Request;
-
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\Reply */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->request_id], ['class' => 'btn btn-danger']) ?>
+
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
+</div>
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
     <?php if($model->request->status==Request::STATUS_ACTIVE): ?>
