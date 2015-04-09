@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -8,14 +7,31 @@ use kartik\widgets\DepDrop;
 use yii\helpers\Url;
 use kartik\widgets\DatePicker;
 use kartik\widgets\TimePicker;
-
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\Inscription */
 /* @var $form yii\widgets\ActiveForm */
-
 // http://demos.krajee.com/widget-details/depdrop
 ?>
+
 <?php $form = ActiveForm::begin(); ?>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/inscription/viewown', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+
+
+    <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
+</div>
+
 <div class="panel panel-primary">
     <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Información de
         inscripción
@@ -187,9 +203,7 @@ use kartik\widgets\TimePicker;
             </div>
         </div>
     </div>
-    <div class="panel-footer">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+
     <!---->
 
 </div>
