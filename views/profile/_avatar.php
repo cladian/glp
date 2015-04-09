@@ -47,7 +47,6 @@ use yii\helpers\Url;
         ],
     ]);
     // $form->field($model, 'photo')->textarea(['rows' => 6])  ?>
-
     </div>
 </div>
 <center>
