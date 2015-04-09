@@ -11,7 +11,7 @@ $this->title = 'Panel de control de usuario';
 // http://demos.krajee.com/widget-details/growl
 //http://www.bsourcecode.com/yiiframework2/gridview-in-yiiframework-2-0/
 
-if (!$hasProfile) {
+/*if (!$hasProfile) {
     echo Growl::widget([
         'type' => Growl::TYPE_DANGER,
         'title' => 'Perfil',
@@ -28,7 +28,7 @@ if (!$hasProfile) {
     ]);
 
 
-}
+}*/
 ?>
 
 <!-- EVENTOS-->
@@ -136,7 +136,7 @@ if (!$hasProfile) {
                             <td>
 
                                 <?= Html::a(' Ver  ', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
-                                <?= Html::a(' Preguntar  ', ['request/createown', 'inscription_id' => $recent->id], ['class' => 'glyphicon glyphicon-comment btn btn-default  btn-xs']) ?>
+                                <?= Html::a(' Nueva Pregunta  ', ['request/createown', 'inscription_id' => $recent->id], ['class' => 'glyphicon glyphicon-comment btn btn-default  btn-xs']) ?>
 
 
                             </td>
@@ -296,20 +296,27 @@ if (!$hasProfile) {
 
 
                 </address>
-            <?php } else { ?>
-                <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+            <?php } else
+            { ?>
+<!--                --><?//= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+
+                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La informacion de su registro esta incomleta porfavor complete la informacion del siguiente formulario</div>
+                <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
+
                 <address>
-                    <strong>Perfil: </strong>Información pendiente
                 </address>
             <?php } ?>
 
         </div>
+        <?php if ($modelProfile):?>
         <!-- /.panel-body -->
         <div class="panel-footer">
+
 &nbsp;
-            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar', ['profile/createown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-left  ']) ?>
-            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Cambiar Imagen', ['profile/viewown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-right  ']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar Perfil', ['profile/createown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-left  ']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Cambiar Imagen', ['profile/avatarown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-right  ']) ?>
         </div>
+        <?php endif;?>
         <!-- /.panel-footer -->
     </div>
     <!-- /.panel .chat-panel -->
