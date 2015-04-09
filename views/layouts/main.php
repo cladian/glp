@@ -12,15 +12,15 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 // Botón HOME todos tiene el botón
-$items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];
+/*$items[] = ['label' => '<span class="glyphicon glyphicon-home"></span> Inicio', 'url' => ['/site/index']];*/
 $items[] = ['label' => '<span class="glyphicon glyphicon-comment"></span> Foro', 'url' => ['/foro']];
 
 
-// Botones solo para usuarios que no están logeados todavia
+/*// Botones solo para usuarios que no están logeados todavia
 if (Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn btn-success btn-md'];
     $items[] = ['label' => '<span class="glyphicon glyphicon-circle-arrow-right"></span> Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]];
-}
+}*/
 
 // Botones para usuario ASOCAM
 if (Yii::$app->user->can('permission_admin')) {
@@ -121,130 +121,6 @@ if (Yii::$app->user->can('asocam')) {
     ];
 
 }
-//temporal
-$temp = false;
-if ($temp) {
-    $items = [
-
-        ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'fa fa-user fa-fw'],
-        /* ['label' => 'Paneles', 'items' => [
-             ['label' => 'User', 'url' => ['/site/admuser']],
-             ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-             ['label' => 'SIS-Admin', 'url' => ['#']],
-         ]
-         ],*/
-        ['label' => 'Foro', 'url' => ['/foro']],
-
-        ['label' => 'Foro', 'items' => [
-            ['label' => 'Foros', 'url' => ['/phforum']],
-            ['label' => 'Documentos', 'url' => ['/phforum-document']],
-            ['label' => 'Videos', 'url' => ['/phforum-video']],
-            ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
-            '<li class="divider"></li>',
-            ['label' => 'Topicos', 'url' => ['/topic']],
-            ['label' => 'Documentos', 'url' => ['/topic-document']],
-            ['label' => 'Videos', 'url' => ['/topic-video']],
-            ['label' => 'Imagen', 'url' => ['/topic-imagen']],
-
-            '<li class="divider"></li>',
-            ['label' => 'Post', 'url' => ['/post']],
-            ['label' => 'Documentos', 'url' => ['/post-document']],
-            ['label' => 'Videos', 'url' => ['/post-video']],
-            ['label' => 'Imagen', 'url' => ['/post-imagen']],
-
-            '<li class="divider"></li>',
-            ['label' => 'Comentarios', 'url' => ['/comment']],
-            '<li class="divider"></li>',
-            ['label' => 'Documentos', 'url' => ['/document']],
-            ['label' => 'Video', 'url' => ['/video']],
-            ['label' => 'Imagen', 'url' => ['/imagen']],
-        ]
-        ],
-
-        ['label' => 'Usuario', 'items' => [
-            ['label' => 'Solicitudes', 'url' => ['/request/index']],
-            ['label' => 'Notificaciones', 'url' => ['/notification/index']],
-            ['label' => 'SIS-Admin', 'url' => ['#']],
-        ]
-        ],
-        ['label' => 'Asocam', 'items' => [
-            /*        ['label' => 'User', 'url' => ['/site/admuser']],
-                    ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-                    ['label' => 'SIS-Admin', 'url' => ['#']],*/
-            /*'<li class="divider"></li>',*/
-            ['label' => 'Inscripción', 'url' => ['/inscription']],
-            '<li class="divider"></li>',
-            ['label' => 'User', 'url' => ['/user']],
-            ['label' => 'Perfiles', 'url' => ['/profile']],
-            '<li class="divider"></li>',
-            ['label' => 'Eventos', 'url' => ['/event']],
-            ['label' => 'Respuesta', 'url' => ['/answer']],
-            ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
-            ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
-            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-            '<li class="divider"></li>',
-            ['label' => 'Solicitudes', 'url' => ['/request']],
-            ['label' => 'Respuestas', 'url' => ['/reply']],
-            ['label' => 'Notificaciones', 'url' => ['/notification']],
-
-
-        ]
-
-        ],
-        ['label' => 'Administrador', 'items' => [
-//        ['label' => 'User', 'url' => ['/site/admuser']],
-//        ['label' => 'Asocam', 'url' => ['/site/admasocam']],
-//        ['label' => 'SIS-Admin', 'url' => ['#']],
-            '<li class="divider"></li>',
-            ['label' => 'Inscripción', 'url' => ['/inscription']],
-            '<li class="divider"></li>',
-            ['label' => 'User', 'url' => ['/user']],
-            ['label' => 'Perfiles', 'url' => ['/profile']],
-            '<li class="divider"></li>',
-            ['label' => 'Eventos', 'url' => ['/event']],
-            ['label' => 'Respuesta', 'url' => ['/answer']],
-            ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],
-            ['label' => 'Pregunta por evento', 'url' => ['/eventquestion']],
-            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-            '<li class="divider"></li>',
-            ['label' => 'Solicitudes', 'url' => ['/request']],
-            ['label' => 'Respuestas', 'url' => ['/reply']],
-            ['label' => 'Notificaciones', 'url' => ['/notification']],
-            '<li class="divider"></li>',
-            ['label' => 'Asignaciones', 'url' => ['/admin']],
-            ['label' => 'Roles', 'url' => ['/admin/role']],
-            ['label' => 'Permisos', 'url' => ['/admin/permission']],
-
-
-        ]
-        ],
-
-
-        // ['label' => 'Acerca de ', 'url' => ['/site/about']],
-
-
-//                ['label' => 'Evento', 'url' => ['/event']],
-
-
-        //['label' => 'Logistica', 'url' => ['/logistic']],
-//                ['label' => 'Registrarse', 'url' => ['/site/about']],
-
-
-        ['label' => 'Catálogo', 'items' => [
-            ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
-            ['label' => 'Institución', 'url' => ['/institutiontype']],
-            '<li class="divider"></li>',
-            ['label' => 'Pais', 'url' => ['/country']],
-            ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-            ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-            '<li class="divider"></li>',
-//            ['label' => 'Preguntas', 'url' => ['/question']],
-            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-        ]
-        ],
-    ];
-}
-
 
 //Menu de Usuario
 if (!Yii::$app->user->isGuest) {
@@ -276,10 +152,10 @@ if (!Yii::$app->user->isGuest) {
 
     <?php
     NavBar::begin([
-        'brandLabel' => 'ASOCAM-GLP',
+        'brandLabel' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> ASOCAM-GLP',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-fixed-top nav-pills',
         ],
     ]);
 

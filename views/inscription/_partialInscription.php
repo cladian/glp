@@ -17,50 +17,7 @@ use yii\helpers\Html;
         </div>
 
     </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
-           <!-- <b>Inscripción</b>
-            <div class="progress">
 
-                <div class="progress-bar" role="progressbar"
-                     aria-valuenow="<?/*= $model->complete; */?>"
-                     aria-valuemin="0" aria-valuemax="100"
-                     style="width: <?/*= $model->complete; */?>%;">
-                    <?/*= $model->complete; */?>%
-                </div>
-            </div>-->
-            <b>Información Logística</b>
-            <div class="progress">
-                <div class="progress-bar progress-bar-info" role="progressbar"
-                     aria-valuenow="<?= $model->complete_logistic; ?>"
-                     aria-valuemin="0" aria-valuemax="100"
-                     style="width: <?= $model->complete_logistic; ?>%;">
-                    <?= $model->complete_logistic; ?>%
-                </div>
-            </div>
-            <b>Preguntas por evento</b>
-            <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar"
-                     aria-valuenow="<?= $model->complete_eventquiz; ?>"
-                     aria-valuemin="0" aria-valuemax="100"
-                     style="width: <?= $model->complete_eventquiz; ?>%;">
-                    <?= $model->complete_eventquiz; ?>%
-                </div>
-            </div>
-            <b>Preguntas Generales</b>
-            <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar"
-                     aria-valuenow="<?= $model->complete_quiz; ?>"
-                     aria-valuemin="0" aria-valuemax="100"
-                     style="width: <?= $model->complete_quiz; ?>%;">
-                    <?= $model->complete_quiz; ?>%
-                </div>
-            </div>
-
-
-        </div>
-
-    </div>
 </div>
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="panel panel-default">
