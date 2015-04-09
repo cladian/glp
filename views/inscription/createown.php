@@ -8,9 +8,9 @@ use yii\helpers\Html;
 $this->title = 'Actualización de  Inscripción: ' . ' ' . $model->id;
 
 ?>
-<div class="regresar">
-    <?= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $model->id], ['class' => 'btn btn-default'])?>
-</div>
+<!--<div class="regresar">-->
+<!--    --><?//= Html::a(\Yii::$app->params['btnRegresar'],['/inscription/viewown','id' => $model->id], ['class' => 'btn btn-default'])?>
+<!--</div>-->
 
         <?= $this->render('_formown', [
             'model' => $model,

@@ -24,19 +24,15 @@ $clase='red';
     <?= Html::a(\Yii::$app->params['btnInscriptionS3'], ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
     <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info']) ?>
     <!-- AYUDA-->
-
-
     <?php
     Modal::begin([
-        'header' => '<h4>Inscripción</h3>',
+        'header' => '<h4>Inscripción</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/inscription-index');
     Modal::end();
     ?>
-
-
 </div>
 
 <?php
