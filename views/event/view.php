@@ -10,8 +10,21 @@ use yii\bootstrap\Tabs;
 $this->title = $model->name;
 
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<div class="breadcrumb">
+    <h1>Reorganizar mauri</h1>
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+
+    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => 'Are you sure you want to delete this item?',
+            'method' => 'post',
+        ],
+    ]) ?>
+    <?= Html::a(\Yii::$app->params['btnSubirImagen'], ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(\Yii::$app->params['btnSubirDoc'], ['file', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
 </div>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
@@ -31,9 +44,59 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="panel panel-primary">
         <?= $this->render('/event/_detailinfo', ['model' => $model]) ?>
         <!-- <div class="panel-footer">
-            <?= Html::a(\Yii::$app->params['btnRegresar'], ['index'], ['class' => 'btn btn-success'])?>
+            <?= Html::a(\Yii::$app->params['btnRegresar'], ['index'], ['class' => 'btn btn-success']) ?>
 
         </div> -->
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3">
+                    <i style="font-size:2em;" class="glyphicon glyphicon-usd"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <div class="huge"><?= $model->cost ?> USD</div>
+                    Costo del evento
+                </div>
+            </div>
+        </div>
+        <?php if ($model->discount): ?>
+
+
+            <div class="panel-body">
+                <div role="tabpanel">
+                    <strong>Costo: </strong>$<?= Html::encode($model->cost) ?><br>
+                    <strong>Información: </strong><?= Html::encode($model->discount_description) ?><br>
+                    <strong>Fin de descuento: </strong><?= Html::encode($model->discount_end_at) ?>
+
+
+                </div>
+
+            </div>
+        <?php endif; ?>
+
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                   aria-expanded="false" aria-controls="collapseThree">
+                    Recursos
+                </a>
+            </h4>
+        </div>
+
+        <div class="panel-body">
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'file:ntext',
+                    'photo:ntext',
+                    'url:ntext',
+                ],
+            ]) ?>
+        </div>
+
     </div>
 
 
@@ -41,126 +104,51 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <!--END Pais-->
 <!--Contenido-->
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+        <div class="panel-body">
+            <blockquote>
+                <h4>Contenido General</h4>
+                <small><?= Html::encode($model->general_content) ?> </small>
+            </blockquote>
+            <blockquote>
+                <h4>Metodología</h4>
+                <small><?= Html::encode($model->methodology) ?></small>
+            </blockquote>
+            <blockquote>
+                <h4>Requisitos</h4>
+                <small><?= Html::encode($model->requirements) ?></small>
+            </blockquote>
+            <blockquote>
+                <h4>Dirigido a</h4>
+                <small><?= Html::encode($model->addressed_to) ?> </small>
+            </blockquote>
+            <blockquote>
+                <h4>El evento incluye</h4>
+                <small><?= Html::encode($model->included) ?></small>
+            </blockquote>
+
+
+        </div>
+    </div>
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h5 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
-                       aria-controls="collapseOne">
-                        Información General
-                    </a>
-                </h5>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-<!--                    --><?//= $model->getStatus($model->status); ?>
-                    <?php $estado = $model->getStatus($model->status); ?>
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'general_content:ntext',
-                            'methodology:ntext',
-                            'addressed_to:ntext',
-                            'included:ntext',
-                            'requirements:ntext',
-                            [                    // the owner name of the model
-                                'label' => 'Pais',
-                                'value' => $model->country->name,
-                            ],
-                            'city',
-                            'year',
-//                            'status',
-                            /*                            [   'attribute'=>'status',
-                                                            'value'=>function($model){return $model->getStatus($estado);}
-                                                        ]*/
-                        ],
-                    ]) ?>
-                </div>
-                <div class="panel-footer">
-
-                    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                    <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
-                        'class' => 'btn btn-danger',
-                        'data' => [
-                            'confirm' => 'Are you sure you want to delete this item?',
-                            'method' => 'post',
-                        ],
-                    ]) ?>
-                    <?= Html::a(\Yii::$app->params['btnSubirImagen'], ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
-                    <?= Html::a(\Yii::$app->params['btnSubirDoc'], ['file', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
-                    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-
-
-                </div>
-
-            </div>
-        </div>
-
-
-        <div class="panel panel-info">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                       aria-expanded="false" aria-controls="collapseTwo">
-                        Información de descuento
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'cost',
-                            'discount',
-                            'discount_end_at',
-                            'discount_description',
-                        ],
-                    ]) ?>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="panel panel-primary">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                       aria-expanded="false" aria-controls="collapseThree">
-                        Recursos
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                    <?= DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'file:ntext',
-                            'photo:ntext',
-                            'url:ntext',
-                        ],
-                    ]) ?>
-                </div>
-            </div>
-        </div>
 
         <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4"
-                       aria-expanded="false" aria-controls="collapse4">
-                        Preguntas por evento
-                    </a>
+
+                    Preguntas por evento
+
                 </h4>
             </div>
-            <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-                <div class="panel-body">
-                    <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
-                    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-                </div>
+
+            <div class="panel-body">
+                <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
+                <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
             </div>
+
         </div>
 
     </div>

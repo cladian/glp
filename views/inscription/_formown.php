@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use kartik\widgets\DatePicker;
 use kartik\widgets\TimePicker;
 use yii\bootstrap\Modal;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Inscription */
 /* @var $form yii\widgets\ActiveForm */
@@ -16,7 +17,7 @@ use yii\bootstrap\Modal;
 
 <?php $form = ActiveForm::begin(); ?>
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/inscription/viewown', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], ['/inscription/viewown', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
 
 
     <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>

@@ -164,29 +164,3 @@ use yii\widgets\DetailView;
 <?php } ?>
 
 
-
-<div class=" col-xs-12">
-    <div class=" col-xs-6">
-        <div class="panel-heading"><h5>Preguntas por evento</h5></div>
-        <div class="progress">
-
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                 aria-valuemax="100"
-                 style="width: 60%;">
-                60%
-            </div>
-        </div>
-    </div>
-    <div class=" col-xs-6">
-        <div class="panel-heading "><h5>Preguntas generales</h5></div>
-        <div class="progress">
-
-            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                 aria-valuemax="100"
-                 style="width: 60%;">
-                60%
-            </div>
-        </div>
-    </div>
-
-</div>

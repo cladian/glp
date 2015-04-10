@@ -174,7 +174,7 @@ class SiteController extends Controller
             return $this->redirect(['admuser']);
         } else {
             return $this->render('index', [
-                'modelEvent' => Event::find()->where(['status' => self::STATUS_ACTIVE])->all(),
+                'modelEvent' => Event::find()->where(['status' => self::STATUS_ACTIVE])->limit(3)->all(),
                 'model'=> $model
             ]);
         }
