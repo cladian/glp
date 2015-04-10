@@ -81,6 +81,7 @@ class LoginForm extends Model
         return [
             'username' => 'Nombre de Usuario',
             'password' => 'Contraseña',
+            'rememberMe' => 'Recordar Contraseña',
             /*            'email' => 'Correo Electrónico',
                         'status' => 'Estado',
                         'created_at' => 'Fecha de Creación',

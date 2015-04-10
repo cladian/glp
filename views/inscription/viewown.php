@@ -60,7 +60,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $model->complete_logistic; ?>%</div>
-                        Información Logistica
+                        Inscripción
                     </div>
                 </div>
             </div>
@@ -191,12 +191,13 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
             <div class="panel-body">
                 <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
-                <?= Html::a(\Yii::$app->params['btnEnviar'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-success']) ?>
+
             </div>
 
     </div>
 
 
 </div>
+
 
 <!--ENDRegistro-->
