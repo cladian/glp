@@ -131,7 +131,7 @@ if (Yii::$app->user->can('asocam')) {
 //Menu de Usuario
 if (!Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> ' . Yii::$app->user->identity->username, 'items' => [
-        ['label' => ' Perfil', 'url' => ['/profile/viewown']],
+        ['label' => ' Perfil', 'url' => ['/profile/updateown']],
         ['label' => 'Actualización de Contraseña', 'url' => ['/user/password']],
         ['label' => 'Actualización de Correo', 'url' => ['/user/email']],
         '<li class="divider"></li>',
