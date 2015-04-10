@@ -14,7 +14,9 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Event */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<div class="panel panel-primary">
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
 <div class="event-form">
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
@@ -181,6 +183,8 @@ END Año-->
         <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
     </div>
 
+</div>
+</div>
 </div>
 </div>
 
