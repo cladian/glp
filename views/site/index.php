@@ -10,21 +10,11 @@ $this->title = 'GLP-ASOCAM';
 <!-- copia -->
 <!-- Landing Page Hero (with full-width background) -->
 <section class="slide">
-    <center class="caja-slide">
-        <div class="hidden-xs hidden-lg hidden-md col-xs-7 col-sm-7 col-md-7 col-lg-7">
-            <div class="caja-slide">
-                <h1 class="tituto-slide">Bienvenidos</h1>
 
-                <p class="texto-slide">Sistema de Registro de Participantes ASOCAM, a tavés de este sistema podrá
-                    acceder a la información de eventos ASOCAM</p>
-            </div>
-        </div>
-    </center>
     <!-- ingreso -->
 
     <!-- Sign up Form -->
-    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
-        <br>
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 
         <div class="caja">
             <div class="panel-heading"><h2 class="titulo-registro"> Registro</h2></div>
@@ -75,11 +65,10 @@ $this->title = 'GLP-ASOCAM';
     <div style="text-align:justify; padding-top: 60px;"
          class="hidden-xs hidden-sm col-xs-12 col-sm-12 col-md-7 col-lg-7">
         <div class="caja-slide">
-            <h1 class="tituto-slide">Bienvenidos</h1>
+            <h1 class="tituto-slide"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Bienvenidos</h1>
 
-            <p class="texto-slide">Al sistema de Registro de Participantes ASOCAM, a través de este sistema podrá
-                registrarse y  acceder a la información, materiales y demás cursos disponibles para los participantes de los eventos
-                regionales</p>
+            <p class="texto-slide">Al sistema de Registro de Participantes ASOCAM, a través de este registro podrá
+                gestionar sus inscripciones a nuestra oferta de eventos regionales</p>
         </div>
     </div>
     <!-- END: Hero Headline and subline -->

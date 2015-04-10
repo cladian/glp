@@ -12,16 +12,21 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 // Botón HOME todos tiene el botón
-$items[] = ['label' => 'Inicio', 'url' => ['/site/index'],'class'=>'btn btn-xs'];
-
-$items[] = ['label' => '<span class="glyphicon glyphicon-comment"></span> Foro', 'url' => ['/foro']];
 
 
-/*// Botones solo para usuarios que no están logeados todavia
+$items[] = ['label' => ' Foro', 'url' => ['/foro']];
+
+
+// Botones solo para usuarios que no están logeados todavia
+
 if (Yii::$app->user->isGuest) {
-    $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn btn-success btn-md'];
-    $items[] = ['label' => '<span class="glyphicon glyphicon-circle-arrow-right"></span> Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest]];
-}*/
+    /*$items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn btn-success btn-md'];*/
+    $items[] = ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest],'class'=>'btn'];
+}
+else
+{
+    $items[] = ['label' => 'Inicio', 'url' => ['/site/index'],'class'=>'btn btn-xs'];
+}
 
 // Botones para usuario ASOCAM
 if (Yii::$app->user->can('permission_admin')) {
@@ -165,6 +170,7 @@ if (!Yii::$app->user->isGuest) {
         'items' => $items,
     ]);
     ?>
+
     <?php  NavBar::end();?>
     <div class="container">
         <?=
