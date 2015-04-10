@@ -9,9 +9,7 @@ use yii\helpers\Html;
 $this->title = 'Crear Perfil';
 
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
-</div>
+
 
       <?= $this->render('_formown', [
         'model' => $model,
