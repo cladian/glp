@@ -91,7 +91,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 'model' => $model,
                 'attributes' => [
                     'file:ntext',
-                    'photo:ntext',
+//                    'photo:ntext',
                     'url:ntext',
                 ],
             ]) ?>

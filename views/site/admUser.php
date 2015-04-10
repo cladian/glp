@@ -294,15 +294,13 @@ $this->title = 'Panel de control de usuario';
                     <strong>Institución: </strong><?= $modelProfile->institution_name; ?> <br>
                     <strong>Tipo: </strong><?= $modelProfile->institutiontype->name; ?>
 
-
                 </address>
             <?php } else
             { ?>
 <!--                --><?//= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
 
-                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La información de su registro esta incompleta, por favor complete sus datos dando clic en botón (Crear Perfil).</div>
+                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La información de su registro está incompleta, por favor proporcione sus datos através del siguiente  formulario.</div>
                 <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
-
                 <address>
                 </address>
             <?php } ?>
