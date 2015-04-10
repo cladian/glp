@@ -300,7 +300,7 @@ $this->title = 'Panel de control de usuario';
             { ?>
 <!--                --><?//= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
 
-                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La informacion de su registro esta incomleta porfavor complete la informacion del siguiente formulario</div>
+                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La información de su registro esta incompleta, por favor complete sus datos dando clic en botón (Crear Perfil).</div>
                 <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
 
                 <address>

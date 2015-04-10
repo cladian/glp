@@ -36,7 +36,7 @@ class ProfileController extends Controller
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['viewown','createown','avatarown','updateown'],
+                        'actions' => ['createown','avatarown','updateown'],
                         'allow' => true,
                         'roles' => ['user','asocam'],
                     ],
@@ -159,7 +159,7 @@ class ProfileController extends Controller
             $avatar->saveAs(\Yii::$app->params['avatarFolder'] . $photoName);
             $model->photo = $photoName;
             $model->save();
-            return $this->redirect(['site/admuser']);
+            return $this->redirect(['profile/updateown']);
         } else {
             return $this->render('avatarown', [
                 'model' => $model,

@@ -19,7 +19,7 @@ use yii\helpers\Url;
 ?>
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/profile/updateown', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
     <?= Html::submitButton($model->isNewRecord ? 'Crear' : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn btn-success' : 'btn btn btn-success']) ?>
 
 
