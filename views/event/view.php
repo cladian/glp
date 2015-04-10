@@ -138,16 +138,16 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-success">
             <div class="panel-heading" role="tab" id="heading4">
                 <h4 class="panel-title">
-                    
-                        Preguntas por evento
+
+                    Preguntas por evento
 
                 </h4>
             </div>
 
-                <div class="panel-body">
-                    <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
-                    <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-                </div>
+            <div class="panel-body">
+                <?= $this->render('_partialEventquestion', ['dataProvider' => $dataProvider, 'searchModel' => $searchModel, 'eventtype_id' => $model->eventtype_id, 'event_id' => $model->id]) ?>
+                <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+            </div>
 
         </div>
 
