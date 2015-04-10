@@ -36,12 +36,6 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
     'dataProvider' => $dataProvider,
     'form' => $form,
     'attributes' => $model->getGrid(),
-/*    'attributeDefaults' => [
-        [
-            'type' => Form::INPUT_RAW,
-            'value'=>function ($model, $key, $index, $widget) {return $model->eventquestion->text; }
-        ],
-    ],*/
     'actionColumn'=>false,
     'serialColumn'=>false,
     'checkboxColumn'=>false,

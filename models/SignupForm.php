@@ -68,6 +68,7 @@ class SignupForm extends Model
         return [
             'username' => 'Nombre de Usuario',
             'password' => 'Contraseña',
+            'rememberme' => 'Contraseña',
 /*            'email' => 'Correo Electrónico',
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
