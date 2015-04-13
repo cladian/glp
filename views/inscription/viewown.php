@@ -103,6 +103,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
     <!--END Panel-->
+
+
+
     <!--Panel-->
     <div class=" col-xs-6 col-lg-3 col-md-3">
         <div class="panel panel-<?= $clase?>">
@@ -137,7 +140,76 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 </span>
         </div>
     </div>
+    <div class="chat-panel panel panel-primary">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Inquietudes y Respuestas
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <ul class="chat">
+                <?php
+                if (!$modelRecentInscription) {
+                    ?>
+                    <li> No existen Solicitudes</li>
+                <?php
+                }
+                // $modelRequest=\app\models\Request::find()
+                foreach ($modelRecentInscription as $inscription) {
 
+                    foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id, 'status' => 1])->orderBy('created_at desc')->all() as $request) {
+                        ?>
+                        <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                      <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                    </span>
+
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="green-font"><?= $request->inscription->user->username ?></strong>
+                                    <small class="pull-right text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
+                                    </small>
+                                </div>
+                                <p> <?= $request->question; ?></p>
+                                <?= Html::a('Responder', ['reply/create', 'id' => $request->id], ['class' => 'btn btn-default btn-xs pull-right']) ?>
+                            </div>
+                        </li>
+                        <?php
+                        $modelReply = \app\models\Reply::find()->where(['request_id' => $request->id])->orderBy('created_at desc')->limit(3)->all();
+                        foreach ($modelReply as $reply) {
+                            ?>
+                            <li class="right ">
+                                    <span class="chat-img pull-right">
+                                        <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                    </span>
+
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+
+                                        <strong class="pull-right primary-font"><?= $reply->user->username ?></strong>
+                                    </div>
+                                    <p>
+                                        <?= $reply->text; ?>
+                                    </p>
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($reply->created_at, 'long'); ?>
+                                    </small>
+                                </div>
+                            </li>
+                        <?php
+                        }
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            Últimas actividades
+        </div>
+        <!-- /.panel-footer -->
+    </div>
     <!--END Visualización evento-->
 
 </div>
@@ -155,6 +227,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
             </h5>
+
         </div>
 
         <div class="panel-body">
@@ -170,6 +243,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
         </h4>
     </div>
+
         <div class="panel-body">
             <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
         </div>
@@ -194,10 +268,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
             </div>
 
-    </div>
 
+    </div>
 
 </div>
 
 
-<!--ENDRegistro-->

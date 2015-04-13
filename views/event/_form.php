@@ -18,7 +18,7 @@ use yii\bootstrap\Modal;
 <?php $form = ActiveForm::begin(); ?>
 
     <div class="breadcrumb">
-        <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/index', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
         <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success ' : 'btn btn-primary ']) ?>
 
         <!-- AYUDA-->

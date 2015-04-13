@@ -2,16 +2,33 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\bootstrap\Modal;
+use app\models\Eventtype;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Eventos';
-
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<div class="breadcrumb">
+
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+    <?= Html::a(\Yii::$app->params['btnCrearEvento'], ['create'], ['class' => 'btn btn-success']) ?>
+
+
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
 </div>
 
 <div class="panel panel-green">
@@ -26,8 +43,8 @@ $this->title = 'Eventos';
 //            'id',
             'name',
             'short_description:ntext',
-            'general_content:ntext',
-            'methodology:ntext',
+//            'general_content:ntext',
+//            'methodology:ntext',
             // 'addressed_to:ntext',
             // 'included:ntext',
             // 'requirements:ntext',
@@ -46,7 +63,16 @@ $this->title = 'Eventos';
             // 'created_at',
             // 'updated_at',
             // 'country_id',
-            // 'eventtype_id',
+//            'eventtype_id',
+            [
+                'attribute' => 'eventtype_id',
+//                'filter' => ['eventtype_id=>name'],
+                'filter' => ArrayHelper::map(Eventtype::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
+
+                'value' => function ($data) {
+                        return $data->eventtype->name;
+                    }
+            ],
 
 //            ['class' => 'yii\grid\ActionColumn'],
             [
@@ -58,11 +84,10 @@ $this->title = 'Eventos';
                             return $rel;
                         }
                     },
-
             ],
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update}',
+                'template' => '{view} ',
                 'buttons' => [
                     'view' => function ($url, $model, $key) {
                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['event/view', 'id' => $key]);
@@ -84,7 +109,7 @@ $this->title = 'Eventos';
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(\Yii::$app->params['btnCrearEvento'], ['create'], ['class' => 'btn btn-success']) ?>
+
     </p>
 
     

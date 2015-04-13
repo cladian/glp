@@ -169,16 +169,13 @@ $this->title = 'Panel de control de usuario';
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-
             <ul class="chat">
-
                 <?php
                 if (!$modelRecentInscription) {
                     ?>
                     <li> No existen Solicitudes</li>
                 <?php
                 }
-
                 // $modelRequest=\app\models\Request::find()
                 foreach ($modelRecentInscription as $inscription) {
 
