@@ -230,7 +230,6 @@ class InscriptionController extends Controller
 
                     }
                 }
-
                 if (isset($_POST['Answer'])) {
                     $answerId = Yii::$app->request->post('editableKey');
                     $modelAnswer = Answer::findOne($answerId);
@@ -267,7 +266,7 @@ class InscriptionController extends Controller
                 'modelProfile' => $modelProfile,
                 'searchInscription' => $searchInscription,
                 'dataInscription' => $dataInscription,
-                'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+                'modelInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id, 'id'=>$id])->orderBy('created_at desc')->limit(10)->all(),
 
             ]);
         }

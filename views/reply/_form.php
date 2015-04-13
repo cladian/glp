@@ -12,7 +12,7 @@ use yii\bootstrap\Modal;
 ?>
 
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->request_id], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/index'], ['class' => 'btn btn-danger']) ?>
     <!-- AYUDA-->
     <?php
     Modal::begin([

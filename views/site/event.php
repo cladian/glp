@@ -89,26 +89,36 @@ $this->title = 'Evento:' . $modelEvent->name;
             <div class="panel panel-primary">
                 <div class="panel-heading"><?= Html::encode($this->title) ?></div>
                 <div class="panel-body">
+                    <?php if ($modelEvent->general_content): ?>
                     <blockquote>
                         <h4>Contenido General</h4>
                         <small><?= Html::encode($modelEvent->general_content) ?> </small>
                     </blockquote>
+                    <?php endif; ?>
+                    <?php if ($modelEvent->methodology): ?>
                     <blockquote>
                         <h4>Metodología</h4>
                         <small><?= Html::encode($modelEvent->methodology) ?></small>
                     </blockquote>
+                    <?php endif; ?>
+                    <?php if ($modelEvent->requirements ): ?>
                     <blockquote>
                         <h4>Requisitos</h4>
                         <small><?= Html::encode($modelEvent->requirements) ?></small>
                     </blockquote>
+                    <?php endif; ?>
+                    <?php if ($modelEvent->addressed_to ): ?>
                     <blockquote>
                         <h4>Dirigido a</h4>
                         <small><?= Html::encode($modelEvent->addressed_to) ?> </small>
                     </blockquote>
+                    <?php endif; ?>
+                    <?php if ($modelEvent->included ): ?>
                     <blockquote>
                         <h4>El evento incluye</h4>
                         <small><?= Html::encode($modelEvent->included) ?></small>
                     </blockquote>
+                    <?php endif; ?>
 
 
                 </div>

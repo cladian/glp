@@ -94,7 +94,6 @@ $this->title = 'Panel de control de usuario';
     <!-- /.panel .chat-panel -->
 
 </div>
-
 <div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
 
     <!-- /.panel  CENTRAL-->
@@ -137,8 +136,6 @@ $this->title = 'Panel de control de usuario';
 
                                 <?= Html::a(' Ver  ', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
                                 <?= Html::a(' Nueva Pregunta  ', ['request/createown', 'inscription_id' => $recent->id], ['class' => 'glyphicon glyphicon-comment btn btn-default  btn-xs']) ?>
-
-
                             </td>
                         </tr>
                     <?php
