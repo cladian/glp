@@ -192,6 +192,8 @@ class InscriptionController extends Controller
             $model = $this->findModel($id);
             $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
 
+            $searchInscription = new InscriptionSearch();
+            $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
             $searchModelEventanswer = new EventanswerSearch();
             $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
@@ -263,6 +265,9 @@ class InscriptionController extends Controller
                 'searchModelRequest' => $searchModelRequest,
                 'dataProviderRequest' => $dataProviderRequest,
                 'modelProfile' => $modelProfile,
+                'searchInscription' => $searchInscription,
+                'dataInscription' => $dataInscription,
+                'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
 
             ]);
         }

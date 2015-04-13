@@ -20,7 +20,6 @@ $this->title = 'Respuestas';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
             'inscription_id',
 //            [
