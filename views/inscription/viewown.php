@@ -22,7 +22,8 @@ $clase='red';
     <?= Html::a(\Yii::$app->params['btnInscriptionS1'], ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-primary']) ?>
     <?= Html::a(\Yii::$app->params['btnInscriptionS2'], ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
     <?= Html::a(\Yii::$app->params['btnInscriptionS3'], ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-    <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info']) ?>
+
+    <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info pull-right' ]) ?>
     <!-- AYUDA-->
     <?php
     Modal::begin([
@@ -223,7 +224,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <h5 class="panel-title">
 
                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                Información de Inscripción <span class="pull-right"><?= $model->complete; ?>%
+                Información General <span class="pull-right"><?= $model->complete; ?>%
 
 
             </h5>

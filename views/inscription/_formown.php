@@ -34,8 +34,7 @@ use yii\bootstrap\Modal;
 </div>
 
 <div class="panel panel-primary">
-    <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Información de
-        inscripción
+    <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Información General
     </div>
     <div class="panel-body">
 
