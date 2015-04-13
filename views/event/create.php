@@ -9,13 +9,11 @@ use yii\helpers\Html;
 $this->title = 'Crear evento';
 
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/event','Eventos' => $model->id], ['class' => 'btn btn-default'])?>
-</div>
+<!--<div class="regresar">
+<?/*= Html::a(\Yii::$app->params['btnRegresar'],['/event','Eventos' => $model->id], ['class' => 'btn btn-default'])*/?>
+</div>-->
 
-<div class="panel panel-green">
-  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
-  <div class="panel-body">
+
      <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
