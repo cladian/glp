@@ -224,7 +224,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <h5 class="panel-title">
 
                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                Información General <span class="pull-right"><?= $model->complete; ?>%
+                Información General <span class="pull-right">
+<!--                    --><?//= $model->complete; ?><!--%-->
 
 
             </h5>
