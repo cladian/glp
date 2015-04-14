@@ -12,7 +12,6 @@ use Yii;
 use mdm\admin\components\MenuHelper;
 use yii\web\Response;
 use yii\helpers\Html;
-use yii\filters\AccessControl;
 
 /**
  * AuthItemController implements the CRUD actions for AuthItem model.
@@ -33,16 +32,6 @@ class PermissionController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
-                ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view','create','update','delete'],
-                        'allow' => true,
-                        'roles' => ['sysadmin'],
-                    ],
                 ],
             ],
         ];

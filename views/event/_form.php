@@ -10,6 +10,7 @@ use kartik\widgets\SwitchInput;
 use kartik\money\MaskMoney;
 use kartik\widgets\FileInput;
 use yii\bootstrap\Modal;
+use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -50,6 +51,10 @@ use yii\bootstrap\Modal;
     </div>
     <div class="col-sm-6">
         <?= $form->field($model, 'general_content')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'general_content')->widget(CKEditor::className(), [
+            'options' => ['rows' => 6],
+            'preset' => 'basic'
+        ]) ?>
     </div>
     <div class="col-sm-6">
         <?= $form->field($model, 'methodology')->textarea(['rows' => 6]) ?>

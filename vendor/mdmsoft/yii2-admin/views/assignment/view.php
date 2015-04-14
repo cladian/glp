@@ -5,13 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model yii\web\IdentityInterface */
 
-$this->title = Yii::t('rbac-admin', 'Asignaciones');
-$this->title = 'Asignaciones';
+$this->title = Yii::t('rbac-admin', 'Assignments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assignment-index">
     <?= Html::a(Yii::t('rbac-admin', 'Users'), ['index'], ['class'=>'btn btn-success']) ?>
-    <h1><?= Yii::t('rbac-admin', 'User') ?>: <?= $model->{$usernameField} ?></h1>
+    <h1><?= Yii::t('rbac-admin', 'User') ?>: <?= Html::encode($model->{$usernameField}) ?></h1>
 
     <div class="col-lg-5">
         <?= Yii::t('rbac-admin', 'Avaliable') ?>:

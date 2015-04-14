@@ -35,7 +35,7 @@ $this->title = $name;
 
 
 
-                <p>Por favor use el botón de retorno y verifique que se encuentra en el lugar correcto. Si necesita asistencia inmediata, por favor en envienos un correo electrónico.
+                <p>Por favor use el botón de retorno y verifique que se encuentra en el lugar correcto. Si necesita asistencia inmediata, por favor en envienos un correo electrónico (info@asocam.org)
                     </p>
 
             </div>
