@@ -17,9 +17,11 @@ use yii\bootstrap\Modal;
 
 <?php $form = ActiveForm::begin(); ?>
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/admuser', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
-
-
+    <?php if ($model->isNewRecord) :?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/index'], ['class' => 'btn btn-danger']) ?>
+    <?php else: ?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], ['/inscription/viewown', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+    <?php endif;?>
     <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
     <!-- AYUDA-->
     <?php
@@ -34,8 +36,7 @@ use yii\bootstrap\Modal;
 </div>
 
 <div class="panel panel-primary">
-    <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Información de
-        inscripción
+    <div class="panel-heading"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Información General
     </div>
     <div class="panel-body">
 

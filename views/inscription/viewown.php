@@ -22,7 +22,8 @@ $clase='red';
     <?= Html::a(\Yii::$app->params['btnInscriptionS1'], ['updateown', 'id' => $model->id], ['class' => 'btn btn btn-primary']) ?>
     <?= Html::a(\Yii::$app->params['btnInscriptionS2'], ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
     <?= Html::a(\Yii::$app->params['btnInscriptionS3'], ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
-    <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info']) ?>
+
+    <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info pull-right' ]) ?>
     <!-- AYUDA-->
     <?php
     Modal::begin([
@@ -103,9 +104,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
     </div>
     <!--END Panel-->
-
-
-
     <!--Panel-->
     <div class=" col-xs-6 col-lg-3 col-md-3">
         <div class="panel panel-<?= $clase?>">
@@ -144,18 +142,19 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
             Inquietudes y Respuestas
+
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <ul class="chat">
                 <?php
-                if (!$modelRecentInscription) {
+                if (!$modelInscription) {
                     ?>
                     <li> No existen Solicitudes</li>
                 <?php
                 }
                 // $modelRequest=\app\models\Request::find()
-                foreach ($modelRecentInscription as $inscription) {
+                foreach ($modelInscription as $inscription) {
 
                     foreach (\app\models\Request::find()->where(['inscription_id' => $inscription->id, 'status' => 1])->orderBy('created_at desc')->all() as $request) {
                         ?>
@@ -163,12 +162,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                     <span class="chat-img pull-left">
                                       <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
-
                             <div class="chat-body clearfix">
                                 <div class="header">
                                     <strong class="green-font"><?= $request->inscription->user->username ?></strong>
                                     <small class="pull-right text-muted">
-                                        <i class="fa fa-clock-o fa-fw"></i> <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
+                                        <i class="fa fa-clock-o fa-fw"></i>  <?= Yii::$app->formatter->asDate($request->created_at, 'long'); ?>
                                     </small>
                                 </div>
                                 <p> <?= $request->question; ?></p>
@@ -186,7 +184,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                                 <div class="chat-body clearfix">
                                     <div class="header">
-
                                         <strong class="pull-right primary-font"><?= $reply->user->username ?></strong>
                                     </div>
                                     <p>
@@ -223,9 +220,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <h5 class="panel-title">
 
                 <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-                Información de Inscripción <span class="pull-right"><?= $model->complete; ?>%
-
-
+                Información General <span class="pull-right">
+<!--                    --><?//= $model->complete; ?><!--%-->
             </h5>
 
         </div>
@@ -239,8 +235,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <h4 class="panel-title">
             <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
 
-                Información logística
-
+            Por favor verificar y completar información de Logística
+            <?= Html::a(\Yii::$app->params['btnInscriptionS3SM'], ['updateown', 'id' => $model->id], ['class' => 'btn btn-info btn-xs pull-right' ]) ?>
         </h4>
     </div>
 
@@ -249,9 +245,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
 
     </div>
-
-
-
 
     <div class="panel panel-success">
         <div class="panel-heading" role="tab" id="heading5">

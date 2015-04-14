@@ -44,7 +44,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel panel-primary">
             <div class="panel-heading"><?= $model->phforum->name ?></div>
             <div class="panel-body">
-                <center style="text-align:justify;"><?= substr($model->content, 0, 170); ?>...</a> </center>
+                <center style="text-align:justify;"><?= $model->content; ?>...</a> </center>
                 <hr/>
                 EVENTO: <?= $model->phforum->event->name ?>
             </div>
