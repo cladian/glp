@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use kartik\widgets\FileInput;
-
+use yii\bootstrap\Modal;
 use kartik\widgets\ColorInput;
 use kartik\widgets\SwitchInput;
 
@@ -18,14 +18,30 @@ use app\models\Country;
 /* @var $model app\models\Profile */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(); ?>
+    <div class="breadcrumb">
+        <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '<span class="glyphicon glyphicon-floppy-disk"></span> Crear' : '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar', ['class' => $model->isNewRecord ? 'btn btn btn-success' : 'btn btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-camera"></span> Actualizar Imagen', ['avatarown', 'id' => $model->id], ['class' => 'btn btn-info btn btn btn-success']) ?>
+
+        <!-- AYUDA-->
+        <?php
+        Modal::begin([
+            'header' => '<h4>Inscripción</h4>',
+            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+        ]);
+
+        echo $this->render('/help/inscription-index');
+        Modal::end();
+        ?>
+    </div>
+<div class="panel panel-primary">
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
+        <div class="profile-update">
+
 
 <div class="profile-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-    
-
-    
-
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
         <?= $form->field($model, 'lastname')->textInput(['maxlength' => 100]) ?>
@@ -67,18 +83,15 @@ use app\models\Country;
 
     <center>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="form-group">
-                <?= Html::submitButton($model->isNewRecord ? '<span class="glyphicon glyphicon-floppy-disk"></span> Crear' : '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar', ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
-                
-            </div>
+
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="form-group">
-                
-                <?= Html::a(\Yii::$app->params['btnCancelar'] , ['/site/index'], ['class' => 'btn btn-danger btn-lg btn-block']) ?>
-            </div>
+
         </div>
     </center>
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
+</div>
 </div>

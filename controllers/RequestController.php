@@ -39,7 +39,6 @@ class RequestController extends Controller
                         'allow' => true,
                         'roles' => ['user'],
                     ],
-
                 ],
             ],
             'verbs' => [
@@ -83,6 +82,7 @@ class RequestController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
     public function actionCreate()
     {
         $model = new Request();
@@ -101,7 +101,7 @@ class RequestController extends Controller
         $model->inscription_id=$inscription_id;
         $model->status=self::STATUS_ACTIVE;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['reply/create', 'id' => $model->id]);
+            return $this->redirect(['inscription/viewown', 'id' => $model->inscription_id]);
         } else {
             return $this->render('createown', [
                 'model' => $model,

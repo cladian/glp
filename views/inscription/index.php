@@ -14,9 +14,26 @@ use app\models\Event;
 $this->title = 'Inscripciones';
 /*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+
+<div class="breadcrumb">
+
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+
+
+    <!-- <!-- AYUDA-->
+    <?php
+    /*    Modal::begin([
+            'header' => '<h4>Inscripción</h4>',
+            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+        ]);
+
+        echo $this->render('/help/inscription-index');
+        Modal::end();
+        */?>
 </div>
+
 
 <div class="inscription-index">
     <?php

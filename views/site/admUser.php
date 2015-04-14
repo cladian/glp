@@ -94,7 +94,6 @@ $this->title = 'Panel de control de usuario';
     <!-- /.panel .chat-panel -->
 
 </div>
-
 <div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
 
     <!-- /.panel  CENTRAL-->
@@ -137,8 +136,6 @@ $this->title = 'Panel de control de usuario';
 
                                 <?= Html::a(' Ver  ', ['inscription/viewown', 'id' => $recent->id], ['class' => 'glyphicon glyphicon-eye-open btn btn-default  btn-xs']) ?>
                                 <?= Html::a(' Nueva Pregunta  ', ['request/createown', 'inscription_id' => $recent->id], ['class' => 'glyphicon glyphicon-comment btn btn-default  btn-xs']) ?>
-
-
                             </td>
                         </tr>
                     <?php
@@ -169,16 +166,13 @@ $this->title = 'Panel de control de usuario';
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-
             <ul class="chat">
-
                 <?php
                 if (!$modelRecentInscription) {
                     ?>
                     <li> No existen Solicitudes</li>
                 <?php
                 }
-
                 // $modelRequest=\app\models\Request::find()
                 foreach ($modelRecentInscription as $inscription) {
 
@@ -294,15 +288,13 @@ $this->title = 'Panel de control de usuario';
                     <strong>Institución: </strong><?= $modelProfile->institution_name; ?> <br>
                     <strong>Tipo: </strong><?= $modelProfile->institutiontype->name; ?>
 
-
                 </address>
             <?php } else
             { ?>
 <!--                --><?//= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
 
-                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La informacion de su registro esta incomleta porfavor complete la informacion del siguiente formulario</div>
+                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La información de su registro está incompleta, por favor proporcione sus datos através del siguiente  formulario.</div>
                 <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
-
                 <address>
                 </address>
             <?php } ?>

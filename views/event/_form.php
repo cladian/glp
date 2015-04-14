@@ -9,16 +9,38 @@ use kartik\widgets\DatePicker;
 use kartik\widgets\SwitchInput;
 use kartik\money\MaskMoney;
 use kartik\widgets\FileInput;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(); ?>
 
+    <div class="breadcrumb">
+        <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/index', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success ' : 'btn btn-primary ']) ?>
+
+        <!-- AYUDA-->
+        <?php
+        Modal::begin([
+            'header' => '<h4>Inscripción</h4>',
+            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+        ]);
+
+        echo $this->render('/help/inscription-index');
+        Modal::end();
+        ?>
+    </div>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
 <div class="event-form">
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
-    <?php $form = ActiveForm::begin(); ?>
+
 
     <div class="col-sm-12">
         <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
@@ -45,10 +67,6 @@ use kartik\widgets\FileInput;
         <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     </div>
 </div>
-
-
-
-
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -175,13 +193,7 @@ END Año-->
     <!--    --><? //= $form->field($model, 'eventtype_id')->textInput() ?>
     
 </div>
-<div class="row">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success btn-lg btn-block' : 'btn btn-primary btn-lg btn-block']) ?>
-    </div>
-
 </div>
 </div>
-
+</div>
     <?php ActiveForm::end(); ?>

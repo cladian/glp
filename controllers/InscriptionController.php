@@ -192,6 +192,8 @@ class InscriptionController extends Controller
             $model = $this->findModel($id);
             $modelLogistic = Logistic::find()->where(['inscription_id' => $id])->one();
 
+            $searchInscription = new InscriptionSearch();
+            $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
 
             $searchModelEventanswer = new EventanswerSearch();
             $dataProviderEventanswer = $searchModelEventanswer->searchByInscription(Yii::$app->request->queryParams, $id);
@@ -228,7 +230,6 @@ class InscriptionController extends Controller
 
                     }
                 }
-
                 if (isset($_POST['Answer'])) {
                     $answerId = Yii::$app->request->post('editableKey');
                     $modelAnswer = Answer::findOne($answerId);
@@ -263,6 +264,9 @@ class InscriptionController extends Controller
                 'searchModelRequest' => $searchModelRequest,
                 'dataProviderRequest' => $dataProviderRequest,
                 'modelProfile' => $modelProfile,
+                'searchInscription' => $searchInscription,
+                'dataInscription' => $dataInscription,
+                'modelInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id, 'id'=>$id])->orderBy('created_at desc')->limit(10)->all(),
 
             ]);
         }

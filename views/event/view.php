@@ -11,17 +11,17 @@ $this->title = $model->name;
 
 ?>
 <div class="breadcrumb">
-    <h1>Reorganizar mauri</h1>
+
     <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
 
     <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
+  <!--  --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
             'confirm' => 'Are you sure you want to delete this item?',
             'method' => 'post',
         ],
-    ]) ?>
+    ]) */?>
     <?= Html::a(\Yii::$app->params['btnSubirImagen'], ['resources', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
     <?= Html::a(\Yii::$app->params['btnSubirDoc'], ['file', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
     <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
@@ -91,7 +91,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 'model' => $model,
                 'attributes' => [
                     'file:ntext',
-                    'photo:ntext',
+//                    'photo:ntext',
                     'url:ntext',
                 ],
             ]) ?>

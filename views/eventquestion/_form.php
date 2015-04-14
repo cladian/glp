@@ -5,15 +5,33 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Event;
 use app\models\Question;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Eventquestion */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(); ?>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->event_id], ['class' => 'btn btn-danger']) ?>
+    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
+</div>
+
+<div class="panel panel-green">
+    <div class="panel-heading">Preguntas por Evento</div>
+    <div class="panel-body">
 
 <div class="eventquestion-form">
-
-    <?php $form = ActiveForm::begin(); ?>
 
     <?/*= $form->field($model, 'status')->textInput() */?>
 <!--    --><?//= $form->field($model, 'status')->dropDownList([ '10' => 'Activo','0' => 'Inactivo'], [ 'prompt' => 'Seleccionar']) ?>
@@ -37,11 +55,7 @@ use app\models\Question;
         ['prompt' => 'Seleccione']
 
     ) */?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
     <?php ActiveForm::end(); ?>
-
+</div>
+</div>
 </div>

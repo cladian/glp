@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -8,21 +9,35 @@ use yii\helpers\Html;
 $this->title = 'Actualizar Usuario ' . ' ' ;
 
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+
+
+    <!-- AYUDA-->
+    <?php
+    Modal::begin([
+        'header' => '<h4>Inscripción</h4>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    ?>
 </div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
   </div>
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <div class="panel panel-primary">
-  <center class="panel-heading"><h3>Actualización de Usuario</h3></center>
+  <center class="panel-heading"><h3>Actualización de Contraseña</h3></center>
   <div class="panel-body">
- 
-      
+
+
       <div class="caption">
-        
-        <p>Por favor, rellene los siguientes:</p>
+
+        <p>Por favor, actualice su contraseña:</p>
         <hr>
         <div class="row">
             <div class="col-lg-12">
@@ -41,7 +56,7 @@ $this->title = 'Actualizar Usuario ' . ' ' ;
   </div>
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
     <div class="">
-      
+
     </div>
   </div>
 </div>
