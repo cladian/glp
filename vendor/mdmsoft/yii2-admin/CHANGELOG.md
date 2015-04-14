@@ -1,10 +1,16 @@
 Yii2 Admin Change Log
 ==========================
 
-1.0.3 Under Development
+1.0.4 Under Development
 -----------------------
 
-- No change
+- Bug: #102: Unique validation of the permission and role (mdmunir).
+- Enh: Clear cache when menu change (mdmunir).
+- Enh: Ensure get latest state of `user` component (mdmunir).
+
+
+1.0.3
+------
 
 
 1.0.2

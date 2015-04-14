@@ -2,7 +2,6 @@
 
 namespace mdm\admin\controllers;
 
-
 use mdm\admin\models\AuthItem;
 use mdm\admin\models\searchs\AuthItem as AuthItemSearch;
 use yii\web\Controller;
@@ -12,7 +11,6 @@ use yii\rbac\Item;
 use Yii;
 use mdm\admin\components\MenuHelper;
 use yii\helpers\Html;
-use yii\filters\AccessControl;
 
 /**
  * AuthItemController implements the CRUD actions for AuthItem model.
@@ -33,16 +31,6 @@ class RoleController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
-                ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view','create','update','delete'],
-                        'allow' => true,
-                        'roles' => ['sysadmin'],
-                    ],
                 ],
             ],
         ];
