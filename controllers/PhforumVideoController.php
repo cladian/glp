@@ -8,6 +8,7 @@ use app\models\PhforumVideoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * PhforumVideoController implements the CRUD actions for PhforumVideo model.
@@ -21,10 +22,27 @@ class PhforumVideoController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create','update','delete'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['view'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                    [
+                        'actions' => ['index','create','update','delete'],
+                        'allow' => false,
+                        'roles' => ['*'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];

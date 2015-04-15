@@ -25,22 +25,22 @@ use kartik\editable\Editable;
             'class' => '\kartik\grid\SerialColumn',
             'contentOptions'=>['class'=>'kartik-sheet-style'],
         ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'question_id',
-            'value' => function ($data) {
-                return $data->question->text;
-            }
-
-        ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'reply',
-            'value' => 'reply',
-
-        ],
+//        [
+//            'class' => 'kartik\grid\EditableColumn',
+//            'readonly' => true,
+//            'attribute' => 'question_id',
+//            'value' => function ($data) {
+//                return $data->question->text;
+//            }
+//
+//        ],
+//        [
+//            'class' => 'kartik\grid\EditableColumn',
+//            'readonly' => true,
+//            'attribute' => 'reply',
+//            'value' => 'reply',
+//
+//        ],
 
 
         [
