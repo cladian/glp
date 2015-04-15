@@ -7,15 +7,12 @@ use yii\helpers\Html;
 /* @var $model app\models\Document */
 
 //$this->title = 'Crear Documento';
-
+$this->title='Nuevo documento';
 ?>
-<div class="document-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('/document/_form', [
         'model' => $model,
 
     ]) ?>
 
-</div>

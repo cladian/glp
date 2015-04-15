@@ -132,6 +132,7 @@ class PhforumController extends Controller
             $modelPhforumDocument->document_id=$model->id;
             $modelPhforumDocument->save();
 
+            
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
@@ -201,6 +202,7 @@ class PhforumController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', 'La información del Foro ha sido actualizada éxitosamente');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

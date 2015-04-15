@@ -8,61 +8,58 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Document */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
+    <div class="breadcrumb">
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
 
-<div class="regresar">
-    <?= Html::a(\Yii::$app->params['btnRegresar'],['/phforum/view','id' => $model->id], ['class' => 'btn btn-default'])?>
-</div>
-<div class="panel panel-green">
-    <div class="panel-heading">Crear Documento</div>
-    <div class="panel-body">
+            <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
-<div class="document-form">
-
-
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-
-
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
-
-<!--    --><?//= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
-
-
-
-
-
-    <?=
-    // Usage with ActiveForm and model
-    $form->field($model, 'file')->widget(FileInput::classname(), [
-        'pluginOptions' => [
-
-            'showRemove' => false,
-            'showUpload' => false,
-            'showPreview' => false,
-            'browseClass' => 'btn btn-primary btn-block',
-            'browseLabel' =>  'Explorar'
-
-        ],
-    ]);
-
-    ?>
-
-    <?= $form->field($model, 'tags')->textarea(['rows' => 6]) ?>
-
-<!--    --><?//= $form->field($model, 'status')->textInput() ?>
-    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
-
-<!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
-<!---->
-<!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+    <div class="panel panel-green">
+        <div class="panel-heading">Crear Documento</div>
+        <div class="panel-body">
 
-    <?php ActiveForm::end(); ?>
+            <div class="document-form">
 
-</div>
-</div>
-</div>
+
+                <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
+
+                <!--    --><? //= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
+
+
+
+
+
+                <?=
+                // Usage with ActiveForm and model
+                $form->field($model, 'file')->widget(FileInput::classname(), [
+                    'pluginOptions' => [
+
+                        'showRemove' => false,
+                        'showUpload' => false,
+                        'showPreview' => false,
+                        'browseClass' => 'btn btn-primary btn-block',
+                        'browseLabel' => 'Explorar'
+
+                    ],
+                ]);
+
+                ?>
+
+                <?/*= $form->field($model, 'tags')->textarea(['rows' => 6]) */?>
+
+                <!--    --><? //= $form->field($model, 'status')->textInput() ?>
+                <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+
+                <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
+                <!---->
+                <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
+
+
+
+
+            </div>
+        </div>
+    </div>
+<?php ActiveForm::end(); ?>
