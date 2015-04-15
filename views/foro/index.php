@@ -3,6 +3,7 @@ use yii\helpers\Html;
 
 use app\models\PhforumDocument;
 use app\models\PhforumImagens;
+use app\models\Topic;
 
 
 use app\models\Document;
@@ -119,7 +120,7 @@ foreach ($model as $foro) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic): ?>
+                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id,'status'=>Topic::STATUS_ACTIVE])->all() as $topic): ?>
 
                                     <tr>
                                         <td><?= $topic->id; ?></td>

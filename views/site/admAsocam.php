@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
 
 // http://demos.krajee.com/widget-details/growl
 
-if (!$hasProfile) {
+/*if (!$hasProfile) {
     echo Growl::widget([
         'type' => Growl::TYPE_WARNING,
         'title' => 'Perfil de usario incompleto',
@@ -27,7 +27,7 @@ if (!$hasProfile) {
     ]);
 
 
-}
+}*/
 ?>
 <div >
 <!--<div class="hidden-xs">-->
