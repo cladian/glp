@@ -175,7 +175,7 @@ class ProfileController extends Controller
         $model = $this->findModelown(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['site/admuser']);
+            return $this->redirect(['site/index']);
         } else {
             return $this->render('updateown', [
                 'model' => $model,

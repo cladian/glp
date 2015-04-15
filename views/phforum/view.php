@@ -26,6 +26,8 @@ $this->title = $model->name;
 
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
+    <?= Html::a(\Yii::$app->params['btnRegresarForo'], ['/foro', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
+
     <!--    --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [

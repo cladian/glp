@@ -29,7 +29,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 }
 ?>
 
-<div class="regresar">
+<div class="breadcrumb">
 
 
     <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
@@ -39,21 +39,24 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <a name="sube"></a>
 
 
-<div role="tabpanel" class="tab-pane active" id="home">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><?= $model->phforum->name ?></div>
-            <div class="panel-body">
-                <center style="text-align:justify;"><?= $model->content; ?>...</a> </center>
-                <hr/>
-                EVENTO: <?= $model->phforum->event->name ?>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><?= $model->phforum->name ?>
+            <?php
+            // Boton visible para asocam
+            // if (Yii::$app->user->can('asocam')) {
+            echo Html::a(\Yii::$app->params['btnUpdateTopic'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-xs btn-default pull-right']);
+            // }
+            ?>
+
+        </div>
+        <div class="panel-body">
+            <center style="text-align:justify;"><?= $model->content; ?></a> </center>
+            <hr/>
+            EVENTO: <?= $model->phforum->event->name ?>
+        </div>
+    </div>
 
     <div class="panel panel-green">
         <div class="panel-heading">
