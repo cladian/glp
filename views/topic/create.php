@@ -9,14 +9,11 @@ use yii\helpers\Html;
 
 //$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
+$this->title='Nuevo Tema';
 ?>
-<div class="topic-create">
+<?= $this->render('_form', [
+    'model' => $model,
 
-    <h1><?= Html::encode($this->title) ?></h1>
+]) ?>
 
-    <?= $this->render('_form', [
-        'model' => $model,
 
-    ]) ?>
-
-</div>

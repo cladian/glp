@@ -9,20 +9,22 @@ use yii\grid\GridView;
 
 $this->title = 'Foro';
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(\Yii::$app->params['btnForo'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 
 <div class="panel panel-green">
-  <div class="panel-heading"><?= Html::encode($this->title) ?></div>
-  <div class="panel-body">
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
+<<<<<<< HEAD
             'name',
             'begin_at',
             'end_at',
@@ -49,18 +51,26 @@ $this->title = 'Foro';
         ],
     ]); ?>
   </div>
+=======
+                'name',
+                'begin_at',
+                'end_at',
+                'meeting_at',
+                // 'memory_at',
+                // 'content:ntext',
+                // 'topic_number',
+                // 'event_id',
+                // 'status',
+                // 'created_at',
+                // 'updated_at',
+                // 'is_private',
+
+                ['class' => 'yii\grid\ActionColumn'],
+            ],
+        ]); ?>
+    </div>
+>>>>>>> edison
 </div>
 
 
-<div class="phforum-index">
 
-    
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-   
-        <?= Html::a(\Yii::$app->params['btnForo'], ['create'], ['class' => 'btn btn-success']) ?>
-   
-
-    
-
-</div>

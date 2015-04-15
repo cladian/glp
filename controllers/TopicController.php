@@ -121,6 +121,7 @@ class TopicController extends Controller
         $model->phforum_id= $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', 'El nuevo tema ha sido agregado éxitosamente');
             return $this->redirect(['phforum/view', 'id' => $model->phforum_id]);
         } else {
             return $this->render('create', [
