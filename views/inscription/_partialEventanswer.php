@@ -25,23 +25,23 @@ $this->title = 'Respuestas por Evento';
             'class' => '\kartik\grid\SerialColumn',
             'contentOptions'=>['class'=>'kartik-sheet-style'],
         ],
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'eventquestion_id',
-            'value' => function ($data) {
-                return $data->eventquestion->text;
-            }
-
-        ],
-
-        [
-            'class' => 'kartik\grid\EditableColumn',
-            'readonly' => true,
-            'attribute' => 'reply',
-            'value' => 'reply',
-
-        ],
+//        [
+//            'class' => 'kartik\grid\EditableColumn',
+//            'readonly' => true,
+//            'attribute' => 'eventquestion_id',
+//            'value' => function ($data) {
+//                return $data->eventquestion->text;
+//            }
+//
+//        ],
+//
+//        [
+//            'class' => 'kartik\grid\EditableColumn',
+//            'readonly' => true,
+//            'attribute' => 'reply',
+//            'value' => 'reply',
+//
+//        ],
         [
             'class' => '\kartik\grid\BooleanColumn',
             'attribute' => 'status',
