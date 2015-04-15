@@ -78,7 +78,7 @@ class Topic extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Contenido',
+            'content' => 'Tema del Foro',
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

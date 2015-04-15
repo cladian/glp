@@ -11,26 +11,16 @@ use kartik\widgets\FileInput;
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="breadcrumb">
-        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $id], ['class' => 'btn btn-danger']) ?>
 
-            <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
     </div>
     <div class="panel panel-green">
         <div class="panel-heading">Crear Documento</div>
         <div class="panel-body">
-
             <div class="document-form">
-
-
                 <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
-
-                <!--    --><? //= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
-
-
-
-
-
                 <?=
                 // Usage with ActiveForm and model
                 $form->field($model, 'file')->widget(FileInput::classname(), [
@@ -44,21 +34,8 @@ use kartik\widgets\FileInput;
 
                     ],
                 ]);
-
                 ?>
-
-                <?/*= $form->field($model, 'tags')->textarea(['rows' => 6]) */?>
-
-                <!--    --><? //= $form->field($model, 'status')->textInput() ?>
                 <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
-
-                <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
-                <!---->
-                <!--    --><? //= $form->field($model, 'updated_at')->textInput() ?>
-
-
-
-
             </div>
         </div>
     </div>

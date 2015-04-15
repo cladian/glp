@@ -12,12 +12,12 @@ use dosamigos\ckeditor\CKEditor;
 
     <div class="breadcrumb">
 
-        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $model->phforum_id], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $model->phforum_id], ['class' => 'btn btn-danger']) ?>
         <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
     </div>
     <div class="panel panel-green">
-        <div class="panel-heading"> Crear Tema</div>
+        <div class="panel-heading">Tema</div>
         <div class="panel-body">
             <div class="topic-form">
 
