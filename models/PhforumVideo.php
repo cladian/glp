@@ -53,6 +53,7 @@ class PhforumVideo extends \yii\db\ActiveRecord
     {
         return [
             [['phforum_id', 'video_id'], 'required'],
+            [['phforum_id', 'video_id'], 'required'],
             [['phforum_id', 'video_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
