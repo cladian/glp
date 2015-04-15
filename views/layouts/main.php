@@ -6,7 +6,6 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 
-
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -21,11 +20,9 @@ $items[] = ['label' => ' Foro', 'url' => ['/foro']];
 
 if (Yii::$app->user->isGuest) {
     /*$items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn btn-success btn-md'];*/
-    $items[] = ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest],'class'=>'btn'];
-}
-else
-{
-    $items[] = ['label' => 'Inicio', 'url' => ['/site/index'],'class'=>'btn btn-xs'];
+    $items[] = ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn'];
+} else {
+    $items[] = ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'btn btn-xs'];
 }
 
 // Botones para usuario ASOCAM
@@ -64,7 +61,7 @@ if (Yii::$app->user->can('permission_admin')) {
         ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
     ]];
 
-    $items[]=
+    $items[] =
 
         ['label' => 'Notificaciones', 'items' => [
             ['label' => 'Solicitudes', 'url' => ['/request']],
@@ -73,20 +70,20 @@ if (Yii::$app->user->can('permission_admin')) {
 
         ]
         ];
-    $items[]=['label' => 'Inscripción', 'url' => ['/inscription']];
+    $items[] = ['label' => 'Inscripción', 'url' => ['/inscription']];
 
-    $items[]=    ['label' => 'Catálogos', 'items' => [
-            ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
-            ['label' => 'Institución', 'url' => ['/institutiontype']],
-            '<li class="divider"></li>',
-            ['label' => 'Pais', 'url' => ['/country']],
-            ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
-            ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
-            '<li class="divider"></li>',
+    $items[] = ['label' => 'Catálogos', 'items' => [
+        ['label' => 'Responsabilidad', 'url' => ['/responsibilitytype']],
+        ['label' => 'Institución', 'url' => ['/institutiontype']],
+        '<li class="divider"></li>',
+        ['label' => 'Pais', 'url' => ['/country']],
+        ['label' => 'Tipos Eventos', 'url' => ['/eventtype']],
+        ['label' => 'Tipo de Registro', 'url' => ['/registertype']],
+        '<li class="divider"></li>',
 //            ['label' => 'Preguntas', 'url' => ['/question']],
-            ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
-        ]
-        ];
+        ['label' => 'Pregunta General', 'url' => ['/generalquestion']],
+    ]
+    ];
 
     if (Yii::$app->user->can('permission_admin'))
         $items[] = ['label' => 'Roles', 'items' => [
@@ -102,7 +99,7 @@ if (Yii::$app->user->can('asocam')) {
 
     $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
-        ['label' => 'Documentos', 'url' => ['/phforum-document']],
+        /*['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
         ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
         '<li class="divider"></li>',
@@ -118,7 +115,7 @@ if (Yii::$app->user->can('asocam')) {
         ['label' => 'Imagen', 'url' => ['/post-imagen']],
 
         '<li class="divider"></li>',
-        ['label' => 'Comentarios', 'url' => ['/comment']],
+        ['label' => 'Comentarios', 'url' => ['/comment']],*/
         '<li class="divider"></li>',
         ['label' => 'Documentos', 'url' => ['/document']],
         ['label' => 'Video', 'url' => ['/video']],
@@ -171,28 +168,33 @@ if (!Yii::$app->user->isGuest) {
     ]);
     ?>
 
-    <?php  NavBar::end();?>
+    <?php NavBar::end(); ?>
     <div class="container">
         <?=
         Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
-        
+
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
-                <a href="http://www.asocam.org" target="_blank"> <?= Html::img('imgs/logos/asocam.png',['class' => 'img_footer']); ?></a>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
+            <a href="http://www.asocam.org"
+               target="_blank"> <?= Html::img('imgs/logos/asocam.png', ['class' => 'img_footer']); ?></a>
 
-            </div>
-            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">
-                <p style="text-align:justify">ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas específicos, generando productos   de alta calidad y utilidad para los actores de desarrollo.</p>
-                <p>Desarrollado por <a href="http://www.cladian.com" target="_blank">Cladian Digital</a> & ASOCAM <?php echo date("Y"); ?>  </p>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">
+            <p style="text-align:justify">ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que
+                apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas
+                específicos, generando productos de alta calidad y utilidad para los actores de desarrollo.</p>
 
-            </div>
+            <p>Desarrollado por <a href="http://www.cladian.com" target="_blank">Cladian Digital</a> &
+                ASOCAM <?php echo date("Y"); ?>  </p>
+
+        </div>
     </div>
 </footer>
 
