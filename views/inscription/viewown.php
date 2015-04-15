@@ -23,11 +23,11 @@ $clase='red';
     <?= Html::a(\Yii::$app->params['btnInscriptionS2'], ['eventanswer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
     <?= Html::a(\Yii::$app->params['btnInscriptionS3'], ['answer', 'id' => $model->id], ['class' => 'btn btn btn-success']) ?>
 
-    <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info pull-right' ]) ?>
+
     <!-- AYUDA-->
     <?php
     Modal::begin([
-        'header' => '<h4>Inscripción</h4>',
+        'header' => '<li class="list-group-item list-group-item-warning"> Instrucciones para completar la Inscripción</li>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
@@ -203,9 +203,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            Últimas actividades
+            <?= Html::a(\Yii::$app->params['btnNuevaInquietud'], ['request/createown', 'inscription_id' => $model->id], ['class' => 'btn btn-info btn-xs ' ]) ?>
         </div>
         <!-- /.panel-footer -->
+
     </div>
     <!--END Visualización evento-->
 
@@ -236,33 +237,21 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
 
             Por favor verificar y completar información de Logística
-            <?= Html::a(\Yii::$app->params['btnInscriptionS3SM'], ['updateown', 'id' => $model->id], ['class' => 'btn btn-info btn-xs pull-right' ]) ?>
+
         </h4>
+
     </div>
+
 
         <div class="panel-body">
             <?= $this->render('_partialLogistic', ['model' => $modelLogistic]) ?>
         </div>
-
-    </div>
-
-    <div class="panel panel-success">
-        <div class="panel-heading" role="tab" id="heading5">
-            <h4 class="panel-title">
-                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-
-                   Inquietudes
-
-            </h4>
+        <div class="panel-footer">
+            <?= Html::a(\Yii::$app->params['btnInscriptionS3SM'], ['updateown', 'id' => $model->id], ['class' => 'btn btn-info btn-xs ' ]) ?>
         </div>
-
-            <div class="panel-body">
-                <?= $this->render('_partialRequest', ['searchModel' => $searchModelRequest, 'dataProvider' => $dataProviderRequest]); ?>
-
-            </div>
-
-
     </div>
+
+
 
 </div>
 
