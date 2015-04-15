@@ -19,9 +19,11 @@ $this->title = 'Actualización Topico';
 
     <?= Html::a(\Yii::$app->params['btnRegresar'] . ' al Foro', ['/phforum/view', 'id' => $model->phforum_id], ['class' => 'btn btn-default']) ?>
     <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
+    <?= Html::a(\Yii::$app->params['btnRegresarTopic'], ['/foro/topic', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
 
     <!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -106,11 +108,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <div class="tab-pane" id="two2">
             <div class="post-index">
-
-
-                <p>
-
-                </p>
+                <br/>
+                <div class="panel panel-green">
+                    <div class="panel-heading">Aportes:</div>
+                    <div class="panel-body">
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderPost,
@@ -152,10 +153,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
             </div>
         </div>
+        </div>
+        </div>
         <div class="tab-pane" id="three2">
 
             <br/>
-
+            <div class="panel panel-green">
+                <div class="panel-heading">Documentos:</div>
+                <div class="panel-body">
             <div class="topic-document-index">
 
 
@@ -170,19 +175,23 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'created_at',
                         'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+//                        ['class' => 'yii\grid\ActionColumn'],
                     ],
                 ]); ?>
 
+            </div>
+            </div>
             </div>
 
 
         </div>
         <div class="tab-pane" id="four2">
-
+            <br/>
             <div class="topic-imagen-index">
 
-
+                <div class="panel panel-green">
+                    <div class="panel-heading">Imagenes:</div>
+                    <div class="panel-body">
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderTopicImagen,
                     'columns' => [
@@ -193,19 +202,21 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'created_at',
                         'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+//                        ['class' => 'yii\grid\ActionColumn'],
                     ],
                 ]); ?>
 
             </div>
-
-
+            </div>
+            </div>
         </div>
 
         <div class="tab-pane" id="five2">
-
+            <br/>
             <div class="topic-video-index">
-
+                <div class="panel panel-green">
+                    <div class="panel-heading">Videos:</div>
+                    <div class="panel-body">
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderTopicVideo,
@@ -218,10 +229,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'created_at',
                         'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+//                        ['class' => 'yii\grid\ActionColumn'],
                     ],
                 ]); ?>
 
+            </div>
+            </div>
             </div>
 
 

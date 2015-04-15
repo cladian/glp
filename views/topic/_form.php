@@ -13,7 +13,8 @@ use dosamigos\ckeditor\CKEditor;
     <div class="breadcrumb">
 
         <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $model->phforum_id], ['class' => 'btn btn-danger']) ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
 
     </div>
     <div class="panel panel-green">

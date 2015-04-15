@@ -216,9 +216,9 @@ if (!$hasProfile) {
         <!-- /.panel-body -->
         <div class="panel-footer">
             <div class="input-group">
-              <!--   <button class="btn btn-warning btn-md" id="btn-chat">
-                    Ver todas
-                </button> -->
+ Listado de inquitudes de los participantes
+
+
 
             </div>
         </div>
@@ -227,7 +227,7 @@ if (!$hasProfile) {
     <!-- /.panel .chat-panel -->
 
 </div>
-<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
 
     <!-- /.panel  CENTRAL-->
     <div class="chat-panel panel panel-green">
@@ -256,7 +256,7 @@ if (!$hasProfile) {
                         ?>
                         <tr>
                             <td><?= $contador++; ?></td>
-                            <td><?= substr($recent->event->name, 0, 15) . '...'; ?></td>
+                            <td><?= substr($recent->event->name, 0, 30) . '...'; ?></td>
 
                             <td><?= $recent->user->username; ?></td>
                             <!--<td> <? /*= Yii::$app->formatter->asDate($recent->created_at, 'short'); */ ?></td>-->
@@ -277,8 +277,9 @@ if (!$hasProfile) {
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <?= Html::a(\Yii::$app->params['btnVisualizar'], ['inscription/index'], ['class' => 'btn btn-default btn-block']) ?>
-            
+          <?= Html::a(\Yii::$app->params['btnVisualizar'], ['inscription/index'], ['class' => 'btn btn-default btn-block btn-xs']) ?>
+
+
             <!--<a href="#" class="btn btn-default btn-block">View All Alerts</a>-->
         </div>
         <!-- /.panel-footer -->
@@ -286,6 +287,7 @@ if (!$hasProfile) {
     <!-- /.panel .chat-panel -->
 
 </div>
+
 
 <div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
@@ -306,22 +308,67 @@ if (!$hasProfile) {
                 <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Evento', ['/eventtype'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos de registro', ['/registertype'],['class'=>'list-group-item']) ?>
 
+            </div>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <br>
+<!--                <a href="#" class="btn btn-default btn-block"></a>-->
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
 
-                              <!--      <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>-->
+</div>
+<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
 
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-green">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Accesos Rápidos
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">
+                <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos responsabilidad', ['/responsibilitytype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Institución', ['/institutiontype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Evento', ['/eventtype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos de registro', ['/registertype'],['class'=>'list-group-item']) ?>
 
+            </div>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <br>
+<!--                <a href="#" class="btn btn-default btn-block"></a>-->
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
 
-                <!--                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                                    </span>
-                                </a>-->
-                <!--                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                                    </span>
-                                </a>-->
+</div><div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
+
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-green">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Accesos Rápidos
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">
+                <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos responsabilidad', ['/responsibilitytype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Institución', ['/institutiontype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Evento', ['/eventtype'],['class'=>'list-group-item']) ?>
+                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos de registro', ['/registertype'],['class'=>'list-group-item']) ?>
+
             </div>
         </div>
         <!-- /.panel-body -->

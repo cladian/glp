@@ -26,6 +26,8 @@ $this->title = $model->name;
 
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
+    <?= Html::a(\Yii::$app->params['btnRegresarForo'], ['/foro', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
+
     <!--    --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
@@ -79,10 +81,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'label' => 'Evento',
                         'value' => $model->event->name,
                     ],
-                    'status',
+//                    'status',
                     'created_at',
                     'updated_at',
-                    'is_private',
+//                    'is_private',
                 ],
             ]) ?>
         </div>
@@ -175,29 +177,27 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 //                'updated_at',
 
 //                            ['class' => 'yii\grid\ActionColumn'],
-                    ['class' => 'yii\grid\ActionColumn',
-                        'template' => '{view} {delete}',
+/*                    ['class' => 'yii\grid\ActionColumn',
+                        'template' => ' {update}',
                         'buttons' => [
                             'view' => function ($url, $model) {
                                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-document/view', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
                             },
-//                                    'update' => function ($url, $model) {
-//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
-//                                        },
+                                    'update' => function ($url, $model) {
+                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+                                        },
 
                             'delete' => function ($url, $model) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-document/delete', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
                             },
 
                         ]
-                    ],
+                    ],*/
                 ],
             ]); ?>
         </div>
 
     </div>
-
-
     <!--FIN Vista Documentos-->
 
 </div>
@@ -226,7 +226,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 //                'updated_at',
 
 //                            ['class' => 'yii\grid\ActionColumn'],
-                    ['class' => 'yii\grid\ActionColumn',
+/*                    ['class' => 'yii\grid\ActionColumn',
                         'template' => '{view} {delete}',
                         'buttons' => [
                             'view' => function ($url, $model) {
@@ -241,7 +241,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             },
 
                         ]
-                    ],
+                    ],*/
                 ],
             ]); ?>
         </div>
@@ -281,7 +281,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 //                            ['class' => 'yii\grid\ActionColumn'],
 
-                    ['class' => 'yii\grid\ActionColumn',
+/*                    ['class' => 'yii\grid\ActionColumn',
                         'template' => '{view} {delete}',
                         'buttons' => [
                             'view' => function ($url, $model) {
@@ -296,7 +296,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             },
 
                         ]
-                    ],
+                    ],*/
 
                 ],
             ]); ?>

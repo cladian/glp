@@ -11,7 +11,7 @@ $this->title = 'Crear Documento';
 $this->params['breadcrumbs'][] = $this->title;*/
 ?>
 
-    <?= $this->render('/document/_form', [
+    <?= $this->render('/document/_formtopic', [
         'model' => $model,
         'id'=>$id,
     ]) ?>
