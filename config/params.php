@@ -21,6 +21,7 @@ return [
     'btnCrearNotificacion' => '<span class="glyphicon glyphicon-pencil"></span> Crear notificación',
     'btnCrearResponsabilidad' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de responsabilidad',
     'btnCrear' => '<span class="glyphicon glyphicon-pencil"></span> Crear',
+    'btnEnviarInquetud' => '<span class="glyphicon glyphicon-pencil"></span> Enviar',
     'btnPublicar' => '<span class="glyphicon glyphicon-file"></span> Publicar',
     'btnCrearTEvento' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de evento',
     'btnCrearRegistro' => '<span class="glyphicon glyphicon-pencil"></span> Crear tipo de registro',

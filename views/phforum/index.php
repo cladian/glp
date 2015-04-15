@@ -36,7 +36,16 @@ $this->title = 'Foro';
             // 'updated_at',
             // 'is_private',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} ',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum/view', 'id' => $key]);
+                        }
+
+                ]
+            ],
         ],
     ]); ?>
   </div>

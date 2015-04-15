@@ -5,8 +5,7 @@
     <li>Por favor, complete información solicitada y con la mayor claridad posible.
     <li>Falsificar información puede hacer que pierda el derecho a entrar al Evento que esta próximo a realizarse.
     <li>Seguir paso a paso las indicaciones dadas.
-    <li>La ventana principal encontrara un avance en cuanto a la información requerida para la inscripción.
-
+    <li>En la ventana principal encontrara toda la informacción que usted proporcione en su INSCRIPCIÓN.
 </ol>
 
 
@@ -16,9 +15,9 @@
 <ul type = circle>
     <li>Pasos para actualizar información
     <li>Sección Informativa y de avance de actualización de información
+    <li>Sección Nueva Inquietud
     <li>Sección Inquietudes y Respuestas
-    <li>Completar Registro
-    <li>Nueva Inquietud
+
 </ul>
 </p>
 
@@ -34,8 +33,18 @@
 <hr/>
 
 <h2><span style="color: #4f83b8;">Sección informativa y de avance en la  actualización de información</span></h2>
-<p>En esta sección se encuentran cuadros con el avance de cada sección mostrando en porsentaje de 0% al 100% </p>
+<p>En esta sección se encuentran cuadros con el avance de cada sección mostrando en porsentaje de 0% al 100% esto cambiara segun la información que proporcione para el evento</p>
+
+<hr/>
+
+<h2><span style="color: #4f83b8;">Sección Nueva Inquietud</span></h2>
+<p>En esta sección podemos crerar varias inquietudes referente al Evento, nos ubicamos en el menu <strong>Inquietudes y Respuestas</strong> damos clic en "nueva inquietud " y escribimos nuestra inquietud, una vez clara la inquietud damos clic en <strong> Enviar</strong> y el mensaje sera enviado y contestado inmediatamente por el personal del Evento.</p>
 
 
+
+<hr/>
+
+<h2><span style="color: #4f83b8;">Sección Inquietudes y Respuestas</span></h2>
+<p>En esta sección podemos visualizar las inquietudes que tenemos pendientes de el Usuario</p>
 
 

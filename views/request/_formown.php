@@ -14,7 +14,7 @@ use app\models\Inscription;
 <div class="breadcrumb">
     <?= Html::a(\Yii::$app->params['btnCancel'], [ '/inscription/viewown', 'id'=>$model->inscription_id], ['class' => 'btn btn-danger']) ?>
 <!--    --><?//=Html::submitButton(\Yii::$app->params['btnGuardarSiguiente'], ['class' => 'btn btn-success']);?>
-    <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+    <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnEnviarInquetud'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     <!-- AYUDA-->
     <?php
     Modal::begin([
@@ -27,7 +27,7 @@ use app\models\Inscription;
     ?>
 </div>
 <div class="panel panel-primary">
-  <div class="panel-heading">Crear Solicitudes</div>
+  <div class="panel-heading">Crear Solicitud</div>
   <div class="panel-body">
 
     <?= $form->field($model, 'question')->textarea(['rows' => 6]) ?>

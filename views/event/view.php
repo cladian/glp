@@ -109,23 +109,23 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <div class="panel-body">
             <blockquote>
                 <h4>Contenido General</h4>
-                <small><?= Html::encode($model->general_content) ?> </small>
+                <span style="font-size: 10pt; color: #808080;"> <?= $model->general_content; ?> </span>
             </blockquote>
             <blockquote>
                 <h4>Metodología</h4>
-                <small><?= Html::encode($model->methodology) ?></small>
+                <span style="font-size: 10pt; color: #808080;"> <?= $model->methodology; ?></span>
             </blockquote>
             <blockquote>
                 <h4>Requisitos</h4>
-                <small><?= Html::encode($model->requirements) ?></small>
+                <span style="font-size: 10pt; color: #808080;"> <?= $model->requirements; ?></span>
             </blockquote>
             <blockquote>
                 <h4>Dirigido a</h4>
-                <small><?= Html::encode($model->addressed_to) ?> </small>
+                <span style="font-size: 10pt; color: #808080;"> <?= $model->addressed_to; ?> </span>
             </blockquote>
             <blockquote>
                 <h4>El evento incluye</h4>
-                <small><?= Html::encode($model->included) ?></small>
+                <span style="font-size: 10pt; color: #808080;"> <?= $model->included; ?></span>
             </blockquote>
 
 
