@@ -106,11 +106,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
         <div class="tab-pane" id="two2">
             <div class="post-index">
-
-
-                <p>
-
-                </p>
+                <br/>
+                <div class="panel panel-green">
+                    <div class="panel-heading">Aportes:</div>
+                    <div class="panel-body">
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderPost,
@@ -152,10 +151,14 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
             </div>
         </div>
+        </div>
+        </div>
         <div class="tab-pane" id="three2">
 
             <br/>
-
+            <div class="panel panel-green">
+                <div class="panel-heading">Documentos:</div>
+                <div class="panel-body">
             <div class="topic-document-index">
 
 
@@ -175,14 +178,18 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 ]); ?>
 
             </div>
+            </div>
+            </div>
 
 
         </div>
         <div class="tab-pane" id="four2">
-
+            <br/>
             <div class="topic-imagen-index">
 
-
+                <div class="panel panel-green">
+                    <div class="panel-heading">Imagenes:</div>
+                    <div class="panel-body">
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderTopicImagen,
                     'columns' => [
@@ -198,14 +205,16 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                 ]); ?>
 
             </div>
-
-
+            </div>
+            </div>
         </div>
 
         <div class="tab-pane" id="five2">
-
+            <br/>
             <div class="topic-video-index">
-
+                <div class="panel panel-green">
+                    <div class="panel-heading">Videos:</div>
+                    <div class="panel-body">
 
                 <?= GridView::widget([
                     'dataProvider' => $dataProviderTopicVideo,
@@ -222,6 +231,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     ],
                 ]); ?>
 
+            </div>
+            </div>
             </div>
 
 

@@ -140,6 +140,8 @@ class PhforumController extends Controller
             return $this->render('createdoc', [
                 'model' => $model,
                 'id'=>$id,
+                'foro'=> true,
+                'topic'=> false,
             ]);
         }
     }
