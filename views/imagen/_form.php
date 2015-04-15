@@ -8,15 +8,23 @@ use kartik\widgets\FileInput;
 /* @var $model app\models\Imagen */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $id], ['class' => 'btn btn-danger']) ?>
+
+    <!--            --><?//= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+    <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+
+</div>
+<div class="panel panel-green">
+    <div class="panel-heading">Crear Imagen</div>
+    <div class="panel-body">
 
 <div class="imagen-form">
- <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 
 <!--     --><?//= $form->field($model, 'file')->textarea(['rows' => 6]) ?><!-- -->
-
-
 
     <?=
     $form->field($model, 'file')->widget(FileInput::classname(), [
@@ -46,9 +54,9 @@ use kartik\widgets\FileInput;
 
     <?= $form->field($model, 'updated_at')->textInput() ?> -->
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+<!--    <div class="form-group">
+        <?/*= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) */?>
+    </div>-->
 
     <?php ActiveForm::end(); ?>
 

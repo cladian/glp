@@ -10,9 +10,9 @@ use yii\helpers\Html;
 $this->title='Nuevo documento';
 ?>
 
-
     <?= $this->render('/document/_form', [
         'model' => $model,
+        'id'=>$id,
 
     ]) ?>
 

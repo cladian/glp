@@ -11,9 +11,10 @@ use kartik\widgets\FileInput;
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="breadcrumb">
-        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $id], ['class' => 'btn btn-danger']) ?>
 
-            <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--            --><?//= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
 
     </div>
     <div class="panel panel-green">
@@ -26,10 +27,6 @@ use kartik\widgets\FileInput;
                 <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 
                 <!--    --><? //= $form->field($model, 'file')->textarea(['rows' => 6]) ?>
-
-
-
-
 
                 <?=
                 // Usage with ActiveForm and model

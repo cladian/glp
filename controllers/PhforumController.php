@@ -119,6 +119,7 @@ class PhforumController extends Controller
         $model = new Document();
         $model->scenario = 'file';
 
+
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
             $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
@@ -138,6 +139,7 @@ class PhforumController extends Controller
         } else {
             return $this->render('createdoc', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }
@@ -160,6 +162,7 @@ class PhforumController extends Controller
         } else {
             return $this->render('createvideo', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }
@@ -189,6 +192,7 @@ class PhforumController extends Controller
         } else {
             return $this->render('createimg', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }
