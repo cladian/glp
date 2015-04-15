@@ -9,14 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 <?php $form = ActiveForm::begin(); ?>
 <div class="breadcrumb">
-<<<<<<< HEAD
-    <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $id], ['class' => 'btn btn-danger']) ?>
-    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-</div>
 
-<div class="video-form">
-
-=======
     <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $id], ['class' => 'btn btn-danger']) ?>
 
     <!--            --><?//= Html::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
@@ -30,14 +23,12 @@ use yii\widgets\ActiveForm;
 <div class="video-form">
 
 
->>>>>>> mauricio
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
 
     <?= $form->field($model, 'ulr')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
-<<<<<<< HEAD
-=======
+
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
@@ -45,13 +36,12 @@ use yii\widgets\ActiveForm;
  <!--   <div class="form-group">
         <?/*= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) */?>
     </div>-->
->>>>>>> mauricio
+
 
 
 </div>
-<<<<<<< HEAD
+
 <?php ActiveForm::end(); ?>
-=======
+
 </div>
 </div>
->>>>>>> mauricio
