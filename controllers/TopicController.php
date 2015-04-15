@@ -79,13 +79,13 @@ class TopicController extends Controller
         $dataProviderTopicVideo = $searchTopicVideo->searchByTopic(Yii::$app->request->queryParams, $id);
 
         $modelPost = new Post();
-        $modelPost->topic_id=$id;
-        $modelPost->user_id=Yii::$app->user->id;
-        if ($modelPost->load(Yii::$app->request->post()) ) {
+        $modelPost->topic_id = $id;
+        $modelPost->user_id = Yii::$app->user->id;
+        if ($modelPost->load(Yii::$app->request->post())) {
             $modelPost->save();
             $modelPost = new Post();
-            $modelPost->content=null;
-       }
+            $modelPost->content = null;
+        }
 
 
         return $this->render('view', [
@@ -103,8 +103,8 @@ class TopicController extends Controller
             'searchTopicVideo' => $searchTopicVideo,
             'dataProviderTopicVideo' => $dataProviderTopicVideo,
 
-            'modelPost'=>$modelPost,
-            'modelPostList'=>Post::find()->where(['topic_id'=>$id])->all(),
+            'modelPost' => $modelPost,
+            'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
 
         ]);
     }
@@ -118,7 +118,7 @@ class TopicController extends Controller
     {
         $model = new Topic();
         $model->user_id = Yii::$app->user->id;
-        $model->phforum_id= $id;
+        $model->phforum_id = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             \Yii::$app->getSession()->setFlash('success', 'El nuevo tema ha sido agregado éxitosamente');
@@ -137,24 +137,25 @@ class TopicController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
-            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            $docName = Yii::$app->security->generateRandomString() . time() . '.' . $doc->extension;
             $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
             $model->file = $docName;
             $model->save();
 
-                      //Guarda relación de documentos
-            $modelTopicDocument=new TopicDocument;
-            $modelTopicDocument->topic_id=$id;
-            $modelTopicDocument->document_id=$model->id;
+            //Guarda relación de documentos
+            $modelTopicDocument = new TopicDocument;
+            $modelTopicDocument->topic_id = $id;
+            $modelTopicDocument->document_id = $model->id;
             $modelTopicDocument->save();
 
-//            print_r($modelTopicDocument);
 
+            \Yii::$app->getSession()->setFlash('success', 'El documento ha sido registrado éxitosamente');
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('createdoc', [
                 'model' => $model,
+                'id' => $id,
             ]);
         }
     }
@@ -165,16 +166,18 @@ class TopicController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //Guarda relación de documentos
-            $modelTopicVideo=new TopicVideo;
-            $modelTopicVideo->topic_id=$id;
-            $modelTopicVideo->video_id=$model->id;
+            $modelTopicVideo = new TopicVideo;
+            $modelTopicVideo->topic_id = $id;
+            $modelTopicVideo->video_id = $model->id;
             $modelTopicVideo->save();
+            \Yii::$app->getSession()->setFlash('success', 'El video ha sido registrado éxitosamente');
             return $this->redirect(['view', 'id' => $id]);
 
 
         } else {
             return $this->render('createvideo', [
                 'model' => $model,
+                'id' => $id,
             ]);
         }
     }
@@ -186,22 +189,23 @@ class TopicController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
-            $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
+            $docName = Yii::$app->security->generateRandomString() . time() . '.' . $doc->extension;
             // $docName =  'mauricio.' . $doc->extension;
             $doc->saveAs(\Yii::$app->params['foroImgs'] . $docName);
             $model->file = $docName;
             $model->save();
 
             //Guarda relación de documentos
-            $modelTopicImg=new TopicImagen;
-            $modelTopicImg->topic_id=$id;
-            $modelTopicImg->imagen_id=$model->id;
+            $modelTopicImg = new TopicImagen;
+            $modelTopicImg->topic_id = $id;
+            $modelTopicImg->imagen_id = $model->id;
             $modelTopicImg->save();
-
+            \Yii::$app->getSession()->setFlash('success', 'La imagen ha sido registrada éxitosamente');
             return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('createimg', [
                 'model' => $model,
+                'id' => $id,
             ]);
         }
     }
@@ -217,6 +221,7 @@ class TopicController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', 'La información del tema ha sido actualizada éxitosamente');
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

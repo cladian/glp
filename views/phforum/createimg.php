@@ -9,12 +9,10 @@ use yii\helpers\Html;
 
 ?>
 <div class="imagen-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    
 
     <?= $this->render('/imagen/_form', [
         'model' => $model,
         'id'=> $id,
     ]) ?>
-
 </div>
