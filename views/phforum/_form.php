@@ -21,7 +21,7 @@ $this->title = $model->name;
 </div>
 
 <div class="panel panel-green">
-    <div class="panel-heading"><h4><?= $this->title = 'Actualización de Foro: ' . ' ' . $model->name; ?> </h4></div>
+    <div class="panel-heading"><?= $this->title = 'Actualización de Foro: ' . ' ' . $model->name; ?> </div>
     <div class="panel-body">
         <div class="phforum-form">
             <?= $form->field($model, 'name')->textInput(['maxlength' => 250]) ?>
