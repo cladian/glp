@@ -12,7 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-
+use yii\filters\AccessControl;
 use app\models\TopicDocument;
 use app\models\TopicVideo;
 use app\models\TopicImagen;
@@ -34,10 +34,28 @@ class TopicController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create', 'createdoc', 'createvideo', 'createimg','update','delete'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','createvideo','createimg','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+
+                    [
+                        'actions' => ['createdoc'],
+                        'allow' => true,
+                        'roles' => ['user','asocam','sysadmin'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
