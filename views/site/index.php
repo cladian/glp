@@ -7,6 +7,19 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'GLP-ASOCAM';
 
 ?>
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    echo '<div class="alert alert-' . $key . '" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  ' . $message . '
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+             </div>';
+}
+?>
+
 <!-- copia -->
 <!-- Landing Page Hero (with full-width background) -->
 <section class="slide">
@@ -146,3 +159,4 @@ $this->title = 'GLP-ASOCAM';
 
 
 </section>
+
