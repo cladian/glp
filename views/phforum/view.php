@@ -125,7 +125,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     // 'phforum_id',
 
 //                            ['class' => 'yii\grid\ActionColumn'],
-<<<<<<< HEAD
+
                             ['class' => 'yii\grid\ActionColumn',
                                 'template' => '{view} ',
                                 'buttons' => [
@@ -142,24 +142,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
             <p>
-=======
-                    ['class' => 'yii\grid\ActionColumn',
-                        'template' => '{view} {update}',
-                        'buttons' => [
-                            'view' => function ($url, $model, $key) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['topic/view', 'id' => $key]);
-                            },
-                            'update' => function ($url, $model, $key) {
-                                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['topic/update', 'id' => $key]);
-                            },
 
-                        ]
-                    ],
-                ],
-            ]); ?>
-        </div>
-    </div>
->>>>>>> edison
 
 
     <!--FIN Vista Temas-->

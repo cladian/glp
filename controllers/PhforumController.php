@@ -119,6 +119,7 @@ class PhforumController extends Controller
         $model = new Document();
         $model->scenario = 'file';
 
+
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
             $docName = Yii::$app->security->generateRandomString().time() . '.' . $doc->extension;
@@ -132,12 +133,13 @@ class PhforumController extends Controller
             $modelPhforumDocument->document_id=$model->id;
             $modelPhforumDocument->save();
 
-            
+            \Yii::$app->getSession()->setFlash('success', 'El documento ha sido registrado éxitosamente');
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('createdoc', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }
@@ -153,12 +155,14 @@ class PhforumController extends Controller
             $modelPhforumVideo->phforum_id=$id;
             $modelPhforumVideo->video_id=$model->id;
             $modelPhforumVideo->save();
+            \Yii::$app->getSession()->setFlash('success', 'El video ha sido registrado éxitosamente');
             return $this->redirect(['view', 'id' => $id]);
 
 
         } else {
             return $this->render('createvideo', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }
@@ -182,10 +186,13 @@ class PhforumController extends Controller
             $modelPhforumImg->imagen_id=$model->id;
             $modelPhforumImg->save();
 
+            \Yii::$app->getSession()->setFlash('success', 'La imagen ha sido registrada éxitosamente');
+
             return $this->redirect(['view', 'id' => $id]);
         } else {
             return $this->render('createimg', [
                 'model' => $model,
+                'id'=>$id,
             ]);
         }
     }

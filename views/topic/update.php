@@ -6,16 +6,12 @@ use yii\helpers\Html;
 /* @var $model app\models\Topic */
 
 $this->title = 'Actualización de Temas: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
+/*$this->params['breadcrumbs'][] = ['label' => 'Topics', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Update';*/
 ?>
-<div class="topic-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 
-</div>

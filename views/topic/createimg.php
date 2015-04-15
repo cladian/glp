@@ -7,15 +7,13 @@ use yii\helpers\Html;
 /* @var $model app\models\Imagen */
 
 $this->title = 'Crear Imagen';
-$this->params['breadcrumbs'][] = ['label' => 'Imagens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->params['breadcrumbs'][] = ['label' => 'Imagens', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;*/
 ?>
-<div class="imagen-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('/imagen/_form', [
         'model' => $model,
+    'id'=>$id,
     ]) ?>
 
-</div>
