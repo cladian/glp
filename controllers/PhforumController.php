@@ -132,7 +132,7 @@ class PhforumController extends Controller
             $modelPhforumDocument->document_id=$model->id;
             $modelPhforumDocument->save();
 
-            
+            \Yii::$app->getSession()->setFlash('success', 'El documento ha sido registrado éxitosamente');
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
@@ -153,6 +153,7 @@ class PhforumController extends Controller
             $modelPhforumVideo->phforum_id=$id;
             $modelPhforumVideo->video_id=$model->id;
             $modelPhforumVideo->save();
+            \Yii::$app->getSession()->setFlash('success', 'El video ha sido registrado éxitosamente');
             return $this->redirect(['view', 'id' => $id]);
 
 
@@ -181,6 +182,8 @@ class PhforumController extends Controller
             $modelPhforumImg->phforum_id=$id;
             $modelPhforumImg->imagen_id=$model->id;
             $modelPhforumImg->save();
+
+            \Yii::$app->getSession()->setFlash('success', 'La imagen ha sido registrada éxitosamente');
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
