@@ -24,6 +24,34 @@ $this->title = 'Foro';
                 ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
+<<<<<<< HEAD
+            'name',
+            'begin_at',
+            'end_at',
+            'meeting_at',
+            // 'memory_at',
+            // 'content:ntext',
+            // 'topic_number',
+            // 'event_id',
+            // 'status',
+            // 'created_at',
+            // 'updated_at',
+            // 'is_private',
+
+//            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} ',
+                'buttons' => [
+                    'view' => function ($url, $model, $key) {
+                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum/view', 'id' => $key]);
+                        }
+
+                ]
+            ],
+        ],
+    ]); ?>
+  </div>
+=======
                 'name',
                 'begin_at',
                 'end_at',
@@ -41,6 +69,7 @@ $this->title = 'Foro';
             ],
         ]); ?>
     </div>
+>>>>>>> edison
 </div>
 
 

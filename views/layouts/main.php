@@ -13,8 +13,8 @@ AppAsset::register($this);
 // Botón HOME todos tiene el botón
 
 
-$items[] = ['label' => ' Foro', 'url' => ['/foro']];
 
+$items[] = ['label' => ' Foro', 'url' => ['/foro']];
 
 // Botones solo para usuarios que no están logeados todavia
 

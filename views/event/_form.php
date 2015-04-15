@@ -43,34 +43,49 @@ use dosamigos\ckeditor\CKEditor;
 
 
 
+
     <div class="col-sm-12">
         <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
     </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'short_description')->textarea(['rows' => 6]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'general_content')->textarea(['rows' => 6]) ?>
-        <?= $form->field($model, 'general_content')->widget(CKEditor::className(), [
-            'options' => ['rows' => 6],
-            'preset' => 'basic'
-        ]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'methodology')->textarea(['rows' => 6]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'addressed_to')->textarea(['rows' => 6]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'included')->textarea(['rows' => 6]) ?>
-    </div>
-    <div class="col-sm-6">
-        <?= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
+    <div class="col-sm-12">
+        <?= $form->field($model, 'short_description')->textarea(['rows' => 3]) ?>
     </div>
     <div class="col-sm-12">
-        <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
+<!--        --><?//= $form->field($model, 'general_content')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'general_content')->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'complete'
+        ]) ?>
     </div>
+    <div class="col-sm-12">
+<!--        --><?//= $form->field($model, 'methodology')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'methodology')->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'complete'
+        ]) ?>
+    </div>
+    <div class="col-sm-12">
+<!--        --><?//= $form->field($model, 'addressed_to')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'addressed_to')->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'complete'
+        ]) ?>
+    </div>
+    <div class="col-sm-12">
+<!--        --><?//= $form->field($model, 'included')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'included')->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'complete'
+        ]) ?>
+    </div>
+    <div class="col-sm-12">
+<!--        --><?//= $form->field($model, 'requirements')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'requirements')->widget(CKEditor::className(), [
+            'options' => ['rows' => 3],
+            'preset' => 'complete'
+        ]) ?>
+    </div>
+
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -186,6 +201,9 @@ END Año-->
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?php if (!$model->isNewRecord )  echo $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+    </div>
+    <div class="col-sm-12">
+        <?= $form->field($model, 'url')->textarea(['rows' => 1]) ?>
     </div>
 
     <!--    --><? //= $form->field($model, 'created_at')->textInput() ?>
