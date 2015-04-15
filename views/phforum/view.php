@@ -115,14 +115,11 @@ $this->title = $model->name;
 
 //                            ['class' => 'yii\grid\ActionColumn'],
                             ['class' => 'yii\grid\ActionColumn',
-                                'template' => '{view} {update}',
+                                'template' => '{view} ',
                                 'buttons' => [
                                     'view' => function ($url, $model, $key) {
                                             return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['topic/view', 'id' => $key]);
-                                        },
-                                    'update' => function ($url, $model, $key) {
-                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['topic/update', 'id' => $key]);
-                                        },
+                                        }
 
                                 ]
                             ],
