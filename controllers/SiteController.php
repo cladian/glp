@@ -164,10 +164,12 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+                   // return $this->goHome();
+                    return $this->redirect(['/foro']);
                 }
             }
         }
+
         if (Yii::$app->user->can('asocam')) {
             return $this->redirect(['admasocam']);
         } elseif (Yii::$app->user->can('user')) {
@@ -296,7 +298,9 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
+
                     return $this->goHome();
+
                 }
             }
         }

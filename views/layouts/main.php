@@ -13,9 +13,6 @@ AppAsset::register($this);
 // Botón HOME todos tiene el botón
 
 
-
-$items[] = ['label' => ' Foro', 'url' => ['/foro']];
-
 // Botones solo para usuarios que no están logeados todavia
 
 if (Yii::$app->user->isGuest) {
@@ -24,10 +21,9 @@ if (Yii::$app->user->isGuest) {
 } else {
     $items[] = ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'btn btn-xs'];
 }
-
+$items[] = ['label' => ' Foro', 'url' => ['/foro']];
 // Botones para usuario ASOCAM
 if (Yii::$app->user->can('permission_admin')) {
-
     $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
         ['label' => 'Documentos', 'url' => ['/phforum-document']],
@@ -95,11 +91,12 @@ if (Yii::$app->user->can('permission_admin')) {
         ];
 
 }
+// Botones Foro
 if (Yii::$app->user->can('asocam')) {
-
+/*
     $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Foro', 'items' => [
         ['label' => 'Foros', 'url' => ['/phforum']],
-        /*['label' => 'Documentos', 'url' => ['/phforum-document']],
+        ['label' => 'Documentos', 'url' => ['/phforum-document']],
         ['label' => 'Videos', 'url' => ['/phforum-video']],
         ['label' => 'Imagen', 'url' => ['/phforum-imagen']],
         '<li class="divider"></li>',
@@ -115,20 +112,20 @@ if (Yii::$app->user->can('asocam')) {
         ['label' => 'Imagen', 'url' => ['/post-imagen']],
 
         '<li class="divider"></li>',
-        ['label' => 'Comentarios', 'url' => ['/comment']],*/
+        ['label' => 'Comentarios', 'url' => ['/comment']],
         '<li class="divider"></li>',
         ['label' => 'Documentos', 'url' => ['/document']],
         ['label' => 'Video', 'url' => ['/video']],
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]
-    ];
+    ];*/
 
 }
 
 //Menu de Usuario
 if (!Yii::$app->user->isGuest) {
     $items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> ' . Yii::$app->user->identity->username, 'items' => [
-        ['label' => ' Perfil', 'url' => ['/profile/updateown']],
+        ['label' => ' Perfil', 'url' => ['/profile/createown']],
         ['label' => 'Actualización de Contraseña', 'url' => ['/user/password']],
         ['label' => 'Actualización de Correo', 'url' => ['/user/email']],
         '<li class="divider"></li>',

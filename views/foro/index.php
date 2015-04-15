@@ -29,7 +29,15 @@ foreach ($model as $foro) {
 
     ?>
     <div class="panel panel-primary">
-        <div class="panel-heading"><?= $foro->name; ?></div>
+        <div class="panel-heading"><?= $foro->name; ?>
+            <?php
+            // Boton visible para asocam
+               // if (Yii::$app->user->can('asocam')) {
+                    echo Html::a(\Yii::$app->params['btnUpdateForo'], ['/phforum/view', 'id' => $foro->id], ['class' => 'btn btn-xs btn-default pull-right']);
+               // }
+                ?>
+
+        </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

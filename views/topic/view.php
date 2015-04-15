@@ -23,6 +23,8 @@ $this->title = 'Actualización Topico';
     <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
+    <?= Html::a(\Yii::$app->params['btnRegresarTopic'], ['/foro/topic', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
+
     <!--        --><?/*= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [

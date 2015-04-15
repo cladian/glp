@@ -41,7 +41,11 @@ return [
     'btnAvatar' => '<span class="glyphicon glyphicon-user"></span> Avatar',
     'btnActualizar' => '<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar',
     'btnVisualizar' => '<span class="glyphicon glyphicon-th-list"></span> Ver todas las inscripciones',
+
     'btnRegresar' => '<span class="glyphicon glyphicon-chevron-left"></span> Regresar',
+
+
+
     'btnVer' => '<span class="glyphicon glyphicon-eye-open"></span> Vizualizar',
     'btnSolicitud' => '<span class="glyphicon glyphicon-pencil""></span> Crear Solicitud',
     'btnNuevo' => '<span class="glyphicon glyphicon-file""></span> Nuevo',
@@ -67,9 +71,13 @@ return [
 
 // Globales
     'btnRegistro' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Registrarse',
-    'btnIngreso' => '<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><br>Iniciar sesión'
+    'btnIngreso' => '<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><br>Iniciar sesión',
 
-
+// Foro
+'btnUpdateForo' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Foro',
+'btnUpdateTopic' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Tema',
+        'btnRegresarForo' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Foro',
+        'btnRegresarTopic' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Tema',
 
     
 
