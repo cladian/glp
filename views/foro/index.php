@@ -40,19 +40,27 @@ foreach ($model as $foro) {
                         <!--                        </button>-->
                         <div>
                             <h4>Información del evento</h4>
-                            <?= $foro->event->name; ?>
+                            <blockquote> <?= $foro->event->name; ?></blockquote>
                         </div>
 
 
-                        <?php if ($foro->getPhforumDocuments()->count() > 0): ?>
-                            <h4>Documentos</h4>
-                            <ul class="list-group">
+
+
+                        <?php
+                        $countdocs=1;
+                        if ($foro->getPhforumDocuments()->count() > 0): ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown" aria-expanded="false">
+                                Documentos disponibles <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
                                 <?php foreach ($foro->getPhforumDocuments()->all() as $documents): ?>
-                                    <li class="list-group-item glyphicon glyphicon-download"> <?= Html::a($documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file); ?></li>
+                                    <li > <?= Html::a($countdocs++.'.-'.$documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file,['parent'=>'blank'] ); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
                             </ul>
+                        </div>
 
                         <?php endif ?>
 
