@@ -27,13 +27,15 @@
 
 <!--<h2><span style="color: #808080;">Pasos para actualizar información</span></h2>-->
 <h2><span style="color: #4f83b8;">Pasos para actualizar información</span></h2>
-<p><strong>Paso 1.- </strong><td>Damos clic en <strong>Sección 1.Información General</strong> y se mostrara toda la información general y logística por actualizar</td>
-<p><strong>Paso 2.- </strong><td>Damos clic en <strong>Sección 2. Experiencia y expectativa</strong> y se mostraran las preguntas Espesificas del Evento </td>
-<p><strong>Paso 3.- </strong><td>Damos clic en <strong>Sección 3. Información logística.</strong> y se mostraran preguntas en general del Evento </td>
+<p><strong>Paso 1.- </strong><td>Damos clic en <strong>Sección 1.Información General</strong> y se mostrara toda la información general y logística por actualizar</td></p>
+<p><strong>Paso 2.- </strong><td>Damos clic en <strong>Sección 2. Experiencia y expectativa</strong> y se mostraran las preguntas Espesificas del Evento </td></p>
+<p><strong>Paso 3.- </strong><td>Damos clic en <strong>Sección 3. Información logística.</strong> y se mostraran preguntas en general del Evento </td></p>
 
 <hr/>
 
-<h2><span style="color: #4f83b8;">Sección Informativa y de avance en la  actualización de información</span></h2>
-</p>
+<h2><span style="color: #4f83b8;">Sección informativa y de avance en la  actualización de información</span></h2>
+<p>En esta sección se encuentran cuadros con el avance de cada sección mostrando en porsentaje de 0% al 100% </p>
+
+
 
 
