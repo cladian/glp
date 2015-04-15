@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
 ?>
 
 
-    <?= $this->render('/imagen/_form', [
+    <?= $this->render('/imagen/_formtopic', [
         'model' => $model,
     'id'=>$id,
     ]) ?>

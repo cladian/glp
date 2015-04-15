@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use app\models\Phforum;
 use app\models\PhforumSearch;
@@ -12,7 +13,7 @@ use yii\web\Controller;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 use app\models\PhforumDocument;
 use app\models\PhforumVideo;
 use app\models\PhforumImagen;
@@ -33,10 +34,22 @@ class PhforumController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create', 'createdoc', 'createvideo', 'createimg','update','delete'],
+                // 'only' => ['login', 'logout', 'signup','event','admuser'],
+                'rules' => [
+                    [
+                        'actions' => ['index','view','create','createdoc','createvideo','createimg','update','delete'],
+                        'allow' => true,
+                        'roles' => ['asocam','sysadmin'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -126,7 +139,6 @@ class PhforumController extends Controller
             $doc->saveAs(\Yii::$app->params['foroDocs'] . $docName);
             $model->file = $docName;
             $model->save();
-
             //Guarda relación de documentos
             $modelPhforumDocument=new PhforumDocument;
             $modelPhforumDocument->phforum_id=$id;

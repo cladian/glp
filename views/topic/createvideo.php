@@ -11,7 +11,7 @@ $this->title = 'Crear Video';
 $this->params['breadcrumbs'][] = $this->title;*/
 ?>
 
-    <?= $this->render('/video/_form', [
+    <?= $this->render('/video/_formtopic', [
         'model' => $model,
         'id'=>$id,
     ]) ?>
