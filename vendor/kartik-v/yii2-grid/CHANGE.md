@@ -1,3 +1,10 @@
+Version 3.0.2
+=============
+**Date:** 05-Apr-2015
+
+1. (enh #261): Allow initialization of ExpandRowColumn cells even if they are hidden.
+2. (enh #263): Added fa-IR (Farsi) translations.
+
 Version 3.0.1
 =============
 **Date:** 14-Mar-2015
@@ -14,6 +21,9 @@ Version 3.0.1
 10. (bug #251): Fix ExpandRowColumn bug with disabled closure and unnecessary check for title.
 11. (bug #252): Fix undefined `$filterInputOptions` in DataColumn.
 12. (enh #253): Enhance EditableColumn `refreshGrid` behavior for multiple editable columns on the grid.
+13. (enh #255): Enhance ExpandRowColumn to allow expand/collapse on row click.
+14. (enh #256): New property `extraData` for sending extra data to ExpandRowColumn via ajax load call.
+15. (enh #257): Fix for `detailOptions` to be set as Closure in ExpandRowColumn.
 
 Version 3.0.0
 =============

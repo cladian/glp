@@ -45,6 +45,16 @@ class ExpandRowColumn extends DataColumn
     public $value = GridView::ROW_NONE;
 
     /**
+     * @var boolean whether to toggle the expansion/collapse by clicking on the table row
+     */
+    public $enableRowClick = false;
+
+    /**
+     * @var array additional data that will be passed to the ajax load function as key value pairs
+     */
+    public $extraData = [];
+    
+    /**
      * @var string icon for the expand indicator. If this is not set, it will derive values automatically
      * using the following rules:
      * - If GridView `bootstrap` property is set to `true`, it will default to [[GridView::ICON_EXPAND]]
@@ -58,7 +68,7 @@ class ExpandRowColumn extends DataColumn
      * using the following rules:
      * - If GridView `bootstrap` property is set to `true`, it will default to [[GridView::ICON_COLLAPSE]]
      *   or `<span class="glyphicon glyphicon-collapse-down"></span>`
-     * - If GridView `bootstrap` property is set to `false`, then it will default to `+`.
+     * - If GridView `bootstrap` property is set to `false`, then it will default to `-`.
      */
     public $collapseIcon;
 
@@ -209,9 +219,6 @@ class ExpandRowColumn extends DataColumn
         if (empty($this->detail) && empty($this->detailUrl)) {
             throw new InvalidConfigException("Either the 'detail' or 'detailUrl' must be entered");
         }
-        if ($this->hiddenFromExport) {
-            Html::addCssClass($this->detailOptions, 'skip-export');
-        }
         $this->format = 'raw';
         $this->expandIcon = $this->getIcon('expand');
         $this->collapseIcon = $this->getIcon('collapse');
@@ -245,8 +252,10 @@ class ExpandRowColumn extends DataColumn
                 'rowCssClass' => $this->detailRowCssClass,
                 'animationDuration' => $this->detailAnimationDuration,
                 'batchToggle' => $this->allowBatchToggle,
+                'enableRowClick' => $this->enableRowClick,
                 'collapseAll' => false,
                 'expandAll' => false,
+                'extraData' => $this->extraData
             ]
         );
         $this->_hashVar = 'kvExpandRow_' . hash('crc32', $clientOptions);
@@ -308,6 +317,9 @@ class ExpandRowColumn extends DataColumn
         $detail = static::parseData($this->detail, $model, $key, $index, $this);
         $detailOptions = static::parseData($this->detailOptions, $model, $key, $index, $this);
         $disabled = static::parseData($this->disabled, $model, $key, $index, $this) ? ' kv-state-disabled' : '';
+        if ($this->hiddenFromExport) {
+            Html::addCssClass($detailOptions, 'skip-export');
+        }        
         $detailOptions['data-index'] = $index;
         $detailOptions['data-key'] = $key;
         Html::addCssClass($detailOptions, 'kv-expanded-row');
