@@ -13,11 +13,7 @@ $this->title = 'Respuestas por Evento';
 ?>
 <div class="eventanswer-index">
 
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-
-
     <?
     $gridColumns = [
         // the name column configuration
@@ -43,13 +39,23 @@ $this->title = 'Respuestas por Evento';
 //
 //        ],
         [
+            'attribute' => 'eventquestion_id',
+            'value' => function ($data) {
+                    return $data->eventquestion->text;
+                }
+        ],
+        [
+            'attribute' => 'reply',
+            'value' => function ($data) {
+                    return $data->reply;
+                }
+        ],
+        [
             'class' => '\kartik\grid\BooleanColumn',
             'attribute' => 'status',
             'trueLabel' => '1',
             'falseLabel' => '0'
         ],
-
-
     ];
 
     echo \kartik\grid\GridView::widget([
@@ -58,7 +64,6 @@ $this->title = 'Respuestas por Evento';
         'columns' => $gridColumns,
         // set your toolbar
         'toolbar' => [
-
             '{export}',
             '{toggleData}',
         ],
@@ -82,7 +87,7 @@ $this->title = 'Respuestas por Evento';
     ]);
 
 
-    /*= GridView::widget([
+/*GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -98,12 +103,12 @@ $this->title = 'Respuestas por Evento';
             ],
             'reply:ntext',
 //            'created_at',
-            // 'updated_at',
-            // 'status',
+//             'updated_at',
+             'status',
 
-//            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); */
-    ?>
+    ]);
+    */?>
 
 </div>

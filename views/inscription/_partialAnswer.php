@@ -13,11 +13,6 @@ use kartik\editable\Editable;
 
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-<!--    <p>-->
-<!--        --><?//= Html::a(' Crear Respuesta', ['create'], ['class' => 'btn btn-success']) ?>
-<!--    </p>-->
-
     <?
     $gridColumns = [
         // the name column configuration
@@ -41,7 +36,18 @@ use kartik\editable\Editable;
 //            'value' => 'reply',
 //
 //        ],
-
+        [
+            'attribute' => 'question_id',
+            'value' => function ($data) {
+                    return $data->question->text;
+                }
+        ],
+        [
+            'attribute' => 'reply',
+            'value' => function ($data) {
+                    return $data->reply;
+                }
+        ],
 
         [
             'class' => '\kartik\grid\BooleanColumn',
