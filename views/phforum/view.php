@@ -12,9 +12,12 @@ $this->title = $model->name;
 
 ?>
 
+
 <div class="breadcrumb">
     <?= Html::a(\Yii::$app->params['btnRegresar'], ['/phforum', 'Phforums' => $model->id], ['class' => 'btn btn-default']) ?>
     <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+
+
     <?= Html::a(\Yii::$app->params['btnTema'], ['topic/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
 
@@ -22,7 +25,7 @@ $this->title = $model->name;
 
 
 
-    <?= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+<!--    --><?//= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
@@ -55,7 +58,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <li class="active"><a href="#one2" data-toggle="tab">Foro</a></li>
     <li><a href="#two2" data-toggle="tab">Temas</a></li>
     <li><a href="#three2" data-toggle="tab">Documentos</a></li>
-    <li><a href="#four2" data-toggle="tab">Videos</a></li>
+<!--    <li><a href="#four2" data-toggle="tab">Videos</a></li>-->
     <li><a href="#five2" data-toggle="tab">Imagenes</a></li>
 </ul>
 <div class="tab-content">
