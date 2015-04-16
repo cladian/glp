@@ -53,9 +53,10 @@ class RecoverForm extends Model
                 // Envio de correo
                 $html = '<h4>Recuperación de contraseña </h4>';
                 $html .= '<blockquote>
-                            <b>Nueva Contraseña</b>' . $newpassword . '<br/>
-                            <b>Usuario</b>' . $user->username  . '<br/>
+                            <b>Usuario: </b>' . $user->username  . '<br/>
+                            <b>Nueva Contraseña:</b>' . $newpassword . '<br/>
                             </blockquote>';
+                $html = '<p>Una vez dentro del sistema, recomendamos la actualización de ésta información por una contraseña que usted recuerde.</p>';
                 $url = \Yii::$app->params['webRoot'] . Url::to(['site/login']);
 
                 $user->sendEmail ($html, $url,$title);
@@ -66,6 +67,9 @@ class RecoverForm extends Model
 
                 return $user;
             }
+            \Yii::$app->getSession()
+                ->setFlash('danger',
+                    'No éxiste registro de usuario con la información de correo electrónico proporcionada');
         }
         return null;
     }

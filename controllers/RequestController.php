@@ -123,7 +123,7 @@ class RequestController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             // Evniamos mensaje únicamente cuanto el estado se cambia a inactivo
             if($model->status==self::STATUS_INACTIVE)
-            {  $this->sendMail("El asministrador ha cerrado la solicitud", $model->inscription->user_id);
+            {  $this->sendMail("El administrador ha cerrado la solicitud", $model->inscription->user_id);
 
             }
             return $this->redirect(['site/index']);
