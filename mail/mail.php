@@ -14,7 +14,7 @@
 
                 <tr>
                     <td align="center" valign="top">
-                        <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="0"
+                        <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="5"
                                cellspacing="0" valign="top" style="overflow:hidden !important;">
                             <tbody>
 <!-- contenido  -->
@@ -75,10 +75,6 @@
                                     <table width="90%">
                                         <tbody>
                                         <tr>
-                                            <td width="70"><a href="#"><img
-                                                    src="http://www.asocam.org/fileadmin/templates/tmpAsocamOrg/images//logoAsocam.png"
-                                                    width="100%" height="auto" alt="InVision App" style="border:0;"></a>
-                                            </td>
                                             <td align="justify"
                                                 style="font-family:'Open Sans', arial, sans-serif !important;font-size:12px !important;font-weight:400 !important;color:#7e8890 !important;">
                                                 ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas específicos, generando productos de alta calidad y utilidad para los actores de desarrollo. 
