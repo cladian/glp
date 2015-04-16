@@ -30,8 +30,8 @@ return [
     'btnForo' => '<span class="glyphicon glyphicon-list-alt"></span> Crear Foro',
     'btnTema' => '<span class="glyphicon glyphicon-file"></span> Nuevo tema',
     'btnSubirD' => '<span class="glyphicon glyphicon-upload"></span> Subir documento',
-    'btnSubirV' => '<span class="glyphicon glyphicon-cloud-upload"></span> Subir video',
-    'btnSubirI' => '<span class="glyphicon glyphicon-export"></span> Subir imagen',
+    'btnSubirV' => '<span class="glyphicon glyphicon-upload-upload"></span> Subir video',
+    'btnSubirI' => '<span class="glyphicon glyphicon-upload"></span> Subir imagen',
 
 // Varios
     'btnCancelar' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',

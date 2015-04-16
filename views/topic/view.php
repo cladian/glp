@@ -18,10 +18,10 @@ $this->title = 'Actualización Topico';
 <div class="breadcrumb">
 
     <?= Html::a(\Yii::$app->params['btnRegresar'] . ' al Foro', ['/phforum/view', 'id' => $model->phforum_id], ['class' => 'btn btn-default']) ?>
-    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('<span class="glyphicon glyphicon-upload"></span>Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a('<span class="glyphicon glyphicon-upload"></span>Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+<!--    --><?//= Html::a('<span class="glyphicon glyphicon-upload"></span>Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
     <?= Html::a(\Yii::$app->params['btnRegresarTopic'], ['/foro/topic', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
 
@@ -55,7 +55,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         <li><a href="#two2" data-toggle="tab">Aportes</a></li>
         <li><a href="#three2" data-toggle="tab">Documento</a></li>
         <li><a href="#four2" data-toggle="tab">Imagen</a></li>
-        <li><a href="#five2" data-toggle="tab">Video</a></li>
+<!--        <li><a href="#five2" data-toggle="tab">Video</a></li>-->
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="one2">

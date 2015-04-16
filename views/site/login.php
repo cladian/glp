@@ -30,10 +30,9 @@ $this->title = 'Ingreso';
                                     <?= Html::submitButton('Iniciar sesión', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                                 </div>
                             </div>
-                            <!--        <div class="col-lg-4">
-
-                                <? /*= Html::a('Recuperar contraseña', ['/site/forgot'], ['class' => 'btn btn-default']) */ ?>
-                            </div>-->
+                            <div class="col-lg-4">
+                                <?= Html::a('Recuperar contraseña', ['/site/forgot'], ['class' => 'btn btn-default']) ?>
+                            </div>
 
 
                             <div class="col-lg-12">

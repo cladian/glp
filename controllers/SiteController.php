@@ -8,6 +8,7 @@ use app\models\NotificationSearch;
 use app\models\Profile;
 use app\models\Event;
 use app\models\Request;
+use app\models\Post;
 
 use app\models\User;
 use Yii;
@@ -20,6 +21,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
+use app\models\RecoverForm;
 use yii\web\NotFoundHttpException;
 
 
@@ -80,10 +82,10 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-//            'captcha' => [
-//                'class' => 'yii\captcha\CaptchaAction',
-//                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-//            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
         ];
     }
 
@@ -94,12 +96,6 @@ class SiteController extends Controller
 
         }
 
-//        $modelUser=User::find()->where(['id'=>Yii::$app->user->identity->id])->one();
-
-        /*$modelUser=User::find()->where(['id'=> Yii::$app->user->identity->id])->one();*/
-
-//        $content='<h1>Prueba de envio</h1>';
-//        $modelUser->sendEmail($content,1,"#");
 
         $searchInscription = new InscriptionSearch();
         $dataInscription = $searchInscription->searchown(Yii::$app->request->queryParams);
@@ -125,6 +121,7 @@ class SiteController extends Controller
             'searchNotification' => $searchNotification,
             'dataNotification' => $dataNotification,
             'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+            'modellatestPost' => Post::find()->where(['status' => self::STATUS_ACTIVE,'user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
 
         ]);
     }
@@ -212,8 +209,8 @@ class SiteController extends Controller
     }
 
 
-    public function actionForgot()
-    {
+/*    public function actionForgot()
+    {*/
         // $getEmail="edison@cladian.com";
         //$getEmail=$_POST['Lupa']['email'];
 
@@ -261,8 +258,8 @@ class SiteController extends Controller
             }
 
         }*/
-        $this->render('forgot');
-    }
+       // $this->render('forgot');
+        // }
 
 
 
@@ -306,6 +303,23 @@ class SiteController extends Controller
         }
 
         return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+    public function actionForgot()
+    {
+        $model = new RecoverForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+
+
+                    return $this->goHome();
+
+
+            }
+        }
+
+        return $this->render('forgot', [
             'model' => $model,
         ]);
     }

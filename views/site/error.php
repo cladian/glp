@@ -19,6 +19,7 @@ $this->title = $name;
 
         <p>    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default ']) ?>
         </p>
+
     </div>
 </div>
 <div class="container">

@@ -1,1 +1,52 @@
-<h1>EDISON</h1>
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
+
+
+
+$this->title = 'Registro';
+// $this->params['breadcrumbs'][] = $this->title;
+?>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="panel panel-primary">
+  <center class="panel-heading">Recuperar contraseña</center>
+  <div class="panel-body">
+ 
+      
+      <div class="caption">
+        
+        <p>El sistema enviará automaticamente una notificación con los datos de acceso</p>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+
+                    <?= $form->field($model, 'email') ?>
+
+                <?= $form->field($model, 'captcha')->widget(Captcha::className()) ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('Recuperar contraseña', ['class' => 'btn btn-success', 'name' => 'signup-button']) ?>
+                    </div>
+                <?php ActiveForm::end(); ?>
+            </div>
+        </div>
+        
+        <!--<p style="font-size:10px;">Para solicitar una cuenta, por favor, póngase en contacto con sus administrador al correo .</p>-->
+      </div>
+     </div>
+</div>
+
+
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="">
+      
+    </div>
+  </div>
+</div>
+
