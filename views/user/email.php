@@ -10,7 +10,7 @@ $this->title = 'Actualizar Usuario ' . ' ' ;
 
 ?>
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/index', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
 
 
     <!-- AYUDA-->

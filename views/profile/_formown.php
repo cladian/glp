@@ -25,15 +25,15 @@ use app\models\Country;
         <?= Html::a('<span class="glyphicon glyphicon-camera"></span> Actualizar Imagen', ['avatarown', 'id' => $model->id], ['class' => 'btn btn-info btn btn btn-success']) ?>
 
         <!-- AYUDA-->
-        <?php
-        Modal::begin([
+<!--        --><?php
+/*        Modal::begin([
             'header' => '<h4>Inscripción</h4>',
             'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
         ]);
 
         echo $this->render('/help/inscription-index');
         Modal::end();
-        ?>
+        */?>
     </div>
 <div class="panel panel-primary">
     <div class="panel-heading"><?= Html::encode($this->title) ?></div>
