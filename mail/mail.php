@@ -3,12 +3,17 @@
     <tr>
         <td align="center" valign="top" style="background-color: #ffff;">
             <table width="600">
+                <tr style="background-color: #005596; padding:15px; ">
+
+                    <td style="color:#7e8890; padding: 15px 15px 0px 15px">
+                        <h3 style=" color:#fff; "><?= $title ?></h3>
+                    </td>
+                </tr>
                 <tr style="background-color: white;">
                     <td><!-- <td align="center" >-->
-                        <h3 style="background-color: #005596; color:#fff; padding:15px;">
-                            <?= $title ?></h3>
 
-                        <div style="padding: 15px;">
+
+                        <div style="padding: 15px;"  align="justify">
                             <?= $content ?></div>
                         <br/>
                         <code style="color:#7e8890; padding: 15px;"><?= Yii::$app->
