@@ -56,14 +56,14 @@ class RecoverForm extends Model
                             <b>Usuario: </b>' . $user->username  . '<br/>
                             <b>Nueva Contraseña:</b>' . $newpassword . '<br/>
                             </blockquote>';
-                $html = '<p>Una vez dentro del sistema, recomendamos la actualización de ésta información por una contraseña que usted recuerde.</p>';
+                $html.= '<p>Una vez dentro del sistema, recomendamos la actualización de ésta información por una contraseña que usted recuerde.</p>';
                 $url = \Yii::$app->params['webRoot'] . Url::to(['site/login']);
 
                 $user->sendEmail ($html, $url,$title);
 
                 \Yii::$app->getSession()
                     ->setFlash('success',
-                        'Su contraseña ha sido reseteada éxitosamente, por favor verificar esta información en su correo electrónico.'.$newpassword);
+                        'Su contraseña ha sido reseteada éxitosamente, por favor verificar esta información en su correo electrónico.');
 
                 return $user;
             }
