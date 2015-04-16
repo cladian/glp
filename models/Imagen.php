@@ -46,13 +46,12 @@ class Imagen extends \yii\db\ActiveRecord
 
     }
     //---> ESTADOS
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'Imagen';
+        return 'imagen';
     }
 
     /**
