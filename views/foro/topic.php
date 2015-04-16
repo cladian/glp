@@ -187,9 +187,10 @@ use app\models\Imagen;
                             $form->field($modelDocument, 'file')->widget(FileInput::classname(), [
                                 'pluginOptions' => [
 
-                                    'showRemove' => false,
+
                                     'showUpload' => false,
                                     'showPreview' => false,
+                                    'showRemove' => true,
                                     'browseClass' => 'btn btn-primary btn-block',
                                     'browseLabel' => 'Explorar'
 
