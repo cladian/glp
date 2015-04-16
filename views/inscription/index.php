@@ -79,15 +79,14 @@ $this->title = 'Inscripciones';
         ],
 
         [
-            'attribute' => 'Avance',
+            'attribute' => 'complete',
 //            'headerOptions' => ['style'=>'align:center'],
 //            'vAlign' => 'middle',
             'value' => function ($data) {
                     return $data->complete."%";
                 }
-
-
         ],
+
         [
             'attribute' => 'created_at',
         ],
