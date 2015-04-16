@@ -1,82 +1,30 @@
 <body style="background-color: #EAECED; font-family:Arial, Helvetica, sans-serif;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#eaeced">
     <tr>
-        <td align="center" valign="top">
-            <table class="master-table" width="600">
-                <tr>
-                    <td align="center" valign="top">
-                        <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="5"
-                               cellspacing="0" valign="top" style="overflow:hidden !important;">
-                            <tbody>
-                            <tr>
-                                <td><!-- <td align="center" >-->
-                                    <h3 style="background-color: #005596; color:#fff; padding:15px;">
-                                        <?= $title ?></h3>
+        <td align="center" valign="top" style="background-color: #ffff;">
+            <table width="600">
+                <tr style="background-color: white;">
+                    <td><!-- <td align="center" >-->
+                        <h3 style="background-color: #005596; color:#fff; padding:15px;">
+                            <?= $title ?></h3>
 
+                        <div style="padding: 15px;">
+                            <?= $content ?></div>
+                        <br/>
+                        <code style="color:#7e8890; padding: 15px;"><?= Yii::$app->
+                            formatter->asDatetime(date('Y-m-d'),'long') ?></code>
 
-                            </tr>
-
-                            <tr>
-                                <td style="padding:0px 20px;">
-
-                                    <div>
-                                        <?= $content ?></div>
-                                    <br/>
-                                    <code style="color:#7e8890;" align="right"><?= Yii::$app->
-                                        formatter->asDatetime(date('Y-m-d'),'long') ?></code>
-
-                                    <p>
-                                        <code><a href="<?= $url ?>" style="">Ver en sitio web</a></code>
-                                    </p>
-                                </td>
-                            </tr>
-
-                            <!-- boton -->
-
-                            <tr>
-                                <td align="center" valign="top">
-                                    <table border="0" cellspacing="0" cellpadding="0">
-                                        <tbody>
-                                        <tr>
-                                            <td align="center" valign="top">
-
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <!-- boton -->
-
-                            <!-- footer -->
-                            <tr>
-                                <td align="center">
-                                    <table width="90%">
-                                        <tbody>
-                                        <tr>
-                                            <td align="justify"
-                                                style="font-family:'Open Sans', arial, sans-serif !important;font-size:12px !important;font-weight:400 !important;color:#7e8890 !important;">
-                                                ASOCAM es el Servicio de Gestión del Conocimiento para América Latina
-                                                que apoya procesos de construcción colectiva de conocimientos, que
-                                                permite compartir y avanzar en temas específicos, generando productos de
-                                                alta calidad y utilidad para los actores de desarrollo.
-                                            </td>
-
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-
-
-                            <tr height="10">
-                                <td>&nbsp;</td>
-                            </tr>
-
-                            <!-- footer -->
-                            </tbody>
-                        </table>
+                        <p style="padding: 15px;">
+                            <a href="<?= $url ?>" style="">Ver en sitio web</a>
+                        </p>
+                </tr>
+                <tr style="background-color: white; ">
+                    <td align="justify"
+                        style="font-family:'Open Sans', arial, sans-serif !important;font-size:12px !important;font-weight:400 !important;color:#7e8890 !important; padding: 15px;">
+                        ASOCAM es el Servicio de Gestión del Conocimiento para América Latina
+                        que apoya procesos de construcción colectiva de conocimientos, que
+                        permite compartir y avanzar en temas específicos, generando productos de
+                        alta calidad y utilidad para los actores de desarrollo.
                     </td>
                 </tr>
             </table>
