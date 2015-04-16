@@ -8,6 +8,7 @@ use app\models\NotificationSearch;
 use app\models\Profile;
 use app\models\Event;
 use app\models\Request;
+use app\models\Post;
 
 use app\models\User;
 use Yii;
@@ -120,6 +121,7 @@ class SiteController extends Controller
             'searchNotification' => $searchNotification,
             'dataNotification' => $dataNotification,
             'modelRecentInscription'=>Inscription::find()->where(['user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
+            'modellatestPost' => Post::find()->where(['status' => self::STATUS_ACTIVE,'user_id'=>Yii::$app->user->identity->id])->orderBy('created_at desc')->limit(10)->all(),
 
         ]);
     }

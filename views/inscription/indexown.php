@@ -16,7 +16,7 @@ $this->title = 'Inscripciones';
 ?>
 
 <div class="breadcrumb">
-    <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/index'], ['class' => 'btn btn-danger']) ?>
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
 
 
     <!-- AYUDA-->

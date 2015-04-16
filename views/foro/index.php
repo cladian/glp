@@ -33,9 +33,9 @@ foreach ($model as $foro) {
         <div class="panel-heading"><?= $foro->name; ?>
             <?php
             // Boton visible para asocam
-               // if (Yii::$app->user->can('asocam')) {
+                if (Yii::$app->user->can('asocam')) {
                     echo Html::a(\Yii::$app->params['btnUpdateForo'], ['/phforum/view', 'id' => $foro->id], ['class' => 'btn btn-xs btn-default pull-right']);
-               // }
+                }
                 ?>
 
         </div>
@@ -74,7 +74,7 @@ foreach ($model as $foro) {
                         <?php endif ?>
 
                         <?php if ($foro->getPhforumImagens()->count() > 0): ?>
-                            <h4>Imagenes</h4>
+                            <hr/>
                             <ul class="list-group">
                                 <?php foreach ($foro->getPhforumImagens()->all() as $imagenes): ?>
                                     <li class="list-group-item"> <?= Html::img(\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>

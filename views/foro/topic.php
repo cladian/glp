@@ -48,9 +48,9 @@ use app\models\Imagen;
             <div class="panel-heading"><?= $model->phforum->name ?>
                 <?php
                 // Boton visible para asocam
-                // if (Yii::$app->user->can('asocam')) {
-                echo Html::a(\Yii::$app->params['btnUpdateTopic'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-xs btn-default pull-right']);
-                // }
+                if (Yii::$app->user->can('asocam')) {
+                    echo Html::a(\Yii::$app->params['btnUpdateTopic'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-xs btn-default pull-right']);
+                }
                 ?>
 
             </div>
@@ -100,7 +100,16 @@ use app\models\Imagen;
 
                                     <small><i
                                             class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?>
+
                                     </small>
+                                    <br/>
+                                    <p>
+                                        <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
+                                            <?= Html::a('Documento: '.$postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file,['parent'=>'blank','class'=>'btn btn-xs btn-default'] ); ?></li>
+
+
+                                        <?php endforeach ?>
+                                    </p>
 
                                 </td>
                                 <td>
@@ -108,21 +117,11 @@ use app\models\Imagen;
 
                                     <p align="center"><?= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
                                     <span class="label label-success"><?= $post->user->username ?></span>
-                                </td>
-                            </tr>
-                            <tr class="<?= $class ?>">
-                                <td colspan="5">
-                                    <!--                                <button type="button" class="btn btn-default ">Agregar Comentario <span class="badge">0</span></button>-->
-                                    <!--&nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Documentos <span class="badge">4</span></button>
-                                    &nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Imagenes <span class="badge">4</span></button>
-                                    &nbsp;<button class="btn btn-default btn-xs pull-right" type="button">Videos <span class="badge">4</span></button>
-    -->
+
                                 </td>
                             </tr>
 
-                            <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                            <?= Html::a($postDocs->document->name, [\Yii::$app->params['foroDocs'] . $postDocs->document->file], ['class' => 'btn btn-primary']); ?>
-                        <?php endforeach ?>
+
 
 
                         <?php
@@ -261,6 +260,6 @@ use app\models\Imagen;
 <?php if ($model->status == Topic::STATUS_INACTIVE): ?>
     <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
 <?php endif; ?>
-    <?php if ($model->status == Topic::STATUS_DELETED): ?>
+<?php if ($model->status == Topic::STATUS_DELETED): ?>
     <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
 <?php endif; ?>

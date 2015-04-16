@@ -63,7 +63,7 @@ class RecoverForm extends Model
 
                 \Yii::$app->getSession()
                     ->setFlash('success',
-                        'Su contraseña ha sido reseteada éxitosamente, por favor verificar esta información en su correo electrónico');
+                        'Su contraseña ha sido reseteada éxitosamente, por favor verificar esta información en su correo electrónico.'.$newpassword);
 
                 return $user;
             }

@@ -49,7 +49,7 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport'=>false,
+            'useFileTransport'=>true,
             'viewPath' => '@app/mail',
 
 
