@@ -9,18 +9,21 @@
                                cellspacing="0" valign="top" style="overflow:hidden !important;">
                             <tbody>
                             <tr>
-                                <td>
-                                    <h3 style="background-color: #005596; color:#fff; padding:5px;"><?= $title ?></h3>
-                                </td>
+                                <td><!-- <td align="center" >-->
+                                    <h3 style="background-color: #005596; color:#fff; padding:15px;">
+                                        <?= $title ?></h3>
+
+
                             </tr>
 
                             <tr>
-                                <td style="padding:20px;">
+                                <td style="padding:0px 20px;">
 
-                                    <div><?= $content ?></div>
-
+                                    <div>
+                                        <?= $content ?></div>
+                                    <br/>
                                     <code style="color:#7e8890;" align="right"><?= Yii::$app->
-                                        formatter->asDatetime(date('Y-m-d'), 'long') ?></code>
+                                        formatter->asDatetime(date('Y-m-d'),'long') ?></code>
 
                                     <p>
                                         <code><a href="<?= $url ?>" style="">Ver en sitio web</a></code>
