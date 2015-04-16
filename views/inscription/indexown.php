@@ -21,14 +21,14 @@ $this->title = 'Inscripciones';
 
     <!-- AYUDA-->
     <?php
-    Modal::begin([
+/*    Modal::begin([
         'header' => '<h4>Inscripción</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/inscription-index');
     Modal::end();
-    ?>
+    */?>
 </div>
 
 <div class="inscription-index">
