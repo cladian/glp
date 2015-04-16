@@ -5,7 +5,7 @@
             <table width="600">
                 <tr style="background-color: #005596; padding:15px; ">
 
-                    <td style="color:#7e8890; padding: 15px 15px 0px 15px">
+                    <td style="color:#7e8890; padding: 15px 15px 10px 15px">
                         <h3 style=" color:#fff; "><?= $title ?></h3>
                     </td>
                 </tr>
