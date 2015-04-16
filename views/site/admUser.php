@@ -244,6 +244,26 @@ $this->title = 'Panel de control de usuario';
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
+            <ul class="chat">
+                <?php if ($modellatestPost){
+                foreach ($modellatestPost as $post): ?>
+                    <li>
+
+                        <p><?= substr($post->content, 0, 90); ?>... </p>
+
+                        <div>
+                            <small><i
+                                    class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'medium'); ?>
+                            </small>
+                            <?= Html::a('Leer más ', ['/foro/topic', 'id' => $post->topic_id], ['class' => 'btn btn-success btn-xs pull-right']) ?>
+                        </div>
+
+                    </li>
+                <?php endforeach; } else { ?>
+                    <li> No existen Aportes</li>
+                <?php } ?>
+            </ul>
+
 
         </div>
         <!-- /.panel-body -->
@@ -276,12 +296,13 @@ $this->title = 'Panel de control de usuario';
                 </div>
 
                 <h5><?= $modelProfile->name ?>
-                <br/><?= $modelProfile->lastname; ?></h5>
+                    <br/><?= $modelProfile->lastname; ?></h5>
                 <address>
 
                     <strong>Teléfono: </strong><?= $modelProfile->phone_number; ?> <br>
                     <strong>Movil: </strong><?= $modelProfile->mobile_number; ?><br>
-                    <strong>Correo: </strong><?= $modelProfile->user->email; ?> <hr/>
+                    <strong>Correo: </strong><?= $modelProfile->user->email; ?>
+                    <hr/>
                     <strong>Responzabilidad: </strong><?= $modelProfile->responsability_name; ?> <br>
                     <strong>Tipo: </strong><?= $modelProfile->responsibilitytype->name; ?> <br>
 
@@ -289,26 +310,30 @@ $this->title = 'Panel de control de usuario';
                     <strong>Tipo: </strong><?= $modelProfile->institutiontype->name; ?>
 
                 </address>
-            <?php } else
-            { ?>
-<!--                --><?//= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+            <?php
+            } else {
+                ?>
+                <!--                --><? //= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
 
-                <div class="alert alert-danger"  role="alert"><span class="glyphicon glyphicon-alert pull-right"  aria-hidden="true"></span>La información de su registro está incompleta, por favor proporcione sus datos através del siguiente  formulario.</div>
+                <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-alert pull-right"
+                                                                   aria-hidden="true"></span>La información de su
+                    registro está incompleta, por favor proporcione sus datos através del siguiente formulario.
+                </div>
                 <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
                 <address>
                 </address>
             <?php } ?>
 
         </div>
-        <?php if ($modelProfile):?>
-        <!-- /.panel-body -->
-        <div class="panel-footer">
+        <?php if ($modelProfile): ?>
+            <!-- /.panel-body -->
+            <div class="panel-footer">
 
-&nbsp;
-            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar Perfil', ['profile/createown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-left  ']) ?>
-            <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Cambiar Imagen', ['profile/avatarown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-right  ']) ?>
-        </div>
-        <?php endif;?>
+                &nbsp;
+                <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Actualizar Perfil', ['profile/createown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-left  ']) ?>
+                <?= Html::a('<span class="glyphicon glyphicon-floppy-disk"></span> Cambiar Imagen', ['profile/avatarown', 'id' => $modelProfile->id], ['class' => 'btn btn-success btn-xs pull-right  ']) ?>
+            </div>
+        <?php endif; ?>
         <!-- /.panel-footer -->
     </div>
     <!-- /.panel .chat-panel -->

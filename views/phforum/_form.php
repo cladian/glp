@@ -14,8 +14,12 @@ $this->title = $model->name;
 ?>
 <?php $form = ActiveForm::begin(); ?>
 <div class="class breadcrumb">
+    <?php if($model->isNewRecord ){?>
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/index'], ['class' => 'btn btn-danger']) ?>
+    <?php }else {?>
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+    <?php }?>
 
-    <?= Html::a(\Yii::$app->params['btnCancelar'], ['/phforum/index', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
 </div>

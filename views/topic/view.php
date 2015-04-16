@@ -18,7 +18,7 @@ $this->title = 'Actualización Topico';
 <div class="breadcrumb">
 
     <?= Html::a(\Yii::$app->params['btnRegresar'] . ' al Foro', ['/phforum/view', 'id' => $model->phforum_id], ['class' => 'btn btn-default']) ?>
-    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     <?= Html::a('Subir Documento', ['topic/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Subir Imagen', ['topic/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Subir Video', ['topic/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
