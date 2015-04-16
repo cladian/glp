@@ -1,52 +1,34 @@
-
-<body style="background-color: #EAECED">
-<center>
+<body style="background-color: #EAECED; font-family:Arial, Helvetica, sans-serif;">
 <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#eaeced">
-    <tr height="8" style="font-size: 0; line-height: 0;">
-        <td>&nbsp;</td>
-    </tr>
-
     <tr>
         <td align="center" valign="top">
-           
             <table class="master-table" width="600">
-
-
                 <tr>
                     <td align="center" valign="top">
                         <table class="responsive-table" width="580" bgcolor="#ffffff" border="0" cellpadding="5"
                                cellspacing="0" valign="top" style="overflow:hidden !important;">
                             <tbody>
-<!-- contenido  -->
                             <tr>
-                                <td align="center">
-                                    <table width="100%">
-                                        <tbody>
-                                        <tr>
-                                            <td align="center"><h2 style="background-color: #005596; with:100%; margin: 0 !important; font-family:'Open Sans', arial, sans-serif !important;font-size:28px !important;font-weight:200 !important;color:#fff !important; line-height: 100px !important;"><?= $title ?> </h2></td>
-                                        </tr>
-                                        <tr>
-                                             <td class="responsive-header-cell" style="margin-left:20px; font-family:'Open Sans', arial, sans-serif !important;font-size:13px !important; font-weight:400 !important;color:#7e8890 !important;text-transform:uppercase !important;" align="right"><code class="lead"><?= Yii::$app->formatter->asDatetime(date('Y-m-d'), 'long') ?></code>
-                                             </td>
-                                        </tr>
-                                       
-                                        <tr>
-                                             <td>
-                                                <p style="margin:0 15px ; font-family:'Open Sans', arial, sans-serif !important;font-size:15px !important; font-weight:200 !important;color:#000 !important;"> <?= $content ?> </p></td>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
+                                <td>
+                                    <h3 style="background-color: #005596; color:#fff; padding:5px;"><?= $title ?></h3>
                                 </td>
                             </tr>
-<!-- contenido  -->                      
-                           
-                           <tr height="20">
-                                <td>&nbsp;</td>
+
+                            <tr>
+                                <td style="padding:20px;">
+
+                                    <div><?= $content ?></div>
+
+                                    <code style="color:#7e8890;" align="right"><?= Yii::$app->
+                                        formatter->asDatetime(date('Y-m-d'), 'long') ?></code>
+
+                                    <p>
+                                        <code><a href="<?= $url ?>" style="">Ver en sitio web</a></code>
+                                    </p>
+                                </td>
                             </tr>
 
-<!-- boton -->
+                            <!-- boton -->
 
                             <tr>
                                 <td align="center" valign="top">
@@ -54,22 +36,16 @@
                                         <tbody>
                                         <tr>
                                             <td align="center" valign="top">
-                                                <a href="<?= $url ?>"
-                                                   style="background-color: #005596; padding: 14px 28px 14px 28px; -webkit-border-radius: 3px; border-radius: 3px; line-height: 18px !important; letter-spacing: 0.125em; text-transform: uppercase; font-size: 13px; font-family: 'Open Sans', Arial, sans-serif; font-weight: 400; color: #ffffff; text-decoration: none; display: inline-block; line-height: 18px !important;-webkit-text-size-adjust:none;mso-hide:all;">Ver
-                                                   </a>
+
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </td>
                             </tr>
-<!-- boton -->
+                            <!-- boton -->
 
-                            <tr height="20">
-                                <td>&nbsp;</td>
-                            </tr>
-
-<!-- footer -->
+                            <!-- footer -->
                             <tr>
                                 <td align="center">
                                     <table width="90%">
@@ -77,11 +53,14 @@
                                         <tr>
                                             <td align="justify"
                                                 style="font-family:'Open Sans', arial, sans-serif !important;font-size:12px !important;font-weight:400 !important;color:#7e8890 !important;">
-                                                ASOCAM es el Servicio de Gestión del Conocimiento para América Latina que apoya procesos de construcción colectiva de conocimientos, que permite compartir y avanzar en temas específicos, generando productos de alta calidad y utilidad para los actores de desarrollo. 
+                                                ASOCAM es el Servicio de Gestión del Conocimiento para América Latina
+                                                que apoya procesos de construcción colectiva de conocimientos, que
+                                                permite compartir y avanzar en temas específicos, generando productos de
+                                                alta calidad y utilidad para los actores de desarrollo.
                                             </td>
-                                             
+
                                         </tr>
-                                       
+
                                         </tbody>
                                     </table>
                                 </td>
@@ -92,7 +71,7 @@
                                 <td>&nbsp;</td>
                             </tr>
 
-<!-- footer -->
+                            <!-- footer -->
                             </tbody>
                         </table>
                     </td>
@@ -101,5 +80,5 @@
         </td>
     </tr>
 </table>
-</center>
+
 </body>
