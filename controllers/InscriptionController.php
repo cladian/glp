@@ -244,7 +244,6 @@ class InscriptionController extends Controller
                             $modelAnswer->reply = NULL;
                         }
                         $modelAnswer->save();
-
                     }
                 }
                 $output = '';
@@ -631,7 +630,7 @@ class InscriptionController extends Controller
                     $count++;
                 }
             }
-            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
+            Yii::$app->session->setFlash('success', " Su Registros ha sido actualizado exitosamente.");
 
             //++++++++++++++++++++++++++++++++++++++++
             // CALCULATE
@@ -674,7 +673,7 @@ class InscriptionController extends Controller
                     $count++;
                 }
             }
-            Yii::$app->session->setFlash('success', " {$count} Registros procesados exitosamente.");
+            Yii::$app->session->setFlash('success', " Su Registros ha sido actualizado exitosamente.");
 
             //++++++++++++++++++++++++++++++++++++++++
             // CALCULATE
@@ -691,9 +690,7 @@ class InscriptionController extends Controller
             'id' => $id,
         ]);
     }
-
     // sendmail
-
     protected function sendMail($inscription_id, $message, $url)
     {
         $title = "Solicitud Completa";
