@@ -18,8 +18,9 @@ use yii\bootstrap\Modal;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="breadcrumb">
         <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <!-- AYUDA-->
         <?php
 /*        Modal::begin([
@@ -29,6 +30,7 @@ use yii\bootstrap\Modal;
         echo $this->render('/help/inscription-index');
         Modal::end();
         */?>
+
     </div>
     <div class="panel panel-primary">
         <div class="panel-heading">Imagen</div>
@@ -40,7 +42,7 @@ use yii\bootstrap\Modal;
     $form->field($model, 'photo')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'showRemove' => false,
+            'showRemove' => true,
             'showUpload' => false,
             'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',

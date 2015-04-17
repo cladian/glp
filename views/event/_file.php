@@ -42,7 +42,7 @@ use yii\bootstrap\Modal;
     $form->field($model, 'file')->widget(FileInput::classname(), [
         'pluginOptions' => [
 
-            'showRemove' => false,
+            'showRemove' => true,
             'showUpload' => false,
             'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',
