@@ -296,7 +296,8 @@ class SiteController extends Controller
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
 
-                    return $this->goHome();
+//                    return $this->goHome();
+                    return $this->redirect(['foro/index']);
 
                 }
             }

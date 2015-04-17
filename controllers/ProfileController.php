@@ -121,7 +121,7 @@ class ProfileController extends Controller
             // Almacenamiento del modelo;
             $model->user_id = Yii::$app->user->identity->id;
             $model->save();
-            return $this->redirect(['viewown']);
+            return $this->redirect(['site/index']);
         } else {
             return $this->render('createown', [
                 'model' => $model,
