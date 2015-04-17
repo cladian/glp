@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use dosamigos\chartjs\ChartJs;
 
 
 /* @var $this yii\web\View */
