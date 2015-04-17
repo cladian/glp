@@ -12,15 +12,23 @@ use kartik\widgets\FileInput;
 
 use app\models\Document;
 use app\models\Imagen;
+use app\models\Phforum;
 
 ?>
+
     <div class="breadcrumb">
 
 
         <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
 
     </div>
-<?php if ($model->status == Topic::STATUS_ACTIVE): ?>
+<?php if ($model->status == Topic::STATUS_INACTIVE): ?>
+    <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
+<?php endif; ?>
+<?php if ($model->status == Topic::STATUS_DELETED): ?>
+    <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
+<?php endif; ?>
+<?php if(($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE) && ($model->status = Topic::STATUS_ACTIVE == $model->status = Topic::STATUS_INACTIVE)): ?>
 
 
     <a name="sube"></a>
@@ -37,11 +45,7 @@ use app\models\Imagen;
     }
     ?>
 
-
-
     <a name="sube"></a>
-
-
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
         <div class="panel panel-primary">
@@ -257,10 +261,4 @@ use app\models\Imagen;
 
     <a name="baja"></a>
 
-<?php endif; ?>
-<?php if ($model->status == Topic::STATUS_INACTIVE): ?>
-    <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
-<?php endif; ?>
-<?php if ($model->status == Topic::STATUS_DELETED): ?>
-    <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
 <?php endif; ?>
