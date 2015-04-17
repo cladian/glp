@@ -19,7 +19,8 @@ use yii\bootstrap\Modal;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="breadcrumb">
         <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success ' : 'btn btn-primary ']) ?>
         <!-- AYUDA-->
 <!--        --><?php
 //        Modal::begin([
@@ -42,7 +43,7 @@ use yii\bootstrap\Modal;
     $form->field($model, 'file')->widget(FileInput::classname(), [
         'pluginOptions' => [
 
-            'showRemove' => false,
+            'showRemove' => true,
             'showUpload' => false,
             'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',

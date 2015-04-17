@@ -105,7 +105,7 @@ use app\models\Imagen;
                                     <br/>
                                     <p>
                                         <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                            <?= Html::a('Documento: '.$postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file,['parent'=>'blank','class'=>'btn btn-xs btn-default'] ); ?></li>
+                                            <?= Html::a('Documento: '.$postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file,['target'=>'_blank','class'=>'btn btn-xs btn-default'] ); ?></li>
 
 
                                         <?php endforeach ?>

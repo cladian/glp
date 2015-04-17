@@ -51,7 +51,7 @@ use yii\helpers\Url;
                 $form->field($model, 'photo')->widget(FileInput::classname(), [
                     'options' => ['accept' => 'image/*'],
                     'pluginOptions' => [
-                        'showRemove' => false,
+                        'showRemove' => true,
                         'showUpload' => false,
                         'showPreview' => false,
                         'browseClass' => 'btn btn-primary btn-block',
