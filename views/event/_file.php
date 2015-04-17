@@ -19,17 +19,18 @@ use yii\bootstrap\Modal;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="breadcrumb">
         <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnActualizar'], ['class' => $model->isNewRecord ? 'btn btn-success ' : 'btn btn-primary ']) ?>
         <!-- AYUDA-->
-        <?php
-        Modal::begin([
-            'header' => '<h4>Inscripción</h4>',
-            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-        ]);
-
-        echo $this->render('/help/inscription-index');
-        Modal::end();
-        ?>
+<!--        --><?php
+//        Modal::begin([
+//            'header' => '<h4>Inscripción</h4>',
+//            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+//        ]);
+//
+//        echo $this->render('/help/inscription-index');
+//        Modal::end();
+//        ?>
     </div>
     <div class="panel panel-primary">
         <div class="panel-heading">Documento</div>
@@ -42,7 +43,7 @@ use yii\bootstrap\Modal;
     $form->field($model, 'file')->widget(FileInput::classname(), [
         'pluginOptions' => [
 
-            'showRemove' => false,
+            'showRemove' => true,
             'showUpload' => false,
             'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',

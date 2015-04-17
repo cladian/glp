@@ -19,7 +19,7 @@ if (Yii::$app->user->isGuest) {
     /*$items[] = ['label' => '<span class="glyphicon glyphicon-user"></span> Registro', 'url' => ['/site/signup'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn btn-success btn-md'];*/
     $items[] = ['label' => 'Ingresar', 'url' => ['/site/login'], 'visible' => [Yii::$app->user->isGuest], 'class' => 'btn'];
 } else {
-    $items[] = ['label' => 'Inicio', 'url' => ['/site/index'], 'class' => 'btn btn-xs'];
+    $items[] = ['label' => 'Eventos', 'url' => ['/site/index'], 'class' => 'btn btn-xs'];
 }
 $items[] = ['label' => ' Foro', 'url' => ['/foro']];
 // Botones para usuario ASOCAM
@@ -49,7 +49,7 @@ if (Yii::$app->user->can('permission_admin')) {
         ['label' => 'Imagen', 'url' => ['/imagen']],
     ]
     ];
-    $items[] = ['label' => 'Evento', 'items' => [
+    $items[] = ['label' => '<span class="glyphicon glyphicon-cog"></span>Evento', 'items' => [
         ['label' => 'Eventos', 'url' => ['/event']],
         ['label' => 'Respuesta', 'url' => ['/answer']],
         ['label' => 'Respuesta por evento', 'url' => ['/eventanswer']],

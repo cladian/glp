@@ -38,6 +38,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
 
+    const EMAIL_DAILY = 1;
+    const EMAIL_NONE = 0;
+    const EMAIL_RESUME = 2;
+
+
     public function getStatus($status)
     {
         $codes = $this->getStatusList();
@@ -53,6 +58,24 @@ class User extends ActiveRecord implements IdentityInterface
         ];
 
     }
+//    campos de notificacion de correo electronico
+    public function getEmail($email)
+    {
+        $codes = $this->getEmailList();
+        return (    isset($codes[$email])) ? $codes[$email] : '';
+    }
+
+
+    public function getEmailList()
+    {
+        return $codes = [
+            self::EMAIL_NONE => 'NO',
+            self::EMAIL_DAILY => 'DIARIAMENTE',
+            self::EMAIL_RESUME => 'RESUMEN',
+        ];
+
+    }
+
     //---> ESTADOS
 
     /**
@@ -72,6 +95,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'auth_key', 'password_hash', 'email'], 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
             [['status'], 'integer'],
+            [['notification', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['username'], 'string', 'max' => 100],
             [['auth_key'], 'string', 'max' => 32],
@@ -100,6 +124,7 @@ class User extends ActiveRecord implements IdentityInterface
             'password_reset_token' => 'Restablecer contraseña',
             'email' => 'Correo Electrónico',
             'status' => 'Estado',
+            'notification' => 'Recibir notificaciones vía email (Evento)',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
         ];

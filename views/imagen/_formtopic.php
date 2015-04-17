@@ -31,7 +31,7 @@ use kartik\widgets\FileInput;
     $form->field($model, 'file')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'showRemove' => false,
+            'showRemove' => true,
             'showUpload' => false,
             'showPreview' => false,
             'browseClass' => 'btn btn-primary btn-block',

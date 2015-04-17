@@ -30,15 +30,15 @@ $this->title = 'Evento:' . $modelEvent->name;
     <!-- AYUDA-->
 
 
-    <?php
-    Modal::begin([
+  <!--  --><?php
+/*    Modal::begin([
         'header' => '<h4>Eventos ASOCAM</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/event-index');
     Modal::end();
-    ?>
+    */?>
 
 
 </div>

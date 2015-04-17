@@ -17,14 +17,14 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
         <?=Html::submitButton(\Yii::$app->params['btnGuardarSiguiente'], ['class' => 'btn btn-success']);?>
         <!-- AYUDA-->
         <?php
-        Modal::begin([
+/*        Modal::begin([
             'header' => '<h4>Inscripción</h4>',
             'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
         ]);
 
         echo $this->render('/help/inscription-index');
         Modal::end();
-        ?>
+        */?>
     </div>
 
 <div class="panel panel-green">

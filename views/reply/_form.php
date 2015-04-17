@@ -14,15 +14,15 @@ use yii\bootstrap\Modal;
 <div class="breadcrumb">
     <?= Html::a(\Yii::$app->params['btnCancel'], ['/site/index'], ['class' => 'btn btn-danger']) ?>
     <!-- AYUDA-->
-    <?php
-    Modal::begin([
-        'header' => '<h4>Inscripción</h4>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-    ]);
-
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    ?>
+<!--    --><?php
+//    Modal::begin([
+//        'header' => '<h4>Inscripción</h4>',
+//        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+//    ]);
+//
+//    echo $this->render('/help/inscription-index');
+//    Modal::end();
+//    ?>
 </div>
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

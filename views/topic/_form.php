@@ -13,9 +13,9 @@ use dosamigos\ckeditor\CKEditor;
     <div class="breadcrumb">
 
         <?php if($model->isNewRecord ){?>
-            <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $model->phforum_id], ['class' => 'btn btn-danger']) ?>
-        <?php }else {?>
             <?= Html::a(\Yii::$app->params['btnCancelar'], ['phforum/view', 'id' => $model->phforum_id], ['class' => 'btn btn-danger']) ?>
+        <?php }else {?>
+            <?= Html::a(\Yii::$app->params['btnCancelar'], ['view', 'id' => $model->phforum_id], ['class' => 'btn btn-danger']) ?>
         <?php }?>
 
 <!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

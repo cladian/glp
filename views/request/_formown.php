@@ -17,14 +17,14 @@ use app\models\Inscription;
     <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnEnviarInquetud'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     <!-- AYUDA-->
     <?php
-    Modal::begin([
+/*    Modal::begin([
         'header' => '<h4>Inscripción</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/inscription-index');
     Modal::end();
-    ?>
+    */?>
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading">Crear Solicitud</div>

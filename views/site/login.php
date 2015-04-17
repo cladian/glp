@@ -50,4 +50,5 @@ $this->title = 'Ingreso';
             </div>
         </div>
     </div>
+</div>
 

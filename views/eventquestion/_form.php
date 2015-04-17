@@ -14,17 +14,18 @@ use yii\bootstrap\Modal;
 <?php $form = ActiveForm::begin(); ?>
 <div class="breadcrumb">
     <?= Html::a(\Yii::$app->params['btnCancel'], [ '/event/view', 'id'=>$model->event_id], ['class' => 'btn btn-danger']) ?>
-    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--    --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     <!-- AYUDA-->
     <?php
-    Modal::begin([
+/*    Modal::begin([
         'header' => '<h4>Inscripción</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/inscription-index');
     Modal::end();
-    ?>
+    */?>
 </div>
 
 <div class="panel panel-green">
