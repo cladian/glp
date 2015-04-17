@@ -28,8 +28,14 @@ use app\models\Phforum;
 <?php if ($model->status == Topic::STATUS_DELETED): ?>
     <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
 <?php endif; ?>
-<?php if(($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE) && ($model->status = Topic::STATUS_ACTIVE == $model->status = Topic::STATUS_INACTIVE)): ?>
-
+<?php if(
+(
+    ($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE)
+)
+&& (
+    ($model->status == Topic::STATUS_ACTIVE) || ( $model->status == Topic::STATUS_INACTIVE)
+)
+): ?>
 
     <a name="sube"></a>
     <?php
@@ -168,11 +174,9 @@ use app\models\Phforum;
             </div>
         </div>
 
-
-
-        <?php if (!Yii::$app->user->isGuest) { ?>
+<!--        --><?php //if (!Yii::$app->user->isGuest) { ?>
+        <?php if( (!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)){ ?>
             <div class="panel panel-yellow">
-
                 <div class="panel-heading">Nuevo Aporte</div>
                 <div class="panel-body">
 

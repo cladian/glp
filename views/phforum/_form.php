@@ -81,11 +81,11 @@ $this->title = $model->name;
                 ['prompt' => 'Seleccione']
             ) ?>
 
-            <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
             <?= $form->field($model, 'is_private')->dropDownList(['0' => 'NO', '1' => 'SI'], ['prompt' => 'Seleccionar']) ?>
 
-            <?= $form->field($model, 'status')->dropDownList(['1' => 'Activo', '0' => 'Inactivo'], ['prompt' => 'Seleccionar']) ?>
+            <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+
 
 
         </div>
