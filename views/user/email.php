@@ -14,15 +14,15 @@ $this->title = 'Actualizar Usuario ' . ' ' ;
 
 
     <!-- AYUDA-->
-    <?php
-    Modal::begin([
-        'header' => '<h4>Inscripción</h4>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-    ]);
-
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    ?>
+<!--    --><?php
+//    Modal::begin([
+//        'header' => '<h4>Inscripción</h4>',
+//        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+//    ]);
+//
+//    echo $this->render('/help/inscription-index');
+//    Modal::end();
+//    ?>
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">

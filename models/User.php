@@ -72,6 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['username', 'auth_key', 'password_hash', 'email'], 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
             [['status'], 'integer'],
+            [['notification', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['username'], 'string', 'max' => 100],
             [['auth_key'], 'string', 'max' => 32],
@@ -100,6 +101,7 @@ class User extends ActiveRecord implements IdentityInterface
             'password_reset_token' => 'Restablecer contraseña',
             'email' => 'Correo Electrónico',
             'status' => 'Estado',
+            'notification' => 'Notificaciones',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
         ];
