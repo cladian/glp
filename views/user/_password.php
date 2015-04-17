@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 <!--    --><?//= $form->field($model, 'auth_key')->textInput(['maxlength' => 32]) ?>
 
     <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => 250]) ?>
-    <?= $form->field($model, 'notification')->dropDownList($model->getStatusList()) ?>
+
 
 <!--    --><?//= $form->field($model, 'password_reset_token')->textInput(['maxlength' => 250]) ?>
 
