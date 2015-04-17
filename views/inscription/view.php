@@ -3,15 +3,35 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\bootstrap\Tabs;
+use yii\bootstrap\Modal;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Inscription */
 
 $this->title = $model->id;
+$clase='green';
+if ($model->complete <100)
+    $clase='red';
 ?>
+
 <div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
 </div>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+    <!-- AYUDA-->
+<!--    --><?php
+/*    Modal::begin([
+        'header' => '<h3><li class="list-group-item list-group-item-warning"> Instrucciones para completar la Inscripción</li></h3>',
+        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+    ]);
+
+    echo $this->render('/help/inscription-index');
+    Modal::end();
+    */?>
+</div>
+
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
@@ -24,7 +44,80 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
              </div>';
 }
 ?>
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
 
+
+    <!--Panel-->
+    <div class=" col-xs-6 col-lg-3 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= $model->complete_logistic; ?>%</div>
+                        Inscripción
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Panel-->
+    <div class=" col-xs-6 col-lg-3 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= $model->complete_eventquiz; ?>%</div>
+                        Preguntas por evento
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class=" col-xs-6 col-lg-3 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= $model->complete_quiz; ?>%</div>
+                        Preguntas generales
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--END Panel-->
+    <!--Panel-->
+    <div class=" col-xs-6 col-lg-3 col-md-3">
+        <div class="panel panel-<?= $clase?>">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i style="font-size:2em;" class="glyphicon glyphicon-question-sign"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?= $model->complete; ?>%</div>
+                        Total
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <!--Visualización información del evento-->
@@ -52,7 +145,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
                        aria-controls="collapseOne" style="color:white;">
-                        Información de Inscripción <span class="pull-right"><?= $model->complete;  ?>%</span>
+                        Información de Inscripción <span class="pull-right"></span>
                     </a>
                 </h5>
             </div>

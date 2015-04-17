@@ -25,7 +25,7 @@ $this->title = 'Solicitudes';
 
 //            'id',
             'question:ntext',
-        //    'answer:ntext',
+           'answer:ntext',
 //            'status',
             [
                 'attribute' => 'status',

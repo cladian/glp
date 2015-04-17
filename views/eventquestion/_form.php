@@ -17,14 +17,14 @@ use yii\bootstrap\Modal;
     <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     <!-- AYUDA-->
     <?php
-    Modal::begin([
+/*    Modal::begin([
         'header' => '<h4>Inscripción</h4>',
         'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
     ]);
 
     echo $this->render('/help/inscription-index');
     Modal::end();
-    ?>
+    */?>
 </div>
 
 <div class="panel panel-green">

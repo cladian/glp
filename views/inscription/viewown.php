@@ -25,15 +25,15 @@ $clase='red';
 
 
     <!-- AYUDA-->
-    <?php
-    Modal::begin([
-        'header' => '<h3><li class="list-group-item list-group-item-warning"> Instrucciones para completar la Inscripción</li></h3>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-    ]);
-
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    ?>
+<!--    --><?php
+//    Modal::begin([
+//        'header' => '<h3><li class="list-group-item list-group-item-warning"> Instrucciones para completar la Inscripción</li></h3>',
+//        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+//    ]);
+//
+//    echo $this->render('/help/inscription-index');
+//    Modal::end();
+//    ?>
 </div>
 
 <?php

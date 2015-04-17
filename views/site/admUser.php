@@ -319,7 +319,7 @@ $this->title = 'Panel de control de usuario';
                                                                    aria-hidden="true"></span>La información de su
                     registro está incompleta, por favor proporcione sus datos através del siguiente formulario.
                 </div>
-                <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => $event->id], ['class' => 'btn btn-success btn-xs ']) ?>
+                <?= Html::a('Crear Perfil', ['profile/createown/', 'id' => Yii::$app->user->identity->id], ['class' => 'btn btn-success btn-xs ']) ?>
                 <address>
                 </address>
             <?php } ?>

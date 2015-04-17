@@ -16,15 +16,15 @@ $this->title = 'Actualizar Respuesta por Evento: ' ;
         <?= Html::a(\Yii::$app->params['btnCancel'], [ '/inscription/viewown', 'id'=>$id], ['class' => 'btn btn-danger']) ?>
         <?=Html::submitButton(\Yii::$app->params['btnGuardarCerrar'], ['class' => 'btn btn-success']);?>
         <!-- AYUDA-->
-        <?php
-        Modal::begin([
+       <!-- --><?php
+/*        Modal::begin([
             'header' => '<h4>Inscripción</h4>',
             'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
         ]);
 
         echo $this->render('/help/inscription-index');
         Modal::end();
-        ?>
+        */?>
     </div>
 
 <div class="panel panel-green">

@@ -23,15 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;*/
     <!-- AYUDA-->
 
 
-    <?php
-    Modal::begin([
-        'header' => '<h4>Inscripción</h3>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'],'class'=>'btn btn-default pull-right'],
-    ]);
-
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    ?>
+<!--    --><?php
+//    Modal::begin([
+//        'header' => '<h4>Inscripción</h3>',
+//        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'],'class'=>'btn btn-default pull-right'],
+//    ]);
+//
+//    echo $this->render('/help/inscription-index');
+//    Modal::end();
+//    ?>
 
 
 </div>

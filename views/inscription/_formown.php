@@ -24,15 +24,15 @@ use yii\bootstrap\Modal;
     <?php endif;?>
     <?= Html::submitButton($model->isNewRecord ? 'Crear y continuar' : 'Guardar y continuar ', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-success']) ?>
     <!-- AYUDA-->
-    <?php
-    Modal::begin([
-        'header' => '<h4>Inscripción</h4>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-    ]);
-
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    ?>
+<!--    --><?php
+//    Modal::begin([
+//        'header' => '<h4>Inscripción</h4>',
+//        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+//    ]);
+//
+//    echo $this->render('/help/inscription-index');
+//    Modal::end();
+//    ?>
 </div>
 
 <div class="panel panel-primary">

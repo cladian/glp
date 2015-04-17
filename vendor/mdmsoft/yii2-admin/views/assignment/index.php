@@ -8,12 +8,32 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel mdm\admin\models\searchs\Assignment */
 
-$this->title = Yii::t('rbac-admin', 'Assignments');
-$this->params['breadcrumbs'][] = $this->title;
+//$this->title = Yii::t('rbac-admin', 'Assignments');
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="breadcrumb">
+
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+
+
+    <!-- <!-- AYUDA-->
+    <?php
+    /*    Modal::begin([
+            'header' => '<h4>Inscripción</h4>',
+            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+        ]);
+
+        echo $this->render('/help/inscription-index');
+        Modal::end();
+        */?>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">Asignaciones</div>
+    <div class="panel-body">
 <div class="assignment-index">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+	<h1>Asignaciones</h1>
 
 	<?php
     Pjax::begin([
@@ -38,3 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
 </div>
+</div>
+</div>
+
