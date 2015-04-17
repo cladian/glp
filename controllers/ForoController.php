@@ -239,7 +239,8 @@ class ForoController extends Controller
         $modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
         foreach ($modelPost as $user) {
             // Contenido, tipo  1=Notificacion URL
-            $user->user->sendEmail($content, $url, $title);
+            if($user->user->notification==User::EMAIL_DAILY)
+                $user->user->sendEmail($content, $url, $title);
         }
     }
 

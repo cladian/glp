@@ -303,6 +303,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="list-group">
+                <?= Html::a('<i class="glyphicon glyphicon-bullhorn"></i> Foros electrónicos <i class="glyphicon glyphicon-circle-arrow-left pull-right"></i> ', ['/phforum/index'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
@@ -332,7 +333,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
            Mapa
         </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
+        <div class="panel-body" style="widht: 80%;">
             <?php
 
             $sql="SELECT  LOWER(c.iso) as 'hc-key', count(i.id)as 'value'
@@ -346,16 +347,6 @@ group by u.id";
             ]);
             $db = Yii::$app->db;
             $dbdata= $db->createCommand($sql)->queryAll();
-
-
-
-
-            $datos=[];
-            $datos[]= ['hc-key' => 'ec', 'value' => 10];
-            $datos[]= ['hc-key' => 'co', 'value' => 10];
-
-
-
 
             echo Highmaps::widget([
                 'options' => [
@@ -378,7 +369,7 @@ group by u.id";
                             'data' => $dbdata,
                             'mapData' => new JsExpression('Highcharts.maps["custom/world"]'),
                             'joinBy' => 'hc-key',
-                            'name' => 'Inscripciones',
+                            'name' => '',
                             'states' => [
                                 'hover' => [
                                     'color' => '#BADA55',
