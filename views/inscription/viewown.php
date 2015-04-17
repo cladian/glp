@@ -61,7 +61,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $model->complete_logistic; ?>%</div>
-                        Inscripción
+<!--                        Inscripción-->
+                        Sección 1. Información General.
                     </div>
                 </div>
             </div>
@@ -79,7 +80,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $model->complete_eventquiz; ?>%</div>
-                        Preguntas por evento
+<!--                        Preguntas por evento-->
+                        Sección 2. Experiencia y expectativa.
                     </div>
                 </div>
             </div>
@@ -96,8 +98,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $model->complete_quiz; ?>%</div>
-                        Preguntas generales
+<!--                        Preguntas generales-->
+                        Sección 3. Preguntas Generales
                     </div>
+
                 </div>
             </div>
 
@@ -114,7 +118,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><?= $model->complete; ?>%</div>
-                        Total
+<!--                        Total-->
+                        Avance de Incripción
                     </div>
                 </div>
             </div>

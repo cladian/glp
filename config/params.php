@@ -59,7 +59,7 @@ return [
 // Botones Inscripción
     'btnInscriptionS1' => '<span class="glyphicon glyphicon-floppy-disk"></span> Sección 1. Información General',
     'btnInscriptionS2' => '<span class="glyphicon glyphicon-question-sign"></span> Sección 2. Experiencia y expectativa',
-    'btnInscriptionS3' => '<span class="glyphicon glyphicon-question-sign"></span> Sección 3. Información logística.',
+    'btnInscriptionS3' => '<span class="glyphicon glyphicon-question-sign"></span> Sección 3. Preguntas Generales.',
     'btnInscriptionS3SM' => '<span class="glyphicon glyphicon-question-sign"></span> Completar Registro.',
     'btnNuevaInquietud' => '<span class="glyphicon glyphicon-send"></span> Nueva inquietud',
 
