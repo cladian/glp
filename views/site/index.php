@@ -127,8 +127,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <?= Html::img('imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive pull-right']); ?>
 
                                 <h4><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> &nbsp; <?= $event->city . ', ' . $event->country->name; ?> </h4>
-
-
                         </div>
                         <div class="panel-body">
 
