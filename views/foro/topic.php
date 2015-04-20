@@ -214,8 +214,6 @@ use app\models\Phforum;
                         </div>
 
                         <?php ActiveForm::end(); ?>
-
-
                     </div>
                 </div>
             </div>
@@ -233,6 +231,19 @@ use app\models\Phforum;
             </div>
 
         <?php } ?>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span>  Notificaciones Electónicas</div>
+            <div class="panel-body">
+
+
+<!--                <p>--><?//= $model->user->notification; ?><!-- </p>-->
+                <p>  Su preferencia de notificaciones enviará correos : <?= $model->user->getEmail($model->user->notification); ?> </p>
+                <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?>
+
+            </div>
+        </div>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -261,6 +272,7 @@ use app\models\Phforum;
             </div>
         </div>
     </div>
+
 
 
     <a name="baja"></a>
