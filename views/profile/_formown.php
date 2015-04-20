@@ -22,8 +22,12 @@ use app\models\Country;
     <div class="breadcrumb">
         <?= Html::a(\Yii::$app->params['btnCancel'], [ '/site/admuser', 'id'=>$model->id], ['class' => 'btn btn-danger']) ?>
         <?= Html::submitButton($model->isNewRecord ? '<span class="glyphicon glyphicon-floppy-disk"></span> Crear' : '<span class="glyphicon glyphicon-floppy-disk"></span> Guardar', ['class' => $model->isNewRecord ? 'btn btn btn-success' : 'btn btn btn-success']) ?>
-        <?= Html::a('<span class="glyphicon glyphicon-camera"></span> Actualizar Imagen', ['avatarown', 'id' => $model->id], ['class' => 'btn btn-info btn btn btn-success']) ?>
 
+
+<?php  if (!$model->isNewRecord):
+?>
+      <?= Html::a('<span class="glyphicon glyphicon-camera"></span> Actualizar Imagen', ['avatarown', 'id' => $model->id], ['class' => 'btn btn-info btn btn btn-success']) ?>
+<?php endif; ?>
         <!-- AYUDA-->
 <!--        --><?php
 /*        Modal::begin([

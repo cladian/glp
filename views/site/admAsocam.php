@@ -54,7 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;*/
                     <div class="panel-footer">
                         <span class="pull-left"><?= Html::a('Ver más..', ['user/index']) ?></span>
                         <span class="pull-right"><i class="glyphicon glyphicon-circle-arrow-right"></i></span>
-
                         <div class="clearfix"></div>
                     </div>
                 </a>

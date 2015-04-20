@@ -12,16 +12,30 @@ use kartik\widgets\FileInput;
 
 use app\models\Document;
 use app\models\Imagen;
+use app\models\Phforum;
 
 ?>
+
     <div class="breadcrumb">
 
 
         <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
 
     </div>
-<?php if ($model->status == Topic::STATUS_ACTIVE): ?>
-
+<?php if ($model->status == Topic::STATUS_INACTIVE): ?>
+    <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
+<?php endif; ?>
+<?php if ($model->status == Topic::STATUS_DELETED): ?>
+    <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
+<?php endif; ?>
+<?php if(
+(
+    ($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE)
+)
+&& (
+    ($model->status == Topic::STATUS_ACTIVE) || ( $model->status == Topic::STATUS_INACTIVE)
+)
+): ?>
 
     <a name="sube"></a>
     <?php
@@ -37,11 +51,7 @@ use app\models\Imagen;
     }
     ?>
 
-
-
     <a name="sube"></a>
-
-
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
         <div class="panel panel-primary">
@@ -164,11 +174,9 @@ use app\models\Imagen;
             </div>
         </div>
 
-
-
-        <?php if (!Yii::$app->user->isGuest) { ?>
+<!--        --><?php //if (!Yii::$app->user->isGuest) { ?>
+        <?php if( (!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)){ ?>
             <div class="panel panel-yellow">
-
                 <div class="panel-heading">Nuevo Aporte</div>
                 <div class="panel-body">
 
@@ -206,8 +214,6 @@ use app\models\Imagen;
                         </div>
 
                         <?php ActiveForm::end(); ?>
-
-
                     </div>
                 </div>
             </div>
@@ -225,6 +231,19 @@ use app\models\Imagen;
             </div>
 
         <?php } ?>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span>  Notificaciones Electónicas</div>
+            <div class="panel-body">
+
+
+<!--                <p>--><?//= $model->user->notification; ?><!-- </p>-->
+                <p>  Su preferencia de notificaciones enviará correos : <?= $model->user->getEmail($model->user->notification); ?> </p>
+                <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?>
+
+            </div>
+        </div>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -255,12 +274,7 @@ use app\models\Imagen;
     </div>
 
 
+
     <a name="baja"></a>
 
-<?php endif; ?>
-<?php if ($model->status == Topic::STATUS_INACTIVE): ?>
-    <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
-<?php endif; ?>
-<?php if ($model->status == Topic::STATUS_DELETED): ?>
-    <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
 <?php endif; ?>
