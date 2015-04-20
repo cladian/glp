@@ -4,8 +4,9 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-
+use kartik\export\ExportMenu;
 use app\models\Event;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InscriptionSearch */
@@ -129,7 +130,11 @@ $this->title = 'Inscripciones';
         ],
 
     ];
-
+    // Renders a export dropdown menu
+    echo \kartik\grid\ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => $gridColumns
+    ]);
     echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
