@@ -3,6 +3,9 @@ use yii\helpers\Html;
 use kartik\widgets\Growl;
 
 use yii\grid\GridView;
+use miloschuman\highcharts\Highmaps;
+use yii\web\JsExpression;
+
 
 /* @var $this yii\web\View */
 /*$this->title = 'Bienvenido ASOCAM';
@@ -300,6 +303,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="list-group">
+                <?= Html::a('<i class="glyphicon glyphicon-bullhorn"></i> Foros electrónicos <i class="glyphicon glyphicon-circle-arrow-left pull-right"></i> ', ['/phforum/index'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
                 <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
@@ -320,61 +324,71 @@ $this->params['breadcrumbs'][] = $this->title;*/
     <!-- /.panel .chat-panel -->
 
 </div>
-<div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
+<div class="col-xs-12 col-lg-8 col-md-8 col-lg-8">
 
     <!-- /.panel -->
     <div class="chat-panel panel panel-green">
-        <div class="panel-heading">
+    <div class="panel-heading">
             <i class="fa fa-comments fa-fw"></i>
-            Accesos Rápidos
+           Mapa
         </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
-            <div class="list-group">
-                <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos responsabilidad', ['/responsibilitytype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Institución', ['/institutiontype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Evento', ['/eventtype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos de registro', ['/registertype'],['class'=>'list-group-item']) ?>
+        <div class="panel-body" style="widht: 80%;">
+            <?php
 
-            </div>
+            $sql="SELECT  LOWER(c.iso) as 'hc-key', count(i.id)as 'value'
+FROM inscription as i, user as u, profile as p, country as c
+where i.status=1 and u.id=i.user_id and p.user_id=u.id and p.country_id=c.id
+group by u.id";
+
+
+            $this->registerJsFile('http://code.highcharts.com/mapdata/custom/world.js', [
+                'depends' => 'miloschuman\highcharts\HighchartsAsset'
+            ]);
+            $db = Yii::$app->db;
+            $dbdata= $db->createCommand($sql)->queryAll();
+
+            echo Highmaps::widget([
+                'options' => [
+                    'title' => [
+                        'text' => 'Inscripciones Generales por Pais',
+                        'enabled' => false,
+                    ],
+                    'mapNavigation' => [
+                        'enabled' => true,
+                        'buttonOptions' => [
+                            'verticalAlign' => 'left',
+                        ]
+                    ],
+                    'colorAxis' => [
+                        'min' => 0,
+                    ],
+
+                    'series' => [
+                        [    'enabled' => true,
+                            'data' => $dbdata,
+                            'mapData' => new JsExpression('Highcharts.maps["custom/world"]'),
+                            'joinBy' => 'hc-key',
+                            'name' => '',
+                            'states' => [
+                                'hover' => [
+                                    'color' => '#BADA55',
+                                ]
+                            ],
+                            'dataLabels' => [
+                                'enabled' => false,
+                                'format' => '{point.name}',
+                                'joinBy'=> ['iso-a2', 'code'],
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+?>
         </div>
         <!-- /.panel-body -->
         <div class="panel-footer">
-            <br>
-<!--                <a href="#" class="btn btn-default btn-block"></a>-->
-        </div>
-        <!-- /.panel-footer -->
-    </div>
-    <!-- /.panel .chat-panel -->
-
-</div><div class="col-xs-12 col-lg-4 col-md-4 col-lg-4">
-
-    <!-- /.panel -->
-    <div class="chat-panel panel panel-green">
-        <div class="panel-heading">
-            <i class="fa fa-comments fa-fw"></i>
-            Accesos Rápidos
-        </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-            <div class="list-group">
-                <?= Html::a('<i class="glyphicon glyphicon-user"></i> Usuarios', ['/user'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-question-sign"></i> Preguntas Generales', ['/generalquestion'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-star"></i> Asignaciones', ['/admin'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos responsabilidad', ['/responsibilitytype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Institución', ['/institutiontype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogos de tipos de Evento', ['/eventtype'],['class'=>'list-group-item']) ?>
-                <?= Html::a('<i class="glyphicon glyphicon-list-alt"></i> Catálogo de tipos de registro', ['/registertype'],['class'=>'list-group-item']) ?>
-
-            </div>
-        </div>
-        <!-- /.panel-body -->
-        <div class="panel-footer">
-            <br>
-<!--                <a href="#" class="btn btn-default btn-block"></a>-->
+            Aplica a los registros de usuario que han completado la información de perfil
         </div>
         <!-- /.panel-footer -->
     </div>

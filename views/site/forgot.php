@@ -9,6 +9,18 @@ $this->title = 'Registro';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    //echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    echo '<div class="alert alert-' . $key . '" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  ' . $message . '
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+             </div>';
+}
+?>
 <div class="row">
   <div class="col-sm-6 col-md-4">
   </div>
