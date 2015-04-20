@@ -1,5 +1,5 @@
 <?php
-
+use kartik\mpdf\Pdf;
 $params = require(__DIR__ . '/params.php');
 
 $config = [
@@ -9,6 +9,13 @@ $config = [
     'language' => 'es',
     'sourceLanguage' => 'es',
     'components' => [
+        'pdf' => [
+            'class' => Pdf::classname(),
+            'format' => Pdf::FORMAT_A4,
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            'destination' => Pdf::DEST_BROWSER,
+            // refer settings section for all configuration options
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'MmLEHt6GjDarlWZqosTfd6qQsFwkKFqu',
