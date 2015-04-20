@@ -153,4 +153,41 @@ class InscriptionSearch extends Inscription
 
         return $dataProvider;
     }
+    public function searchByEvent($params, $id)
+    {
+        $query = Inscription::find();
+        /*$query->joinWith(['event']);*/
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'exposition' => $this->exposition,
+            'service_terms' => $this->service_terms,
+            'complete' => $this->complete,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'complete_logistic' => $this->complete_logistic,
+            'complete_eventquiz' => $this->complete_eventquiz,
+            'complete_quiz' => $this->complete_quiz,
+            'event_id' => $id,
+            'user_id' => $this->user_id,
+            'registertype_type' => $this->registertype_type,
+            'registertype_assigment' => $this->registertype_assigment,
+        ]);
+        /*->andFilterWhere(['like', 'event.id', $this->event_id]);*/
+
+        return $dataProvider;
+    }
 }

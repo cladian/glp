@@ -6,6 +6,7 @@ use Yii;
 use app\models\Event;
 use app\models\EventSearch;
 use app\models\EventquestionSearch;
+use app\models\InscriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,11 +28,11 @@ class EventController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create', 'update', 'delete'],
+                'only' => ['index', 'view', 'create', 'update', 'delete', 'statistics'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources', 'file'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources', 'file','statistics'],
                         'allow' => true,
                         'roles' => ['asocam', 'sysadmin'],
                     ],
@@ -50,6 +51,18 @@ class EventController extends Controller
      * Lists all Event models.
      * @return mixed
      */
+
+    public function actionStatistics($id)
+    {
+        $searchModel = new InscriptionSearch();
+        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $id);
+
+        return $this->render('statistics', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionIndex()
     {
         $searchModel = new EventSearch();
@@ -212,3 +225,4 @@ class EventController extends Controller
     }
 
 }
+
