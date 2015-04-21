@@ -14,27 +14,28 @@ use app\models\Document;
 use app\models\Imagen;
 use app\models\Phforum;
 
+
 ?>
 
-    <div class="breadcrumb">
+<div class="breadcrumb">
 
 
-        <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
 
-    </div>
+</div>
 <?php if ($model->status == Topic::STATUS_INACTIVE): ?>
-    <div class="alert alert-warning" role="alert">El tema ha sido despublicado</div>
+    <div class="alert alert-warning" role="alert">El tema ha sido Inactivado</div>
 <?php endif; ?>
 <?php if ($model->status == Topic::STATUS_DELETED): ?>
     <div class="alert alert-danger" role="alert">El tema ha sido eliminado</div>
 <?php endif; ?>
-<?php if(
-(
-    ($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE)
-)
-&& (
-    ($model->status == Topic::STATUS_ACTIVE) || ( $model->status == Topic::STATUS_INACTIVE)
-)
+<?php if (
+    (
+        ($model->phforum->status == phforum::STATUS_ACTIVE) || ($model->phforum->status == phforum::STATUS_INACTIVE)
+    )
+    && (
+        ($model->status == Topic::STATUS_ACTIVE) || ($model->status == Topic::STATUS_INACTIVE)
+    )
 ): ?>
 
     <a name="sube"></a>
@@ -113,9 +114,10 @@ use app\models\Phforum;
 
                                     </small>
                                     <br/>
+
                                     <p>
                                         <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                            <?= Html::a('Documento: '.$postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file,['target'=>'_blank','class'=>'btn btn-xs btn-default'] ); ?></li>
+                                            <?= Html::a('Documento: ' . $postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
 
 
                                         <?php endforeach ?>
@@ -174,8 +176,10 @@ use app\models\Phforum;
             </div>
         </div>
 
-<!--        --><?php //if (!Yii::$app->user->isGuest) { ?>
-        <?php if( (!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)){ ?>
+        <!--        --><?php //if (!Yii::$app->user->isGuest) { ?>
+        <?php
+
+        if ((!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)) { ?>
             <div class="panel panel-yellow">
                 <div class="panel-heading">Nuevo Aporte</div>
                 <div class="panel-body">
@@ -217,7 +221,7 @@ use app\models\Phforum;
                     </div>
                 </div>
             </div>
-        <?php } else { ?>
+        <?php } elseif (Yii::$app->user->isGuest) { ?>
 
             <div class="alert alert-warning" role="alert">
                 <center>Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas,
@@ -230,17 +234,27 @@ use app\models\Phforum;
                 </center>
             </div>
 
-        <?php } ?>
+        <?php }else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+                <center>Los aportes han sido inhabilitados
+                </center>
+
+            </div>
+        <?php
+        } ?>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
         <div class="panel panel-default">
-            <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span>  Notificaciones Electónicas</div>
+            <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones electrónicas
+            </div>
             <div class="panel-body">
 
 
-<!--                <p>--><?//= $model->user->notification; ?><!-- </p>-->
-                <p>  Su preferencia de notificaciones enviará correos : <?= $model->user->getEmail($model->user->notification); ?> </p>
-                <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?>
+                <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
+                <p>Su perfil está configurado para el envio de notificaciónes:
+                    <b><?= $modelUser->getEmail($modelUser->notification); ?></p>
+                <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
 
             </div>
         </div>
