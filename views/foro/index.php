@@ -120,8 +120,8 @@ foreach ($model as $foro) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id,'status'=>Topic::STATUS_ACTIVE])->all() as $topic): ?>
-
+                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic): ?>
+                                    <?php if (($topic->status ==Topic::STATUS_ACTIVE)||($topic->status ==Topic::STATUS_INACTIVE)) :?>
                                     <tr>
                                         <td><?= $topic->id; ?></td>
                                         <td><?= $topic->content; ?></td>
@@ -129,7 +129,9 @@ foreach ($model as $foro) {
                                         <td><?= Yii::$app->formatter->asDate($topic->created_at, 'medium'); ?></td>
                                         <td><?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-xs']) ?></td>
                                     </tr>
-                                <?php endforeach; ?>
+                                <?php
+                                    endif;
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

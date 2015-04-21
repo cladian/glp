@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Phforum;
+use app\models\User;
 use app\models\Topic;
 use app\models\PhforumSearch;
 use yii\web\Controller;
@@ -116,6 +117,7 @@ class ForoController extends Controller
             'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
             'modelPost' => $modelPost,
             'modelDocument' => $modelDocument,
+            'modelUser'=>User::find()->where(['id'=>Yii::$app->user->id])->one(),
         ]);
     }
 
@@ -230,8 +232,7 @@ class ForoController extends Controller
     /*
     * Función para envio de correos electrónicos a todos los participantes que están participando en el tópico
     */
-    protected
-    function sendMail($topic_id, $message, $url)
+    protected function sendMail($topic_id, $message, $url)
     {
         $title = "Nuevo mensaje enviado Foro-ASOCAM";
         $content = $message;
