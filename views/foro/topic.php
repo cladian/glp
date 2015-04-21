@@ -56,6 +56,7 @@ use app\models\Phforum;
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
         <div class="panel panel-primary">
+
             <div class="panel-heading"><?= $model->phforum->name ?>
                 <?php
                 // Boton visible para asocam
@@ -65,11 +66,52 @@ use app\models\Phforum;
                 ?>
 
             </div>
-            <div class="panel-body">
-                <center style="text-align:justify;"><?= $model->content; ?></a> </center>
-                <hr/>
-                EVENTO: <?= $model->phforum->event->name ?>
-            </div>
+            <?php
+            $countdocs=1;
+            if ($model->getTopicDocuments()->count() > 0): ?>
+                <div class=" panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                            <?php if ($model->getTopicImagens()->count() > 0): ?>
+
+                                <div class="pull-right" >
+                                    <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
+
+                                        <?= Html::img(\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
+
+                                    <?php
+                                    endforeach;
+                                    ?>
+                                </div>
+
+                            <?php endif ?>
+                        </div>
+                    <center style="text-align:justify;"><?= $model->content; ?></a> </center>
+                    <hr/>
+                    EVENTO: <?= $model->phforum->event->name ?>
+
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown" aria-expanded="false">
+                        Documentos disponibles <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <?php foreach ($model->getTopicDocuments()->all() as $documents): ?>
+                            <li > <?= Html::a($countdocs++.'.-'.$documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file,['target'=>'_blank'] ); ?></li>
+                        <?php
+                        endforeach;
+                        ?>
+                    </ul>
+                </div>
+
+            <?php endif ?>
+
+                </div>
+                </div>
+                </div>
+
+
+
         </div>
 
         <div class="panel panel-green">

@@ -9,7 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\helpers\Html;
+
 /**
  * PhforumDocumentController implements the CRUD actions for PhforumDocument model.
  */
@@ -123,19 +123,9 @@ class PhforumDocumentController extends Controller
      */
     public function actionDelete($phforum_id, $document_id)
     {
-        if($this->findModel($phforum_id, $document_id)->delete()){
+        $this->findModel($phforum_id, $document_id)->delete();
 
         return $this->redirect(['/phforum/view', 'id' => $phforum_id]);
-        }else{
-            return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-                'title' => Yii::t('yii', 'Delete'),
-                'class'=>'btn btn-primary',
-                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                'data-method' => 'post',
-                'data-pjax' => '0',
-            ]);
-        }
-
     }
 
     /**
