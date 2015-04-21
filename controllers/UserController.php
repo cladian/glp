@@ -157,7 +157,10 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['site/index', 'id' => $model->id]);
+           // return $this->redirect(['site/index']);
+            return $this->redirect(['/foro']);
+            //return $this->redirect(Yii::$app->request->referrer);
+           // return $this->goBack();
 
         } else {
             return $this->render('email', [

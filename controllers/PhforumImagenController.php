@@ -28,7 +28,7 @@ class PhforumImagenController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['view'],
+                        'actions' => ['view', 'delete'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
@@ -125,7 +125,7 @@ class PhforumImagenController extends Controller
     {
         $this->findModel($phforum_id, $imagen_id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['/phforum/view', 'id' => $phforum_id]);
     }
 
     /**
