@@ -146,9 +146,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     </div>
                 </div>
             <?php } // End ForEach ?>
-
-
-
         </div>
         <div class="panel-footer">
             <h5 class="text-large">Próximos eventos</h5>

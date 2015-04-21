@@ -170,8 +170,20 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'topic_id',
-                        'document_id',
+//                        'topic_id',
+//                        [
+//                            'attribute' => 'topic_id',
+//                            'value' => function ($data) {
+//                                    return $data->topic->content;
+//                                }
+//                        ],
+//                        'document_id',
+                        [
+                            'attribute' => 'document_id',
+                            'value' => function ($data) {
+                                    return $data->document->name;
+                                }
+                        ],
                         'created_at',
                         'updated_at',
 
@@ -197,8 +209,17 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'topic_id',
-                        'imagen_id',
+//                        'topic_id',
+//                        'imagen_id',
+                        [
+                            'label' => 'Imagen',
+                            'format' => 'raw',
+
+                            'value' => function ($data) {
+                                    $url = \Yii::$app->params['foroImgs'] . $data->imagen->file;
+                                    return Html::img($url, ['class' => 'thumbnail', 'style' => 'height:100px;']);
+                                }
+                        ],
                         'created_at',
                         'updated_at',
 
