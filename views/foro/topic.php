@@ -252,7 +252,7 @@ use app\models\Phforum;
 
 
                 <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
-                <p>Su perfil está configurado para el envio de notificaciónes:
+                <p>Su perfil está configurado para el envio de notificaciones:
                     <b><?= $modelUser->getEmail($modelUser->notification); ?></p>
                 <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
 
