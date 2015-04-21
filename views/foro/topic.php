@@ -71,8 +71,8 @@ use app\models\Phforum;
             if ($model->getTopicDocuments()->count() > 0): ?>
                 <div class=" panel-body">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                             <?php if ($model->getTopicImagens()->count() > 0): ?>
 
                                 <div class="pull-right" >

@@ -70,8 +70,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $codes = [
             self::EMAIL_NONE => 'NO',
-            self::EMAIL_DAILY => 'DIARIAMENTE',
-            self::EMAIL_RESUME => 'RESUMEN',
+            self::EMAIL_DAILY => 'RESUMEN DIARIO',
+            self::EMAIL_RESUME => 'INMEDIATAMENTE',
         ];
 
     }
