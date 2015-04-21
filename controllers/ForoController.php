@@ -234,7 +234,7 @@ class ForoController extends Controller
     */
     protected function sendMail($topic_id, $message, $url)
     {
-        $title = "Nuevo mensaje enviado Foro-ASOCAM";
+        $title = "Nuevo mensaje Foro:";
         $content = $message;
 
         $modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
