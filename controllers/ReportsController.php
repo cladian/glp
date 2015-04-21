@@ -31,7 +31,7 @@ class ReportsController extends \yii\web\Controller
     }
 
     public function actionForo() {
-        $foro="phforum_id";
+        $foro= "   ";
         $pdf = new Pdf([
             'mode' => Pdf::MODE_CORE, // leaner size using standard fonts
             'content' => $this->renderPartial('foroEstadistica',['id'=>$foro]),

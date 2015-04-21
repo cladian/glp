@@ -54,7 +54,7 @@ foreach ($model as $foro) {
                         $countdocs=1;
                         if ($foro->getPhforumDocuments()->count() > 0): ?>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle btn-group-justified" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-group-justified" data-toggle="dropdown" aria-expanded="false">
                                 Documentos disponibles <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">

@@ -81,7 +81,7 @@ use app\models\Phforum;
                         if ($model->getTopicDocuments()->count() > 0): ?>
                             <div class="btn-group ">
                                 <br/>
-                                <button type="button" class="btn btn-default dropdown-toggle btn-group-justified"
+                                <button type="button" class="btn btn-info dropdown-toggle btn-group-justified"
                                         data-toggle="dropdown" aria-expanded="false">
                                     Documentos disponibles <span class="caret"></span>
                                 </button>
