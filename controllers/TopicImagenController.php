@@ -124,7 +124,7 @@ class TopicImagenController extends Controller
     public function actionDelete($topic_id, $imagen_id)
     {
         $this->findModel($topic_id, $imagen_id)->delete();
-
+        \Yii::$app->getSession()->setFlash('success', 'La Imagen ha sido eliminada éxitosamente');
         return $this->redirect(['/topic/view', 'id' => $topic_id]);
     }
 

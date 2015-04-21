@@ -124,6 +124,7 @@ class TopicDocumentController extends Controller
     public function actionDelete($topic_id, $document_id)
     {
         $this->findModel($topic_id, $document_id)->delete();
+        \Yii::$app->getSession()->setFlash('success', 'El documento ha sido eliminado éxitosamente');
 
         return $this->redirect(['/topic/view', 'id' => $topic_id]);
     }
