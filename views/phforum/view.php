@@ -30,7 +30,7 @@ $this->title = $model->name;
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 <!--    --><?//= Html::a(\Yii::$app->params['btnDescarga'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?php
-    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte', ['/reports/foro'], [
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte', ['/reports/foro' , 'id'=> $id], [
         'class'=>'btn btn-danger',
         'target'=>'_blank',
         'data-toggle'=>'tooltip',

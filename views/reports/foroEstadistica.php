@@ -14,7 +14,7 @@
     </tr>
 
     <tr>
-        <td colspan="4">Nombre</td>
+        <td colspan="4"><?= $model->name ?> </td>
     </tr>
     <tr>
         <td colspan="4">Apellido</td>

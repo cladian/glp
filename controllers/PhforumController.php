@@ -108,6 +108,7 @@ class PhforumController extends Controller
 
             'searchPImagen' => $searchPImagen,
             'dataProviderPImagen' => $dataProviderPImagen,
+            'id' => $id,
 
         ]);
     }
