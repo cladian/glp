@@ -50,10 +50,6 @@ foreach ($model as $foro) {
                             <h4>Información del evento</h4>
                             <blockquote> <?= $foro->event->name; ?></blockquote>
                         </div>
-
-
-
-
                         <?php
                         $countdocs=1;
                         if ($foro->getPhforumDocuments()->count() > 0): ?>
@@ -119,7 +115,7 @@ foreach ($model as $foro) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->all() as $topic): ?>
+                                <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->orderby('created_at desc')->all() as $topic): ?>
                                     <?php if (($topic->status ==Topic::STATUS_ACTIVE)||($topic->status ==Topic::STATUS_INACTIVE)) :?>
                                     <tr>
                                         <td><?= $topic->id; ?></td>

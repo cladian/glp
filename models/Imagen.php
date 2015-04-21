@@ -67,7 +67,7 @@ class Imagen extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 250],
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')],
-            [['file'], 'file', 'extensions'=>'jpg, png, gif '],
+            [['file'], 'file', 'extensions'=>'jpg, png, gif, jpeg'],
             [['file'], 'required','on'=>'file']
         ];
     }
