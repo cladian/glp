@@ -29,4 +29,22 @@ class ReportsController extends \yii\web\Controller
         ]);
         return $pdf->render();
     }
+
+    public function actionForo() {
+        $foro="phforum_id";
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_CORE, // leaner size using standard fonts
+            'content' => $this->renderPartial('foroEstadistica',['id'=>$foro]),
+            'options' => [
+                'title' => 'Privacy Policy - Krajee.com',
+                'subject' => 'Generating PDF files via yii2-mpdf extension has never been easy'
+            ],
+            'methods' => [
+                'SetHeader' => [self::REPORT_TITLE.'||Generado en: ' . date("r")],
+                'SetFooter' => ['|Página {PAGENO}|'],
+            ]
+        ]);
+        return $pdf->render();
+    }
+
 }

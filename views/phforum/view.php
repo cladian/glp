@@ -28,7 +28,15 @@ $this->title = $model->name;
 <!--    --><?//= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
+<!--    --><?//= Html::a(\Yii::$app->params['btnDescarga'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?php
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte', ['/reports/foro'], [
+        'class'=>'btn btn-danger',
+        'target'=>'_blank',
+        'data-toggle'=>'tooltip',
+        'title'=>'Will open the generated PDF file in a new window'
+    ]);
+    ?>
     <?= Html::a(\Yii::$app->params['btnRegresarForo'], ['/foro', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
 
     <!--    --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
@@ -311,7 +319,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 </div>
 </div>
 </div>
-
 
 
 

@@ -32,6 +32,7 @@ return [
     'btnSubirD' => '<span class="glyphicon glyphicon-upload"></span> Subir documento',
     'btnSubirV' => '<span class="glyphicon glyphicon-upload-upload"></span> Subir video',
     'btnSubirI' => '<span class="glyphicon glyphicon-upload"></span> Subir imagen',
+    'btnDescarga' => '<span class="glyphicon glyphicon-download"></span> Descargar Reporte',
 
 // Varios
     'btnCancelar' => '<span class="glyphicon glyphicon-remove"></span> Cancelar',
