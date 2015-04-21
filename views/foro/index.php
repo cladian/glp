@@ -9,7 +9,6 @@ use app\models\Topic;
 use app\models\Document;
 use app\models\Imagen;
 
-
 ?>
 <?php
 // Mensaje de error si no existen Foros activos

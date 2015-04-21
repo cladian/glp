@@ -28,12 +28,12 @@ class TopicDocumentController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['view'],
+                        'actions' => ['view','delete'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
                     [
-                        'actions' => ['index','create','update','delete'],
+                        'actions' => ['index','create','update'],
                         'allow' => false,
                         'roles' => ['*'],
                     ],
@@ -125,7 +125,7 @@ class TopicDocumentController extends Controller
     {
         $this->findModel($topic_id, $document_id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['/topic/view', 'id' => $topic_id]);
     }
 
     /**
