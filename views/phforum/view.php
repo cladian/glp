@@ -173,29 +173,29 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     [
                         'attribute' => 'document_id',
                         'value' => function ($data) {
-                            return $data->document->file;
+                            return $data->document->name;
                         }
                     ],
                     'created_at',
 //                'updated_at',
 
 //                            ['class' => 'yii\grid\ActionColumn'],
-/*                    ['class' => 'yii\grid\ActionColumn',
-                        'template' => ' {update}',
+                    ['class' => 'yii\grid\ActionColumn',
+                        'template' => ' {delete}',
                         'buttons' => [
-                            'view' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-document/view', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
-                            },
-                                    'update' => function ($url, $model) {
-                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
-                                        },
+//                            'view' => function ($url, $model) {
+//                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-document/view', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                            },
+//                                    'update' => function ($url, $model) {
+//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                                        },
 
                             'delete' => function ($url, $model) {
                                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-document/delete', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
                             },
 
                         ]
-                    ],*/
+                    ],
                 ],
             ]); ?>
         </div>
@@ -284,22 +284,22 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 //                            ['class' => 'yii\grid\ActionColumn'],
 
-/*                    ['class' => 'yii\grid\ActionColumn',
-                        'template' => '{view} {delete}',
+                    ['class' => 'yii\grid\ActionColumn',
+                        'template' => '{delete}',
                         'buttons' => [
-                            'view' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-imagen/view', 'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
-                            },
-//                                    'update' => function ($url, $model) {
-//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+//                            'view' => function ($url, $model) {
+//                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-imagen/view', 'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
+//                            },
+//                                   'update' => function ($url, $model) {
+//                                           return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
 //                                        },
 
                             'delete' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-imagen/delete', 'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
+                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-imagen/delete' ,'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
                             },
 
                         ]
-                    ],*/
+                    ],
 
                 ],
             ]); ?>
