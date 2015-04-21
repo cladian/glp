@@ -124,7 +124,7 @@ class PhforumDocumentController extends Controller
     public function actionDelete($phforum_id, $document_id)
     {
         $this->findModel($phforum_id, $document_id)->delete();
-
+        \Yii::$app->getSession()->setFlash('success', 'El documento ha sido eliminado éxitosamente');
         return $this->redirect(['/phforum/view', 'id' => $phforum_id]);
     }
 
