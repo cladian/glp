@@ -261,7 +261,7 @@ class ForoController extends Controller
 
         $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
 
-
+        $enviarMail = false;
         foreach ($modelForo as $foro) {
             $arr = array();
             $mensaje = '';
@@ -278,26 +278,37 @@ class ForoController extends Controller
                 $mensaje .= '<p>' . $topic->content . '</p>';
                 $mensaje .= '<h5> Aportes del día :</h5>';
                 $numPost = 1;
-                
-                foreach ($topic->getPosts()->all() as $post) {
-                    if (($post->status == Post::STATUS_ACTIVE)&&($post->created_at < date("Y-m-d 0:0:0")) )
+
+                $modelPost = Post::find()->where(['topic_id' => $topic->id])->all();
+
+                foreach ($modelPost as $post) {
+
+                    if (($post->status == Post::STATUS_ACTIVE) && (date('Y-m-d', strtotime($post->created_at)) == date("Y-m-d"))) {
                         $mensaje .= '<p style="padding-left: 10px;"><b>' . $numPost++ . ': </b>' . $post->content . '</p>';
+                        // Condición única para el envio de información del mensaje
+                        $enviarMail = true;
+                    }
+
                 }
 
             }
             $mensaje .= '<hr>';
+           // echo $mensaje;
+            if ($enviarMail) {
 
-            foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
-                if ($post->user->notification == User::EMAIL_RESUME)
-                    $post->user->sendEmail($mensaje, $url, $title);
+                foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
+                    if ($post->user->notification == User::EMAIL_RESUME)
+                        $post->user->sendEmail($mensaje, $url, $title);
 
-            endforeach;
-            unset($arr);
-
-
+                endforeach;
+            }
         }
+        unset($arr);
+
 
     }
+
+
 
 
 }
