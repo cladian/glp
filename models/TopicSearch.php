@@ -71,7 +71,7 @@ class TopicSearch extends Topic
 
     public function searchByTopic($params, $id)
     {
-        $query = Topic::find();
+        $query = Topic::find()->orderby('created_at desc');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
