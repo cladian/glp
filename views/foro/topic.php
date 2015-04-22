@@ -70,14 +70,18 @@ use app\models\Phforum;
         <div class=" panel-body">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <?php if ($model->getTopicImagens()->count() > 0){?>
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <?php }else { ?>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <?php } ?>
                         <p style="text-align:justify;"> <?= $model->content; ?></p>
                         <?php
                         $countdocs = 1;
                         if ($model->getTopicDocuments()->count() > 0): ?>
                             <div class="btn-group ">
                                 <br/>
-                                <button type="button" class="btn btn-default dropdown-toggle btn-group-justified"
+                                <button type="button" class="btn btn-info dropdown-toggle btn-group-justified"
                                         data-toggle="dropdown" aria-expanded="false">
                                     Documentos disponibles <span class="caret"></span>
                                 </button>
@@ -92,8 +96,8 @@ use app\models\Phforum;
 
                         <?php endif ?>
                     </div>
+                    <?php if ($model->getTopicImagens()->count() > 0): ?>
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <?php if ($model->getTopicImagens()->count() > 0): ?>
 
                             <div class="pull-right">
                                 <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
@@ -105,8 +109,8 @@ use app\models\Phforum;
                                 ?>
                             </div>
 
-                        <?php endif ?>
                     </div>
+                    <?php endif ?>
 
 
 

@@ -108,6 +108,7 @@ class PhforumController extends Controller
 
             'searchPImagen' => $searchPImagen,
             'dataProviderPImagen' => $dataProviderPImagen,
+            'id' => $id,
 
         ]);
     }
@@ -160,7 +161,7 @@ class PhforumController extends Controller
             $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
             $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
 
-            $this->sendMail($id, $html, $url, $title);
+            $this->sendMailResources($id, $html, $url, $title);
 
 
             return $this->redirect(['view', 'id' => $id]);
@@ -277,20 +278,27 @@ class PhforumController extends Controller
         }
     }
 
-    protected function sendMail($id, $message, $url, $title)
+    protected function sendMailResources($id, $message, $url, $title)
     {
 
         $content = $message;
         // Carga de datos de topicos
         $modelTopic = Topic::find()->where(['phforum_id' => $id])->all();
+
+        $arr = array();
+        foreach($modelTopic as $t)
+        {
+            array_push($arr,$t->id);
+        }
+
         // Todos los temas
-        foreach ($modelTopic as $topic):
+        //foreach ($modelTopic as $topic):
             // Todos los usuarios del tema agrupados por usuarios
-            foreach (\app\models\Post::find()->where(['topic_id' => $topic->id])->addGroupBy(['user_id'])->all() as $post):
+            foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
                 if ($post->user->notification == User::EMAIL_DAILY)
                     $post->user->sendEmail($content, $url, $title);
 
             endforeach;
-        endforeach;
+        //endforeach;
     }
 }

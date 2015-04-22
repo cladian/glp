@@ -124,7 +124,7 @@ class PhforumImagenController extends Controller
     public function actionDelete($phforum_id, $imagen_id)
     {
         $this->findModel($phforum_id, $imagen_id)->delete();
-
+        \Yii::$app->getSession()->setFlash('success', 'La Imagen ha sido eliminada éxitosamente');
         return $this->redirect(['/phforum/view', 'id' => $phforum_id]);
     }
 

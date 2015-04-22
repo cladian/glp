@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Topic;
+use app\models\User;
 use app\models\Video;
 use app\models\Imagen;
 use app\models\Post;
@@ -21,6 +22,7 @@ use app\models\PostSearch;
 use app\models\TopicDocumentSearch;
 use app\models\TopicImagenSearch;
 use app\models\TopicVideoSearch;
+use yii\helpers\Url;
 
 /**
  * TopicController implements the CRUD actions for Topic model.
@@ -169,6 +171,16 @@ class TopicController extends Controller
 
 
             \Yii::$app->getSession()->setFlash('success', 'El documento ha sido registrado éxitosamente');
+            // Envio de notificación
+            // http://localhost/glp/web/upload/docs/XyMVjkPLyyJGrxnTegyVynwFqEQvx2s21429652374.pdf
+            $title = 'Nuevo documento Agregado';
+            $html = '<p>Estimado participante el moderador del foro ha publicado un nuevo documento, puede revisar la información en el enlace a continuación</p>';
+            $html .= '<p> Documento: ' . $model->name . '</p>';
+            $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic','id'=>$id]);
+
+            $this->sendMailResources($id, $html, $url, $title);
+
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
@@ -258,7 +270,6 @@ class TopicController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -278,5 +289,20 @@ class TopicController extends Controller
         }
     }
 
+    protected function sendMailResources($id, $message, $url, $title)
+    {
+
+        $content = $message;
+
+        // Todos los temas
+        //foreach ($modelTopic as $topic):
+        // Todos los usuarios del tema agrupados por usuarios
+        foreach (\app\models\Post::find()->where(['topic_id' => $id])->addGroupBy(['user_id'])->all() as $post):
+            if ($post->user->notification == User::EMAIL_DAILY)
+                $post->user->sendEmail($content, $url, $title);
+
+        endforeach;
+        //endforeach;
+    }
 
 }

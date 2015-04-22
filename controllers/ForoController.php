@@ -38,7 +38,6 @@ class ForoController extends Controller
         ];
     }
 
-
     /**
      * Lists all Phforum models.
      * @return mixed
