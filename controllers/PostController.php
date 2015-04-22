@@ -176,7 +176,7 @@ class PostController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['topic/view', 'id' => $model->topic_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

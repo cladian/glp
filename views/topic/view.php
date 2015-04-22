@@ -138,11 +138,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 //                            ['class' => 'yii\grid\ActionColumn'],
                         ['class' => 'yii\grid\ActionColumn',
-                            'template' => '{view} {update}',
+                            'template' => ' {update}',
                             'buttons' => [
-                                'view' => function ($url, $model, $key) {
-                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['post/view', 'id' => $key]);
-                                },
+//                                'view' => function ($url, $model, $key) {
+//                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['post/view', 'id' => $key]);
+//                                },
                                 'update' => function ($url, $model, $key) {
                                     return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['post/update', 'id' => $key]);
                                 },

@@ -7,14 +7,23 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Post */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(); ?>
+<div class="class breadcrumb">
 
-<div class="post-form">
+        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+</div>
+<div class="panel panel-green">
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
 
-<!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
+
+
+<!--    --><?//= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+
+    <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 <!---->
 <!--    --><?//= $form->field($model, 'updated_at')->textInput() ?>
 
@@ -25,10 +34,13 @@ use yii\widgets\ActiveForm;
 <!---->
 <!--    --><?//= $form->field($model, 'user_id')->textInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+<!--    <div class="form-group">-->
+<!--        --><?//= Html::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+<!--    </div>-->
 
     <?php ActiveForm::end(); ?>
 
 </div>
+</div>
+
+
