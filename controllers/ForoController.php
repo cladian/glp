@@ -276,10 +276,11 @@ class ForoController extends Controller
 
                 $mensaje .= '<h3>TEMA :' . $counTopic++ . '</h3>';
                 $mensaje .= '<p>' . $topic->content . '</p>';
-                $mensaje .= '<h5> APORTES :</h5>';
+                $mensaje .= '<h5> Aportes del día :</h5>';
                 $numPost = 1;
+                
                 foreach ($topic->getPosts()->all() as $post) {
-                    if ($post->status == Post::STATUS_ACTIVE)
+                    if (($post->status == Post::STATUS_ACTIVE)&&($post->created_at < date("Y-m-d 0:0:0")) )
                         $mensaje .= '<p style="padding-left: 10px;"><b>' . $numPost++ . ': </b>' . $post->content . '</p>';
                 }
 
