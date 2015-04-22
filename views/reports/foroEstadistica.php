@@ -25,10 +25,9 @@ use app\models\Post;
     </tr>
 
     <tr>
-
         <td colspan="4">
             <?php foreach ($model->getTopics()->all() as $topic): ?>
-                <table cellpadding="2" border="1">
+                <table cellspacing="5" cellpadding="2" border="1">
                     <tr >
                         <td colspan="3" width=" 200mm" ><h4><strong>Tema:</strong></h4><?= $topic->content ?></td>
                     </tr>

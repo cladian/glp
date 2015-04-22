@@ -112,7 +112,7 @@ class ForoController extends Controller
         return $this->render('topic', [
             'model' => Topic::find()->where(['id' => $id])->one(),
             'modellatest' => Post::find()->where(['status' => self::STATUS_ACTIVE])->orderBy('created_at desc')->limit(5)->all(),
-            'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
+            'modelPostList' => Post::find()->where(['topic_id' => $id, 'status'=>self::STATUS_ACTIVE])->all(),
             'modelPost' => $modelPost,
             'modelDocument' => $modelDocument,
             'modelUser'=>User::find()->where(['id'=>Yii::$app->user->id])->one(),
