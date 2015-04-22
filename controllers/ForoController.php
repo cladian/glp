@@ -107,7 +107,6 @@ class ForoController extends Controller
             return $this->redirect(['topic', 'id' => $id]);
             /*   $modelPost = new Post();
                $modelPost->content=NULL;*/
-
         }
 
         return $this->render('topic', [

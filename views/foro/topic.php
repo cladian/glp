@@ -13,6 +13,7 @@ use kartik\widgets\FileInput;
 use app\models\Document;
 use app\models\Imagen;
 use app\models\Phforum;
+use app\models\Post;
 
 
 ?>
@@ -51,7 +52,6 @@ use app\models\Phforum;
              </div>';
     }
     ?>
-
     <a name="sube"></a>
 
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
@@ -150,10 +150,12 @@ use app\models\Phforum;
                     $contador = 0;
                     // Foreach 1
                     foreach ($modelPostList as $post):
+                        if ($post->status==Post:: STATUS_ACTIVE):
                         $class = '';
                         if ($contador++ % 2)
                             $class = 'info';
                         ?>
+
                         <tr class="<?= $class ?>">
                             <th scope="row"><h2><kbd> <?= $contador ?></kbd></h2></th>
                             <td></td>
@@ -165,6 +167,7 @@ use app\models\Phforum;
                                         class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($post->created_at, 'long'); ?>
 
                                 </small>
+
                                 <br/>
 
                                 <p>
@@ -176,21 +179,16 @@ use app\models\Phforum;
                                 </p>
 
                             </td>
+
                             <td>
-
-
                                 <p align="center"><?= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
                                 <span class="label label-success"><?= $post->user->username ?></span>
 
                             </td>
                         </tr>
-
-
-
-
                     <?php
-                        // endForaeach 1
-                    endforeach ?>
+                        endif;
+                    endforeach; ?>
                     </tbody>
                 </table>
 
