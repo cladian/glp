@@ -116,7 +116,7 @@ class ForoController extends Controller
             'modelPostList' => Post::find()->where(['topic_id' => $id])->all(),
             'modelPost' => $modelPost,
             'modelDocument' => $modelDocument,
-            'modelUser'=>User::find()->where(['id'=>Yii::$app->user->id])->one(),
+            'modelUser' => User::find()->where(['id' => Yii::$app->user->id])->one(),
         ]);
     }
 
@@ -239,9 +239,78 @@ class ForoController extends Controller
         $modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
         foreach ($modelPost as $user) {
             // Contenido, tipo  1=Notificacion URL
-            if($user->user->notification==User::EMAIL_DAILY)
+            if ($user->user->notification == User::EMAIL_DAILY)
                 $user->user->sendEmail($content, $url, $title);
         }
     }
+
+    public function actionResumen()
+    {
+        $title = 'Resumen de Diario de Aportes Foro electrónico';
+        $content = 'Resumen foro';
+
+        //Armado de contenidos
+        $modelForo = Phforum::find()->where(['status' => Phforum::STATUS_ACTIVE])->all();
+        /*
+                $curr_date = date('Y-m-d H:m:s');
+                echo( $curr_date);
+
+                $modelPost=Post::find()->where(['date("Y-m-d H:m:s")< created_at'])->all();
+                print_r($modelPost);*/
+
+
+        $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
+
+        $enviarMail = false;
+        foreach ($modelForo as $foro) {
+            $arr = array();
+            $mensaje = '';
+            $mensaje .= '<h1>FORO:' . $foro->name . '</h1>';
+
+            $counTopic = 1;
+            $modelTopic = Topic::find()->where(['status' => Topic::STATUS_ACTIVE])->all();
+            foreach ($modelTopic as $topic) {
+
+                //Arreglo de busqueda para unificar usuarios por foro
+                array_push($arr, $topic->id);
+
+                $mensaje .= '<h3>TEMA :' . $counTopic++ . '</h3>';
+                $mensaje .= '<p>' . $topic->content . '</p>';
+                $mensaje .= '<h5> Aportes del día :</h5>';
+                $numPost = 1;
+
+                $modelPost = Post::find()->where(['topic_id' => $topic->id])->all();
+                if (!$modelPost)
+                    $mensaje .= '<p>No existen post</p>';
+
+                foreach ($modelPost as $post) {
+
+                    if (($post->status == Post::STATUS_ACTIVE) && (     date('Y-m-d', strtotime($post->created_at)) == date("Y-m-d"))) {
+                        $mensaje .= '<p style="padding-left: 10px;"><b>' . $numPost++ . ': </b>' . $post->content . '</p>';
+                        // Condición única para el envio de información del mensaje
+                        $enviarMail = true;
+                    }
+
+                }
+
+            }
+            $mensaje .= '<hr>';
+           // echo $mensaje;
+            if ($enviarMail) {
+
+                foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
+                    if ($post->user->notification == User::EMAIL_RESUME)
+                        $post->user->sendEmail($mensaje, $url, $title);
+
+                endforeach;
+            }
+        }
+        unset($arr);
+
+
+    }
+
+
+
 
 }
