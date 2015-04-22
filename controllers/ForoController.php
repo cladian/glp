@@ -246,7 +246,7 @@ class ForoController extends Controller
 
     public function actionResumen()
     {
-        $title = 'Resumen de post';
+        $title = 'Resumen de Diario de Aportes Foro electrónico';
         $content = 'Resumen foro';
 
         //Armado de contenidos
@@ -280,6 +280,8 @@ class ForoController extends Controller
                 $numPost = 1;
 
                 $modelPost = Post::find()->where(['topic_id' => $topic->id])->all();
+                if (!$modelPost)
+                    $mensaje .= '<p>No existen post</p>';
 
                 foreach ($modelPost as $post) {
 
