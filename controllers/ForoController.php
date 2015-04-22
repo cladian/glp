@@ -283,7 +283,7 @@ class ForoController extends Controller
 
                 foreach ($modelPost as $post) {
 
-                    if (($post->status == Post::STATUS_ACTIVE) && (date('Y-m-d', strtotime($post->created_at)) == date("Y-m-d"))) {
+                    if (($post->status == Post::STATUS_ACTIVE) && (     date('Y-m-d', strtotime($post->created_at)) == date("Y-m-d"))) {
                         $mensaje .= '<p style="padding-left: 10px;"><b>' . $numPost++ . ': </b>' . $post->content . '</p>';
                         // Condición única para el envio de información del mensaje
                         $enviarMail = true;
