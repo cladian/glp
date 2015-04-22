@@ -287,7 +287,7 @@ class ForoController extends Controller
             $mensaje .= '<hr>';
 
             foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
-                if ($post->user->notification == User::EMAIL_DAILY)
+                if ($post->user->notification == User::EMAIL_RESUME)
                     $post->user->sendEmail($mensaje, $url, $title);
 
             endforeach;
