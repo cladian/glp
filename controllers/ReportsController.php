@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 use kartik\mpdf\Pdf;
+
 use app\models\Phforum;
+
 class ReportsController extends \yii\web\Controller
 {
     const REPORT_TITLE = 'ASOCAM - Sistema de Gestión de lista de Participantes';
