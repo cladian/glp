@@ -719,6 +719,7 @@ class InscriptionController extends Controller
         //$objPHPExcel = new \PHPExcel();
 
         $model=Inscription::find()->all();
+
         header('Pragma: public');
         header("Expires: Sat, 26 Jul 2097 05:00:00 GMT");
         //header('Last-Modified: '.$lastModified . ' GMT');
