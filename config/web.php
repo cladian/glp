@@ -16,6 +16,9 @@ $config = [
             'destination' => Pdf::DEST_BROWSER,
             // refer settings section for all configuration options
         ],
+/*        'excel'=>[
+            'class'=>'yii\phpoffice\PHPExcel',
+        ],*/
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'MmLEHt6GjDarlWZqosTfd6qQsFwkKFqu',

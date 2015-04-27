@@ -338,6 +338,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 	 * Loads PHPExcel from file
 	 *
 	 * @param 	string 		$pFilename
+     * @return  PHPExcel
 	 * @throws 	PHPExcel_Reader_Exception
 	 */
 	public function load($pFilename)
@@ -478,7 +479,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
                     $macros = $customUI = NULL;
 					foreach ($relsWorkbook->Relationship as $ele) {
 						switch($ele['Type']){
-						case "http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet": 
+						case "http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet":
 							$worksheets[(string) $ele["Id"]] = $ele["Target"];
 							break;
 						// a vbaProject ? (: some macros)
@@ -756,7 +757,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 								}
 								if (isset($xmlSheet->sheetFormatPr['zeroHeight']) &&
 									((string)$xmlSheet->sheetFormatPr['zeroHeight'] == '1')) {
-									$docSheet->getDefaultRowDimension()->setzeroHeight(true);
+									$docSheet->getDefaultRowDimension()->setZeroHeight(true);
 								}
 							}
 
@@ -1005,102 +1006,106 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 							}
 
 							if ($xmlSheet && $xmlSheet->autoFilter && !$this->_readDataOnly) {
-								$autoFilter = $docSheet->getAutoFilter();
-								$autoFilter->setRange((string) $xmlSheet->autoFilter["ref"]);
-								foreach ($xmlSheet->autoFilter->filterColumn as $filterColumn) {
-									$column = $autoFilter->getColumnByOffset((integer) $filterColumn["colId"]);
-									//	Check for standard filters
-									if ($filterColumn->filters) {
-										$column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_FILTER);
-										$filters = $filterColumn->filters;
-										if ((isset($filters["blank"])) && ($filters["blank"] == 1)) {
-											$column->createRule()->setRule(
-												NULL,	//	Operator is undefined, but always treated as EQUAL
-												''
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_FILTER);
-										}
-										//	Standard filters are always an OR join, so no join rule needs to be set
-										//	Entries can be either filter elements
-										foreach ($filters->filter as $filterRule) {
-											$column->createRule()->setRule(
-												NULL,	//	Operator is undefined, but always treated as EQUAL
-												(string) $filterRule["val"]
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_FILTER);
-										}
-										//	Or Date Group elements
-										foreach ($filters->dateGroupItem as $dateGroupItem) {
-											$column->createRule()->setRule(
-												NULL,	//	Operator is undefined, but always treated as EQUAL
-												array(
-													'year' => (string) $dateGroupItem["year"],
-													'month' => (string) $dateGroupItem["month"],
-													'day' => (string) $dateGroupItem["day"],
-													'hour' => (string) $dateGroupItem["hour"],
-													'minute' => (string) $dateGroupItem["minute"],
-													'second' => (string) $dateGroupItem["second"],
-												),
-												(string) $dateGroupItem["dateTimeGrouping"]
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DATEGROUP);
-										}
-									}
-									//	Check for custom filters
-									if ($filterColumn->customFilters) {
-										$column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_CUSTOMFILTER);
-										$customFilters = $filterColumn->customFilters;
-										//	Custom filters can an AND or an OR join;
-										//		and there should only ever be one or two entries
-										if ((isset($customFilters["and"])) && ($customFilters["and"] == 1)) {
-											$column->setJoin(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_AND);
-										}
-										foreach ($customFilters->customFilter as $filterRule) {
-											$column->createRule()->setRule(
-												(string) $filterRule["operator"],
-												(string) $filterRule["val"]
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER);
-										}
-									}
-									//	Check for dynamic filters
-									if ($filterColumn->dynamicFilter) {
-										$column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_DYNAMICFILTER);
-										//	We should only ever have one dynamic filter
-										foreach ($filterColumn->dynamicFilter as $filterRule) {
-											$column->createRule()->setRule(
-												NULL,	//	Operator is undefined, but always treated as EQUAL
-												(string) $filterRule["val"],
-												(string) $filterRule["type"]
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DYNAMICFILTER);
-											if (isset($filterRule["val"])) {
-												$column->setAttribute('val',(string) $filterRule["val"]);
-											}
-											if (isset($filterRule["maxVal"])) {
-												$column->setAttribute('maxVal',(string) $filterRule["maxVal"]);
-											}
-										}
-									}
-									//	Check for dynamic filters
-									if ($filterColumn->top10) {
-										$column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_TOPTENFILTER);
-										//	We should only ever have one top10 filter
-										foreach ($filterColumn->top10 as $filterRule) {
-											$column->createRule()->setRule(
-												(((isset($filterRule["percent"])) && ($filterRule["percent"] == 1))
-													? PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_PERCENT
-													: PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_BY_VALUE
-												),
-												(string) $filterRule["val"],
-												(((isset($filterRule["top"])) && ($filterRule["top"] == 1))
-													? PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_TOP
-													: PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_BOTTOM
-												)
-											)
-											->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_TOPTENFILTER);
-										}
-									}
+                                $autoFilterRange = (string) $xmlSheet->autoFilter["ref"];
+                                if (strpos($autoFilterRange, ':') !== false) {
+                                    $autoFilter = $docSheet->getAutoFilter();
+                                    $autoFilter->setRange($autoFilterRange);
+
+                                    foreach ($xmlSheet->autoFilter->filterColumn as $filterColumn) {
+                                        $column = $autoFilter->getColumnByOffset((integer) $filterColumn["colId"]);
+                                        //	Check for standard filters
+                                        if ($filterColumn->filters) {
+                                            $column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_FILTER);
+                                            $filters = $filterColumn->filters;
+                                            if ((isset($filters["blank"])) && ($filters["blank"] == 1)) {
+                                                $column->createRule()->setRule(
+                                                    NULL,	//	Operator is undefined, but always treated as EQUAL
+                                                    ''
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_FILTER);
+                                            }
+                                            //	Standard filters are always an OR join, so no join rule needs to be set
+                                            //	Entries can be either filter elements
+                                            foreach ($filters->filter as $filterRule) {
+                                                $column->createRule()->setRule(
+                                                    NULL,	//	Operator is undefined, but always treated as EQUAL
+                                                    (string) $filterRule["val"]
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_FILTER);
+                                            }
+                                            //	Or Date Group elements
+                                            foreach ($filters->dateGroupItem as $dateGroupItem) {
+                                                $column->createRule()->setRule(
+                                                    NULL,	//	Operator is undefined, but always treated as EQUAL
+                                                    array(
+                                                        'year' => (string) $dateGroupItem["year"],
+                                                        'month' => (string) $dateGroupItem["month"],
+                                                        'day' => (string) $dateGroupItem["day"],
+                                                        'hour' => (string) $dateGroupItem["hour"],
+                                                        'minute' => (string) $dateGroupItem["minute"],
+                                                        'second' => (string) $dateGroupItem["second"],
+                                                    ),
+                                                    (string) $dateGroupItem["dateTimeGrouping"]
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DATEGROUP);
+                                            }
+                                        }
+                                        //	Check for custom filters
+                                        if ($filterColumn->customFilters) {
+                                            $column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_CUSTOMFILTER);
+                                            $customFilters = $filterColumn->customFilters;
+                                            //	Custom filters can an AND or an OR join;
+                                            //		and there should only ever be one or two entries
+                                            if ((isset($customFilters["and"])) && ($customFilters["and"] == 1)) {
+                                                $column->setJoin(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_AND);
+                                            }
+                                            foreach ($customFilters->customFilter as $filterRule) {
+                                                $column->createRule()->setRule(
+                                                    (string) $filterRule["operator"],
+                                                    (string) $filterRule["val"]
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_CUSTOMFILTER);
+                                            }
+                                        }
+                                        //	Check for dynamic filters
+                                        if ($filterColumn->dynamicFilter) {
+                                            $column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_DYNAMICFILTER);
+                                            //	We should only ever have one dynamic filter
+                                            foreach ($filterColumn->dynamicFilter as $filterRule) {
+                                                $column->createRule()->setRule(
+                                                    NULL,	//	Operator is undefined, but always treated as EQUAL
+                                                    (string) $filterRule["val"],
+                                                    (string) $filterRule["type"]
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_DYNAMICFILTER);
+                                                if (isset($filterRule["val"])) {
+                                                    $column->setAttribute('val',(string) $filterRule["val"]);
+                                                }
+                                                if (isset($filterRule["maxVal"])) {
+                                                    $column->setAttribute('maxVal',(string) $filterRule["maxVal"]);
+                                                }
+                                            }
+                                        }
+                                        //	Check for dynamic filters
+                                        if ($filterColumn->top10) {
+                                            $column->setFilterType(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_TOPTENFILTER);
+                                            //	We should only ever have one top10 filter
+                                            foreach ($filterColumn->top10 as $filterRule) {
+                                                $column->createRule()->setRule(
+                                                    (((isset($filterRule["percent"])) && ($filterRule["percent"] == 1))
+                                                        ? PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_PERCENT
+                                                        : PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_BY_VALUE
+                                                    ),
+                                                    (string) $filterRule["val"],
+                                                    (((isset($filterRule["top"])) && ($filterRule["top"] == 1))
+                                                        ? PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_TOP
+                                                        : PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_COLUMN_RULE_TOPTEN_BOTTOM
+                                                    )
+                                                )
+                                                ->setRuleType(PHPExcel_Worksheet_AutoFilter_Column_Rule::AUTOFILTER_RULETYPE_TOPTENFILTER);
+                                            }
+                                        }
+                                    }
 								}
 							}
 
@@ -1302,7 +1307,8 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 									// Loop through contents
 									foreach ($commentsFile->commentList->comment as $comment) {
-										$docSheet->getComment( (string)$comment['ref'] )->setAuthor( $authors[(string)$comment['authorId']] );
+										if(!empty($comment['authorId']))
+											$docSheet->getComment( (string)$comment['ref'] )->setAuthor( $authors[(string)$comment['authorId']] );
 										$docSheet->getComment( (string)$comment['ref'] )->setText( $this->_parseRichText($comment->text) );
 									}
 								}
@@ -1504,10 +1510,9 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 													$objDrawing->setOffsetY(PHPExcel_Shared_Drawing::EMUToPixels($twoCellAnchor->from->rowOff));
 													$objDrawing->setResizeProportional(false);
 
-													$objDrawing->setWidth(PHPExcel_Shared_Drawing::EMUToPixels(self::array_item($xfrm->ext->attributes(), "cx")));
-													$objDrawing->setHeight(PHPExcel_Shared_Drawing::EMUToPixels(self::array_item($xfrm->ext->attributes(), "cy")));
-
 													if ($xfrm) {
+														$objDrawing->setWidth(PHPExcel_Shared_Drawing::EMUToPixels(self::array_item($xfrm->ext->attributes(), "cx")));
+														$objDrawing->setHeight(PHPExcel_Shared_Drawing::EMUToPixels(self::array_item($xfrm->ext->attributes(), "cy")));
 														$objDrawing->setRotation(PHPExcel_Shared_Drawing::angleToDegrees(self::array_item($xfrm->attributes(), "rot")));
 													}
 													if ($outerShdw) {
@@ -1573,7 +1578,13 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 											case '_xlnm._FilterDatabase':
 												if ((string)$definedName['hidden'] !== '1') {
-													$docSheet->getAutoFilter()->setRange($extractedRange);
+                                                    $extractedRange = explode(',', $extractedRange);
+                                                    foreach ($extractedRange as $range) {
+                                                        $autoFilterRange = $range;
+                                                        if (strpos($autoFilterRange, ':') !== false) {
+                                                            $docSheet->getAutoFilter()->setRange($autoFilterRange);
+                                                        }
+                                                    }
 												}
 												break;
 
@@ -1878,6 +1889,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 			$docStyle->getAlignment()->setWrapText(self::boolean((string) $style->alignment["wrapText"]));
 			$docStyle->getAlignment()->setShrinkToFit(self::boolean((string) $style->alignment["shrinkToFit"]));
 			$docStyle->getAlignment()->setIndent( intval((string)$style->alignment["indent"]) > 0 ? intval((string)$style->alignment["indent"]) : 0 );
+			$docStyle->getAlignment()->setReadorder( intval((string)$style->alignment["readingOrder"]) > 0 ? intval((string)$style->alignment["readingOrder"]) : 0 );
 		}
 
 		// protection
@@ -1922,6 +1934,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 		if (isset($is->t)) {
 			$value->createText( PHPExcel_Shared_String::ControlCharacterOOXML2PHP( (string) $is->t ) );
 		} else {
+			if(is_object($is->r)) {
 			foreach ($is->r as $run) {
 				if (!isset($run->rPr)) {
 					$objText = $value->createText( PHPExcel_Shared_String::ControlCharacterOOXML2PHP( (string) $run->t ) );
@@ -1973,6 +1986,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 					}
 				}
 			}
+			}
 		}
 
 		return $value;
@@ -1984,7 +1998,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 		$nameCustomUI = basename($customUITarget);
         // get the xml file (ribbon)
 		$localRibbon = $this->_getFromZipArchive($zip, $customUITarget);
-		$customUIImagesNames = array(); 
+		$customUIImagesNames = array();
         $customUIImagesBinaries = array();
         // something like customUI/_rels/customUI.xml.rels
 		$pathRels = $baseDir . '/_rels/' . $nameCustomUI . '.rels';
