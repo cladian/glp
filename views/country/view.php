@@ -30,8 +30,13 @@ $this->title = $model->name;
             'is_event_city',
             'iso',
             'phonecode',
-            'status',
-//            'created_at',
+//            'status',
+
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ],//            'created_at',
 //            'updated_at',
         ],
     ]) ?>

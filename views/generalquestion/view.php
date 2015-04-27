@@ -31,8 +31,11 @@ $this->title = $model->id;
         'model' => $model,
         'attributes' => [
 //            'id',
-            'status',
-//            'created_at',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ], //            'created_at',
 //            'updated_at',
             'text',
 

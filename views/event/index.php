@@ -14,22 +14,22 @@ $this->title = 'Eventos';
 ?>
 
 <div class="breadcrumb">
-
     <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
     <?= Html::a(\Yii::$app->params['btnCrearEvento'], ['create'], ['class' => 'btn btn-success']) ?>
 
 
     <!-- AYUDA-->
-<!--    --><?php
-/*    Modal::begin([
-        'header' => '<h4>Inscripción</h4>',
-        'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
-    ]);
+    <!--    --><?php
+    /*    Modal::begin([
+            'header' => '<h4>Inscripción</h4>',
+            'toggleButton' => ['label' => \Yii::$app->params['btnHelp'], 'class' => 'btn btn-default pull-right'],
+        ]);
 
-    echo $this->render('/help/inscription-index');
-    Modal::end();
-    */?>
+        echo $this->render('/help/inscription-index');
+        Modal::end();
+        */?>
 </div>
+
 
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>

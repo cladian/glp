@@ -37,8 +37,11 @@ $this->title = $model->id;
             'eventquestion_id',
 //            'created_at',
 //            'updated_at',
-            'status',
-        ],
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ],         ],
     ]) ?>
 
 </div>
