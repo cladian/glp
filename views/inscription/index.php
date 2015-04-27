@@ -131,10 +131,10 @@ $this->title = 'Inscripciones';
 
     ];
     // Renders a export dropdown menu
-    echo \kartik\grid\ExportMenu::widget([
+/*    echo \kartik\grid\ExportMenu::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumns
-    ]);
+    ]);*/
     echo \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
