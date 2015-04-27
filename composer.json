@@ -30,12 +30,11 @@
         "2amigos/yii2-chartjs-widget" : "~2.0",
         "2amigos/yii2-ckeditor-widget" : "~1.0",
         "miloschuman/yii2-highcharts-widget": "*",
+        "phpoffice/phpexcel": "dev-develop",
         "kartik-v/yii2-widgets":"dev-master",
         "kartik-v/yii2-money": "*",
         "kartik-v/yii2-grid": "dev-master",
-        "kartik-v/yii2-mpdf": "dev-master",
-        "kartik-v/yii2-mpdf": "*",
-        "kartik-v/yii2-export": "dev-master"
+        "kartik-v/yii2-mpdf": "dev-master"
 
 
     },
