@@ -38,7 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'reply:ntext',
 //            'created_at',
 //            'updated_at',
-            'status',
+//            'status',
+
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ],
         ],
     ]) ?>
 

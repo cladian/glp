@@ -26,8 +26,11 @@ $this->title = $model->name;
 //            'id',
             'name',
             'role',
-            'status',
-//            'created_at',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ], //            'created_at',
 //            'updated_at',
 //            'registertype_id',
             [                    // the owner name of the model

@@ -33,8 +33,11 @@ $this->title = $model->name;
             'phone_number',
             'mobile_number',
 //            'complete',
-            'status',
-//            'created_at',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ], //            'created_at',
 //            'updated_at',
             'photo',
 //            'user_id',
