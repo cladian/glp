@@ -304,11 +304,19 @@ class InscriptionController extends Controller
         $model = new Inscription();
         $modelLogistic = new Logistic();
 
+        $modelProfile =Profile::find()->where(['user_id'=>Yii::$app->user->identity->id])->all();
+
+
+
         //Almacenamiento de ID de usuario logeado
         $model->user_id = Yii::$app->user->identity->id;
         $model->event_id = $id;
 
-
+        // Verificación de existencia de registro de perfil
+        if (!$modelProfile){
+            \Yii::$app->getSession()->setFlash('danger', 'Antes de iniciar su registro en el evento es necesario que complete la información de su perfil de usuario');
+            return $this->redirect(['profile/createown']);
+        }
         //Verificación si el usuario tiene un registro previo al evento seleccionado
 
         if (Inscription::find()->where(['user_id' => Yii::$app->user->identity->id, 'event_id' => $id])->count() > 0) {
