@@ -32,8 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'file:ntext',
             'tags:ntext',
-            'status',
-            'created_at',
+//            'status',
+
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ],            'created_at',
             'updated_at',
         ],
     ]) ?>

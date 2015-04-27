@@ -29,8 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
 //            'id',
-            'status',
-//            'created_at',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ], //            'created_at',
 //            'updated_at',
             'text',
             [                    // the owner name of the model

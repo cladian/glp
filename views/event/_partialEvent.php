@@ -36,7 +36,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'discount_end_at',
             'discount_description',
             'year',
-            'status',
+            [
+                'attribute' => 'status',
+                /* 'value'=> function ($data){ return $data->question->text;}*/
+                'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
+                'value' => function ($model) {
+                        if ($rel = $model->getStatus($model->status)) {
+                            return $rel;
+                        }
+                    },
+
+            ],
 //            'created_at',
 //            'updated_at',
 //            'country_id',

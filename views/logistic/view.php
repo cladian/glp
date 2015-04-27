@@ -43,8 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'residenceobs:ntext',
             'accommodationdatein',
             'accommodationdateout',
-            'status',
-//            'created_at',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ], //            'created_at',
 //            'updated_at',
         ],
     ]) ?>

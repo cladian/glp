@@ -35,8 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'content:ntext',
             'created_at',
             'updated_at',
-            'status',
-            'topic_id',
+            [
+                'label' => 'Estado',
+                'value'=>$model->getStatus ($model->status),
+
+            ],             'topic_id',
             'user_id',
         ],
     ]) ?>
