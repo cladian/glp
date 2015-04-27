@@ -137,7 +137,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 		$worksheetNames = array();
 
-		$xml = simplexml_load_file($pFilename, 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+		$xml = simplexml_load_string(file_get_contents($pFilename), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
 		$namespaces = $xml->getNamespaces(true);
 
 		$xml_ss = $xml->children($namespaces['ss']);
@@ -165,7 +165,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 		$worksheetInfo = array();
 
-		$xml = simplexml_load_file($pFilename, 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+		$xml = simplexml_load_string(file_get_contents($pFilename), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
 		$namespaces = $xml->getNamespaces(true);
 
 		$worksheetID = 1;
@@ -232,6 +232,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 	{
 		// Create new PHPExcel
 		$objPHPExcel = new PHPExcel();
+        $objPHPExcel->removeSheetByIndex(0);
 
 		// Load into this instance
 		return $this->loadIntoExisting($pFilename, $objPHPExcel);
@@ -330,7 +331,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 			throw new PHPExcel_Reader_Exception($pFilename . " is an Invalid Spreadsheet file.");
 		}
 
-		$xml = simplexml_load_file($pFilename, 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
+		$xml = simplexml_load_string(file_get_contents($pFilename), 'SimpleXMLElement', PHPExcel_Settings::getLibXmlLoaderOptions());
 		$namespaces = $xml->getNamespaces(true);
 
 		$docProps = $objPHPExcel->getProperties();
@@ -576,6 +577,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 
 			$rowID = 1;
 			if (isset($worksheet->Table->Row)) {
+                $additionalMergedCells = 0;
 				foreach($worksheet->Table->Row as $rowData) {
 					$rowHasData = false;
 					$row_ss = $rowData->attributes($namespaces['ss']);
@@ -602,6 +604,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 						if ((isset($cell_ss['MergeAcross'])) || (isset($cell_ss['MergeDown']))) {
 							$columnTo = $columnID;
 							if (isset($cell_ss['MergeAcross'])) {
+                                $additionalMergedCells += (int)$cell_ss['MergeAcross'];
 								$columnTo = PHPExcel_Cell::stringFromColumnIndex(PHPExcel_Cell::columnIndexFromString($columnID) + $cell_ss['MergeAcross'] -1);
 							}
 							$rowTo = $rowID;
@@ -759,6 +762,10 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
 							}
 						}
 						++$columnID;
+                        while ($additionalMergedCells > 0) {
+                            ++$columnID;
+                            $additionalMergedCells--;
+                        }
 					}
 
 					if ($rowHasData) {
