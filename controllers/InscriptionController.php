@@ -25,6 +25,9 @@ use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 
+
+
+
 // BUILD FORM
 use yii\data\ActiveDataProvider;
 
@@ -700,6 +703,28 @@ class InscriptionController extends Controller
             // Contenido, tipo  1=Notificacion URL
             $user->sendEmail($content, $url, $title);
         }
+
+
+    }
+
+    public function actionExcel(){
+        //$objPHPExcel = new \PHPExcel();
+
+        $model=Inscription::find()->all();
+        header('Pragma: public');
+        header("Expires: Sat, 26 Jul 2097 05:00:00 GMT");
+        //header('Last-Modified: '.$lastModified . ' GMT');
+        //header('Last-Modified: '.gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: no-store, no-cache, must-revalidate');
+        header('Cache-Control: pre-check=0, post-check=0, max-age=0');
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        header('Content-Encoding: UTF-8');
+        header('Content-Transfer-Encoding: text');
+        header('Content-Type: application/vnd.ms-excel; charset=UTF-8');
+        header("Content-type: application/x-msexcel; charset=UTF-8");
+        header('Content-Disposition: attachment; filename="archivo.xls"');
+        echo $this->renderPartial('excel',['model'=>$model]);
 
 
     }
