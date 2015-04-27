@@ -41,7 +41,7 @@ $this->title = 'Eventos';
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-         
+
             [
                 'attribute' => 'name',
                 'format' => 'raw',
