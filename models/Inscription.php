@@ -96,7 +96,7 @@ class Inscription extends \yii\db\ActiveRecord
             'complete_quiz' => 'Complete Quiz',
             'event_id' => 'Evento',
             'user_id' => 'Usuario',
-            'registertype_type' => 'Tipo de Resgistro',
+            'registertype_type' => 'Tipo de Registro',
             'registertype_assigment' => 'Tipo de Asignación',
         ];
     }
@@ -155,6 +155,10 @@ class Inscription extends \yii\db\ActiveRecord
     public function getLogistics()
     {
         return $this->hasMany(Logistic::className(), ['inscription_id' => 'id']);
+    }
+    public function getLogistic()
+    {
+        return $this->hasOne(Logistic::className(), ['inscription_id' => 'id']);
     }
 
     /**

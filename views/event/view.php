@@ -26,7 +26,15 @@ $this->title = $model->name;
     <?= Html::a(\Yii::$app->params['btnSubirDoc'], ['file', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
     <?= Html::a(\Yii::$app->params['btnPregunta'], ['eventquestion/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     <?= Html::a(\Yii::$app->params['btnEstadisticas'], ['event/statistics', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <?php
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Inscripciones (Excel)', ['/inscription/excelevent' , 'id'=> $model->id], [
+        'class'=>'btn btn-success',
+        'target'=>'_blank',
+        'data-toggle'=>'tooltip',
 
+
+    ]);
+    ?>
 </div>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
