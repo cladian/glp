@@ -1,46 +1,57 @@
 <?php
 /* @var $this yii\web\View */
+use yii\helpers\Html;
+use app\models\Post;
+
 ?>
-<h1>reports/index</h1>
+
+    <h1>
+        <center>Reporte</center>
+    </h1>
 
 
-<html>
-<head><title>Ejemplo de columnas fusionadas</title></head>
-<body>
+   <h4><strong>Nombre:</strong></h4>
+     <p><?= $model->name ?></p>
 
-<table cellspacing="10" cellpadding="10" border="1" style="width:100%">
-    <tr>
-        <td colspan="4"><h1><center>Reporte</center></h1></td>
-    </tr>
 
-    <tr>
-        <td colspan="4"><?= $model->name ?> </td>
-    </tr>
-    <tr>
-        <td colspan="4">Apellido</td>
-    </tr>
-    <tr>
-        <td colspan="4">Fecha</td>
-    </tr>
-    <tr>
-        <td align="center">
-            <table cellspacing="2" cellpadding="2" border="1" style="width:100%">
-                <tr>
-                    <td COLSPAN="2" align="center"><h1>Tema</h1></td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti fugiat ut ipsa quas odit, veritatis placeat officiis est. Laborum ut similique dignissimos sapiente reiciendis unde repellendus suscipit molestiae, deleniti.</td>
-                </tr>
-                <tr>
-                    <td>Imagen</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti fugiat ut ipsa quas odit, veritatis placeat officiis est. Laborum ut similique dignissimos sapiente reiciendis unde repellendus suscipit molestiae, deleniti.</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-</body>
-</html>
+    <h4><strong>Contenido:</strong></h4>
+    <p><?= $model->content ?></p>
+
+
+<!--  <h4><strong>Fecha de Inicio:</strong></h4><p>--><?//= $model->begin_at ?><!--</p>-->
+
+        <?php foreach ($model->getTopics()->all() as $topic): ?>
+
+    <p>
+<hr/>
+   <h4><strong>Tema:</strong></h4><?= $topic->content ?>
+    </p>
+    <p>
+   <h4><strong>Aportes del Tema:</strong></h4>
+    </p>
+<?php
+$contador = 1;
+?>
+<?php foreach ($topic->getPosts()->all() as $post):
+    if ($post->status == Post::STATUS_ACTIVE):
+        ?>
+        <small>  <?= Yii::$app->formatter->asDatetime($post->created_at, 'short'); ?></small>
+        <span class="label label-success"><?= $post->user->username ?></span>
+        <p>
+            <kbd> <?= $contador++ ?></kbd>
+            <?= $post->content ?>
+            <!--                                <p align="center">-->
+            <? //= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?><!--</p>-->
+        </p>
+
+ <?php endif; endforeach; ?>
+
+<?php endforeach; ?>
+
+
+
+
+
+
 
 
