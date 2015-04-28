@@ -9,8 +9,10 @@ use yii\grid\GridView;
 
 $this->title = 'Tipos de Evento';
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+    <?= Html::a(\Yii::$app->params['btnCrearTEvento'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
@@ -59,6 +61,3 @@ $this->title = 'Tipos de Evento';
     ]); ?>
   </div>
 </div>
- <p>
-        <?= Html::a(\Yii::$app->params['btnCrearTEvento'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>

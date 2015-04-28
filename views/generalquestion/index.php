@@ -10,8 +10,12 @@ use yii\helpers\ArrayHelper;
 
 $this->title = 'Preguntas Generales';
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<!--<div class="regresar">
+<?/*= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])*/?>
+</div>-->
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(\Yii::$app->params['btnPreguntaGeneral'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 
 
@@ -81,11 +85,5 @@ $this->title = 'Preguntas Generales';
 </div>
 <div class="generalquestion-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(\Yii::$app->params['btnPreguntaGeneral'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    
 
 </div>

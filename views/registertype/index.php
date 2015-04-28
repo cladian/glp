@@ -9,8 +9,10 @@ use yii\grid\GridView;
 
 $this->title = 'Tipos de Registro';
 ?>
-<div class="regresar">
+<div class="breadcrumb">
 <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<?= Html::a(\Yii::$app->params['btnCrearRegistro'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
@@ -23,7 +25,7 @@ $this->title = 'Tipos de Registro';
 
 //            'id',
             'name',
-            'role',
+//            'role',
 //            'status',
             [
                 'attribute' => 'status',
@@ -55,6 +57,3 @@ $this->title = 'Tipos de Registro';
     ]); ?>
   </div>
 </div>
-    <p>
-        <?= Html::a(\Yii::$app->params['btnCrearRegistro'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>

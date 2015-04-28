@@ -10,8 +10,12 @@ use yii\grid\GridView;
 $this->title = 'Tipos de Responsabilidad';
 
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<!--<div class="regresar">
+<?/*= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])*/?>
+</div>-->
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(\Yii::$app->params['btnCrear'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
@@ -59,4 +63,4 @@ $this->title = 'Tipos de Responsabilidad';
   </div>
 </div>
 
-        <?= Html::a(\Yii::$app->params['btnCrear'], ['create'], ['class' => 'btn btn-success']) ?>
+

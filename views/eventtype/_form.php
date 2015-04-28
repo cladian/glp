@@ -7,10 +7,20 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Eventtype */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php $form = ActiveForm::begin(); ?>
+<div class="regresar">
+    <?= Html::a(\Yii::$app->params['btnRegresar'],['/eventtype/index'], ['class' => 'btn btn-default'])?>
+
+
+<?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+</div>
+
+<div class="panel panel-green">
+    <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+    <div class="panel-body">
 
 <div class="eventtype-form">
 
-    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 100]) ?>
 
@@ -23,10 +33,12 @@ use yii\widgets\ActiveForm;
 
     --><?/*= $form->field($model, 'updated_at')->textInput() */?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+   <!-- <div class="form-group">
+        <?/*= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnCrear'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) */?>
+    </div>-->
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

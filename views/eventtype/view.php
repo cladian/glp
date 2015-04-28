@@ -8,17 +8,16 @@ use yii\widgets\DetailView;
 
 $this->title = $model->name;
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+<div class="breadcrumb">
+<?= Html::a(\Yii::$app->params['btnRegresar'],['/eventtype/index'], ['class' => 'btn btn-default'])?>
+
+<?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 </div>
 <div class="eventtype-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        
-    </p>
+    <div class="panel panel-green">
+        <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+        <div class="panel-body">
 
     <?= DetailView::widget([
         'model' => $model,
@@ -35,4 +34,6 @@ $this->title = $model->name;
         ],
     ]) ?>
 
+</div>
+</div>
 </div>
