@@ -78,7 +78,7 @@ class Registertype extends \yii\db\ActiveRecord
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
-            'registertype_id' => 'Registertype ID',
+            'registertype_id' => 'Tipos de Registro',
         ];
     }
 

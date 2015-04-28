@@ -11,17 +11,28 @@ use kartik\builder\Form;
 
 $this->title = $model->name;
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/responsibilitytype/index'], ['class' => 'btn btn-default']) ?>
+    <!--    --><?//= Html::a(\Yii::$app->params['btnPreguntaGeneral'], ['create'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
 </div>
+<!--<div class="regresar">
+<?/*= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])*/?>
+</div>-->
+
 <div class="responsibilitytype-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
 
-    <p>
-        <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+  <!--  <p>
+        <?/*= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) */?>
         
-    </p>
+    </p>-->
+    <div class="panel panel-green">
+        <div class="panel-heading"><?= Html::encode($this->title) ?></div>
+        <div class="panel-body">
+            <div class="generalquestion-form">
 
     <?= DetailView::widget([
         'model' => $model,
@@ -38,5 +49,8 @@ $this->title = $model->name;
         ],
     ]) ?>
 
+</div>
+</div>
+</div>
 </div>
 

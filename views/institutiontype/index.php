@@ -15,8 +15,14 @@ use yii\helpers\Url;
 
 $this->title = 'Tipos de Institución';
 ?>
-<div class="regresar">
-<?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+
+<!--<div class="regresar">
+<?/*= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])*/?>
+</div>
+-->
+<div class="breadcrumb">
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+    <?= Html::a(\Yii::$app->params['btnInstitucion'], ['create'], ['class' => 'btn btn-success']) ?>
 </div>
 <div class="panel panel-green">
   <div class="panel-heading"><?= Html::encode($this->title) ?></div>
@@ -99,6 +105,6 @@ $this->title = 'Tipos de Institución';
 
   </div>
 </div>
-<p>
-        <?= Html::a(\Yii::$app->params['btnInstitucion'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<!--<p>
+        <?/*= Html::a(\Yii::$app->params['btnInstitucion'], ['create'], ['class' => 'btn btn-success']) */?>
+    </p>-->
