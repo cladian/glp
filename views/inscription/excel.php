@@ -20,6 +20,7 @@
         <th>Teléfono Celular</th>
         <th>Correo electrónico</th>
         <th>País</th>
+
             <th>Id</th>
             <th>Avance %</th>
             <th>Fecha de Inscripción</th>
@@ -40,7 +41,7 @@
 
             <th>Dia de Ingreso al Hotel del Evento</th>
             <th>Dia de Salida al Hotel del Evento</th>
-            <th>Recide en el lugar del evento</th>
+            <th>Reside en el lugar del evento</th>
             <th>Observación</th>
 
     </tr>

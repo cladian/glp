@@ -283,7 +283,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'format' => 'raw',
 
                         'value' => function ($data) {
-                            $url = \Yii::$app->params['foroImgs'] . $data->imagen->file;
+                            $url = \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroImgs'] . $data->imagen->file;
                             return Html::img($url, ['class' => 'thumbnail', 'style' => 'height:100px;']);
                         }
                     ],
