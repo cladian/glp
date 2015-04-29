@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use kartik\export\ExportMenu;
+
 use app\models\Event;
 
 
@@ -20,6 +20,13 @@ $this->title = 'Inscripciones';
 <div class="breadcrumb">
 
     <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+    <?php
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte (Excel)', ['excel' ], [
+        'class'=>'btn btn-success',
+        'target'=>'_blank',
+        'data-toggle'=>'tooltip',
+    ]);
+    ?>
 
 
 
@@ -60,9 +67,9 @@ $this->title = 'Inscripciones';
                        return $data->event->name;
                    }*/
             'attribute' => 'event_id',
-            'vAlign' => 'middle',
-            'value' => function ($model) {
-                return $model->event->name;
+            'format' => 'raw',
+            'value' => function ($model, $key, $index) {
+                return Html::a($model->event->name, ['/event/view', 'id' => $model->event_id]);
             },
             'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
             'filter' => ArrayHelper::map(Event::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
@@ -72,6 +79,7 @@ $this->title = 'Inscripciones';
             ],
 
         ],
+
         [
             'attribute' => 'user_id',
             'value' => function ($data) {

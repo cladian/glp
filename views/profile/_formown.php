@@ -74,7 +74,7 @@ use app\models\Country;
     
     <center>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
+            <?= Html::img(\Yii::$app->params['webRoot'].'/'.$model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
         </div>
     </center>
 

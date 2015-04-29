@@ -41,7 +41,14 @@ $this->title = 'Eventos';
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'name',
+
+            [
+                'attribute' => 'name',
+                'format' => 'raw',
+                'value' => function ($model, $key, $index) {
+                    return Html::a($model->name, ['/event/view', 'id' => $model->id]);
+                },
+            ],
             'short_description:ntext',
 //            'general_content:ntext',
 //            'methodology:ntext',
@@ -72,6 +79,8 @@ $this->title = 'Eventos';
                 'value' => function ($data) {
                         return $data->eventtype->name;
                     }
+
+
             ],
 
 //            ['class' => 'yii\grid\ActionColumn'],

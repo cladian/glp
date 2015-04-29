@@ -165,7 +165,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         ?>
                         <li class="left clearfix">
                                     <span class="chat-img pull-left">
-                                      <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                      <?= Html::img(\Yii::$app->params['webRoot'].'/'.$request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -184,7 +184,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             ?>
                             <li class="right ">
                                     <span class="chat-img pull-right">
-                                        <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                        <?= Html::img(\Yii::$app->params['webRoot'].'/'.$reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
 
                                 <div class="chat-body clearfix">

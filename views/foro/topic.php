@@ -102,7 +102,7 @@ use app\models\Post;
                             <div class="pull-right">
                                 <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
 
-                                    <?= Html::img(\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
+                                    <?= Html::img(\Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
 
                                 <?php
                                 endforeach;
@@ -181,7 +181,7 @@ use app\models\Post;
                             </td>
 
                             <td>
-                                <p align="center"><?= Html::img($post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
+                                <p align="center"><?= Html::img(\Yii::$app->params['webRoot'].'/'.$post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
                                 <span class="label label-success"><?= $post->user->username ?></span>
 
                             </td>

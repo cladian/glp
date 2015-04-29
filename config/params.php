@@ -1,9 +1,10 @@
 <?php
 // Llamada
-//    \Yii::$app->params['contactEmail']
+//    \Yii::$app->params['webRoot']
 return [
-    'webRoot'=>'http://www.cladian.net',
-    'mail'=>'team@cladian.com',
+    //'webRoot'=>'http://www.asocam.net',
+    'webRoot' => 'http://localhost/glp/web',
+    'mail' => 'team@cladian.com',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
@@ -46,7 +47,6 @@ return [
     'btnRegresar' => '<span class="glyphicon glyphicon-chevron-left"></span> Regresar',
 
 
-
     'btnVer' => '<span class="glyphicon glyphicon-eye-open"></span> Vizualizar',
     'btnSolicitud' => '<span class="glyphicon glyphicon-pencil""></span> Crear Solicitud',
     'btnNuevo' => '<span class="glyphicon glyphicon-file""></span> Nuevo',
@@ -76,12 +76,11 @@ return [
     'btnIngreso' => '<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><br>Iniciar sesión',
 
 // Foro
-'btnUpdateForo' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Foro',
-'btnUpdateTopic' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Tema',
-        'btnRegresarForo' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Foro',
-        'btnRegresarTopic' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Tema',
+    'btnUpdateForo' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Foro',
+    'btnUpdateTopic' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Tema',
+    'btnRegresarForo' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Foro',
+    'btnRegresarTopic' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Tema',
 
-    
 
 ];
 

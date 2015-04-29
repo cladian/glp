@@ -72,7 +72,7 @@ foreach ($model as $foro) {
                             <hr/>
                             <ul class="list-group">
                                 <?php foreach ($foro->getPhforumImagens()->all() as $imagenes): ?>
-                                    <li class="list-group-item"> <?= Html::img(\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
+                                    <li class="list-group-item"> <?= Html::img(\Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
