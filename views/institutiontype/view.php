@@ -10,29 +10,34 @@ use kartik\editable\Editable;
 /* @var $model app\models\Institutiontype */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Tipos de Institución', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="institutiontype-view">
 
-    <h1>Actualización de Tipo de Institución</h1>
 
-    <p>
+
+<!--    <p>
          
 
-        <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
+
+        <?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
-    </p>
+        ]) */?>
+    </p>-->
 
 
-
-
+    <div class="breadcrumb">
+        <?= Html::a(\Yii::$app->params['btnRegresar'], ['/institutiontype/index'], ['class' => 'btn btn-default']) ?>
+        <!--    --><?//= Html::a(\Yii::$app->params['btnPreguntaGeneral'], ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    </div>
+    <div class="panel panel-green">
+        <div class="panel-heading">Tipos de Instituto</div>
+        <div class="panel-body">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -48,4 +53,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+</div>
+</div>
 </div>

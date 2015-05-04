@@ -48,7 +48,7 @@ $this->title = 'Panel de control de usuario';
                 <?php foreach ($modelEvent as $event) { ?>
                     <li class="left clearfix">
                         <span class="chat-img pull-left">
-                            <?= Html::img('imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
+                            <?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/flags/24/' . strtolower($event->country->iso) . '.png', ['class' => 'img-thumbnail']); ?>
                         </span>
 
                         <div class="chat-body clearfix">
@@ -180,7 +180,7 @@ $this->title = 'Panel de control de usuario';
                         ?>
                         <li class="left clearfix">
                                     <span class="chat-img pull-left">
-                                      <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                      <?= Html::img(\Yii::$app->params['webRoot'].'/'.$request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
 
                             <div class="chat-body clearfix">
@@ -200,7 +200,7 @@ $this->title = 'Panel de control de usuario';
                             ?>
                             <li class="right ">
                                     <span class="chat-img pull-right">
-                                        <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                        <?= Html::img(\Yii::$app->params['webRoot'].'/'.$reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
 
                                 <div class="chat-body clearfix">
@@ -290,9 +290,9 @@ $this->title = 'Panel de control de usuario';
             <?php if ($hasProfile) { ?>
 
                 <div style="width: 30%" class="pull-right">
-                    <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
+                    <?= Html::img(\Yii::$app->params['webRoot'].'/'.$modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
                     <span
-                        align="center"> <?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?></span>
+                        align="center"> <?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?></span>
                 </div>
 
                 <h5><?= $modelProfile->name ?>

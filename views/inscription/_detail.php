@@ -59,10 +59,10 @@ use yii\widgets\DetailView;
                         <strong><?= $modelProfile->name . ' ' . $modelProfile->lastname;; ?></strong><br>
                         <strong>phone: </strong><?= $modelProfile->phone_number; ?> <br>
                         <strong>mail: </strong><?= $modelLogistic->inscription->user->email; ?> <br>
-                        <?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
+                        <?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
                     </address>
                 <?php } else { ?>
-                    <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail']); ?>
+                    <?= Html::img(\Yii::$app->params['webRoot'].'/'.Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail']); ?>
                     <address>
                         <strong>Perfil: </strong>Información pendiente
                     </address>
@@ -121,16 +121,16 @@ use yii\widgets\DetailView;
             <div class="panel-heading">Perfil</div>
             <div class="panel-body">
                 <?php if ($modelProfile) { ?>
-                    <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
+                    <?= Html::img(\Yii::$app->params['webRoot'].'/'.$modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
                     <address>
                         <!--                <strong>--><? //= $model->leavingonorigincity ?><!--</strong><br>-->
                         <strong><?= $modelProfile->name . ' ' . $modelProfile->lastname;; ?></strong><br>
                         <strong>phone: </strong><?= $modelProfile->phone_number; ?> <br>
                         <strong>mail: </strong><?= $modelLogistic->inscription->user->email; ?> <br>
-                        <?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
+                        <?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
                     </address>
                 <?php } else { ?>
-                    <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail']); ?>
+                    <?= Html::img(\Yii::$app->params['webRoot'].'/'.Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail']); ?>
                     <address>
                         <strong>Perfil: </strong>Información pendiente
                     </address>

@@ -1,6 +1,7 @@
 <table>
     <thead>
     <tr>
+        <th colspan="1" style="background-color: #4eb305;"><b>Evento</b></th>
         <th colspan="10" style="background-color: #70c0b1;"><b>Perfil</b></th>
         <th  colspan="18" style="background-color: yellow;"><b>Inscripción</b></th>
     </tr>
@@ -8,6 +9,7 @@
 
 
 
+        <th>Nombre</th>
         <th>Nombre del Participante</th>
         <th>Institución</th>
         <th>Tipo de institución</th>
@@ -18,6 +20,7 @@
         <th>Teléfono Celular</th>
         <th>Correo electrónico</th>
         <th>País</th>
+
             <th>Id</th>
             <th>Avance %</th>
             <th>Fecha de Inscripción</th>
@@ -38,7 +41,7 @@
 
             <th>Dia de Ingreso al Hotel del Evento</th>
             <th>Dia de Salida al Hotel del Evento</th>
-            <th>Recide en el lugar del evento</th>
+            <th>Reside en el lugar del evento</th>
             <th>Observación</th>
 
     </tr>
@@ -48,6 +51,7 @@
 
     foreach ($model as $inscription):?>
     <tr>
+        <td><?= $inscription->event->name ?></td>
         <td><?= $inscription->user->profiles->name.' '.$inscription->user->profiles->lastname ?></td>
         <td><?= $inscription->user->profiles->institution_name ?></td>
         <td><?= $inscription->user->profiles->institutiontype->name ?></td>

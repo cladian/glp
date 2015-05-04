@@ -26,7 +26,8 @@ class SignupForm extends Model
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Este nómbre de usuario ya ha sido seleccionado.'],
             ['username', 'string', 'min' => 6, 'max' => 15],
-
+//            ['username', 'match', 'pattern' => '/^[a-z]\w*$/i'],
+            ['username', 'match', 'pattern' => '/^[a-z]+$/', 'message' => 'Utilice unícamente caracteres de la a-z minisculas'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
 
@@ -37,6 +38,7 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 8],
+
         ];
     }
 

@@ -9,6 +9,10 @@ $config = [
     'language' => 'es',
     'sourceLanguage' => 'es',
     'components' => [
+        'request' => [
+            'baseUrl' => $baseUrl,
+        ],
+
         'pdf' => [
             'class' => Pdf::classname(),
             'format' => Pdf::FORMAT_A4,
@@ -50,10 +54,19 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-/*       'urlManager'=>[
-           'enablePrettyUrl'=>'true',
-            'showScriptName' => 'false',
-        ],*/
+       'urlManager'=>[
+
+           'enablePrettyUrl' => true,
+           'showScriptName' => false,
+           'rules'=>[
+               '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                                               '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+                   '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
+],
+
+
+        ],
         'authManager'=>[
             'class'=>'yii\rbac\DbManager',
         ],

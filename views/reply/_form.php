@@ -57,7 +57,7 @@ use yii\bootstrap\Modal;
                 <h4>
                     <kbd><?= $model->request->question; ?></kbd></h4>
                 <span>
-                <?= Html::img($model->request->inscription->user->getImageUrl(), ['class' => 'img-circle push-right', 'style' => 'height:30px;']); ?>
+                <?= Html::img(\Yii::$app->params['webRoot'].'/'.$model->request->inscription->user->getImageUrl(), ['class' => 'img-circle push-right', 'style' => 'height:30px;']); ?>
 </span>
                 <i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($model->request->created_at, 'long'); ?>
             </div>
@@ -87,7 +87,7 @@ use yii\bootstrap\Modal;
                     ?>
                     <li <?= $clase; ?>>
                         <div class="timeline-badge">
-                            <?= Html::img($reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:40px;']); ?>
+                            <?= Html::img(\Yii::$app->params['webRoot'].'/'.$reply->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:40px;']); ?>
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">

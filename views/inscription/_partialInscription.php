@@ -25,8 +25,8 @@ use yii\helpers\Html;
             <?php if ($modelProfile) { ?>
 
 
-                <?= Html::img($modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
-                <h5><?= Html::img('imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
+                <?= Html::img(\Yii::$app->params['webRoot'].'/'.$modelProfile->getImageUrl(), ['class' => 'img-responsive img-thumbnail']); ?>
+                <h5><?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/flags/24/' . strtolower($modelProfile->country->iso) . '.png'); ?>
                     <?= $modelProfile->name . ' ' . $modelProfile->lastname;; ?></h5>
                 <address>
 
@@ -35,7 +35,7 @@ use yii\helpers\Html;
 
                 </address>
             <?php } else { ?>
-                <?= Html::img(Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
+                <?= Html::img(\Yii::$app->params['webRoot'].'/'.Yii::$app->params['avatarFolder'] . 'profile.png', ['class' => 'img-responsive img-thumbnail img-block']); ?>
                 <address>
                     <strong>Perfil: </strong>Información pendiente
                 </address>

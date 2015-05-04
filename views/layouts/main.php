@@ -180,7 +180,7 @@ if (!Yii::$app->user->isGuest) {
     <div class="container">
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
             <a href="http://www.asocam.org"
-               target="_blank"> <?= Html::img('imgs/logos/asocam.png', ['class' => 'img_footer']); ?></a>
+               target="_blank"> <?= Html::img(\Yii::$app->params['webRoot'].'/'.'imgs/logos/asocam.png', ['class' => 'img_footer']); ?></a>
 
         </div>
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-11">

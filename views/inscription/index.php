@@ -67,9 +67,9 @@ $this->title = 'Inscripciones';
                        return $data->event->name;
                    }*/
             'attribute' => 'event_id',
-            'vAlign' => 'middle',
-            'value' => function ($model) {
-                return $model->event->name;
+            'format' => 'raw',
+            'value' => function ($model, $key, $index) {
+                return Html::a($model->event->name, ['/event/view', 'id' => $model->event_id]);
             },
             'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
             'filter' => ArrayHelper::map(Event::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
@@ -79,6 +79,7 @@ $this->title = 'Inscripciones';
             ],
 
         ],
+
         [
             'attribute' => 'user_id',
             'value' => function ($data) {

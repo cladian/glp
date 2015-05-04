@@ -191,7 +191,7 @@ $this->params['breadcrumbs'][] = $this->title;*/
                 <?php foreach ($modelRequest as $request) { ?>
                     <li class="left clearfix">
                                     <span class="chat-img pull-left">
-                                      <?= Html::img($request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
+                                      <?= Html::img(\Yii::$app->params['webRoot'].'/'.$request->inscription->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:50px;']); ?>
                                     </span>
 
                         <div class="chat-body clearfix">
