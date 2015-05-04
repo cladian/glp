@@ -87,7 +87,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <?php foreach ($model->getTopicDocuments()->all() as $documents): ?>
-                                    <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
+                                    <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
@@ -170,7 +170,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                                 <p>
                                     <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                        <?= Html::a('Documento: ' . $postDocs->document->name, \Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
+                                        <?= Html::a('Documento: ' . $postDocs->document->name, \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
 
 
                                     <?php endforeach ?>
@@ -306,6 +306,7 @@ if ((!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_A
 
             <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
 
+        </div>
         </div>
     </div>
 </div>

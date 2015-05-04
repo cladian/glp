@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\bootstrap\Tabs;
+use app\models\Document;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -97,9 +98,11 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
 
         <div class="panel-body">
+            <?= Html::a("Información", \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['eventDocs'] . $model->file, ['target' => '_blank']);?>
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
+
                     'file:ntext',
 //                    'photo:ntext',
                     'url:ntext',
