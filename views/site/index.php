@@ -124,7 +124,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     <div class="panel panel-default">
                         <div class="panel-heading">
 
-                            <?= Html::img('imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive pull-right']); ?>
+                            <?= Html::img(Yii::$app->urlManager->baseUrl.'/imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive pull-right']); ?>
 
                                 <h4><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> &nbsp; <?= $event->city . ', ' . $event->country->name; ?> </h4>
                         </div>
@@ -136,7 +136,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong
                                 class="event-text">Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
                             <br><br>
-                            <?= Html::img($event->getImageUrl(), ['class' => 'img-d-retina']); ?>
+                            <?= Html::img(Yii::$app->urlManager->baseUrl.'/'.$event->getImageUrl(), ['class' => 'img-d-retina']); ?>
 
 
                         </div>
@@ -167,3 +167,6 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 ?>
 
+<?= Yii::$app->basePath ?>
+<h1>dd</h1>
+<?= Yii::$app->urlManager->baseUrl ?>
