@@ -68,7 +68,7 @@ use yii\helpers\Url;
             </div>
         </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <?= Html::img($model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
+        <?= Html::img(Yii::$app->urlManager->baseUrl . "/". $model->getImageUrl(),['class'=>'img-responsive img-thumbnail']);?>
     </div>
     </center>
 
