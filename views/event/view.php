@@ -98,8 +98,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
         </div>
 
         <div class="panel-body">
-            <?= Html::a("Información", \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['eventDocs'] . $model->file, ['target' => '_blank']);?>
-            <?= DetailView::widget([
+            <?= Html::a("Documento Descargable", Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['eventDocs'] . $model->file, ['target' => '_blank']);?>
+            <?/*= DetailView::widget([
                 'model' => $model,
                 'attributes' => [
 
@@ -107,7 +107,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 //                    'photo:ntext',
                     'url:ntext',
                 ],
-            ]) ?>
+            ]) */?>
         </div>
 
     </div>
