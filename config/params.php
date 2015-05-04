@@ -2,8 +2,13 @@
 // Llamada
 //    \Yii::$app->params['webRoot']
 return [
-    //'webRoot'=>'http://www.asocam.net',
-    'webRoot' => 'http://localhost/glp/web',
+    // Pruebas de carga de archivo
+  //  'uploadPathDocs'=> Yii::$app->basePath . '/upload/docs/',
+   // 'uploadUrlDocs' => Yii::$app->urlManager->baseUrl . '/uploads/docs',
+
+/*    'webRoot'=>'http://localhost/glp/web',
+    'webRoot'=>'http://cladian.net/glp/web',*/
+    'webRoot'=>'http://www.asocam.net',
     'mail' => 'team@cladian.com',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',

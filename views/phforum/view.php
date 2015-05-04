@@ -267,7 +267,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <!--INICIOVista Imagenes-->
 
     <div class="panel panel-green">
-        <div class="panel-heading">Imagenes</div>
+        <div class="panel-heading">Imágenes</div>
         <div class="panel-body">
 
             <?= GridView::widget([
@@ -283,7 +283,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'format' => 'raw',
 
                         'value' => function ($data) {
-                            $url = \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroImgs'] . $data->imagen->file;
+                            $url = Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroImgs'] . $data->imagen->file;
                             return Html::img($url, ['class' => 'thumbnail', 'style' => 'height:100px;']);
                         }
                     ],

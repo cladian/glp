@@ -59,7 +59,7 @@ foreach ($model as $foro) {
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <?php foreach ($foro->getPhforumDocuments()->all() as $documents): ?>
-                                    <li > <?= Html::a($countdocs++.'.-'.$documents->document->name, \Yii::$app->params['foroDocs'] . $documents->document->file,['target'=>'_blank'] ); ?></li>
+                                    <li > <?= Html::a($countdocs++.'.-'.$documents->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $documents->document->file,['target'=>'_blank'] ); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
@@ -72,7 +72,7 @@ foreach ($model as $foro) {
                             <hr/>
                             <ul class="list-group">
                                 <?php foreach ($foro->getPhforumImagens()->all() as $imagenes): ?>
-                                    <li class="list-group-item"> <?= Html::img(\Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
+                                    <li class="list-group-item"> <?= Html::img(Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
                                 <?php
                                 endforeach;
                                 ?>

@@ -87,7 +87,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <?php foreach ($model->getTopicDocuments()->all() as $documents): ?>
-                                    <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
+                                    <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
@@ -102,7 +102,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <div class="pull-right">
                             <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
 
-                                <?= Html::img(\Yii::$app->params['webRoot'] . '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
+                                <?= Html::img(Yii::$app->urlManager->baseUrl. '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
 
                             <?php
                             endforeach;
@@ -170,7 +170,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
                                 <p>
                                     <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                        <?= Html::a('Documento: ' . $postDocs->document->name, \Yii::$app->params['webRoot'].'/'.\Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
+                                        <?= Html::a('Documento: ' . $postDocs->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
 
 
                                     <?php endforeach ?>
@@ -179,7 +179,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </td>
 
                             <td>
-                                <p align="center"><?= Html::img(\Yii::$app->params['webRoot'] . '/' . $post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
+                                <p align="center"><?= Html::img(Yii::$app->urlManager->baseUrl . '/' . $post->user->getImageUrl(), ['class' => 'img-circle', 'style' => 'height:30px;']); ?></p>
                                 <span class="label label-success"><?= $post->user->username ?></span>
 
                             </td>
