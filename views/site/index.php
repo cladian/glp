@@ -166,7 +166,3 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 
 ?>
-
-<?= Yii::$app->basePath ?>
-<h1>dd</h1>
-<?= Yii::$app->urlManager->baseUrl ?>
