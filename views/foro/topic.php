@@ -291,27 +291,28 @@ if ((!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_A
 <?php
 } ?>
 </div>
-<?php  if (!Yii::$app->user->isGuest)  {?>
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-    <div class="panel panel-default">
-        <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones electrónicas
+
+    <?php if (!Yii::$app->user->isGuest) { ?>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones
+                    electrónicas
+                </div>
+                <div class="panel-body">
+
+
+                    <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
+                    <p>Su perfil está configurado para el envio de notificaciones:
+                        <b><?= $modelUser->getEmail($modelUser->notification); ?></p>
+
+                    <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
+
+                </div>
+            </div>
         </div>
-        <div class="panel-body">
 
-
-
-            <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
-            <p>Su perfil está configurado para el envio de notificaciones:
-                <b><?= $modelUser->getEmail($modelUser->notification); ?></p>
-
-            <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
-
-        </div>
-        </div>
-    </div>
-</div>
-<?php
-} ?>
+    <?php
+    } ?>
 
 
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
