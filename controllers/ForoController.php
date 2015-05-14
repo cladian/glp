@@ -294,7 +294,7 @@ class ForoController extends Controller
 
             }
             $mensaje .= '<hr>';
-           // echo $mensaje;
+            echo $mensaje;
             if ($enviarMail) {
 
                 foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
