@@ -18,12 +18,12 @@ use app\models\Post;
 
 ?>
 
-<div class="breadcrumb">
+    <div class="breadcrumb">
 
 
-    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(\Yii::$app->params['btnRegresar'], ['/foro'], ['class' => 'btn btn-default']) ?>
 
-</div>
+    </div>
 <?php if ($model->status == Topic::STATUS_INACTIVE): ?>
     <div class="alert alert-warning" role="alert">El tema ha sido Inactivado</div>
 <?php endif; ?>
@@ -87,7 +87,7 @@ use app\models\Post;
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <?php foreach ($model->getTopicDocuments()->all() as $documents): ?>
-                                        <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
+                                        <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
                                     <?php
                                     endforeach;
                                     ?>
@@ -102,7 +102,7 @@ use app\models\Post;
                             <div class="pull-right">
                                 <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
 
-                                    <?= Html::img(Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
+                                    <?= Html::img(Yii::$app->urlManager->baseUrl. '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
 
                                 <?php
                                 endforeach;
@@ -170,7 +170,7 @@ use app\models\Post;
 
                                     <p>
                                         <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                            <?= Html::a('Documento: ' . $postDocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
+                                            <?= Html::a('Documento: ' . $postDocs->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
 
 
                                         <?php endforeach ?>
@@ -267,48 +267,6 @@ use app\models\Post;
                 </div>
             </div>
         </div>
-<<<<<<< Updated upstream
-    </div>
-<?php } elseif (Yii::$app->user->isGuest) { ?>
-
-    <div class="alert alert-warning" role="alert">
-        <center>Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas,
-            comentarios, etc.
-        </center>
-        <center>
-            <br>
-            <?= Html::a(\Yii::$app->params['btnIngreso'], ['/site/login'], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(\Yii::$app->params['btnRegistro'], ['/site/signup'], ['class' => 'btn btn-success']) ?>
-        </center>
-    </div>
-
-<?php
-} else {
-    ?>
-    <div class="alert alert-danger" role="alert">
-        <center>Los aportes han sido inhabilitados
-        </center>
-
-    </div>
-<?php
-} ?>
-</div>
-
-    <?php if (!Yii::$app->user->isGuest) { ?>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-            <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones
-                    electrónicas
-                </div>
-                <div class="panel-body">
-
-
-                    <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
-                    <p>Su perfil está configurado para el envio de notificaciones:
-                        <b><?= $modelUser->getEmail($modelUser->notification); ?></p>
-
-                    <?= Html::a('Modificar', ['/user/email'], ['class' => 'btn btn-default btn-xs']) ?></b>
-=======
     <?php } elseif (Yii::$app->user->isGuest) { ?>
 
         <div class="alert alert-warning" role="alert">
@@ -328,27 +286,18 @@ use app\models\Post;
         <div class="alert alert-danger" role="alert">
             <center>Los aportes han sido inhabilitados
             </center>
->>>>>>> Stashed changes
 
-                </div>
-            </div>
         </div>
-<<<<<<< Updated upstream
-
-    <?php
-    } ?>
-=======
     <?php
     } ?>
     </div>
-    <?php if (!Yii::$app->user->isGuest) { ?>
+    <?php  if (!Yii::$app->user->isGuest)  {?>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones
-                    electrónicas
+                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones electrónicas
                 </div>
                 <div class="panel-body">
->>>>>>> Stashed changes
+
 
 
                     <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
@@ -360,7 +309,7 @@ use app\models\Post;
                 </div>
             </div>
         </div>
-        
+        </div>
     <?php
     } ?>
 
