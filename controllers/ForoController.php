@@ -260,7 +260,7 @@ class ForoController extends Controller
 
         $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
 
-        $enviarMail = false;
+        $enviarMail = true;
         foreach ($modelForo as $foro) {
             $arr = array();
             $mensaje = '';
