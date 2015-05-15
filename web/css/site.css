@@ -99,7 +99,8 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 strong{
-    color: #337AB7;
+    /*color: #337AB7; */
+    color:black;
 }
 .figure{
     width: 100%;
