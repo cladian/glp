@@ -152,7 +152,7 @@ if (!Yii::$app->user->isGuest) {
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> ASOCAM-GLP',
+        'brandLabel' => '<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> ASOCAM: Plataforma Tencológica',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top nav-pills',
