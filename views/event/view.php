@@ -59,7 +59,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
         </div> -->
     </div>
-    <?php if ($modelEvent->cost>0){ ?>
+    <?php if ($model->cost >0){ ?>
     <div class="panel panel-primary">
         <div class="panel-heading">
             <div class="row">
@@ -89,12 +89,13 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
     </div>
     <?php } ?>
-    <?php if ( ($modelEvent->cost==0)&&($modelEvent->discount) ){ ?>
+
+    <?php if ( ($model->cost==0)&&($model->discount) ){ ?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <div role="tabpanel">
 
-                    <strong>Información: </strong><?= Html::encode($modelEvent->discount_description) ?>
+                    <strong>Información: </strong><?= Html::encode($model->discount_description) ?>
 
 
 
