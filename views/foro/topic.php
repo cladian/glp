@@ -310,7 +310,7 @@ use app\models\Post;
                 </div>
             </div>
         </div>
-        
+
     <?php
     } ?>
 
