@@ -51,7 +51,9 @@ $this->title = 'Evento:' . $modelEvent->name;
                 <?= $this->render('/event/_detailinfo', ['model' => $modelEvent]) ?>
             </div>
             <!--END Gestión de Proyectos-->
+            <?php if ($modelEvent->cost>0){ ?>
             <div class="panel panel-primary">
+
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
@@ -63,6 +65,7 @@ $this->title = 'Evento:' . $modelEvent->name;
                         </div>
                     </div>
                 </div>
+
                 <?php if ($modelEvent->discount): ?>
 
 
@@ -79,6 +82,22 @@ $this->title = 'Evento:' . $modelEvent->name;
                 <?php endif; ?>
 
             </div>
+            <?php } ?>
+
+            <?php if ( ($modelEvent->cost==0)&&($modelEvent->discount) ){ ?>
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div role="tabpanel">
+
+                        <strong>Información: </strong><?= Html::encode($modelEvent->discount_description) ?>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <?php } ?>
 
         </div>
         <!--END Visualización evento-->

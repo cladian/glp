@@ -155,7 +155,7 @@ class ProfileController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $avatar = UploadedFile::getInstance($model, 'photo');
-            $photoName = $model->id . '.' . $avatar->extension;
+            $photoName = $model->id . "-" . date('dmY-hms'). '.' . $avatar->extension;
             $avatar->saveAs(\Yii::$app->params['avatarFolder'] . $photoName);
             $model->photo = $photoName;
             $model->save();
