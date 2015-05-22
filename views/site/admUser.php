@@ -303,7 +303,7 @@ $this->title = 'Panel de control de usuario';
                     <strong>Movil: </strong><?= $modelProfile->mobile_number; ?><br>
                     <strong>Correo: </strong><?= $modelProfile->user->email; ?>
                     <hr/>
-                    <strong>Responzabilidad: </strong><?= $modelProfile->responsability_name; ?> <br>
+                    <strong>Responsabilidad: </strong><?= $modelProfile->responsability_name; ?> <br>
                     <strong>Tipo: </strong><?= $modelProfile->responsibilitytype->name; ?> <br>
 
                     <strong>Institución: </strong><?= $modelProfile->institution_name; ?> <br>

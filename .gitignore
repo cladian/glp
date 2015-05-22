@@ -15,7 +15,10 @@ web/assets/*
 config/db.php
 
 config/db.php
-
-web/upload/*
-
 web/imgs/docs/*
+
+<<<<<<< Updated upstream
+web/upload/docs/*
+=======
+web/upload/*
+>>>>>>> Stashed changes

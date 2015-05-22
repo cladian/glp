@@ -260,7 +260,7 @@ class ForoController extends Controller
 
         $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
 
-        $enviarMail = false;
+        $enviarMail = true;
         foreach ($modelForo as $foro) {
             $arr = array();
             $mensaje = '';
@@ -294,7 +294,7 @@ class ForoController extends Controller
 
             }
             $mensaje .= '<hr>';
-           // echo $mensaje;
+            echo $mensaje;
             if ($enviarMail) {
 
                 foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):

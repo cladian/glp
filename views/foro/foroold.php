@@ -87,7 +87,7 @@ use app\models\Post;
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <?php foreach ($model->getTopicDocuments()->all() as $documents): ?>
-                                        <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
+                                        <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
                                     <?php
                                     endforeach;
                                     ?>
@@ -102,7 +102,7 @@ use app\models\Post;
                             <div class="pull-right">
                                 <?php foreach ($model->getTopicImagens()->all() as $imagenes): ?>
 
-                                    <?= Html::img(Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
+                                    <?= Html::img(Yii::$app->urlManager->baseUrl. '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-thumbnail pull-right']); ?>
 
                                 <?php
                                 endforeach;
@@ -170,7 +170,7 @@ use app\models\Post;
 
                                     <p>
                                         <?php foreach ($post->getpostDocuments()->all() as $postDocs): ?>
-                                            <?= Html::a('Documento: ' . $postDocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
+                                            <?= Html::a('Documento: ' . $postDocs->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $postDocs->document->file, ['target' => '_blank', 'class' => 'btn btn-xs btn-default']); ?></li>
 
 
                                         <?php endforeach ?>
@@ -291,14 +291,13 @@ use app\models\Post;
     <?php
     } ?>
     </div>
-
-    <?php if (!Yii::$app->user->isGuest) { ?>
+    <?php  if (!Yii::$app->user->isGuest)  {?>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones
-                    electrónicas
+                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Notificaciones electrónicas
                 </div>
                 <div class="panel-body">
+
 
 
                     <!--                <p>--><? //= $model->user->notification; ?><!-- </p>-->
@@ -310,7 +309,7 @@ use app\models\Post;
                 </div>
             </div>
         </div>
-
+        </div>
     <?php
     } ?>
 
