@@ -1,43 +1,32 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
-
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Phforum */
 
 $this->title = $model->name;
-
 ?>
-
 
 <div class="breadcrumb">
     <?= Html::a(\Yii::$app->params['btnRegresar'], ['/phforum', 'Phforums' => $model->id], ['class' => 'btn btn-default']) ?>
     <?= Html::a(\Yii::$app->params['btnActualizar'], ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-
-
     <?= Html::a(\Yii::$app->params['btnTema'], ['topic/create', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
-
     <?= Html::a(\Yii::$app->params['btnSubirD'], ['phforum/createdoc', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
-
-
-<!--    --><?//= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
+    <!--    --><? //= Html::a(\Yii::$app->params['btnSubirV'], ['phforum/createvideo', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a(\Yii::$app->params['btnSubirI'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-<!--    --><?//= Html::a(\Yii::$app->params['btnDescarga'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <!--    --><? //= Html::a(\Yii::$app->params['btnDescarga'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?php
-    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte', ['/reports/foro' , 'id'=> $id], [
-        'class'=>'btn btn-danger',
-        'target'=>'_blank',
-        'data-toggle'=>'tooltip',
-        'title'=>'Will open the generated PDF file in a new window'
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte', ['/reports/foro', 'id' => $id], [
+        'class' => 'btn btn-danger',
+        'target' => '_blank',
+        'data-toggle' => 'tooltip',
+        'title' => 'Will open the generated PDF file in a new window'
     ]);
     ?>
     <?= Html::a(\Yii::$app->params['btnRegresarForo'], ['/foro', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
+    <?= Html::a(\Yii::$app->params['btnEnvelope'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
 
     <!--    --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
@@ -46,7 +35,9 @@ $this->title = $model->name;
             'method' => 'post',
         ],
     ]) */
+
     ?>
+
 </div>
 <?php
 foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
@@ -66,7 +57,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <li class="active"><a href="#one2" data-toggle="tab">Foro</a></li>
     <li><a href="#two2" data-toggle="tab">Temas</a></li>
     <li><a href="#three2" data-toggle="tab">Documentos</a></li>
-<!--    <li><a href="#four2" data-toggle="tab">Videos</a></li>-->
+    <!--    <li><a href="#four2" data-toggle="tab">Videos</a></li>-->
     <li><a href="#five2" data-toggle="tab">Imagenes</a></li>
 </ul>
 <div class="tab-content">
@@ -139,26 +130,25 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 
 //                            ['class' => 'yii\grid\ActionColumn'],
 
-                            ['class' => 'yii\grid\ActionColumn',
-                                'template' => '{view} ',
-                                'buttons' => [
-                                    'view' => function ($url, $model, $key) {
-                                            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['topic/view', 'id' => $key]);
-                                        }
+                    ['class' => 'yii\grid\ActionColumn',
+                        'template' => '{view} ',
+                        'buttons' => [
+                            'view' => function ($url, $model, $key) {
+                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['topic/view', 'id' => $key]);
+                            }
 
-                                ]
-                            ],
-                        ],
-                    ]); ?>
-                </div>
-            </div>
-
-
-            <p>
+                        ]
+                    ],
+                ],
+            ]); ?>
+        </div>
+    </div>
 
 
+    <p>
 
-    <!--FIN Vista Temas-->
+
+        <!--FIN Vista Temas-->
 
 </div>
 
@@ -237,22 +227,22 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 //                'updated_at',
 
 //                            ['class' => 'yii\grid\ActionColumn'],
-/*                    ['class' => 'yii\grid\ActionColumn',
-                        'template' => '{view} {delete}',
-                        'buttons' => [
-                            'view' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-video/view', 'phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
-                            },
-//                                    'update' => function ($url, $model) {
-//                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
-//                                        },
+                    /*                    ['class' => 'yii\grid\ActionColumn',
+                                            'template' => '{view} {delete}',
+                                            'buttons' => [
+                                                'view' => function ($url, $model) {
+                                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['phforum-video/view', 'phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
+                                                },
+                    //                                    'update' => function ($url, $model) {
+                    //                                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['phforum-document/update', 'phforum_id' => $model->phforum_id, 'document_id' => $model->document_id]);
+                    //                                        },
 
-                            'delete' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-video/delete', 'phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
-                            },
+                                                'delete' => function ($url, $model) {
+                                                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-video/delete', 'phforum_id' => $model->phforum_id, 'video_id' => $model->video_id]);
+                                                },
 
-                        ]
-                    ],*/
+                                            ]
+                                        ],*/
                 ],
             ]); ?>
         </div>
@@ -283,7 +273,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         'format' => 'raw',
 
                         'value' => function ($data) {
-                            $url = Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroImgs'] . $data->imagen->file;
+                            $url = Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroImgs'] . $data->imagen->file;
                             return Html::img($url, ['class' => 'thumbnail', 'style' => 'height:100px;']);
                         }
                     ],
@@ -303,7 +293,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 //                                        },
 
                             'delete' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-imagen/delete' ,'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
+                                return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['phforum-imagen/delete', 'phforum_id' => $model->phforum_id, 'imagen_id' => $model->imagen_id]);
                             },
 
                         ]

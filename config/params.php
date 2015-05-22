@@ -87,6 +87,11 @@ return [
     'btnRegresarTopic' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Tema',
 
 
+    'btnEnvelope' => '<span class="glyphicon glyphicon-envelope"></span> Notificar',
+
+
+
+
 ];
 
 

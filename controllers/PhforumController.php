@@ -301,4 +301,8 @@ class PhforumController extends Controller
             endforeach;
         //endforeach;
     }
+    // Función para envio de notificaciones de foro electronico
+    protected function actionNotify($id){
+
+    }
 }
