@@ -236,7 +236,7 @@ class ForoController extends Controller
         $modelTopic = Topic::find()->where(['id'=>$topic_id])->one();
 
 
-        $title = $modelTopic->phforum->name."/"."Nuevo mensaje";
+        $title = "Nuevo mensaje";
         $content = $message;
 
 
