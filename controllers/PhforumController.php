@@ -136,6 +136,7 @@ class PhforumController extends Controller
     {
         $model = new Document();
         $model->scenario = 'file';
+        $modelForo=$this->findModel($id);
 
 
         if ($model->load(Yii::$app->request->post())) {
@@ -155,14 +156,18 @@ class PhforumController extends Controller
 
             // Envio de notificación
             // http://localhost/glp/web/upload/docs/XyMVjkPLyyJGrxnTegyVynwFqEQvx2s21429652374.pdf
-            $title = 'Nuevo documento Agregado';
-            $html = '<p>Estimado participante el moderador del foro ha publicado un nuevo documento, puede revisar la información en el enlace a continuación</p>';
-            $html .= '<p> Documento: ' . $model->name . '</p>';
-            $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
-            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
+            if ($modelForo->status==Phforum::STATUS_ACTIVE ){
+                $title = 'Nuevo documento Agregado';
+                $html = '<p>Estimado participante el moderador del foro ha publicado un nuevo documento, puede revisar la información en el enlace a continuación</p>';
+                $html .= '<p> Documento: ' . $model->name . '</p>';
+                $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
+                $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
 
-            $this->sendMailResources($id, $html, $url, $title);
-
+                $this->sendMailResources($id, $html, $url, $title);
+            }else
+            {
+                \Yii::$app->getSession()->setFlash('warning', 'La notificación electrónica no ha sido enviada ya que el foro no tiene un estado ACTIVO');
+            }
 
             return $this->redirect(['view', 'id' => $id]);
         } else {
@@ -277,7 +282,9 @@ class PhforumController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
+/*
+ * Envia mail de notificación luego de la subida d eun contenido
+ */
     protected function sendMailResources($id, $message, $url, $title)
     {
 
@@ -291,14 +298,25 @@ class PhforumController extends Controller
             array_push($arr,$t->id);
         }
 
-        // Todos los temas
+        foreach (\app\models\User::find()->where(['status'=>User::STATUS_ACTIVE])->all() as $post):
+            if ($post->notification == User::EMAIL_DAILY)
+                $post->sendEmail($content, $url, $title);
+
+        endforeach;
+
+        // Versión orgiginal
         //foreach ($modelTopic as $topic):
             // Todos los usuarios del tema agrupados por usuarios
-            foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
+         /*   foreach (\app\models\Post::find()->where(['topic_id' => $arr])->addGroupBy(['user_id'])->all() as $post):
                 if ($post->user->notification == User::EMAIL_DAILY)
                     $post->user->sendEmail($content, $url, $title);
 
-            endforeach;
+            endforeach;*/
         //endforeach;
+
+    }
+    // Función para envio de notificaciones de foro electronico
+    protected function actionNotify($id){
+
     }
 }

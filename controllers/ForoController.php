@@ -94,13 +94,14 @@ class ForoController extends Controller
             $html = '<h4>Contenido </h4>';
             $html .= '<blockquote>' . $modelPost->content . '</blockquote>';
             $html .= '<kbd>' . $modelPost->user->username . '</kbd>';
+            $html .= '<b>' .substr( $modelPost->topic->content,0,100).'...</b>';
             $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic', 'id' => $id, '#' => $modelPost->id]);
 
             $this->sendMail($id, $html, $url);
             //> Fin Correo
             \Yii::$app->getSession()
                 ->setFlash('success',
-                    'Su aporte ha sido publicado éxitosamente');
+                    'Su aporte ha sido publicado éxitosamente'.$html);
 
 
             // Encerar modelo
@@ -235,12 +236,19 @@ class ForoController extends Controller
         $title = "Nuevo mensaje Foro:";
         $content = $message;
 
-        $modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
+
+        $modelPost = User::find()->where(['status'=>User::STATUS_ACTIVE])->all();
         foreach ($modelPost as $user) {
+            // Contenido, tipo  1=Notificacion URL
+            if ($user->notification == User::EMAIL_DAILY)
+                $user->sendEmail($content, $url, $title);
+        }
+        //$modelPost = Post::find()->where(['topic_id' => $topic_id])->addGroupBy(['user_id'])->all();
+        /*        foreach ($modelPost as $user) {
             // Contenido, tipo  1=Notificacion URL
             if ($user->user->notification == User::EMAIL_DAILY)
                 $user->user->sendEmail($content, $url, $title);
-        }
+        }*/
     }
 
     public function actionResumen()
