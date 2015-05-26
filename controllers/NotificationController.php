@@ -103,16 +103,16 @@ class NotificationController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-
+            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
             // Envio de notificación electrónica
             $url = \Yii::$app->params['webRoot'] . Url::to(['foro/'])."/".$id;
             $title = 'Notificación electrónica';
             $html = $model->text;
             $html .=" <hr>";
             $html .="<b>".Yii::$app->user->identity->username."</b>";
-            $html .="<a href=". $url. "> ".$modelForo->name."</a>";
+           // $html .="<a href=". $url. "> ".$modelForo->name."</a>";
 
-            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
+
             $this->sendMail($id, $html, $url, $title);
 
             return $this->redirect(['/phforum/view', 'id' => $id]);
