@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Phforum;
 use Yii;
 use app\models\Notification;
 use app\models\NotificationSearch;
@@ -26,11 +27,12 @@ class NotificationController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete'],
+                'only' => ['create', 'send'],
+                //'only' => ['index', 'view', 'create','update','delete'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete','send'],
+                        'actions' => ['create','send'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
@@ -96,22 +98,30 @@ class NotificationController extends Controller
     public function actionForo($id)
     {
         $model = new Notification();
+        $modelForo = Phforum::find()->where(['id'=>$id])->one();
         $model->user_id= Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
+
 
             // Envio de notificación electrónica
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/'])."/".$id;
             $title = 'Notificación electrónica';
             $html = $model->text;
-            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']).$id;
+            $html .=" <hr>";
+            $html .="<b>".Yii::$app->user->identity->username."</b>";
+            $html .=$modelForo->name;
+            $html .="<br>";
+            $html .="<a href=". $url. "> Ir a Foro </a>";
 
+            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
             $this->sendMail($id, $html, $url, $title);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/phforum/view', 'id' => $id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'id'=>$id
             ]);
         }
     }

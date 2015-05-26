@@ -69,7 +69,7 @@ class Notification extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'text' => 'Texto',
+            'text' => 'Contenido',
             'status' => 'Estado',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',

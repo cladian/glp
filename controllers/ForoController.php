@@ -233,7 +233,10 @@ class ForoController extends Controller
     */
     protected function sendMail($topic_id, $message, $url)
     {
-        $title = "Nuevo mensaje Foro:";
+        $modelTopic = Topic::find()->where(['id'=>$topic_id])->one();
+
+
+        $title = "Nuevo mensaje (".$modelTopic->phforum->name.")";
         $content = $message;
 
 

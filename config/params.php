@@ -9,7 +9,7 @@ return [
 /*    'webRoot'=>'http://localhost/glp/web',
     'webRoot'=>'http://cladian.net/glp/web',*/
     'webRoot'=>'http://www.asocam.net',
-    'mail' => 'team@cladian.com',
+    'mail' => 'foro@asocam.org',
     'adminEmail' => 'team@cladian.com',
     'contactEmail' => 'team@cladian.com',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
