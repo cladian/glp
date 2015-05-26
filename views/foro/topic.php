@@ -14,6 +14,8 @@ use app\models\Document;
 use app\models\Imagen;
 use app\models\Phforum;
 use app\models\Post;
+use dosamigos\ckeditor\CKEditor;
+
 
 
 ?>
@@ -135,7 +137,11 @@ use app\models\Post;
                 <div class="post-form">
                     <!--                    --><?php //$form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
                     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-                    <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
+
+                    <?= $form->field($modelPost, 'content')->widget(CKEditor::className(), [
+                        'options' => ['rows' => 6],
+                        'preset' => 'basic'
+                    ]) ?>
 
                     <!--    --><? //= $form->field($model, 'status')->textInput() ?>
                     <div class="alert alert-success" role="alert">
