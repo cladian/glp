@@ -17,12 +17,13 @@
                             <?= $content ?>
                         </div>
                         <br/>
-                  <!--      <code style="color:#7e8890; padding: 15px;"><?/*= Yii::$app->
-                            formatter->asDatetime(date('Y-m-d'),'long') */?></code>-->
+                        <code style="color:#7e8890; padding: 15px;"><?= Yii::$app->
+                            formatter->asDatetime(date('Y-m-d'),'long') ?></code>
 
                         <p style="padding: 15px;">
                             <a href="<?= $url ?>" style="">Ver en sitio web</a>
                         </p>
+                    </td>
                 </tr>
                 <tr style="background-color: white; ">
                     <td align="justify"
