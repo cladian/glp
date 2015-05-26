@@ -110,9 +110,7 @@ class NotificationController extends Controller
             $html = $model->text;
             $html .=" <hr>";
             $html .="<b>".Yii::$app->user->identity->username."</b>";
-            $html .=$modelForo->name;
-            $html .="<br>";
-            $html .="<a href=". $url. "> Ir a Foro </a>";
+            $html .="<a href=". $url. "> ".$modelForo->name."</a>";
 
             \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
             $this->sendMail($id, $html, $url, $title);
