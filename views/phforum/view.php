@@ -26,7 +26,7 @@ $this->title = $model->name;
     ]);
     ?>
     <?= Html::a(\Yii::$app->params['btnRegresarForo'], ['/foro', 'id' => $model->id], ['class' => 'btn btn-default pull-right']) ?>
-    <?= Html::a(\Yii::$app->params['btnEnvelope'], ['phforum/createimg', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+    <?= Html::a(\Yii::$app->params['btnEnvelope'], ['notification/send', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
 
     <!--    --><?/*= Html::a(\Yii::$app->params['btnEliminar'], ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
