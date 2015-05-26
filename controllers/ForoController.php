@@ -101,7 +101,7 @@ class ForoController extends Controller
             //> Fin Correo
             \Yii::$app->getSession()
                 ->setFlash('success',
-                    'Su aporte ha sido publicado éxitosamente'.$html);
+                    'Su aporte ha sido publicado éxitosamente');
 
 
             // Encerar modelo

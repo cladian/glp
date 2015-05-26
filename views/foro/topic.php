@@ -122,6 +122,75 @@ use app\models\Post;
         </div>
     </div>
 
+
+
+    <?php
+
+    if ((!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)) {
+        ?>
+        <div class="panel panel-yellow">
+            <div class="panel-heading">Nuevo Aporte</div>
+            <div class="panel-body">
+
+                <div class="post-form">
+                    <!--                    --><?php //$form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+                    <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
+
+                    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
+                    <div class="alert alert-success" role="alert">
+                        <p>Documentos</p>
+                        <?= $form->field($modelDocument, 'name')->textInput(['maxlength' => 250]) ?>
+
+                        <?=
+                        // Usage with ActiveForm and model
+                        $form->field($modelDocument, 'file')->widget(FileInput::classname(), [
+                            'pluginOptions' => [
+                                'showUpload' => false,
+                                'showPreview' => false,
+                                'showRemove' => true,
+                                'browseClass' => 'btn btn-primary btn-block',
+                                'browseLabel' => 'Explorar'
+                            ],
+                        ]);
+
+                        ?>
+
+                    </div>
+
+                    <div class="form-group">
+                        <?= Html::submitButton($modelPost->isNewRecord ? \Yii::$app->params['btnPublicar'] : \Yii::$app->params['btnGuardar'], ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+        </div>
+    <?php } elseif (Yii::$app->user->isGuest) { ?>
+
+        <div class="alert alert-warning" role="alert">
+            <center>Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas,
+                comentarios, etc.
+            </center>
+            <center>
+                <br>
+                <?= Html::a(\Yii::$app->params['btnIngreso'], ['/site/login'], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a(\Yii::$app->params['btnRegistro'], ['/site/signup'], ['class' => 'btn btn-success']) ?>
+            </center>
+        </div>
+
+    <?php
+    } else {
+        ?>
+        <div class="alert alert-danger" role="alert">
+            <center>Los aportes han sido inhabilitados
+            </center>
+
+        </div>
+    <?php
+    } ?>
+
+
     <div class="panel panel-green">
         <div class="panel-heading">
             <a href="#baja" class="pull-right">
@@ -225,71 +294,7 @@ use app\models\Post;
     </div>
 
     <!----><?php //if (!Yii::$app->user->isGuest) { ?>
-    <?php
 
-    if ((!Yii::$app->user->isGuest) && ($model->phforum->status == phforum::STATUS_ACTIVE) && ($model->status == Topic::STATUS_ACTIVE)) {
-        ?>
-        <div class="panel panel-yellow">
-            <div class="panel-heading">Nuevo Aporte</div>
-            <div class="panel-body">
-
-                <div class="post-form">
-                    <!--                    --><?php //$form = ActiveForm::begin(['enableAjaxValidation' => false]); ?>
-                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-                    <?= $form->field($modelPost, 'content')->textarea(['rows' => 6]) ?>
-
-                    <!--    --><? //= $form->field($model, 'status')->textInput() ?>
-                    <div class="alert alert-success" role="alert">
-                        <p>Documentos</p>
-                        <?= $form->field($modelDocument, 'name')->textInput(['maxlength' => 250]) ?>
-
-                        <?=
-                        // Usage with ActiveForm and model
-                        $form->field($modelDocument, 'file')->widget(FileInput::classname(), [
-                            'pluginOptions' => [
-                                'showUpload' => false,
-                                'showPreview' => false,
-                                'showRemove' => true,
-                                'browseClass' => 'btn btn-primary btn-block',
-                                'browseLabel' => 'Explorar'
-                            ],
-                        ]);
-
-                        ?>
-
-                    </div>
-
-                    <div class="form-group">
-                        <?= Html::submitButton($modelPost->isNewRecord ? \Yii::$app->params['btnPublicar'] : \Yii::$app->params['btnGuardar'], ['class' => $modelPost->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                    </div>
-
-                    <?php ActiveForm::end(); ?>
-                </div>
-            </div>
-        </div>
-    <?php } elseif (Yii::$app->user->isGuest) { ?>
-
-        <div class="alert alert-warning" role="alert">
-            <center>Inicia sesión y podrás debatir con otros usuarios e intercambiar opiniones, información, ideas,
-                comentarios, etc.
-            </center>
-            <center>
-                <br>
-                <?= Html::a(\Yii::$app->params['btnIngreso'], ['/site/login'], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a(\Yii::$app->params['btnRegistro'], ['/site/signup'], ['class' => 'btn btn-success']) ?>
-            </center>
-        </div>
-
-    <?php
-    } else {
-        ?>
-        <div class="alert alert-danger" role="alert">
-            <center>Los aportes han sido inhabilitados
-            </center>
-
-        </div>
-    <?php
-    } ?>
     </div>
 
     <?php if (!Yii::$app->user->isGuest) { ?>
