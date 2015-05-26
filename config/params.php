@@ -11,7 +11,7 @@ return [
     'webRoot'=>'http://www.asocam.net',
     'mail' => 'foro@asocam.org',
     'adminEmail' => 'team@cladian.com',
-    'contactEmail' => 'team@cladian.com',
+    'contactEmail' => 'foro@asocam.org',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
     'avatarFolder' => 'upload/avatar/',
     'foroDocs' => 'upload/fdocs/',
