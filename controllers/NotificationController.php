@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
+use app\models\User;
 
 /**
  * NotificationController implements the CRUD actions for Notification model.
@@ -28,7 +30,7 @@ class NotificationController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['index','view','create','update','delete','send'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
@@ -88,6 +90,31 @@ class NotificationController extends Controller
             ]);
         }
     }
+    /*
+     * Notificaciones para Foro
+     */
+    public function actionForo($id)
+    {
+        $model = new Notification();
+        $model->user_id= Yii::$app->user->identity->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
+
+            // Envio de notificación electrónica
+            $title = 'Notificación electrónica';
+            $html = $model->text;
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']).$id;
+
+            $this->sendMail($id, $html, $url, $title);
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     /**
      * Updates an existing Notification model.
@@ -135,5 +162,17 @@ class NotificationController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /*
+     * Función para notificación electrónica desde el foro
+     */
+    protected function sendMail($id, $message, $url, $title)
+    {
+        $content = $message;
+        foreach (\app\models\User::find()->where(['status'=>User::STATUS_ACTIVE])->all() as $post):
+            if ($post->notification == User::EMAIL_DAILY)
+                $post->sendEmail($content, $url, $title);
+
+        endforeach;
     }
 }

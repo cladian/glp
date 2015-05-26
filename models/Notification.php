@@ -53,7 +53,7 @@ class Notification extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text', 'user_id'], 'required'],
+            [['text'], 'required'],
             [['text'], 'string'],
             [['status', 'user_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
