@@ -158,6 +158,9 @@ if (!Yii::$app->user->isGuest) {
             'class' => 'navbar-inverse navbar-fixed-top nav-pills',
         ],
     ]);
+    ?>
+
+    <?php
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
