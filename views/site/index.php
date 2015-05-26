@@ -107,7 +107,8 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <!-- END: Landing Page Hero (with full-width background) -->
     <!-- end copia -->
     <!-- eventos -->
-    <div id="fb-root"> text</div>
+<div align="center"></div>
+    <div id="fb-root" align="center">aa</div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -116,6 +117,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
             js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+</div>
     <section style="padding-top: 20px;">
         <div class="panel panel-default">
             <div class="panel-body">

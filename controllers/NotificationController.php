@@ -105,7 +105,8 @@ class NotificationController extends Controller
 
             \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
             // Envio de notificación electrónica
-            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/'])."/".$id;
+            //$url = \Yii::$app->params['webRoot'] . Url::to(['foro/'])."/".$id;
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
             $title = 'Notificación electrónica';
             $html = $model->text;
             $html .=" <hr>";
