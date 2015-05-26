@@ -118,7 +118,7 @@ foreach ($model as $foro) {
                                     <?php if (($topic->status == Topic::STATUS_ACTIVE) || ($topic->status == Topic::STATUS_INACTIVE)) : ?>
                                         <tr>
                                             <td><kbd> <?= $topic->id ?></kbd></td>
-                                            <td> <?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-md pull-right']) ?>
+                                            <td> <?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes / Posts ', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-md pull-right']) ?>
                                                 <?= $topic->content; ?>
                                                 <span class="label label-success"><?= $topic->user->username; ?></span>
 
