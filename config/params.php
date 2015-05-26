@@ -8,6 +8,7 @@ return [
 
 /*    'webRoot'=>'http://localhost/glp/web',
     'webRoot'=>'http://cladian.net/glp/web',*/
+    'title'=>"[ASOCAM-AguayCambioClimático]",
     'webRoot'=>'http://www.asocam.net',
     'mail' => 'foro@asocam.org',
     'adminEmail' => 'team@cladian.com',
