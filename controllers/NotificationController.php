@@ -27,12 +27,12 @@ class NotificationController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'send'],
+                'only' => ['create', 'send','foro'],
                 //'only' => ['index', 'view', 'create','update','delete'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['create','send'],
+                        'actions' => ['create','send','foro'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],

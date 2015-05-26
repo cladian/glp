@@ -351,11 +351,11 @@ class User extends ActiveRecord implements IdentityInterface
 
 
     public function sendEmail($content, $url, $title){
-        $title= \Yii::$app->params['title'].$title;
+        $asunto= \Yii::$app->params['title']."-".$title;
         Yii::$app->mailer->compose('mail',['content'=>$content,'url'=>$url,'title'=>$title])
             ->setFrom(\Yii::$app->params['contactEmail'])
             ->setTo($this->email)
-            ->setSubject($title)
+            ->setSubject($asunto)
             ->send();
     }
 }
