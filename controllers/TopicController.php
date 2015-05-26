@@ -155,6 +155,7 @@ class TopicController extends Controller
     {
         $model = new Document();
         $model->scenario = 'file';
+        $modelTopic=$this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
             $doc = UploadedFile::getInstance($model, 'file');
@@ -173,13 +174,18 @@ class TopicController extends Controller
             \Yii::$app->getSession()->setFlash('success', 'El documento ha sido registrado éxitosamente');
             // Envio de notificación
             // http://localhost/glp/web/upload/docs/XyMVjkPLyyJGrxnTegyVynwFqEQvx2s21429652374.pdf
-            $title = 'Nuevo documento Agregado';
-            $html = '<p>Estimado participante el moderador del foro ha publicado un nuevo documento, puede revisar la información en el enlace a continuación</p>';
-            $html .= '<p> Documento: ' . $model->name . '</p>';
-            $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
-            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic','id'=>$id]);
-
-            $this->sendMailResources($id, $html, $url, $title);
+            if ($modelTopic->status == Topic::STATUS_ACTIVE){
+                $title = 'Nuevo documento Agregado';
+                $html = '<p>Estimado participante el moderador del foro ha publicado un nuevo documento, puede revisar la información en el enlace a continuación</p>';
+                $html .= '<p> Documento: ' . $model->name . '</p>';
+                $html .= '<kbd>' . Yii::$app->user->identity->username . '</kbd>';
+                $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic','id'=>$id]);
+                $this->sendMailResources($id, $html, $url, $title);
+            }
+            else
+            {
+                \Yii::$app->getSession()->setFlash('warning', 'La notificación electrónica no ha sido enviada ya que el Tema no tiene un estado ACTIVO');
+            }
 
 
             return $this->redirect(['view', 'id' => $id]);
@@ -293,8 +299,15 @@ class TopicController extends Controller
     {
 
         $content = $message;
+        // Versión 26 de Mayo 2015
+        foreach (\app\models\User::find()->where(['status'=>User::STATUS_ACTIVE])->all() as $post):
+            if ($post->notification == User::EMAIL_DAILY)
+                $post->sendEmail($content, $url, $title);
 
-        // Todos los temas
+        endforeach;
+
+
+   /*     // Todos los temas
         //foreach ($modelTopic as $topic):
         // Todos los usuarios del tema agrupados por usuarios
         foreach (\app\models\Post::find()->where(['topic_id' => $id])->addGroupBy(['user_id'])->all() as $post):
@@ -302,7 +315,7 @@ class TopicController extends Controller
                 $post->user->sendEmail($content, $url, $title);
 
         endforeach;
-        //endforeach;
+        //endforeach;*/
     }
 
 }
