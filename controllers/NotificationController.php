@@ -110,8 +110,9 @@ class NotificationController extends Controller
             $title = 'Notificación electrónica';
             $html = $model->text;
             $html .=" <hr>";
+
+            $html .="<a href=". $url. "> ".$modelForo->name."</a> <br/>";
             $html .="<b>".Yii::$app->user->identity->username."</b>";
-           // $html .="<a href=". $url. "> ".$modelForo->name."</a>";
 
 
             $this->sendMail($id, $html, $url, $title);
