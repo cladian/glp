@@ -107,16 +107,10 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <!-- END: Landing Page Hero (with full-width background) -->
     <!-- end copia -->
     <!-- eventos -->
-<div align="center"></div>
-    <div id="fb-root" align="center">aa</div>
-    <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+<div align="center" style="padding-top: 10px;">
+
+    <div class="fb-like" data-href="http://www.asocam.net" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    
 </div>
     <section style="padding-top: 20px;">
         <div class="panel panel-default">
