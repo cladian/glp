@@ -110,7 +110,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
 <div align="center" style="padding-top: 10px;">
 
     <div class="fb-like" data-href="http://www.asocam.net" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-    
+
 </div>
     <section style="padding-top: 20px;">
         <div class="panel panel-default">
