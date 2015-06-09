@@ -27,7 +27,7 @@ use app\models\Imagen;
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>Clasificación</th>
+<!--                    <th>Clasificación</th>-->
                     <th>Usuario</th>
                     <th>Fecha</th>
 
@@ -41,8 +41,9 @@ use app\models\Imagen;
             foreach ($modelForoDocs as $forodocs){ ?>
                 <tr>
                     <th scope="row"><?= $i++;?></th>
-                    <td><?= Html::a($forodocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $forodocs->document->file, ['target' => '_blank', '']); ?></td>
-                    <td>Foro</td>
+                    <td><span class="label label-primary">Foro</span>
+                        <?= Html::a($forodocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $forodocs->document->file, ['target' => '_blank', '']); ?></td>
+<!--                    <td>Foro</td>-->
                     <td>-</td>
                     <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
                 </tr>
@@ -56,9 +57,10 @@ use app\models\Imagen;
         foreach ($modelTopicDocs as $topicdocs){ ?>
             <tr>
                 <th scope="row"><?= $i++;?></th>
-                <td><?= Html::a($topicdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $topicdocs->document->file, ['target' => '_blank']); ?></td>
+                <td><span class="label label-info">Tema</span>
+                    <?= Html::a($topicdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $topicdocs->document->file, ['target' => '_blank']); ?></td>
 <!--                <td>--><?//= $topicdocs->document->name ?><!--</td>-->
-                <td>Tema</td>
+<!--                <td>Tema</td>-->
                 <td><?= ($topicdocs->topic->user->username);?></td>
                 <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
             </tr>
@@ -69,11 +71,15 @@ use app\models\Imagen;
         foreach ($modelPostDocs as $postdocs){ ?>
             <tr>
                 <th scope="row"><?= $i++;?></th>
-                <td><?= Html::a($postdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postdocs->document->file, ['target' => '_blank']); ?></td>
+                <td><span class="label label-success">Aporte</span>
+                    <?= Html::a($postdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postdocs->document->file, ['target' => '_blank']); ?>
+                </td>
+
                 <!--<td><?/*= $postdocs->document->name */?></td>-->
-                <td>Aporte</td>
+<!--                <td>Aportes</td>-->
                 <td><?= ($postdocs->post->user->username);?></td>
                 <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
+
             </tr>
         <?php
         }
