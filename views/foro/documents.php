@@ -46,10 +46,10 @@ use app\models\Imagen;
                         <p><?= Html::a($forodocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $forodocs->document->file, ['target' => '_blank', '']); ?></p>
                         <span class="label label-primary">Foro</span>
                         <span class="label label-default">-</span>
-                        <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></span>
+                        <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'long'); ?></span>
 <!--                    <td>Foro</td>-->
                    </td>
-                    
+
                 </tr>
         <?php
             }
@@ -66,7 +66,7 @@ use app\models\Imagen;
                     <p><?= Html::a($topicdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $topicdocs->document->file, ['target' => '_blank']); ?></p>
                     <span class="label label-info">Tema</span>
                     <span class="label label-default"><?= ($topicdocs->topic->user->username);?></span>
-                    <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></span>
+                    <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'long'); ?></span>
 <!--                <td>--><?//= $topicdocs->document->name ?><!--</td>-->
 <!--                <td>Tema</td>-->
                </td>
