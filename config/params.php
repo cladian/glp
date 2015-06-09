@@ -8,10 +8,11 @@ return [
 
 /*    'webRoot'=>'http://localhost/glp/web',
     'webRoot'=>'http://cladian.net/glp/web',*/
+    'title'=>"[Foro evento Multiredes COSUDE]",
     'webRoot'=>'http://www.asocam.net',
-    'mail' => 'team@cladian.com',
+    'mail' => 'foro@asocam.org',
     'adminEmail' => 'team@cladian.com',
-    'contactEmail' => 'team@cladian.com',
+    'contactEmail' => 'foro@asocam.org',
     'errorOwn' => 'El recurso al que quiere acceder pertenece a otro usuario',
     'avatarFolder' => 'upload/avatar/',
     'foroDocs' => 'upload/fdocs/',
@@ -85,6 +86,11 @@ return [
     'btnUpdateTopic' => '<span class="glyphicon glyphicon-pencil"></span>  Editar Tema',
     'btnRegresarForo' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Foro',
     'btnRegresarTopic' => '<span class="glyphicon glyphicon-chevron-right"></span> Ver Tema',
+
+
+    'btnEnvelope' => '<span class="glyphicon glyphicon-envelope"></span> Notificar',
+
+
 
 
 ];

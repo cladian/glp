@@ -30,7 +30,15 @@ $this->title = 'Panel de control de usuario';
 
 }*/
 ?>
+<div>
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4>Actualización 8 de Junio 2015</h4>
+        <?= Html::a('Actualizar', ['/user/email'], ['class'=>'btn btn-danger pull-right']) ?>
+        <p>Etimad@ participante, si ha recibido notificaciones automáticas de los foros electrónicos a los que no se ha inscrito, usted puede deshabilitar la opción <i>"Recibir notificaciones vía email : NO"</i></p>
+    </div>
 
+</div>
 <!-- EVENTOS-->
 <div class="col-xs-12 col-lg-4 col-md-4">
 

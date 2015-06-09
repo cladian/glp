@@ -103,61 +103,57 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                     acceder a la información, materiales y demás cursos disponibles para los participantes de los
                     eventos
                     regionales</p>
-
-
     </section>
     <!-- END: Landing Page Hero (with full-width background) -->
-
-
     <!-- end copia -->
-
-
     <!-- eventos -->
+<div align="center" style="padding-top: 10px;">
+
+    <div class="fb-like" data-href="http://www.asocam.net" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+</div>
     <section style="padding-top: 20px;">
-
         <div class="panel panel-default">
-
             <div class="panel-body">
-                <!-- panel-interno -->
+
+                <div class="panel-body">
+                    <!-- panel-interno -->
+                    <?php // Begin foreach
+                    foreach ($modelEvent as $event) {
+                        ?>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <?= Html::img(Yii::$app->urlManager->baseUrl . '/imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive pull-right']); ?>
+                                    <h4><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                                        &nbsp; <?= $event->city . ', ' . $event->country->name; ?> </h4>
+                                </div>
+                                <div class="panel-body">
+
+                                    <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i>
+                                    <strong
+                                        class="event-text">Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
+                                    <br>
+                                    <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i>
+                                    <strong
+                                        class="event-text">Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
+                                    <br><br>
+                                    <?= Html::img(Yii::$app->urlManager->baseUrl . '/' . $event->getImageUrl(), ['class' => 'img-d-retina']); ?>
 
 
-
-                <?php // Begin foreach
-                foreach ($modelEvent as $event) {
-                    ?>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-
-                                <?= Html::img(Yii::$app->urlManager->baseUrl . '/imgs/flags/' . strtolower($event->country->iso) . '.png', ['class' => 'img-responsive pull-right']); ?>
-
-                                <h4><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
-                                    &nbsp; <?= $event->city . ', ' . $event->country->name; ?> </h4>
-                            </div>
-                            <div class="panel-body">
-
-                                <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong
-                                    class="event-text">Inicia: </strong><?= Yii::$app->formatter->asDate($event->begin_at, 'long'); ?>
-                                <br>
-                                <i style="color:#999; padding-right:1px;" class="glyphicon glyphicon-time"></i> <strong
-                                    class="event-text">Finaliza: </strong><?= Yii::$app->formatter->asDate($event->end_at, 'long'); ?>
-                                <br><br>
-                                <?= Html::img(Yii::$app->urlManager->baseUrl . '/' . $event->getImageUrl(), ['class' => 'img-d-retina']); ?>
-
-
-                            </div>
-                            <div class="panel-footer">
-                                <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
+                                </div>
+                                <div class="panel-footer">
+                                    <?= Html::a('Más información', ['site/event/', 'id' => $event->id], ['class' => 'btn btn-success btn-lg btn-block']) ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php } // End ForEach ?>
+                    <?php } // End ForEach ?>
+                </div>
+                <div class="panel-footer">
+                    <h5 class="text-large">Próximos eventos</h5>
+                </div>
+                <!-- end panel interno -->
             </div>
-            <div class="panel-footer">
-                <h5 class="text-large">Próximos eventos</h5>
-            </div>
-            <!-- end panel interno -->
-        </div>
 
 
     </section>

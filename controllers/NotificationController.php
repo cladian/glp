@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Phforum;
 use Yii;
 use app\models\Notification;
 use app\models\NotificationSearch;
@@ -9,6 +10,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
+use app\models\User;
 
 /**
  * NotificationController implements the CRUD actions for Notification model.
@@ -24,11 +27,12 @@ class NotificationController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create','update','delete'],
+                'only' => ['create', 'send','foro'],
+                //'only' => ['index', 'view', 'create','update','delete'],
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','create','update','delete'],
+                        'actions' => ['create','send','foro'],
                         'allow' => true,
                         'roles' => ['asocam','sysadmin'],
                     ],
@@ -88,6 +92,39 @@ class NotificationController extends Controller
             ]);
         }
     }
+    /*
+     * Notificaciones para Foro
+     */
+    public function actionForo($id)
+    {
+        $model = new Notification();
+        $modelForo = Phforum::find()->where(['id'=>$id])->one();
+        $model->user_id= Yii::$app->user->identity->id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            \Yii::$app->getSession()->setFlash('success', 'La notificación ha sido enviada con éxito');
+            // Envio de notificación electrónica
+            //$url = \Yii::$app->params['webRoot'] . Url::to(['foro/'])."/".$id;
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/']);
+            $title = 'Notificación electrónica';
+            $html = $model->text;
+            $html .=" <hr>";
+
+            $html .="<a href=". $url. "> ".$modelForo->name."</a> <br/>";
+            $html .="<b>".Yii::$app->user->identity->username."</b>";
+
+
+            $this->sendMail($id, $html, $url, $title);
+
+            return $this->redirect(['/phforum/view', 'id' => $id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'id'=>$id
+            ]);
+        }
+    }
 
     /**
      * Updates an existing Notification model.
@@ -135,5 +172,17 @@ class NotificationController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    /*
+     * Función para notificación electrónica desde el foro
+     */
+    protected function sendMail($id, $message, $url, $title)
+    {
+        $content = $message;
+        foreach (\app\models\User::find()->where(['status'=>User::STATUS_ACTIVE])->all() as $post):
+            if ($post->notification == User::EMAIL_DAILY)
+                $post->sendEmail($content, $url, $title);
+
+        endforeach;
     }
 }

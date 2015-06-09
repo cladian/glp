@@ -13,14 +13,14 @@ use app\models\Imagen;
 <?php
 // Mensaje de error si no existen Foros activos
 if (!$model):?>
-    <div class="panel panel-primary">
-        <div class="panel-heading">No existen Foros Activos</div>
-        <div class="panel-body">
-            <p>Estimado participante, no existen foros activos en este momento.</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">No existen Foros Activos</div>
+    <div class="panel-body">
+       <p>Estimado participante, no existen foros activos en este momento.</p>
 
 
-        </div>
     </div>
+</div>
 <?php endif; ?>
 
 <?php
@@ -32,10 +32,10 @@ foreach ($model as $foro) {
         <div class="panel-heading"><?= $foro->name; ?>
             <?php
             // Boton visible para asocam
-            if (Yii::$app->user->can('asocam')) {
-                echo Html::a(\Yii::$app->params['btnUpdateForo'], ['/phforum/view', 'id' => $foro->id], ['class' => 'btn btn-xs btn-default pull-right']);
-            }
-            ?>
+                if (Yii::$app->user->can('asocam')) {
+                    echo Html::a(\Yii::$app->params['btnUpdateForo'], ['/phforum/view', 'id' => $foro->id], ['class' => 'btn btn-xs btn-default pull-right']);
+                }
+                ?>
 
         </div>
         <div class="panel-body">
@@ -51,21 +51,20 @@ foreach ($model as $foro) {
                             <blockquote> <?= $foro->event->name; ?></blockquote>
                         </div>
                         <?php
-                        $countdocs = 1;
+                        $countdocs=1;
                         if ($foro->getPhforumDocuments()->count() > 0): ?>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle btn-group-justified"
-                                        data-toggle="dropdown" aria-expanded="false">
-                                    Documentos disponibles <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <?php foreach ($foro->getPhforumDocuments()->all() as $documents): ?>
-                                        <li> <?= Html::a($countdocs++ . '.-' . $documents->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $documents->document->file, ['target' => '_blank']); ?></li>
-                                    <?php
-                                    endforeach;
-                                    ?>
-                                </ul>
-                            </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-group-justified" data-toggle="dropdown" aria-expanded="false">
+                                Documentos disponibles <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <?php foreach ($foro->getPhforumDocuments()->all() as $documents): ?>
+                                    <li > <?= Html::a($countdocs++.'.-'.$documents->document->name, Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroDocs'] . $documents->document->file,['target'=>'_blank'] ); ?></li>
+                                <?php
+                                endforeach;
+                                ?>
+                            </ul>
+                        </div>
 
                         <?php endif ?>
 
@@ -73,7 +72,7 @@ foreach ($model as $foro) {
                             <hr/>
                             <ul class="list-group">
                                 <?php foreach ($foro->getPhforumImagens()->all() as $imagenes): ?>
-                                    <li class="list-group-item"> <?= Html::img(Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
+                                    <li class="list-group-item"> <?= Html::img(Yii::$app->urlManager->baseUrl.'/'.\Yii::$app->params['foroImgs'] . $imagenes->imagen->file, ['class' => 'img-responsive']); ?></li>
                                 <?php
                                 endforeach;
                                 ?>
@@ -104,34 +103,30 @@ foreach ($model as $foro) {
 
                             </div>
                         </div>
-                        <div>
-
+                        <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Tema</th>
+                                    <th>por</th>
+                                    <th>fecha</th>
+                                    <th>ver</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach (\app\models\Topic::find()->where(['phforum_id' => $foro->id])->orderby('created_at desc')->all() as $topic): ?>
-                                    <?php if (($topic->status == Topic::STATUS_ACTIVE) || ($topic->status == Topic::STATUS_INACTIVE)) : ?>
-                                        <tr>
-                                            <td><kbd> <?= $topic->id ?></kbd></td>
-                                            <td> <?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes / Posts ', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-md pull-right']) ?>
-                                                <?= $topic->content; ?>
-                                                <span class="label label-success"><?= $topic->user->username; ?></span>
-
-                                                <small><i
-                                                        class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDatetime($topic->created_at, 'long'); ?>
-
-                                                </small>
-                                                <?= Yii::$app->formatter->asDate($topic->created_at, 'short'); ?>
-                                            </td>
-                                        </tr>
-                                    <?php
+                                    <?php if (($topic->status ==Topic::STATUS_ACTIVE)||($topic->status ==Topic::STATUS_INACTIVE)) :?>
+                                    <tr>
+                                        <td><?= $topic->id; ?></td>
+                                        <td><?= $topic->content; ?></td>
+                                        <td><?= $topic->user->username; ?></td>
+                                        <td><?= Yii::$app->formatter->asDate($topic->created_at, 'medium'); ?></td>
+                                        <td><?= Html::a('<span class="badge">' . $topic->getPosts()->count() . '</span> Aportes', ['foro/topic', 'id' => $topic->id], ['class' => 'btn btn-primary btn-xs']) ?></td>
+                                    </tr>
+                                <?php
                                     endif;
-                                endforeach; ?>
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
