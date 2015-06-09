@@ -1,11 +1,8 @@
 <?php
 use yii\helpers\Html;
-
 use app\models\PhforumDocument;
 use app\models\PhforumImagens;
 use app\models\Topic;
-
-
 use app\models\Document;
 use app\models\Imagen;
 
@@ -65,6 +62,13 @@ foreach ($model as $foro) {
                                     endforeach;
                                     ?>
                                 </ul>
+                            </div>
+                            <div><br/></div>
+                            <div>
+                                <!--<button type="button" class="btn btn-primary  btn-group-left">
+                                    Todos los docmuentos <span class=""></span>
+                                </button>-->
+                                <?= Html::a('<span class="badge">'.'</span> Todos los documentos ', ['foro/documents', 'id' => $foro->id], ['class' => 'btn btn-primary  ']) ?>
                             </div>
 
                         <?php endif ?>
