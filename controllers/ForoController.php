@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\PhforumDocument;
+use app\models\TopicDocument;
 use Yii;
 use app\models\Phforum;
 use app\models\User;
@@ -94,8 +96,8 @@ class ForoController extends Controller
             $html = '<h4>Contenido </h4>';
             $html .= '<blockquote>' . $modelPost->content . '</blockquote>';
             $html .= '<kbd>' . $modelPost->user->username . '</kbd>';
-            $html .= '<b>' .substr( $modelPost->topic->content,0,100).'...</b>';
-            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic', 'id' => $id, '#' => $modelPost->id]);
+            $html .= '<b>' .htmlspecialchars_decode(substr( $modelPost->topic->content,0,200)).'...</b>';
+            $url = \Yii::$app->params['webRoot'] . Url::to(['foro/topic', 'id' => $id]);
 
             $this->sendMail($id, $html, $url);
             //> Fin Correo
@@ -233,7 +235,10 @@ class ForoController extends Controller
     */
     protected function sendMail($topic_id, $message, $url)
     {
-        $title = "Nuevo mensaje Foro:";
+        $modelTopic = Topic::find()->where(['id'=>$topic_id])->one();
+
+
+        $title = "Nuevo mensaje";
         $content = $message;
 
 
@@ -313,6 +318,51 @@ class ForoController extends Controller
             }
         }
         unset($arr);
+
+
+    }
+    /*
+     * Martes 9 de Junio
+     * Función para despliegue de documentos relacionados
+     */
+    public function actionDocuments($id){
+        // Carga de foro enviado
+
+        if (($model = Phforum::findOne($id)) !== null) {
+            // Listado de todos los documentos del foro
+            $modelForoDocs=PhforumDocument::find()->where(['phforum_id'=>$id])->all();
+
+            // Listado de todos los Topicos
+            $modelTopic=Topic::find()->where(['phforum_id'=>$id])->all();
+
+            // Barrido de todos los ID's del modelo
+            $arr = array();
+            foreach ($modelTopic as $topic){
+                array_push($arr, $topic->id);
+            }
+            $modelTopicDocs=TopicDocument::find()->where(['topic_id'=>$arr])->all();
+
+
+            $modelPost=Post::find()->where(['topic_id'=>$arr])->all();
+            $arrPost = array();
+            foreach ($modelPost as $post){
+                array_push($arrPost, $post->id);
+            }
+            $modelPostDocs=PostDocument::find()->where(['post_id'=>$arrPost])->all();
+
+            unset($arr);
+            unset($arrPost);
+            return $this->render('documents',
+                [
+                    'modelForoDocs'=>$modelForoDocs,
+                    'modelTopicDocs'=>$modelTopicDocs,
+                    'modelPostDocs'=>$modelPostDocs
+                ]
+            );
+
+        } else {
+            throw new NotFoundHttpException('La página solicitada no éxiste');
+        }
 
 
     }
