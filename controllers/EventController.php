@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Eventanswer;
+use app\models\Generopais;
 use Yii;
 use app\models\Event;
 use app\models\EventSearch;
@@ -32,7 +34,7 @@ class EventController extends Controller
                 // 'only' => ['login', 'logout', 'signup','event','admuser'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources', 'file','statistics'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'resources', 'file', 'statistics'],
                         'allow' => true,
                         'roles' => ['asocam', 'sysadmin'],
                     ],
@@ -57,9 +59,38 @@ class EventController extends Controller
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $id);
 
+        $arr = array();
+        // $arr['pais']=['EC', 'CO', 'IM', 'BE', 'PL'];
+        /* $arr['H']=[1, 2, 4, 6, 2];
+         $arr['M']=[2, 3, 5, 7, 1];*/
+
+        $masculino = 0;
+        $femenino = 0;
+        // todos los paises
+        foreach (Generopais::find()->where(['event_id' => $id])->groupBy('iso')->all() as $pais) {
+            $arr['pais'][] = $pais->iso;
+            $genderM = 0;
+            $genderF = 0;
+
+            $m = Generopais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "M"])->one();
+            $f = Generopais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "F"])->one();
+
+            if ($m) $genderM = intval($m->cgender);
+            if ($f) $genderF = intval($f->cgender);
+
+            $arr['M'][] = $genderM;
+            $arr['F'][] = $genderF;
+            $masculino += $genderM;
+            $femenino += $genderF;
+        }
+
         return $this->render('statistics', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'arr' => $arr,
+            'masculino' => $masculino,
+            'femenino' => $femenino,
+            'id'=>$id
         ]);
     }
 
@@ -87,7 +118,7 @@ class EventController extends Controller
 
         // Edison despues de actualización
         //$dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $model->eventtype_id);
-        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams,$id);
+        $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $id);
 //        print_r($model);
         return $this->render('view', [
             'model' => $model,
@@ -106,7 +137,7 @@ class EventController extends Controller
     {
         $model = new Event();
         // Por defecto el status estará en 2= INACTIVO;
-        $model->status=self::STATUS_INACTIVE;;
+        $model->status = self::STATUS_INACTIVE;;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -124,13 +155,12 @@ class EventController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
 
-            
             $avatar = UploadedFile::getInstance($model, 'photo');
             // $photoName = $model->id . '.' . $avatar->extension;
-            $photoName = Yii::$app->security->generateRandomString().time() . '.' . $avatar->extension;
+            $photoName = Yii::$app->security->generateRandomString() . time() . '.' . $avatar->extension;
             $avatar->saveAs(\Yii::$app->params['eventFolder'] . $photoName);
             $model->photo = $photoName;
-   
+
             $model->save();
 
 
@@ -148,11 +178,11 @@ class EventController extends Controller
         $model->scenario = 'documento';
 
         if ($model->load(Yii::$app->request->post())) {
-            
+
 
             $file = UploadedFile::getInstance($model, 'file');
             // $fileName = $model->id . '.' . $file->extension;
-            $fileName = Yii::$app->security->generateRandomString().time() . '.' . $file->extension;
+            $fileName = Yii::$app->security->generateRandomString() . time() . '.' . $file->extension;
             $file->saveAs(\Yii::$app->params['eventDocs'] . $fileName);
             $model->file = $fileName;
             $model->save();
@@ -176,14 +206,14 @@ class EventController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) ) {
+        if ($model->load(Yii::$app->request->post())) {
 
-            if (($model->getEventquestions()->andWhere(['status'=>self::STATUS_ACTIVE])->count()==0)&&($model->status==self::STATUS_ACTIVE)){
+            if (($model->getEventquestions()->andWhere(['status' => self::STATUS_ACTIVE])->count() == 0) && ($model->status == self::STATUS_ACTIVE)) {
                 // WARNINGS
                 \Yii::$app->getSession()
                     ->setFlash('danger',
-                    'El evento no puede cambiar a estado activo hasta que agregue al menos una pregunta al evento');
-                $model->status=self::STATUS_INACTIVE;
+                        'El evento no puede cambiar a estado activo hasta que agregue al menos una pregunta al evento');
+                $model->status = self::STATUS_INACTIVE;
             }
 //             print_r($model);(exit);
             $model->save();
@@ -223,6 +253,7 @@ class EventController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 
 }
 

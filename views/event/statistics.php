@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use miloschuman\highcharts\Highmaps;
 use yii\web\JsExpression;
 use app\models\Event;
+use miloschuman\highcharts\Highcharts;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\InscriptionSearch */
@@ -19,7 +20,16 @@ $this->title = 'Inscripciones';
 
 <div class="breadcrumb">
 
-    <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
+    <?= Html::a(\Yii::$app->params['btnRegresar'], ['/site/index'], ['class' => 'btn btn-default']) ?>
+    <?php
+    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Inscripciones (Excel)', ['/inscription/excelevent', 'id' => $id], [
+        'class' => 'btn btn-success',
+        'target' => '_blank',
+        'data-toggle' => 'tooltip',
+
+
+    ]);
+    ?>
 
 
 
@@ -32,23 +42,21 @@ $this->title = 'Inscripciones';
 
         echo $this->render('/help/inscription-index');
         Modal::end();
-        */?>
+        */
+    ?>
 </div>
-
-
-
-
 <div class="tabs-x align-center tabs-above tab-bordered">
 <ul class="nav nav-tabs">
     <li class="active"><a href="#one2" data-toggle="tab">Inscripciones</a></li>
-    <li><a href="#two2" data-toggle="tab">Graficas</a></li>
-<!--    <li><a href="#three2" data-toggle="tab">Documentos</a></li>-->
+    <li><a href="#dos" data-toggle="tab">Pais</a></li>
+    <li><a href="#tres" data-toggle="tab">Género</a></li>
     <!--    <li><a href="#four2" data-toggle="tab">Videos</a></li>-->
-<!--    <li><a href="#five2" data-toggle="tab">Imagenes</a></li>-->
+    <!--    <li><a href="#five2" data-toggle="tab">Imagenes</a></li>-->
 </ul>
 <div class="tab-content">
 <div class="tab-pane active" id="one2">
     <br/>
+
     <div class="inscription-index">
         <?php
 
@@ -61,8 +69,8 @@ $this->title = 'Inscripciones';
             [   //Columna para expander detalles
                 'class' => 'kartik\grid\ExpandRowColumn',
                 'value' => function ($model, $key, $index, $column) {
-                        return \kartik\grid\GridView::ROW_COLLAPSED;
-                    },
+                    return \kartik\grid\GridView::ROW_COLLAPSED;
+                },
                 'detailUrl' => Url::to(['inscription/detail']),
                 // 'detailRowCssClass' => \kartik\grid\GridView::TYPE_DEFAULT,
                 'pageSummary' => false,
@@ -75,8 +83,8 @@ $this->title = 'Inscripciones';
                 'attribute' => 'event_id',
                 'vAlign' => 'middle',
                 'value' => function ($model) {
-                        return $model->event->name;
-                    },
+                    return $model->event->name;
+                },
                 'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
                 'filter' => ArrayHelper::map(Event::find()->orderBy('name')->asArray()->all(), 'id', 'name'),
                 'filterInputOptions' => ['placeholder' => 'Todos'],
@@ -88,8 +96,8 @@ $this->title = 'Inscripciones';
             [
                 'attribute' => 'user_id',
                 'value' => function ($data) {
-                        return $data->user->username;
-                    }
+                    return $data->user->username;
+                }
             ],
 
             [
@@ -97,8 +105,8 @@ $this->title = 'Inscripciones';
 //            'headerOptions' => ['style'=>'align:center'],
 //            'vAlign' => 'middle',
                 'value' => function ($data) {
-                        return $data->complete."%";
-                    }
+                    return $data->complete . "%";
+                }
             ],
 
             [
@@ -108,10 +116,10 @@ $this->title = 'Inscripciones';
                 'attribute' => 'status',
                 'vAlign' => 'middle',
                 'value' => function ($model) {
-                        if ($rel = $model->getStatus($model->status)) {
-                            return $rel;
-                        }
-                    },
+                    if ($rel = $model->getStatus($model->status)) {
+                        return $rel;
+                    }
+                },
                 'filterType' => \kartik\grid\GridView::FILTER_SELECT2,
                 'filter' => [1 => 'ACTIVO', 2 => 'INACTIVO', 0 => 'ELIMINADO'],
                 'filterInputOptions' => ['placeholder' => 'Todos'],
@@ -210,17 +218,13 @@ $this->title = 'Inscripciones';
     </div>
 </div>
 
-<br/>
-<div class="tab-pane" id="two2">
-    <div class="alert alert-default">
-        <div class="panel-heading">
-            <i class="fa fa-comments fa-fw"></i>
-            Mapa
-        </div>
-    <div class="panel-body" style="widht: 200%;">
+
+
+<div class="tab-pane  panel panel-default" id="dos">
+    <div class="panel-body">
         <?php
 
-        $sql="SELECT  LOWER(c.iso) as 'hc-key', count(i.id)as 'value'
+        $sql = "SELECT  LOWER(c.iso) as 'hc-key', count(i.id)as 'value'
 FROM inscription as i, user as u, profile as p, country as c
 where i.status=1 and u.id=i.user_id and p.user_id=u.id and p.country_id=c.id
 group by u.id";
@@ -230,7 +234,7 @@ group by u.id";
             'depends' => 'miloschuman\highcharts\HighchartsAsset'
         ]);
         $db = Yii::$app->db;
-        $dbdata= $db->createCommand($sql)->queryAll();
+        $dbdata = $db->createCommand($sql)->queryAll();
 
         echo Highmaps::widget([
             'options' => [
@@ -249,7 +253,7 @@ group by u.id";
                 ],
 
                 'series' => [
-                    [    'enabled' => true,
+                    ['enabled' => true,
                         'data' => $dbdata,
                         'mapData' => new JsExpression('Highcharts.maps["custom/world"]'),
                         'joinBy' => 'hc-key',
@@ -262,20 +266,88 @@ group by u.id";
                         'dataLabels' => [
                             'enabled' => false,
                             'format' => '{point.name}',
-                            'joinBy'=> ['iso-a2', 'code'],
+                            'joinBy' => ['iso-a2', 'code'],
                         ]
                     ]
                 ]
             ]
         ]);
         ?>
-    </div>
-    </div>
+        </div>
     </div>
 
+<div class="tab-pane  panel panel-default" id="tres">
+    <div class="panel-body">
+        <?php
+        echo Highcharts::widget([
+            'scripts' => [
+                'modules/exporting',
+                'themes/grid-light',
+            ],
+            'options' => [
+                'title' => [
+                    'text' => 'Por Género',
+                ],
+                // PAISES
+                'xAxis' => [
+                    'categories' => $arr['pais'],
+                ],
+                'labels' => [
+                    'items' => [
+                        [
+                            'html' => 'Género / Paises',
+                            'style' => [
+                                'left' => '50px',
+                                'top' => '18px',
+                                'color' => new JsExpression('(Highcharts.theme && Highcharts.theme.textColor) || "black"'),
+                            ],
+                        ],
+                    ],
+                ],
+                'series' => [
+                    [
+                        'type' => 'column',
+                        'name' => 'Masculino',
+                        'data' => $arr['M'],
+                    ],
+                    [
+                        'type' => 'column',
+                        'data' => $arr['F'],
+                        'name' => 'Femenino',
 
+                    ],
+
+
+                    [
+                        'type' => 'pie',
+                        'name' => 'Total',
+                        'data' => [
+                            [
+                                'name' => 'Masculino',
+                                'y' => $masculino,
+                                'color' => new JsExpression('Highcharts.getOptions().colors[0]'), // Jane's color
+                            ],
+                            [
+                                'name' => 'Femenino',
+                                'y' => $femenino,
+                                'color' => new JsExpression('Highcharts.getOptions().colors[1]'), // John's color
+                            ],
+
+                        ],
+                        'center' => [100, 80],
+                        'size' => 100,
+                        'showInLegend' => false,
+                        'dataLabels' => [
+                            'enabled' => true,
+                        ],
+                    ],
+                ],
+            ]
+        ]);
+        ?>
+    </div>
 </div>
-
+</div>
 
 
 <!--<div class="tab-pane" id="four2">-->

@@ -67,7 +67,7 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'lastname',  'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'required'],
+            [['name', 'lastname',  'institutiontype_id', 'responsibilitytype_id', 'country_id','gender'], 'required'],
             [['gender'], 'string'],
             [['complete', 'status', 'user_id', 'institutiontype_id', 'responsibilitytype_id', 'country_id'], 'integer'],
             [['created_at', 'updated_at','photo'], 'safe'],
