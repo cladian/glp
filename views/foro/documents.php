@@ -27,9 +27,9 @@ use app\models\Imagen;
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>Clasificación</th>
-                    <th>Usuario</th>
-                    <th>Fecha</th>
+<!--                    <th>Clasificación</th>-->
+<!--                    <th>Fecha</th>-->
+<!--                    <th>Usuario</th>-->
 
                 </tr>
                 </thead>
@@ -41,10 +41,15 @@ use app\models\Imagen;
             foreach ($modelForoDocs as $forodocs){ ?>
                 <tr>
                     <th scope="row"><?= $i++;?></th>
-                    <td><?= Html::a($forodocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $forodocs->document->file, ['target' => '_blank', '']); ?></td>
-                    <td>Foro</td>
-                    <td>-</td>
-                    <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
+                    <td>
+
+                        <p><?= Html::a($forodocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $forodocs->document->file, ['target' => '_blank', '']); ?></p>
+                        <span class="label label-primary">Foro</span>
+                        <span class="label label-default">-</span>
+                        <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'long'); ?></span>
+<!--                    <td>Foro</td>-->
+                   </td>
+
                 </tr>
         <?php
             }
@@ -56,11 +61,15 @@ use app\models\Imagen;
         foreach ($modelTopicDocs as $topicdocs){ ?>
             <tr>
                 <th scope="row"><?= $i++;?></th>
-                <td><?= Html::a($topicdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $topicdocs->document->file, ['target' => '_blank']); ?></td>
+                <td>
+
+                    <p><?= Html::a($topicdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $topicdocs->document->file, ['target' => '_blank']); ?></p>
+                    <span class="label label-info">Tema</span>
+                    <span class="label label-default"><?= ($topicdocs->topic->user->username);?></span>
+                    <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'long'); ?></span>
 <!--                <td>--><?//= $topicdocs->document->name ?><!--</td>-->
-                <td>Tema</td>
-                <td><?= ($topicdocs->topic->user->username);?></td>
-                <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
+<!--                <td>Tema</td>-->
+               </td>
             </tr>
         <?php
             }
@@ -69,11 +78,17 @@ use app\models\Imagen;
         foreach ($modelPostDocs as $postdocs){ ?>
             <tr>
                 <th scope="row"><?= $i++;?></th>
-                <td><?= Html::a($postdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postdocs->document->file, ['target' => '_blank']); ?></td>
+                <td>
+                    <p><?= Html::a($postdocs->document->name, Yii::$app->urlManager->baseUrl . '/' . \Yii::$app->params['foroDocs'] . $postdocs->document->file, ['target' => '_blank']); ?></p>
+                    <span class="label label-success">Aporte</span>
+                    <span class="label label-default"><?= ($postdocs->post->user->username);?></span>
+                    <span class="label label-default"><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'long'); ?></span>
+                </td>
+
                 <!--<td><?/*= $postdocs->document->name */?></td>-->
-                <td>Aporte</td>
-                <td><?= ($postdocs->post->user->username);?></td>
-                <td><?= Yii::$app->formatter->asDatetime($forodocs->created_at, 'short'); ?></td>
+<!--                <td>Aportes</td>-->
+
+
             </tr>
         <?php
         }
