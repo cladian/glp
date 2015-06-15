@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\PhforumDocument;
 use app\models\TopicDocument;
+use app\models\Userphforum;
 use Yii;
 use app\models\Phforum;
 use app\models\User;
@@ -150,6 +151,19 @@ class ForoController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    function actionInscription($id)
+    {
+        $model = new Userphforum();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('_forminscription', [
                 'model' => $model,
             ]);
         }
@@ -302,9 +316,7 @@ class ForoController extends Controller
                         // Condición única para el envio de información del mensaje
                         $enviarMail = true;
                     }
-
                 }
-
             }
             $mensaje .= '<hr>';
             echo $mensaje;

@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use app\models\PhforumDocument;
 use app\models\PhforumImagens;
 use app\models\Topic;
+use app\models\Userphforum;
 use app\models\Document;
 use app\models\Imagen;
 
@@ -69,7 +70,18 @@ foreach ($model as $foro) {
                                     Todos los docmuentos <span class=""></span>
                                 </button>-->
                                 <?= Html::a('<span class="badge">'.'</span> Todos los documentos ', ['foro/documents', 'id' => $foro->id], ['class' => 'btn btn-primary  ']) ?>
+
                             </div>
+                            <br/>
+
+                            <!-- Botón de inscripción-->
+                            <div>
+
+                                <?= Html::a('<span class="badge">'.'</span> Inscríbete ', ['inscription', 'id' => $foro->id], ['class' => 'btn btn-success']) ?>
+
+                            </div>
+                            <!-- Botón de inscripción-->
+
 
                         <?php endif ?>
 

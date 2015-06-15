@@ -122,8 +122,6 @@ class EventController extends Controller
         $model->scenario = 'imagen';
 
         if ($model->load(Yii::$app->request->post())) {
-
-
             
             $avatar = UploadedFile::getInstance($model, 'photo');
             // $photoName = $model->id . '.' . $avatar->extension;
