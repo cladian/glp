@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\models\Eventanswer;
-use app\models\Generopais;
+use app\models\Vgeneropais;
+use app\models\Vresprofile;
+use app\models\Vinsttprofile;
 use Yii;
 use app\models\Event;
 use app\models\EventSearch;
@@ -58,36 +60,56 @@ class EventController extends Controller
     {
         $searchModel = new InscriptionSearch();
         $dataProvider = $searchModel->searchByEvent(Yii::$app->request->queryParams, $id);
+        /**
+         * GENERO PAISES
+         */
 
         $arr = array();
-        // $arr['pais']=['EC', 'CO', 'IM', 'BE', 'PL'];
-        /* $arr['H']=[1, 2, 4, 6, 2];
-         $arr['M']=[2, 3, 5, 7, 1];*/
-
         $masculino = 0;
         $femenino = 0;
         // todos los paises
-        foreach (Generopais::find()->where(['event_id' => $id])->groupBy('iso')->all() as $pais) {
+        foreach (Vgeneropais::find()->where(['event_id' => $id])->groupBy('iso')->all() as $pais) {
             $arr['pais'][] = $pais->iso;
             $genderM = 0;
             $genderF = 0;
 
-            $m = Generopais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "M"])->one();
-            $f = Generopais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "F"])->one();
+            $m = Vgeneropais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "M"])->one();
+            $f = Vgeneropais::find()->where(['event_id' => $id, 'iso' => $pais->iso, 'gender' => "F"])->one();
 
             if ($m) $genderM = intval($m->cgender);
             if ($f) $genderF = intval($f->cgender);
 
             $arr['M'][] = $genderM;
             $arr['F'][] = $genderF;
+
             $masculino += $genderM;
             $femenino += $genderF;
         }
+        // FIN Genero Paises
+
+        /** Tipo de responsabilidades */
+
+        $arrResp=array();
+        foreach(Vresprofile::find()->where(['event_id'=>$id])->all() as $resptype){
+            $arrResp["header"][]=$resptype->name;
+            $arrResp["data"][]=$resptype->cresp;
+
+        }
+
+        $arrInstitucion=array();
+        foreach(Vinsttprofile::find()->where(['event_id'=>$id])->all() as $insttype){
+            $arrInstitucion["header"][]=$insttype->name;
+            $arrInstitucion["data"][]=$insttype->cresp;
+
+        }
+
 
         return $this->render('statistics', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'arr' => $arr,
+            'arrResp' => $arrResp,
+            'arrInstitucion' => $arrInstitucion,
             'masculino' => $masculino,
             'femenino' => $femenino,
             'id'=>$id

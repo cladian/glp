@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "generopais".
+ * This is the model class for table "vgeneropais".
  *
  * @property string $gender
  * @property integer $cgender
@@ -13,14 +13,14 @@ use Yii;
  * @property integer $ciso
  * @property integer $event_id
  */
-class Generopais extends \yii\db\ActiveRecord
+class Vgeneropais extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'generopais';
+        return 'vgeneropais';
     }
 
     /**

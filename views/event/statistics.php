@@ -48,10 +48,10 @@ $this->title = 'Inscripciones';
 <div class="tabs-x align-center tabs-above tab-bordered">
 <ul class="nav nav-tabs">
     <li class="active"><a href="#one2" data-toggle="tab">Inscripciones</a></li>
-    <li><a href="#dos" data-toggle="tab">Pais</a></li>
+   <!-- <li><a href="#dos" data-toggle="tab">Pais</a></li>-->
     <li><a href="#tres" data-toggle="tab">Género</a></li>
-    <!--    <li><a href="#four2" data-toggle="tab">Videos</a></li>-->
-    <!--    <li><a href="#five2" data-toggle="tab">Imagenes</a></li>-->
+  <li><a href="#cuatro" data-toggle="tab">Tipo de Responsabilidad</a></li>
+   <li><a href="#cinco" data-toggle="tab">Tipo de Institución</a></li>
 </ul>
 <div class="tab-content">
 <div class="tab-pane active" id="one2">
@@ -220,10 +220,10 @@ $this->title = 'Inscripciones';
 
 
 
-<div class="tab-pane  panel panel-default" id="dos">
+<!--<div class="tab-pane  panel panel-default" id="dos">
     <div class="panel-body">
         <?php
-
+/*
         $sql = "SELECT  LOWER(c.iso) as 'hc-key', count(i.id)as 'value'
 FROM inscription as i, user as u, profile as p, country as c
 where i.status=1 and u.id=i.user_id and p.user_id=u.id and p.country_id=c.id
@@ -272,9 +272,9 @@ group by u.id";
                 ]
             ]
         ]);
-        ?>
+        */?>
         </div>
-    </div>
+    </div>-->
 
 <div class="tab-pane  panel panel-default" id="tres">
     <div class="panel-body">
@@ -347,6 +347,72 @@ group by u.id";
         ?>
     </div>
 </div>
+
+<div class="tab-pane  panel panel-default" id="cuatro">
+    <div class="panel-body">
+        <?php
+        echo Highcharts::widget([
+            'scripts' => [
+                'modules/exporting',
+                'themes/grid-light',
+            ],
+            'options' => [
+                'title' => [
+                    'text' => 'Por tipo de Responsabilidad (Perfil del Participante)',
+                ],
+                // PAISES
+                'xAxis' => [
+                    'categories' => $arrResp['header'],
+                ],
+                'series' => [
+                    [
+                        'type' => 'column',
+                        'name' => 'Número de participantes',
+                        'data' => $arrResp['data'],
+                    ],
+
+                ],
+            ]
+        ]);
+        ?>
+    </div>
+</div>
+
+
+<div class="tab-pane  panel panel-default" id="cinco">
+    <div class="panel-body">
+        <?php
+        echo Highcharts::widget([
+            'scripts' => [
+                'modules/exporting',
+                'themes/grid-light',
+            ],
+            'options' => [
+                'title' => [
+                    'text' => 'Por tipo de Institución (Perfil del Participante)',
+                ],
+                // PAISES
+                'xAxis' => [
+                    'categories' => $arrInstitucion['header'],
+                ],
+                'series' => [
+                    [
+                        'type' => 'column',
+                        'name' => 'Número de participantes',
+                        'data' => $arrInstitucion['data'],
+                    ],
+
+                ],
+            ]
+        ]);
+        ?>
+    </div>
+</div>
+
+
+
+
+
 </div>
 
 
