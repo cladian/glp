@@ -79,17 +79,16 @@ foreach ($model as $foro) {
                         <!-- Botón de inscripción-->
 
                         <?php
-                       if ($foro->validarInscription (Yii::$app->user->identity->id, $foro->id)){
-                      // if ($foro->getUsers()){
+                        if (!(Yii::$app->user->isGuest))
+                            if(($foro->validarInscription (Yii::$app->user->identity->id, $foro->id)) ){
                            ?>
-                        <div>
+                            <div>
+                                <?= Html::a('<span class="badge">'.'</span> Inscríbete ', ['inscription', 'id' => $foro->id], ['class' => 'btn btn-success']) ?>
+                            </div>
+                            <?php
+                           }
 
-                            <?= Html::a('<span class="badge">'.'</span> Inscríbete ', ['inscription', 'id' => $foro->id], ['class' => 'btn btn-success']) ?>
-
-                        </div>
-                        <?php
-                       }
-                        ?>
+                            ?>
 
 
                         <!-- Botón de inscripción-->

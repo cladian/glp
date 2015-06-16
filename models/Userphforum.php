@@ -67,7 +67,7 @@ class Userphforum extends \yii\db\ActiveRecord
         return [
             'phforum_id' => 'Foro ID',
             'user_id' => 'Usuario ID',
-            'observation' => 'Observaciones',
+            'observation' => 'Observaciones (opcional)',
             'created_at' => 'Fecha de Creación',
             'updated_at' => 'Fecha de Actualización',
             'status' => 'Estado',

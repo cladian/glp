@@ -31,7 +31,7 @@ use app\models\Userphforum;
 <div class="userphforum-form">
 
 <!--    --><?//= $form->field($model, 'phforum_id')->textInput() ?>
-<!---->
+
 <!--    --><?//= $form->field($model, 'user_id')->textInput() ?>
 
     <?= $form->field($model, 'observation')->textarea(['rows' => 6]) ?>
@@ -42,7 +42,7 @@ use app\models\Userphforum;
 
    <!-- --><?/*= $form->field($model, 'status')->textInput() */?>
 
-    <?= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
+<!--    --><?//= $form->field($model, 'status')->dropDownList($model->getStatusList()) ?>
 
     <div class="form-group">
 
