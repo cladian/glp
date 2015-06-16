@@ -173,11 +173,34 @@ class Phforum extends \yii\db\ActiveRecord
         return $this->hasMany(Video::className(), ['id' => 'video_id'])->viaTable('phforum_video', ['phforum_id' => 'id']);
     }
 
+    public function getUserphforums()
+    {
+        return $this->hasMany(Userphforum::className(), ['phforum_id' => 'id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(), ['id' => 'user_id'])->viaTable('userphforum', ['phforum_id' => 'id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getTopics()
     {
         return $this->hasMany(Topic::className(), ['phforum_id' => 'id']);
+    }
+    /*
+     * Retorna True para que el boton de Inscribete aparezca en foro/index
+     * Mauricio 16Junio 2015
+     */
+    public function validarInscription ($user_id, $id){
+        if ( Userphforum::find()->where(['phforum_id' =>$id,'user_id'=>$user_id])->one())
+            return false;
+        return true;
+
+
     }
 }

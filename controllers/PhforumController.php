@@ -319,4 +319,6 @@ class PhforumController extends Controller
     protected function actionNotify($id){
 
     }
+
+
 }

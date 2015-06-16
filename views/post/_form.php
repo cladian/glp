@@ -10,8 +10,7 @@ use yii\widgets\ActiveForm;
 <?php $form = ActiveForm::begin(); ?>
 <div class="class breadcrumb">
 
-        <?= Html::a(\Yii::$app->params['btnCancelar'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
-
+    <?= Html::a(\Yii::$app->params['btnCancelar'], ['/topic/view', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     <?= Html::submitButton($model->isNewRecord ? \Yii::$app->params['btnGuardar'] : \Yii::$app->params['btnGuardar'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 
 </div>

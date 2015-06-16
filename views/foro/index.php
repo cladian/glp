@@ -74,16 +74,25 @@ foreach ($model as $foro) {
                             </div>
                             <br/>
 
-                            <!-- Botón de inscripción-->
-                            <div>
-
-                                <?= Html::a('<span class="badge">'.'</span> Inscríbete ', ['inscription', 'id' => $foro->id], ['class' => 'btn btn-success']) ?>
-
-                            </div>
-                            <!-- Botón de inscripción-->
-
 
                         <?php endif ?>
+                        <!-- Botón de inscripción-->
+
+                        <?php
+                       if ($foro->validarInscription (Yii::$app->user->identity->id, $foro->id)){
+                      // if ($foro->getUsers()){
+                           ?>
+                        <div>
+
+                            <?= Html::a('<span class="badge">'.'</span> Inscríbete ', ['inscription', 'id' => $foro->id], ['class' => 'btn btn-success']) ?>
+
+                        </div>
+                        <?php
+                       }
+                        ?>
+
+
+                        <!-- Botón de inscripción-->
 
                         <?php if ($foro->getPhforumImagens()->count() > 0): ?>
                             <hr/>

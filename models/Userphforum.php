@@ -19,9 +19,26 @@ use Yii;
  */
 class Userphforum extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+    // CONTROL DE ESTADOS
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+
+    public function getStatus($status)
+    {
+        $codes = $this->getStatusList();
+        return (    isset($codes[$status])) ? $codes[$status] : '';
+    }
+
+    public function getStatusList()
+    {
+        return $codes = [
+            self::STATUS_ACTIVE => 'ACTIVO',
+            self::STATUS_INACTIVE => 'INACTIVO',
+            self::STATUS_DELETED => 'ELIMINADO',
+        ];
+
+    }
     public static function tableName()
     {
         return 'userphforum';
@@ -36,7 +53,9 @@ class Userphforum extends \yii\db\ActiveRecord
             [['phforum_id', 'user_id'], 'required'],
             [['phforum_id', 'user_id', 'status'], 'integer'],
             [['observation'], 'string'],
-            [['created_at', 'updated_at'], 'safe']
+            [['created_at', 'updated_at'], 'safe'],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
+            ['updated_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 

@@ -157,15 +157,30 @@ class ForoController extends Controller
     }
 
     function actionInscription($id)
-    {
+    {   // Validación inicial de exitencia de registro del usuario con el id del for
+        // si el registro existe se redirecciona la pantalla
+        if (( Userphforum::find()->where(['user_id' =>Yii::$app->user->identity->id,'phforum_id'=>$id])->one() ) == null) {
+
         $model = new Userphforum();
+        $modelForo = Phforum::find()->where(['id'=>$id])->one();
+
+        // Asignación previa de variable foro antes de validación
+        $model->phforum_id=$id;
+        $model->user_id=Yii::$app->user->identity->id;
+
+        // Validar existencia previa del registro para emitir mensaje de error.
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('_forminscription', [
                 'model' => $model,
+                'modelForo'=> $modelForo,
             ]);
+        }
+        } else {
+            throw new NotFoundHttpException('Usted ya se encuentra registrado al Foro ');
         }
     }
 
