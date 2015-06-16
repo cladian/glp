@@ -21,12 +21,12 @@ $this->title = 'Inscripciones';
 
     <?= Html::a(\Yii::$app->params['btnRegresar'],['/site/index'], ['class' => 'btn btn-default'])?>
     <?php
-    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte (Excel)', ['excel' ], [
+/*    echo Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> Descargar Reporte (Excel)', ['excel' ], [
         'class'=>'btn btn-success',
         'target'=>'_blank',
         'data-toggle'=>'tooltip',
     ]);
-    ?>
+    */?>
 
 
 
